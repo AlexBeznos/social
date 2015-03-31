@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -23,10 +23,13 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'haml'
+gem 'haml-rails'
 gem 'aasm'
 gem 'oj'
 gem 'active_type'
+gem 'authlogic'
+gem 'daemons'
+gem 'delayed_job_active_record'
 
 # aws s3
 gem 'aws-sdk', '~> 1.48.1'
@@ -36,6 +39,13 @@ gem 'figaro'
 
 # dump db
 gem 'yaml_db'
+
+# vk api
+gem 'vkontakte_api'
+
+# bootswach
+gem 'twitter-bootswatch-rails'
+gem 'twitter-bootswatch-rails-helpers'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

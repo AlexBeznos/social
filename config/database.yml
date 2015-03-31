@@ -17,7 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: social
+  username: postgres
+  password: ''
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -25,7 +26,6 @@ default: &default
 development:
   <<: *default
   database: social_development
-  password: <%= ENV['SOCIAL_DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,7 +60,6 @@ development:
 test:
   <<: *default
   database: social_test
-  password: <%= ENV['SOCIAL_DATABASE_PASSWORD'] %>
 
 
 # As with config/secrets.yml, you never want to store sensitive information,
