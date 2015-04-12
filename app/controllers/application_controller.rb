@@ -16,4 +16,16 @@ class ApplicationController < ActionController::Base
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.user
     end
+
+    def gen_root_path
+      if current_user
+        if current_user.general?
+          return root_path
+        elsif current_user.admin?
+          return adm_root_path
+        end
+      else
+        login_path
+      end
+    end
 end

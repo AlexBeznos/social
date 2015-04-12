@@ -8,8 +8,9 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
-      redirect_to dashboard_index_path
+      redirect_to gen_root_path
     else
+      flash[:alert] = "Something went wrong. Errors: #{@user_session.errors.each {|e| e}}"
       render :action => :new
     end
   end
@@ -17,6 +18,7 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "Logout successful!"
-    redirect_to user_sessions_new_path
+    redirect_to login_path
   end
+
 end

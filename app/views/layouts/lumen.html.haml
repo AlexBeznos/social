@@ -26,11 +26,15 @@
           %a.navbar-brand{:href => "/"} Social
         #bs-example-navbar-collapse-2.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
-            %li
-              %a{:href => "/login"} Login
-            %li
-              %a{:href => "/signup"} Signup
+            - unless current_user
+              %li
+                %a{:href => "/login"} Login
+            - else
+              %li
+                %a{:href => '#'}= current_user.group
+              %li= link_to 'Logout', user_session_path(current_user.id), method: 'DELETE'
     .container
+      = render 'shared/flash'
       = yield
 
     /

@@ -28,8 +28,6 @@ gem 'aasm'
 gem 'oj'
 gem 'active_type'
 gem 'authlogic'
-gem 'daemons'
-gem 'delayed_job_active_record'
 
 # aws s3
 gem 'aws-sdk', '~> 1.48.1'

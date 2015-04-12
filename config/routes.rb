@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+
+  namespace :adm do
+    root to: 'dashboard#index'
+    get '/' => 'dashboard#index'
+    resources :users
+  end
+
   root to: 'dashboard#index'
-  get 'dashboard/index'
-  get 'dashboard/login'
-  get 'dashboard/signup'
+  get '/' => 'dashboard#index'
 
   resources :user_sessions, only: [:create, :destroy]
   get 'login' => 'user_sessions#new'
