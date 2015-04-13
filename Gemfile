@@ -28,6 +28,7 @@ gem 'aasm'
 gem 'oj'
 gem 'active_type'
 gem 'authlogic'
+gem 'simple_form'
 
 # aws s3
 gem 'aws-sdk', '~> 1.48.1'

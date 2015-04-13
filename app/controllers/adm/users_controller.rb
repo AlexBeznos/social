@@ -1,7 +1,10 @@
-class Adm::UsersController < ApplicationController
+class Adm::UsersController < AdministrationController
   before_filter :find_user, except: [:index, :new, :create]
   def index
     @users = User.all
+  end
+
+  def show
   end
 
   def new
@@ -23,7 +26,18 @@ class Adm::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_users_path, :notice => 'User updated!'
+      redirect_to adm_users_path, :notice => 'User updated!'
+    else
+      render :action => :new, :alert => "U pass something wrong. Errors: #{@user.errors}"
+    end
+  end
+
+  def edit_password
+  end
+
+  def update_password
+    if @user.update(user_params)
+      redirect_to adm_users_path, :notice => 'User updated!'
     else
       render :action => :new, :alert => "U pass something wrong. Errors: #{@user.errors}"
     end
@@ -36,7 +50,7 @@ class Adm::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :group)
   end
 
   def find_user

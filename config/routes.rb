@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   namespace :adm do
     root to: 'dashboard#index'
     get '/' => 'dashboard#index'
-    resources :users
+    resources :users do
+      member do
+        get 'edit_password' => 'users#edit_password'
+        patch 'update_password' => 'users#update_password'
+      end
+    end
   end
 
   root to: 'dashboard#index'

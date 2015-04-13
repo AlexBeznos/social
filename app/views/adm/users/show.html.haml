@@ -1,0 +1,11 @@
+%h1 Show #{@user.email}
+
+.row
+  .col-md-3
+    %ul.list-group
+      %li.list-group-item
+        Email
+        %span.badge.pull-right= @user.email
+      %li.list-group-item
+        Group
+        %span.badge.pull-right= @user.group

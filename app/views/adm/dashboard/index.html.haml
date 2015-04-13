@@ -1,2 +1,18 @@
 %h1 Adm::Dashboard#index
-%p Find me in app/views/adm/dashboard/index.html.haml
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th id
+      %th email
+      %th group
+      %th
+  %tbody
+  - @users.each do |user|
+    %tr
+      %th= user.id
+      %td= link_to user.email, adm_user_path(user)
+      %td= user.group
+      %td
+        = link_to 'edit', edit_adm_user_path(user), class: 'btn btn-outline btn-warning'
+        = link_to 'destroy', adm_user_path(user), class: 'btn btn-outline btn-danger', method: 'DELETE' unless user == current_user
