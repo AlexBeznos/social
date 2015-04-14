@@ -4,9 +4,9 @@ class CreatePlaces < ActiveRecord::Migration
       t.string :name
       t.string :slug
       t.integer :user_id
-      t.boolean :enter_by_password
+      t.boolean :enter_by_password, :default => false
       t.string :password
-      t.boolean :active
+      t.boolean :active, :default => false
 
       t.timestamps
     end

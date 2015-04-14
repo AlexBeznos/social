@@ -12,3 +12,13 @@
       %li.list-group-item
         Slug
         %span.badge.pull-right= @place.slug
+      %li.list-group-item
+        Place active
+        %span.badge.pull-right= @place.active
+      - if @place.enter_by_password
+        %li.list-group-item
+          Enter by password
+          %span.badge.pull-right= @place.enter_by_password
+        %li.list-group-item
+          Password
+          %span.badge.pull-right= @place.password
