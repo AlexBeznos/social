@@ -1,0 +1,14 @@
+%h1
+  Place '#{@place.name}'
+  = link_to 'Edit this place', edit_adm_user_place_path(@user, @place), class: 'btn btn-primary pull-right'
+
+
+.row
+  .col-md-3
+    %ul.list-group
+      %li.list-group-item
+        Name
+        %span.badge.pull-right= @place.name
+      %li.list-group-item
+        Slug
+        %span.badge.pull-right= @place.slug

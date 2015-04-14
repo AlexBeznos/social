@@ -9,3 +9,24 @@
       %li.list-group-item
         Group
         %span.badge.pull-right= @user.group
+
+.row
+  .col-md-12
+    %h3 Places
+    = link_to 'Add place', new_adm_user_place_path(@user), class: 'btn btn-primary'
+    %table.table.table-striped
+      %thead
+        %tr
+          %th id
+          %th name
+          %th slug
+          %th
+      %tbody
+      - @user.places.each do |place|
+        %tr
+          %th= place.id
+          %td= link_to place.name, adm_user_place_path(@user, place)
+          %td= place.slug
+          %td
+            = link_to 'edit', edit_adm_user_place_path(@user, place), class: 'btn btn-outline btn-warning'
+            = link_to 'destroy', adm_user_place_path(@user, place), class: 'btn btn-outline btn-danger', method: 'DELETE'

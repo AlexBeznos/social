@@ -54,6 +54,7 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     commonjs (0.2.7)
+    cyrillizer (0.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
@@ -257,6 +258,7 @@ DEPENDENCIES
   aws-sdk (~> 1.48.1)
   capybara
   coffee-rails (~> 4.0.0)
+  cyrillizer
   factory_girl_rails
   figaro
   forgery

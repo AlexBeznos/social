@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
     get '/' => 'dashboard#index'
     resources :users do
+      resources :places, except: :index
       member do
         get 'edit_password' => 'users#edit_password'
         patch 'update_password' => 'users#update_password'
