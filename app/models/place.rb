@@ -16,6 +16,10 @@ class Place < ActiveRecord::Base
     if Place.where(slug: self.slug).any? && self != Place.find_by(slug: self.slug)
       self.errors.add(:changable_slug, 'place with such slug already exists')
     end
+
+    if self.slug == '' || self.nil?
+      self.errors.add(:changable_slug, 'slug should be seted')
+    end
   end
 
   def gen_slug
