@@ -5,9 +5,14 @@ Rails.application.routes.draw do
     get '/' => 'dashboard#index'
     resources :users do
       resources :places, except: :index do
-        resources :messages, except: [:index, :show]
+        resources :messages, except: [:index, :show] do
+          member do
+            get 'activate'
+            get 'deactivate'
+          end
+        end
       end
-      
+
       member do
         get 'edit_password' => 'users#edit_password'
         patch 'update_password' => 'users#update_password'

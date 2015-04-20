@@ -21,6 +21,16 @@ class Adm::MessagesController < AdministrationController
   def edit
   end
 
+  def activate
+    @message.update(active: true)
+    redirect_to adm_user_place_path(@user, @place)
+  end
+
+  def deactivate
+    @message.update(active: false)
+    redirect_to adm_user_place_path(@user, @place)
+  end
+
   def update
     if @message.update(message_params)
       redirect_to adm_user_place_path(@user, @place), :notice => 'Message updated!'
@@ -40,7 +50,7 @@ class Adm::MessagesController < AdministrationController
   end
 
   def find_place
-    @place = Place.find(params[:place_id])
+    @place = Place.find_by_slug(params[:place_id])
   end
 
   def find_message
@@ -48,6 +58,6 @@ class Adm::MessagesController < AdministrationController
   end
 
   def message_params
-    params.require(:message).permit(:type, :message, :redirect_link, :message_link)
+    params.require(:message).permit(:network, :message, :redirect_link, :message_link, :image)
   end
 end

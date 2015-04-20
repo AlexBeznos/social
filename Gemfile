@@ -33,7 +33,7 @@ gem 'cyrillizer'
 gem 'has_unique_slug'
 
 # aws s3
-gem 'aws-sdk', '~> 1.48.1'
+gem 'aws-sdk', '< 2.0'
 
 # configuration
 gem 'figaro'
@@ -43,6 +43,9 @@ gem 'yaml_db'
 
 # vk api
 gem 'vkontakte_api'
+
+# img managment
+gem "paperclip", "~> 4.2"
 
 # bootswach
 gem 'twitter-bootswatch-rails'

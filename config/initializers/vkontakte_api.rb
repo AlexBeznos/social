@@ -2,7 +2,7 @@ VkontakteApi.configure do |config|
   # Authorization parameters (not needed when using an external authorization):
   config.app_id       = ENV['VK_APP_ID']
   config.app_secret   = ENV['VK_APP_SECRET']
-  config.redirect_uri = ENV['APP_URL'] + ENV['REDIRECT_URI']
+  config.redirect_uri = "#{ENV['APP_URL']}#{ENV['VK_REDIRECT_PATH']}"
 
   # Faraday adapter to make requests with:
   # config.adapter = :net_http

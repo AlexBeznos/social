@@ -17,12 +17,16 @@ ActiveRecord::Schema.define(version: 20150414170220) do
   enable_extension "plpgsql"
 
   create_table "messages", force: true do |t|
-    t.integer  "type"
-    t.text     "attachments"
+    t.integer  "network"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.string   "redirect_link"
     t.text     "message"
     t.string   "message_link"
     t.integer  "place_id"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

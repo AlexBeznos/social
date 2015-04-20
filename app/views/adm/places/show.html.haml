@@ -5,7 +5,7 @@
   - navigation_add 'Users', adm_users_path
   - navigation_add "User #{@user.id}", adm_user_path(@user)
   - navigation_add 'Places', adm_user_places_path(@user)
-  - navigation_add "Place #{@place.id}", adm_user_place_path(@user, @place)
+  - navigation_add "Place #{@place.id}", adm_user_place_path(@user, @place.id)
   = render_navigation
 
 %section.content
@@ -42,11 +42,12 @@
                 Password
                 %span.text-muted.pull-right= @place.password
 
-  - Message.types.each_key do |key|
+  - Message.networks.each_key do |key|
     .box
       .box-header.with-border
         = key
         messages
+        = link_to 'New message', new_adm_user_place_message_path(@user, @place), class: 'btn btn-primary btn-xs pull-right'
       .box-body
         %table.table.table-striped
           %thead
@@ -59,12 +60,24 @@
               %th active
               %th
           %tbody
-            - @place.messages.where(type: key).each do |message|
+            - @place.messages.where("network = ?", Message.networks[key.to_sym]).each do |message|
               %tr
                 %td= message.id
                 %td= message.message
-                %td= message.attachments
+                %td= image_tag message.image, height: 100
                 %td= message.redirect_link
                 %td= message.message_link
-                %td= message.active
                 %td
+                  - if message.active
+                    %i.fa.fa-thumbs-o-up
+                  - else
+                    %i.fa.fa-thumbs-o-down
+                %td
+              %tr
+                %td{:colspan => '6'}
+                  - if message.active
+                    = link_to 'deactivate', deactivate_adm_user_place_message_path(@user, @place, message), class: 'btn btn-danger'
+                  - else
+                    = link_to 'activate', activate_adm_user_place_message_path(@user, @place, message), class: 'btn btn-success'
+                  = link_to 'edit', edit_adm_user_place_message_path(@user, @place, message), class: 'btn btn-warning'
+                  = link_to 'destroy', adm_user_place_message_path(@user, @place, message), class: 'btn btn-danger', method: 'DELETE'
