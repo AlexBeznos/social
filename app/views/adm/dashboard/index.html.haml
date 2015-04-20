@@ -1,18 +1,11 @@
-%h1 Adm::Dashboard#index
+= content_for :title, "Dashboard"
+%section.content-header
+  %h1= yield(:title)
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th id
-      %th email
-      %th group
-      %th
-  %tbody
-  - @users.each do |user|
-    %tr
-      %th= user.id
-      %td= link_to user.email, adm_user_path(user)
-      %td= user.group
-      %td
-        = link_to 'edit', edit_adm_user_path(user), class: 'btn btn-outline btn-warning'
-        = link_to 'destroy', adm_user_path(user), class: 'btn btn-outline btn-danger', method: 'DELETE' unless user == current_user
+  - navigation_add 'Dashboard', adm_root_path
+  = render_navigation
+
+%section.content
+  .box.box-solid
+    .box-header Dashboard
+    .box-body Some charts gonna be here

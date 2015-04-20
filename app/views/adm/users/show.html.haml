@@ -1,32 +1,43 @@
-%h1 Show #{@user.email}
+= content_for :title, "User #{@user.email}"
+%section.content-header
+  %h1= yield(:title)
 
-.row
-  .col-md-3
-    %ul.list-group
-      %li.list-group-item
-        Email
-        %span.badge.pull-right= @user.email
-      %li.list-group-item
-        Group
-        %span.badge.pull-right= @user.group
+  - navigation_add 'Users', adm_users_path
+  - navigation_add "User #{@user.id}", adm_user_path(@user)
+  = render_navigation
 
-.row
-  .col-md-12
-    %h3 Places
-    = link_to 'Add place', new_adm_user_place_path(@user), class: 'btn btn-primary'
-    %table.table.table-striped
-      %thead
-        %tr
-          %th id
-          %th name
-          %th slug
-          %th
-      %tbody
-      - @user.places.each do |place|
-        %tr
-          %th= place.id
-          %td= link_to place.name, adm_user_place_path(@user, place)
-          %td= place.slug
-          %td
-            = link_to 'edit', edit_adm_user_place_path(@user, place), class: 'btn btn-outline btn-warning'
-            = link_to 'destroy', adm_user_place_path(@user, place), class: 'btn btn-outline btn-danger', method: 'DELETE'
+%section.content
+  .row
+    .col-md-4
+      .box
+        .box-header.with-border User information
+        .box-body
+          %ul.list-group
+            %li.list-group-item
+              Email
+              %span.text-muted.pull-right= @user.email
+            %li.list-group-item
+              Group
+              %span.text-muted.pull-right= @user.group
+
+  .box
+    .box-header.with-border
+      Places
+      = link_to 'Add place', new_adm_user_place_path(@user), class: 'btn btn-primary pull-right'
+    .box-body
+      %table.table.table-striped
+        %thead
+          %tr
+            %th id
+            %th name
+            %th slug
+            %th
+        %tbody
+        - @user.places.each do |place|
+          %tr
+            %th= place.id
+            %td= link_to place.name, adm_user_place_path(@user, place)
+            %td= place.slug
+            %td
+              = link_to 'edit', edit_adm_user_place_path(@user, place), class: 'btn btn-outline btn-warning'
+              = link_to 'destroy', adm_user_place_path(@user, place), class: 'btn btn-outline btn-danger', method: 'DELETE'

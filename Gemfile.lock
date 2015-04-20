@@ -87,6 +87,7 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    has_unique_slug (0.1.8)
     hashie (3.4.0)
     hike (1.2.3)
     html2haml (2.0.0)
@@ -263,6 +264,7 @@ DEPENDENCIES
   figaro
   forgery
   haml-rails
+  has_unique_slug
   jbuilder (~> 2.0)
   jquery-rails
   json_spec

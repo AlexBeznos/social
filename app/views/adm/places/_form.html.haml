@@ -1,9 +1,10 @@
 = simple_form_for [:adm, @user, @place] do |f|
   = f.error_notification
   = f.input :name
-  = f.input :changable_slug
+  = f.input :slug
   = f.input :enter_by_password, as: :boolean, inline_label: 'Enter by password'
-  = f.input :password
+  .adm_place_password
+    = f.input :password
   = f.input :active, as: :boolean, inline_label: 'Is place active?'
 
   = f.button :submit

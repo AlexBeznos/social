@@ -30,6 +30,8 @@ gem 'active_type'
 gem 'authlogic'
 gem 'simple_form'
 gem 'cyrillizer'
+gem 'has_unique_slug'
+
 # aws s3
 gem 'aws-sdk', '~> 1.48.1'
 

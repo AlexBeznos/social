@@ -1,5 +1,13 @@
-%h1 Adm::Users#new
+= content_for :title, "New User"
+%section.content-header
+  %h1= yield(:title)
 
-.row
-  .col-md-6
-    = render 'adm/users/forms/new'
+  - navigation_add 'Users', adm_users_path
+  - navigation_add 'New', new_adm_user_path
+  = render_navigation
+
+%section.content
+  .row
+    .col-md-6
+      .box.box-solid
+        .box-body= render 'adm/users/forms/new'

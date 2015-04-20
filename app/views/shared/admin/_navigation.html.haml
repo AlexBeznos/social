@@ -1,0 +1,8 @@
+%ul.sidebar-menu
+  %li.header MENU
+  %li{:class => active_menu('dashboard') }
+    %a{:href => adm_root_path }
+      %span Dashboard
+  %li{:class => active_menu('users') }
+    %a{:href => adm_users_path }
+      %span Users

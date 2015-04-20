@@ -1,24 +1,70 @@
-%h1
-  Place '#{@place.name}'
-  = link_to 'Edit this place', edit_adm_user_place_path(@user, @place), class: 'btn btn-primary pull-right'
+= content_for :title, "Place #{@place.name}"
+%section.content-header
+  %h1= yield(:title)
 
+  - navigation_add 'Users', adm_users_path
+  - navigation_add "User #{@user.id}", adm_user_path(@user)
+  - navigation_add 'Places', adm_user_places_path(@user)
+  - navigation_add "Place #{@place.id}", adm_user_place_path(@user, @place)
+  = render_navigation
 
-.row
-  .col-md-3
-    %ul.list-group
-      %li.list-group-item
-        Name
-        %span.badge.pull-right= @place.name
-      %li.list-group-item
-        Slug
-        %span.badge.pull-right= @place.slug
-      %li.list-group-item
-        Place active
-        %span.badge.pull-right= @place.active
-      - if @place.enter_by_password
-        %li.list-group-item
-          Enter by password
-          %span.badge.pull-right= @place.enter_by_password
-        %li.list-group-item
-          Password
-          %span.badge.pull-right= @place.password
+%section.content
+  .row
+    .col-md-4
+      .box
+        .box-header.with-border
+          Place information
+          = link_to 'Edit', edit_adm_user_place_path(@user, @place), class: 'btn btn-primary pull-right'
+        .box-body
+          %ul.list-group
+            %li.list-group-item
+              Name
+              %span.text-muted.pull-right= @place.name
+            %li.list-group-item
+              Slug
+              %span.text-muted.pull-right= @place.slug
+            %li.list-group-item
+              Place active
+              %span.text-muted.pull-right
+                - if @place.active
+                  %i.fa.fa-thumbs-o-up
+                - else
+                  %i.fa.fa-thumbs-o-down
+            %li.list-group-item
+              Enter by password
+              %span.text-muted.pull-right
+                - if @place.enter_by_password
+                  %i.fa.fa-thumbs-o-up
+                - else
+                  %i.fa.fa-thumbs-o-down
+            - if @place.enter_by_password
+              %li.list-group-item
+                Password
+                %span.text-muted.pull-right= @place.password
+
+  - Message.types.each_key do |key|
+    .box
+      .box-header.with-border
+        = key
+        messages
+      .box-body
+        %table.table.table-striped
+          %thead
+            %tr
+              %th id
+              %th message
+              %th attachments
+              %th redirect link
+              %th post link
+              %th active
+              %th
+          %tbody
+            - @place.messages.where(type: key).each do |message|
+              %tr
+                %td= message.id
+                %td= message.message
+                %td= message.attachments
+                %td= message.redirect_link
+                %td= message.message_link
+                %td= message.active
+                %td

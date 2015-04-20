@@ -1,5 +1,14 @@
-%h1 Add new place
+= content_for :title, "New Place"
+%section.content-header
+  %h1= yield(:title)
 
-.row
-  .col-md-6
-    = render 'form'
+  - navigation_add 'Users', adm_users_path
+  - navigation_add "User #{@user.id}", adm_user_path(@user)
+  - navigation_add "New Place", new_adm_user_place_path(@user)
+  = render_navigation
+
+%section.content
+  .row
+    .col-md-6
+      .box
+        .box-body= render 'form'

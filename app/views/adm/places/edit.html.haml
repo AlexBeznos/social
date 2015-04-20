@@ -1,5 +1,19 @@
-%h1 Edit place #{@place.name}
+= content_for :title, "Edit Place"
+%section.content-header
+  %h1= yield(:title)
 
-.row
-  .col-md-4
-    = render 'form' 
+  - navigation_add 'Users', adm_users_path
+  - navigation_add "User #{@user.id}", adm_user_path(@user)
+  - navigation_add 'Places', adm_user_places_path(@user)
+  - navigation_add "Place #{@place.id}", adm_user_place_path(@user, @place)
+  - navigation_add 'Edit', edit_adm_user_place_path(@user, @place)
+  = render_navigation
+
+%section.content
+  .row
+    .col-md-6
+      .box.box-solid
+        .box-header.with-border
+          Place:
+          = @place.name
+        .box-body= render 'form'
