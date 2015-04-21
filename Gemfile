@@ -44,6 +44,9 @@ gem 'yaml_db'
 # vk api
 gem 'vkontakte_api'
 
+# fb api
+gem "koala", "~> 2.0"
+
 # img managment
 gem "paperclip", "~> 4.2"
 

@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create, :destroy]
   get 'login' => 'user_sessions#new'
 
+  scope '/places' do
+    get ':slug' => 'gowifi#show', as: :gowifi_place
+    get ':slug/social/:network' => 'gowifi#authorize', as: :gowifi_request
+    get '/no_place' => 'gowifi#no_place', as: :gowifi_no_place
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

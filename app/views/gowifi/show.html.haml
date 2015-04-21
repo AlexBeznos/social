@@ -1,0 +1,5 @@
+%h1= @place.name
+
+%ul
+  - @networks.each do |network|
+    %li= link_to network, gowifi_request_path(network: network)
