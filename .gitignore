@@ -17,3 +17,5 @@
 
 # ignore variables
 /config/application.yml
+
+.DS_Store

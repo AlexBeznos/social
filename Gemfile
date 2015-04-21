@@ -31,6 +31,7 @@ gem 'authlogic'
 gem 'simple_form'
 gem 'cyrillizer'
 gem 'has_unique_slug'
+gem 'rmagick'
 
 # aws s3
 gem 'aws-sdk', '< 2.0'
