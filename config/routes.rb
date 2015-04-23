@@ -20,15 +20,20 @@ Rails.application.routes.draw do
     end
   end
 
+
+  # app users log in level pages
   root to: 'dashboard#index'
   get '/' => 'dashboard#index'
 
+  # consumers level accessed pages
   resources :user_sessions, only: [:create, :destroy]
   get 'login' => 'user_sessions#new'
 
+  get '/auth/:provider/callback' => 'gowifi#omniauth' # omniauth consumers authentication
+
   scope '/places' do
     get ':slug' => 'gowifi#show', as: :gowifi_place
-    get ':slug/social/:network' => 'gowifi#authorize', as: :gowifi_request
+    get ':slug/auth/:network' => 'gowifi#authorize', as: :gowifi_request
     get '/no_place' => 'gowifi#no_place', as: :gowifi_no_place
   end
 

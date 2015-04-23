@@ -32,6 +32,7 @@ gem 'simple_form'
 gem 'cyrillizer'
 gem 'has_unique_slug'
 gem 'rmagick'
+gem 'omniauth-twitter'
 
 # aws s3
 gem 'aws-sdk', '< 2.0'
@@ -44,6 +45,9 @@ gem 'yaml_db'
 
 # vk api
 gem 'vkontakte_api'
+
+# twitter api
+gem 'twitter'
 
 # fb api
 gem "koala", "~> 2.0"
