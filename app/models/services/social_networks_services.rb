@@ -8,7 +8,7 @@ class SocialNetworksServices < ActiveType::Object
   def get_auth_path
     case self.network
     when 'vk'
-      return "https://oauth.vk.com/authorize?client_id=#{ENV['VK_APP_ID']}&scope=wall&display=page&redirect_uri=#{ENV['APP_URL']}#{ENV['VK_REDIRECT_PATH']}&response_type=code&"
+      return "#{ENV['APP_URL']}auth/vkontakte/?state=#{self.state}"
     when 'facebook'
       oauth = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_SECRET'], ENV['APP_URL'] + ENV['FB_REDIRECT_PATH'])
       return oauth.url_for_oauth_code(:permissions => ['publish_stream', 'offline_access', 'manage_pages'], :state => self.state)
@@ -21,12 +21,17 @@ class SocialNetworksServices < ActiveType::Object
 
   def post_message_and_get_url
     place = Place.find_by_slug(self.slug)
-    
-    case self.network
+    attrs = {:place => place, :credentials => self.credentials}
+
+    case self.credentials['provider']
     when 'twitter'
-      return TwitterService.new({:place => place, :credentials => self.credentials}).advertise
+      return TwitterService.new(attrs).advertise
     when 'instagram'
-      return InstagramService.new({:place => place, :credentials => self.credentials}).advertise
+      return InstagramService.new(attrs).advertise
+    when 'vkontakte'
+      puts '+++++++++++'
+      puts 'vkontakte'
+      return VkService.new(attrs).advertise
     end
   end
 

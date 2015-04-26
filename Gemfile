@@ -32,8 +32,11 @@ gem 'simple_form'
 gem 'cyrillizer'
 gem 'has_unique_slug'
 gem 'rmagick'
+
+# omniauth
 gem 'omniauth-twitter'
 gem 'omniauth-instagram'
+gem 'omniauth-vkontakte'
 
 # aws s3
 gem 'aws-sdk', '< 2.0'
