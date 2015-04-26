@@ -1,12 +1,17 @@
 = simple_form_for [:adm, @user, @place, @message] do |f|
   = f.error_notification
   = f.input :network, collection: Message.networks.keys
-  = f.input :redirect_link
-  = f.input :message_link
-  - if @message.image.exists?
-    = image_tag @message.image.url, height: 100
-  = f.input :image, as: :file
-  = f.input :active, as: :boolean, inline_label: 'Is message active?'
-  = f.input :message, as: :text
+  .facebook.vk.twitter
+    = f.input :message_link
+    - if @message.image.exists?
+      = image_tag @message.image.url, height: 100
+    = f.input :image, as: :file
+    = f.input :message, as: :text
+  .instagram.facebook.vk.twitter
+    = f.input :redirect_link
+    = f.input :active, as: :boolean, inline_label: 'Is message active?'
+  .instagram
+    = f.input :subscription
+
 
   = f.button :submit

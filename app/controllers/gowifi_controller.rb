@@ -1,5 +1,6 @@
 class GowifiController < ActionController::Base
   before_action :find_place
+
   def show
     if @place
       @networks = @place.get_networks
@@ -10,7 +11,9 @@ class GowifiController < ActionController::Base
 
   def authorize
     session[:state] = Digest::MD5.hexdigest(rand.to_s)
-    network = SocialNetworksServices.new(network: params[:network], state: session[:state], slug: params[:slug])
+    session[:slug] = params[:slug]
+
+    network = SocialNetworksServices.new(network: params[:network], state: session[:state], slug: session[:slug])
     redirect_to network.get_auth_path
   end
 
@@ -18,10 +21,13 @@ class GowifiController < ActionController::Base
   end
 
   def omniauth
-    if session[:state] != params[:state]
+    if session[:state] != params[:state] && params[:provider] != 'instagram'
       return render :action => :no_place, :alert => 'Some one tryied to brake you!'
     end
-    network = SocialNetworksServices.new(credentials: credentials, slug: params[:place])
+
+    network = SocialNetworksServices.new( credentials: credentials,
+                                          slug: session[:slug] )
+
     redirect_to network.post_message_and_get_url
   end
 

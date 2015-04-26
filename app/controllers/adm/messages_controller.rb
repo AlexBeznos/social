@@ -58,6 +58,6 @@ class Adm::MessagesController < AdministrationController
   end
 
   def message_params
-    params.require(:message).permit(:network, :message, :redirect_link, :message_link, :image, :active)
+    params.require(:message).permit(:network, :message, :redirect_link, :message_link, :image, :active, :subscription)
   end
 end

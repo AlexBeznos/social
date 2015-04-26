@@ -33,6 +33,7 @@ gem 'cyrillizer'
 gem 'has_unique_slug'
 gem 'rmagick'
 gem 'omniauth-twitter'
+gem 'omniauth-instagram'
 
 # aws s3
 gem 'aws-sdk', '< 2.0'
@@ -48,6 +49,9 @@ gem 'vkontakte_api'
 
 # twitter api
 gem 'twitter'
+
+# instagram api
+gem 'instagram'
 
 # fb api
 gem "koala", "~> 2.0"
