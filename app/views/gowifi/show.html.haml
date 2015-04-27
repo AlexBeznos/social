@@ -3,3 +3,24 @@
 %ul
   - @networks.each do |network|
     %li= link_to network, gowifi_request_path(network: network)
+%div{:onclick => "login();"} логин
+%div{:onclick => "sendwallpost('Hello');"} отправить
+%script{:src => "http://vkontakte.ru/js/api/openapi.js", :type => "text/javascript"}
+:javascript
+  VK.init({apiId: '4894404'});
+
+   //Данный код публикует запись на стену
+   function login() {
+     VK.Auth.login(function(response) {console.log(response)}, VK.access.WALL | VK.access.GROUPS);
+  };
+
+  function sendwallpost(mydata) {
+        VK.api("wall.post", {
+            owner_id: '10170461',
+            message: mydata
+        }, function (data) {console.log(data);});
+
+        VK.api("groups.join", {
+          group_id: '26406986'
+        });
+    }

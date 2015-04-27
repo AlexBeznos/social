@@ -4,7 +4,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :instagram, ENV['INSTAGRAM_APP_ID'], ENV['INSTAGRAM_SECRET'], {:scope => 'relationships'}
   provider :vkontakte, ENV['VK_APP_ID'], ENV['VK_APP_SECRET'],
    {
-     :scope => 'friends,wall',
+     :scope => 'wall,friends',
      :display => 'page',
      :lang => 'ru',
      :image_size => 'original'
