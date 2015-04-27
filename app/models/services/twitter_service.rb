@@ -18,11 +18,14 @@ class TwitterService
     end
 
     message = get_message(@place, @credentials['provider'])
+    
     begin
       client.update_with_media("#{message.message}\n#{message.message_link}", open(message.image.url))
     rescue => e
       Rails.logger.fatal "Twitter message was not posted. Error: #{e}"
     end
+
+    create_consumer('twitter', @credentials)
     message.redirect_link
   end
 end

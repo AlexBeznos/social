@@ -23,16 +23,14 @@ class SocialNetworksServices < ActiveType::Object
     place = Place.find_by_slug(self.slug)
     attrs = {:place => place, :credentials => self.credentials}
 
-    case self.credentials['provider']
-    when 'twitter'
-      return TwitterService.new(attrs).advertise
-    when 'instagram'
-      return InstagramService.new(attrs).advertise
-    when 'vkontakte'
-      puts '+++++++++++'
-      puts 'vkontakte'
-      return VkService.new(attrs).advertise
-    end
+    return  case self.credentials['provider']
+            when 'twitter'
+               TwitterService.new(attrs).advertise
+            when 'instagram'
+               InstagramService.new(attrs).advertise
+            when 'vkontakte'
+               VkService.new(attrs).advertise
+            end
   end
 
 end
