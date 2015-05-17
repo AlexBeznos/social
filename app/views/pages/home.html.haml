@@ -39,7 +39,7 @@
           / /.navbar-collapse
         .logo
           %a{:href => "/"}
-            %img{:alt => "", :src => "assets/logo.png"}/
+            = image_tag 'logo.png'
     / background
     .all_window_height{:style => "width: 100%; height: 100vh; top: 0px; z-index: 0;"}
       .background_window
@@ -51,27 +51,27 @@
             %h2 Ваши гости расскажут о Вас :
             .social_icons
               .col-md-2.col-md-offset-2.col-sm-3.col-xs-6
-                %img{:alt => "", :src => "assets/social1.png"}/
+                = image_tag 'social1.png'
               .col-md-2.col-sm-3.col-xs-6
-                %img{:alt => "", :src => "assets/social2.png"}/
+                = image_tag 'social2.png'
               .col-md-2.col-sm-3.col-xs-6
-                %img{:alt => "", :src => "assets/social3.png"}/
+                = image_tag 'social3.png'
               .col-md-2.col-sm-3.col-xs-6
-                %img{:alt => "", :src => "assets/icon6.png"}/
+                = image_tag 'icon6.png'
               .clear
         .say_people
           .container
             .shadow
               .col-md-4.col-sm-12.coll
-                %img.sh1{:alt => "", :src => "assets/s1.png"}/
+                = image_tag 's1.png'
                 .go_arrow.go_arrow1
-                  %img{:alt => "", :src => "assets/logo-mini.png"}/
+                  = image_tag 'logo-mini.png'
               .col-md-4.col-sm-6.coll2
-                %img.sh2{:alt => "", :src => "assets/s2.png"}/
+                = image_tag 's2.png'
                 .go_arrow.go_arrow2
-                  %img{:alt => "", :src => "assets/logo-mini.png"}/
+                  = image_tag 'logo-mini.png'
               .col-md-4.col-sm-6
-                %img.sh3{:alt => "", :src => "assets/s3.png"}/
+                = image_tag 's3.png'
               .clear
           .clear
       #ya2.work
@@ -87,10 +87,10 @@
                 #tab1.tab-pane.active
                   .col-md-4.col-sm-4
                     .iphone
-                      %img{:alt => "", :src => "assets/iphone.png"}/
+                      = image_tag 'iphone.png'
                   .col-md-4.col-sm-4
                     .iphone_hand
-                      %img{:alt => "", :src => "assets/iphone_hand.png"}/
+                      = image_tag 'iphone_hand.png'
                   .col-md-4.col-sm-4
                     .text_info
                       %ul.nav.nav-tabs
@@ -108,10 +108,10 @@
                 #tab2.tab-pane
                   .col-md-4
                     .iphone
-                      %img{:alt => "", :src => "assets/iphone.png"}/
+                      = image_tag 'iphone.png'
                   .col-md-4
                     .iphone_hand
-                      %img{:alt => "", :src => "assets/iphone_hand.png"}/
+                      = image_tag 'iphone_hand.png'
                   .col-md-4
                     .text_info
                       %ul.nav.nav-tabs
@@ -129,10 +129,10 @@
                 #tab3.tab-pane
                   .col-md-4
                     .iphone
-                      %img{:alt => "", :src => "assets/iphone.png"}/
+                      = image_tag 'iphone.png'
                   .col-md-4
                     .iphone_hand
-                      %img{:alt => "", :src => "assets/iphone_hand.png"}/
+                      = image_tag 'iphone_hand.png'
                   .col-md-4
                     .text_info
                       %ul.nav.nav-tabs
@@ -153,13 +153,13 @@
           .col-md-4.col-sm-12
             .block1
               .block1_top
-                %img{:alt => "", :src => "assets/ico1.png"}/
+                = image_tag 'ico1.png'
               .block_bottom
                 %h3 Популяризация бренда в соц.сетях
                 %p Воспитанные люди должны удовлетворять следующим условиям: … Они уважают человеческую личность, всегда снисходительны, мягкие, вежливые, уступчивые…
           .col-md-4.col-sm-12
             .block1_top.top2
-              %img{:alt => "", :src => "assets/ico2.png"}/
+              = image_tag 'ico2.png'
             .block_bottom
               %h3 Увеличение среднего чека
               %p
@@ -167,7 +167,7 @@
                 … Они воспитывают в себе эстетику
           .col-md-4.col-sm-12
             .block1_top.top3
-              %img{:alt => "", :src => "assets/ico3.png"}/
+              = image_tag 'ico3.png'
             .block_bottom
               %h3 Новые клиенты
               %p
@@ -183,7 +183,7 @@
           .col-md-6
             .block_right
               .seven
-                %img{:alt => "", :src => "assets/seven.png"}/
+                = image_tag 'seven.png'
                 %span Бесплатное тестирование
               %form{:action => ""}
                 %input{:placeholder => "имя и фамилия...", :type => "text"}/
@@ -198,7 +198,7 @@
           %p 8(067)97-97-253
         .col-md-6.right
           %a{:href => "http://rabby.com.ua", :target => "_blank"}
-            %img{:alt => "", :src => "assets/rabby.png"}/
+            = image_tag 'rabby.png'
     :javascript
       $(document).ready(function() {
         $(window).scroll(function() {

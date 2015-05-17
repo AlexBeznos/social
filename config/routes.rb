@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   # static pages
   scope "/:locale", locale: /en|bn|hi/ do
-    get "/pages/:id" => "high_voltage/pages#show", :as => :page, :format => false
+    get "/:id" => "high_voltage/pages#show", :as => :page, :format => false
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
