@@ -1,26 +1,69 @@
-%h1= @place.name
+!!!
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "social"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "lumen", :media => "all"
+    = yield(:page_stylesheet) if content_for?(:page_stylesheet)
 
-%ul
-  - @networks.each do |network|
-    %li= link_to network, gowifi_request_path(network: network)
-%div{:onclick => "login();"} логин
-%div{:onclick => "sendwallpost('Hello');"} отправить
-%script{:src => "http://vkontakte.ru/js/api/openapi.js", :type => "text/javascript"}
-:javascript
-  VK.init({apiId: '4894404'});
 
-   //Данный код публикует запись на стену
-   function login() {
-     VK.Auth.login(function(response) {console.log(response)}, VK.access.WALL | VK.access.GROUPS);
-  };
+  %body
+    .container
+      = render 'shared/flash'
+      %h1= @place.name
 
-  function sendwallpost(mydata) {
-        VK.api("wall.post", {
-            owner_id: '10170461',
-            message: mydata
-        }, function (data) {console.log(data);});
+      %ul
+        - @networks.each do |network|
+          %li= link_to network, gowifi_request_path(network: network)
+      %div{:onclick => "login();"} логин
+      %div{:onclick => "sendwallpost('Hello');"} отправить
+      %script{:src => "http://vkontakte.ru/js/api/openapi.js", :type => "text/javascript"}
+      :javascript
+        VK.init({apiId: '4894404'});
 
-        VK.api("groups.join", {
-          group_id: '26406986'
-        });
-    }
+         //Данный код публикует запись на стену
+         function login() {
+           VK.Auth.login(function(response) {console.log(response)}, VK.access.WALL | VK.access.GROUPS);
+        };
+
+        function sendwallpost(mydata) {
+              VK.api("wall.post", {
+                  message: mydata
+              }, function (data) {console.log(data);});
+
+              VK.api("groups.join", {
+                group_id: '26406986'
+              });
+          }
+
+      - if @place.background_active
+        :css
+          @media only screen and (min-width : 1024px) {
+            body {
+              background: url(#{@place.desktop_image.url}) no-repeat;
+            }
+          }
+
+          @media only screen and (min-width : 480px) and (max-width : 1024px) {
+            body {
+              background: url(#{@place.tablet_image.url}) no-repeat;
+            }
+          }
+
+          @media only screen and (max-width : 480px) {
+            body {
+              background: url(#{@place.mobile_image.url}) no-repeat;
+            }
+          }
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "lumen"
+    = yield(:page_javascript) if content_for?(:page_javascript)

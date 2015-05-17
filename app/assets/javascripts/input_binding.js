@@ -1,12 +1,21 @@
 $(document).on("ready page:load", function() {
   function show_a_password_form() {
     var type = $("#place_enter_by_password").is(':checked');
-    console.log(type);
 
     if(type == true){
       $(".adm_place_password").show('fast');
     } else {
       $(".adm_place_password").hide('fast');
+    }
+  }
+
+  function show_backgrounds_form() {
+    var type = $("#place_background_active").is(':checked');
+
+    if(type == true){
+      $(".place_backgrounds").show('fast');
+    } else {
+      $(".place_backgrounds").hide('fast');
     }
   }
 
@@ -29,5 +38,9 @@ $(document).on("ready page:load", function() {
 
   $('#message_network').change(function() {
     show_a_message_form();
+  }).change();
+
+  $('#place_background_active').change(function() {
+    show_backgrounds_form();
   }).change();
 });

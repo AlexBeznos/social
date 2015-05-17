@@ -6,5 +6,16 @@
   .adm_place_password
     = f.input :password
   = f.input :active, as: :boolean, inline_label: 'Is place active?'
+  = f.input :background_active, as: :boolean, inline_label: 'Is place has different backgrounds?'
+  .place_backgrounds
+    - if @place.mobile_image.present?
+      = image_tag @place.mobile_image.url, height: 100
+    = f.input :mobile_image, as: :file
+    - if @place.tablet_image.present?
+      = image_tag @place.tablet_image.url, height: 100
+    = f.input :tablet_image, as: :file
+    - if @place.desktop_image.present?
+      = image_tag @place.desktop_image.url, height: 100
+    = f.input :desktop_image, as: :file
 
   = f.button :submit

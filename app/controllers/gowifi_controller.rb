@@ -1,5 +1,5 @@
 class GowifiController < ActionController::Base
-  layout 'enter' 
+  layout 'no-layout' 
   before_action :find_place, only: :show
 
   def show

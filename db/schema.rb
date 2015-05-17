@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427202720) do
+ActiveRecord::Schema.define(version: 20150428084639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,11 +53,24 @@ ActiveRecord::Schema.define(version: 20150427202720) do
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "enter_by_password", default: false
+    t.boolean  "enter_by_password",          default: false
     t.string   "password"
-    t.boolean  "active",            default: false
+    t.boolean  "active",                     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "background_active"
+    t.string   "mobile_image_file_name"
+    t.string   "mobile_image_content_type"
+    t.integer  "mobile_image_file_size"
+    t.datetime "mobile_image_updated_at"
+    t.string   "tablet_image_file_name"
+    t.string   "tablet_image_content_type"
+    t.integer  "tablet_image_file_size"
+    t.datetime "tablet_image_updated_at"
+    t.string   "desktop_image_file_name"
+    t.string   "desktop_image_content_type"
+    t.integer  "desktop_image_file_size"
+    t.datetime "desktop_image_updated_at"
   end
 
   create_table "sessions", force: true do |t|
