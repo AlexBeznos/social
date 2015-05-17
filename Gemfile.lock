@@ -96,6 +96,7 @@ GEM
       railties (>= 4.0.1)
     has_unique_slug (0.1.8)
     hashie (3.4.0)
+    high_voltage (2.3.0)
     hike (1.2.3)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
@@ -325,6 +326,7 @@ DEPENDENCIES
   forgery
   haml-rails
   has_unique_slug
+  high_voltage (~> 2.3.0)
   instagram
   jbuilder (~> 2.0)
   jquery-rails

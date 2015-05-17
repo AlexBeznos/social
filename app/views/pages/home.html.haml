@@ -1,0 +1,218 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title GoFriends - Больше друзей в вашем заведении
+    %link{:href => "assets/favicon.ico", :rel => "shortcut icon"}/
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "home", :media => "all"
+    = yield(:page_stylesheet) if content_for?(:page_stylesheet)
+    = javascript_include_tag "home"
+  %body
+    %header
+      .container
+        %nav.navbar.navbar-default.lipm{:role => "navigation"}
+          / Brand and toggle get grouped for better mobile display
+          .navbar-header
+            %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+          / Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            %ul.nav.navv.navbar-nav.navbar-right
+              %li.active
+                %a{:href => "#ya1"} Новые гости
+              %li
+                %a{:href => "#ya2"} Как это работает
+              %li
+                %a{:href => "#ya4"} Выгоды
+              %li
+                %a{:href => "#ya5"} Бесплатно
+              %li.inside
+                %a{:href => "#"} Войти
+          / /.navbar-collapse
+        .logo
+          %a{:href => "/"}
+            %img{:alt => "", :src => "assets/logo.png"}/
+    / background
+    .all_window_height{:style => "width: 100%; height: 100vh; top: 0px; z-index: 0;"}
+      .background_window
+    / end_background
+    %main{:style => "position: relative; z-index: 1;"}
+      #ya1.people_say
+        .say_social
+          .container
+            %h2 Ваши гости расскажут о Вас :
+            .social_icons
+              .col-md-2.col-md-offset-2.col-sm-3.col-xs-6
+                %img{:alt => "", :src => "assets/social1.png"}/
+              .col-md-2.col-sm-3.col-xs-6
+                %img{:alt => "", :src => "assets/social2.png"}/
+              .col-md-2.col-sm-3.col-xs-6
+                %img{:alt => "", :src => "assets/social3.png"}/
+              .col-md-2.col-sm-3.col-xs-6
+                %img{:alt => "", :src => "assets/icon6.png"}/
+              .clear
+        .say_people
+          .container
+            .shadow
+              .col-md-4.col-sm-12.coll
+                %img.sh1{:alt => "", :src => "assets/s1.png"}/
+                .go_arrow.go_arrow1
+                  %img{:alt => "", :src => "assets/logo-mini.png"}/
+              .col-md-4.col-sm-6.coll2
+                %img.sh2{:alt => "", :src => "assets/s2.png"}/
+                .go_arrow.go_arrow2
+                  %img{:alt => "", :src => "assets/logo-mini.png"}/
+              .col-md-4.col-sm-6
+                %img.sh3{:alt => "", :src => "assets/s3.png"}/
+              .clear
+          .clear
+      #ya2.work
+        .work_block
+          .work_green
+            .container
+              %h2 Как это работает
+        .work_iphone
+          .container
+            .tabbable
+              / Only required for left/right tabs
+              .tab-content
+                #tab1.tab-pane.active
+                  .col-md-4.col-sm-4
+                    .iphone
+                      %img{:alt => "", :src => "assets/iphone.png"}/
+                  .col-md-4.col-sm-4
+                    .iphone_hand
+                      %img{:alt => "", :src => "assets/iphone_hand.png"}/
+                  .col-md-4.col-sm-4
+                    .text_info
+                      %ul.nav.nav-tabs
+                        %li.active
+                          %a.st{"data-toggle" => "tab", :href => "#tab1"}
+                        %li
+                          %a.st{"data-toggle" => "tab", :href => "#tab2"}
+                        %li
+                          %a.st{"data-toggle" => "tab", :href => "#tab3"}
+                      %p
+                        Гарнир к рыбе с чипсами — гороховое пюре, маринованный лук, маринованные огурцы или тушеная в томатном соусе фасоль.
+                        %br/
+                        = succeed "\u{414}\u{43e}\u{43f}\u{43e}\u{43b}\u{43d}\u{435}\u{43d}\u{438}\u{435}" do
+                          %br/
+                #tab2.tab-pane
+                  .col-md-4
+                    .iphone
+                      %img{:alt => "", :src => "assets/iphone.png"}/
+                  .col-md-4
+                    .iphone_hand
+                      %img{:alt => "", :src => "assets/iphone_hand.png"}/
+                  .col-md-4
+                    .text_info
+                      %ul.nav.nav-tabs
+                        %li
+                          %a.st{"data-toggle" => "tab", :href => "#tab1"}
+                        %li.active
+                          %a.st{"data-toggle" => "tab", :href => "#tab2"}
+                        %li
+                          %a.st{"data-toggle" => "tab", :href => "#tab3"}
+                      %p
+                        111Гарнир к рыбе с чипсами — гороховое пюре, маринованный лук, маринованные огурцы или тушеная в томатном соусе фасоль.
+                        %br/
+                        = succeed "\u{414}\u{43e}\u{43f}\u{43e}\u{43b}\u{43d}\u{435}\u{43d}\u{438}\u{435}" do
+                          %br/
+                #tab3.tab-pane
+                  .col-md-4
+                    .iphone
+                      %img{:alt => "", :src => "assets/iphone.png"}/
+                  .col-md-4
+                    .iphone_hand
+                      %img{:alt => "", :src => "assets/iphone_hand.png"}/
+                  .col-md-4
+                    .text_info
+                      %ul.nav.nav-tabs
+                        %li
+                          %a.st{"data-toggle" => "tab", :href => "#tab1"}
+                        %li
+                          %a.st{"data-toggle" => "tab", :href => "#tab2"}
+                        %li.active
+                          %a.st{"data-toggle" => "tab", :href => "#tab3"}
+                      %p
+                        222Гарнир к рыбе с чипсами — гороховое пюре, маринованный лук, маринованные огурцы или тушеная в томатном соусе фасоль.
+                        %br/
+                        = succeed "\u{414}\u{43e}\u{43f}\u{43e}\u{43b}\u{43d}\u{435}\u{43d}\u{438}\u{435}" do
+                          %br/
+      #ya3.work
+        .top_bg_news
+        .container
+          .col-md-4.col-sm-12
+            .block1
+              .block1_top
+                %img{:alt => "", :src => "assets/ico1.png"}/
+              .block_bottom
+                %h3 Популяризация бренда в соц.сетях
+                %p Воспитанные люди должны удовлетворять следующим условиям: … Они уважают человеческую личность, всегда снисходительны, мягкие, вежливые, уступчивые…
+          .col-md-4.col-sm-12
+            .block1_top.top2
+              %img{:alt => "", :src => "assets/ico2.png"}/
+            .block_bottom
+              %h3 Увеличение среднего чека
+              %p
+                Если имеют в себе талант, то уважают его… Они жертвуют для него всем…
+                … Они воспитывают в себе эстетику
+          .col-md-4.col-sm-12
+            .block1_top.top3
+              %img{:alt => "", :src => "assets/ico3.png"}/
+            .block_bottom
+              %h3 Новые клиенты
+              %p
+                Не лгут даже в пустяках… Они не лезут с откровенностями, когда их не спрашивают…
+                %br/
+                %br/
+                Они не унижают себя с тою целью, чтобы вызвать в другом сочувствие.
+      #ya4.container
+        .bottom_block
+          .col-md-6
+            .block_left
+              %h3 Хотите новых гостей?
+          .col-md-6
+            .block_right
+              .seven
+                %img{:alt => "", :src => "assets/seven.png"}/
+                %span Бесплатное тестирование
+              %form{:action => ""}
+                %input{:placeholder => "имя и фамилия...", :type => "text"}/
+                %input{:placeholder => "e-mail...", :type => "text"}/
+                %input{:placeholder => "номер телефона...", :type => "text"}/
+                %input{:type => "submit", :value => "Оставить заявку"}/
+          .clear
+    %footer
+      .container
+        .col-md-6.left
+          %p 8(063)01-01-797
+          %p 8(067)97-97-253
+        .col-md-6.right
+          %a{:href => "http://rabby.com.ua", :target => "_blank"}
+            %img{:alt => "", :src => "assets/rabby.png"}/
+    :javascript
+      $(document).ready(function() {
+        $(window).scroll(function() {
+        if ($(this).scrollTop() > 175){
+            $(".lipm").addClass("sticky");
+          }
+          else{
+            $(".lipm").removeClass("sticky");
+          }
+        });
+      })
+
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = yield(:page_javascript) if content_for?(:page_javascript)

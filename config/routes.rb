@@ -21,10 +21,6 @@ Rails.application.routes.draw do
   end
 
 
-  # app users log in level pages
-  root to: 'dashboard#index'
-  get '/' => 'dashboard#index'
-
   # consumers level accessed pages
   resources :user_sessions, only: [:create, :destroy]
   get 'login' => 'user_sessions#new'
@@ -35,6 +31,12 @@ Rails.application.routes.draw do
     get ':slug' => 'gowifi#show', as: :gowifi_place
     get ':slug/auth/:network' => 'gowifi#authorize', as: :gowifi_request
     get '/no_place' => 'gowifi#no_place', as: :gowifi_no_place
+  end
+
+
+  # static pages
+  scope "/:locale", locale: /en|bn|hi/ do
+    get "/pages/:id" => "high_voltage/pages#show", :as => :page, :format => false
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

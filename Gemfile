@@ -32,6 +32,7 @@ gem 'simple_form'
 gem 'cyrillizer'
 gem 'has_unique_slug'
 gem 'rmagick'
+gem 'high_voltage', '~> 2.3.0'
 
 # omniauth
 gem 'omniauth-twitter'

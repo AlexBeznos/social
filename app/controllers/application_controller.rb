@@ -3,8 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   helper_method :current_user_session, :current_user, :gen_root_path
   protect_from_forgery with: :exception
-  layout 'lumen'
+  before_action :set_locale
 
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   private
     def current_user_session
