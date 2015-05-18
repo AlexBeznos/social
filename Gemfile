@@ -63,9 +63,6 @@ gem "koala", "~> 2.0"
 # img managment
 gem "paperclip", "~> 4.2"
 
-# bootswach
-gem 'twitter-bootswatch-rails'
-gem 'twitter-bootswatch-rails-helpers'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
