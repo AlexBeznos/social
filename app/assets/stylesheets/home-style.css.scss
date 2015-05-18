@@ -44,22 +44,22 @@ table {
 
 @font-face {
     font-family: exo2; /* Имя шрифта */
-    src: url('<%= asset_path("Exo2-Thin.ttf") %>'); /* Путь к файлу со шрифтом */
+    src: url('../assets/Exo2-Thin.ttf'); /* Путь к файлу со шрифтом */
 }
 
 @font-face {
     font-family: bliss; /* Имя шрифта */
-    src: url('<%= asset_path("BlissPro-Regular.otf") %>'); /* Путь к файлу со шрифтом */
+    src: url('../assets/BlissPro-Regular.otf'); /* Путь к файлу со шрифтом */
 }
 
 @font-face {
     font-family: exo2r; /* Имя шрифта */
-    src: url('<%= asset_path("Exo2-Regular.ttf") %>'); /* Путь к файлу со шрифтом */
+    src: url('../assets/Exo2-Regular.ttf'); /* Путь к файлу со шрифтом */
 }
 
 @font-face {
     font-family: exo2l; /* Имя шрифта */
-    src: url('<%= asset_path("Exo2-Light.ttf") %>'); /* Путь к файлу со шрифтом */
+    src: url('../assets/Exo2-Light.ttf'); /* Путь к файлу со шрифтом */
 }
 
 
