@@ -33,6 +33,8 @@ gem 'cyrillizer'
 gem 'has_unique_slug'
 gem 'rmagick'
 gem 'high_voltage', '~> 2.3.0'
+gem 'redcarpet'
+gem 'http_accept_language'
 
 # omniauth
 gem 'omniauth-twitter'

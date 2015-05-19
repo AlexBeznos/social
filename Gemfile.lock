@@ -104,6 +104,7 @@ GEM
       ruby_parser (~> 3.5)
     http (0.6.4)
       http_parser.rb (~> 0.6.0)
+    http_accept_language (2.0.5)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     instagram (1.1.5)
@@ -194,6 +195,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    redcarpet (3.2.3)
     ref (1.0.5)
     request_store (1.1.0)
     rmagick (2.14.0)
@@ -315,6 +317,7 @@ DEPENDENCIES
   haml-rails
   has_unique_slug
   high_voltage (~> 2.3.0)
+  http_accept_language
   instagram
   jbuilder (~> 2.0)
   jquery-rails
@@ -327,6 +330,7 @@ DEPENDENCIES
   paperclip (~> 4.2)
   pg
   rails (= 4.1.7)
+  redcarpet
   rmagick
   rspec-collection_matchers
   rspec-rails (~> 3.0.0)

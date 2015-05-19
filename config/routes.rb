@@ -33,11 +33,11 @@ Rails.application.routes.draw do
     get '/no_place' => 'gowifi#no_place', as: :gowifi_no_place
   end
 
+  get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale
+
 
   # static pages
-  scope "/:locale", locale: /en|bn|hi/ do
-    get "/:id" => "high_voltage/pages#show", :as => :page, :format => false
-  end
+  get "/:id" => "high_voltage/pages#show", :as => :page, :format => false
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

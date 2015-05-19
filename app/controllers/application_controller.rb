@@ -5,9 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
 
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
 
   private
     def current_user_session
@@ -29,6 +26,16 @@ class ApplicationController < ActionController::Base
         end
       else
         login_path
+      end
+    end
+
+    def set_locale
+      if !session[:locale] || !I18n.available_locales.include?(session[:locale].to_sym)
+        locale = http_accept_language.compatible_language_from(I18n.available_locales)
+        I18n.locale = locale
+        session[:locale] = locale
+      else
+        I18n.locale = session[:locale]
       end
     end
 end

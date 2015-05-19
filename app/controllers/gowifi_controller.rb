@@ -1,5 +1,5 @@
 class GowifiController < ActionController::Base
-  layout 'no-layout' 
+  layout 'no-layout'
   before_action :find_place, only: :show
 
   def show
@@ -30,6 +30,15 @@ class GowifiController < ActionController::Base
                                           slug: session[:slug] )
 
     redirect_to network.post_message_and_get_url
+  end
+
+  def set_locale
+    if I18n.available_locales.include?(params[:locale].to_sym)
+      session[:locale] = params[:locale]
+      I18n.locale = params[:locale]
+    end
+
+    redirect_to request.referrer
   end
 
   private

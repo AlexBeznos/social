@@ -1,0 +1,81 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title GoFriends - Больше друзей в вашем заведении
+    %link{:href => "assets/favicon.ico", :rel => "shortcut icon"}/
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "bootstrap", :media => "all"
+  %body
+    .container
+      .lang.pull-right{:style => 'margin-top: 5px'}
+        = link_to 'en', set_locale_path('en')
+        |
+        = link_to 'ua', set_locale_path('ua')
+        |
+        = link_to 'ru', set_locale_path('ru')
+      :markdown
+        # #{ t('privacy_police.title') }
+        ## #{ t('privacy_police.part_1.title') }
+
+        #{ t('privacy_police.part_1.text') }
+
+        ## #{ t('privacy_police.part_2.title') }
+
+        #{ t('privacy_police.part_2.text.subparagraph_1') }
+
+        #{ t('privacy_police.part_2.text.subparagraph_2') }
+
+        #{ t('privacy_police.part_2.text.list_title') }
+
+        - #{ t('privacy_police.part_2.text.list.element_1') }
+        - #{ t('privacy_police.part_2.text.list.element_2') }
+        - #{ t('privacy_police.part_2.text.list.element_3') }
+        - #{ t('privacy_police.part_2.text.list.element_4') }
+        - #{ t('privacy_police.part_2.text.list.element_5') }
+        - #{ t('privacy_police.part_2.text.list.element_6') }
+        - #{ t('privacy_police.part_2.text.list.element_7') }
+        - #{ t('privacy_police.part_2.text.list.element_8') }
+        - #{ t('privacy_police.part_2.text.list.element_9') }
+        - #{ t('privacy_police.part_2.text.list.element_10') }
+
+        #{ t('privacy_police.part_2.text.subparagraph_2') }
+
+        ## #{ t('privacy_police.part_3.title') }
+
+        #{ t('privacy_police.part_3.text') }
+
+        ## #{ t('privacy_police.part_4.title') }
+
+        #{ t('privacy_police.part_4.text') }
+
+        ## #{ t('privacy_police.part_5.title') }
+
+        #{ t('privacy_police.part_5.text') }
+
+        ## #{ t('privacy_police.part_6.title') }
+
+        #{ t('privacy_police.part_6.text') }
+
+        ## #{ t('privacy_police.part_7.title') }
+
+        #{ t('privacy_police.part_7.text') }
+
+        ## #{ t('privacy_police.part_8.title') }
+
+        #{ t('privacy_police.part_8.text') }
+
+        ## #{ t('privacy_police.part_9.title') }
+
+        #{ t('privacy_police.part_9.text.subparagraph_1') }
+
+        #{ t('privacy_police.part_9.text.subparagraph_2') }
+
+        ## #{ t('privacy_police.part_10.title') }
+
+        #{ t('privacy_police.part_10.text') }
+        info@rabby.com.ua

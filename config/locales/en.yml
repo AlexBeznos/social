@@ -20,4 +20,52 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  privacy_police:
+    title: "Privacy policy"
+    part_1:
+      title: '1. General'
+      text: 'gofriends.com.ua (hereinafter gofriends.com.ua, the Site, we, our or us) is committed to ensuring due protection of the personal data of the individuals using gofriends.com.ua web-site and its services (hereinafter the Services). The Site Administration has the right to modify this Privacy Policy (hereinafter the Policy). In case changes are made to this Policy, the Site Administration shall notify the users by posting the new version of the Policy on the Site and/or in Services. Such changes become effective from the moment the new version of the Policy is posted. By further using of the Services the User agrees with the changes made.'
+    part_2:
+      title: '2. Consent to personal data processing'
+      text:
+        subparagraph_1: 'When You join us as a User of our Services, we ask You to provide us with Your personal data that will be used for Your Account registration, for providing You with the Services, for cooperation with You concerning Your Account state, and for another mentioned in the valid Policy aims. Your name, links to Your pages in social networking services, phone number, e-mail, and some other information about You may be necessary for giving You primary access to the Services or should be further indicated while using the Services.'
+        subparagraph_2: 'When You provide us with Your personal data, Your make the Services possible for You. By providing us with Your personal data, You agree of Your own accord with Your data gathering, storing, using and spreading in an anonymized and pooled state by us. We process only the data mentioned in the effective Policy. While processing Your personal data and depending on situation we may sometimes ask You to reconfirm Your consent to personal data processing. Your consent will sometimes be presumed with Your cooperation if the aim of processing is obvious, and if You provides this data of Your own accord.'
+        list_title: 'We may use Your personal date or Account data for the following aims:'
+        list:
+          element_1: 'To provide You with the Services and to better the Site and Services quality;'
+          element_2: 'To provide You with the information in order to Your more effective usage of the Site and the Services;'
+          element_3: 'To create, to administer, and to control Your Account, and to check Your access rights to the Services and to the software;'
+          element_4: 'To communicate with You in order to inform about changes or modifications of the Services, or about availability of any services provided by us;'
+          element_5: 'To rate service level, for traffic monitoring and to monitor the popularity rate of various services;'
+          element_6: 'To carry out our marketing;'
+          element_7: 'To keep within this Policy;'
+          element_8: 'To examine and to answer on complaints concerning any violation of our rights or any other person’s rights;'
+          element_9: 'To answer on Your enquiries regarding servicing;'
+          element_10: 'To protect Your and our rights, property, and personal data and the rights, property, and personal data of our clients and the community.'
+        subparagraph_3: 'We may inform You about our products, services, news, and events. You have a right not to receive such information. Please, contact us if You want stop or pause receiving messages containing mentioned information. The only types of messages You can not refuse from are compulsory messages concerning the Services including the information about Your Account and future pauses and stops of the Services. We will do our best not to bother You with the quantity of the messages.'
+    part_3:
+      title: '3. Your data rights'
+      text: 'You have a right for an access to and editing of Your data whenever you like via web-interface provided by the Services.'
+    part_4:
+      title: '4. Spreading of the information'
+      text: 'We will transfer Your personal data to the third persons only according to Your instructions or to provide You with the Services, or because of another reasons due to the valid legal framework in the privacy sphere. We do not usually sell, rent and spread Your personal data without having Your preliminary consent or without noting compulsory conditions for mentioned actions in the effective Policy. Public information that is easy accessible, for instance Your name and surname, links on Your personal data on pages in the social networking services, and that can be received in any way not using our Services may be transferred by us to the third persons without Your consent.'
+    part_5:
+      title: '5. Pooled data'
+      text: 'We may also use Your personal data to get pooled data for inner usage and for the exchange with another persons on the free-choice bases. “Pooled data” is the data that have been deprived of the unique information allowing to identify Users, pages or final user, and that have been changed or united in order to provide somebody with generalized information. Your personality and personal data in Pooled data will be stored in an anonymous state.'
+    part_6:
+      title: '6. Links'
+      text: 'The Site may contain links to other sites. We are not responsible for the Privacy Policy and the contents of those sites. We advise You to read the Privacy Policy of the sites linked with us. Their Privacy Policy and activity differ from our Policy and the Site activity.'
+    part_7:
+      title: '7. Cookies and log files'
+      text: 'We use “cookies” and log files to monitor information about Users. Cookies are little weight data that is transferred by the web-server to Your web-browser and that are saved on the hard drive of Your computer. We use cookies to monitor pages visited, to count the number of visitor’s clicks on different pages of the Site, to monitor traffic, and to rate popularity level of service settings. We will use this information in order to provide You with proper data an services. Mentioned information also allows us to make sure that visitors see the page they are expected to see.'
+    part_8:
+      title: '8. Property or business handover'
+      text: 'In case the owner I changed or the business is handed over Your personal data may be handed over according to the proper legal framework in the privacy sphere.'
+    part_9:
+      title: '9. Security'
+      text:
+        subparagraph_1: 'We will do our best to prevent unlawful access to Your personal data. However, You should be aware of the fact that any data transfer via Internet, via mobile or wireless device can not be fully secured. We will go on bettering our security system basing it on the new technologies and their accessibility. We strongly recommend You not to tell Your password to anyone. We do not store Your social networking systems log files and passwords. If You forget and/or lose this data, Your should restore it by yourself with the help of the social network system where You have created an account. Your authorization in social network systems is carried out via the services provided by those social network systems, and we do not transfer Your log files and passwords to them while the authorization process. This process is fully carried out by the social network system You choose. To authorize You via social network systems we use accessible to everyone services that are open to general use. We are not responsible for Your authorization in social network systems.'
+        subparagraph_2: 'Please, remember that Your should control the data we receive during Your Service usage. You are the first person who is responsible for keeping in secret Your and/or others personal data that is at our disposal during Your Service usage. Be always attentive and responsible using Your personal data. We are not responsible for and can not control data given to the third persons by and used by them. That is why You should be careful choosing the data You provide to the third persons via the Services. We are also not responsible for the personal data content and the content of any other information that Your receive from other users via the Services. You exempt us from responsibility concerning any personal data content and the content of any other information that You may receive using the Services. We can not guarantee and are not responsible for checking the information provided by the third persons. You also exempt us from responsibility concerning usage of the personal data or any information mentioned in this part.'
+    part_10:
+      title: '10.  Contact us'
+      text: 'If You have any questions or suggestions regarding this Policy, please, do not hesitate to contact us with our e-mail:'
