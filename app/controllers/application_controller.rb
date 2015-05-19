@@ -32,8 +32,12 @@ class ApplicationController < ActionController::Base
     def set_locale
       if !session[:locale] || !I18n.available_locales.include?(session[:locale].to_sym)
         locale = http_accept_language.compatible_language_from(I18n.available_locales)
-        I18n.locale = locale
-        session[:locale] = locale
+        if I18n.available_locales.include?(locale.to_sym)
+          I18n.locale = locale
+          session[:locale] = locale
+        else
+          session[:locale] = I18n.default_locale
+        end
       else
         I18n.locale = session[:locale]
       end
