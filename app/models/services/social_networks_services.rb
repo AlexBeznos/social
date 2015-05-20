@@ -7,7 +7,7 @@ class SocialNetworksServices < ActiveType::Object
 
   def get_auth_path
     case self.network
-    when 'vk'
+    when 'vkontakte'
       return "#{ENV['APP_URL']}auth/vkontakte/?state=#{self.state}"
     when 'facebook'
       oauth = Koala::Facebook::OAuth.new(ENV['FB_APP_ID'], ENV['FB_SECRET'], ENV['APP_URL'] + ENV['FB_REDIRECT_PATH'])

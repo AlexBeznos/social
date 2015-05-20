@@ -6,7 +6,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
    {
      :scope => 'wall,friends',
      :display => 'page',
-     :lang => 'ru',
      :image_size => 'original'
    }
 end

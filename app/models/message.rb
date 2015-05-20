@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :place
 
-  enum network: [ :vk,
+  enum network: [ :vkontakte,
                   :facebook,
                   :twitter,
                   :instagram ]

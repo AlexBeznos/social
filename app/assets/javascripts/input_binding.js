@@ -20,10 +20,10 @@ $(document).on("ready page:load", function() {
   }
 
   function show_a_message_form() {
-    $('.instagram, .vk, .twitter, .facebook').hide();
+    $('.instagram, .vkontakte, .twitter, .facebook').hide();
     var network = $("#message_network").val();
 
-    if(network == 'vk'|| network == 'facebook' || network == 'twitter') {
+    if(network == 'vkontakte'|| network == 'facebook' || network == 'twitter') {
       $('.facebook').show();
     } else if (network == 'instagram') {
       $('.instagram').show();
