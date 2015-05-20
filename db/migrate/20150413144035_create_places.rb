@@ -10,5 +10,8 @@ class CreatePlaces < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :places, :user_id
+    add_index :places, :slug
   end
 end

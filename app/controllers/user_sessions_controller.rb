@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  layout 'lumen'
 
   def new
     @user_session = UserSession.new

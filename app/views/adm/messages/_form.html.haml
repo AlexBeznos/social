@@ -1,6 +1,6 @@
 = simple_form_for [:adm, @user, @place, @message] do |f|
   = f.error_notification
-  = f.input :network, collection: Message.networks.keys
+  = f.association :social_network
   .facebook.vkontakte.twitter
     = f.input :message_link
     - if @message.image.exists?

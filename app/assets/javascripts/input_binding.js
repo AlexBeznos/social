@@ -21,7 +21,7 @@ $(document).on("ready page:load", function() {
 
   function show_a_message_form() {
     $('.instagram, .vkontakte, .twitter, .facebook').hide();
-    var network = $("#message_network").val();
+    var network = $("#message_social_network_id option:selected").text();
 
     if(network == 'vkontakte'|| network == 'facebook' || network == 'twitter') {
       $('.facebook').show();
@@ -36,7 +36,7 @@ $(document).on("ready page:load", function() {
     show_a_password_form();
   }).change();
 
-  $('#message_network').change(function() {
+  $('#message_social_network_id').change(function() {
     show_a_message_form();
   }).change();
 

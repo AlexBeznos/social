@@ -42,9 +42,9 @@ class Place < ActiveRecord::Base
 
   def get_networks
     networks = []
-    Message.networks.keys.each do |key|
-      if self.messages.where("network = ? and active = true", Message.networks[key.to_sym]).any?
-        networks.push(key)
+    SocialNetwork.all.each do |network|
+      if self.messages.where("social_network_id = ? and active = true", network.id).any?
+        networks.push(network)
       end
     end
 

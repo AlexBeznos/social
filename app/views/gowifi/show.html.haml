@@ -20,7 +20,9 @@
 
       %ul
         - @networks.each do |network|
-          %li= link_to network, gowifi_request_path(network: network)
+          %li= link_to network.name, gowifi_request_path(network: network.name)
+
+          
       %div{:onclick => "login();"} логин
       %div{:onclick => "sendwallpost('Hello');"} отправить
       %script{:src => "http://vkontakte.ru/js/api/openapi.js", :type => "text/javascript"}

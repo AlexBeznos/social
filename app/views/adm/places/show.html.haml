@@ -63,10 +63,10 @@
                   = link_to 'img', @place.desktop_image.url
 
 
-  - Message.networks.each_key do |key|
+  - @networks.each do |network|
     .box
       .box-header.with-border
-        = key
+        = network.name
         messages
         = link_to 'New message', new_adm_user_place_message_path(@user, @place), class: 'btn btn-primary btn-xs pull-right'
       .box-body
@@ -81,7 +81,7 @@
               %th active
               %th
           %tbody
-            - @place.messages.where("network = ?", Message.networks[key.to_sym]).each do |message|
+            - @place.messages.where(social_network: network).each do |message|
               %tr
                 %td= message.id
                 %td= message.message

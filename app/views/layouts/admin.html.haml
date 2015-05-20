@@ -18,6 +18,8 @@
   %body{:class => "skin-blue"}
     = render 'shared/admin/header'
     .content-wrapper
+      .content-flash
+        = render 'shared/flash'
       = yield
     = render 'shared/admin/footer'
 

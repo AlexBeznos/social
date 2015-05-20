@@ -1,5 +1,5 @@
 class Costumer < ActiveRecord::Base
-  enum network: [:vkontakte, :facebook, :twitter, :instagram]
+  belongs_to :social_network
 
-  validates :name, :url, :uid, :friends_count, presence: true, if: 'network.to_sym == :twitter'
+  validates :name, :url, :uid, :friends_count, presence: true, if: 'social_network_id == 4' # if network is twitter
 end

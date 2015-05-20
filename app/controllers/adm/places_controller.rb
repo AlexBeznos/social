@@ -4,6 +4,7 @@ class Adm::PlacesController < AdministrationController
 
   def show
     @place = Place.includes(:messages).find_by_slug(params[:id])
+    @networks = SocialNetwork.all
   end
 
   def new

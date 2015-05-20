@@ -1,7 +1,6 @@
 class CreateCostumers < ActiveRecord::Migration
   def change
     create_table :costumers do |t|
-      t.integer :network
       t.string :name
       t.string :s_name
       t.string :url
@@ -12,8 +11,11 @@ class CreateCostumers < ActiveRecord::Migration
       t.string :b_date
       t.string :city
       t.string :country
+      t.integer :social_network_id
 
       t.timestamps
     end
+
+    add_index :costumers, :social_network_id
   end
 end

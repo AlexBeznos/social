@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428084639) do
+ActiveRecord::Schema.define(version: 20150520211200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "costumers", force: true do |t|
-    t.integer  "network"
     t.string   "name"
     t.string   "s_name"
     t.string   "url"
@@ -28,12 +27,14 @@ ActiveRecord::Schema.define(version: 20150428084639) do
     t.string   "b_date"
     t.string   "city"
     t.string   "country"
+    t.integer  "social_network_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "costumers", ["social_network_id"], name: "index_costumers_on_social_network_id", using: :btree
+
   create_table "messages", force: true do |t|
-    t.integer  "network"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -43,11 +44,15 @@ ActiveRecord::Schema.define(version: 20150428084639) do
     t.string   "message_link"
     t.integer  "place_id"
     t.boolean  "active"
+    t.integer  "social_network_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "subscription"
     t.string   "subscription_uid"
   end
+
+  add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
+  add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"
@@ -73,6 +78,9 @@ ActiveRecord::Schema.define(version: 20150428084639) do
     t.datetime "desktop_image_updated_at"
   end
 
+  add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
+  add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
+
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
     t.text     "data"
@@ -82,6 +90,12 @@ ActiveRecord::Schema.define(version: 20150428084639) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "social_networks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
