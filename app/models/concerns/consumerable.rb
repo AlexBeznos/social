@@ -3,7 +3,7 @@ module Consumerable
     place.messages.active.where(social_network: SocialNetwork.find_by(name: network)).first
   end
 
-  def create_consumer(provider, place, credentials)
+  def create_consumer(provider, place, credentials) # TODO: make this method as delayed job
     social_network = SocialNetwork.find_by(name: provider)
 
     unless Costumer.where("social_network_id = ? and uid = ?", social_network, credentials['uid']).any?
