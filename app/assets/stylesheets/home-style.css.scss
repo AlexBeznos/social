@@ -640,3 +640,19 @@ footer {
 		display: table;
 	}
 }
+
+.navv_email > li {
+	position: relative;
+  display: block;
+	background: rgba(250, 250, 250, 0.65) !important;
+  font-family: exo2r;
+}
+
+.navv_email > li:hover {
+	background: rgba(7,203,160,0.8) !important;
+}
+
+.navv_email li 	a {
+	color: #9b45da !important;
+	font-size: 24px;
+}
