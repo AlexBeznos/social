@@ -12,6 +12,9 @@ class CreateCostumers < ActiveRecord::Migration
       t.string :city
       t.string :country
       t.integer :social_network_id
+      t.string :access_token
+      t.string :access_token_secret
+      t.datetime :expiration_date
 
       t.timestamps
     end

@@ -3,7 +3,7 @@ class GowifiController < ActionController::Base
   before_action :find_place, only: :show
 
   def show
-    if @place
+    if @place && @place.active
       @state = session[:state] = Digest::MD5.hexdigest(rand.to_s)
       session[:slug] = @place.slug
 

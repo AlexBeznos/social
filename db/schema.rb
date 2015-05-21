@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20150520211200) do
     t.string   "city"
     t.string   "country"
     t.integer  "social_network_id"
+    t.string   "access_token"
+    t.string   "access_token_secret"
+    t.datetime "expiration_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,6 +99,8 @@ ActiveRecord::Schema.define(version: 20150520211200) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "social_networks", ["name"], name: "index_social_networks_on_name", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
