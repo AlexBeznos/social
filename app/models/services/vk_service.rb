@@ -1,5 +1,5 @@
 class VkService
-  include Advertisable
+  include Consumerable
   attr_accessor :hash
 
   def initialize(hash)

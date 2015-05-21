@@ -1,6 +1,6 @@
 require 'open-uri'
 class TwitterService
-  include Advertisable
+  include Consumerable
 
   attr_accessor :hash
 
@@ -18,7 +18,7 @@ class TwitterService
     end
 
     message = get_message(@place, @credentials['provider'])
-    
+
     begin
       client.update_with_media("#{message.message}\n#{message.message_link}", open(message.image.url))
     rescue => e

@@ -29,7 +29,6 @@ Rails.application.routes.draw do
 
   scope '/places' do
     get ':slug' => 'gowifi#show', as: :gowifi_place
-    get ':slug/auth/:network' => 'gowifi#authorize', as: :gowifi_request
     get '/no_place' => 'gowifi#no_place', as: :gowifi_no_place
   end
 
