@@ -25,7 +25,7 @@ class TwitterService
       Rails.logger.fatal "Twitter message was not posted. Error: #{e}"
     end
 
-    create_consumer('twitter', @place, @credentials)
+    create_consumer(@place, @credentials)
     message.redirect_link
   end
 end

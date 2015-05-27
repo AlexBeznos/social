@@ -4,7 +4,6 @@ class GowifiController < ActionController::Base
 
   def show
     if @place && @place.active
-      @state = session[:state] = Digest::MD5.hexdigest(rand.to_s)
       session[:slug] = @place.slug
 
       @networks = @place.get_networks
@@ -17,10 +16,6 @@ class GowifiController < ActionController::Base
   end
 
   def omniauth
-    if params[:state] && session[:state] != params[:state]
-      return render :action => :show, :alert => 'Some one tryied to brake you!'
-    end
-
     place = Place.find_by_slug(session[:slug])
     clear_session
     redirect_to post_advertisment_and_get_redirect_url(place)
@@ -60,6 +55,8 @@ class GowifiController < ActionController::Base
                  InstagramService.new(attrs).advertise
               when 'vkontakte'
                  VkService.new(attrs).advertise
+              when 'facebook'
+                 FacebookService.new(attrs).advertise
               end
   end
 end

@@ -1,14 +1,14 @@
 class CreateCostumers < ActiveRecord::Migration
   def change
     create_table :costumers do |t|
-      t.string :name
-      t.string :s_name
+      t.string :first_name
+      t.string :last_name
       t.string :url
       t.string :uid
       t.integer :friends_count
       t.string :gender
       t.string :age
-      t.string :b_date
+      t.string :birthday
       t.string :city
       t.string :country
       t.integer :social_network_id

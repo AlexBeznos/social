@@ -38,6 +38,7 @@ gem 'http_accept_language'
 
 # omniauth
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 gem 'omniauth-instagram'
 gem 'omniauth-vkontakte'
 
@@ -60,7 +61,7 @@ gem 'twitter'
 gem 'instagram'
 
 # fb api
-gem "koala", "~> 2.0"
+gem "koala"
 
 # img managment
 gem "paperclip", "~> 4.2"

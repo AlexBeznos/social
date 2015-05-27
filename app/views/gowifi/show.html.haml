@@ -20,7 +20,7 @@
 
       %ul
         - @networks.each do |network|
-          %li= link_to network.name, "#{ENV['APP_URL']}auth/#{network.name}/?state=#{@state}"
+          %li= link_to network.name, "#{ENV['APP_URL']}auth/#{network.name}/"
 
 
       %div{:onclick => "login();"} логин

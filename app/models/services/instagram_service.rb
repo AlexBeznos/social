@@ -1,4 +1,4 @@
-class InstagramService
+class FacebookService
   include Consumerable
   attr_accessor :hash
 
