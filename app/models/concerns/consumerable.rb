@@ -1,26 +1,22 @@
 module Consumerable
   require 'ext/string'
-  
+
   def get_message(place, network)
     place.messages.active.where(social_network: SocialNetwork.find_by(name: network)).first
   end
 
-  def create_consumer(place, credentials) # TODO: make this method as delayed job
-    social_network = SocialNetwork.find_by(name: credentials['provider'])
-
-    unless Costumer.where("social_network_id = ? and uid = ?", social_network, credentials['uid']).any?
-      case credentials['provider']
-      when 'twitter'
-        create_twitter_consumer(credentials)
-      when 'facebook'
-        create_facebook_consumer(credentials)
-      end
+  def create_customer(credentials) # TODO: make this method as delayed job
+    case credentials['provider']
+    when 'twitter'
+      create_twitter_customer(credentials)
+    when 'facebook'
+      create_facebook_customer(credentials)
     end
   end
 
   private
 
-    def create_twitter_consumer(credentials)
+    def create_twitter_customer(credentials)
       params = {:social_network => SocialNetwork.find_by(name: 'twitter'),
                 :first_name => credentials['info']['name'],
                 :url => credentials['info']['urls']['Twitter'],
@@ -32,10 +28,10 @@ module Consumerable
                 }
 
       params.merge!(get_location(credentials['info']['location']))
-      Costumer.create(params)
+      Customer.create(params)
     end
 
-    def create_facebook_consumer(credentials)
+    def create_facebook_customer(credentials)
       params = {:social_network => SocialNetwork.find_by(name: 'facebook'),
                 :first_name => credentials['info']['first_name'],
                 :gender => credentials['extra']['raw_info']['gender'].to_gender,
@@ -47,7 +43,7 @@ module Consumerable
                 }
 
       params.merge!(get_location(credentials['info']['location']))
-      Costumer.create(params)
+      Customer.create(params)
     end
 
     def get_location(full_location)

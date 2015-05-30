@@ -21,11 +21,11 @@ Rails.application.routes.draw do
   end
 
 
-  # consumers level accessed pages
+  # customers level accessed pages
   resources :user_sessions, only: [:create, :destroy]
   get 'login' => 'user_sessions#new'
 
-  get '/auth/:provider/callback' => 'gowifi#omniauth' # omniauth consumers authentication
+  get '/auth/:provider/callback' => 'gowifi#omniauth' # omniauth customers authentication
 
   scope '/places' do
     get ':slug' => 'gowifi#show', as: :gowifi_place

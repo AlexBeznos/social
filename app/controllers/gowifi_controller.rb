@@ -1,10 +1,12 @@
 class GowifiController < ActionController::Base
+  include Consumerable
   layout 'no-layout'
   before_action :find_place, only: :show
 
   def show
     if @place && @place.active
       session[:slug] = @place.slug
+      @costumer = Costumer.find(cookies.signed[:costumer].to_i) if cookies.signed[:costumer]
 
       @networks = @place.get_networks
     else
@@ -16,9 +18,12 @@ class GowifiController < ActionController::Base
   end
 
   def omniauth
-    place = Place.find_by_slug(session[:slug])
+    @place = Place.find_by_slug(session[:slug])
+    @message = get_message(@place, credentials['provider'])
+
+    post_advertisment
+    deal_with_customer
     clear_session
-    redirect_to post_advertisment_and_get_redirect_url(place)
   end
 
   def set_locale
@@ -45,18 +50,26 @@ class GowifiController < ActionController::Base
       session.delete(:slug)
     end
 
-    def post_advertisment_and_get_redirect_url(place)
-      attrs = {:place => place, :credentials => credentials}
+    def post_advertisment
+      attrs = {:place => @place, :message => @message, :credentials => credentials}
 
-      return  case credentials['provider']
-              when 'twitter'
-                 TwitterService.new(attrs).advertise
-              when 'instagram'
-                 InstagramService.new(attrs).advertise
-              when 'vkontakte'
-                 VkService.new(attrs).advertise
-              when 'facebook'
-                 FacebookService.new(attrs).advertise
-              end
+      case credentials['provider']
+      when 'twitter'
+         TwitterService.new(attrs).advertise
+      when 'instagram'
+         InstagramService.new(attrs).advertise
+      when 'vkontakte'
+         VkService.new(attrs).advertise
+      when 'facebook'
+         FacebookService.new(attrs).advertise
+      end
+
+      def deal_with_customer
+        if cookies.signed[:customer]
+          # TODO: make a method which will add visit
+        else
+          cookies.permanent.signed[:customer] = create_customer(credentials).id
+        end
+      end
   end
 end

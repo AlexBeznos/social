@@ -16,26 +16,17 @@ ActiveRecord::Schema.define(version: 20150520211200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "costumers", force: true do |t|
+  create_table "customers", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "url"
-    t.string   "uid"
-    t.integer  "friends_count"
     t.string   "gender"
     t.string   "age"
     t.string   "birthday"
     t.string   "city"
     t.string   "country"
-    t.integer  "social_network_id"
-    t.string   "access_token"
-    t.string   "access_token_secret"
-    t.datetime "expiration_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "costumers", ["social_network_id"], name: "index_costumers_on_social_network_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.string   "image_file_name"

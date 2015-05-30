@@ -7,7 +7,10 @@ class CreateMessages < ActiveRecord::Migration
       t.string :message_link
       t.integer :place_id
       t.boolean :active
+      t.string :subscription
+      t.string :subscription_uid
       t.integer :social_network_id
+
 
       t.timestamps
     end

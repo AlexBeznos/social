@@ -1,9 +1,9 @@
 class FacebookService
-  include Consumerable
   attr_accessor :hash
 
   def initialize(hash)
     @place = hash[:place]
+    @message = hash[:message]
     @credentials = hash[:credentials]
   end
 
@@ -20,18 +20,14 @@ class FacebookService
   end
 
   def advertise
-    message = get_message(@place, @credentials['provider'])
     graph = Koala::Facebook::API.new(@credentials['credentials']['token'])
 
     begin
-      @graph.put_connections('me', 'feed', {:message => message.message,
-                                            :picture => message.image.url,
-                                            :link => message.message_link})
+      @graph.put_connections('me', 'feed', {:message => @message.message,
+                                            :picture => @message.image.url,
+                                            :link => @message.message_link})
     rescue => e
       Rails.logger.error "Facebook message were not sended. Error: #{e.inspect}"
     end
-
-    create_consumer(@place, @credentials)
-    message.redirect_link
   end
 end
