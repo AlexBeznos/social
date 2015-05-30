@@ -7,7 +7,7 @@ class FacebookService
     @credentials = hash[:credentials]
   end
 
-  def self.get_friends_count(costumer)
+  def self.get_friends_number(costumer)
     graph = Koala::Facebook::API.new(costumer.access_token)
 
     begin

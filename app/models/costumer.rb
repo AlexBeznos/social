@@ -7,6 +7,6 @@ class Costumer < ActiveRecord::Base
   validates :first_name, :url, :uid, :friends_count, :social_network, presence: true
 
   def set_friends_count
-    self.friends_count = FacebookService.get_friends_count(self)
+    self.friends_count = FacebookService.get_friends_number(self)
   end
 end
