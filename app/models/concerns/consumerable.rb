@@ -19,7 +19,7 @@ module Consumerable
     def create_twitter_customer(credentials)
       params = {
                 :first_name => credentials['info']['name'],
-                :customer_network_profiles_attributes => [{
+                :network_profiles_attributes => [{
                     :social_network => SocialNetwork.find_by(name: 'twitter'),
                     :url => credentials['info']['urls']['Twitter'],
                     :uid => credentials['uid'],
@@ -30,7 +30,7 @@ module Consumerable
                   }]
                 }
 
-      params[:customer_network_profiles_attributes][0].merge!(get_location(credentials['info']['location']))
+      params[:network_profiles_attributes][0].merge!(get_location(credentials['info']['location']))
       create_customer_by_params(params)
     end
 
@@ -39,7 +39,7 @@ module Consumerable
                 :first_name => credentials['info']['first_name'],
                 :last_name => credentials['info']['last_name'],
                 :gender => credentials['extra']['raw_info']['gender'].to_gender,
-                :customer_network_profiles_attributes => [{
+                :network_profiles_attributes => [{
                     :social_network => SocialNetwork.find_by(name: 'facebook'),
                     :url => credentials['info']['urls']['Facebook'],
                     :uid => credentials['uid'],
@@ -48,7 +48,7 @@ module Consumerable
                   }]
                 }
 
-      params[:customer_network_profiles_attributes][0].merge!(get_location(credentials['info']['location']))
+      params[:network_profiles_attributes][0].merge!(get_location(credentials['info']['location']))
       create_customer_by_params(params)
     end
 

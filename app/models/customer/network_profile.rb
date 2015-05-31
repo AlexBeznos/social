@@ -1,4 +1,4 @@
-class CustomerNetworkProfile < ActiveRecord::Base
+class Customer::NetworkProfile < ActiveRecord::Base
   belongs_to :customer
   belongs_to :social_network
 

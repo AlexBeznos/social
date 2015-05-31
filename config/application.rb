@@ -8,11 +8,13 @@ Bundler.require(*Rails.groups)
 
 module Social
   class Application < Rails::Application
-    config.autoload_paths << "#{config.root}/app/models/services"
+    config.autoload_paths << "#{config.root}/app/services"
 
     Rails.application.config.assets.precompile += %w( *.css )
     Rails.application.config.assets.precompile += %w( *.js )
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf|jpg|png)\z/
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf|jpg|png|ico)\z/
+
+    # localization
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:en, :ru, :ua]

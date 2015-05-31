@@ -72,7 +72,7 @@ class GowifiController < ActionController::Base
     end
 
     def deal_with_customer
-      if cookies.signed[:customer]
+      if @customer
         # TODO: make a method which will add visit
       else
         cookies.permanent.signed[:customer] = create_customer(credentials).id
