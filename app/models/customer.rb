@@ -1,16 +1,15 @@
 class Customer < ActiveRecord::Base
-  belongs_to :social_network
+  has_many :customer_network_profiles, :dependent => :destroy
+  accepts_nested_attributes_for :customer_network_profiles
 
-  before_validation :set_friends_count, if: 'social_network_id == 2'
+  validates :first_name, presence: true
 
-  validates :uid, uniqueness: { scope: :social_network }
-  validates :first_name, :url, :uid, :friends_count, :social_network, presence: true
-
-  def set_friends_count
-    self.friends_count = FacebookService.get_friends_number(self)
-  end
 
   def full_name
-
+    if first_name && last_name
+      "#{first_name} #{last_name}"
+    else
+      first_name
+    end
   end
 end

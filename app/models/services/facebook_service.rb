@@ -23,11 +23,11 @@ class FacebookService
     graph = Koala::Facebook::API.new(@credentials['credentials']['token'])
 
     begin
-      @graph.put_connections('me', 'feed', {:message => @message.message,
+      graph.put_connections('me', 'feed', {:message => @message.message,
                                             :picture => @message.image.url,
                                             :link => @message.message_link})
     rescue => e
-      Rails.logger.error "Facebook message were not sended. Error: #{e.inspect}"
+      raise "Facebook message were not sended. Error: #{e.inspect}"
     end
   end
 end

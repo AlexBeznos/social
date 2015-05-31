@@ -2,11 +2,11 @@ class GowifiController < ActionController::Base
   include Consumerable
   layout 'no-layout'
   before_action :find_place, only: :show
+  before_action :find_customer, only: [:show, :omniauth]
 
   def show
     if @place && @place.active
       session[:slug] = @place.slug
-      @costumer = Costumer.find(cookies.signed[:costumer].to_i) if cookies.signed[:costumer]
 
       @networks = @place.get_networks
     else
@@ -21,9 +21,12 @@ class GowifiController < ActionController::Base
     @place = Place.find_by_slug(session[:slug])
     @message = get_message(@place, credentials['provider'])
 
+    clear_session
+
     post_advertisment
     deal_with_customer
-    clear_session
+
+    redirect_to 'http://172.16.16.1/login?user=P8uDratA&password=Tac4edrU'
   end
 
   def set_locale
@@ -41,12 +44,15 @@ class GowifiController < ActionController::Base
       @place = Place.find_by_slug(params[:slug])
     end
 
+    def find_customer
+      @costumer = Customer.find(cookies.signed[:customer].to_i) if cookies.signed[:customer]
+    end
+
     def credentials
       request.env['omniauth.auth']
     end
 
     def clear_session
-      session.delete(:state)
       session.delete(:slug)
     end
 
@@ -63,13 +69,14 @@ class GowifiController < ActionController::Base
       when 'facebook'
          FacebookService.new(attrs).advertise
       end
+    end
 
-      def deal_with_customer
-        if cookies.signed[:customer]
-          # TODO: make a method which will add visit
-        else
-          cookies.permanent.signed[:customer] = create_customer(credentials).id
-        end
+    def deal_with_customer
+      if cookies.signed[:customer]
+        # TODO: make a method which will add visit
+      else
+        cookies.permanent.signed[:customer] = create_customer(credentials).id
       end
-  end
+    end
+
 end
