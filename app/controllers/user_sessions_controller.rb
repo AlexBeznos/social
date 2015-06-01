@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  layout 'lumen'
+  before_filter :redirect_user, except: :destroy
 
   def new
     @user_session = UserSession.new
@@ -8,10 +8,8 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Login successful!"
       redirect_to gen_root_path
     else
-      flash[:alert] = "Something went wrong. Errors: #{@user_session.errors.each {|e| e}}"
       render :action => :new
     end
   end
@@ -22,4 +20,10 @@ class UserSessionsController < ApplicationController
     redirect_to login_path
   end
 
+  private
+    def redirect_user
+      if current_user
+        redirect_to gen_root_path
+      end
+    end
 end

@@ -24,7 +24,7 @@ en:
     title: "Privacy policy"
     part_1:
       title: '1. General'
-      text: 'gofriends.com.ua (hereinafter gofriends.com.ua, the Site, we, our or us) is committed to ensuring due protection of the personal data of the individuals using gofriends.com.ua web-site and its services (hereinafter the Services). The Site Administration has the right to modify this Privacy Policy (hereinafter the Policy). In case changes are made to this Policy, the Site Administration shall notify the users by posting the new version of the Policy on the Site and/or in Services. Such changes become effective from the moment the new version of the Policy is posted. By further using of the Services the User agrees with the changes made.'
+      text: 'gofriends.com.ua (here in after gofriends.com.ua, the Site, we, our or us) is committed to ensuring due protection of the personal data of the individuals using gofriends.com.ua web-site and its services (here in after the Services). The Site Administration has the right to modify this Privacy Policy (hereinafter the Policy). In case changes are made to this Policy, the Site Administration shall notify the users by posting the new version of the Policy on the Site and/or in Services. Such changes become effective from the moment the new version of the Policy is posted. By further using of the Services the User agrees with the changes made.'
     part_2:
       title: '2. Consent to personal data processing'
       text:
@@ -73,3 +73,6 @@ en:
     greetings: "Hello, %{customer_name}!"
     description: 'Enter through your favorite social network and get access to the Internet'
     footer: 'Powered by GoFriends'
+  navigation:
+    logout: 'Logout'
+    login: 'Login'

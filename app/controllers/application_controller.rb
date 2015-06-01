@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
           return adm_root_path
         end
       else
-        login_path
+        root_path
       end
     end
 
