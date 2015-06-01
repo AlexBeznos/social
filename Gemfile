@@ -69,6 +69,8 @@ gem "paperclip", "~> 4.2"
 # gender from name
 gem 'guess'
 
+# cyrillic to latin
+gem 'translit'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

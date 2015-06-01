@@ -1,8 +1,7 @@
 require 'ext/string'
-require 'cyrillizer'
 
 class Place < ActiveRecord::Base
-  has_unique_slug :subject => Proc.new {|place| "#{place.name.to_lat.urlize({:convert_spaces => true})}"}
+  has_unique_slug :subject => Proc.new {|place| "#{Translit.convert(place.name).urlize({:convert_spaces => true})}"}
 
   has_attached_file :logo,
                     :storage => :s3,
