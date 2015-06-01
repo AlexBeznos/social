@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.string   "last_login_ip"
     t.string   "current_login_ip"
     t.integer  "group",             default: 0
+    t.integer  "user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

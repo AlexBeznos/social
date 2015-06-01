@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
 
+  def require_user
+    unless current_user
+      redirect_to login_path, alert: 'You have no rights to access this page!'
+    end
+  end
+
 
   private
     def current_user_session
@@ -32,7 +38,7 @@ class ApplicationController < ActionController::Base
     def set_locale
       if !session[:locale] || !I18n.available_locales.include?(session[:locale].to_sym)
         locale = http_accept_language.compatible_language_from(I18n.available_locales)
-        if local && I18n.available_locales.include?(locale.to_sym)
+        if locale && I18n.available_locales.include?(locale.to_sym)
           I18n.locale = locale
           session[:locale] = locale
         else

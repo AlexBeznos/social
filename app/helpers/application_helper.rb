@@ -6,6 +6,6 @@ module ApplicationHelper
   end
 
   def render_shared_navigation(navigation = true)
-    render 'shared/navigation' if navigation.to_bool
+    render 'shared/navigation' if navigation == '' || navigation.to_bool
   end
 end

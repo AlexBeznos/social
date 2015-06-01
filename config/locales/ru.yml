@@ -48,3 +48,15 @@ ru:
     part_10:
       title: '10. Связь с нами'
       text: 'Если у Вас есть вопросы или предложения относительно Политики конфиденциальности, пожалуйста, напишите нам на:'
+  wifi:
+    greetings: "Привет, %{customer_name}!"
+    description: 'Войди через свою любимую социальную сеть и получи доступ к интернету'
+    footer: 'Powered by GoFriends'
+  navigation:
+    logout: 'Выйти'
+    login: 'Войти'
+    my_places: 'Мои заведения'
+  pages:
+    places:
+      title: 'Заведения'
+      my_places: 'Ваши заведения '

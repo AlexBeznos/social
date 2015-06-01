@@ -76,3 +76,8 @@ en:
   navigation:
     logout: 'Logout'
     login: 'Login'
+    my_places: 'My places'
+  pages:
+    places:
+      title: 'Places'
+      my_places: 'Places belongs to you '

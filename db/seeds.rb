@@ -1,9 +1,10 @@
-User.create(email: 'a@u.com', password: 'qwerty', password_confirmation: 'qwerty')
-User.create(email: 'b@u.com', password: 'qwerty', password_confirmation: 'qwerty')
-User.create(email: 'c@u.com', password: 'qwerty', password_confirmation: 'qwerty')
-User.create(email: 'd@u.com', password: 'qwerty', password_confirmation: 'qwerty')
-User.create(email: 'alex@u.com', password: 'qwerty', password_confirmation: 'qwerty', group: 'admin')
+u = User.create(email: 'alex@u.com', password: 'qwerty', password_confirmation: 'qwerty', group: 'admin')
 User.create(email: 'bbking@u.com', password: 'qwerty', password_confirmation: 'qwerty', group: 'admin')
+
+User.create(email: 'a@u.com', password: 'qwerty', password_confirmation: 'qwerty', user_id: u.id)
+User.create(email: 'b@u.com', password: 'qwerty', password_confirmation: 'qwerty', user_id: u.id)
+User.create(email: 'c@u.com', password: 'qwerty', password_confirmation: 'qwerty', user_id: u.id)
+User.create(email: 'd@u.com', password: 'qwerty', password_confirmation: 'qwerty', user_id: u.id)
 
 
 # Do not change order

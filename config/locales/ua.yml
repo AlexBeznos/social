@@ -48,3 +48,15 @@ ua:
     part_10:
       title: 10. Зв'язок з нами"
       text: 'Якщо у Вас є запитання або пропозиції стосовно Політики, будь ласка, пишіть нам на:'
+  wifi:
+    greetings: "Привіт, %{customer_name}!"
+    description: 'Зайди через свою улюблену соціальну мережу і отримай доступ до інтернету'
+    footer: 'Powered by GoFriends'
+  navigation:
+    logout: 'Вийти'
+    login: 'Увійті'
+    my_places: 'Мої заклади'
+  pages:
+    places:
+      title: 'Заклади'
+      my_places: 'Ваши заклади '
