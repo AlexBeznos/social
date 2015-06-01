@@ -3,6 +3,7 @@ class CreateCustomerVisits < ActiveRecord::Migration
     create_table :customer_visits do |t|
       t.integer :customer_network_profile_id
       t.integer :place_id
+      t.boolean :by_password
 
       t.timestamps
     end

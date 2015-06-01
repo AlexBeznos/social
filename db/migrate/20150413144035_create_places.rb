@@ -7,6 +7,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.boolean :enter_by_password, :default => false
       t.string :password
       t.boolean :active, :default => false
+      t.attachment :logo
 
       t.timestamps
     end

@@ -14,7 +14,6 @@ module Consumerable
       return profiles.first.customer
     else
       if customer
-        puts 'just adds network profile'
         profile = customer.network_profiles.create(get_network_profile_params(credentials))
       else
         customer = create_customer(credentials)

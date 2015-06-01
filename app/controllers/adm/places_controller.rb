@@ -48,7 +48,8 @@ class Adm::PlacesController < AdministrationController
 
   def place_params
     params.require(:place).permit(:name,
-                                  :changable_slug,
+                                  :logo,
+                                  :slug,
                                   :enter_by_password,
                                   :password,
                                   :active,

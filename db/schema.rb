@@ -29,9 +29,14 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.datetime "updated_at"
   end
 
+  add_index "customer_network_profiles", ["customer_id"], name: "index_customer_network_profiles_on_customer_id", using: :btree
+  add_index "customer_network_profiles", ["social_network_id"], name: "index_customer_network_profiles_on_social_network_id", using: :btree
+  add_index "customer_network_profiles", ["uid"], name: "index_customer_network_profiles_on_uid", using: :btree
+
   create_table "customer_visits", force: true do |t|
     t.integer  "customer_network_profile_id"
     t.integer  "place_id"
+    t.boolean  "by_password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,11 +67,11 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.string   "message_link"
     t.integer  "place_id"
     t.boolean  "active"
+    t.string   "subscription"
+    t.string   "subscription_uid"
     t.integer  "social_network_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "subscription"
-    t.string   "subscription_uid"
   end
 
   add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
@@ -79,6 +84,10 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.boolean  "enter_by_password",          default: false
     t.string   "password"
     t.boolean  "active",                     default: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "background_active"

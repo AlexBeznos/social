@@ -69,3 +69,7 @@ en:
     part_10:
       title: '10.  Contact us'
       text: 'If You have any questions or suggestions regarding this Policy, please, do not hesitate to contact us with our e-mail:'
+  wifi:
+    greetings: "Hello, %{customer_name}!"
+    description: 'Enter through your favorite social network and get access to the Internet'
+    footer: 'Powered by GoFriends'

@@ -4,6 +4,11 @@ require 'cyrillizer'
 class Place < ActiveRecord::Base
   has_unique_slug :subject => Proc.new {|place| "#{place.name.to_lat.urlize({:convert_spaces => true})}"}
 
+  has_attached_file :logo,
+                    :storage => :s3,
+                    :path => "/images/logos/:id/:style.:extension",
+                    :url => ":s3_domain_url"
+
   has_attached_file :mobile_image,
                     :storage => :s3,
                     :path => "/images/backgrounds/mobile/:id/:style.:extension",
