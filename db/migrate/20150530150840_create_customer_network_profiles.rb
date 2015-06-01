@@ -12,5 +12,9 @@ class CreateCustomerNetworkProfiles < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :customer_network_profiles, :social_network_id
+    add_index :customer_network_profiles, :customer_id
+    add_index :customer_network_profiles, :uid
   end
 end

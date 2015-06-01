@@ -1,4 +1,6 @@
 class Customer::NetworkProfile < ActiveRecord::Base
+  has_many :visits, :class_name => 'Customer::Visit', :foreign_key => :customer_network_profile_id
+
   belongs_to :customer
   belongs_to :social_network
 

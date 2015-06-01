@@ -10,8 +10,8 @@ class TwitterService
 
   def advertise
     client = Twitter::REST::Client.new do |config|
-      config.customer_key        = ENV['TWITTER_API_KEY']
-      config.customer_secret     = ENV['TWITTER_API_SECRET']
+      config.consumer_key        = ENV['TWITTER_API_KEY']
+      config.consumer_secret     = ENV['TWITTER_API_SECRET']
       config.access_token        = @credentials['credentials']['token']
       config.access_token_secret = @credentials['credentials']['secret']
     end

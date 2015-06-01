@@ -19,8 +19,8 @@
     .container
       = render 'shared/flash'
       %h1= @place.name
-      - if @costumer
-        %p= @costumer.full_name
+      - if @customer
+        %p= @customer.full_name
 
       %ul
         - @networks.each do |network|

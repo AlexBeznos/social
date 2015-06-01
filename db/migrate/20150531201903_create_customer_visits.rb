@@ -1,0 +1,14 @@
+class CreateCustomerVisits < ActiveRecord::Migration
+  def change
+    create_table :customer_visits do |t|
+      t.integer :customer_network_profile_id
+      t.integer :place_id
+
+      t.timestamps
+    end
+
+    add_index :customer_visits, :customer_network_profile_id
+    add_index :customer_visits, :place_id
+    add_index :customer_visits, :created_at
+  end
+end

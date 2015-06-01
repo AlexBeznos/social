@@ -23,7 +23,7 @@ class GowifiController < ActionController::Base
 
     clear_session
 
-    post_advertisment
+    #post_advertisment
     deal_with_customer
 
     redirect_to 'http://172.16.16.1/login?user=P8uDratA&password=Tac4edrU'
@@ -45,7 +45,7 @@ class GowifiController < ActionController::Base
     end
 
     def find_customer
-      @costumer = Customer.find(cookies.signed[:customer].to_i) if cookies.signed[:customer]
+      @customer = Customer.find(cookies.signed[:customer].to_i) if cookies.signed[:customer]
     end
 
     def credentials
@@ -72,10 +72,10 @@ class GowifiController < ActionController::Base
     end
 
     def deal_with_customer
-      if @customer
-        # TODO: make a method which will add visit
-      else
-        cookies.permanent.signed[:customer] = create_customer(credentials).id
+      customer = find_or_create_costumer(credentials, @place, @customer)
+
+      unless @customer
+        cookies.permanent.signed[:customer] = customer.id
       end
     end
 
