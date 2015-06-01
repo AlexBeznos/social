@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :place_owners, class_name: 'User', foreign_key: :user_id
   belongs_to :franchisee, class_name: 'User', foreign_key: :user_id
 
-  validate :user, presence: true, if: 'group.to_sym == :general'
+  validate :user_id, presence: true, if: 'group.to_sym == :general'
 
   enum group: [:general, :franchisee, :admin]
 
