@@ -66,6 +66,9 @@ gem "koala"
 # img managment
 gem "paperclip", "~> 4.2"
 
+# gender from name
+gem 'guess'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

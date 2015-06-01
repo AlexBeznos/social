@@ -4,6 +4,8 @@ class Customer < ActiveRecord::Base
 
   validates :first_name, presence: true
 
+  before_save :set_gender, unless: 'gender'
+
 
   def full_name
     if first_name && last_name
@@ -11,5 +13,10 @@ class Customer < ActiveRecord::Base
     else
       first_name
     end
+  end
+
+  def set_gender
+    gender = Guess.gender(self.full_name)[:gender]
+    self.gender = gender unless gender == 'unknown'
   end
 end
