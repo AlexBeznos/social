@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
     if self.general?
       return self.places
     else
-      places = self.places
+      places = []
+      places.concat(self.places)
 
       self.place_owners.includes(:places).each do |owner|
         places.concat(owner.places)

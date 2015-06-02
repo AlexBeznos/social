@@ -23,11 +23,13 @@ class ApplicationController < ActionController::Base
       @current_user = current_user_session && current_user_session.user
     end
 
-    def gen_root_path
-      if current_user
-        if current_user.general?
-          return root_path
-        elsif current_user.admin?
+    def gen_root_path(user = false)
+      u = user ? user : current_user
+
+      if u
+        if u.general? || u.franchisee?
+          return places_path
+        elsif u.admin?
           return adm_root_path
         end
       else
