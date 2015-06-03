@@ -27,14 +27,11 @@ gem 'jquery-ui-rails'
 gem 'haml-rails'
 gem 'aasm'
 gem 'oj'
-gem 'active_type'
 gem 'authlogic'
 gem 'simple_form'
-gem 'cyrillizer'
 gem 'has_unique_slug'
 gem 'rmagick'
 gem 'high_voltage', '~> 2.3.0'
-gem 'redcarpet'
 gem 'http_accept_language'
 
 # omniauth
@@ -72,6 +69,13 @@ gem 'guess'
 
 # cyrillic to latin
 gem 'translit'
+
+# email service
+gem 'sendgrid'
+
+# privacy policy markdown parser
+gem 'redcarpet'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

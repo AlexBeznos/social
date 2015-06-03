@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale
 
+  post '/feedback' => 'gowifi#feedback', as: :feedback
+
 
   # static pages
   get "/:id" => "high_voltage/pages#show", :as => :page, :format => false

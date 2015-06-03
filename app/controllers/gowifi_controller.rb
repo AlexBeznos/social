@@ -38,6 +38,13 @@ class GowifiController < ActionController::Base
     redirect_to request.referrer
   end
 
+  def feedback
+    if params[:name] && params[:tel] && params[:email]
+      BasicMailer.feedback(params[:name], params[:tel], params[:email]).deliver
+      head :ok
+    end
+  end
+
   private
 
     def find_place

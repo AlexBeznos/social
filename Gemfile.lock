@@ -15,8 +15,6 @@ GEM
       activesupport (= 4.1.7)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    active_type (0.3.1)
-      activerecord (>= 3.2)
     activemodel (4.1.7)
       activesupport (= 4.1.7)
       builder (~> 3.1)
@@ -59,7 +57,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
-    cyrillizer (0.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
     equalizer (0.0.11)
@@ -243,6 +240,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sendgrid (1.2.0)
+      json
     sexp_processor (4.5.0)
     shoulda-callback-matchers (1.1.1)
       activesupport (>= 3)
@@ -311,12 +310,10 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
-  active_type
   authlogic
   aws-sdk (< 2.0)
   capybara
   coffee-rails (~> 4.0.0)
-  cyrillizer
   factory_girl_rails
   figaro
   forgery
@@ -346,6 +343,7 @@ DEPENDENCIES
   rspec_candy
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  sendgrid
   shoulda-callback-matchers (~> 1.0)
   shoulda-matchers
   simple_form
