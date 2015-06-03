@@ -1,0 +1,224 @@
+.upwards {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.calendar-container {
+    margin-top: 48px;
+}
+
+    @media (max-width: 767px) {
+        .calendar-container {
+            margin-top: 24px;
+        }
+    }
+
+    .calendar-container h1 {
+        margin-top: 64px;
+        margin-bottom: 0;
+        text-transform: uppercase;
+        font-size: 26px;
+        line-height: 24px;
+        color: #9b45da;
+    }
+
+        @media (max-width: 767px) {
+            .calendar-container h1 {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+
+.calendar {
+    position: relative;
+}
+
+    .day {
+        display: inline-block;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+        .day h2 {
+            color: #9b45da;
+        }
+
+            .day h2 a {
+                color: inherit;
+            }
+
+        .day > a {
+            display: inline-block;
+            background: #383f49;
+            width: 16px;
+            height: 16px;
+            margin-top: 5px;
+            border-radius: 100%;
+            border: 3px solid #07cba0;
+        }
+
+        .calendar .active > a, .calendar .day:hover > a {
+            background: #fff;
+            border: 3px solid rgba(0, 0, 0, 0.8);
+        }
+
+        .calendar .active h2 {
+            color: #000;
+        }
+
+    .aleft {
+        position: absolute;
+        cursor: pointer;
+        top: 4px;
+        left: 8px;
+    }
+    .aright {
+        position: absolute;
+        cursor: pointer;
+        top: 4px;
+        right: 8px;
+    }
+
+    .calendar-inner {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .calendar-bar {
+        position: absolute;
+        background: #07cba0;
+        border-radius: 12px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 24px;
+    }
+
+.statistics-table-container {
+    margin-bottom: 48px;
+}
+
+    .statistics-table-minimized tr:nth-child(n+9) {
+        display: none;
+    }
+
+    .statistics-table-arrow {
+    }
+
+        .statistics-table-arrow img {
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+        }
+
+            @media (max-width: 767px) {
+                .statistics-table-arrow img {
+                    position: static;
+                    margin: 15px;
+                }
+            }
+
+    .statistics-table th {
+        text-align: center;
+        font-family: 'Open Sans', serif;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+        @media (max-width: 400px) {
+            .statistics-table th:nth-child(2) {
+                color: #fff;
+                font-size: 0;
+            }
+        }
+
+        .statistics-table .col-xs-4:first-child {
+            text-align: right;
+        }
+
+    .statistics-table tr:first-child {
+        background: #fff !important;
+        border-bottom: 5px solid #383f49;
+    }
+
+    .statistics-table tr:nth-child(odd) {
+        background: #cdf5ec;
+    }
+
+    .statistics-table .col-xs-4 {
+        padding: 15px;
+    }
+
+
+        @media (max-width: 320px) {
+            .statistics-table .col-xs-4 {
+                padding-right: 0;
+            }
+        }
+
+        .statistics-table tr:nth-child(odd) td {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .statistics-table td:last-child {
+            text-align: left;
+            padding-left: 8%;
+        }
+
+.analysis {
+    background: #f4f2f2;
+}
+
+    .analysis h1 {
+        font-size: 18px;
+    }
+
+    .analysis h2 {
+        font-size: 16px;
+    }
+
+    @media (max-width: 767px) {
+        .analysis-col:nth-child(2) .analysis-col-inner:first-child {
+            border-top: 2px dashed #434a53;
+        }
+        .analysis-col:nth-child(2) .analysis-col-inner:last-child {
+            border-bottom: 2px dashed #434a53;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .analysis-col:nth-child(2) .analysis-col-inner:last-child {
+            border-left: 2px dashed #434a53;
+            border-right: 2px dashed #434a53;
+        }
+    }
+
+    .gender, .age, .pic {
+        text-align: left;
+    }
+
+        .gender > div:first-child {
+            font-size: 16px;
+            text-align: right;
+            padding-right: 54px;
+        }
+
+        .age > div:first-child {
+            font-size: 16px;
+            text-align: right;
+            padding-right: 23px;
+        }
+
+        .gender > div:last-child p, .age > div:last-child p {
+            font-size: 15px;
+            color: #757a80;
+        }
+
+        .pic img {
+            margin: 8px;
+        }

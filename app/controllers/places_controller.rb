@@ -6,6 +6,9 @@ class PlacesController < ApplicationController
     @places = current_user.get_all_places
   end
 
+  def show
+  end
+
   private
     def find_place
       @place = Place.find_by_slug(params[:id])

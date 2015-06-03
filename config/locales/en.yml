@@ -81,3 +81,5 @@ en:
     places:
       title: 'Places'
       my_places: 'Places belongs to you '
+    place:
+      title: "Place %{place_name}"
