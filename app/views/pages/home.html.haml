@@ -20,7 +20,7 @@
               arrows: false
           });
           $('.carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-              $('#how .col-sm-7 img').attr('src', 'assets/how/' + (nextSlide + 1) + '.jpg');
+              $('#how .col-sm-7 img').attr('src', 'https://s3-us-west-2.amazonaws.com/gowifi-prod/landing/slides/' + (nextSlide + 1) + '.jpg');
           });
           $(".scrollTo").click(function(event){
               //prevent the default action for the click event
