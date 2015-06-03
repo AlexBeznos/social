@@ -10,211 +10,154 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "home", :media => "all"
-    = yield(:page_stylesheet) if content_for?(:page_stylesheet)
     = javascript_include_tag "home"
-  %body
-    %header
-      .container
-        %nav.navbar.navbar-default.lipm{:role => "navigation"}
-          / Brand and toggle get grouped for better mobile display
-          .navbar-header
-            %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-              %span.sr-only Toggle navigation
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-          / Collect the nav links, forms, and other content for toggling
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            %ul.nav.navv.navv_email.navbar-nav.navbar-left
-              %li
-                %a{:href => "mailto:info@gofriends.com.ua"} info@gofriends.com.ua
-            %ul.nav.navv.navbar-nav.navbar-right
-              %li.active
-                %a{:href => "#ya1"} Новые гости
-              %li
-                %a{:href => "#ya2"} Как это работает
-              %li
-                %a{:href => "#ya4"} Выгоды
-              %li
-                %a{:href => "#ya5"} Бесплатно
-              %li.inside
-                %a{:href => "/login"} Войти
-          / /.navbar-collapse
-        .logo
-          %a{:href => "/"}
-            = image_tag 'logo.png'
-    / background
-    .all_window_height{:style => "width: 100%; height: 100vh; top: 0px; z-index: 0;"}
-      .background_window
-    / end_background
-    %main{:style => "position: relative; z-index: 1;"}
-      #ya1.people_say
-        .say_social
-          .container
-            %h2 Ваши гости расскажут о Вас :
-            .social_icons
-              .col-md-2.col-md-offset-2.col-sm-3.col-xs-6
-                = image_tag 'social1.png'
-              .col-md-2.col-sm-3.col-xs-6
-                = image_tag 'social2.png'
-              .col-md-2.col-sm-3.col-xs-6
-                = image_tag 'social3.png'
-              .col-md-2.col-sm-3.col-xs-6
-                = image_tag 'icon6.png'
-              .clear
-        .say_people
-          .container
-            .shadow
-              .col-md-4.col-sm-12.coll
-                = image_tag 's1.png'
-                .go_arrow.go_arrow1
-                  = image_tag 'logo-mini.png'
-              .col-md-4.col-sm-6.coll2
-                = image_tag 's2.png'
-                .go_arrow.go_arrow2
-                  = image_tag 'logo-mini.png'
-              .col-md-4.col-sm-6
-                = image_tag 's3.png'
-              .clear
-          .clear
-      #ya2.work
-        .work_block
-          .work_green
-            .container
-              %h2 Как это работает
-        .work_iphone
-          .container
-            .tabbable
-              / Only required for left/right tabs
-              .tab-content
-                #tab1.tab-pane.active
-                  .col-md-4.col-sm-4
-                    .iphone
-                      = image_tag 'iphone.png'
-                  .col-md-4.col-sm-4
-                    .iphone_hand
-                      = image_tag 'iphone_hand.png'
-                  .col-md-4.col-sm-4
-                    .text_info
-                      %ul.nav.nav-tabs
-                        %li.active
-                          %a.st{"data-toggle" => "tab", :href => "#tab1"}
-                        %li
-                          %a.st{"data-toggle" => "tab", :href => "#tab2"}
-                        %li
-                          %a.st{"data-toggle" => "tab", :href => "#tab3"}
-                      %p
-                        Вашему гостю нужен интернет и он подключается к бесплатной Wi-fi сети.
-                        %br
-                        %br
-                        Подключение
-                #tab2.tab-pane
-                  .col-md-4
-                    .iphone
-                      = image_tag 'iphone.png'
-                  .col-md-4
-                    .iphone_hand
-                      = image_tag 'iphone_hand.png'
-                  .col-md-4
-                    .text_info
-                      %ul.nav.nav-tabs
-                        %li
-                          %a.st{"data-toggle" => "tab", :href => "#tab1"}
-                        %li.active
-                          %a.st{"data-toggle" => "tab", :href => "#tab2"}
-                        %li
-                          %a.st{"data-toggle" => "tab", :href => "#tab3"}
-                      %p
-                        Гость получает доступ к интернету с помощью входа через свою любимую социальную сеть. На этой странице Вы так же можете разместить акцию или мероприятие Вашего заведения.
-                        %br
-                        %br
-                        Авторизация
-                #tab3.tab-pane
-                  .col-md-4
-                    .iphone
-                      = image_tag 'iphone.png'
-                  .col-md-4
-                    .iphone_hand
-                      = image_tag 'iphone_hand.png'
-                  .col-md-4
-                    .text_info
-                      %ul.nav.nav-tabs
-                        %li
-                          %a.st{"data-toggle" => "tab", :href => "#tab1"}
-                        %li
-                          %a.st{"data-toggle" => "tab", :href => "#tab2"}
-                        %li.active
-                          %a.st{"data-toggle" => "tab", :href => "#tab3"}
-                      %p
-                        Ваш гость получил доступ в интернет, и первая страница, которую он видит вместо своей стартовой - Ваше сообщество в социальной сети или Ваш сайт! А так же на стене у гостя размещается пост о Вашем заведении, который видят все его друзья.
-                        %br
-                        %br
-                        Пост и переход
-      #ya3.work
-        .top_bg_news
-        .container
-          .col-md-4.col-sm-12
-            .block1
-              .block1_top
-                = image_tag 'ico1.png'
-              .block_bottom
-                %h3 Популяризация бренда в соц.сетях
-                %p Ваши гости сами распространят информацию о Вас в социальных медиа, а так же станут Вашими подписчиками - эффект сарафанного радио! Весь процесс полностью автоматизирован, и поэтому больше не нужно платить IT или SMM специалисту.
-          .col-md-4.col-sm-12
-            .block1_top.top2
-              = image_tag 'ico2.png'
-            .block_bottom
-              %h3 Увеличение среднего чека
-              %p
-                Ваши гости благодаря программе лояльности станут постоянными клиентами и вернуться к Вам снова! И после утреннего кофе придут со своими друзьями отмечать свой День Рождение, корпоратив, День Свадьбы и другие праздники.
-          .col-md-4.col-sm-12
-            .block1_top.top3
-              = image_tag 'ico3.png'
-            .block_bottom
-              %h3 Новые клиенты
-              %p
-                GoFriends - друзья придут! Гости от своего имени порекомендуют Вас своим друзьям, родственникам, коллегам, одногруппникам, одноклассникам, соседям и просто знакомым. Они так же расскажут о Ваших акциях, мероприятиях и других событиях.
-      #ya4.container
-        .bottom_block
-          .col-md-6
-            .block_left
-              %h3 Хотите новых гостей?
-          .col-md-6
-            .block_right
-              .seven
-                = image_tag 'seven.png'
-                %span Бесплатное тестирование
-              %form{:action => ""}
-                %input{:placeholder => "имя и фамилия...", :type => "text"}/
-                %input{:placeholder => "e-mail...", :type => "text"}/
-                %input{:placeholder => "номер телефона...", :type => "text"}/
-                %input{:type => "submit", :value => "Оставить заявку"}/
-          .clear
-    %footer
-      .container
-        .col-md-4.left
-          %p 063-692-86-57
-          %p 068-99-99-398
-        .col-md-4
-          .policy
-            = link_to t('privacy_police.title'), page_path('privacy_policy')
-        .col-md-4.right
-          %a{:href => "http://rabby.com.ua", :target => "_blank"}
-            = image_tag 'rabby.png'
     :javascript
-      $(document).ready(function() {
-        $(window).scroll(function() {
-        if ($(this).scrollTop() > 175){
-            $(".lipm").addClass("sticky");
-          }
-          else{
-            $(".lipm").removeClass("sticky");
-          }
-        });
-      })
+      $(document).ready(function(){
+          $(".carousel").slick({
+              autoplay: true,
+              dots: true,
+              dotsClass: 'dots',
+              arrows: false
+          });
+          $('.carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+              $('#how .col-sm-7 img').attr('src', 'assets/how/' + (nextSlide + 1) + '.jpg');
+          });
+          $(".scrollTo").click(function(event){
+              //prevent the default action for the click event
+              event.preventDefault();
 
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-    = yield(:page_javascript) if content_for?(:page_javascript)
+              //get the full url - like mysitecom/index.htm#home
+              var full_url = this.href;
+
+              //split the url by # and get the anchor target name - home in mysitecom/index.htm#home
+              var parts = full_url.split("#");
+              var trgt = parts[1];
+
+              //get the top offset of the target anchor
+              var target_offset = $("#"+trgt).offset();
+              var target_top = target_offset.top;
+
+              //goto that anchor by setting the body scroll top to anchor top
+              $('html, body').animate({scrollTop:target_top-80}, 1500, 'easeInSine');
+          });
+          var modalSuccess = new jBox('Modal', {
+              content: 'Ваша заявка была успешно отправлена!'
+          });
+          $('#signup').submit(function(){
+              var name = $('#signup input[name=name]').val();
+              var tel = $('#signup input[name=tel]').val();
+              var email = $('#signup input[name=email]').val();
+              if (name == '' || tel == '' || email == '')
+                  return false;
+              else {
+                  $.post("/feedback", {name: name, tel: tel, email: email});
+                  modalSuccess.open();
+              }
+              return false;
+          });
+      });
+  %body
+    %nav.navbar.navbar-custom.navbar-fixed-top.gradient
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Навигация
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "mailto:info@gofriends.com.ua", :style => 'margin-top: 16px;'} info@gofriends.com.ua
+        / Collect the nav links, forms, and other content for toggling
+        #navbar-collapse.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a.scrollTo{:href => "#guests"} Новые гости
+            %li
+              %a.scrollTo{:href => "#how"} Как это работает
+            %li
+              %a.scrollTo{:href => "#benefits"} Выгоды
+            %li
+              %a.scrollTo{:href => "#contact"} Бесплатно
+            %li
+              = link_to 'Войти', login_path
+        / /.navbar-collapse
+      / /.container-fluid
+    %header#header
+      #logo
+        = image_tag 'logo.png'
+    #guests
+      %h1 Ваши гости расскажут о Вас:
+      = image_tag 'socials/fb.png'
+      = image_tag 'socials/vk.png'
+      = image_tag 'socials/tw.png'
+      = image_tag 'socials/ok.png'
+      .container-fluid
+        .row
+          .col-sm-4
+            = image_tag 'photos/1.jpg'
+          .col-sm-4
+            = image_tag 'photos/2.jpg'
+          .col-sm-4
+            = image_tag 'photos/3.jpg'
+    #how
+      %h1 Как это работает
+      .container
+        .row
+          .col-sm-7
+            = image_tag 'how/1.jpg'
+          .col-sm-5
+            .carousel
+              .carousel-inner
+                %p
+                  Вашему гостю нужен интернет и он подключается к бесплатной Wi-fi сети.
+              .carousel-inner
+                %p Гость получает доступ к интернету с помощью входа через свою любимую социальную сеть. На этой странице Вы так же можете разместить акцию или мероприятие Вашего заведения.
+              .carousel-inner
+                %p Ваш гость получил доступ в интернет, и первая страница, которую он видит вместо своей стартовой - Ваше сообщество в социальной сети или Ваш сайт! А так же на стене у гостя размещается пост о Вашем заведении, который видят все его друзья.
+    #benefits
+      %h1 Выгоды
+      .container
+        .row
+          .col-md-4
+            #head
+              = image_tag 'benefits/3.png'
+            #body
+              %h1 Новые клиенты
+              %p GoFriends - друзья придут! Гости от своего имени порекомендуют Вас своим друзьям, родственникам, коллегам, одногруппникам, одноклассникам, соседям и просто знакомым. Они так же расскажут о Ваших акциях, мероприятиях и других событиях.
+          .col-md-4
+            #head
+              = image_tag 'benefits/1.png'
+            #body
+              %h1 Популяризация бренда в соц.сетях
+              %p Ваши гости сами распространят информацию о Вас в социальных медиа, а так же станут Вашими подписчиками - эффект сарафанного радио! Весь процесс полностью автоматизирован, и поэтому больше не нужно платить IT или SMM специалисту.
+          .col-md-4
+            #head
+              = image_tag 'benefits/2.png'
+            #body
+              %h1 Увеличение среднего чека
+              %p Ваши гости благодаря программе лояльности станут постоянными клиентами и вернуться к Вам снова! И после утреннего кофе придут со своими друзьями отмечать свой День Рождение, корпоратив, День Свадьбы и другие праздники.
+    #contact
+      .container
+        .row
+          .col-md-6
+            #test
+              %h1 Хотите новых гостей?
+              = image_tag '7days.png'
+              %p Бесплатное тестирование
+            = image_tag 'contact.jpg'
+          .col-md-6
+            %form#signup{:action => "/", :method => "post"}
+              %input{:name => "name", :placeholder => "Имя и фамилия", :required => "", :type => "text"}/
+              %input{:name => "email", :placeholder => "E-mail", :required => "", :type => "text"}/
+              %input{:name => "tel", :placeholder => "Номер телефона", :required => "", :type => "text"}/
+              %input{:type => "submit", :value => "Оставить заявку"}/
+              %h1 или
+              %h1
+                позвонить
+                %span 8(063)01-01-797
+    %footer#footer
+      %h1 8(063)01-01-797
+      %h1 8(067)97-97-253
+      %h2= link_to t('privacy_police.title'), page_path('privacy_policy')
+      %a{:href => "http://rabby.com.ua/"}
+        = image_tag "rabby.png"

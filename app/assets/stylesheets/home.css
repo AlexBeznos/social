@@ -11,8 +11,11 @@
  * file per style scope.
  *
  *
- *= require bootstrap-theme
  *= require bootstrap
- *= require home-style
+ *= require bootstrap-theme
+ *= require jquery-ui
+ *= require slick_slider
+ *= require jbox
+ *= require home_style
  *= require_self
  */
