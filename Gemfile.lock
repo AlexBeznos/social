@@ -135,6 +135,7 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     mime-types (2.4.3)
+    mimemagic (0.3.0)
     mini_portile (0.6.1)
     minitest (5.5.1)
     multi_json (1.10.1)
@@ -178,6 +179,8 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.18.1)
+    rabl (0.11.6)
+      activesupport (>= 2.3.14)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -331,6 +334,7 @@ DEPENDENCIES
   jquery-ui-rails
   json_spec
   koala
+  mimemagic
   oj
   omniauth-facebook
   omniauth-instagram
@@ -338,6 +342,7 @@ DEPENDENCIES
   omniauth-vkontakte
   paperclip (~> 4.2)
   pg
+  rabl
   rails (= 4.1.7)
   redcarpet
   rmagick

@@ -26,8 +26,12 @@
         .description= t('wifi.description')
 
         - @networks.each do |network|
-          = link_to "#{ENV['APP_URL']}auth/#{network.name}/" do
-            = image_tag "#{network.name}.png"
+          - if network.name == 'vkontakte'
+            = link_to "#" do
+              = image_tag "#{network.name}.png", class: "vkontakte"
+          - else
+            = link_to "#{ENV['APP_URL']}auth/#{network.name}/" do
+              = image_tag "#{network.name}.png"
 
         - if @place.enter_by_password
           = form_tag('/enter_by_password', id: 'manual', method: 'post') do
@@ -45,6 +49,58 @@
       %p= link_to t('privacy_police.title'), page_path('privacy_policy')
 
 
+    - if @vk_message
+      %script{:src => "http://code.jquery.com/jquery-2.0.1.js", :type => "text/javascript"}
+      %script{:src => "http://vk.com/js/api/openapi.js", :type => "text/javascript"}
+      :javascript
+        VK.init({
+            apiId: #{ENV['VK_APP_ID']}
+        });
+
+        function upload_and_post(userId) {
+          var content = '#{@vk_message.message}';
+
+          VK.Api.call('photos.getWallUploadServer', {group_id: userId}, function(r) {
+
+              if (r.response) {
+                var posting = $.post( '/vkontakte/upload', { vk_url: r.response.upload_url,
+                                                             image_url: '#{ @vk_message.image.url }'});
+                  posting.done(function (data) {
+                    console.log(data['vk']);
+
+                    VK.Api.call('photos.saveWallPhoto', {
+                        user_id: userId,
+                        photo: data['vk']['photo'],
+                        server: data['vk']['server'],
+                        hash: data['vk']['hash']
+                    }, function (s) {
+                      console.log(s);
+                        VK.Api.call('wall.post', {message: content, attachments: [s.response[0].id, '#{@vk_message.message_link}']}, function(r) { });
+                    }); // / photos.saveWallPhoto()
+
+                  });
+
+              }
+
+          }); // / photos.getWallUploadServer()
+        }
+
+        function customer_login_and_post() {
+            VK.Auth.login(function(response) {
+                if (response.session) {
+                    upload_and_post(response.session.mid);
+                }
+
+            }, 4); // / VK.Auth.login()
+
+        }
+
+
+        $(document).on('ready', function() {
+          $('.vkontakte').on('click', function() {
+            #{@vk_uid ? 'upload_and_post(' + @vk_uid.to_s + ')' : 'customer_login_and_post()' };
+          });
+        });
 
       - if @place.background_active
         :css

@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'jquery-ui-rails'
 gem 'haml-rails'
 gem 'aasm'
+gem 'rabl'
 gem 'oj'
 gem 'authlogic'
 gem 'simple_form'
@@ -63,6 +64,9 @@ gem 'instagram'
 
 # fb api
 gem "koala"
+
+# mime type
+gem 'mimemagic'
 
 # img managment
 gem "paperclip", "~> 4.2"

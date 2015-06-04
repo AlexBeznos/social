@@ -7,6 +7,16 @@ class VkService
     @credentials = hash[:credentials]
   end
 
+  def self.upload_picture(vk_url, img_path)
+    file = MimeMagic.by_path("#{ENV['APP_URL']}public#{img_path}")
+    
+    begin
+      VkontakteApi.upload(url: vk_url, photo: [img_path, file.type])
+    rescue => e
+      Rails.logger.error "Vkontakte image is not uploaded, error: #{e.inspect}"
+    end
+  end
+
   def advertise
     puts @credentials
 

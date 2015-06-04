@@ -9,6 +9,10 @@ class GowifiController < ActionController::Base
       session[:slug] = @place.slug
 
       @networks = @place.get_networks
+
+      if @networks.map{|network| network.name}.include?('vkontakte')
+        @vk_message = get_message(@place, 'vkontakte')
+      end
     else
       redirect_to '/404.html'
     end
@@ -53,6 +57,7 @@ class GowifiController < ActionController::Base
 
     def find_customer
       @customer = Customer.find(cookies.signed[:customer].to_i) if cookies.signed[:customer]
+      @vk_uid = cookies.signed[:vk_uid]
     end
 
     def credentials

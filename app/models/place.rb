@@ -53,6 +53,6 @@ class Place < ActiveRecord::Base
       end
     end
 
-    networks
+    networks.uniq
   end
 end

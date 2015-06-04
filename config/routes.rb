@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   post '/feedback' => 'gowifi#feedback', as: :feedback
 
+  post '/vkontakte/upload'
+
 
   # static pages
   get "/:id" => "high_voltage/pages#show", :as => :page, :format => false
