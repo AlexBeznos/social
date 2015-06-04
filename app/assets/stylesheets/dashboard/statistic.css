@@ -108,7 +108,8 @@
     .statistics-table-arrow {
     }
 
-        .statistics-table-arrow img {
+        .statistics-table-arrow i {
+            font-size: 30px;
             cursor: pointer;
             position: absolute;
             bottom: 0;
@@ -116,7 +117,7 @@
         }
 
             @media (max-width: 767px) {
-                .statistics-table-arrow img {
+                .statistics-table-arrow i {
                     position: static;
                     margin: 15px;
                 }
@@ -219,6 +220,8 @@
             color: #757a80;
         }
 
-        .pic img {
+        .pic i {
+            font-size: 25px;
+            color: grey;
             margin: 8px;
         }

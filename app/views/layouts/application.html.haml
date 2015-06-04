@@ -10,7 +10,7 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    = yield(:page_stylesheet) if content_for?(:page_stylesheet)
+    = stylesheet_link_tag yield(:page_stylesheet) if content_for?(:page_stylesheet)
 
 
   %body
@@ -49,4 +49,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
-    = yield(:page_javascript) if content_for?(:page_javascript)
+    = javascript_include_tag yield(:page_javascript) if content_for?(:page_javascript)

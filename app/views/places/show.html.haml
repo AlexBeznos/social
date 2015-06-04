@@ -1,3 +1,137 @@
-= content_for :page_stylesheet, 'statistic'
-= content_for :page_javascript, javascript_include_tag 'statistic'
+= content_for :page_stylesheet, 'dashboard/statistic'
+= content_for :page_javascript, 'dashboard/statistic'
 = content_for :title, t('pages.place.title', place_name: @place.name)
+
+.row.calendar-container
+  .col-sm-2
+    %h1 Май
+  .col-sm-8.calendar
+    .calendar-inner
+      .day.active
+        %h2
+          %a{:href => "#"} 11
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 10
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 9
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 8
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 7
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 6
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 5
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 4
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 3
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 2
+        %a{:href => "#"}
+      .day
+        %h2
+          %a{:href => "#"} 1
+        %a{:href => "#"}
+    .calendar-bar
+      = fa_icon "chevron-left", class: 'aleft'
+      = fa_icon "chevron-right", class: 'aright'
+.row.statistics-table-container
+  %table.col-sm-8.col-sm-offset-2.col-xs-12.statistics-table.statistics-table-minimized
+    %tr.row
+      %th.col-xs-4 Время
+      %th.col-xs-4 Соц. сеть
+      %th.col-xs-4 Пользователь
+    - @visits.each do |visit|
+      %tr.row
+        %td.col-xs-4= visit.created_at.strftime('%k:%M')
+        %td.col-xs-4= fa_icon visit.network_profile.social_network.name
+        %td.col-xs-4= link_to visit.network_profile.customer.full_name, visit.network_profile.url
+  .col-sm-2.statistics-table-arrow
+    = fa_icon "angle-double-down"
+.row.analysis
+  .col-sm-4.analysis-col
+    .analysis-col-inner
+      %h1
+        Сутки:
+        %span= @visits.count
+    .analysis-col-inner
+      %h2
+        Кол-во переходов:
+        %span 260
+      .row.pic
+        .col-xs-6.col-xs-offset-6
+          = fa_icon 'users'
+      .row.gender
+        .col-xs-6
+          Пол:
+        .col-xs-6
+          %p
+            муж:
+            %span= @visits_by_date.by_gender('m').count
+          %p
+            жен:
+            %span= @visits_by_date.by_gender().count
+  .col-sm-4.analysis-col
+    .analysis-col-inner
+      %h1
+        Неделя:
+        %span= @visits_this_week.count
+    .analysis-col-inner
+      %h2
+        Кол-во переходов:
+        %span 260
+      .row.pic
+        .col-xs-6.col-xs-offset-6
+          = fa_icon 'users'
+      .row.gender
+        .col-xs-6
+          Пол:
+        .col-xs-6
+          %p
+            муж:
+            %span= @visits_this_week.by_gender('m').count
+          %p
+            жен:
+            %span= @visits_this_week.by_gender().count
+  .col-sm-4.analysis-col
+    .analysis-col-inner
+      %h1
+        Месяц:
+        %span= @visits_this_month.count
+    .analysis-col-inner
+      %h2
+        Кол-во переходов:
+        %span 260
+      .row.pic
+        .col-xs-6.col-xs-offset-6
+          = fa_icon 'users'
+      .row.gender
+        .col-xs-6
+          Пол:
+        .col-xs-6
+          %p
+            муж:
+            %span= @visits_this_month.by_gender('m').count
+          %p
+            жен:
+            %span= @visits_this_month.by_gender().count
+      .row.age

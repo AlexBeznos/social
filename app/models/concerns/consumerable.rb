@@ -36,6 +36,7 @@ module Consumerable
 
   def create_visit(network_profile, place)
     Customer::Visit.create( customer_network_profile_id: network_profile.id,
+                            customer_id: network_profile.customer_id,
                             place: place)
   end
 

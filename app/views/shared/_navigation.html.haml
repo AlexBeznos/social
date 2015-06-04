@@ -1,7 +1,6 @@
 %nav.nav-inner-custom
   %ul.nav.nav-justified
-    %li
-      %a{:href => "statistics.html"} Статистика
+    %li= link_to t('navigation.dashboard.statistic'), place_path(@place)
     %li
       %a{:href => "settings.html"} Настройка
     %li

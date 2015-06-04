@@ -1,5 +1,8 @@
 class Customer < ActiveRecord::Base
+
   has_many :network_profiles, :dependent => :destroy, :class_name => 'Customer::NetworkProfile'
+  has_many :visits, :dependent => :destroy, :class_name => 'Customer::Visit'
+  
   accepts_nested_attributes_for :network_profiles
 
   validates :first_name, presence: true

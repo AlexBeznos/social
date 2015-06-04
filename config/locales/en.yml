@@ -77,6 +77,8 @@ en:
     logout: 'Logout'
     login: 'Login'
     my_places: 'My places'
+    dashboard:
+      statistic: 'Statistic'
   pages:
     places:
       title: 'Places'

@@ -12,6 +12,7 @@
  *
  *= require bootstrap
  *= require dashboard
- *= require slick_slider
+ *= require lib/slick_slider
+ *= require font-awesome
  *= require_self
  */

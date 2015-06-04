@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150531201903) do
   create_table "customer_visits", force: true do |t|
     t.integer  "customer_network_profile_id"
     t.integer  "place_id"
+    t.integer  "customer_id"
     t.boolean  "by_password"
     t.datetime "created_at"
     t.datetime "updated_at"

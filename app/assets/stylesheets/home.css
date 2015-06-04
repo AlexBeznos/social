@@ -14,8 +14,8 @@
  *= require bootstrap
  *= require bootstrap-theme
  *= require jquery-ui
- *= require slick_slider
- *= require jbox
- *= require home_style
+ *= require lib/slick_slider
+ *= require lib/jbox
+ *= require dashboard/style
  *= require_self
  */

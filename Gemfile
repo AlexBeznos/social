@@ -32,6 +32,9 @@ gem 'simple_form'
 gem 'has_unique_slug'
 gem 'rmagick'
 gem 'high_voltage', '~> 2.3.0'
+gem 'font-awesome-rails'
+
+# lib to get lang from http request header
 gem 'http_accept_language'
 
 # omniauth

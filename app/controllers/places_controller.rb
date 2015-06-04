@@ -7,6 +7,11 @@ class PlacesController < ApplicationController
   end
 
   def show
+    date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.now
+    @visits = @place.visits.joins([:customer, :network_profile => :social_network])
+    @visits_by_date = @visits.by_date(date.beginning_of_day)
+    @visits_this_week = @place.visits.joins(:customer).by_date(1.week.ago)
+    @visits_this_month = @place.visits.joins(:customer).by_date(1.month.ago)
   end
 
   private
