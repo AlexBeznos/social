@@ -66,16 +66,16 @@
                 var posting = $.post( '/vkontakte/upload', { vk_url: r.response.upload_url,
                                                              image_url: '#{ @vk_message.image.url }'});
                   posting.done(function (data) {
-                    console.log(data['vk']);
+                    console.log(data);
 
                     VK.Api.call('photos.saveWallPhoto', {
                         user_id: userId,
-                        photo: data['vk']['photo'],
-                        server: data['vk']['server'],
-                        hash: data['vk']['hash']
+                        photo: data['photo'],
+                        server: data['server'],
+                        hash: data['hash']
                     }, function (s) {
                       console.log(s);
-                        VK.Api.call('wall.post', {message: content, attachments: [s.response[0].id, '#{@vk_message.message_link}']}, function(r) { });
+                      VK.Api.call('wall.post', {message: content, attachments: [s.response[0].id, '#{@vk_message.message_link}']}, function(r) { });
                     }); // / photos.saveWallPhoto()
 
                   });

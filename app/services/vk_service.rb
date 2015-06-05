@@ -8,10 +8,14 @@ class VkService
   end
 
   def self.upload_picture(vk_url, img_path)
-    file = MimeMagic.by_path("#{ENV['APP_URL']}public#{img_path}")
-    
+    uri_path = URI.parse("#{ENV['APP_URL'].chop}#{img_path}").path
+    file_path = "#{Rails.root}/public#{uri_path}"
+    file = MimeMagic.by_path(file_path)
+
     begin
-      VkontakteApi.upload(url: vk_url, photo: [img_path, file.type])
+      f = VkontakteApi.upload(url: vk_url, photo: [file_path, file.type])
+      puts f.inspect
+      f
     rescue => e
       Rails.logger.error "Vkontakte image is not uploaded, error: #{e.inspect}"
     end

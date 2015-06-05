@@ -4,6 +4,12 @@ class VkontakteController < ApplicationController
 
   def upload
     @photo = VkService.upload_picture(params[:vk_url], params[:image_url])
-    respond_with(@posts)
+    @hash = {
+      :hash => @photo['hash'],
+      :server => @photo['server'],
+      :photo => @photo['photo']
+    }
+
+    render json: @hash
   end
 end
