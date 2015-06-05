@@ -13,9 +13,7 @@ class VkService
     file = MimeMagic.by_path(file_path)
 
     begin
-      f = VkontakteApi.upload(url: vk_url, photo: [file_path, file.type])
-      puts f.inspect
-      f
+      VkontakteApi.upload(url: vk_url, photo: [file_path, file.type])
     rescue => e
       Rails.logger.error "Vkontakte image is not uploaded, error: #{e.inspect}"
     end

@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   post '/feedback' => 'gowifi#feedback', as: :feedback
 
   post '/vkontakte/upload'
+  post '/vkontakte/save'
 
 
   # static pages

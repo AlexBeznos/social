@@ -56,7 +56,7 @@ class GowifiController < ActionController::Base
     end
 
     def find_customer
-      @customer = Customer.find(cookies.signed[:customer].to_i) if cookies.signed[:customer]
+      @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
       @vk_uid = cookies.signed[:vk_uid]
     end
 
@@ -87,7 +87,7 @@ class GowifiController < ActionController::Base
       customer = find_or_create_costumer(credentials, @place, @customer)
 
       unless @customer
-        cookies.permanent.signed[:customer] = customer.id
+        cookies.permanent[:customer] = customer.id
       end
     end
 

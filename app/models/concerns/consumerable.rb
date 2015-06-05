@@ -20,6 +20,8 @@ module Consumerable
         profile = customer.network_profiles.last
       end
 
+
+
       create_visit(profile, place)
       customer
     end
@@ -31,6 +33,8 @@ module Consumerable
               create_twitter_customer(credentials)
             when 'facebook'
               create_facebook_customer(credentials)
+            when 'vkontakte'
+              create_vkontakte_customer(credentials)
             end
   end
 
@@ -49,6 +53,17 @@ module Consumerable
 
     def create_facebook_customer(credentials)
       params = get_facebook_params(credentials)
+      create_customer_by_params(params)
+    end
+
+    def create_vkontakte_customer(credentials)
+      params = {
+        :first_name => credentials['first_name'],
+        :last_name => credentials['last_name'],
+        :gender => credentials['sex'].to_gender,
+        :birthday => credentials['bday'],
+        :network_profiles_attributes => [get_network_profile_params(credentials)]
+      }
       create_customer_by_params(params)
     end
 
@@ -114,6 +129,13 @@ module Consumerable
                   :access_token_secret => credentials['credentials']['secret'],
                   :expiration_date => Time.now + 1.year,
                   :friends_count => credentials['extra']['raw_info']['followers_count']
+                }
+              when 'vkontakte'
+                {
+                  :social_network => SocialNetwork.find_by(name: 'vkontakte'),
+                  :url => "http://vk.com/#{credentials['domain']}",
+                  :uid => credentials['uid'],
+                  :friends_count => credentials['common_count']
                 }
               end
     end

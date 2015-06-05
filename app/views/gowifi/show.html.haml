@@ -50,7 +50,8 @@
 
 
     - if @vk_message
-      %script{:src => "http://code.jquery.com/jquery-2.0.1.js", :type => "text/javascript"}
+      = javascript_include_tag "jquery"
+      = javascript_include_tag "jquery.cookie"
       %script{:src => "http://vk.com/js/api/openapi.js", :type => "text/javascript"}
       :javascript
         VK.init({
@@ -66,16 +67,30 @@
                 var posting = $.post( '/vkontakte/upload', { vk_url: r.response.upload_url,
                                                              image_url: '#{ @vk_message.image.url }'});
                   posting.done(function (data) {
-                    console.log(data);
 
                     VK.Api.call('photos.saveWallPhoto', {
                         user_id: userId,
+                        group_id: userId,
                         photo: data['photo'],
                         server: data['server'],
                         hash: data['hash']
                     }, function (s) {
                       console.log(s);
-                      VK.Api.call('wall.post', {message: content, attachments: [s.response[0].id, '#{@vk_message.message_link}']}, function(r) { });
+                      VK.Api.call('wall.post', {message: content, attachments: [s.response[0].id, '#{@vk_message.message_link}']}, function(r) {
+                        console.log(r);
+                        VK.Api.call('users.get', {user_ids: userId, fields: ['sex', 'bdate', 'city', 'common_count', 'domain'], name_case: 'nom'}, function(info) {
+                          console.log(info);
+                          $.post('/vkontakte/save', {customer: #{@customer ? @customer.id : "'none'"}, place_id: #{@place.id}, credentials: info.response[0]}, function(redirect) {
+                            if (redirect['link']) {
+                              if (!$.cookie('customer')){
+                                $.cookie('customer', redirect['customer'], { expires : 365 })
+                              }
+
+                              window.location = redirect['link']
+                            }
+                          });
+                        })
+                      });
                     }); // / photos.saveWallPhoto()
 
                   });

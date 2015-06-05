@@ -63,7 +63,7 @@
     - @visits.each do |visit|
       %tr.row
         %td.col-xs-4= visit.created_at.strftime('%k:%M')
-        %td.col-xs-4= fa_icon visit.network_profile.social_network.name
+        %td.col-xs-4= fa_icon visit.network_profile.social_network.font_awesome_name
         %td.col-xs-4= link_to visit.network_profile.customer.full_name, visit.network_profile.url
   .col-sm-2.statistics-table-arrow
     = fa_icon "angle-double-down"
