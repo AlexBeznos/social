@@ -87,7 +87,7 @@
             VK.Api.call('photos.getWallUploadServer', {group_id: App.Vk.userId}, function(r) {
               if (r.response) {
                 var posting = $.post( '/vkontakte/upload', { vk_url: r.response.upload_url,
-                                                             image_url: '#{ @vk_message.image.url }'});
+                                                             message: '#{ @vk_message.id }' });
                 posting.done(function (data) {
                   VK.Api.call('photos.saveWallPhoto', {
                       user_id: App.Vk.userId,
@@ -104,7 +104,7 @@
           },
           postToTheWall: function(wallImage) {
             VK.Api.call('wall.post', {message: App.Vk.message, attachments: [wallImage.response[0].id, '#{@vk_message.message_link}']}, function(res) {
-              if(res.response) {  
+              if(res.response) {
                 App.Vk.saveVisitor(res)
               }
             });

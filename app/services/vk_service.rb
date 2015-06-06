@@ -1,3 +1,4 @@
+require 'open-uri'
 class VkService
   attr_accessor :hash
 
@@ -7,9 +8,9 @@ class VkService
     @credentials = hash[:credentials]
   end
 
-  def self.upload_picture(vk_url, img_path)
-    uri_path = URI.parse("#{ENV['APP_URL'].chop}#{img_path}").path
-    file_path = "#{Rails.root}/public#{uri_path}"
+  def self.upload_picture(vk_url, message)
+    message = Message.find(message.to_i)
+    file_path = VkService.save_image_localy(message)
     file = MimeMagic.by_path(file_path)
 
     begin
@@ -26,5 +27,20 @@ class VkService
     vk.wall.post(owner_id: @credentials['uid'], message: "#{@message.message}<br>#{@message.image.url}", attachments: @message.message_link)
 
     message.redirect_link
+  end
+
+  def self.save_image_localy(message)
+    img_url = message.image.url
+    url = URI.parse(img_url)
+    ext = File.extname(url.path)
+    path = "#{Rails.root}/public/vk/#{message.id}#{ext}"
+
+    File.delete(path) if File.exist?(path)
+
+    open(path, 'wb') do |file|
+      file << open(img_url).read
+    end
+
+    path
   end
 end

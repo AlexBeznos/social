@@ -27,7 +27,7 @@ class GowifiController < ActionController::Base
 
     clear_session
 
-    #post_advertisment
+    post_advertisment
     deal_with_customer
 
     redirect_to 'http://172.16.16.1/login?user=P8uDratA&password=Tac4edrU'

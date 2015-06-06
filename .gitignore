@@ -18,4 +18,6 @@
 # ignore variables
 /config/application.yml
 
+# ignore vk images
+/public/vk
 .DS_Store

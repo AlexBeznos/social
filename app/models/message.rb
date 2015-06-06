@@ -1,8 +1,8 @@
 class Message < ActiveRecord::Base
   has_attached_file :image,
-                    :storage => :filesystem,
-                    :path => "#{Rails.root}/public/messages/:id/:style/:basename.:extension",
-                    :url => "/messages/:id/:style/:basename.:extension"
+                    :storage => :s3,
+                    :path => "/images/:id/:style.:extension",
+                    :url => ":s3_domain_url"
 
   scope :active, -> { where(active: true) }
 
