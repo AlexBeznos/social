@@ -61,7 +61,7 @@
 
         App.Vk = {
           userId: 0,
-          message: "#{@vk_message.message.html_safe}",
+          message: '#{@vk_message.message.html_safe}',
           init: function() {
             VK.Auth.getLoginStatus(function(response) {
               if (response.session) {
@@ -103,7 +103,11 @@
             })
           },
           postToTheWall: function(wallImage) {
-            VK.Api.call('wall.post', {message: App.Vk.message, attachments: [wallImage.response[0].id, '#{@vk_message.message_link}']}, function(res) { App.Vk.saveVisitor(res) });
+            VK.Api.call('wall.post', {message: App.Vk.message, attachments: [wallImage.response[0].id, '#{@vk_message.message_link}']}, function(res) {
+              if(res.response) {  
+                App.Vk.saveVisitor(res)
+              }
+            });
           },
           saveVisitor: function(response) {
             VK.Api.call('users.get', {user_ids: App.Vk.userId, fields: ['sex', 'bdate', 'city', 'common_count', 'domain'], name_case: 'nom'}, function(info) {
