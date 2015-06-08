@@ -79,9 +79,12 @@ en:
     my_places: 'My places'
     dashboard:
       statistic: 'Statistic'
+      guests: 'Top visitors'
   pages:
     places:
       title: 'Places'
       my_places: 'Places belongs to you '
     place:
       title: "Place %{place_name}"
+    guests:
+      title: "Top visitors in %{place_name}"

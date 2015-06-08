@@ -1,0 +1,18 @@
+= content_for :page_stylesheet, 'dashboard/guests'
+= content_for :page_javascript, 'dashboard/guests'
+= content_for :title, t('pages.guests.title', place_name: @place.name)
+
+
+.row.guests-table-container
+  %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
+    %tr.row
+      %th.col-xs-4 Пользователь
+      %th.col-xs-4 Соц. сеть
+      %th.col-xs-4 Кол-во подключений
+    - @customers.each do |customer|
+      %tr.row
+        %td.col-xs-4= customer.customer.full_name
+        %td.col-xs-4= fa_icon customer.social_network.font_awesome_name
+        %td.col-xs-4= customer.visits.where(place: @place).count
+  .col-sm-2.guests-table-arrow
+    = fa_icon "angle-double-down"

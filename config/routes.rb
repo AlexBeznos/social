@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :places
+  resources :places do
+    member do
+      get 'guests'
+    end
+  end
 
 
   # customers level accessed pages

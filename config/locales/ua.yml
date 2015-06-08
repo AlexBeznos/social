@@ -56,7 +56,14 @@ ua:
     logout: 'Вийти'
     login: 'Увійті'
     my_places: 'Мої заклади'
+    dashboard:
+      statistic: 'Статистика'
+      guests: 'Top відвідувачів'
   pages:
     places:
       title: 'Заклади'
       my_places: 'Ваши заклади '
+    place:
+      title: "Заклад %{place_name}"
+    guests:
+      title: "Top відвідувачів в %{place_name}"

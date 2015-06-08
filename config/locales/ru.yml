@@ -56,7 +56,14 @@ ru:
     logout: 'Выйти'
     login: 'Войти'
     my_places: 'Мои заведения'
+    dashboard:
+      statistic: 'Статистика'
+      guests: 'Top посетителей'
   pages:
     places:
       title: 'Заведения'
       my_places: 'Ваши заведения '
+    place:
+      title: "Заведение %{place_name}"
+    guests:
+      title: "Top посетителей в %{place_name}"
