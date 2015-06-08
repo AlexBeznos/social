@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :places do
     member do
       get 'guests'
+      get 'birthdays'
     end
   end
 

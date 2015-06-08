@@ -5,7 +5,7 @@ class CreateCostumers < ActiveRecord::Migration
       t.string :last_name
       t.string :gender
       t.string :age
-      t.string :birthday
+      t.date :birthday
       t.string :city
       t.string :country
 

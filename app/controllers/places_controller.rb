@@ -22,6 +22,13 @@ class PlacesController < ApplicationController
                                          .reverse
   end
 
+  def birthdays
+    @customers = Customer.joins(:visits)
+                         .where('customer_visits.place_id = ?', 1)
+                         .where.not(birthday: nil)
+                         .uniq
+  end
+
   private
     def find_place
       @place = Place.find_by_slug(params[:id])

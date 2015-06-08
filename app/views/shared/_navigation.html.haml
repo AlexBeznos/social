@@ -4,5 +4,4 @@
     %li
       %a{:href => "settings.html"} Настройка
     %li= link_to t('navigation.dashboard.guests'), guests_place_path(@place)
-    %li
-      %a{:href => "birthdays.html"} Дни рождения
+    %li= link_to t('navigation.dashboard.birthdays'), birthdays_place_path(@place)

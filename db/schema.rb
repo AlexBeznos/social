@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150531201903) do
   end
 
   add_index "customer_visits", ["created_at"], name: "index_customer_visits_on_created_at", using: :btree
+  add_index "customer_visits", ["customer_id"], name: "index_customer_visits_on_customer_id", using: :btree
   add_index "customer_visits", ["customer_network_profile_id"], name: "index_customer_visits_on_customer_network_profile_id", using: :btree
   add_index "customer_visits", ["place_id"], name: "index_customer_visits_on_place_id", using: :btree
 
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.string   "last_name"
     t.string   "gender"
     t.string   "age"
-    t.string   "birthday"
+    t.date     "birthday"
     t.string   "city"
     t.string   "country"
     t.datetime "created_at"
@@ -131,6 +132,9 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                         null: false
+    t.string   "first_name"
+    t.string   "second_name"
+    t.string   "phone"
     t.string   "crypted_password",              null: false
     t.string   "password_salt",                 null: false
     t.string   "persistence_token",             null: false

@@ -59,6 +59,7 @@ ru:
     dashboard:
       statistic: 'Статистика'
       guests: 'Top посетителей'
+      birthdays: "Visitor's birthdays"
   pages:
     places:
       title: 'Заведения'

@@ -80,6 +80,7 @@ en:
     dashboard:
       statistic: 'Statistic'
       guests: 'Top visitors'
+      birthdays: "Visitor's birthdays"
   pages:
     places:
       title: 'Places'

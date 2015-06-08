@@ -1,0 +1,93 @@
+.upwards {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.birthdays-table-container {
+    margin-bottom: 48px;
+}
+
+    .birthdays-table-minimized tr:nth-child(n+9) {
+        display: none;
+    }
+
+    .birthday-table {
+        position: relative;
+        z-index: 1;
+    }
+
+    .birthdays-table-arrow {
+        position: relative;
+        z-index: 0;
+    }
+
+        .birthdays-table-arrow img {
+            cursor: pointer;
+            position: absolute;
+            z-index: 0;
+            bottom: 0;
+            left: 15px;
+        }
+
+            @media (max-width: 767px) {
+                .birthdays-table-arrow img {
+                    position: static;
+                    margin: 15px;
+                }
+            }
+
+    .birthdays-table th {
+        text-align: center;
+        font-family: 'Open Sans', serif;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+        .link-min {
+            display: none;
+        }
+
+        @media (max-width: 420px) {
+            .birthdays-table .col-xs-4:nth-child(2) {
+                display: none;
+            }
+            .link-min {
+                display: inline;
+            }
+        }
+
+        .birthdays-table .col-xs-4:first-child {
+            text-align: right;
+        }
+
+    .birthdays-table tr:first-child {
+        background: #fff !important;
+        border-bottom: 5px solid #383f49;
+    }
+
+    .birthdays-table tr:nth-child(odd) {
+        background: #cdf5ec;
+    }
+
+    .birthdays-table .col-xs-4 {
+        padding: 15px;
+    }
+
+
+        @media (max-width: 320px) {
+            .birthdays-table .col-xs-4 {
+                padding-right: 0;
+            }
+        }
+
+        .birthdays-table tr:nth-child(odd) td {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .birthdays-table td:last-child {
+            text-align: left;
+            padding-left: 8%;
+        }

@@ -59,6 +59,7 @@ ua:
     dashboard:
       statistic: 'Статистика'
       guests: 'Top відвідувачів'
+      birthdays: "Visitor's birthdays"
   pages:
     places:
       title: 'Заклади'

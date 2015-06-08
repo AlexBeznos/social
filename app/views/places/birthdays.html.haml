@@ -1,0 +1,19 @@
+= content_for :page_stylesheet, 'dashboard/guests'
+= content_for :page_javascript, 'dashboard/guests'
+= content_for :title, t('pages.guests.title', place_name: @place.name)
+
+
+.row.birthdays-table-container
+  %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
+    %tr.row
+      %th.col-xs-4 Пользователь
+      %th.col-xs-4 Аккаунты
+      %th.col-xs-4 День Рождения
+    - @customers.each do |customer|
+      %tr.row
+        %td.col-xs-4= customer.full_name
+        %td.col-xs-4
+          - customer.network_profiles.joins(:visits).where('customer_visits.place_id = ?', @place.id).uniq.each do |np|
+            = link_to fa_icon(np.social_network.font_awesome_name), np.url
+        %td.col-xs-4= customer.birthday.strftime('%d.%m.%Y')
+  .col-sm-2.guests-table-arrow= fa_icon "angle-double-down"
