@@ -1,6 +1,9 @@
 = simple_form_for [:adm, @user] do |f|
   = f.error_notification
   = f.input :email
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :phone
   = f.input :password
   = f.input :password_confirmation
   = f.input :group, :as => :select, :collection => User.groups.keys.to_a unless @user == current_user

@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.datetime "updated_at"
     t.string   "email",                         null: false
     t.string   "first_name"
-    t.string   "second_name"
+    t.string   "last_name"
     t.string   "phone"
     t.string   "crypted_password",              null: false
     t.string   "password_salt",                 null: false

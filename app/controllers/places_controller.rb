@@ -27,6 +27,7 @@ class PlacesController < ApplicationController
                          .where('customer_visits.place_id = ?', 1)
                          .where.not(birthday: nil)
                          .uniq
+                         .order(:birthday)
   end
 
   private

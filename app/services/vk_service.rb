@@ -20,14 +20,14 @@ class VkService
     end
   end
 
-  def advertise
-    puts @credentials
+  #def advertise
+  #  puts @credentials
 
-    vk = VkontakteApi::Client.new(@credentials['credentials']['token'])
-    vk.wall.post(owner_id: @credentials['uid'], message: "#{@message.message}<br>#{@message.image.url}", attachments: @message.message_link)
+  #  vk = VkontakteApi::Client.new(@credentials['credentials']['token'])
+  #  vk.wall.post(owner_id: @credentials['uid'], message: "#{@message.message}<br>#{@message.image.url}", attachments: @message.message_link)
 
-    message.redirect_link
-  end
+  #  message.redirect_link
+  #end
 
   def self.save_image_localy(message)
     img_url = message.image.url

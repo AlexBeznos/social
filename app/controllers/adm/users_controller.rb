@@ -50,7 +50,7 @@ class Adm::UsersController < AdministrationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :group)
+    params.require(:user).permit(:email, :first_name, :last_name, :phone, :password, :password_confirmation, :group)
   end
 
   def find_user
