@@ -4,7 +4,7 @@
   = f.input :logo, as: :file
   = f.input :enter_by_password, as: :boolean, input_html: { class: 'enter_by_password_check' }
   .enter_by_password
-    = f.input :password
+    = f.input :password, as: :string
   = f.input :active, :as => :hidden, :default => true
 
   = f.button :submit

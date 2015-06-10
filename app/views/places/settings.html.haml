@@ -1,32 +1,32 @@
 = content_for :page_stylesheet, 'dashboard/settings'
-= content_for :title, t('pages.settings.title', place_name: @place.name)
+= content_for :title, t('models.places.actions.settings.title', place_name: @place.name)
 
 .row.settings
   .col-sm-5
-    %h1 Настройка Wi-Fi
+    %h1= t('models.places.actions.settings.wifi')
     %ul.list-group.list-wifi_settings
       %li.list-group-item
-        = t('pages.settings.attrs.name')
+        = t('models.places.attrs.name')
         %span.text-muted.pull-right= @place.name
       - if @place.logo
         %li.list-group-item.img
-          = t('pages.settings.attrs.logo')
+          = t('models.places.attrs.logo')
           .pull-right
             = image_tag @place.logo.url, height: 50
       %li.list-group-item
-        = t('pages.settings.attrs.active')
+        = t('models.places.attrs.active')
         %span.text-muted.pull-right= fa_plus_minus(@place.active)
       %li.list-group-item
-        = t('pages.settings.attrs.by_password')
+        = t('models.places.attrs.by_password')
         %span.text-muted.pull-right= fa_plus_minus(@place.enter_by_password)
       - if @place.enter_by_password
         %li.list-group-item
-          = t('pages.settings.attrs.password')
-          %span.text-muted.pull-right= fa_plus_minus(@place.password)
+          = t('models.places.attrs.password')
+          %span.text-muted.pull-right= @place.password
       %li.list-group-item
         = link_to t('helpers.submit.edit'), edit_place_path(@place), class: 'btn btn-primary btn-block'
   .col-sm-7
-    %h1 Настройка постов
+    %h1= t('models.places.actions.settings.messages')
     %form{ :action => "#{settings_place_path(@place)}",  :method => "get"}
       .row
         .col-sm-4.col-sm-offset-4
@@ -34,15 +34,15 @@
     .row
       .panel.panel-default.panel-settings
         .panel-heading
-          %h3.panel-title= t('pages.settings.messages.message_for', name: @message.social_network.font_awesome_name)
+          %h3.panel-title= t('models.messages.message_for', name: @message.social_network.font_awesome_name)
         .panel-body
           - if @message.social_network.name == 'instagram'
             %ul.list-group
               %li.list-group-item
-                = t('pages.settings.messages.subscription')
+                = t('models.messages.attrs.subscription')
                 %span.text-muted.pull-right= @place.subscription
               %li.list-group-item
-                = t('pages.settings.messages.redirect')
+                = t('models.messages.attrs.redirect_link')
                 %span.text-muted.pull-right= link_to fa_icon('external-link'), @message.redirect_link
           - else
             .row
@@ -55,7 +55,7 @@
                     = link_to @message.message_link, @message.message_link
                 %ul.list-group
                   %li.list-group-item
-                    = t('pages.settings.messages.redirect')
+                    = t('models.messages.attrs.redirect_link')
                     %span.text-muted.pull-right= link_to fa_icon('external-link'), @message.redirect_link
               .col-sm-4
                 = image_tag @message.image.url, class: 'img-responsive'
