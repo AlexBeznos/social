@@ -13,4 +13,6 @@ $(document).on("ready page:load", function() {
   $('.enter_by_password_check').change(function() {
     show_a_password_form();
   }).change();
+
+
 });

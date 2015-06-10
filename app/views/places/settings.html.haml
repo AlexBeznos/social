@@ -34,7 +34,9 @@
     .row
       .panel.panel-default.panel-settings
         .panel-heading
-          %h3.panel-title= t('models.messages.message_for', name: @message.social_network.font_awesome_name)
+          .panel-title
+            = t('models.messages.message_for', name: @message.social_network.font_awesome_name)
+            = link_to t('helpers.submit.add', name: t('models.messages.attrs.message')), new_place_message_path(@place), class: 'btn btn-info btn-xs pull-right'
         .panel-body
           - if @message.social_network.name == 'instagram'
             %ul.list-group
@@ -60,5 +62,5 @@
               .col-sm-4
                 = image_tag @message.image.url, class: 'img-responsive'
         .panel-footer
-          = link_to t('helpers.submit.edit'), edit_message_path(@message), class: 'btn btn-primary btn-block'
-          = link_to t('helpers.submit.add', name: t('models.messages.attrs.message')), new_message_path, class: 'btn btn-info btn-block'
+          = link_to t('helpers.submit.edit'), edit_place_message_path(@place, @message), class: 'btn btn-primary btn-block'
+          = link_to t('helpers.submit.destroy'), place_message_path(@place, @message), method: 'DELETE', class: 'btn btn-danger btn-block'

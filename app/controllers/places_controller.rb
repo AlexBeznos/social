@@ -52,11 +52,6 @@ class PlacesController < ApplicationController
       @place = Place.find_by_slug(params[:id])
     end
 
-    def require_proper_user
-      unless current_user.get_all_places.include?(@place)
-        redirect_to places_path, alert: 'You have no rights to access this page!'
-      end
-    end
 
     def place_params
       params.require(:place).permit(:name,
@@ -66,4 +61,5 @@ class PlacesController < ApplicationController
                                     :password,
                                     :active)
     end
+
 end

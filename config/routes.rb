@@ -21,11 +21,11 @@ Rails.application.routes.draw do
   end
 
   resources :places do
+    resources :messages, except: [:index, :show]
     member do
       get 'guests'
       get 'birthdays'
       get 'settings'
-      resources :messages, except: [:index, :show]
     end
   end
 

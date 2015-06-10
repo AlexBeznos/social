@@ -51,3 +51,18 @@
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
     = javascript_include_tag yield(:page_javascript) if content_for?(:page_javascript)
+    - if @message
+      :javascript
+        $(document).ready(function() {
+          function show_a_message_form() {
+            $('.instagram, .vkontakte, .twitter, .facebook').hide();
+            var network = "#{ @message.social_network.name }";
+
+            if(network == 'vkontakte'|| network == 'facebook' || network == 'twitter') {
+              $('.facebook').show();
+            } else if (network == 'instagram') {
+              $('.instagram').show();
+            }
+          }
+          show_a_message_form();
+        });

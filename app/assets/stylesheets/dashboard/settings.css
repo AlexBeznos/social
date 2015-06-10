@@ -111,8 +111,10 @@
       }
     }
 
-
-
     form {
       text-align: left;
+    }
+
+    a.btn.btn-info {
+      color: white;
     }

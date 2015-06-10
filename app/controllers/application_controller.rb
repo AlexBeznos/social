@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_proper_user
+    unless current_user.get_all_places.include?(@place)
+      redirect_to places_path, alert: 'You have no rights to access this page!'
+    end
+  end
+
 
   private
     def current_user_session

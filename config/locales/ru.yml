@@ -176,6 +176,7 @@ ru:
       update: Сохранить %{model}
       edit: Редактировать
       add: Добавить новое %{name}
+      destroy: Удалить
   number:
     currency:
       format:
@@ -351,3 +352,6 @@ ru:
         subscription: "Подписка на"
         message_link: "Ссылка в сообщении"
         redirect_link: "Редирект после аутентификации"
+      actions:
+        edit:
+          title: 'Обновление %{place_name}'
