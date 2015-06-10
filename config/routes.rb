@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       get 'guests'
       get 'birthdays'
       get 'settings'
-      resources :messages
+      resources :messages, except: [:index, :show]
     end
   end
 

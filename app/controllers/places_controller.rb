@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
   before_filter :require_user
   before_action :find_place, except: :index
+  before_filter :require_proper_user, except: :index
 
   def index
     @places = current_user.get_all_places
@@ -35,8 +36,34 @@ class PlacesController < ApplicationController
     @networks = @place.messages.map {|message| message.social_network }.uniq
   end
 
+  def edit
+  end
+
+  def update
+    if @place.update(place_params)
+      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
+    else
+      render :action => :new
+    end
+  end
+
   private
     def find_place
       @place = Place.find_by_slug(params[:id])
+    end
+
+    def require_proper_user
+      unless current_user.get_all_places.include?(@place)
+        redirect_to places_path, alert: 'You have no rights to access this page!'
+      end
+    end
+
+    def place_params
+      params.require(:place).permit(:name,
+                                    :logo,
+                                    :slug,
+                                    :enter_by_password,
+                                    :password,
+                                    :active)
     end
 end

@@ -1,4 +1,6 @@
 ru:
+  notice:
+    updated: "%{subject} обновленно"
   date:
     abbr_day_names:
     - Вс
@@ -318,25 +320,30 @@ ru:
       guests: 'Top посетителей'
       birthdays: "Дни рождения"
       settings: 'Настройки'
-  pages:
+  models:
     places:
-      title: 'Заведения'
-      my_places: 'Ваши заведения '
-    place:
-      title: "Заведение %{place_name}"
-    guests:
-      title: "Top посетителей в %{place_name}"
-    settings:
-      title: "Настройки для %{place_name}"
-      messages:
-        message: 'сообщение'
-        message_for: "Сообщение для %{name}"
-        subscription: "Подписка на"
-        message_link: "Ссылка в сообщении"
-        redirect: "Редирект после аутентификации"
       attrs:
         name: 'Название заведения'
         by_password: 'Вход по паролю'
         password: 'Пароль для входа'
         active: 'Hotspot активен'
         logo: 'Логотип'
+      actions:
+        index:
+          title: 'Заведения'
+          my_places: 'Ваши заведения '
+        show:
+          title: "Заведение %{place_name}"
+        edit:
+          title: 'Обновление %{place_name}'
+        guests:
+          title: "Top посетителей в %{place_name}"
+        settings:
+          title: "Настройки для %{place_name}"
+    messages:
+      message_for: "Сообщение для %{name}"
+      attrs:
+        message: 'сообщение'
+        subscription: "Подписка на"
+        message_link: "Ссылка в сообщении"
+        redirect_link: "Редирект после аутентификации"

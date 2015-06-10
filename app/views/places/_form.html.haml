@@ -1,0 +1,10 @@
+= simple_form_for @place do |f|
+  = f.error_notification
+  = f.input :name
+  = f.input :logo, as: :file
+  = f.input :enter_by_password, as: :boolean, input_html: { class: 'enter_by_password_check' }
+  .enter_by_password
+    = f.input :password
+  = f.input :active, :as => :hidden, :default => true
+
+  = f.button :submit
