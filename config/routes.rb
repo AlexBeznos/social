@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     member do
       get 'guests'
       get 'birthdays'
+      get 'settings'
+      resources :messages
     end
   end
 

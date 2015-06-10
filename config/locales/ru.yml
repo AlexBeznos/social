@@ -172,6 +172,8 @@ ru:
       create: Создать %{model}
       submit: Сохранить %{model}
       update: Сохранить %{model}
+      edit: Редактировать
+      add: Добавить новое %{name}
   number:
     currency:
       format:
@@ -314,7 +316,8 @@ ru:
     dashboard:
       statistic: 'Статистика'
       guests: 'Top посетителей'
-      birthdays: "Visitor's birthdays"
+      birthdays: "Дни рождения"
+      settings: 'Настройки'
   pages:
     places:
       title: 'Заведения'
@@ -323,3 +326,17 @@ ru:
       title: "Заведение %{place_name}"
     guests:
       title: "Top посетителей в %{place_name}"
+    settings:
+      title: "Настройки для %{place_name}"
+      messages:
+        message: 'сообщение'
+        message_for: "Сообщение для %{name}"
+        subscription: "Подписка на"
+        message_link: "Ссылка в сообщении"
+        redirect: "Редирект после аутентификации"
+      attrs:
+        name: 'Название заведения'
+        by_password: 'Вход по паролю'
+        password: 'Пароль для входа'
+        active: 'Hotspot активен'
+        logo: 'Логотип'

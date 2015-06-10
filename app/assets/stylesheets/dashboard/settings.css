@@ -1,0 +1,112 @@
+
+.settings {
+    padding-bottom: 15px;
+}
+
+    .settings h1 {
+        color: #9b45da;
+        font-size: 18px;
+    }
+
+    .settings form {
+        text-align: left;
+    }
+
+    .settings label {
+        font-weight: normal;
+    }
+
+    .settings input[type=text], .settings textarea {
+        font-size: 12px;
+        display: block;
+        margin: 8px 0;
+        padding: 6px 12px;
+        width: 100%;
+        color: #9b45da;
+        border: 1px solid #9b45da;
+        border-radius: 6px;
+    }
+
+    #postImg {
+        width: 100%;
+    }
+
+        .imgUpload {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            margin: 8px;
+            font-size: 14px;              /* example */
+            height: 24px;                 /* example */
+            line-height: 24px;             /* the same as height */
+        }
+
+        .imgUpload .button, .imgUpload > mark{
+            display: block;
+            cursor: pointer;              /* example */
+        }
+        .imgUpload .button{
+            float: right;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            width: 100%;                  /* example */
+            height: 100%;
+            background: #383f49;
+            border-radius: 6px;
+            color: #fff;
+            text-align: center;          /* example */
+        }
+        .imgUpload > mark{
+            background: transparent;     /* example */
+            padding: 0 8px;
+        }
+        .imgUpload input {
+            display: none;
+        }
+
+    .settings input[type=checkbox] {
+        display: none;
+        margin: 8px;
+    }
+
+    .settings input[type=checkbox] + label span {
+        display: inline-block;
+        cursor: pointer;
+        width: 12px;
+        height: 12px;
+        margin-right: 8px;
+        background: none;
+        outline: none;
+        border-radius: 100%;
+        border: 1px solid #07cba0;
+    }
+
+    .settings input[type=checkbox]:checked + label span {
+        background: url(img/checkbox.png) no-repeat;
+        background-position: -1px -1px;
+    }
+
+    .list-group {
+      margin-top:10px;
+      text-align: left;
+    }
+
+    .settings select {
+      width: 100%;
+    }
+    .settings .panel {
+      margin-top: 10px;
+      text-align: left;
+    }
+    .settings .list-group-item.img {
+      height: 70px;
+    }
+    @media (min-width: 769px) {
+      .settings .panel-settings {
+        margin-right: 15px;
+      }
+      .list-wifi_settings {
+        margin-top: 30px;
+      }
+    }

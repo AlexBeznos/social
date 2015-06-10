@@ -1,0 +1,64 @@
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :title, t('pages.settings.title', place_name: @place.name)
+
+.row.settings
+  .col-sm-5
+    %h1 Настройка Wi-Fi
+    %ul.list-group.list-wifi_settings
+      %li.list-group-item
+        = t('pages.settings.attrs.name')
+        %span.text-muted.pull-right= @place.name
+      - if @place.logo
+        %li.list-group-item.img
+          = t('pages.settings.attrs.logo')
+          .pull-right
+            = image_tag @place.logo.url, height: 50
+      %li.list-group-item
+        = t('pages.settings.attrs.active')
+        %span.text-muted.pull-right= fa_plus_minus(@place.active)
+      %li.list-group-item
+        = t('pages.settings.attrs.by_password')
+        %span.text-muted.pull-right= fa_plus_minus(@place.enter_by_password)
+      - if @place.enter_by_password
+        %li.list-group-item
+          = t('pages.settings.attrs.password')
+          %span.text-muted.pull-right= fa_plus_minus(@place.password)
+      %li.list-group-item
+        = link_to t('helpers.submit.edit'), edit_place_path(@place), class: 'btn btn-primary btn-block'
+  .col-sm-7
+    %h1 Настройка постов
+    %form{ :action => "#{settings_place_path(@place)}",  :method => "get"}
+      .row
+        .col-sm-4.col-sm-offset-4
+          = select_tag "message", options_from_collection_for_select(@networks, "name", "name"), include_blank: true, onchange: "this.form.submit();"
+    .row
+      .panel.panel-default.panel-settings
+        .panel-heading
+          %h3.panel-title= t('pages.settings.messages.message_for', name: @message.social_network.font_awesome_name)
+        .panel-body
+          - if @message.social_network.name == 'instagram'
+            %ul.list-group
+              %li.list-group-item
+                = t('pages.settings.messages.subscription')
+                %span.text-muted.pull-right= @place.subscription
+              %li.list-group-item
+                = t('pages.settings.messages.redirect')
+                %span.text-muted.pull-right= link_to fa_icon('external-link'), @message.redirect_link
+          - else
+            .row
+              .col-sm-8
+                Сообщение:
+                .panel.panel-default
+                  .panel-body
+                    = @message.message
+                    %br
+                    = link_to @message.message_link, @message.message_link
+                %ul.list-group
+                  %li.list-group-item
+                    = t('pages.settings.messages.redirect')
+                    %span.text-muted.pull-right= link_to fa_icon('external-link'), @message.redirect_link
+              .col-sm-4
+                = image_tag @message.image.url, class: 'img-responsive'
+        .panel-footer
+          = link_to t('helpers.submit.edit'), edit_message_path(@message), class: 'btn btn-primary btn-block'
+          = link_to t('helpers.submit.add', name: t('pages.settings.messages.message')), new_message_path, class: 'btn btn-info btn-block'
