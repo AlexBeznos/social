@@ -1,6 +1,8 @@
 = content_for :title, t('models.users.actions.index.title')
 = content_for :navigation, 'false'
 
+%div{:style => 'position: relative; text-align: right;'}
+  = link_to t('helpers.submit.create', model: t('models.users.user')), new_user_path, class:'btn btn-info'
 .header
   %h1
     = t 'models.users.actions.index.my_users'

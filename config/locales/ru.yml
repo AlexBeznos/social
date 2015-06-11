@@ -363,6 +363,8 @@ ru:
         new:
           title: Добавить сообщение
     users:
+      created: Пользователь добавлен
+      user: пользователя
       actions:
         index:
           title: Пользователи
@@ -371,6 +373,8 @@ ru:
           title: "Пользователь %{user}"
           heading: Настройки пользователя
           places: Заведения пользователя
+        new:
+          title: Создать нового пользователя
       attrs:
         first_name: Имя
         last_name: Фамилия

@@ -12,9 +12,10 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = current_user.places.new(place_params)
+    @place = Place.new(place_params)
+
     if @place.save
-      redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
+      redirect_to user_path(@place.user), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
       render :action => :new
     end
@@ -77,7 +78,8 @@ class PlacesController < ApplicationController
                                     :slug,
                                     :enter_by_password,
                                     :password,
-                                    :active)
+                                    :active,
+                                    :user_id)
     end
 
 end

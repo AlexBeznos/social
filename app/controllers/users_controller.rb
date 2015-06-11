@@ -10,6 +10,21 @@ class UsersController < ApplicationController
   def show
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = current_user.place_owners.new(user_params)
+    @user.user_id = current_user.id
+
+    if @user.save
+      redirect_to users_path, :notice => I18n.t('models.users.created')
+    else
+      render :action => :new
+    end
+  end
+
   def destroy
     @user.destroy
     redirect_to users_path
@@ -32,5 +47,9 @@ class UsersController < ApplicationController
       unless current_user.place_owners.include?(@user) || @user == current_user
         redirect_to users_path, alert: 'You have no rights to access this page!'
       end
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :first_name, :last_name, :phone, :password, :password_confirmation)
     end
 end
