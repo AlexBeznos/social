@@ -34,6 +34,7 @@ gem 'has_unique_slug'
 gem 'rmagick'
 gem 'high_voltage', '~> 2.3.0'
 gem 'font-awesome-rails'
+gem 'metric_fu'
 
 # lib to get lang from http request header
 gem 'http_accept_language'
