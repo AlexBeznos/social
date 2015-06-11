@@ -1,0 +1,26 @@
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :title, t('models.users.actions.show.title', user: @user.full_name)
+= content_for :navigation, 'false'
+
+.row.settings
+  .col-sm-5
+    %h1= t('models.users.actions.show.heading')
+    %ul.list-group
+      %li.list-group-item
+        = t('models.users.attrs.first_name')
+        %span.text-muted.pull-right= @user.first_name
+      %li.list-group-item
+        = t('models.users.attrs.last_name')
+        %span.text-muted.pull-right= @user.last_name
+      %li.list-group-item
+        = t('models.users.attrs.phone')
+        %span.text-muted.pull-right= @user.phone
+      %li.list-group-item
+        = link_to t('helpers.submit.edit'), edit_user_path(@user), class: 'btn btn-primary btn-block'
+        = link_to t('helpers.submit.destroy'), user_path(@user), method: 'DELETE', class: 'btn btn-danger btn-block'
+  .col-sm-7
+    %h1=  t('models.users.actions.show.places')
+    %ul.list-group
+      - @user.places.each do |place|
+        %li.list-group-item= link_to place.name, place_path(place)
+      %li.list-group-item= link_to t('helpers.submit.create', model: t('models.places.place')), new_place_path, class: 'btn btn-info btn-block'

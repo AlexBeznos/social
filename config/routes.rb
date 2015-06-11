@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index, :show]
+  resources :users
 
   resources :places do
     resources :messages, except: [:index, :show]

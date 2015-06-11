@@ -325,6 +325,7 @@ ru:
       settings: 'Настройки'
   models:
     places:
+      place: заведение
       attrs:
         name: 'Название заведения'
         by_password: 'Вход по паролю'
@@ -364,3 +365,11 @@ ru:
         index:
           title: Пользователи
           my_users: Ваши пользователи
+        show:
+          title: "Пользователь %{user}"
+          heading: Настройки пользователя
+          places: Заведения пользователя
+      attrs:
+        first_name: Имя
+        last_name: Фамилия
+        phone: Телефон
