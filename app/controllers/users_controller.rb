@@ -25,6 +25,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), :notice => I18n.t('models.users.updated')
+    else
+      render :action => :new
+    end
+  end
+
+
   def destroy
     @user.destroy
     redirect_to users_path

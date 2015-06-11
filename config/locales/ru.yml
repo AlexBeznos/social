@@ -364,6 +364,7 @@ ru:
           title: Добавить сообщение
     users:
       created: Пользователь добавлен
+      updated: Данные пользователя обновленны
       user: пользователя
       actions:
         index:
@@ -375,7 +376,10 @@ ru:
           places: Заведения пользователя
         new:
           title: Создать нового пользователя
+        edit:
+          title: 'Обновление %{name}'
       attrs:
         first_name: Имя
         last_name: Фамилия
         phone: Телефон
+        email: E-mail

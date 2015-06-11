@@ -1,0 +1,9 @@
+= content_for :title, t('models.users.actions.edit.title', name: @user.full_name)
+= content_for :navigation, 'false'
+
+
+.row
+  .col-sm-4
+    %h1= t('models.users.actions.edit.title', name: @user.full_name)
+
+    = render 'form'
