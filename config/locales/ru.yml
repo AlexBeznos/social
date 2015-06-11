@@ -316,6 +316,7 @@ ru:
   navigation:
     logout: 'Выйти'
     login: 'Войти'
+    users: 'Пользователи'
     my_places: 'Мои заведения'
     dashboard:
       statistic: 'Статистика'
@@ -358,3 +359,8 @@ ru:
           title: 'Обновление %{place_name}'
         new:
           title: Добавить сообщение
+    users:
+      actions:
+        index:
+          title: Пользователи
+          my_users: Ваши пользователи

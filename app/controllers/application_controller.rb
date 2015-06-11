@@ -7,14 +7,22 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user
-      redirect_to login_path, alert: 'You have no rights to access this page!'
+      no_access_to_login
     end
   end
 
   def require_proper_user
     unless current_user.get_all_places.include?(@place)
-      redirect_to places_path, alert: 'You have no rights to access this page!'
+      no_access_to_place
     end
+  end
+
+  def no_access_to_login
+    redirect_to login_path, alert: 'You have no rights to access this page!'
+  end
+
+  def no_access_to_place
+    redirect_to places_path, alert: 'You have no rights to access this page!'
   end
 
 
@@ -56,4 +64,5 @@ class ApplicationController < ActionController::Base
         I18n.locale = session[:locale]
       end
     end
+
 end

@@ -1,0 +1,12 @@
+= content_for :title, t('models.users.actions.index.title')
+= content_for :navigation, 'false'
+
+.header
+  %h1
+    = t 'models.users.actions.index.my_users'
+    (
+    %span= @users.length
+    )
+%ul.facility
+  - @users.each do |user|
+    %li= link_to user.full_name, user_path(user)
