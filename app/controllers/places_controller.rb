@@ -1,10 +1,23 @@
 class PlacesController < ApplicationController
   before_filter :require_user
-  before_action :find_place, except: :index
-  before_filter :require_proper_user, except: :index
+  before_action :find_place, except: [:index, :new, :create]
+  before_filter :require_proper_user, except: [:index, :new, :create]
 
   def index
     @places = current_user.get_all_places
+  end
+
+  def new
+    @place = Place.new
+  end
+
+  def create
+    @place = current_user.places.new(place_params)
+    if @place.save
+      redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
+    else
+      render :action => :new
+    end
   end
 
   def show
@@ -43,7 +56,7 @@ class PlacesController < ApplicationController
     if @place.update(place_params)
       redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
-      render :action => :new
+      render :action => :edit
     end
   end
 

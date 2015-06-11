@@ -1,0 +1,10 @@
+= content_for :page_javascript, 'dashboard/input_binding'
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :navigation, 'false'
+= content_for :title, t('models.places.actions.new.title')
+
+.row
+  .col-sm-4
+    %h1= t('models.places.actions.new.title')
+
+    = render 'form'

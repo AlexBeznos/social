@@ -338,6 +338,8 @@ ru:
           my_places: 'Ваши заведения '
         show:
           title: "Заведение %{place_name}"
+        new:
+          title: "Создать заведение"
         edit:
           title: 'Обновление %{place_name}'
         guests:

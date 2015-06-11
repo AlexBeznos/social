@@ -22,5 +22,7 @@
     %h1=  t('models.users.actions.show.places')
     %ul.list-group
       - @user.places.each do |place|
-        %li.list-group-item= link_to place.name, place_path(place)
+        %li.list-group-item
+          = link_to place.name, place_path(place)
+          = link_to t('helpers.submit.destroy'), place_path(place), methods: 'DELETE', class: 'btn btn-danger btn-xs pull-right'
       %li.list-group-item= link_to t('helpers.submit.create', model: t('models.places.place')), new_place_path, class: 'btn btn-info btn-block'
