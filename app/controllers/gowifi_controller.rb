@@ -1,4 +1,4 @@
-class GowifiController < ActionController::Base
+class GowifiController < ApplicationController
   include Consumerable
   layout 'no-layout'
   before_action :find_place, only: :show
@@ -56,8 +56,10 @@ class GowifiController < ActionController::Base
     end
 
     def find_customer
+      puts '++++++++'
+      puts cookies[:customer]
       @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-      @vk_uid = cookies.signed[:vk_uid]
+      puts @customer.inspect
     end
 
     def credentials
@@ -84,6 +86,8 @@ class GowifiController < ActionController::Base
     end
 
     def deal_with_customer
+      puts '+++++++++'
+      puts @customer.inspect
       customer = find_or_create_costumer(credentials, @place, @customer)
 
       unless @customer

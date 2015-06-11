@@ -12,11 +12,16 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "lib/boostrap-alert", :media => "all"
     = stylesheet_link_tag "wifi", :media => "all"
 
   %body
     #content.gradient
       .inner
+        .alert.alert-success.alert-dismissible#alertWindow{:role => "alert", :style => 'width: 300px; margin: auto; display: none'}
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          = t('wifi.alert')
         - if @place.logo.exists?
           = image_tag @place.logo.url
         - else
@@ -28,14 +33,14 @@
 
         - @networks.each do |network|
           - if network.name == 'vkontakte'
-            = link_to "#" do
+            = link_to "#", class: 'wifi_link' do
               = image_tag "#{network.name}.png", class: "vkontakte"
           - else
-            = link_to "#{ENV['APP_URL']}auth/#{network.name}/" do
+            = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
               = image_tag "#{network.name}.png"
 
         - if @place.enter_by_password
-          = form_tag('/enter_by_password', id: 'manual', method: 'post') do
+          = form_tag('/enter_by_password', id: 'manual', method: 'post', class: 'wifi_link') do
             %input{:name => "pass", :placeholder => "или введите пароль...", :required => "", :type => "password"}/
             %input{:type => "submit", :value => ""}/
     #offer
@@ -53,6 +58,7 @@
     - if @vk_message
       = javascript_include_tag "jquery"
       = javascript_include_tag "jquery.cookie"
+      = javascript_include_tag "lib/bootstrap-alert"
       %script{:src => "http://vk.com/js/api/openapi.js", :type => "text/javascript"}
       :javascript
         VK.init({
@@ -115,7 +121,7 @@
               $.post('/vkontakte/save', {customer: #{@customer ? @customer.id : "'none'"}, place_id: #{@place.id}, credentials: info.response[0]}, function(redirect) {
                 if (redirect['link']) {
                   if (!$.cookie('customer')){
-                    $.cookie('customer', redirect['customer'], { expires : 365 })
+                    $.cookie('customer', redirect['customer'], { expires : 365, path: '/' })
                   }
 
                   window.location = redirect['link']
@@ -129,6 +135,11 @@
         $(document).on('ready', function() {
           $('.vkontakte').on('click', function() {
             App.Vk.init();
+          });
+
+          $('.wifi_link').on('click', function() {
+            $('#alertWindow').css('display', 'block');
+            $('.wifi_link').css('display', 'none');
           });
         });
 

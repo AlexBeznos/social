@@ -5,8 +5,8 @@ class VkontakteController < ApplicationController
 
   def upload
     @photo = VkService.upload_picture(params[:vk_url], params[:message])
-    puts '+++++++'
-    puts @photo.inspect
+
+
     @hash = {
       :hash => @photo['hash'],
       :server => @photo['server'],

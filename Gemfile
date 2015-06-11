@@ -34,7 +34,7 @@ gem 'has_unique_slug'
 gem 'rmagick'
 gem 'high_voltage', '~> 2.3.0'
 gem 'font-awesome-rails'
-gem 'metric_fu'
+
 
 # lib to get lang from http request header
 gem 'http_accept_language'
@@ -85,6 +85,11 @@ gem 'sendgrid'
 gem 'redcarpet'
 
 
+group :development do
+  gem 'spring'
+  gem 'metric_fu'
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
@@ -100,9 +105,6 @@ group :test do
   gem 'rspec_candy'
   gem 'capybara'
 end
-
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

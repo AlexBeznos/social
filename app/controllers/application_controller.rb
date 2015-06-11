@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   helper_method :current_user_session, :current_user, :gen_root_path
   protect_from_forgery with: :exception
-  before_action :set_locale
+  before_action :check_locale
 
   def require_user
     unless current_user
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def set_locale
+    def check_locale
       if !session[:locale] || !I18n.available_locales.include?(session[:locale].to_sym)
         locale = http_accept_language.compatible_language_from(I18n.available_locales)
         if locale && I18n.available_locales.include?(locale.to_sym)

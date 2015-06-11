@@ -61,30 +61,11 @@ module Consumerable
         :first_name => credentials['first_name'],
         :last_name => credentials['last_name'],
         :gender => credentials['sex'].to_gender,
-        :birthday => credentials['bday'],
+        :birthday => credentials['bdate'] ? Date.parse(credentials['bdate']) : nil,
         :network_profiles_attributes => [get_network_profile_params(credentials)]
       }
+
       create_customer_by_params(params)
-    end
-
-    def get_location(full_location)
-      if full_location && !full_location.empty?
-        location = full_location.split(', ')
-
-        {:city => location[0], :country => location[1]}
-      else
-        {}
-      end
-    end
-
-    def create_customer_by_params(params)
-      customer = Customer.new(params)
-
-      if customer.save
-        customer
-      else
-        raise "Customer not created, error: #{customer.errors.inspect}"
-      end
     end
 
     def get_twitter_params(credentials)
@@ -108,6 +89,26 @@ module Consumerable
 
       params.merge!(get_location(credentials['info']['location']))
       params
+    end
+
+    def get_location(full_location)
+      if full_location && !full_location.empty?
+        location = full_location.split(', ')
+
+        {:city => location[0], :country => location[1]}
+      else
+        {}
+      end
+    end
+
+    def create_customer_by_params(params)
+      customer = Customer.new(params)
+
+      if customer.save
+        customer
+      else
+        raise "Customer not created, error: #{customer.errors.inspect}"
+      end
     end
 
     def get_network_profile_params(credentials)

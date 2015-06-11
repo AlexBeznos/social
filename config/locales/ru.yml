@@ -312,6 +312,7 @@ ru:
   wifi:
     greetings: "Привет, %{customer_name}!"
     description: 'Войди через свою любимую социальную сеть и получи доступ к интернету'
+    alert: 'Авторизация началась, подождите пожалуйста.'
     footer: 'Powered by GoFriends'
   navigation:
     logout: 'Выйти'
