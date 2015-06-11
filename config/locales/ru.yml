@@ -1,5 +1,6 @@
 ru:
   notice:
+    create: "%{subject} добавленно"
     updated: "%{subject} обновленно"
   date:
     abbr_day_names:
@@ -355,3 +356,5 @@ ru:
       actions:
         edit:
           title: 'Обновление %{place_name}'
+        new:
+          title: Добавить сообщение

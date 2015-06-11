@@ -1,0 +1,16 @@
+= simple_form_for [@place, @message] do |f|
+  = f.error_notification
+  = f.association :social_network
+  .facebook.vkontakte.twitter
+    = f.input :message_link
+    - if @message.image.exists?
+      = image_tag @message.image.url, height: 100
+    = f.input :image, as: :file
+    = f.input :message, as: :text
+  .instagram.facebook.vkontakte.twitter
+    = f.input :redirect_link
+  .instagram
+    = f.input :subscription
+
+
+  = f.button :submit

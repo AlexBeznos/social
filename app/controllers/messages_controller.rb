@@ -5,9 +5,16 @@ class MessagesController < ApplicationController
   before_filter :require_proper_user
 
   def new
+    @message = Message.new
   end
 
   def create
+    @message = @place.messages.create(message_params)
+    if @message
+      redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+    else
+      render :action => :new
+    end
   end
 
   def edit

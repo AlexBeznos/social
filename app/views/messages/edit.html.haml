@@ -4,6 +4,6 @@
 
 .row
   .col-sm-4
-    %h1= t('models.messages.actions.edit.title', place_name: @place.name)
+    %h1= t('models.messages.actions.edit.title', place_name: '')
 
-    = render 'form_edit'
+    = render 'messages/form/edit'

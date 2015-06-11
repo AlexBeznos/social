@@ -32,8 +32,8 @@ class PlacesController < ApplicationController
   end
 
   def settings
-    @message = params[:message] ? @place.messages.find_by(social_network: SocialNetwork.find_by(name: params[:message])) : @place.messages.first
-    @networks = @place.messages.map {|message| message.social_network }.uniq
+    @message = params[:message] ? @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: params[:message])) : @place.messages.where(active: true).first
+    @networks = @place.messages.where(active: true).map {|message| message.social_network }.uniq
   end
 
   def edit

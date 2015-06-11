@@ -18,10 +18,19 @@ class Message < ActiveRecord::Base
                                 unless: 'social_network_id == 3'
 
   before_save :set_subscription_uid, if: 'social_network_id == 3'
+  before_save :activate
   after_save :set_active_only_to_one_message_from_place, if: 'active'
 
   def set_subscription_uid
     self.subscription_uid = InstagramService.get_user_id(self.subscription)
+  end
+
+  def activate
+    place = Place.includes(:messages).find(place_id)
+
+    place.messages.where(social_network_id: social_network_id).each do |message|
+      message.update(active: false) unless message == self
+    end
   end
 
   def set_active_only_to_one_message_from_place
