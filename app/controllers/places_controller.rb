@@ -60,6 +60,11 @@ class PlacesController < ApplicationController
     end
   end
 
+  def destroy
+    @place.destroy
+    redirect_to request.referer
+  end
+
   private
     def find_place
       @place = Place.find_by_slug(params[:id])

@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     end
 
     def require_proper_franchisee
-      unless current_user.place_owners.include?(@user)
+      unless current_user.place_owners.include?(@user) || @user == current_user
         redirect_to users_path, alert: 'You have no rights to access this page!'
       end
     end
