@@ -84,4 +84,7 @@ test:
 production:
   <<: *default
   database: gowifi_production
-  password: <%= ENV['SOCIAL_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST']%>
+  pool: 10 # number of simultenious connections
