@@ -33,7 +33,7 @@ class VkService
     img_url = message.image.url
     url = URI.parse(img_url)
     ext = File.extname(url.path)
-    path = "#{Rails.root}/public/vk/#{message.id}#{ext}"
+    path = "#{Rails.root}/social/public/vk/#{message.id}#{ext}"
 
     File.delete(path) if File.exist?(path)
 
