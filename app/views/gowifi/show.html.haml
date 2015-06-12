@@ -40,8 +40,8 @@
               = image_tag "#{network.name}.png"
 
         - if @place.enter_by_password
-          = form_tag('/enter_by_password', id: 'manual', method: 'post', class: 'wifi_link') do
-            %input{:name => "pass", :placeholder => "или введите пароль...", :required => "", :type => "password"}/
+          = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
+            %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/
             %input{:type => "submit", :value => ""}/
     #offer
       .inner
@@ -138,8 +138,9 @@
           });
 
           $('.wifi_link').on('click', function() {
-            $('#alertWindow').css('display', 'block');
-            $('.wifi_link').css('display', 'none');
+            $('#alertWindow').show();
+            $('.wifi_link').hide();
+            $('.password_form').hide();
           });
         });
 

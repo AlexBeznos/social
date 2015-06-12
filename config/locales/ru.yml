@@ -314,6 +314,7 @@ ru:
     description: 'Войди через свою любимую социальную сеть и получи доступ к интернету'
     alert: 'Авторизация началась, подождите пожалуйста.'
     footer: 'Powered by GoFriends'
+    password_placeholder: 'или введите пароль...'
   navigation:
     logout: 'Выйти'
     login: 'Войти'

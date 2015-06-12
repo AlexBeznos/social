@@ -60,11 +60,15 @@
       %th.col-xs-4 Время
       %th.col-xs-4 Соц. сеть
       %th.col-xs-4 Пользователь
-    - @visits.each do |visit|
+    - @visits_by_date_without_join.each do |visit|
       %tr.row
         %td.col-xs-4= visit.created_at.strftime('%k:%M')
-        %td.col-xs-4= fa_icon visit.network_profile.social_network.font_awesome_name
-        %td.col-xs-4= link_to visit.network_profile.customer.full_name, visit.network_profile.url
+        - if visit.by_password
+          %td.col-xs-4= fa_icon 'key'
+          %td.col-xs-4= @place.password
+        - else
+          %td.col-xs-4= fa_icon visit.network_profile.social_network.font_awesome_name
+          %td.col-xs-4= link_to visit.network_profile.customer.full_name, visit.network_profile.url
   .col-sm-2.statistics-table-arrow
     = fa_icon "angle-double-down"
 .row.analysis

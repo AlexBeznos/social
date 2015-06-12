@@ -1,7 +1,7 @@
 class GowifiController < ApplicationController
   include Consumerable
   layout 'no-layout'
-  before_action :find_place, only: :show
+  before_action :find_place, only: [:show, :enter_by_password]
   before_action :find_customer, only: [:show, :omniauth]
 
   def show
@@ -18,7 +18,10 @@ class GowifiController < ApplicationController
     end
   end
 
-  def no_place
+  def enter_by_password
+    if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
+      redirect_to 'http://172.16.16.1/login?user=P8uDratA&password=Tac4edrU'
+    end
   end
 
   def omniauth

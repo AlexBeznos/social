@@ -44,6 +44,10 @@ module Consumerable
                             place: place)
   end
 
+  def create_visit_by_password(place)
+    Customer::Visit.create(place: place, by_password: true)
+  end
+
   private
 
     def create_twitter_customer(credentials)

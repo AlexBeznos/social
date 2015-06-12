@@ -4,7 +4,7 @@ class CreateCustomerVisits < ActiveRecord::Migration
       t.integer :customer_network_profile_id
       t.integer :place_id
       t.integer :customer_id
-      t.boolean :by_password
+      t.boolean :by_password, :default => false
 
       t.timestamps
     end

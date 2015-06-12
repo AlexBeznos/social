@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   scope '/wifi' do
     get ':slug' => 'gowifi#show', as: :gowifi_place
-    get '/no_place' => 'gowifi#no_place', as: :gowifi_no_place
+    post ':slug/by_password' => 'gowifi#enter_by_password'
   end
 
   get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale
