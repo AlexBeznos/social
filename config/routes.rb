@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'gowifi#omniauth' # omniauth customers authentication
 
   scope '/wifi' do
-    get ':slug' => 'gowifi#show', as: :gowifi_place
+    get ':slug/login' => 'gowifi#show', as: :gowifi_place
     post ':slug/by_password' => 'gowifi#enter_by_password'
   end
 
