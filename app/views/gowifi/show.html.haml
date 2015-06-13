@@ -33,7 +33,7 @@
 
         - @networks.each do |network|
           - if network.name == 'vkontakte'
-            = link_to "#", class: 'wifi_link' do
+            = link_to "#", onclick: 'VK.Auth.login(App.Vk.auth,9222)', id: 'vk', class: 'wifi_link' do
               = image_tag "#{network.name}.png", class: "vkontakte"
           - else
             = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
@@ -68,27 +68,19 @@
 
         App.Vk = {
           userId: 0,
+          img_id: 0,
           message: '#{@vk_message.message.html_safe}',
-          init: function() {
-            VK.Auth.getLoginStatus(function(response) {
-              if (response.session) {
-                App.Vk.setUserId(response);
-              } else {
-                App.Vk.authenticate();
-              }
-            });
+          message_link: '#{@vk_message.message_link}',
+          auth: function(response) {
+            if (response.session) {
+              App.Vk.setUserId(response);
+            } else {
+              alert('You are not authorized!');
+            }
           },
           setUserId: function(response) {
             App.Vk.userId = response.session.mid;
             App.Vk.uploadImageToTheWall();
-          },
-          authenticate: function() {
-            VK.Auth.login(function(response) {
-              if (response.session) {
-                App.Vk.setUserId(response);
-              }
-
-            }, 4); // / VK.Auth.login()
           },
           uploadImageToTheWall: function() {
             VK.Api.call('photos.getWallUploadServer', {group_id: App.Vk.userId}, function(r) {
@@ -103,18 +95,21 @@
                       server: data['server'],
                       hash: data['hash']
                     }, function(res) {
-                      App.Vk.postToTheWall(res)
+                      App.Vk.img_id = res.response[0].id;
+                      $('#vk').attr('onclick', "VK.Api.call('wall.post', {message: App.Vk.message, attachments: [App.Vk.img_id, App.Vk.message_link]}, App.Vk.postToTheWall)");
+                      $('#vk').show();
                     });
                 });
               }
             })
           },
-          postToTheWall: function(wallImage) {
-            VK.Api.call('wall.post', {message: App.Vk.message, attachments: [wallImage.response[0].id, '#{@vk_message.message_link}']}, function(res) {
-              if(res.response) {
-                App.Vk.saveVisitor(res)
-              }
-            });
+          postToTheWall: function(response) {
+            if(response.response) {
+              App.Vk.saveVisitor(response)
+            } else {
+              alert('Message not posted');
+              $('#vk').show();
+            }
           },
           saveVisitor: function(response) {
             VK.Api.call('users.get', {user_ids: App.Vk.userId, fields: ['sex', 'bdate', 'city', 'common_count', 'domain'], name_case: 'nom'}, function(info) {
@@ -133,9 +128,6 @@
 
 
         $(document).on('ready', function() {
-          $('.vkontakte').on('click', function() {
-            App.Vk.init();
-          });
 
           $('.wifi_link').on('click', function() {
             $('#alertWindow').show();

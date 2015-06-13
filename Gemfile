@@ -31,7 +31,7 @@ gem 'oj'
 gem 'authlogic'
 gem 'simple_form'
 gem 'has_unique_slug'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'high_voltage', '~> 2.3.0'
 gem 'font-awesome-rails'
 
