@@ -3,6 +3,7 @@
   = f.input :name
   = f.input :logo, as: :file
   = f.input :active, as: :boolean
+  = f.input :redirect_url
   = f.input :enter_by_password, as: :boolean, input_html: { class: 'enter_by_password_check' }
   .enter_by_password
     = f.input :password, as: :string

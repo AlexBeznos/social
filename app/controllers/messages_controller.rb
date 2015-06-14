@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:social_network_id, :message, :redirect_link, :message_link, :image, :subscription)
+      params.require(:message).permit(:social_network_id, :message, :message_link, :image, :subscription)
     end
 
 end

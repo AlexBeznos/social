@@ -53,6 +53,7 @@ class Adm::PlacesController < AdministrationController
                                   :enter_by_password,
                                   :password,
                                   :active,
+                                  :redirect_url,
                                   :background_active,
                                   :mobile_image,
                                   :tablet_image,

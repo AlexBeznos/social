@@ -24,6 +24,9 @@
           = t('models.places.attrs.password')
           %span.text-muted.pull-right= @place.password
       %li.list-group-item
+        = t('models.places.attrs.redirect_url')
+        %span.text-muted.pull-right= link_to fa_icon('external-link'), @place.redirect_url
+      %li.list-group-item
         = link_to t('helpers.submit.edit'), edit_place_path(@place), class: 'btn btn-primary btn-block'
   .col-sm-7
     %h1= t('models.places.actions.settings.messages')
@@ -44,22 +47,15 @@
                 %li.list-group-item
                   = t('models.messages.attrs.subscription')
                   %span.text-muted.pull-right= @place.subscription
-                %li.list-group-item
-                  = t('models.messages.attrs.redirect_link')
-                  %span.text-muted.pull-right= link_to fa_icon('external-link'), @message.redirect_link
             - else
               .row
                 .col-sm-8
-                  Сообщение:
+                  = "#{t('models.messages.attrs.message').capitalize}:"
                   .panel.panel-default
                     .panel-body
                       = @message.message
                       %br
                       = link_to @message.message_link, @message.message_link
-                  %ul.list-group
-                    %li.list-group-item
-                      = t('models.messages.attrs.redirect_link')
-                      %span.text-muted.pull-right= link_to fa_icon('external-link'), @message.redirect_link
                 .col-sm-4
                   = image_tag @message.image.url, class: 'img-responsive'
           .panel-footer

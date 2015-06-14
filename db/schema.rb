@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531201903) do
+ActiveRecord::Schema.define(version: 20150614082913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "redirect_link"
     t.text     "message"
     t.string   "message_link"
     t.integer  "place_id"
@@ -105,6 +104,7 @@ ActiveRecord::Schema.define(version: 20150531201903) do
     t.string   "desktop_image_content_type"
     t.integer  "desktop_image_file_size"
     t.datetime "desktop_image_updated_at"
+    t.string   "redirect_url"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

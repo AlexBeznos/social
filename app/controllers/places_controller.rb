@@ -79,6 +79,7 @@ class PlacesController < ApplicationController
                                     :enter_by_password,
                                     :password,
                                     :active,
+                                    :redirect_url,
                                     :user_id)
     end
 

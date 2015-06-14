@@ -6,8 +6,6 @@
       = image_tag @message.image.url, height: 100
     = f.input :image, as: :file
     = f.input :message, as: :text
-  .instagram.facebook.vkontakte.twitter
-    = f.input :redirect_link
   .instagram
     = f.input :subscription
 

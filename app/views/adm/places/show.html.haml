@@ -24,6 +24,9 @@
               Slug
               %span.text-muted.pull-right= @place.slug
             %li.list-group-item
+              Redirect url
+              %span.text-muted.pull-right= link_to 'link', @place.redirect_url
+            %li.list-group-item
               Place active
               %span.text-muted.pull-right
                 - if @place.active
@@ -76,7 +79,6 @@
               %th id
               %th message
               %th attachments
-              %th redirect link
               %th post link
               %th active
               %th
@@ -86,7 +88,6 @@
                 %td= message.id
                 %td= message.message
                 %td= image_tag message.image, height: 100
-                %td= message.redirect_link
                 %td= message.message_link
                 %td
                   - if message.active

@@ -334,6 +334,7 @@ ru:
         password: 'Пароль для входа'
         active: 'Hotspot активен'
         logo: 'Логотип'
+        redirect_url: "Редирект после аутентификации"
       actions:
         index:
           title: 'Заведения'
@@ -358,7 +359,6 @@ ru:
         message: 'сообщение'
         subscription: "Подписка на"
         message_link: "Ссылка в сообщении"
-        redirect_link: "Редирект после аутентификации"
       actions:
         edit:
           title: 'Обновление %{place_name}'

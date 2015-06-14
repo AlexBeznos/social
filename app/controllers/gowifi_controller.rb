@@ -1,7 +1,7 @@
 class GowifiController < ApplicationController
   include Consumerable
   layout 'no-layout'
-  before_action :find_place, only: [:show, :enter_by_password]
+  before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
   before_action :find_customer, only: [:show, :omniauth]
 
   def show
@@ -36,6 +36,14 @@ class GowifiController < ApplicationController
     redirect_to 'http://172.16.16.1/login?user=P8uDratA&password=Tac4edrU'
   end
 
+  def redirect_after_auth
+    if @place
+      redirect_to @place.redirect_url
+    else
+      redirect_to root_path
+    end
+  end
+
   def set_locale
     if I18n.available_locales.include?(params[:locale].to_sym)
       session[:locale] = params[:locale]
@@ -59,10 +67,7 @@ class GowifiController < ApplicationController
     end
 
     def find_customer
-      puts '++++++++'
-      puts cookies[:customer]
       @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-      puts @customer.inspect
     end
 
     def credentials
