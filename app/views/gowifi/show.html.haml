@@ -64,70 +64,71 @@
         VK.init({
             apiId: #{ENV['VK_APP_ID']}
         });
-        var App = {}
-
-        App.Vk = {
-          userId: 0,
-          img_id: 0,
-          message: '#{@vk_message.message.html_safe}',
-          message_link: '#{@vk_message.message_link}',
-          auth: function(response) {
-            if (response.session) {
-              App.Vk.setUserId(response);
-            } else {
-              alert('You are not authorized!');
-            }
-          },
-          setUserId: function(response) {
-            App.Vk.userId = response.session.mid;
-            App.Vk.uploadImageToTheWall();
-          },
-          uploadImageToTheWall: function() {
-            VK.Api.call('photos.getWallUploadServer', {group_id: App.Vk.userId}, function(r) {
-              if (r.response) {
-                var posting = $.post( '/vkontakte/upload', { vk_url: r.response.upload_url,
-                                                             message: '#{ @vk_message.id }' });
-                posting.done(function (data) {
-                  VK.Api.call('photos.saveWallPhoto', {
-                      user_id: App.Vk.userId,
-                      group_id: App.Vk.userId,
-                      photo: data['photo'],
-                      server: data['server'],
-                      hash: data['hash']
-                    }, function(res) {
-                      App.Vk.img_id = res.response[0].id;
-                      $('#vk').attr('onclick', "VK.Api.call('wall.post', {message: App.Vk.message, attachments: [App.Vk.img_id, App.Vk.message_link]}, App.Vk.postToTheWall)");
-                      $('#vk').show();
-                    });
-                });
-              }
-            })
-          },
-          postToTheWall: function(response) {
-            if(response.response) {
-              App.Vk.saveVisitor(response)
-            } else {
-              alert('Message not posted');
-              $('#vk').show();
-            }
-          },
-          saveVisitor: function(response) {
-            VK.Api.call('users.get', {user_ids: App.Vk.userId, fields: ['sex', 'bdate', 'city', 'common_count', 'domain'], name_case: 'nom'}, function(info) {
-              $.post('/vkontakte/save', {customer: #{@customer ? @customer.id : "'none'"}, place_id: #{@place.id}, credentials: info.response[0]}, function(redirect) {
-                if (redirect['link']) {
-                  if (!$.cookie('customer')){
-                    $.cookie('customer', redirect['customer'], { expires : 365, path: '/' })
-                  }
-
-                  window.location = redirect['link']
-                }
-              });
-            })
-          }
-        }
-
 
         $(document).on('ready', function() {
+          var App = {}
+
+          App.Vk = {
+            userId: 0,
+            img_id: 0,
+            message: '#{@vk_message.message.html_safe}',
+            message_link: '#{@vk_message.message_link}',
+            auth: function(response) {
+              if (response.session) {
+                App.Vk.setUserId(response);
+              } else {
+                alert('You are not authorized!');
+              }
+            },
+            setUserId: function(response) {
+              App.Vk.userId = response.session.mid;
+              App.Vk.uploadImageToTheWall();
+            },
+            uploadImageToTheWall: function() {
+              VK.Api.call('photos.getWallUploadServer', {group_id: App.Vk.userId}, function(r) {
+                if (r.response) {
+                  var posting = $.post( '/vkontakte/upload', { vk_url: r.response.upload_url,
+                                                               message: '#{ @vk_message.id }' });
+                  posting.done(function (data) {
+                    VK.Api.call('photos.saveWallPhoto', {
+                        user_id: App.Vk.userId,
+                        group_id: App.Vk.userId,
+                        photo: data['photo'],
+                        server: data['server'],
+                        hash: data['hash']
+                      }, function(res) {
+                        App.Vk.img_id = res.response[0].id;
+                        $('#vk').attr('onclick', "VK.Api.call('wall.post', {message: App.Vk.message, attachments: [App.Vk.img_id, App.Vk.message_link]}, App.Vk.postToTheWall)");
+                        $('#vk').show();
+                      });
+                  });
+                }
+              })
+            },
+            postToTheWall: function(response) {
+              if(response.response) {
+                App.Vk.saveVisitor(response)
+              } else {
+                alert('Message not posted');
+                $('#vk').show();
+              }
+            },
+            saveVisitor: function(response) {
+              VK.Api.call('users.get', {user_ids: App.Vk.userId, fields: ['sex', 'bdate', 'city', 'common_count', 'domain'], name_case: 'nom'}, function(info) {
+                $.post('/vkontakte/save', {customer: #{@customer ? @customer.id : "'none'"}, place_id: #{@place.id}, credentials: info.response[0]}, function(redirect) {
+                  if (redirect['link']) {
+                    if (!$.cookie('customer')){
+                      $.cookie('customer', redirect['customer'], { expires : 365, path: '/' })
+                    }
+
+                    window.location = redirect['link']
+                  }
+                });
+              })
+            }
+          }
+
+
 
           $('.wifi_link').on('click', function() {
             $('#alertWindow').show();
