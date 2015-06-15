@@ -65,7 +65,7 @@ module Consumerable
         :first_name => credentials['extra']['raw_info']['first_name'],
         :last_name => credentials['extra']['raw_info']['last_name'],
         :gender => credentials['extra']['raw_info']['sex'].to_s.to_gender,
-        :birthday => credentials['extra']['raw_info']['bdate'] ? Date.parse(credentials['extra']['raw_info']['bdate']) : nil,
+        :birthday => get_date(credentials['extra']['raw_info']['bdate']),
         :network_profiles_attributes => [get_network_profile_params(credentials)]
       }
 
@@ -102,6 +102,14 @@ module Consumerable
         {:city => location[0], :country => location[1]}
       else
         {}
+      end
+    end
+
+    def get_date(date)
+      begin
+        Date.parse(date)
+      rescue
+        nil
       end
     end
 
