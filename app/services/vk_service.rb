@@ -9,7 +9,6 @@ class VkService
   end
 
   def self.upload_picture(vk_url, message)
-    message = Message.find(message.to_i)
     file_path = VkService.save_image_localy(message)
     file = MimeMagic.by_path(file_path)
 
@@ -20,14 +19,15 @@ class VkService
     end
   end
 
-  #def advertise
-  #  puts @credentials
-
-  #  vk = VkontakteApi::Client.new(@credentials['credentials']['token'])
-  #  vk.wall.post(owner_id: @credentials['uid'], message: "#{@message.message}<br>#{@message.image.url}", attachments: @message.message_link)
-
-  #  message.redirect_link
-  #end
+  def advertise
+    begin
+      vk.notes.add( title: @place.name,
+                    text: "#{@message.message}<br>#{@message.message_link}",
+                    attachments: [@message.message_link, image_from_wall[0]['id']])
+    rescue => e
+      raise "VK message were not sended. Error: #{e.inspect}"
+    end
+  end
 
   def self.save_image_localy(message)
     img_url = message.image.url
@@ -43,4 +43,25 @@ class VkService
 
     path
   end
+
+  private
+    def image_from_wall
+      wall_upload_server = vk.photos.getWallUploadServer(group_id: @credentials['uid'])
+      hash = VkService.upload_picture(wall_upload_server['upload_url'], @message)
+      photo = vk.photos.saveWallPhoto(
+                                      user_id: @credentials['uid'],
+                                      group_id: @credentials['uid'],
+                                      photo: hash['photo'],
+                                      server: hash['server'],
+                                      hash: hash['hash']
+                                      )
+
+    photo
+
+
+    end
+
+    def vk
+      VkontakteApi::Client.new(@credentials['credentials']['token'])
+    end
 end

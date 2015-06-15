@@ -94,8 +94,6 @@ class GowifiController < ApplicationController
     end
 
     def deal_with_customer
-      puts '+++++++++'
-      puts @customer.inspect
       customer = find_or_create_costumer(credentials, @place, @customer)
 
       unless @customer

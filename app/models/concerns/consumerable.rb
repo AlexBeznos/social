@@ -62,10 +62,10 @@ module Consumerable
 
     def create_vkontakte_customer(credentials)
       params = {
-        :first_name => credentials['first_name'],
-        :last_name => credentials['last_name'],
-        :gender => credentials['sex'].to_gender,
-        :birthday => credentials['bdate'] ? Date.parse(credentials['bdate']) : nil,
+        :first_name => credentials['extra']['raw_info']['first_name'],
+        :last_name => credentials['extra']['raw_info']['last_name'],
+        :gender => credentials['extra']['raw_info']['sex'].to_s.to_gender,
+        :birthday => credentials['extra']['raw_info']['bdate'] ? Date.parse(credentials['extra']['raw_info']['bdate']) : nil,
         :network_profiles_attributes => [get_network_profile_params(credentials)]
       }
 
@@ -138,9 +138,10 @@ module Consumerable
               when 'vkontakte'
                 {
                   :social_network => SocialNetwork.find_by(name: 'vkontakte'),
-                  :url => "http://vk.com/#{credentials['domain']}",
-                  :uid => credentials['uid'],
-                  :friends_count => credentials['common_count']
+                  :access_token => credentials['credentials']['token'],
+                  :expiration_date => credentials['credentials']['expires_at'].to_i.seconds.from_now,
+                  :url => credentials['info']['urls']['Vkontakte'],
+                  :uid => credentials['uid']
                 }
               end
     end
