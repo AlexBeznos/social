@@ -21,9 +21,10 @@ class VkService
 
   def advertise
     begin
-      vk.notes.add( title: @place.name,
-                    text: "#{@message.message}<br>#{@message.message_link}",
-                    attachments: [@message.message_link, image_from_wall[0]['id']])
+      album = vk.photos.createAlbum(title: @place.name)
+      upload_server = vk.photos.getUploadServer(album_id: album['aid'])
+      hash = VkService.upload_picture(upload_server['upload_url'], @message)
+      vk.photos.save(album_id: album['aid'], server: hash['server'], photos_list: hash['photos_list'], hash: hash['hash'], caption: "#{@message.message} #{@message.message_link}")
     rescue => e
       raise "VK message were not sended. Error: #{e.inspect}"
     end
