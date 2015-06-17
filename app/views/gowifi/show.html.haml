@@ -22,7 +22,7 @@
           %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
             %span{"aria-hidden" => "true"} ×
           = t('wifi.alert')
-        - if @place.logo.exists?
+        - if @place.logo.file?
           = image_tag @place.logo.url
         - else
           %h1= @place.name

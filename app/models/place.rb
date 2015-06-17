@@ -46,13 +46,12 @@ class Place < ActiveRecord::Base
   end
 
   def get_networks
-    networks = []
-    SocialNetwork.all.each do |network|
-      if self.messages.where("social_network_id = ? and active = true", network.id).any?
-        networks.push(network)
-      end
-    end
+    networks_ids = self.messages
+                       .where(active: true)
+                       .select('social_network_id')
+                       .map { |message| message.social_network_id }
+                       .uniq
 
-    networks.uniq
+    SocialNetwork.where(id: networks_ids)
   end
 end

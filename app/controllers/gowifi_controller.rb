@@ -3,19 +3,11 @@ class GowifiController < ApplicationController
   layout 'no-layout'
   before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
   before_action :find_customer, only: [:show, :omniauth]
+  before_filter :check_for_place_activation, only: :show
 
   def show
-    if @place && @place.active
-      session[:slug] = @place.slug
-
-      @networks = @place.get_networks
-
-      if @networks.map{|network| network.name}.include?('vkontakte')
-        @vk_message = get_message(@place, 'vkontakte')
-      end
-    else
-      redirect_to '/404.html'
-    end
+    session[:slug] = @place.slug
+    @networks = @place.get_networks
   end
 
   def enter_by_password
@@ -68,6 +60,10 @@ class GowifiController < ApplicationController
 
     def find_customer
       @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
+    end
+
+    def check_for_place_activation
+      redirect_to '/404.html' if !@place || !@place.active
     end
 
     def credentials

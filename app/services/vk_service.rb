@@ -20,14 +20,18 @@ class VkService
   end
 
   def advertise
-    begin
-      album = vk.photos.createAlbum(title: @place.name)
-      upload_server = vk.photos.getUploadServer(album_id: album['aid'])
+      albums = vk.photos.getAlbums(owner_id: @credentials['uid'])
+      found_album = get_album(albums)
+
+      if found_album == 0
+        album_id = vk.photos.createAlbum(title: @place.name)['aid']
+      else
+        album_id = found_album['aid']
+      end
+
+      upload_server = vk.photos.getUploadServer(album_id: album_id)
       hash = VkService.upload_picture(upload_server['upload_url'], @message)
-      vk.photos.save(album_id: album['aid'], server: hash['server'], photos_list: hash['photos_list'], hash: hash['hash'], caption: "#{@message.message} #{@message.message_link}")
-    rescue => e
-      raise "VK message were not sended. Error: #{e.inspect}"
-    end
+      vk.photos.save(album_id: album_id, server: hash['server'], photos_list: hash['photos_list'], hash: hash['hash'], caption: "#{@message.message} #{@message.message_link}")
   end
 
   def self.save_image_localy(message)
@@ -60,6 +64,17 @@ class VkService
     photo
 
 
+    end
+
+    def get_album(albums)
+      found_albums = []
+      albums.each do |album|
+        if album['privacy_view']['type'] == 'all'
+          found_albums.push(album)
+        end
+      end
+
+      found_albums.empty? ? 0 : found_albums.first
     end
 
     def vk
