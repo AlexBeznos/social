@@ -10,6 +10,7 @@ module Consumerable
 
     if profiles.any?
       create_visit(profiles.first, place)
+      update_profile(profiles.first, credentials)
 
       return profiles.first.customer
     else
@@ -19,8 +20,6 @@ module Consumerable
         customer = create_customer(credentials)
         profile = customer.network_profiles.last
       end
-
-
 
       create_visit(profile, place)
       customer
@@ -49,6 +48,10 @@ module Consumerable
   end
 
   private
+
+    def update_profile(network_profile, credentials)
+      network_profile.update(get_network_profile_params(credentials))
+    end
 
     def create_twitter_customer(credentials)
       params = get_twitter_params(credentials)
