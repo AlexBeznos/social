@@ -90,8 +90,8 @@ class PlacesController < ApplicationController
     def get_number_of_friends(records)
       records.map {|visit| visit.network_profile }
              .uniq
-             .map {|np| np.friends_count }
-             .inject{|sum,x| sum + x unless sum == nil || x == nil }
+             .map {|np| np.try(:friends_count) }
+             .inject{|sum,x| sum.to_i + x.to_i }
     end
 
 end
