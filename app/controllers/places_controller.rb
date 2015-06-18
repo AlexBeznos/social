@@ -23,10 +23,14 @@ class PlacesController < ApplicationController
 
   def show
     date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.now
-    @visits_by_date_without_join = @place.visits.by_date(date.beginning_of_day)
-    @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date.beginning_of_day)
-    @visits_this_week = @place.visits.joins(:customer).by_date(1.week.ago)
-    @visits_this_month = @place.visits.joins(:customer).by_date(1.month.ago)
+    @visits_by_date_without_join = @place.visits.by_date(date)
+    @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
+    @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
+    @visits_this_month = @place.visits.joins(:customer).by_date_from_to(date - 1.month, date)
+
+    @number_of_friends_by_day = get_number_of_friends @visits_by_date_without_join
+    @number_of_friends_by_week = get_number_of_friends @visits_this_week
+    @number_of_friends_by_month = get_number_of_friends @visits_this_month
   end
 
   def guests
@@ -81,6 +85,13 @@ class PlacesController < ApplicationController
                                     :active,
                                     :redirect_url,
                                     :user_id)
+    end
+
+    def get_number_of_friends(records)
+      records.map {|visit| visit.network_profile }
+             .uniq
+             .map {|np| np.friends_count }
+             .inject{|sum,x| sum + x }
     end
 
 end

@@ -4,52 +4,14 @@
 
 .row.calendar-container
   .col-sm-2
-    %h1 Май
+    %select#month
+      - I18n.t('date.abbr_month_names')[1..-1].each_with_index do |month, index|
+        %option{:value => index}= month
   .col-sm-8.calendar
     .calendar-inner
-      .day.active
+      .day
         %h2
           %a{:href => "#"} 11
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 10
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 9
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 8
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 7
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 6
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 5
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 4
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 3
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 2
-        %a{:href => "#"}
-      .day
-        %h2
-          %a{:href => "#"} 1
         %a{:href => "#"}
     .calendar-bar
       = fa_icon "chevron-left", class: 'aleft'
@@ -79,8 +41,8 @@
         %span= @visits_by_date.count
     .analysis-col-inner
       %h2
-        Кол-во переходов:
-        %span 260
+        Охват аудитории:
+        %span= @number_of_friends_by_day
       .row.pic
         .col-xs-6.col-xs-offset-6
           = fa_icon 'users'
@@ -101,8 +63,8 @@
         %span= @visits_this_week.count
     .analysis-col-inner
       %h2
-        Кол-во переходов:
-        %span 260
+        Охват аудитории:
+        %span= @number_of_friends_by_week
       .row.pic
         .col-xs-6.col-xs-offset-6
           = fa_icon 'users'
@@ -123,8 +85,8 @@
         %span= @visits_this_month.count
     .analysis-col-inner
       %h2
-        Кол-во переходов:
-        %span 260
+        Охват аудитории:
+        %span= @number_of_friends_by_month
       .row.pic
         .col-xs-6.col-xs-offset-6
           = fa_icon 'users'

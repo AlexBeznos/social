@@ -15,17 +15,19 @@
         }
     }
 
-    .calendar-container h1 {
-        margin-top: 64px;
+    .calendar-container select {
+        margin-top: 62px;
         margin-bottom: 0;
         text-transform: uppercase;
-        font-size: 26px;
+        font-size: 20px;
         line-height: 24px;
         color: #9b45da;
+        background: none;
+        border: none;
     }
 
         @media (max-width: 767px) {
-            .calendar-container h1 {
+            .calendar-container select {
                 margin-top: 0;
                 margin-bottom: 0;
             }
