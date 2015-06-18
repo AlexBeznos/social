@@ -91,7 +91,7 @@ class PlacesController < ApplicationController
       records.map {|visit| visit.network_profile }
              .uniq
              .map {|np| np.friends_count }
-             .inject{|sum,x| sum + x }
+             .inject{|sum,x| sum + x unless sum == nil || x == nil }
     end
 
 end
