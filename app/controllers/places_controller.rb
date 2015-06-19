@@ -22,7 +22,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.now
+    date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Date.today
     @visits_by_date_without_join = @place.visits.by_date(date)
     @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
     @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
@@ -88,10 +88,12 @@ class PlacesController < ApplicationController
     end
 
     def get_number_of_friends(records)
-      records.map {|visit| visit.network_profile }
-             .uniq
-             .map {|np| np.try(:friends_count) }
-             .inject{|sum,x| sum.to_i + x.to_i }
+      number = records.map {|visit| visit.network_profile }
+                      .uniq
+                      .map {|np| np.try(:friends_count) }
+                      .inject{|sum,x| sum.to_i + x.to_i }
+
+      number ? number : 0
     end
 
 end
