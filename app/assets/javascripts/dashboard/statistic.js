@@ -84,7 +84,7 @@ function setDaysToCalendar(number_of_days, today, year) {
   slickCalendar();
 
   if(today != -1 ) {
-    $('.calendar-inner').slick('slickGoTo', today - 1);
+    $('.calendar-inner').slick('slickGoTo', today - 1, true);
   }
 
   $('.calendar-inner a').on('click', function(e) {
