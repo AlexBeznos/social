@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'jquery-ui-rails'
 gem 'haml-rails'
+gem 'active_type'
 gem 'aasm'
 gem 'rabl'
 gem 'oj'
@@ -84,6 +85,8 @@ gem 'sendgrid'
 # privacy policy markdown parser
 gem 'redcarpet'
 
+# zip archive creator
+gem 'rubyzip'
 
 group :development do
   gem 'spring'
@@ -110,7 +113,7 @@ end
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

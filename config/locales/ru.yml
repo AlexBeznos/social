@@ -353,6 +353,7 @@ ru:
           title: "Настройки для %{place_name}"
           wifi:  Настройка Wi-Fi
           messages:  Настройка постов
+          download_settings: 'Скачать настройки WiFi'
     messages:
       message_for: "Сообщение для %{name}"
       attrs:

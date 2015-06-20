@@ -38,12 +38,9 @@ class Place < ActiveRecord::Base
                        :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
                        if: 'background_active'
 
-  def set_password
-    if self.id && self.password == ''
-      place = Place.find(self.id)
-      self.password = place.password if place
-    end
-  end
+ before_save :set_wifi_link_freshnes
+ after_save :gen_new_wifi_settings
+
 
   def get_networks
     networks_ids = self.messages
@@ -54,4 +51,31 @@ class Place < ActiveRecord::Base
 
     SocialNetwork.where(id: networks_ids)
   end
+
+  private
+    def set_password
+      if self.id && self.password == ''
+        place = Place.find(self.id)
+        self.password = place.password if place
+      end
+    end
+
+    def set_wifi_link_freshnes
+      if wifi_settings_link_not_fresh
+        delete_settings_archive
+        self.wifi_settings_link = nil
+      end
+
+      self.wifi_settings_link_not_fresh = true
+    end
+
+    # TODO: should be delayed
+    def gen_new_wifi_settings
+      WifiSettingsService.create(place_id: id) unless wifi_settings_link
+    end
+
+    # TODO: should be delayed
+    def delete_settings_archive
+      S3UploaderService.delete_settings_archive_by_url(wifi_settings_link)
+    end
 end

@@ -12,7 +12,7 @@ class GowifiController < ApplicationController
 
   def enter_by_password
     if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
-      redirect_to 'http://172.16.16.1/login?user=P8uDratA&password=Tac4edrU'
+      redirect_to wifi_login_path
     end
   end
 
@@ -25,7 +25,7 @@ class GowifiController < ApplicationController
     post_advertisment
     deal_with_customer
 
-    redirect_to 'http://172.16.16.1/login?user=P8uDratA&password=Tac4edrU'
+    redirect_to wifi_login_path
   end
 
   def redirect_after_auth
@@ -72,6 +72,10 @@ class GowifiController < ApplicationController
 
     def clear_session
       session.delete(:slug)
+    end
+
+    def wifi_login_path
+      "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
     end
 
     def post_advertisment

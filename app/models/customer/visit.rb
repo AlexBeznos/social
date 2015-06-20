@@ -1,7 +1,7 @@
 class Customer::Visit < ActiveRecord::Base
   default_scope { order('created_at DESC') }
 
-  scope :by_date, lambda {|date| where(created_at: date..date.end_of_day) }
+  scope :by_date, lambda {|date| where(created_at: date.beginning_of_day..date.end_of_day) }
   scope :by_date_from_to, lambda {|from, to| where(created_at: from..to.end_of_day) }
   scope :by_gender, lambda {|gender = 'f'| where('customers.gender = ?', gender == 'm' ? 'male' : 'female') }
 

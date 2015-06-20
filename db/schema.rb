@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614082913) do
+ActiveRecord::Schema.define(version: 20150619231427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(version: 20150614082913) do
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "enter_by_password",          default: false
+    t.boolean  "enter_by_password",            default: false
     t.string   "password"
-    t.boolean  "active",                     default: false
+    t.boolean  "active",                       default: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -105,6 +105,10 @@ ActiveRecord::Schema.define(version: 20150614082913) do
     t.integer  "desktop_image_file_size"
     t.datetime "desktop_image_updated_at"
     t.string   "redirect_url"
+    t.string   "wifi_username",                default: "P8uDratA"
+    t.string   "wifi_password",                default: "Tac4edrU"
+    t.string   "wifi_settings_link"
+    t.boolean  "wifi_settings_link_not_fresh", default: true
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
