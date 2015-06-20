@@ -27,7 +27,7 @@
         = t('models.places.attrs.redirect_url')
         %span.text-muted.pull-right= link_to fa_icon('external-link'), @place.redirect_url
       %li.list-group-item
-        = link_to t('helpers.submit.edit'), edit_place_path(@place), class: 'btn btn-primary btn-block'
+        = link_to t('helpers.submit.edit'), edit_place_path(@place, user: @place.user_id), class: 'btn btn-primary btn-block'
       - if @place.wifi_settings_link
         %li.list-group-item
           = link_to t('models.places.actions.settings.download_settings'), @place.wifi_settings_link, class: 'btn btn-block btn-info'
