@@ -76,6 +76,6 @@ class Place < ActiveRecord::Base
 
     # TODO: should be delayed
     def delete_settings_archive
-      S3UploaderService.delete_settings_archive_by_url(wifi_settings_link)
+      S3UploaderService.delete_settings_archive_by_url(wifi_settings_link) if wifi_settings_link
     end
 end
