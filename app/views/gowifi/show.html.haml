@@ -12,21 +12,20 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag "lib/boostrap-alert", :media => "all"
     = stylesheet_link_tag "wifi/spinner", :media => "all"
-    = stylesheet_link_tag "bootstrap", :media => "all"
-    = stylesheet_link_tag "bootstrap-theme", :media => "all"
     - if @styles_exist
       = stylesheet_link_tag "wifi/#{@place.slug}/style", :media => "all"
     - else
       = stylesheet_link_tag "wifi/style", :media => "all"
+    = stylesheet_link_tag "bootstrap", :media => "all"
+    = stylesheet_link_tag "bootstrap-theme", :media => "all"
 
   %body
     .wrapper-out
       .wrapper-in
         .content
           - if @place.logo.file?
-            = image_tag @place.logo.url
+            = image_tag @place.logo.url, class: 'logo'
           - else
             %h1= @place.name
           - if @customer
