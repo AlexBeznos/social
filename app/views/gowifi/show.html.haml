@@ -13,59 +13,79 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "lib/boostrap-alert", :media => "all"
-    = stylesheet_link_tag "wifi", :media => "all"
+    = stylesheet_link_tag "wifi/spinner", :media => "all"
+    = stylesheet_link_tag "bootstrap", :media => "all"
+    = stylesheet_link_tag "bootstrap-theme", :media => "all"
+    - if @styles_exist
+      = stylesheet_link_tag "wifi/#{@place.slug}/style", :media => "all"
+    - else
+      = stylesheet_link_tag "wifi/style", :media => "all"
 
   %body
-    #content.gradient
-      .inner
-        .alert.alert-success.alert-dismissible#alertWindow{:role => "alert", :style => 'width: 300px; margin: auto; display: none'}
-          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
-            %span{"aria-hidden" => "true"} ×
-          = t('wifi.alert')
-        - if @place.logo.file?
-          = image_tag @place.logo.url
-        - else
-          %h1= @place.name
+    .wrapper-out
+      .wrapper-in
+        .content
+          - if @place.logo.file?
+            = image_tag @place.logo.url
+          - else
+            %h1= @place.name
+          - if @customer
+            %p= t('wifi.greetings', customer_name: @customer.full_name)
+          - else
+            %p= t('wifi.greetings_to_no_one')
+          %p= t('wifi.description').html_safe
+          .socials
+            - @networks.each do |network|
+              = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
+                = image_tag "wifi#{@icons_exist ? @place.slug + '/' : '/'}#{network.name}.png"
+          - if @place.enter_by_password
+            = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
+              %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/
+              %input{:type => "submit", :value => ""}/
+        %footer
+          %p= t('wifi.footer')
+          = link_to t('privacy_police.title'), page_path('privacy_policy')
+    .loading{:hidden => "true"}
+      .spinner
+        .spinner-container.container1
+          .circle1
+          .circle2
+          .circle3
+          .circle4
+        .spinner-container.container2
+          .circle1
+          .circle2
+          .circle3
+          .circle4
+        .spinner-container.container3
+          .circle1
+          .circle2
+          .circle3
+          .circle4
+    = javascript_include_tag "jquery", :media => "all"
+    :javascript
+      $(document).ready(function(){
+          $(".socials>a").click(function(){
+              $(".loading").attr("hidden", false);
+          });
+      });
 
-        - if @customer
-          %p= t('wifi.greetings', customer_name: @customer.full_name)
-        .description= t('wifi.description')
-
-        - @networks.each do |network|
-          = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
-            = image_tag "#{network.name}.png"
-
-        - if @place.enter_by_password
-          = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
-            %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/
-            %input{:type => "submit", :value => ""}/
-    #offer
-      .inner
-    /    %img{:alt => "", :src => "img/testoffer.jpg"}/
-    /    .splash
-    /      %p 2
-    /      %p за
-    /      %p 35 грн
-    %footer
-      %p= t('wifi.footer')
-      %p= link_to t('privacy_police.title'), page_path('privacy_policy')
-
-      - if @place.background_active
-        :css
-          @media only screen and (min-width : 1024px) {
-            body {
-              background: url(#{@place.desktop_image.url}) no-repeat;
-            }
+    - if @place.background_active
+      :css
+        @media only screen and (min-width : 1024px) {
+          body {
+            background: url(#{@place.desktop_image.url}) no-repeat;
           }
+        }
 
-          @media only screen and (min-width : 480px) and (max-width : 1024px) {
-            body {
-              background: url(#{@place.tablet_image.url}) no-repeat;
-            }
+        @media only screen and (min-width : 480px) and (max-width : 1024px) {
+          body {
+            background: url(#{@place.tablet_image.url}) no-repeat;
           }
+        }
 
-          @media only screen and (max-width : 480px) {
-            body {
-              background: url(#{@place.mobile_image.url}) no-repeat;
-            }
+        @media only screen and (max-width : 480px) {
+          body {
+            background: url(#{@place.mobile_image.url}) no-repeat;
           }
+        }
