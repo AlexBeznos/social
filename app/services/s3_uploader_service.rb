@@ -6,12 +6,14 @@ class S3UploaderService
   end
 
   def self.delete_settings_archive_by_url(url)
-    file = URI.parse(url).path[1..-1]
-    
-    s3 = AWS::S3.new
-    bucket = s3.buckets[get_bucket_name]
-    obj = bucket.objects[file]
-    obj.delete
+    if uri?(url)
+      file = URI.parse(url).path[1..-1]
+
+      s3 = AWS::S3.new
+      bucket = s3.buckets[get_bucket_name]
+      obj = bucket.objects[file]
+      obj.delete
+    end
   end
 
   private
@@ -26,6 +28,15 @@ class S3UploaderService
 
     def self.get_bucket_name
       Rails.env.development? ? 'gowifi-dev' : 'gowifi-prod'
+    end
+
+    def self.uri?(string)
+      uri = URI.parse(string)
+      %w( http https ).include?(uri.scheme)
+    rescue URI::BadURIError
+      false
+    rescue URI::InvalidURIError
+      false
     end
 
 end

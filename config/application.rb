@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Social
   class Application < Rails::Application
     config.autoload_paths << "#{config.root}/app/services"
+    config.eager_load_paths += ["#{config.root}/app/services"]
 
     Rails.application.config.assets.precompile += %w( *.css )
     Rails.application.config.assets.precompile += %w( *.js )
