@@ -88,6 +88,9 @@ gem 'redcarpet'
 # zip archive creator
 gem 'rubyzip'
 
+# expection detector
+gem 'rollbar', '~> 1.5.3'
+
 group :development do
   gem 'spring'
   gem 'metric_fu'
