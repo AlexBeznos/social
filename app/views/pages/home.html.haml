@@ -101,7 +101,7 @@
               %p Бесплатное тестирование
             = image_tag 'contact.jpg'
           .col-md-6
-            %form#signup{:action => "/", :method => "post"}
+            = form_tag("/feedback", id: 'signup', method: 'post') do
               %input{:name => "name", :placeholder => "Имя и фамилия", :required => "", :type => "text"}/
               %input{:name => "email", :placeholder => "E-mail", :required => "", :type => "text"}/
               %input{:name => "tel", :placeholder => "Номер телефона", :required => "", :type => "text"}/
