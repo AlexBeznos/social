@@ -16,6 +16,8 @@ class GowifiController < ApplicationController
   def enter_by_password
     if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
       redirect_to wifi_login_path
+    else
+      redirect_to gowifi_place_path @place
     end
   end
 
@@ -45,7 +47,7 @@ class GowifiController < ApplicationController
       I18n.locale = params[:locale]
     end
 
-    redirect_to request.referrer
+    redirect_to request.referrer ||= root_path
   end
 
   def feedback
