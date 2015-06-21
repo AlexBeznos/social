@@ -9,8 +9,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = @place.messages.create(message_params)
-    if @message
+    @message = Message.new(message_params)
+    @message.place_id = @place.id
+
+    if @message.save
       redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
     else
       render :action => :new

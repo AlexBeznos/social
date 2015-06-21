@@ -68,7 +68,8 @@ class GowifiController < ApplicationController
     end
 
     def check_for_place_activation
-      redirect_to '/404.html' if !@place || !@place.active
+      redirect_to '/404.html' unless @place
+      redirect_to wifi_login_path unless @place.active
     end
 
     def credentials

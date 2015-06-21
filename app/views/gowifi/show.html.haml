@@ -28,15 +28,17 @@
             = image_tag @place.logo.url, class: 'logo'
           - else
             %h1= @place.name
-          - if @customer
-            %p= t('wifi.greetings', customer_name: @customer.full_name)
-          - else
-            %p= t('wifi.greetings_to_no_one')
-          %p= t('wifi.description').html_safe
+          %p
+            - if @customer
+              = t('wifi.greetings', customer_name: @customer.full_name)
+            - else
+              = t('wifi.greetings_to_no_one')
+            %br
+            = t('wifi.description').html_safe
           .socials
             - @networks.each do |network|
               = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
-                = image_tag "wifi#{@icons_exist ? @place.slug + '/' : '/'}#{network.name}.png"
+                = image_tag "wifi#{@icons_exist ? '/' + @place.slug + '/' : '/'}#{network.name}.png"
           - if @place.enter_by_password
             = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
               %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/

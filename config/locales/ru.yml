@@ -336,6 +336,7 @@ ru:
         active: 'Hotspot активен'
         logo: 'Логотип'
         redirect_url: "Редирект после аутентификации"
+        wifi_link: "Ссылка на страницу с аутентификацией"
       actions:
         index:
           title: 'Заведения'
