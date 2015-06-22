@@ -46,8 +46,9 @@ class GowifiController < ApplicationController
       session[:locale] = params[:locale]
       I18n.locale = params[:locale]
     end
+    redirect = request.referrer
 
-    redirect_to request.referrer ||= root_path
+    redirect_to  redirect ||= root_path
   end
 
   def feedback
