@@ -54,7 +54,7 @@ add action=masquerade chain=srcnat comment="masquerade hotspot network" \
     src-address=172.16.16.0/20 to-addresses=0.0.0.0
 add action=masquerade chain=srcnat comment="masquerade hotspot network" \
     src-address=192.168.88.0/24 to-addresses=0.0.0.0
-/ip hotspot users
+/ip hotspot user
 add name=admin password=sp07tc
 add name=##username## password=##password##
 /ip hotspot walled-garden

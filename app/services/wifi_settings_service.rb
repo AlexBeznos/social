@@ -40,13 +40,14 @@ class WifiSettingsService < ActiveType::Object
       FileUtils.cp("#{path}psftp.scr", destination)
       FileUtils.cp("#{path}README.html", destination)
       FileUtils.cp("#{path}start.bat", destination)
+      FileUtils.cp("#{path}y.txt", destination)
     end
 
     def fix_config_file
       config_path = "#{get_path}config.rsc"
       config_text = File.read(config_path)
 
-      config_text.gsub!(/##ssid##/, @place.name)
+      config_text.gsub!(/##ssid##/, Translit.convert(@place.name, :english))
       config_text.gsub!(/##slug##/, @place.slug)
       config_text.gsub!(/##username##/, @place.wifi_username)
       config_text.gsub!(/##password##/, @place.wifi_password)
@@ -76,8 +77,9 @@ class WifiSettingsService < ActiveType::Object
       psftp_scr = File.exist?("#{path}psftp.scr")
       readme = File.exist?("#{path}README.html")
       start = File.exist?("#{path}start.bat")
+      y = File.exist?("#{path}y.txt")
 
-      config && plink && psftp_exe && psftp_scr && readme && start
+      config && plink && psftp_exe && psftp_scr && readme && start && y
     end
 
     def get_path
