@@ -1,0 +1,146 @@
+@charset 'utf-8'
+
+
+@font-face
+    font-family: 'Exo 2'
+    font-style: normal
+    font-weight: 300
+    src: local('Exo 2 Light'), local('Exo2-Light'), url('http://fonts.gstatic.com/s/exo2/v3/ZvqiGg27-1PW7JHPGOnJEPesZW2xOQ-xsNqO47m55DA.woff2') format('woff2'), url('http://fonts.gstatic.com/s/exo2/v3/5kpBH6SjiUHiaKVw-Vesv_esZW2xOQ-xsNqO47m55DA.woff') format('woff')
+
+@font-face
+    font-family: 'Exo 2'
+    font-style: normal
+    font-weight: 400
+    src: local('Exo 2'), local('Exo2-Regular'), url('http://fonts.gstatic.com/s/exo2/v3/SnQ9OVOpPaYwOjWHK4vvtw.woff2') format('woff2'), url('http://fonts.gstatic.com/s/exo2/v3/W4IAweRTlhKE0KN1t814DA.woff') format('woff')
+
+@font-face
+    font-family: 'Exo 2'
+    font-style: normal
+    font-weight: 600
+    src: local('Exo 2 Semi Bold'), local('Exo2-SemiBold'), url('http://fonts.gstatic.com/s/exo2/v3/LFe3mB-q6jNXyAcQ2iPxAfesZW2xOQ-xsNqO47m55DA.woff2') format('woff2'), url('http://fonts.gstatic.com/s/exo2/v3/f0hHk_ds7TVzNRk1BrjGO_esZW2xOQ-xsNqO47m55DA.woff') format('woff')
+
+@font-face
+    font-family: 'Exo 2'
+    font-style: italic
+    font-weight: 300
+    src: local('Exo 2 Light Italic'), local('Exo2-LightItalic'), url('http://fonts.gstatic.com/s/exo2/v3/23rYvy_JA5ECpoxf7frKbfk_vArhqVIZ0nv9q090hN8.woff2') format('woff2'), url('http://fonts.gstatic.com/s/exo2/v3/23rYvy_JA5ECpoxf7frKbRsxEYwM7FgeyaSgU71cLG0.woff') format('woff')
+
+@font-face
+    font-family: 'Exo 2'
+    font-style: italic
+    font-weight: 400
+    src: local('Exo 2 Italic'), local('Exo2-Italic'), url('http://fonts.gstatic.com/s/exo2/v3/V7Umbxb6b99nDs8N97PPhQ.woff2') format('woff2'), url('http://fonts.gstatic.com/s/exo2/v3/fp3xmqvXDwAKWuAQUwdeZg.woff') format('woff')
+
+@font-face
+    font-family: 'Exo 2'
+    font-style: italic
+    font-weight: 600
+    src: local('Exo 2 Semi Bold Italic'), local('Exo2-SemiBoldItalic'), url('http://fonts.gstatic.com/s/exo2/v3/AbE2HdC08fDM25clla7d4_k_vArhqVIZ0nv9q090hN8.woff2') format('woff2'), url('http://fonts.gstatic.com/s/exo2/v3/AbE2HdC08fDM25clla7d4xsxEYwM7FgeyaSgU71cLG0.woff') format('woff')
+
+
+$mbig: 28px
+$msmall: 14px
+
+body
+    width: 100%
+    height: 100vh
+    min-width: 320px
+    min-height: 500px
+    text-align: center
+    background: image-url('wifi/coffeetoria_lounge/bg.jpg') no-repeat center
+    background-size: cover
+    position: relative
+
+.wrapper-out
+    width: 100%
+    height: 100%
+    min-width: 320px
+    display: table
+    .wrapper-in
+        width: 100%
+        height: 100%
+        min-width: 320px
+        display: table-cell
+        vertical-align: middle
+        position: relative
+        overflow: hidden
+        .content
+            margin-left: auto
+            margin-right: auto
+            .logo
+                width: 90px
+                margin-bottom: $mbig
+                @media all and (max-height: 767px)
+                    margin-bottom: $msmall
+            p
+                color: white
+                font:
+                    family: 'Exo 2'
+                    weight: 300
+                    size: 19.43px
+                &:first-line
+                    color: #fff889
+            .socials
+                margin-top: $mbig
+                @media all and (max-height: 767px)
+                    margin-top: $msmall
+                font-size: 0
+                a
+                    &:focus, &:active
+                        outline: none
+                img
+                    width: 65px
+                    margin: 8px
+            #manual
+                margin-top: $mbig
+                @media all and (max-height: 767px)
+                    margin-top: $msmall
+                input[type='password']
+                    border-radius: 36px
+                    padding-left: 15px
+                    padding-right: 45px
+                    outline: none
+                    border: none
+                    width: 270px
+                    height: 36px
+                input[type='submit']
+                    position: absolute
+                    margin-left: -36px
+                    width: 36px
+                    height: 36px
+                    border-radius: 36px
+                    background: image-url('wifi/coffeetoria_lounge/submit.png') center no-repeat
+                    outline: none
+                    border: none
+    footer
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 100%
+        background-color: rgba(0, 0, 0, 0.75)
+        p, a
+            color: white
+            margin: 0
+        p
+            font-size: 11.61px
+            padding-top: 8.61px
+            line-height: 4px
+        a
+            text-decoration: underline
+            font-size: 7.74px
+            &:hover
+                color: white
+
+.loading
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.66)
+    position: absolute
+    top: 0
+    .spinner
+        position: absolute
+        z-index: 100
+        left: 50%
+        top: 50%
+        margin-left: -30px
+        margin-top: -30px
