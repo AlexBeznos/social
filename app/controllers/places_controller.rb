@@ -54,6 +54,7 @@ class PlacesController < ApplicationController
     @networks = @place.messages.where(active: true).map {|message| message.social_network }.uniq
   end
 
+
   def edit
   end
 
@@ -84,7 +85,8 @@ class PlacesController < ApplicationController
                                     :password,
                                     :active,
                                     :redirect_url,
-                                    :user_id)
+                                    :user_id,
+                                    :stocks_active)
     end
 
     def get_number_of_friends(records)

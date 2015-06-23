@@ -11,6 +11,7 @@ class GowifiController < ApplicationController
     @styles_exist = File.directory?("#{Rails.root}/app/assets/stylesheets/wifi/#{@place.slug}")
     @js_exist = File.directory?("#{Rails.root}/app/assets/javascripts/wifi/#{@place.slug}")
     @icons_exist = File.directory?("#{Rails.root}/app/assets/images/wifi/#{@place.slug}")
+    @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
   end
 
   def enter_by_password

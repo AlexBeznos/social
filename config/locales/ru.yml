@@ -1,4 +1,35 @@
 ru:
+  activerecord:
+    models:
+      message: сообщение
+      user: пользователя
+      place: заведение
+      stock: акцию
+  simple_form:
+    error_notification:
+      default_message: "Пожалуйста решите проблемы ниже:"
+    labels:
+      place:
+        name: 'Название заведения'
+        logo: 'Логотип'
+        active: Hotspot активен
+        stocks_active: Акции активны
+        redirect_url: Адрес переадресации после аутентификации
+        enter_by_password: Вход по паролю
+        password: Пароль
+      user:
+        first_name: Имя
+        last_name: Фамилия
+        phone: Номер телефона
+        password: Пароль входа
+        password_confirmation: Подтвердите пароль
+      message:
+        message_link: Ссылка в сообщении
+        image: Картинка
+        message: Сообщение
+      stocks:
+        url: Ссылка
+        image: Картинка
   notice:
     create: "%{subject} добавленно"
     updated: "%{subject} обновленно"
@@ -310,7 +341,7 @@ ru:
       title: '10. Связь с нами'
       text: 'Если у Вас есть вопросы или предложения относительно Политики конфиденциальности, пожалуйста, напишите нам на:'
   wifi:
-    greetings: "Здравствуйте, %{customer_name}!"
+    greetings: "Здравствуйте, <ins>%{customer_name}</ins>!"
     greetings_to_no_one: Здравствуйте
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'
     alert: 'Авторизация началась, подождите пожалуйста.'
@@ -326,6 +357,7 @@ ru:
       guests: 'Top посетителей'
       birthdays: "Дни рождения"
       settings: 'Настройки'
+      stocks: 'Акции'
   models:
     places:
       place: заведение
@@ -334,6 +366,7 @@ ru:
         by_password: 'Вход по паролю'
         password: 'Пароль для входа'
         active: 'Hotspot активен'
+        stocks_active: Вывод акций на страницу аутентификации
         logo: 'Логотип'
         redirect_url: "Редирект после аутентификации"
         wifi_link: "Ссылка на страницу с аутентификацией"
@@ -388,3 +421,17 @@ ru:
         last_name: Фамилия
         phone: Телефон
         email: E-mail
+    stocks:
+      class: 'Акцию'
+      actions:
+        index:
+          title: "Акции в заведении %{place_name}"
+          no_stocks: У вас пока что нет акций
+          add: Добавить акцию
+        new:
+          title: Добавить акцию
+        edit:
+          title: Редактировать акцию
+      attrs:
+        image: Фото
+        url: Редирект

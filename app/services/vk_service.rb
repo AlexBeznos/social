@@ -36,7 +36,6 @@ class VkService
       vk.photos.save(album_id: album_id, server: hash['server'], photos_list: hash['photos_list'], hash: hash['hash'], caption: "#{@message.message} #{@message.message_link}")
     rescue => e
       Rails.logger.error "Vk Service photo post error: #{e.inspect}"
-      VkService.new({:place => @place, :message => @message, :credentials => credentials}).advertise
     end
   end
 

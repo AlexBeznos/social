@@ -1,0 +1,21 @@
+= content_for :page_stylesheet, 'dashboard/guests'
+= content_for :title, t('models.stocks.actions.index.title', place_name: @place.name)
+
+
+.row.birthdays-table-container
+  = link_to t('models.stocks.actions.index.add'), new_place_stock_path(@place), class: 'btn btn-info pull-right', style: 'margin-right: 25px'
+  - if @stocks.any?
+    %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
+      %tr.row
+        %th.col-xs-4= t('models.stocks.attrs.image')
+        %th.col-xs-4= t('models.stocks.attrs.url')
+        %th.col-xs-4
+      - @stocks.each do |stock|
+        %tr.row
+          %td.col-xs-4= image_tag stock.image.url, width: 100
+          %td.col-xs-4= stock.url
+          %td.col-xs-4
+            = link_to t('helpers.submit.edit'), edit_place_stock_path(@place, stock), class: 'btn btn-sm btn-primary'
+            = link_to t('helpers.submit.destroy'), place_stock_path(@place, stock), method: 'DELETE', class: 'btn btn-sm btn-danger'
+  - else
+    %h1= t('models.stocks.actions.index.no_stocks')

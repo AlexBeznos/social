@@ -1,0 +1,9 @@
+= simple_form_for [@place, @stock] do |f|
+  = f.error_notification
+  = f.input :url
+  - if @stock.image.exists?
+    = image_tag @stock.image.url, height: 100
+  = f.input :image, as: :file
+
+
+  = f.button :submit

@@ -9,6 +9,16 @@ module ApplicationHelper
     render 'shared/navigation' if navigation == '' || navigation.to_bool
   end
 
+  def render_stock_image(stock)
+    if stock.url != ''
+      link_to stock.url do
+        image_tag stock.image.url
+      end
+    else
+      image_tag stock.image.url
+    end
+  end
+
   def fa_plus_minus(bool)
     if bool
       fa_icon 'plus'

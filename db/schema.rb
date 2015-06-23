@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619231427) do
+ActiveRecord::Schema.define(version: 20150623190545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150619231427) do
     t.string   "wifi_password",                default: "Tac4edrU"
     t.string   "wifi_settings_link"
     t.boolean  "wifi_settings_link_not_fresh", default: true
+    t.boolean  "stocks_active",                default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
@@ -131,6 +132,19 @@ ActiveRecord::Schema.define(version: 20150619231427) do
   end
 
   add_index "social_networks", ["name"], name: "index_social_networks_on_name", using: :btree
+
+  create_table "stocks", force: true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "url"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stocks", ["place_id"], name: "index_stocks_on_place_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
