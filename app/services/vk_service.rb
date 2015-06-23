@@ -24,15 +24,20 @@ class VkService
     albums = vk.photos.getAlbums(owner_id: @credentials['uid'])
     found_album = get_album(albums)
 
-    if found_album == 0
-      album_id = vk.photos.createAlbum(title: @place.name)['aid']
-    else
-      album_id = found_album['aid']
-    end
+    begin
+      if found_album == 0
+        album_id = vk.photos.createAlbum(title: @place.name)['aid']
+      else
+        album_id = found_album['aid']
+      end
 
-    upload_server = vk.photos.getUploadServer(album_id: album_id)
-    hash = upload_picture(upload_server['upload_url'], @message)
-    vk.photos.save(album_id: album_id, server: hash['server'], photos_list: hash['photos_list'], hash: hash['hash'], caption: "#{@message.message} #{@message.message_link}")
+      upload_server = vk.photos.getUploadServer(album_id: album_id)
+      hash = upload_picture(upload_server['upload_url'], @message)
+      vk.photos.save(album_id: album_id, server: hash['server'], photos_list: hash['photos_list'], hash: hash['hash'], caption: "#{@message.message} #{@message.message_link}")
+    rescue => e
+      Rails.logger.error "Vk Service photo post error: #{e.inspect}"
+      VkService.new({:place => @place, :message => @message, :credentials => credentials}).advertise
+    end
   end
 
   private
