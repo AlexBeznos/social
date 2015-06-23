@@ -23,7 +23,6 @@ class GowifiController < ApplicationController
 
   def omniauth
     @place = Place.find_by_slug(session[:slug])
-    @message = get_message(@place, credentials['provider'])
 
     clear_session
 
@@ -86,6 +85,7 @@ class GowifiController < ApplicationController
     end
 
     def post_advertisment
+      @message = get_message(@place, credentials['provider'])
       attrs = {:place => @place, :message => @message, :credentials => credentials}
 
       case credentials['provider']
