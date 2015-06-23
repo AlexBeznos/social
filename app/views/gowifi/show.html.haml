@@ -70,8 +70,13 @@
               $(".loading").attr("hidden", false);
           });
 
-          $('.wifi_link').click(function() {
-            $('.wifi_link').attr('href', '#');
+          var click_numbers = 0;
+
+          $('.wifi_link').click(function(e) {
+            click_numbers++;
+            if (click_numbers > 1) {
+              e.preventDefault();
+            }
           })
       });
 
