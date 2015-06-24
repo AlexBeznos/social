@@ -4,6 +4,7 @@ class GowifiController < ApplicationController
   before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
   before_action :find_customer, only: [:show, :omniauth]
   before_filter :check_for_place_activation, only: :show
+  before_filter :fix_format, only: :show
 
   def show
     session[:slug] = @place.slug
@@ -27,8 +28,10 @@ class GowifiController < ApplicationController
 
     clear_session
 
-    post_advertisment
-    deal_with_customer
+    unless advertisment_already_posted?
+      post_advertisment
+      deal_with_customer
+    end
 
     redirect_to wifi_login_path
   end
@@ -70,7 +73,14 @@ class GowifiController < ApplicationController
 
     def check_for_place_activation
       redirect_to '/404.html' unless @place
-      redirect_to wifi_login_path unless @place.active
+      redirect_to wifi_login_path unless @place.try(:active)
+    end
+
+    def fix_format
+      if params[:format] == 'xml'
+        redirect_to gowifi_place_path(:slug => params[:slug],
+                                      :format => 'html')
+      end
     end
 
     def credentials
@@ -83,6 +93,16 @@ class GowifiController < ApplicationController
 
     def wifi_login_path
       "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
+    end
+
+    def advertisment_already_posted?
+      now = DateTime.now
+      Customer::Visit.joins(:network_profile)
+                     .where({:customer_network_profiles => {:uid => credentials['uid']},
+                             :customer_network_profiles => {:social_network_id => SocialNetwork.find_by(name: credentials['provider'])},
+                             :created_at => (now - 15.minutes)..now,
+                             :place_id => @place.id})
+                     .any?
     end
 
     def post_advertisment
