@@ -1,4 +1,14 @@
 ru:
+  authlogic:
+    error_messages:
+      login_not_found: не найден
+      password_blank: не может быть пустым
+      user_session: UserSession (or whatever name you are using)
+    attributes:
+      user_session:
+        email: Email
+        password: Пароль
+        remember_me: запомнить меня
   activerecord:
     models:
       message: сообщение

@@ -20,12 +20,15 @@
         %span.text-muted.pull-right= @user.phone
       %li.list-group-item
         = link_to t('helpers.submit.edit'), edit_user_path(@user), class: 'btn btn-primary btn-block'
-        = link_to t('helpers.submit.destroy'), user_path(@user), method: 'DELETE', class: 'btn btn-danger btn-block'
+        - unless current_user.group.to_sym == :general
+          = link_to t('helpers.submit.destroy'), user_path(@user), method: 'DELETE', class: 'btn btn-danger btn-block'
   .col-sm-7
     %h1=  t('models.users.actions.show.places')
     %ul.list-group
       - @user.places.each do |place|
         %li.list-group-item
           = link_to place.name, place_path(place)
-          = link_to t('helpers.submit.destroy'), place_path(place), method: 'DELETE', class: 'btn btn-danger btn-xs pull-right'
-      %li.list-group-item= link_to t('helpers.submit.create', model: t('models.places.place')), new_place_path(user: @user.id), class: 'btn btn-info btn-block'
+          - unless current_user.group.to_sym == :general
+            = link_to t('helpers.submit.destroy'), place_path(place), method: 'DELETE', class: 'btn btn-danger btn-xs pull-right'
+      - unless current_user.group.to_sym == :general
+        %li.list-group-item= link_to t('helpers.submit.create', model: t('models.places.place')), new_place_path(user: @user.id), class: 'btn btn-info btn-block'

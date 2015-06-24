@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_franchisee
+  before_filter :require_franchisee, except: [:show, :edit, :update]
   before_action :find_user, except: [:index, :new, :create]
   before_filter :require_proper_franchisee, except: [:index, :new, :create]
 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
 
     def require_proper_franchisee
-      unless current_user.place_owners.include?(@user) || @user == current_user
+      if @user != current_user && !current_user.place_owners.include?(@user)
         redirect_to users_path, alert: 'You have no rights to access this page!'
       end
     end

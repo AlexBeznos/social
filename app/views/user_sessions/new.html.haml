@@ -2,10 +2,10 @@
 .header
   %h1= t('navigation.login')
 .row
-  .col-md-6.col-md-offset-3
+  .col-md-6.col-md-offset-3{:style => 'text-align: left'}
     = simple_form_for @user_session, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { boolean: :horizontal_boolean } do |f|
       = f.error_notification
       = f.input :email
       = f.input :password
-      = f.input :remember_me, as: :boolean, inline_label: 'Remember me', wrapper_html: { style: 'text-align: left;' }
-      = f.button :submit, t('navigation.login')
+      = f.input :remember_me, as: :boolean, wrapper_html: {:style => 'text-align: right; padding-right: 20px;'}
+      = f.button :submit, t('navigation.login'), class: 'center-block'
