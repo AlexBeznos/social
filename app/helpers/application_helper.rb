@@ -10,12 +10,14 @@ module ApplicationHelper
   end
 
   def render_stock_image(stock)
+    push_image = image_tag stock.image.url, class: 'offer'
+    
     if stock.url != ''
       link_to stock.url do
-        image_tag stock.image.url
+        push_image
       end
     else
-      image_tag stock.image.url
+      push_image
     end
   end
 
