@@ -96,13 +96,17 @@ class GowifiController < ApplicationController
     end
 
     def advertisment_already_posted?
-      now = DateTime.now
-      Customer::Visit.joins(:network_profile)
-                     .where({:customer_network_profiles => {:uid => credentials['uid']},
-                             :customer_network_profiles => {:social_network_id => SocialNetwork.find_by(name: credentials['provider'])},
-                             :created_at => (now - 15.minutes)..now,
-                             :place_id => @place.id})
-                     .any?
+      if @place
+        now = DateTime.now
+        Customer::Visit.joins(:network_profile)
+                       .where({:customer_network_profiles => {:uid => credentials['uid']},
+                               :customer_network_profiles => {:social_network_id => SocialNetwork.find_by(name: credentials['provider'])},
+                               :created_at => (now - 15.minutes)..now,
+                               :place_id => @place.id})
+                       .any?
+      else
+        true
+      end
     end
 
     def post_advertisment
