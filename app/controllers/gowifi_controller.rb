@@ -29,8 +29,8 @@ class GowifiController < ApplicationController
     clear_session
 
     unless advertisment_already_posted?
+      deal_with_customer # TODO: in case of delayed job, this method should be alfter post_advertisment
       post_advertisment
-      deal_with_customer
     end
 
     redirect_to wifi_login_path
@@ -72,7 +72,7 @@ class GowifiController < ApplicationController
     end
 
     def check_for_place_activation
-      redirect_to '/404.html' unless @place
+      return redirect_to '/404.html' unless @place
       redirect_to wifi_login_path unless @place.try(:active)
     end
 
