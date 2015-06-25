@@ -91,6 +91,11 @@ gem 'rubyzip'
 # expection detector
 gem 'rollbar', '~> 1.5.3'
 
+# delayed_job
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+
+
 group :development do
   gem 'spring'
   gem 'metric_fu'

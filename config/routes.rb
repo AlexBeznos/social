@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  require 'admin_constraint'
 
   namespace :adm do
+    mount Sidekiq::Web => '/sidekiq', :constraints => AdminConstraint.new
     root to: 'dashboard#index'
     get '/' => 'dashboard#index'
     resources :users do

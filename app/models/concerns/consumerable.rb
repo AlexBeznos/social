@@ -5,14 +5,13 @@ module Consumerable
     place.messages.active.where(social_network: SocialNetwork.find_by(name: network)).first
   end
 
-  def find_or_create_costumer(credentials, place, customer = false) # TODO: make this method as delayed job
+  def find_or_create_costumer(credentials, place, customer = false)
     profiles = Customer::NetworkProfile.where("uid = ? and social_network_id = ?", credentials[:uid], SocialNetwork.find_by(name: credentials['provider']))
 
     if profiles.any?
-      create_visit(profiles.first, place)
+      visit = create_visit(profiles.first, place)
       update_profile(profiles.first, credentials)
-
-      return profiles.first.customer
+      return {:customer => profiles.first.customer, :visit => visit.errors.any?}
     else
       if customer
         profile = customer.network_profiles.create(get_network_profile_params(credentials))
@@ -21,8 +20,8 @@ module Consumerable
         profile = customer.network_profiles.last
       end
 
-      create_visit(profile, place)
-      customer
+      visit = create_visit(profile, place)
+      {:customer => customer, :visit => visit.errors.any?}
     end
   end
 

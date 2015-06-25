@@ -2,6 +2,7 @@ class GowifiController < ApplicationController
   include Consumerable
   layout 'no-layout'
   before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
+  before_action :find_place_from_session, only: :omniauth
   before_action :find_customer, only: [:show, :omniauth]
   before_filter :check_for_place_activation, only: :show
   before_filter :fix_format, only: :show
@@ -24,15 +25,11 @@ class GowifiController < ApplicationController
   end
 
   def omniauth
-    @place = Place.find_by_slug(session[:slug])
-
-    clear_session
-
-    unless advertisment_already_posted?
-      deal_with_customer # TODO: in case of delayed job, this method should be alfter post_advertisment
-      post_advertisment
+    unless visit_already_created?
+      AdvertisingWorker.perform_async(session[:slug], credentials)
     end
 
+    clear_session
     redirect_to wifi_login_path
   end
 
@@ -67,6 +64,10 @@ class GowifiController < ApplicationController
       @place = Place.find_by_slug(params[:slug])
     end
 
+    def find_place_from_session
+      @place = Place.find_by_slug(session[:slug])
+    end
+
     def find_customer
       @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
     end
@@ -95,42 +96,15 @@ class GowifiController < ApplicationController
       "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
     end
 
-    def advertisment_already_posted?
-      if @place
-        now = DateTime.now
-        Customer::Visit.joins(:network_profile)
-                       .where({:customer_network_profiles => {:uid => credentials['uid']},
-                               :customer_network_profiles => {:social_network_id => SocialNetwork.find_by(name: credentials['provider'])},
-                               :created_at => (now - 15.minutes)..now,
-                               :place_id => @place.id})
-                       .any?
-      else
-        true
-      end
-    end
 
-    def post_advertisment
-      @message = get_message(@place, credentials['provider'])
-      attrs = {:place => @place, :message => @message, :credentials => credentials}
-
-      case credentials['provider']
-      when 'twitter'
-         TwitterService.new(attrs).advertise
-      when 'instagram'
-         InstagramService.new(attrs).advertise
-      when 'vkontakte'
-         VkService.new(attrs).advertise
-      when 'facebook'
-         FacebookService.new(attrs).advertise
-      end
-    end
-
-    def deal_with_customer
-      customer = find_or_create_costumer(credentials, @place, @customer)
+    def visit_already_created?
+      hash = find_or_create_costumer(credentials, @place, @customer)
 
       unless @customer
-        cookies.permanent[:customer] = customer.id
+        cookies.permanent[:customer] = hash[:customer].id
       end
+
+      hash[:visit]
     end
 
 end

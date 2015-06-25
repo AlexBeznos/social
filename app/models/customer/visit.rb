@@ -10,7 +10,18 @@ class Customer::Visit < ActiveRecord::Base
   belongs_to :network_profile,  :class_name => 'Customer::NetworkProfile',
                                 :foreign_key => :customer_network_profile_id
 
-  validate :network_profile, :place, :created_at, presence: true, unless: 'by_password'
+  validates :network_profile, :place,  presence: true, unless: 'by_password'
+  validate :visiting_ones_a_half_an_hour
 
-
+  private
+    def visiting_ones_a_half_an_hour
+      now = DateTime.now
+      any_visits =  Customer::Visit.joins(:network_profile)
+                                   .where({:customer_network_profiles => {:uid => network_profile.uid},
+                                           :customer_network_profiles => {:social_network_id => network_profile.social_network_id},
+                                           :created_at => (now - 15.minutes)..now,
+                                           :place_id => place_id})
+                                   .any?
+      self.errors.add(:customer, 'Already logged in') if any_visits
+    end
 end
