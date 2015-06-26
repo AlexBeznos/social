@@ -98,6 +98,7 @@ gem 'sinatra', :require => nil
 
 group :development do
   gem 'spring'
+  gem 'mina'
   gem 'metric_fu'
 end
 

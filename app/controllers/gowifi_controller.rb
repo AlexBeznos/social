@@ -33,6 +33,14 @@ class GowifiController < ApplicationController
     redirect_to wifi_login_path
   end
 
+  def auth_failure
+    if params[:provider]
+      redirect_to "/auth/#{params[:provider]}"
+    else
+      redirect_to gowifi_place_path(:slug => session[:slug])
+    end
+  end
+
   def redirect_after_auth
     if @place
       redirect_to @place.redirect_url
@@ -78,7 +86,7 @@ class GowifiController < ApplicationController
     end
 
     def fix_format
-      if params[:format] == 'xml'
+      if params[:format]
         redirect_to gowifi_place_path(:slug => params[:slug],
                                       :format => 'html')
       end
