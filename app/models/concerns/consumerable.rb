@@ -8,7 +8,8 @@ module Consumerable
   def find_or_create_costumer(credentials, place, customer = false)
     Rails.logger.warn '+++++++++++++'
     Rails.logger.warn 'Find or create'
-    profiles = Customer::NetworkProfile.where("uid = ? and social_network_id = ?", credentials[:uid], SocialNetwork.find_by(name: credentials['provider']))
+    Rails.logger.warn 'Find or create'
+    profiles = Customer::NetworkProfile.where("uid = ? and social_network_id = ?", credentials['uid'], SocialNetwork.find_by(name: credentials['provider']).id)
 
     if profiles.any?
       Rails.logger.warn 'Have found profile'
