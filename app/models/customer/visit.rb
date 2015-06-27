@@ -11,7 +11,7 @@ class Customer::Visit < ActiveRecord::Base
                                 :foreign_key => :customer_network_profile_id
 
   validates :network_profile, :place,  presence: true, unless: 'by_password'
-  validate :visiting_ones_a_half_an_hour
+  validate :visiting_ones_a_half_an_hour, unless: 'by_password'
 
   private
     def visiting_ones_a_half_an_hour
