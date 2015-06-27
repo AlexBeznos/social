@@ -6,16 +6,21 @@ module Consumerable
   end
 
   def find_or_create_costumer(credentials, place, customer = false)
+    Rails.logger.warn '+++++++++++++'
+    Rails.logger.warn 'Find or create'
     profiles = Customer::NetworkProfile.where("uid = ? and social_network_id = ?", credentials[:uid], SocialNetwork.find_by(name: credentials['provider']))
 
     if profiles.any?
+      Rails.logger.warn 'Have found profile'
       visit = create_visit(profiles.first, place)
       update_profile(profiles.first, credentials)
       return {:customer => profiles.first.customer, :visit => visit.errors.any?}
     else
       if customer
+        Rails.logger.warn 'Found customer'
         profile = customer.network_profiles.create(get_network_profile_params(credentials))
       else
+        Rails.logger.warn 'Not fount customer'
         customer = create_customer(credentials)
         profile = customer.network_profiles.last
       end
