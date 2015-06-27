@@ -20,7 +20,11 @@ class Customer::Visit < ActiveRecord::Base
       Rails.logger.warn network_profile.uid
       Rails.logger.warn network_profile.social_network_id
       any_visits =  Customer::Visit.joins(:network_profile)
-                                   .where("customer_network_profiles.uid = ? and customer_network_profiles.social_network_id = ? and (created_at between ? and ?) and place_id = ?", network_profile.uid, network_profile.social_network_id, now-now.hour.hours, now, place_id)
+                                   .where({
+                                           :customer_network_profiles => {:social_network_id => network_profile.social_network_id},
+                                           :customer_network_profiles => {:uid => network_profile.uid},
+                                           :created_at => (now - now.hour.hours)..now,
+                                           :place_id => place_id})
       Rails.logger.warn any_visits.inspect
       self.errors.add(:customer, 'Already logged in') if any_visits.any?
     end
