@@ -26,6 +26,7 @@ module Consumerable
       end
 
       visit = create_visit(profile, place)
+      Rails.logger.warn "Visit errors: #{visit.errors.inspect}"
       {:customer => customer, :visit => visit.errors.any?}
     end
   end
