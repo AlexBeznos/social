@@ -17,6 +17,8 @@ class Customer::Visit < ActiveRecord::Base
     def visiting_ones_a_half_an_hour
       now = DateTime.now
       Rails.logger.warn 'visit validation start'
+      Rails.logger.warn network_profile.uid
+      Rails.logger.warn network_profile.social_network_id
       any_visits =  Customer::Visit.joins(:network_profile)
                                    .where({:customer_network_profiles => {:uid => network_profile.uid},
                                            :customer_network_profiles => {:social_network_id => network_profile.social_network_id},

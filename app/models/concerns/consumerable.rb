@@ -13,6 +13,7 @@ module Consumerable
 
     if profiles.any?
       Rails.logger.warn 'Have found profile'
+      Rails.logger.warn profiles.inspect
       visit = create_visit(profiles.first, place)
       update_profile(profiles.first, credentials)
       return {:customer => profiles.first.customer, :visit => visit.errors.any?}
