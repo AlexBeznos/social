@@ -108,6 +108,7 @@ class GowifiController < ApplicationController
     def visit_already_created?
       hash = find_or_create_costumer(credentials, @place, @customer)
       Rails.logger.warn 'find or create happend'
+      Rails.logger.warn hash[:visit]
       unless @customer
         cookies.permanent[:customer] = hash[:customer].id
       end
