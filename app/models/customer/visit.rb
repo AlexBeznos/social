@@ -16,12 +16,13 @@ class Customer::Visit < ActiveRecord::Base
   private
     def visiting_ones_a_half_an_hour
       now = DateTime.now
+      Rails.logger.warn 'visit validation start'
       any_visits =  Customer::Visit.joins(:network_profile)
                                    .where({:customer_network_profiles => {:uid => network_profile.uid},
                                            :customer_network_profiles => {:social_network_id => network_profile.social_network_id},
                                            :created_at => (now - now.hour.hours)..now,
                                            :place_id => place_id})
-                                   .any?
-      self.errors.add(:customer, 'Already logged in') if any_visits
+      Rails.logger.warn any_visits.inspect
+      self.errors.add(:customer, 'Already logged in') if any_visits.any?
     end
 end
