@@ -12,7 +12,7 @@
     - @customers.each do |customer|
       %tr.row
         %td.col-xs-4= customer.customer.full_name
-        %td.col-xs-4= fa_icon customer.social_network.font_awesome_name
+        %td.col-xs-4= link_to fa_icon(customer.social_network.font_awesome_name), customer.url
         %td.col-xs-4= customer.visits.where(place: @place).count
   .col-sm-2.guests-table-arrow
     = fa_icon "angle-double-down"

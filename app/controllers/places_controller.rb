@@ -43,7 +43,7 @@ class PlacesController < ApplicationController
 
   def birthdays
     @customers = Customer.joins(:visits)
-                         .where('customer_visits.place_id = ?', 1)
+                         .where('customer_visits.place_id = ?', @place.id)
                          .where.not(birthday: nil)
                          .uniq
                          .order(:birthday)
