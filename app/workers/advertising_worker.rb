@@ -24,7 +24,7 @@ class AdvertisingWorker
       when 'vkontakte'
          VkService.new(attrs).advertise
       when 'facebook'
-         FacebookService.new(attrs).advertise
+         FacebookService.advertise(attrs)
       end
     end
 

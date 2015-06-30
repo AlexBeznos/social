@@ -19,13 +19,13 @@ class FacebookService
     end
   end
 
-  def advertise
-    graph = Koala::Facebook::API.new(@credentials['credentials']['token'])
+  def self.advertise(hash)
+    graph = Koala::Facebook::API.new(hash[:credentials]['credentials']['token'])
 
     begin
-      graph.put_connections('me', 'feed', {:message => @message.message,
-                                            :picture => @message.image.url,
-                                            :link => @message.message_link})
+      graph.put_connections('me', 'feed', {:message => hash[:message].message,
+                                            :picture => hash[:message].image.url,
+                                            :link => hash[:message].message_link})
     rescue => e
       raise "Facebook message were not sended. Error: #{e.inspect}"
     end
