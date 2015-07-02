@@ -26,4 +26,4 @@
   } else {
     f();
   }
-})(document, window, "yandex_metrika_callbacks"); < /script> < !—/Yandex.Metrika counter —>
+})(document, window, "yandex_metrika_callbacks");
