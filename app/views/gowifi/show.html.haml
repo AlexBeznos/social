@@ -46,8 +46,8 @@
               %input{:type => "submit", :value => ""}/
           - if @place.stocks_active && @stock
             = render_stock_image(@stock)
-            - if @js_exist
-              = javascript_include_tag "wifi/#{@place.slug}/addition"
+          - if @js_exist
+            = javascript_include_tag "wifi/#{@place.slug}/addition"
 
         %footer
           %p= t('wifi.footer')
