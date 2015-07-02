@@ -11,25 +11,24 @@ require 'mina/unicorn'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'stage.gofriends.com.ua'
 set :deploy_to, '/home/deployer/social/'
 set :repository, 'git@github.com:AlexBeznos/social.git'
-set :branch, 'mina'
 set :user, 'deployer'
 set :forward_agent, true
 set :port, '22'
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :rvm_path, '/usr/local/rvm/scripts/rvm'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml']
+set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml', 'config/application.yml']
 
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
   queue %{echo "-----> Loading environment"}
-  invoke :'rvm:use[ruby-2.1.3-p242@social]'
+  invoke :'rvm:use[ruby-2.1.3@social]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -53,22 +52,28 @@ task :setup => :environment do
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
 end
 
-desc "Deploys the current version to the server."
-task :deploy => :environment do
-  deploy do
 
-    # stop accepting new workers
-    invoke :'sidekiq:quiet'
+namespace :stage do
+  set :domain, 'stage.gofriends.com.ua'
+  set :branch, 'mina'
 
-    invoke :'git:clone'
-    invoke :'deploy:link_shared_paths'
-    invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
+  desc "Deploys the current version to the server."
+  task :deploy => :environment do
+    deploy do
 
-    to :launch do
-      invoke :'sidekiq:restart'
-      invoke :'unicorn:restart'
+      # stop accepting new workers
+      invoke :'sidekiq:quiet'
+
+      invoke :'git:clone'
+      invoke :'deploy:link_shared_paths'
+      invoke :'bundle:install'
+      invoke :'rails:db_migrate'
+      invoke :'rails:assets_precompile'
+
+      to :launch do
+        invoke :'sidekiq:restart'
+        invoke :'unicorn:restart'
+      end
     end
   end
 end
