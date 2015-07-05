@@ -34,7 +34,7 @@ end
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
-task :setup => :environment do
+task :basic_setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 
@@ -52,28 +52,61 @@ task :setup => :environment do
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
 end
 
+task :basic_logs do
+  queue "tail -f social/#{ENV['releas'] ||= 'current'}/log/production.log --lines=#{ENV['lines'] ||= '100'}"
+end
+
+task :basic_deploy do
+  deploy do
+    # stop accepting new workers
+    invoke :'sidekiq:quiet'
+
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
+
+    to :launch do
+      invoke :'sidekiq:restart'
+      invoke :'unicorn:restart'
+    end
+  end
+end
+
 
 namespace :stage do
   set :domain, 'stage.gofriends.com.ua'
-  set :branch, 'mina'
+  set :branch, 'stage'
+
+  task :setup do
+    invoke :basic_setup
+  end
+
+  task :logs do
+    invoke :basic_logs
+  end
 
   desc "Deploys the current version to the server."
-  task :deploy => :environment do
-    deploy do
+  task :deploy do
+    invoke :basic_deploy
+  end
+end
 
-      # stop accepting new workers
-      invoke :'sidekiq:quiet'
+namespace :app_1 do
+  set :domain, 'app-1.gofriends.com.ua'
+  set :branch, 'master'
 
-      invoke :'git:clone'
-      invoke :'deploy:link_shared_paths'
-      invoke :'bundle:install'
-      invoke :'rails:db_migrate'
-      invoke :'rails:assets_precompile'
+  task :setup do
+    invoke :basic_setup
+  end
 
-      to :launch do
-        invoke :'sidekiq:restart'
-        invoke :'unicorn:restart'
-      end
-    end
+  task :logs do
+    invoke :basic_logs
+  end
+
+  desc "Deploys the current version to the server."
+  task :deploy do
+    invoke :basic_deploy
   end
 end
