@@ -47,7 +47,7 @@ task :basic_logs do
   queue "tail -f social/#{ENV['releas'] ||= 'current'}/log/production.log --lines=#{ENV['lines'] ||= '100'}"
 end
 
-task :basic_deploy do
+task :basic_deploy => :environment do
   deploy do
     # stop accepting new workers
     invoke :'sidekiq:quiet'
