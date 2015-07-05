@@ -98,3 +98,45 @@ namespace :app_1 do
     invoke :basic_deploy
   end
 end
+
+namespace :app_2 do
+  set :domain, 'app-2.gofriends.com.ua'
+  set :branch, 'master'
+
+  task :setup do
+    invoke :basic_setup
+  end
+
+  task :logs do
+    invoke :basic_logs
+  end
+
+  task :deploy do
+    invoke :basic_deploy
+  end
+end
+
+namespace :prod do
+  set :domains, %w[app-1.gofriends.com.ua app-2.gofriends.com.ua]
+
+  task :logs do
+    isolate do
+      domains.each do |domain|
+        set :domain, domain
+        queue %[echo "-----> Server #{domain} logs."]
+        invoke :basic_logs
+        run!
+      end
+    end
+  end
+
+  task :deploy do
+    isolate do
+      domains.each_with_index do |domain, index|
+        set :domain, domain
+        invoke :basic_deploy
+        run!
+      end
+    end
+  end
+end
