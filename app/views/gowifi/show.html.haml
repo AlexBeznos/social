@@ -13,13 +13,9 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "wifi/spinner", :media => "all"
-    - if @styles_exist
-      = stylesheet_link_tag "wifi/#{@place.slug}/style", :media => "all"
-    - else
-      = stylesheet_link_tag "wifi/style", :media => "all"
+    = stylesheet_link_tag "wifi/#{@place.template}/style", :media => "all"
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    = javascript_include_tag "jquery"
 
   %body
     .wrapper-out
@@ -39,15 +35,13 @@
           .socials
             - @networks.each do |network|
               = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
-                = image_tag "wifi#{@icons_exist ? '/' + @place.slug + '/' : '/'}#{network.name}.png"
+                = image_tag "wifi/#{@place.template}/#{network.name}.png"
           - if @place.enter_by_password
             = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
               %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/
               %input{:type => "submit", :value => ""}/
           - if @place.stocks_active && @stock
             = render_stock_image(@stock)
-          - if @js_exist
-            = javascript_include_tag "wifi/#{@place.slug}/addition"
 
         %footer
           %p= t('wifi.footer')
@@ -70,6 +64,7 @@
           .circle3
           .circle4
     = javascript_include_tag "jquery", :media => "all"
+    = javascript_include_tag "wifi/#{@place.template}"
     :javascript
       $(document).ready(function(){
           $(".socials>a").click(function(){

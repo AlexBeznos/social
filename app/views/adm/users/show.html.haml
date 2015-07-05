@@ -17,8 +17,21 @@
               Email
               %span.text-muted.pull-right= @user.email
             %li.list-group-item
+              First name
+              %span.text-muted.pull-right= @user.first_name
+            %li.list-group-item
+              Last name
+              %span.text-muted.pull-right= @user.last_name
+            %li.list-group-item
+              Phone
+              %span.text-muted.pull-right= @user.phone
+            %li.list-group-item
               Group
               %span.text-muted.pull-right= @user.group
+            - if @user.general?
+              %li.list-group-item
+                Francheese
+                %span.text-muted.pull-right= link_to @user.franchisee.full_name, adm_user_path(@user.franchisee)
 
   .box
     .box-header.with-border

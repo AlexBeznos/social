@@ -27,6 +27,9 @@
               Redirect url
               %span.text-muted.pull-right= link_to 'link', @place.redirect_url
             %li.list-group-item
+              Template
+              %span.text-muted.pull-right= @place.template
+            %li.list-group-item
               Place active
               %span.text-muted.pull-right
                 - if @place.active

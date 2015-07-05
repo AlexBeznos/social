@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623190545) do
+ActiveRecord::Schema.define(version: 20150705145522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20150623190545) do
     t.string   "wifi_settings_link"
     t.boolean  "wifi_settings_link_not_fresh", default: true
     t.boolean  "stocks_active",                default: false
+    t.string   "template",                     default: "default"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

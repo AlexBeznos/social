@@ -2,7 +2,10 @@
   = f.error_notification
   = f.input :name
   = f.input :slug
+  - if @place.logo.present?
+    = image_tag @place.logo.url, height: 100
   = f.input :logo, as: :file
+  = f.input :template, collection: Dir.entries("#{Rails.root}/app/assets/stylesheets/wifi").select {|entry| File.directory? File.join("#{Rails.root}/app/assets/stylesheets/wifi",entry) and !(entry =='.' || entry == '..') }
   = f.input :enter_by_password, as: :boolean, inline_label: 'Enter by password'
   .adm_place_password
     = f.input :password

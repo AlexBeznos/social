@@ -1,18 +1,14 @@
 class GowifiController < ApplicationController
   include Consumerable
-  layout 'no-layout'
+  layout false
   before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
   before_action :find_place_from_session, only: :omniauth
   before_action :find_customer, only: [:show, :omniauth]
   before_filter :check_for_place_activation, only: :show
-  before_filter :fix_format, only: :show
 
   def show
     session[:slug] = @place.slug
     @networks = @place.get_networks
-    @styles_exist = File.directory?("#{Rails.root}/app/assets/stylesheets/wifi/#{@place.slug}")
-    @js_exist = File.directory?("#{Rails.root}/app/assets/javascripts/wifi/#{@place.slug}")
-    @icons_exist = File.directory?("#{Rails.root}/app/assets/images/wifi/#{@place.slug}")
     @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
   end
 
@@ -85,13 +81,6 @@ class GowifiController < ApplicationController
       redirect_to wifi_login_path unless @place.try(:active)
     end
 
-    def fix_format
-      if params[:format]
-        redirect_to gowifi_place_path(:slug => params[:slug],
-                                      :format => 'html')
-      end
-    end
-
     def credentials
       request.env['omniauth.auth']
     end
@@ -107,11 +96,7 @@ class GowifiController < ApplicationController
 
     def visit_already_created?
       hash = find_or_create_costumer(credentials, @place, @customer)
-      Rails.logger.warn 'find or create happend'
-      Rails.logger.warn hash[:visit]
-      unless @customer
-        cookies.permanent[:customer] = hash[:customer].id
-      end
+      cookies.permanent[:customer] = hash[:customer].id
 
       hash[:visit]
     end
