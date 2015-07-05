@@ -47,27 +47,6 @@
               %li.list-group-item
                 Password
                 %span.text-muted.pull-right= @place.password
-            %li.list-group-item
-              Background
-              %span.text-muted.pull-right
-                - if @place.background_active
-                  %i.fa.fa-thumbs-o-up
-                - else
-                  %i.fa.fa-thumbs-o-down
-            - if @place.background_active
-              %li.list-group-item
-                mobile
-                .pull-right
-                  = link_to 'img', @place.mobile_image.url
-              %li.list-group-item
-                tablet
-                .pull-right
-                  = link_to 'img', @place.tablet_image.url
-              %li.list-group-item
-                desktop
-                .pull-right
-                  = link_to 'img', @place.desktop_image.url
-
 
   - @networks.each do |network|
     .box

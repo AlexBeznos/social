@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705145522) do
+ActiveRecord::Schema.define(version: 20150705173617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,19 +91,6 @@ ActiveRecord::Schema.define(version: 20150705145522) do
     t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "background_active"
-    t.string   "mobile_image_file_name"
-    t.string   "mobile_image_content_type"
-    t.integer  "mobile_image_file_size"
-    t.datetime "mobile_image_updated_at"
-    t.string   "tablet_image_file_name"
-    t.string   "tablet_image_content_type"
-    t.integer  "tablet_image_file_size"
-    t.datetime "tablet_image_updated_at"
-    t.string   "desktop_image_file_name"
-    t.string   "desktop_image_content_type"
-    t.integer  "desktop_image_file_size"
-    t.datetime "desktop_image_updated_at"
     t.string   "redirect_url"
     t.string   "wifi_username",                default: "P8uDratA"
     t.string   "wifi_password",                default: "Tac4edrU"
