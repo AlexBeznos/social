@@ -99,6 +99,8 @@ gem 'sinatra', :require => nil
 group :development do
   gem 'spring'
   gem 'mina'
+  gem 'mina-sidekiq', :require => false
+  gem 'mina-unicorn', :require => false
   gem 'metric_fu'
 end
 
@@ -122,7 +124,7 @@ end
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
