@@ -18,22 +18,13 @@ set :forward_agent, true
 set :port, '22'
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
-
-# Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
-# They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml', 'config/application.yml']
 
-
-# This task is the environment that is loaded for most commands, such as
-# `mina deploy` or `mina rake`.
 task :environment do
   queue %{echo "-----> Loading environment"}
   invoke :'rvm:use[ruby-2.1.3@social]'
 end
 
-# Put any custom mkdir's in here for when `mina setup` is ran.
-# For Rails apps, we'll make some of the shared paths that are shared between
-# all releases.
 task :basic_setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
@@ -74,7 +65,6 @@ task :basic_deploy do
   end
 end
 
-
 namespace :stage do
   set :domain, 'stage.gofriends.com.ua'
   set :branch, 'stage'
@@ -87,7 +77,6 @@ namespace :stage do
     invoke :basic_logs
   end
 
-  desc "Deploys the current version to the server."
   task :deploy do
     invoke :basic_deploy
   end
@@ -105,7 +94,6 @@ namespace :app_1 do
     invoke :basic_logs
   end
 
-  desc "Deploys the current version to the server."
   task :deploy do
     invoke :basic_deploy
   end
