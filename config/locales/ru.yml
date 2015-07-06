@@ -445,4 +445,3 @@ ru:
       attrs:
         image: Фото
         url: Редирект
-  long_twitter_message: 'Длина сообщения в Twitter не должна превышать 140 символов'
