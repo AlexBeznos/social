@@ -1,4 +1,9 @@
 ru:
+  errors:
+    js_precompilation: имеет ошибку в коде
+    not_valid_css_color: не настоящий css цвет
+    not_valid_css_hexidecimal_color: не настоящий hexidecimal цвет
+    not_valid_css_websafe_color: не веб безопасный цвет
   authlogic:
     error_messages:
       login_not_found: не найден
@@ -15,6 +20,7 @@ ru:
       user: пользователя
       place: заведение
       stock: акцию
+      style: стиль
   simple_form:
     error_notification:
       default_message: "Пожалуйста решите проблемы ниже:"
@@ -40,6 +46,12 @@ ru:
       stocks:
         url: Ссылка
         image: Картинка
+      style:
+        background: Задний фон
+        js: JS
+        css: CSS
+        text_color: Цвет основного текста
+        greating_color: Цвет приветствия
   notice:
     create: "%{subject} добавленно"
     updated: "%{subject} обновленно"

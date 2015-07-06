@@ -13,7 +13,7 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag "admin", :media => "all"
-    = yield(:page_stylesheet) if content_for?(:page_stylesheet)
+    = stylesheet_link_tag yield(:page_stylesheet) if content_for?(:page_stylesheet)
 
 
   %body{:class => "skin-blue"}
@@ -29,4 +29,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "admin"
-    = yield(:page_javascript) if content_for?(:page_javascript)
+    = javascript_include_tag yield(:page_javascript) if content_for?(:page_javascript)

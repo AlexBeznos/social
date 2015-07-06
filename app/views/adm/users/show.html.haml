@@ -49,8 +49,8 @@
         - @user.places.each do |place|
           %tr
             %th= place.id
-            %td= link_to place.name, adm_user_place_path(@user, place)
+            %td= link_to place.name, adm_place_path(place)
             %td= place.slug
             %td
-              = link_to 'edit', edit_adm_user_place_path(@user, place), class: 'btn btn-outline btn-warning'
-              = link_to 'destroy', adm_user_place_path(@user, place), class: 'btn btn-outline btn-danger', method: 'DELETE'
+              = link_to 'edit', edit_adm_place_path(place), class: 'btn btn-warning'
+              = link_to 'destroy', adm_place_path(place), class: 'btn btn-danger', method: 'DELETE'

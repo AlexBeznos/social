@@ -94,6 +94,14 @@ gem 'rollbar', '~> 1.5.3'
 gem 'sidekiq'
 gem 'sinatra', :require => nil
 
+# css minifier
+gem 'cssminify'
+
+# code highlighter
+gem 'codemirror-rails'
+
+# color picker
+gem 'jquery-minicolors-rails'
 
 group :development do
   gem 'spring'

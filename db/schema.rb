@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705173617) do
+ActiveRecord::Schema.define(version: 20150706180652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,24 @@ ActiveRecord::Schema.define(version: 20150705173617) do
   end
 
   add_index "stocks", ["place_id"], name: "index_stocks_on_place_id", using: :btree
+
+  create_table "styles", force: true do |t|
+    t.text     "js"
+    t.text     "js_min"
+    t.text     "css"
+    t.text     "css_min"
+    t.string   "text_color"
+    t.string   "greating_color"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

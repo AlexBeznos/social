@@ -5,11 +5,18 @@ class GowifiController < ApplicationController
   before_action :find_place_from_session, only: :omniauth
   before_action :find_customer, only: [:show, :omniauth]
   before_filter :check_for_place_activation, only: :show
+  skip_before_action :verify_authenticity_token, only: :show
 
   def show
     session[:slug] = @place.slug
     @networks = @place.get_networks
     @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
+
+    respond_to do |format|
+      format.html
+      format.css
+      format.js
+    end
   end
 
   def enter_by_password

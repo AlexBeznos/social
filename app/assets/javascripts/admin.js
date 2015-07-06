@@ -17,4 +17,3 @@
 //= require fastclick
 //= require app
 //= require input_binding
-//= require turbolinks
