@@ -17,6 +17,8 @@ class Message < ActiveRecord::Base
                                 :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
                                 unless: 'social_network_id == 3'
 
+  validate :twitter_message_length
+
   before_save :set_subscription_uid, if: 'social_network_id == 3'
   after_save :set_active_only_to_one_message_from_place, if: 'active'
 
@@ -29,6 +31,12 @@ class Message < ActiveRecord::Base
 
     place.messages.where(social_network_id: social_network_id).each do |message|
       message.update(active: false) unless message == self
+    end
+  end
+
+  def twitter_message_length
+    if social_network_id == 4 && (message.length + message_link.length) > 141
+      errors.add(:message, I18n.t(:long_twitter_message))
     end
   end
 end

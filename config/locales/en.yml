@@ -68,3 +68,4 @@ en:
       title: "Place %{place_name}"
     guests:
       title: "Top visitors in %{place_name}"
+  long_twitter_message: 'Twitter message should not be longer than 140 symbols'

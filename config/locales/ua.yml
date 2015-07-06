@@ -317,3 +317,4 @@ ua:
       title: "Заклад %{place_name}"
     guests:
       title: "Top відвідувачів в %{place_name}"
+  long_twitter_message: 'Довжина повідомлення має буте не більше 140 символів'
