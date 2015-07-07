@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :user_id, presence: true, if: 'group.to_sym == :general'
   validates :phone, presence: true,
                     length: { minimum: 10, maximum: 20 },
-                    format: { with: /\A(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})?\z/,
+                    format: { with: /\A(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\/]?)?((?:\(?\d{1,}\)?[\-\.\/]?){0,})?\z/,
                               message: I18n.t('errors.wrong_phone_number') }
 
   enum group: [:general, :franchisee, :admin]
