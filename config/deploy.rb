@@ -65,26 +65,47 @@ task :basic_deploy => :environment do
   end
 end
 
+task :cleanup do
+    queue %{
+      echo "-----> Cleaning up old releases (keeping #{keep_releases!})"
+      #{echo_cmd %{cd "#{deploy_to!}/#{releases_path!}" || exit 15}}
+      #{echo_cmd %{count=`ls -1d [0-9]* | sort -rn | wc -l`}}
+      #{echo_cmd %{remove=$((count > #{keep_releases} ? count - #{keep_releases} : 0))}}
+      #{echo_cmd %{ls -1d [0-9]* | sort -rn | tail -n $remove | xargs rm -rf {}}}
+    }
+  end
+
 namespace :stage do
-  set :domain, 'stage.gofriends.com.ua'
-  set :branch, 'stage'
+  task :set_domain do
+    set :domain, 'stage.gofriends.com.ua'
+  end
 
   task :setup do
+    invoke :'stage:set_domain'
     invoke :basic_setup
   end
 
   task :logs do
+    invoke :'stage:set_domain'
     invoke :basic_logs
   end
 
   task :deploy do
+    set :branch, 'stage'
+    invoke :'stage:set_domain'
     invoke :basic_deploy
+  end
+
+  task :cleanup do
+    invoke :'stage:set_domain'
+    invoke :cleanup
   end
 end
 
 namespace :app_1 do
-  set :domain, 'app-1.gofriends.com.ua'
-  set :branch, 'master'
+  task :set_domain do
+    set :domain, 'app-1.gofriends.com.ua'
+  end
 
   task :setup do
     invoke :basic_setup
@@ -95,14 +116,20 @@ namespace :app_1 do
   end
 
   task :deploy do
+    invoke :'app_1:set_domain'
     invoke :basic_deploy
+  end
+
+  task :cleanup do
+    invoke :'app_1:set_domain'
+    invoke :cleanup
   end
 end
 
 namespace :app_2 do
-  set :domain, 'app-2.gofriends.com.ua'
-  set :branch, 'master'
-
+  task :set_domain do
+    set :domain, 'app-2.gofriends.com.ua'
+  end
   task :setup do
     invoke :basic_setup
   end
@@ -112,7 +139,13 @@ namespace :app_2 do
   end
 
   task :deploy do
+    invoke :'app_1:set_domain'
     invoke :basic_deploy
+  end
+
+  task :cleanup do
+    invoke :'app_1:set_domain'
+    invoke :cleanup
   end
 end
 
@@ -135,6 +168,16 @@ namespace :prod do
       domains.each_with_index do |domain, index|
         set :domain, domain
         invoke :basic_deploy
+        run!
+      end
+    end
+  end
+
+  task :cleanup do
+    isolate do
+      domains.each_with_index do |domain, index|
+        set :domain, domain
+        invoke :cleanup
         run!
       end
     end
