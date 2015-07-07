@@ -3,18 +3,25 @@
   %h1= yield(:title)
 
   - navigation_add 'Users', adm_users_path
-  - navigation_add "User #{@user.id}", adm_user_path(@user)
-  - navigation_add 'Places', adm_user_places_path(@user)
-  - navigation_add "Place #{@place.id}", adm_user_place_path(@user, @place.id)
+  - navigation_add "User #{@place.user.id}", adm_user_path(@place.user)
+  - navigation_add "Place #{@place.id}", adm_place_path(@place)
   = render_navigation
 
 %section.content
+  - if @place.style
+    = link_to 'Destroy style', adm_style_path(@place.style), method: :delete, class: 'btn btn-danger pull-right'
+    - if @place.style.background.exists?
+      = link_to 'Remove background', remove_background_adm_style_path(@place.style), method: :patch, class: 'btn btn-warning pull-right'
+    = link_to 'Edit style', edit_adm_style_path(@place.style), class: 'btn btn-info pull-right'
+  - else
+    = link_to 'Add place style', new_adm_place_style_path(@place), class: 'btn btn-success pull-right'
   .row
     .col-md-4
       .box
         .box-header.with-border
           Place information
-          = link_to 'Edit', edit_adm_user_place_path(@user, @place), class: 'btn btn-primary pull-right'
+          = link_to 'Edit', edit_adm_place_path(@place), class: 'btn btn-primary pull-right'
+
         .box-body
           %ul.list-group
             %li.list-group-item
@@ -53,7 +60,7 @@
       .box-header.with-border
         = network.name
         messages
-        = link_to 'New message', new_adm_user_place_message_path(@user, @place), class: 'btn btn-primary btn-xs pull-right'
+        = link_to 'New message', new_adm_place_message_path(@place), class: 'btn btn-primary btn-xs pull-right'
       .box-body
         %table.table.table-striped
           %thead
@@ -80,8 +87,8 @@
               %tr
                 %td{:colspan => '6'}
                   - if message.active
-                    = link_to 'deactivate', deactivate_adm_user_place_message_path(@user, @place, message), class: 'btn btn-danger'
+                    = link_to 'deactivate', deactivate_adm_message_path(message), class: 'btn btn-danger'
                   - else
-                    = link_to 'activate', activate_adm_user_place_message_path(@user, @place, message), class: 'btn btn-success'
-                  = link_to 'edit', edit_adm_user_place_message_path(@user, @place, message), class: 'btn btn-warning'
-                  = link_to 'destroy', adm_user_place_message_path(@user, @place, message), class: 'btn btn-danger', method: 'DELETE'
+                    = link_to 'activate', activate_adm_message_path(message), class: 'btn btn-success'
+                  = link_to 'edit', edit_adm_message_path(message), class: 'btn btn-warning'
+                  = link_to 'destroy', adm_message_path(message), class: 'btn btn-danger', method: 'DELETE'

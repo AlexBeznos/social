@@ -1,5 +1,5 @@
 class Adm::PlacesController < AdministrationController
-  before_action :find_user
+  before_action :find_user, only: [:new, :create]
   before_action :find_place, except: [:new, :create, :show]
 
   def show
@@ -12,10 +12,11 @@ class Adm::PlacesController < AdministrationController
   end
 
   def create
-    @place = @user.places.new(place_params)
+    @place = Place.new(place_params)
+    @place.user_id = @user.id
 
     if @place.save
-      redirect_to adm_user_place_path(@user, @place), :notice => 'Place created!'
+      redirect_to adm_place_path(@user), :notice => 'Place created!'
     else
       render :action => :new, :alert => "U pass something wrong. Errors: #{@place.errors}"
     end
@@ -26,7 +27,7 @@ class Adm::PlacesController < AdministrationController
 
   def update
     if @place.update(place_params)
-      redirect_to adm_user_place_path(@user, @place), :notice => 'Place updated!'
+      redirect_to adm_place_path(@place), :notice => 'Place updated!'
     else
       render :action => :new, :alert => "U pass something wrong. Errors: #{@place.errors}"
     end
@@ -34,7 +35,7 @@ class Adm::PlacesController < AdministrationController
 
   def destroy
     @place.destroy
-    redirect_to adm_user_path(@user), :notice => 'Place destroied!'
+    redirect_to adm_user_path(@place.user), :notice => 'Place destroied!'
   end
 
   private

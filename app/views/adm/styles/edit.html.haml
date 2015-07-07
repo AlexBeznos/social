@@ -1,0 +1,18 @@
+= content_for :title, "Edit Style"
+%section.content-header
+  %h1= yield(:title)
+
+  - navigation_add 'Users', adm_users_path
+  - navigation_add "User #{@style.place.user.id}", adm_user_path(@style.place.user)
+  - navigation_add "Place #{@style.place.id}", adm_place_path(@style.place)
+  - navigation_add 'Edit style', edit_adm_style_path(@style)
+  = render_navigation
+
+%section.content
+  .row
+    .col-md-6
+      .box.box-solid
+        .box-header.with-border
+          Style wifi page place:
+          = @style.place.name
+        .box-body= render 'form'

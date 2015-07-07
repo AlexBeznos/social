@@ -1,0 +1,14 @@
+= content_for :page_stylesheet, 'code_highlight'
+= content_for :page_javascript, 'code_highlight'
+
+= simple_form_for [:adm, @place, @style] do |f|
+  = f.error_notification
+  - if @style.background.exists?
+    = image_tag @style.background.url, height: 100
+  = f.input :background, as: :file
+  = f.input :text_color, as: :minicolors, minicolors: {theme: :bootstrap, position: :top}
+  = f.input :greating_color, as: :minicolors, minicolors: {theme: :bootstrap, position: :top}
+  = f.input :css, as: :text
+  = f.input :js, as: :text
+
+  = f.button :submit
