@@ -1,3 +1,4 @@
 en:
   errors:
     long_twitter_message: 'Twitter message with link should not be longer than 140 symbols'
+    wrong_link_format: 'Wrong link format'
