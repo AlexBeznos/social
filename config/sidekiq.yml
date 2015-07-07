@@ -2,4 +2,5 @@
 :concurrency:  25
 :queues:
   - [advertisment, 5]
+  - [wifi_settings, 4]
   - [default, 1] 

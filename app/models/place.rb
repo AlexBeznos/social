@@ -17,8 +17,8 @@ class Place < ActiveRecord::Base
 
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
-  validates :wifi_settings_link, :redirect_url, format: { with: /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix,
-                                                          message: I18n.t('errors.wrong_link_format')}
+  # validates :wifi_settings_link, :redirect_url, format: { with: /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix,
+  #                                                         message: I18n.t('errors.wrong_link_format')}
   validates_attachment :logo,
                        :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
 
@@ -55,7 +55,7 @@ class Place < ActiveRecord::Base
 
     # TODO: should be delayed
     def gen_new_wifi_settings
-      WifiSettingsService.create(place_id: id) unless wifi_settings_link
+      WifiSettingsWorker.perform_async(id) unless wifi_settings_link
     end
 
     # TODO: should be delayed
