@@ -58,6 +58,9 @@ task :basic_deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
 
+    queue 'mkdir public/settings && chmod 755 public/settings'
+    queue 'mkdir public/vk && chmod 755 public/vk'
+
     to :launch do
       invoke :'sidekiq:restart'
       invoke :'unicorn:restart'
