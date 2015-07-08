@@ -1,4 +1,4 @@
-class AllUrlsValidator < ActiveModel::EachValidator
+class UrlValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return false unless value
     record.errors[attribute] << (options[:message] || I18n.t('errors.wrong_link_format')) unless self.class.matches?(value)
