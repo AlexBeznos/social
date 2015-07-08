@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :user_id, presence: true, if: 'group.to_sym == :general'
   validates :phone, presence: true,
                     length: { minimum: 10, maximum: 20 },
-                    :phone => truee
+                    :phone => true
 
   enum group: [:general, :franchisee, :admin]
 
