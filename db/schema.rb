@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150706180652) do
     t.integer  "customer_network_profile_id"
     t.integer  "place_id"
     t.integer  "customer_id"
-    t.boolean  "by_password"
+    t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150706180652) do
     t.text     "message"
     t.string   "message_link"
     t.integer  "place_id"
-    t.boolean  "active"
+    t.boolean  "active",             default: true
     t.string   "subscription"
     t.string   "subscription_uid"
     t.integer  "social_network_id"

@@ -1,7 +1,5 @@
 class PlacesController < ApplicationController
-  before_filter :require_user
   before_action :find_place, except: [:index, :new, :create]
-  before_filter :require_proper_user, except: [:index, :new, :create]
 
   def index
     @places = current_user.get_all_places

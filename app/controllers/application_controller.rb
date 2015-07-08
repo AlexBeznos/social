@@ -5,24 +5,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :check_locale
 
-  def require_user
-    unless current_user
-      no_access_to_login
-    end
-  end
-
-  def require_proper_user
-    unless current_user.get_all_places.include?(@place)
-      no_access_to_place
-    end
-  end
-
-  def no_access_to_login
-    redirect_to login_path, alert: 'You have no rights to access this page!'
-  end
-
-  def no_access_to_place
-    redirect_to places_path, alert: 'You have no rights to access this page!'
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to login_path, :alert => exception.message
   end
 
 

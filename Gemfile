@@ -102,6 +102,8 @@ gem 'codemirror-rails'
 
 # color picker
 gem 'jquery-minicolors-rails'
+# authorization
+gem 'cancancan', '~> 1.10'
 
 group :development do
   gem 'spring'
@@ -115,6 +117,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
   gem 'forgery'
+  gem 'byebug'
 end
 
 group :test do

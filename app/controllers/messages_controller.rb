@@ -1,8 +1,6 @@
 class MessagesController < ApplicationController
-  before_filter :require_user
   before_action :find_place
   before_action :find_message, except: [:new, :create]
-  before_filter :require_proper_user
 
   def new
     @message = Message.new

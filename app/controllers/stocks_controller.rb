@@ -1,8 +1,6 @@
 class StocksController < ApplicationController
-  before_filter :require_user
   before_action :find_place
   before_action :find_stock, except: [:index, :new, :create]
-  before_filter :require_proper_user
 
   def index
     @stocks = Stock.where(place_id: @place.id)
