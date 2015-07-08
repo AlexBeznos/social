@@ -1,6 +1,6 @@
 class Adm::PlacesController < AdministrationController
-  before_action :find_user, only: [:new, :create]
-  before_action :find_place, except: [:new, :create, :show]
+  load_and_authorize_resource :user
+  load_and_authorize_resource :find_by => :slug, :through => :user, :shallow => true
 
   def show
     @place = Place.includes(:messages).find_by_slug(params[:id])
@@ -29,7 +29,7 @@ class Adm::PlacesController < AdministrationController
     if @place.update(place_params)
       redirect_to adm_place_path(@place), :notice => 'Place updated!'
     else
-      render :action => :new, :alert => "U pass something wrong. Errors: #{@place.errors}"
+      render :action => :edit, :alert => "U pass something wrong. Errors: #{@place.errors}"
     end
   end
 
@@ -39,13 +39,6 @@ class Adm::PlacesController < AdministrationController
   end
 
   private
-  def find_user
-    @user = User.find(params[:user_id])
-  end
-
-  def find_place
-    @place = Place.find_by_slug(params[:id])
-  end
 
   def place_params
     params.require(:place).permit(:name,

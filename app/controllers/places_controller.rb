@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :find_place, except: [:index, :new, :create]
+  load_and_authorize_resource :find_by => :slug
 
   def index
     @places = current_user.get_all_places
@@ -70,10 +70,6 @@ class PlacesController < ApplicationController
   end
 
   private
-    def find_place
-      @place = Place.find_by_slug(params[:id])
-    end
-
 
     def place_params
       params.require(:place).permit(:name,
@@ -88,10 +84,10 @@ class PlacesController < ApplicationController
     end
 
     def get_number_of_friends(records)
-      number = records.map {|visit| visit.network_profile }
+      number = records.map { |visit| visit.network_profile }
                       .uniq
-                      .map {|np| np.try(:friends_count) }
-                      .inject{|sum,x| sum.to_i + x.to_i }
+                      .map { |np| np.try(:friends_count) }
+                      .inject{ |sum,x| sum.to_i + x.to_i }
 
       number ? number : 0
     end

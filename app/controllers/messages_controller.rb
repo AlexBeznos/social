@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
-  before_action :find_place
-  before_action :find_message, except: [:new, :create]
+  load_and_authorize_resource :place, :find_by => :slug
+  load_and_authorize_resource :through => :place
+
 
   def new
     @message = Message.new
@@ -34,13 +35,6 @@ class MessagesController < ApplicationController
   end
 
   private
-    def find_place
-      @place = Place.find_by_slug(params[:place_id])
-    end
-
-    def find_message
-      @message = Message.find(params[:id])
-    end
 
     def message_params
       params.require(:message).permit(:social_network_id, :message, :message_link, :image, :subscription)

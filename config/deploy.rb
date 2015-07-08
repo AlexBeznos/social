@@ -111,10 +111,12 @@ namespace :app_1 do
   end
 
   task :setup do
+    invoke :'app_1:set_domain'
     invoke :basic_setup
   end
 
   task :logs do
+    invoke :'app_1:set_domain'
     invoke :basic_logs
   end
 
@@ -134,10 +136,12 @@ namespace :app_2 do
     set :domain, 'app-2.gofriends.com.ua'
   end
   task :setup do
+    invoke :'app_2:set_domain'
     invoke :basic_setup
   end
 
   task :logs do
+    invoke :'app_2:set_domain'
     invoke :basic_logs
   end
 

@@ -1,4 +1,6 @@
 ru:
+  unauthorized:
+    default: У вас нет доступа к этой странице
   errors:
     js_precompilation: имеет ошибку в коде
     not_valid_css_color: не настоящий css цвет

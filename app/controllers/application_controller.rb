@@ -6,7 +6,21 @@ class ApplicationController < ActionController::Base
   before_action :check_locale
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to login_path, :alert => exception.message
+    if current_user
+      target = if (request.referer.nil? || request.url == request.referer || request.method == 'POST')
+                 places_path
+               else
+                 request.referer
+               end
+
+      redirect_to target, alert: exception.message
+    else
+      redirect_to login_path, :alert => exception.message
+    end
+  end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
   end
 
 

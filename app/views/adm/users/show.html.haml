@@ -28,7 +28,7 @@
             %li.list-group-item
               Group
               %span.text-muted.pull-right= @user.group
-            - if @user.general?
+            - if @user.general? && @user.try(:franchisee)
               %li.list-group-item
                 Francheese
                 %span.text-muted.pull-right= link_to @user.franchisee.full_name, adm_user_path(@user.franchisee)
