@@ -1,0 +1,3 @@
+en:
+  errors:
+    unique_place_for_customer: 'Place should be unique for customer'

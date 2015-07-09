@@ -1,0 +1,3 @@
+ua:
+  errors:
+    unique_place_for_customer: 'Заклад має бути унікальним для відвідувача'

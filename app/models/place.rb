@@ -13,6 +13,7 @@ class Place < ActiveRecord::Base
   has_many :messages, :dependent => :destroy
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
   has_many :stocks, :dependent => :destroy
+  has_many :reputations, :dependent => :destroy, class_name: 'Customer::Reputation'
   belongs_to :user
 
   before_validation :set_password, if: 'enter_by_password'

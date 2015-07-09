@@ -13,6 +13,8 @@ class Customer::Visit < ActiveRecord::Base
   validates :network_profile, :place,  presence: true, unless: 'by_password'
   validate :visiting_ones_a_half_an_hour, unless: 'by_password'
 
+  after_commit :calculate_reputation
+
   private
     def visiting_ones_a_half_an_hour
       now = DateTime.now
@@ -27,5 +29,9 @@ class Customer::Visit < ActiveRecord::Base
                                            :place_id => place_id})
       Rails.logger.warn any_visits.inspect
       self.errors.add(:customer, 'Already logged in') if any_visits.any?
+    end
+
+    def calculate_reputation
+      Customer::Reputation.calculate(self)
     end
 end
