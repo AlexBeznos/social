@@ -7,10 +7,10 @@ class Customer::Reputation < ActiveRecord::Base
                                      on: :create}
 
   def self.calculate(object)
-    reputation = object.customer.reputations.find_by(place_id: object.place_id)
+    reputation = Customer::Reputation.find_by(place_id: object.place_id)
 
     if reputation.nil?
-      object.customer.reputations.create(place_id: object.place_id, score: object.place.score_amount)
+      Customer::Reputation.create(place_id: object.place_id, score: object.place.score_amount, customer_id: object.customer_id)
     else
       reputation.update_attributes(score: reputation.score + object.place.score_amount)
     end

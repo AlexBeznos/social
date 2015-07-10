@@ -19,6 +19,9 @@
         = t('models.users.attrs.phone')
         %span.text-muted.pull-right= @user.phone
       %li.list-group-item
+        = t('models.users.attrs.timezone')
+        %span.text-muted.pull-right= @user.timezone
+      %li.list-group-item
         = link_to t('helpers.submit.edit'), edit_user_path(@user), class: 'btn btn-primary btn-block'
         - if can? :destroy, User
           = link_to t('helpers.submit.destroy'), user_path(@user), method: 'DELETE', class: 'btn btn-danger btn-block'

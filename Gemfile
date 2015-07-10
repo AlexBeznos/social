@@ -102,8 +102,13 @@ gem 'codemirror-rails'
 
 # color picker
 gem 'jquery-minicolors-rails'
+
 # authorization
 gem 'cancancan', '~> 1.10'
+
+# Timezone locales
+
+gem 'i18n-timezones'
 
 group :development do
   gem 'spring'

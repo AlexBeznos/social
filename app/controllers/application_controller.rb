@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :gen_root_path
   protect_from_forgery with: :null_session
   before_action :check_locale
+  before_action :set_timezone
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
@@ -25,6 +26,7 @@ class ApplicationController < ActionController::Base
 
 
   private
+
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
@@ -61,6 +63,11 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = session[:locale]
       end
+    end
+
+    def set_timezone
+      tz = current_user ? current_user.timezone : nil
+      Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
     end
 
 end
