@@ -23,7 +23,7 @@ class Style < ActiveRecord::Base
       begin
         self.js_min = Uglifier.compile(js)
       rescue
-        errors.add(:js, I18n.t('errors.js_precompilation'))
+        errors.add(:js, I18n.t('models.errors.js_precompilation'))
       end
     end
 end

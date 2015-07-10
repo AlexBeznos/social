@@ -1,0 +1,33 @@
+ru:
+  simple_form:
+    error_notification:
+      default_message: "Пожалуйста решите проблемы ниже:"
+    labels:
+      place:
+        name: 'Название заведения'
+        logo: 'Логотип'
+        active: Hotspot активен
+        stocks_active: Акции активны
+        redirect_url: Адрес переадресации после аутентификации
+        enter_by_password: Вход по паролю
+        password: Пароль
+      user:
+        first_name: Имя
+        last_name: Фамилия
+        phone: Номер телефона
+        timezone: Текущая таймзона
+        password: Пароль входа
+        password_confirmation: Подтвердите пароль
+      message:
+        message_link: Ссылка в сообщении
+        image: Картинка
+        message: Сообщение
+      stocks:
+        url: Ссылка
+        image: Картинка
+      style:
+        background: Задний фон
+        js: JS
+        css: CSS
+        text_color: Цвет основного текста
+        greating_color: Цвет приветствия

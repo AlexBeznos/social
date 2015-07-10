@@ -1,0 +1,33 @@
+ru:
+  simple_form:
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      place:
+        name: 'Place name'
+        logo: 'Logo'
+        active: Hotspot is active
+        stocks_active: Stocks are active
+        redirect_url: Redirect url after authentication
+        enter_by_password: Enter by password
+        password: Password
+      user:
+        first_name: First name
+        last_name: Last name
+        phone: Phone number
+        timezone: Current timezone
+        password: Password
+        password_confirmation: Confirm password
+      message:
+        message_link: Message link
+        image: Image
+        message: Message
+      stocks:
+        url: Url
+        image: Image
+      style:
+        background: Background
+        js: JS
+        css: CSS
+        text_color: Main text color
+        greating_color: Greating color

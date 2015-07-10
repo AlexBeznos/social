@@ -3,7 +3,7 @@ class Customer::Reputation < ActiveRecord::Base
   belongs_to :place
 
   validates :place_id, uniqueness: { scope: :customer_id,
-                                     message: I18n.t('errors.unique_place_for_customer'),
+                                     messages: I18n.t('errors.validations.unique_place_for_customer'),
                                      on: :create}
 
   def self.calculate(object)

@@ -1,0 +1,11 @@
+ru:
+  models:
+    errors:
+      validations:
+        wrong_link_format: Неверный формат ссылки
+        unique_place_for_customer: Заведение должно быть уникальным для посетителя
+        long_twitter_message: Сообщение со ссылкой не должно превышать 140 символо
+        wrong_phone_number: Неверный формат номера телефона
+        not_valid_css_color: не настоящий css цвет
+        not_valid_css_websafe_color: не веб безопасный цвет
+        not_valid_css_hexidecimal_color: не настоящий hexidecimal цвет

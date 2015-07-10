@@ -1,0 +1,32 @@
+en:
+  models:
+    places:
+      place: заведение
+      attrs:
+        name: 'Название заведения'
+        by_password: 'Вход по паролю'
+        password: 'Пароль для входа'
+        active: 'Hotspot активен'
+        stocks_active: Вывод акций на страницу аутентификации
+        logo: 'Логотип'
+        redirect_url: "Редирект после аутентификации"
+        wifi_link: "Ссылка на страницу с аутентификацией"
+      actions:
+        index:
+          title: 'Заведения'
+          my_places: 'Ваши заведения '
+        show:
+          title: "Заведение %{place_name}"
+        new:
+          title: "Создать заведение"
+        edit:
+          title: 'Обновление %{place_name}'
+        guests:
+          title: "Top посетителей в %{place_name}"
+        birthdays:
+          title: "Дни рождения посетителей в %{place_name}"
+        settings:
+          title: "Настройки для %{place_name}"
+          wifi:  Настройка Wi-Fi
+          messages:  Настройка постов
+          download_settings: 'Скачать настройки WiFi'

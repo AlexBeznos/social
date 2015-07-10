@@ -1,0 +1,5 @@
+ua:
+  models:
+    errors:
+      js_precompilation: має помилку у коді
+      already_logged_in: вже залогінен

@@ -37,7 +37,7 @@ class Message < ActiveRecord::Base
 
   def twitter_message_length
     if (message.length + message_link.length) > 141
-      errors.add(:message, I18n.t('errors.long_twitter_message'))
+      errors.add(:message, I18n.t('errors.validations.long_twitter_message'))
     end
   end
 end

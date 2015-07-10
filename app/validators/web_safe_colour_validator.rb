@@ -1,6 +1,6 @@
 class WebSafeColourValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    record.errors[attribute] << (options[:message] || I18n.t('errors.not_valid_websafe_color')) unless self.class.matches?(value)
+    record.errors[attribute] << (options[:message] || I18n.t('models.errors.validations.not_valid_css_websafe_color')) unless self.class.matches?(value)
   end
 
   def self.matches?(value)

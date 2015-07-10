@@ -1,0 +1,16 @@
+en:
+  models:
+    stocks:
+      class: 'Акцию'
+      actions:
+        index:
+          title: "Акции в заведении %{place_name}"
+          no_stocks: У вас пока что нет акций
+          add: Добавить акцию
+        new:
+          title: Добавить акцию
+        edit:
+          title: Редактировать акцию
+      attrs:
+        image: Фото
+        url: Редирект

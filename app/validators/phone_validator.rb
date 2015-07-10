@@ -1,7 +1,7 @@
 class PhoneValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     return false unless value
-    record.errors[attribute] << (options[:message] || I18n.t('errors.wrong_phone_number')) unless self.class.matches?(value)
+    record.errors[attribute] << (options[:message] || I18n.t('models.errors.validations.wrong_phone_number')) unless self.class.matches?(value)
   end
 
   def self.matches?(value)

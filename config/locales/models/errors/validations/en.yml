@@ -1,0 +1,11 @@
+ru:
+  models:
+    errors:
+      validations:
+        wrong_link_format: Wrong link format
+        unique_place_for_customer: Place should be unique for customer
+        long_twitter_message: Twitter message with link should not be longer than 140 symbols
+        wrong_phone_number: Wrong phone number format
+        not_valid_css_color: is not a valid css colour
+        not_valid_css_websafe_color: is not a websafe css colour
+        not_valid_css_hexidecimal_color: is not a valid hexadecimal colour

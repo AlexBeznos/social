@@ -1,4 +1,0 @@
-ru:
-  errors:
-    long_twitter_message: 'Сообщение со ссылкой не должно превышать 140 символов'
-    wrong_link_format: 'Неверный формат ссылки'

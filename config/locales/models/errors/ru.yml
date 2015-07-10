@@ -1,0 +1,5 @@
+ru:
+  models:
+    errors:
+      js_precompilation: имеет ошибку в коде
+      already_logged_in: уже залогинен

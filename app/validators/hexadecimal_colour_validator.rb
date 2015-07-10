@@ -1,6 +1,6 @@
 class HexadecimalColourValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    record.errors[attribute] << (options[:message] || 'is not a valid hexadecimal colour') unless self.class.matches?(value)
+    record.errors[attribute] << (options[:message] || I18n.t('models.errors.validations.not_valid_css_hexidecimal_color')) unless self.class.matches?(value)
   end
 
   def self.matches?(value)
