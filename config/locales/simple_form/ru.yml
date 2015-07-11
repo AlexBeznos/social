@@ -8,6 +8,8 @@ ru:
         logo: 'Логотип'
         active: Hotspot активен
         stocks_active: Акции активны
+        reputation_on: Начисление бонусов
+        score_amount: Размер бонуса
         redirect_url: Адрес переадресации после аутентификации
         enter_by_password: Вход по паролю
         password: Пароль

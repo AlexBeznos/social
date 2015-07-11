@@ -11,6 +11,8 @@ en:
         logo: 'Логотип'
         redirect_url: "Редирект после аутентификации"
         wifi_link: "Ссылка на страницу с аутентификацией"
+        reputation_active: "Начисление бонусов"
+        score_amount: "Размер бонуса"
       actions:
         index:
           title: 'Заведения'

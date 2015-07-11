@@ -8,6 +8,8 @@ ru:
         logo: 'Logo'
         active: Hotspot is active
         stocks_active: Stocks are active
+        reputation_on: Add bonuses
+        score_amount: Score amount
         redirect_url: Redirect url after authentication
         enter_by_password: Enter by password
         password: Password

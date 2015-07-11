@@ -80,7 +80,9 @@ class PlacesController < ApplicationController
                                     :active,
                                     :redirect_url,
                                     :user_id,
-                                    :stocks_active)
+                                    :stocks_active,
+                                    :reputation_on,
+                                    :score_amount)
     end
 
     def get_number_of_friends(records)

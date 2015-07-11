@@ -20,6 +20,12 @@
         = t('models.places.attrs.stocks_active')
         %span.text-muted.pull-right= fa_plus_minus(@place.stocks_active)
       %li.list-group-item
+        = t('models.places.attrs.reputation_active')
+        %span.text-muted.pull-right= fa_plus_minus(@place.reputation_on)
+      %li.list-group-item
+        = t('models.places.attrs.score_amount')
+        %span.text-muted.pull-right= @place.score_amount
+      %li.list-group-item
         = t('models.places.attrs.by_password')
         %span.text-muted.pull-right= fa_plus_minus(@place.enter_by_password)
       - if @place.enter_by_password
