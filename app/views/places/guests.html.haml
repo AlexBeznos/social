@@ -6,9 +6,9 @@
 .row.guests-table-container
   %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
     %tr.row
-      %th.col-xs-4 Пользователь
-      %th.col-xs-4 Соц. сеть
-      %th.col-xs-4 Кол-во подключений
+      %th.col-xs-4= t('models.places.actions.guests.table.user')
+      %th.col-xs-4= t('models.places.actions.guests.table.network')
+      %th.col-xs-4= t('models.places.actions.guests.table.connection_number')
     - @customers.each do |customer|
       %tr.row
         %td.col-xs-4= customer.customer.full_name

@@ -1,26 +1,26 @@
 ua:
   unauthorized:
-      default: У вас нет доступа к этой странице
+    default: У Вас немае доступу до цієї строрінки
   authlogic:
     error_messages:
-      login_not_found: не найден
-      password_blank: не может быть пустым
+      login_not_found: не знайдений
+      password_blank: не має бути порожнім
       user_session: UserSession (or whatever name you are using)
     attributes:
       user_session:
         email: Email
         password: Пароль
-        remember_me: запомнить меня
+        remember_me: запам`ятати мене
   activerecord:
     models:
-      message: сообщение
-      user: пользователя
-      place: заведение
-      stock: акцию
+      message: повідомлення
+      user: користувач
+      place: заклад
+      stock: акцію
       style: стиль
   notice:
-    create: "%{subject} добавлено"
-    updated: "%{subject} обновлено"
+    create: "%{subject} добавленно"
+    updated: "%{subject} оновлено"
   date:
     abbr_day_names:
     - нд.
@@ -189,6 +189,9 @@ ua:
       create: Створити %{model}
       submit: Зберегти %{model}
       update: Зберегти %{model}
+      edit: Редагувати
+      add: Додати нове %{name}
+      destroy: Видалити
   number:
     currency:
       format:
@@ -271,17 +274,22 @@ ua:
       short: "%d %b, %H:%M"
     pm: по полудні
   wifi:
-    greetings: "Привіт, %{customer_name}!"
+    greetings: "Привіт, <ins>%{customer_name}</ins>!"
+    greetings_to_no_one: Привіт
     description: 'Зайди через свою улюблену соціальну мережу і отримай доступ до інтернету'
     footer: 'Powered by GoFriends'
+    password_placeholder: 'или введите пароль...'
   navigation:
     logout: 'Вийти'
     login: 'Увійті'
+    users: 'Користувачі'
     my_places: 'Мої заклади'
     dashboard:
       statistic: 'Статистика'
+      settings: 'Налаштування'
+      stocks: 'Акції'
       guests: 'Top відвідувачів'
-      birthdays: "Visitor's birthdays"
+      birthdays: "Дні народження"
   pages:
     places:
       title: 'Заклади'

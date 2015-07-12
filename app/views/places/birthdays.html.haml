@@ -6,9 +6,9 @@
 .row.birthdays-table-container
   %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
     %tr.row
-      %th.col-xs-4 Пользователь
-      %th.col-xs-4 Аккаунты
-      %th.col-xs-4 День Рождения
+      %th.col-xs-4= t('models.places.actions.birthdays.table.user')
+      %th.col-xs-4= t('models.places.actions.birthdays.table.network')
+      %th.col-xs-4= t('models.places.actions.birthdays.table.birthday')
     - @customers.each do |customer|
       %tr.row
         %td.col-xs-4= customer.full_name

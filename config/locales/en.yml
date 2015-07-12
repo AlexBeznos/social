@@ -142,6 +142,9 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+      edit: Edit
+      add: Add new %{name}
+      destroy: Delete
   number:
     currency:
       format:
@@ -209,9 +212,12 @@ en:
   navigation:
     logout: 'Logout'
     login: 'Login'
+    users: 'Users'
     my_places: 'My places'
     dashboard:
       statistic: 'Statistic'
+      settings: 'Settings'
+      stocks: 'Stocks'
       guests: 'Top visitors'
       birthdays: "Visitor's birthdays"
   pages:

@@ -107,7 +107,6 @@ gem 'jquery-minicolors-rails'
 gem 'cancancan', '~> 1.10'
 
 # Timezone locales
-
 gem 'i18n-timezones'
 
 group :development do

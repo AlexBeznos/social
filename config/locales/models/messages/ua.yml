@@ -1,13 +1,13 @@
 ua:
   models:
     messages:
-      message_for: "Сообщение для %{name}"
+      message_for: "Повідомлення для %{name}"
       attrs:
-        message: 'сообщение'
-        subscription: "Подписка на"
-        message_link: "Ссылка в сообщении"
+        message: 'повідомлення'
+        subscription: "Підписка на"
+        message_link: "Посилання в повідомленні"
       actions:
         edit:
-          title: 'Обновление %{place_name}'
+          title: 'Оновлення %{place_name}'
         new:
-          title: Добавить сообщение
+          title: Додати повідомлення

@@ -21,10 +21,12 @@ ru:
         password: Пароль входа
         password_confirmation: Подтвердите пароль
       message:
+        social_network: Социальная сеть
+        subscription: Подписать на
         message_link: Ссылка в сообщении
         image: Картинка
         message: Сообщение
-      stocks:
+      stock:
         url: Ссылка
         image: Картинка
       style:

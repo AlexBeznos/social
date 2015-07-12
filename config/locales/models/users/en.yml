@@ -1,24 +1,24 @@
 en:
   models:
     users:
-      created: Пользователь добавлен
-      updated: Данные пользователя обновлены
-      user: пользователя
+      created: User was added
+      updated: User's data updated
+      user: user
       actions:
         index:
-          title: Пользователи
-          my_users: Ваши пользователи
+          title: User
+          my_users: Your users
         show:
-          title: "Пользователь %{user}"
-          heading: Настройки пользователя
-          places: Заведения пользователя
+          title: "User %{user}"
+          heading: User's settings
+          places: User's places
         new:
-          title: Создать нового пользователя
+          title: Create new user
         edit:
-          title: 'Обновление %{name}'
+          title: 'Update %{name}'
       attrs:
-        first_name: Имя
-        last_name: Фамилия
-        phone: Телефон
+        first_name: Name
+        last_name: Second name
+        phone: Phone
         email: E-mail
-        timezone: 'Текущая таймзона'
+        timezone: 'Current timezone'

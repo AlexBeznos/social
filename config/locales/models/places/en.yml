@@ -1,34 +1,54 @@
 en:
   models:
     places:
-      place: заведение
+      place: places
       attrs:
-        name: 'Название заведения'
-        by_password: 'Вход по паролю'
-        password: 'Пароль для входа'
-        active: 'Hotspot активен'
-        stocks_active: Вывод акций на страницу аутентификации
-        logo: 'Логотип'
-        redirect_url: "Редирект после аутентификации"
-        wifi_link: "Ссылка на страницу с аутентификацией"
-        reputation_active: "Начисление бонусов"
-        score_amount: "Размер бонуса"
+        name: 'Place name'
+        by_password: 'Enter by password'
+        password: 'Password'
+        active: 'Hotspot enabled'
+        stocks_active: Add stocks to authentication page
+        logo: 'Logo'
+        redirect_url: "Redirect after authentication"
+        wifi_link: "Authentication page link"
+        reputation_active: "Bonuses count"
+        score_amount: "Bonus amount"
       actions:
         index:
-          title: 'Заведения'
-          my_places: 'Ваши заведения '
+          title: 'Places'
+          my_places: 'Your places '
         show:
-          title: "Заведение %{place_name}"
+          title: "Place %{place_name}"
+          table:
+            time: Time
+            network: Soc. network
+            customer: Visitor
+          info:
+            day: Day
+            week: Week
+            month: Month
+            gender: Gender
+            men: men
+            women: women
+            auditory: Auditory
         new:
-          title: "Создать заведение"
+          title: "Create a place"
         edit:
-          title: 'Обновление %{place_name}'
+          title: 'Update %{place_name}'
         guests:
-          title: "Top посетителей в %{place_name}"
+          title: "Top visitors in %{place_name}"
+          table:
+            user: Visitor
+            network: Soc. network
+            connection_number: Connections number
         birthdays:
-          title: "Дни рождения посетителей в %{place_name}"
+          title: "Visitors birthdays in %{place_name}"
+          table:
+            user: Visitor
+            network: Soc. network
+            birthday: Birthday
         settings:
-          title: "Настройки для %{place_name}"
-          wifi:  Настройка Wi-Fi
-          messages:  Настройка постов
-          download_settings: 'Скачать настройки WiFi'
+          title: "Settings for %{place_name}"
+          wifi: Wi-Fi settings
+          messages: Posts settings
+          download_settings: 'Download WiFi settings'

@@ -1,24 +1,24 @@
 ua:
   models:
     users:
-      created: Пользователь добавлен
-      updated: Данные пользователя обновлены
-      user: пользователя
+      created: Користувача добавленно
+      updated: Данні користувача оновленно
+      user: користувач
       actions:
         index:
-          title: Пользователи
-          my_users: Ваши пользователи
+          title: Користувачі
+          my_users: Ваші користувачі
         show:
-          title: "Пользователь %{user}"
-          heading: Настройки пользователя
-          places: Заведения пользователя
+          title: "Користувач %{user}"
+          heading: Налаштування користувача
+          places: Заклади користувача
         new:
-          title: Создать нового пользователя
+          title: Додати нового користувача
         edit:
-          title: 'Обновление %{name}'
+          title: 'Оновлення %{name}'
       attrs:
-        first_name: Имя
-        last_name: Фамилия
+        first_name: Им`я
+        last_name: Прізвище
         phone: Телефон
         email: E-mail
-        timezone: 'Текущая таймзона'
+        timezone: 'Поточний часовий пояс'

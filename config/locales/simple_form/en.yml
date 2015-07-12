@@ -1,4 +1,4 @@
-ru:
+en:
   simple_form:
     error_notification:
       default_message: "Please review the problems below:"
@@ -21,11 +21,13 @@ ru:
         password: Password
         password_confirmation: Confirm password
       message:
+        social_network: Social network
+        subscription: Subscribe to
         message_link: Message link
         image: Image
         message: Message
-      stocks:
-        url: Url
+      stock:
+        url: URL
         image: Image
       style:
         background: Background

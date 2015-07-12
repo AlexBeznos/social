@@ -19,14 +19,34 @@ ru:
           my_places: 'Ваши заведения '
         show:
           title: "Заведение %{place_name}"
+          table:
+            time: Время
+            network: Соц. сеть
+            customer: Пользователь
+          info:
+            day: Сутки
+            week: Неделя
+            month: Месяц
+            gender: Пол
+            men: муж
+            women: жен
+            auditory: Охват аудитории
         new:
           title: "Создать заведение"
         edit:
           title: 'Обновление %{place_name}'
         guests:
           title: "Top посетителей в %{place_name}"
+          table:
+            user: Пользователь
+            network: Соц. сеть
+            connection_number: Кол-во подключений
         birthdays:
           title: "Дни рождения посетителей в %{place_name}"
+          table:
+            user: Пользователь
+            network: Соц. сеть
+            birthday: День рождения
         settings:
           title: "Настройки для %{place_name}"
           wifi:  Настройка Wi-Fi

@@ -1,34 +1,54 @@
 ua:
   models:
     places:
-      place: заведение
+      place: заклад
       attrs:
-        name: 'Название заведения'
-        by_password: 'Вход по паролю'
-        password: 'Пароль для входа'
-        active: 'Hotspot активен'
-        stocks_active: Вывод акций на страницу аутентификации
+        name: 'Назва закладу'
+        by_password: 'Вхід через пароль'
+        password: 'Пароль для входу'
+        active: 'Hotspot активований'
+        stocks_active: Виводити акції на сторінку аутентифікації
         logo: 'Логотип'
-        redirect_url: "Редирект после аутентификации"
-        wifi_link: "Ссылка на страницу с аутентификацией"
-        reputation_active: "Начисление бонусов"
-        score_amount: "Размер бонуса"
+        redirect_url: "Редирект після аутентифікації"
+        wifi_link: "Посилання на сторінку аутентифікації"
+        reputation_active: "Нарахування бонусів"
+        score_amount: "Розмір бонусу"
       actions:
         index:
-          title: 'Заведения'
-          my_places: 'Ваши заведения '
+          title: 'Заклад'
+          my_places: 'Ваші заклади '
         show:
-          title: "Заведение %{place_name}"
+          title: "Заклад %{place_name}"
+          table:
+            time: Час
+            network: Соц. мережа
+            customer: Користувач
+          info:
+            day: Доба
+            week: Неділя
+            month: Місяць
+            gender: Стать
+            men: чол
+            women: жен
+            auditory: Охоплення аудиториї
         new:
-          title: "Создать заведение"
+          title: "Додати заклад"
         edit:
-          title: 'Обновление %{place_name}'
+          title: 'Оновлення %{place_name}'
         guests:
-          title: "Top посетителей в %{place_name}"
+          title: "Top відідувачів у %{place_name}"
+          table:
+            user: Відвідувача
+            network: Соц. мережа
+            connection_number: Кількість підключень
         birthdays:
-          title: "Дни рождения посетителей в %{place_name}"
+          title: "Дні народження відвідувачів у %{place_name}"
+          table:
+            user: Відвідувача
+            network: Соц. мережа
+            birthday: День народження
         settings:
-          title: "Настройки для %{place_name}"
-          wifi:  Настройка Wi-Fi
-          messages:  Настройка постов
-          download_settings: 'Скачать настройки WiFi'
+          title: "Налаштування для %{place_name}"
+          wifi:  Налаштування Wi-Fi
+          messages:  Налаштування постів
+          download_settings: 'Скачати налаштування WiFi'
