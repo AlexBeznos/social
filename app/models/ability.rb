@@ -16,11 +16,13 @@ class Ability
       can :manage, :all
     elsif user.franchisee?
       user_ids = user.place_owners.map(&:id)
+      all_user_ids = [user.id] + user_ids
 
       can :crud, User, id: user_ids + [user.id]
       cannot :destroy, User
-      can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: [user.id] + user_ids
-      can :crud, [Stock, Message, Style], :place => { :user_id => [user.id] + user_ids }
+      can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: all_user_ids
+      can :download_settings, Place, user_id: all_user_ids
+      can :crud, [Stock, Message, Style], :place => { :user_id => all_user_ids }
     elsif user.id && user.general?
       can [:show, :update], User, id: user.id
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: user.id
