@@ -276,9 +276,9 @@ ua:
   wifi:
     greetings: "Привіт, <ins>%{customer_name}</ins>!"
     greetings_to_no_one: Привіт
-    description: 'Зайди через свою улюблену соціальну мережу і отримай доступ до інтернету'
+    description: 'Зайди через свою улюблену соціальну мережу та отримай доступ до інтернету'
     footer: 'Powered by GoFriends'
-    password_placeholder: 'или введите пароль...'
+    password_placeholder: 'фбо введіть пароль...'
   navigation:
     logout: 'Вийти'
     login: 'Увійті'

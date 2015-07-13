@@ -1,14 +1,14 @@
 ua:
   simple_form:
     error_notification:
-      default_message: "Будь ласка вирішіть промблеми нижче:"
+      default_message: "Будь ласка вирішіть проблеми нижче:"
     labels:
       place:
         name: 'Назва закладу'
         logo: 'Логотип'
         active: Активувати Hotspot
         stocks_active: Активувати Акції
-        redirect_url: Адрес переадресациї після аутентивікації
+        redirect_url: Адреса переадресації після аутентифікації
         enter_by_password: Вхід за паролем
         password: Пароль
       user:

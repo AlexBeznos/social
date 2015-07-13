@@ -5,7 +5,7 @@ en:
       actions:
         index:
           title: "Stocks in %{place_name}"
-          no_stocks: У вас пока что нет акций
+          no_stocks: You don't have any stocks yet
           add: Add stock
         new:
           title: Add stock
