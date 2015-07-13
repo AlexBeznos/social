@@ -1,5 +1,6 @@
 class Adm::UsersController < AdministrationController
-  before_filter :find_user, except: [:index, :new, :create]
+  load_and_authorize_resource :user
+
   def index
     @users = User.all
   end
@@ -28,7 +29,7 @@ class Adm::UsersController < AdministrationController
     if @user.update(user_params)
       redirect_to adm_users_path, :notice => 'User updated!'
     else
-      render :action => :new, :alert => "U pass something wrong. Errors: #{@user.errors}"
+      render :action => :edit, :alert => "U pass something wrong. Errors: #{@user.errors}"
     end
   end
 
@@ -51,9 +52,5 @@ class Adm::UsersController < AdministrationController
   private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :phone, :password, :password_confirmation, :group)
-  end
-
-  def find_user
-    @user = User.find(params[:id])
   end
 end

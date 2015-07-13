@@ -1,0 +1,13 @@
+en:
+  models:
+    messages:
+      message_for: "Message for %{name}"
+      attrs:
+        message: 'message'
+        subscription: "Subscription on"
+        message_link: "Link in message"
+      actions:
+        edit:
+          title: 'Update %{place_name}'
+        new:
+          title: Add message

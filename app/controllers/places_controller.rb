@@ -1,19 +1,14 @@
 class PlacesController < ApplicationController
-  before_filter :require_user
-  before_action :find_place, except: [:index, :new, :create]
-  before_filter :require_proper_user, except: [:index, :new, :create]
+  load_and_authorize_resource :find_by => :slug
 
   def index
-    @places = current_user.get_all_places
+    @places = Place.all
   end
 
   def new
-    @place = Place.new
   end
 
   def create
-    @place = Place.new(place_params)
-
     if @place.save
       redirect_to user_path(@place.user), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
@@ -72,10 +67,6 @@ class PlacesController < ApplicationController
   end
 
   private
-    def find_place
-      @place = Place.find_by_slug(params[:id])
-    end
-
 
     def place_params
       params.require(:place).permit(:name,
@@ -86,14 +77,16 @@ class PlacesController < ApplicationController
                                     :active,
                                     :redirect_url,
                                     :user_id,
-                                    :stocks_active)
+                                    :stocks_active,
+                                    :reputation_on,
+                                    :score_amount)
     end
 
     def get_number_of_friends(records)
-      number = records.map {|visit| visit.network_profile }
+      number = records.map { |visit| visit.network_profile }
                       .uniq
-                      .map {|np| np.try(:friends_count) }
-                      .inject{|sum,x| sum.to_i + x.to_i }
+                      .map { |np| np.try(:friends_count) }
+                      .inject{ |sum,x| sum.to_i + x.to_i }
 
       number ? number : 0
     end

@@ -7,6 +7,7 @@ class Customer::NetworkProfile < ActiveRecord::Base
   belongs_to :social_network
 
   validates :uid, uniqueness: { scope: :social_network }
+  validates :url, :url => true
   before_save :set_friends_count
 
 

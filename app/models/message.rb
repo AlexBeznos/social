@@ -12,10 +12,13 @@ class Message < ActiveRecord::Base
   # TODO: links validation
   validates :social_network, presence: true
   validates :message, presence: true, unless: 'social_network_id == 3' # SocialNetwork.find(3).name == 'instagram'
+  validates :message_link, :url => true
   validates :subscription, presence: true, if: 'social_network_id == 3'
   validates_attachment :image, :presence => true,
                                 :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
                                 unless: 'social_network_id == 3'
+
+  validate :twitter_message_length, if: 'social_network_id == 4'
 
   before_save :set_subscription_uid, if: 'social_network_id == 3'
   after_save :set_active_only_to_one_message_from_place, if: 'active'
@@ -29,6 +32,12 @@ class Message < ActiveRecord::Base
 
     place.messages.where(social_network_id: social_network_id).each do |message|
       message.update(active: false) unless message == self
+    end
+  end
+
+  def twitter_message_length
+    if (message.length + message_link.length) > 141
+      errors.add(:message, I18n.t('models.errors.validations.long_twitter_message'))
     end
   end
 end

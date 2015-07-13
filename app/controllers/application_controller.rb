@@ -4,29 +4,29 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :gen_root_path
   protect_from_forgery with: :null_session
   before_action :check_locale
+  before_action :set_timezone
 
-  def require_user
-    unless current_user
-      no_access_to_login
+  rescue_from CanCan::AccessDenied do |exception|
+    if current_user
+      target = if (request.referer.nil? || request.url == request.referer || request.method == 'POST')
+                 places_path
+               else
+                 request.referer
+               end
+
+      redirect_to target, alert: exception.message
+    else
+      redirect_to login_path, :alert => exception.message
     end
   end
 
-  def require_proper_user
-    unless current_user.get_all_places.include?(@place)
-      no_access_to_place
-    end
-  end
-
-  def no_access_to_login
-    redirect_to login_path, alert: 'You have no rights to access this page!'
-  end
-
-  def no_access_to_place
-    redirect_to places_path, alert: 'You have no rights to access this page!'
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
   end
 
 
   private
+
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
@@ -63,6 +63,11 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = session[:locale]
       end
+    end
+
+    def set_timezone
+      tz = current_user ? current_user.timezone : nil
+      Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
     end
 
 end

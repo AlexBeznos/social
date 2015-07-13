@@ -8,15 +8,19 @@ class Place < ActiveRecord::Base
                     :path => "/images/logos/:id/:style.:extension",
                     :url => ":s3_domain_url"
 
+  has_one :style,  :dependent => :destroy
   has_many :messages, :dependent => :destroy
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
   has_many :stocks, :dependent => :destroy
+  has_many :reputations, :dependent => :destroy, class_name: 'Customer::Reputation'
+  has_many :social_network_icons, :dependent => :destroy
   belongs_to :user
 
   before_validation :set_password, if: 'enter_by_password'
 
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
+  validates :wifi_settings_link, :redirect_url, :url => true
   validates_attachment :logo,
                        :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
 
@@ -53,7 +57,7 @@ class Place < ActiveRecord::Base
 
     # TODO: should be delayed
     def gen_new_wifi_settings
-      WifiSettingsService.create(place_id: id) unless wifi_settings_link
+      WifiSettingsWorker.perform_async(id) unless wifi_settings_link
     end
 
     # TODO: should be delayed

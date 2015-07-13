@@ -1,0 +1,24 @@
+ru:
+  models:
+    users:
+      created: Пользователь добавлен
+      updated: Данные пользователя обновлены
+      user: пользователя
+      actions:
+        index:
+          title: Пользователи
+          my_users: Ваши пользователи
+        show:
+          title: "Пользователь %{user}"
+          heading: Настройки пользователя
+          places: Заведения пользователя
+        new:
+          title: Создать нового пользователя
+        edit:
+          title: 'Обновление %{name}'
+      attrs:
+        first_name: Имя
+        last_name: Фамилия
+        phone: Телефон
+        email: E-mail
+        timezone: 'Часовой пояс'

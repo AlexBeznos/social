@@ -1,0 +1,16 @@
+ua:
+  models:
+    stocks:
+      class: 'Акцію'
+      actions:
+        index:
+          title: "Акції в закладах %{place_name}"
+          no_stocks: У вас поки що немає акцій
+          add: Додати акцію
+        new:
+          title: Додати акцію
+        edit:
+          title: Редагувати акцію
+      attrs:
+        image: Фото
+        url: Посилання

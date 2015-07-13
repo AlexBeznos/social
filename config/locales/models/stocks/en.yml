@@ -1,0 +1,16 @@
+en:
+  models:
+    stocks:
+      class: 'Stock'
+      actions:
+        index:
+          title: "Stocks in %{place_name}"
+          no_stocks: У вас пока что нет акций
+          add: Add stock
+        new:
+          title: Add stock
+        edit:
+          title: Edit stock
+      attrs:
+        image: Picture
+        url: Redirect url

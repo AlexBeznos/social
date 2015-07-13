@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705173617) do
+ActiveRecord::Schema.define(version: 20150712222211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20150705173617) do
   add_index "customer_network_profiles", ["customer_id"], name: "index_customer_network_profiles_on_customer_id", using: :btree
   add_index "customer_network_profiles", ["social_network_id"], name: "index_customer_network_profiles_on_social_network_id", using: :btree
   add_index "customer_network_profiles", ["uid"], name: "index_customer_network_profiles_on_uid", using: :btree
+
+  create_table "customer_reputations", force: true do |t|
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "place_id"
+    t.integer  "customer_id"
+  end
+
+  add_index "customer_reputations", ["customer_id"], name: "index_customer_reputations_on_customer_id", using: :btree
+  add_index "customer_reputations", ["place_id"], name: "index_customer_reputations_on_place_id", using: :btree
 
   create_table "customer_visits", force: true do |t|
     t.integer  "customer_network_profile_id"
@@ -98,6 +109,8 @@ ActiveRecord::Schema.define(version: 20150705173617) do
     t.boolean  "wifi_settings_link_not_fresh", default: true
     t.boolean  "stocks_active",                default: false
     t.string   "template",                     default: "default"
+    t.boolean  "reputation_on",                default: false
+    t.integer  "score_amount",                 default: 0
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
@@ -112,6 +125,22 @@ ActiveRecord::Schema.define(version: 20150705173617) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "social_network_icons", force: true do |t|
+    t.integer  "place_id"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.integer  "social_network_id"
+    t.integer  "style_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "social_network_icons", ["place_id"], name: "index_social_network_icons_on_place_id", using: :btree
+  add_index "social_network_icons", ["social_network_id"], name: "index_social_network_icons_on_social_network_id", using: :btree
+  add_index "social_network_icons", ["style_id"], name: "index_social_network_icons_on_style_id", using: :btree
 
   create_table "social_networks", force: true do |t|
     t.string   "name"
@@ -134,6 +163,24 @@ ActiveRecord::Schema.define(version: 20150705173617) do
 
   add_index "stocks", ["place_id"], name: "index_stocks_on_place_id", using: :btree
 
+  create_table "styles", force: true do |t|
+    t.text     "js"
+    t.text     "js_min"
+    t.text     "css"
+    t.text     "css_min"
+    t.string   "text_color"
+    t.string   "greating_color"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
+
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -152,6 +199,7 @@ ActiveRecord::Schema.define(version: 20150705173617) do
     t.string   "current_login_ip"
     t.integer  "group",             default: 0
     t.integer  "user_id"
+    t.string   "timezone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

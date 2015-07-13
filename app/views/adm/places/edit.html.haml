@@ -3,10 +3,9 @@
   %h1= yield(:title)
 
   - navigation_add 'Users', adm_users_path
-  - navigation_add "User #{@user.id}", adm_user_path(@user)
-  - navigation_add 'Places', adm_user_places_path(@user)
-  - navigation_add "Place #{@place.id}", adm_user_place_path(@user, @place)
-  - navigation_add 'Edit', edit_adm_user_place_path(@user, @place)
+  - navigation_add "User #{@place.user.id}", adm_user_path(@place.user)
+  - navigation_add "Place #{@place.id}", adm_place_path(@place)
+  - navigation_add 'Edit', edit_adm_place_path(@place)
   = render_navigation
 
 %section.content

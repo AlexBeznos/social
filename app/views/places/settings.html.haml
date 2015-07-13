@@ -20,6 +20,12 @@
         = t('models.places.attrs.stocks_active')
         %span.text-muted.pull-right= fa_plus_minus(@place.stocks_active)
       %li.list-group-item
+        = t('models.places.attrs.reputation_active')
+        %span.text-muted.pull-right= fa_plus_minus(@place.reputation_on)
+      %li.list-group-item
+        = t('models.places.attrs.score_amount')
+        %span.text-muted.pull-right= @place.score_amount
+      %li.list-group-item
         = t('models.places.attrs.by_password')
         %span.text-muted.pull-right= fa_plus_minus(@place.enter_by_password)
       - if @place.enter_by_password
@@ -34,7 +40,9 @@
         %span.text-muted.pull-right= link_to fa_icon('external-link'), gowifi_place_path(@place)
       %li.list-group-item
         = link_to t('helpers.submit.edit'), edit_place_path(@place, user: @place.user_id), class: 'btn btn-primary btn-block'
-      - if @place.wifi_settings_link
+      %li.list-group-item
+        = link_to "#{t('helpers.submit.edit')} #{t('models.style.page')}", @place.style ? edit_place_style_path(@place, @place.style) : new_place_style_path(@place), class: 'btn btn-success btn-block'
+      - if @place.wifi_settings_link && can?(:download_settings, @place)
         %li.list-group-item
           = link_to t('models.places.actions.settings.download_settings'), @place.wifi_settings_link, class: 'btn btn-block btn-info'
   .col-sm-7

@@ -5,7 +5,7 @@
 .row.calendar-container
   .col-sm-2
     %select#month
-      - I18n.t('date.abbr_month_names')[1..-1].each_with_index do |month, index|
+      - t('date.abbr_month_names')[1..-1].each_with_index do |month, index|
         %option{:value => index}= month
   .col-sm-8.calendar
     .calendar-inner
@@ -19,9 +19,9 @@
 .row.statistics-table-container
   %table.col-sm-8.col-sm-offset-2.col-xs-12.statistics-table.statistics-table-minimized
     %tr.row
-      %th.col-xs-4 Время
-      %th.col-xs-4 Соц. сеть
-      %th.col-xs-4 Пользователь
+      %th.col-xs-4= t('models.places.actions.show.table.time')
+      %th.col-xs-4= t('models.places.actions.show.table.network')
+      %th.col-xs-4= t('models.places.actions.show.table.customer')
     - @visits_by_date_without_join.each do |visit|
       %tr.row
         %td.col-xs-4= visit.created_at.strftime('%k:%M')
@@ -37,67 +37,67 @@
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
-        Сутки:
+        = "#{t('models.places.actions.show.info.day')}:"
         %span= @visits_by_date.count
     .analysis-col-inner
       %h2
-        Охват аудитории:
+        = "#{t('models.places.actions.show.info.auditory')}:"
         %span= @number_of_friends_by_day
       .row.pic
         .col-xs-6.col-xs-offset-6
           = fa_icon 'users'
       .row.gender
         .col-xs-6
-          Пол:
+          = "#{t('models.places.actions.show.info.gender')}:"
         .col-xs-6
           %p
-            муж:
+            = "#{t('models.places.actions.show.info.men')}:"
             %span= @visits_by_date.by_gender('m').count
           %p
-            жен:
+            = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_by_date.by_gender().count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
-        Неделя:
+        = "#{t('models.places.actions.show.info.week')}:"
         %span= @visits_this_week.count
     .analysis-col-inner
       %h2
-        Охват аудитории:
+        = "#{t('models.places.actions.show.info.auditory')}:"
         %span= @number_of_friends_by_week
       .row.pic
         .col-xs-6.col-xs-offset-6
           = fa_icon 'users'
       .row.gender
         .col-xs-6
-          Пол:
+          = "#{t('models.places.actions.show.info.gender')}:"
         .col-xs-6
           %p
-            муж:
+            = "#{t('models.places.actions.show.info.men')}:"
             %span= @visits_this_week.by_gender('m').count
           %p
-            жен:
+            = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_this_week.by_gender().count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
-        Месяц:
+        = "#{t('models.places.actions.show.info.month')}:"
         %span= @visits_this_month.count
     .analysis-col-inner
       %h2
-        Охват аудитории:
+        = "#{t('models.places.actions.show.info.auditory')}:"
         %span= @number_of_friends_by_month
       .row.pic
         .col-xs-6.col-xs-offset-6
           = fa_icon 'users'
       .row.gender
         .col-xs-6
-          Пол:
+          = "#{t('models.places.actions.show.info.gender')}:"
         .col-xs-6
           %p
-            муж:
+            = "#{t('models.places.actions.show.info.men')}:"
             %span= @visits_this_month.by_gender('m').count
           %p
-            жен:
+            = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_this_month.by_gender().count
       .row.age

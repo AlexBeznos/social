@@ -1,0 +1,13 @@
+ru:
+  models:
+    messages:
+      message_for: "Сообщение для %{name}"
+      attrs:
+        message: 'сообщение'
+        subscription: "Подписка на"
+        message_link: "Ссылка в сообщении"
+      actions:
+        edit:
+          title: 'Обновление %{place_name}'
+        new:
+          title: Добавить сообщение

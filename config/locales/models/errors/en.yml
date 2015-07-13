@@ -1,0 +1,5 @@
+en:
+  models:
+    errors:
+      js_precompilation: has the error in code
+      already_logged_in: already logged in

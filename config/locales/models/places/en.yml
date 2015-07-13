@@ -1,0 +1,54 @@
+en:
+  models:
+    places:
+      place: places
+      attrs:
+        name: 'Place name'
+        by_password: 'Enter by password'
+        password: 'Password'
+        active: 'Hotspot enabled'
+        stocks_active: Add stocks to authentication page
+        logo: 'Logo'
+        redirect_url: "Redirect after authentication"
+        wifi_link: "Authentication page link"
+        reputation_active: "Bonuses count"
+        score_amount: "Bonus amount"
+      actions:
+        index:
+          title: 'Places'
+          my_places: 'Your places '
+        show:
+          title: "Place %{place_name}"
+          table:
+            time: Time
+            network: Soc. network
+            customer: Visitor
+          info:
+            day: Day
+            week: Week
+            month: Month
+            gender: Gender
+            men: men
+            women: women
+            auditory: Auditory
+        new:
+          title: "Create a place"
+        edit:
+          title: 'Update %{place_name}'
+        guests:
+          title: "Top visitors in %{place_name}"
+          table:
+            user: Visitor
+            network: Soc. network
+            connection_number: Connections number
+        birthdays:
+          title: "Visitors birthdays in %{place_name}"
+          table:
+            user: Visitor
+            network: Soc. network
+            birthday: Birthday
+        settings:
+          title: "Settings for %{place_name}"
+          wifi: Wi-Fi settings
+          messages: Posts settings
+          download_settings: 'Download WiFi settings'

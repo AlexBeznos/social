@@ -1,7 +1,6 @@
 class Adm::MessagesController < AdministrationController
-  before_action :find_user
-  before_action :find_place
-  before_action :find_message, except: [:new, :create]
+  load_and_authorize_resource :place, :find_by => :slug
+  load_and_authorize_resource :style, :through => :place, :shallow => true
 
 
   def new
@@ -9,10 +8,11 @@ class Adm::MessagesController < AdministrationController
   end
 
   def create
-    @message = @place.messages.new(message_params)
+    @message = Message.new(message_params)
+    @message.place_id = @place.id
 
     if @message.save
-      redirect_to adm_user_place_path(@user, @place), :notice => 'Message created!'
+      redirect_to adm_place_path(@place), :notice => 'Message created!'
     else
       render :action => :new, :alert => "U pass something wrong. Errors: #{@message.errors}"
     end
@@ -21,41 +21,30 @@ class Adm::MessagesController < AdministrationController
   def edit
   end
 
+  def update
+    if @message.update(message_params)
+      redirect_to adm_place_path(@message.place), :notice => 'Message updated!'
+    else
+      render :action => :edit, :alert => "U pass something wrong. Errors: #{@message.errors}"
+    end
+  end
+
   def activate
     @message.update(active: true)
-    redirect_to adm_user_place_path(@user, @place)
+    redirect_to adm_place_path(@message.place)
   end
 
   def deactivate
     @message.update(active: false)
-    redirect_to adm_user_place_path(@user, @place)
-  end
-
-  def update
-    if @message.update(message_params)
-      redirect_to adm_user_place_path(@user, @place), :notice => 'Message updated!'
-    else
-      render :action => :new, :alert => "U pass something wrong. Errors: #{@message.errors}"
-    end
+    redirect_to adm_place_path(@message.place)
   end
 
   def destroy
     @message.destroy
-    redirect_to adm_user_place_path(@user, @place), :notice => 'Place destroied!'
+    redirect_to adm_place_path(@message.place), :notice => 'Place destroied!'
   end
 
   private
-  def find_user
-    @user = User.find(params[:user_id])
-  end
-
-  def find_place
-    @place = Place.find_by_slug(params[:place_id])
-  end
-
-  def find_message
-    @message = Message.find(params[:id])
-  end
 
   def message_params
     params.require(:message).permit(:social_network_id, :message, :message_link, :image, :active, :subscription)

@@ -1,0 +1,54 @@
+ua:
+  models:
+    places:
+      place: заклад
+      attrs:
+        name: 'Назва закладу'
+        by_password: 'Вхід через пароль'
+        password: 'Пароль для входу'
+        active: 'Hotspot активований'
+        stocks_active: Виводити акції на сторінку аутентифікації
+        logo: 'Логотип'
+        redirect_url: "Редирект після аутентифікації"
+        wifi_link: "Посилання на сторінку аутентифікації"
+        reputation_active: "Нарахування бонусів"
+        score_amount: "Розмір бонусу"
+      actions:
+        index:
+          title: 'Заклад'
+          my_places: 'Ваші заклади '
+        show:
+          title: "Заклад %{place_name}"
+          table:
+            time: Час
+            network: Соц. мережа
+            customer: Користувач
+          info:
+            day: Доба
+            week: Неділя
+            month: Місяць
+            gender: Стать
+            men: чол
+            women: жен
+            auditory: Охоплення аудиториї
+        new:
+          title: "Додати заклад"
+        edit:
+          title: 'Оновлення %{place_name}'
+        guests:
+          title: "Top відідувачів у %{place_name}"
+          table:
+            user: Відвідувача
+            network: Соц. мережа
+            connection_number: Кількість підключень
+        birthdays:
+          title: "Дні народження відвідувачів у %{place_name}"
+          table:
+            user: Відвідувача
+            network: Соц. мережа
+            birthday: День народження
+        settings:
+          title: "Налаштування для %{place_name}"
+          wifi:  Налаштування Wi-Fi
+          messages:  Налаштування постів
+          download_settings: 'Скачати налаштування WiFi'

@@ -1,0 +1,24 @@
+ua:
+  models:
+    users:
+      created: Користувача добавленно
+      updated: Данні користувача оновленно
+      user: користувач
+      actions:
+        index:
+          title: Користувачі
+          my_users: Ваші користувачі
+        show:
+          title: "Користувач %{user}"
+          heading: Налаштування користувача
+          places: Заклади користувача
+        new:
+          title: Додати нового користувача
+        edit:
+          title: 'Оновлення %{name}'
+      attrs:
+        first_name: Им`я
+        last_name: Прізвище
+        phone: Телефон
+        email: E-mail
+        timezone: 'Часовий пояс'

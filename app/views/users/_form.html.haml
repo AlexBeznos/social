@@ -4,6 +4,7 @@
   = f.input :first_name
   = f.input :last_name
   = f.input :phone
+  = f.input :timezone, as: :time_zone, include_blank: false, label: I18n.t('simple_form.labels.user.timezone')
   = f.input :password
   = f.input :password_confirmation
 

@@ -1,0 +1,35 @@
+ua:
+  simple_form:
+    error_notification:
+      default_message: "Будь ласка вирішіть промблеми нижче:"
+    labels:
+      place:
+        name: 'Назва закладу'
+        logo: 'Логотип'
+        active: Активувати Hotspot
+        stocks_active: Активувати Акції
+        redirect_url: Адрес переадресациї після аутентивікації
+        enter_by_password: Вхід за паролем
+        password: Пароль
+      user:
+        first_name: Ім`я
+        last_name: Прізвище
+        phone: Номер телефону
+        timezone: Поточний часовий пояс
+        password: Пароль входу
+        password_confirmation: Підтвердити пароль
+      message:
+        social_network: Соціальна мережа
+        subscription: Підписати на
+        message_link: Посилання в повідомленні
+        image: Картинка
+        message: Повідомлення
+      stock:
+        url: Посилання
+        image: Картинка
+      style:
+        background: Задній фон
+        js: JS
+        css: CSS
+        text_color: Колір основного тексту
+        greating_color: Колір привітання

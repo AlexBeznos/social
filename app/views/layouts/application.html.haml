@@ -31,7 +31,7 @@
           %ul.nav.navbar-nav.navbar-right
             - if current_user
               %li= link_to current_user.full_name, user_path(current_user)
-              - if [:franchisee, :admin].include?(current_user.group.to_sym)
+              - if can? :crud, User
                 %li= link_to t('navigation.users'), users_path
               %li= link_to t('navigation.my_places'), places_path
               %li= link_to t('navigation.logout'), user_session_path(current_user.id), method: 'DELETE'
@@ -45,6 +45,12 @@
           = render 'shared/flash'
           = yield
     %footer
+      .lang
+        = link_to 'en', set_locale_path('en')
+        |
+        = link_to 'ua', set_locale_path('ua')
+        |
+        = link_to 'ru', set_locale_path('ru')
 
     /
       Javascripts

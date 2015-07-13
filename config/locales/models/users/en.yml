@@ -1,0 +1,24 @@
+en:
+  models:
+    users:
+      created: User was added
+      updated: User's data updated
+      user: user
+      actions:
+        index:
+          title: User
+          my_users: Your users
+        show:
+          title: "User %{user}"
+          heading: User's settings
+          places: User's places
+        new:
+          title: Create new user
+        edit:
+          title: 'Update %{name}'
+      attrs:
+        first_name: Name
+        last_name: Second name
+        phone: Phone
+        email: E-mail
+        timezone: 'Timezone'

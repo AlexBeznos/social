@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   namespace :adm do
     root to: 'dashboard#index'
     get '/' => 'dashboard#index'
-    resources :users do
+    resources :users, :shallow => true do
       resources :places, except: :index do
+        resources :styles, except: :index do
+          member do
+            patch 'remove_background'
+          end
+        end
         resources :messages, except: [:index, :show] do
           member do
             get 'activate'
@@ -29,6 +34,7 @@ Rails.application.routes.draw do
   resources :places do
     resources :messages, except: [:index, :show]
     resources :stocks, except: [:show]
+    resources :styles, except: :index
     member do
       get 'guests'
       get 'birthdays'
