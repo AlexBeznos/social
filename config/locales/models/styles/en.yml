@@ -1,0 +1,8 @@
+en:
+  models:
+    style:
+      class: 'Style'
+      page: enter page
+      actions:
+        edit:
+          title: Edit view of visitor`s authentication page

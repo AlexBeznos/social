@@ -21,4 +21,4 @@ ua:
         last_name: Прізвище
         phone: Телефон
         email: E-mail
-        timezone: 'Поточний часовий пояс'
+        timezone: 'Часовий пояс'

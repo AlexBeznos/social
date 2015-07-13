@@ -1,0 +1,24 @@
+= content_for :page_stylesheet, 'code_highlight'
+= content_for :page_javascript, 'code_highlight'
+
+= simple_form_for [@place, @style], :html => { style: 'text-align: left', multipart: true } do |f|
+  = f.error_notification
+  = f.input :text_color, as: :minicolors, minicolors: {theme: :bootstrap, position: :top}
+  = f.input :greating_color, as: :minicolors, minicolors: {theme: :bootstrap, position: :top}
+  - @style.social_network_icons.find_each do |icon|
+    = image_tag icon.icon.url, height: 65
+  = f.simple_fields_for :network_icons do |s_form|
+    - SocialNetwork.find_each do |network|
+      = s_form.simple_fields_for network.name do |n_form|
+        = n_form.input :icon, as: :file, label: network.name
+        = n_form.input :place_id, as: :hidden, input_html: { value: @place.id }
+        = n_form.input :style_id, as: :hidden, input_html: { value: @style.id }
+        = n_form.input :social_network_id, as: :hidden, input_html: { value: network.id }
+  - if @style.background.exists?
+    = image_tag @style.background.url, height: 100
+  = f.input :background, as: :file
+  = f.input :css, as: :text
+
+  = f.button :submit
+  - if @style.id
+    = link_to t('helpers.submit.destroy'), place_style_path(@place, @style), method: 'delete', class: 'btn btn-danger'

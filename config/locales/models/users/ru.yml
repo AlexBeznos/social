@@ -21,4 +21,4 @@ ru:
         last_name: Фамилия
         phone: Телефон
         email: E-mail
-        timezone: 'Текущая таймзона'
+        timezone: 'Часовой пояс'

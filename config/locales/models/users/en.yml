@@ -21,4 +21,4 @@ en:
         last_name: Second name
         phone: Phone
         email: E-mail
-        timezone: 'Current timezone'
+        timezone: 'Timezone'

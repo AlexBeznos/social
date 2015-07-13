@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709141055) do
+ActiveRecord::Schema.define(version: 20150712222211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,22 @@ ActiveRecord::Schema.define(version: 20150709141055) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "social_network_icons", force: true do |t|
+    t.integer  "place_id"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.integer  "social_network_id"
+    t.integer  "style_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "social_network_icons", ["place_id"], name: "index_social_network_icons_on_place_id", using: :btree
+  add_index "social_network_icons", ["social_network_id"], name: "index_social_network_icons_on_social_network_id", using: :btree
+  add_index "social_network_icons", ["style_id"], name: "index_social_network_icons_on_style_id", using: :btree
 
   create_table "social_networks", force: true do |t|
     t.string   "name"

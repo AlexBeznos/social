@@ -3,17 +3,17 @@ require 'ext/string'
 class Place < ActiveRecord::Base
   has_unique_slug :subject => Proc.new {|place| "#{Translit.convert(place.name, :english).urlize({:convert_spaces => true})}"}
 
-  has_one :style
-  
   has_attached_file :logo,
                     :storage => :s3,
                     :path => "/images/logos/:id/:style.:extension",
                     :url => ":s3_domain_url"
 
+  has_one :style,  :dependent => :destroy
   has_many :messages, :dependent => :destroy
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
   has_many :stocks, :dependent => :destroy
   has_many :reputations, :dependent => :destroy, class_name: 'Customer::Reputation'
+  has_many :social_network_icons, :dependent => :destroy
   belongs_to :user
 
   before_validation :set_password, if: 'enter_by_password'

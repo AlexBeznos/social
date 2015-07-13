@@ -36,7 +36,11 @@
           .socials
             - @networks.each do |network|
               = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
-                = image_tag "wifi/#{@place.template}/#{network.name}.png"
+                - icon = @place.social_network_icons.find_by(social_network_id: network.id)
+                - if icon
+                  = image_tag icon.icon.url
+                - else
+                  = image_tag "wifi/#{@place.template}/#{network.name}.png"
           - if @place.enter_by_password
             = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
               %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/

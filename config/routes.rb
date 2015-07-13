@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :places do
     resources :messages, except: [:index, :show]
     resources :stocks, except: [:show]
+    resources :styles, except: :index
     member do
       get 'guests'
       get 'birthdays'
