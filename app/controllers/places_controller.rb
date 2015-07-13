@@ -1,11 +1,13 @@
 class PlacesController < ApplicationController
-  load_and_authorize_resource :find_by => :slug
+  load_and_authorize_resource :find_by => :slug, except: :new
 
   def index
     @places = Place.all
   end
 
   def new
+    @place = Place.new
+    authorize! :create, Place
   end
 
   def create
