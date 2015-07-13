@@ -278,10 +278,10 @@ ua:
     greetings_to_no_one: Привіт
     description: 'Зайди через свою улюблену соціальну мережу та отримай доступ до інтернету'
     footer: 'Powered by GoFriends'
-    password_placeholder: 'фбо введіть пароль...'
+    password_placeholder: 'або введіть пароль...'
   navigation:
     logout: 'Вийти'
-    login: 'Увійті'
+    login: 'Увійти'
     users: 'Користувачі'
     my_places: 'Мої заклади'
     dashboard:
