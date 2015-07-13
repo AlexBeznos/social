@@ -106,6 +106,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
@@ -476,6 +478,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   cssminify
   factory_girl_rails
+  faker
   figaro
   font-awesome-rails
   forgery
@@ -530,3 +533,6 @@ DEPENDENCIES
   unicorn
   vkontakte_api
   yaml_db
+
+BUNDLED WITH
+   1.10.5
