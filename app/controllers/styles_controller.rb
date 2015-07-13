@@ -4,11 +4,9 @@ class StylesController < ApplicationController
   before_action :icons_save, only: [:create, :update]
 
   def new
-    @style = Style.new
   end
 
   def create
-    @style = Style.new(style_params)
     @style.place = @place
 
     if @style.save

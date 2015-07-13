@@ -21,11 +21,13 @@ class Ability
       cannot :destroy, User
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: [user.id] + user_ids
       can :crud, [Stock, Message, Style], :place => { :user_id => [user.id] + user_ids }
-    elsif user.general?
+    elsif user.id && user.general?
       can [:show, :update], User, id: user.id
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: user.id
       cannot [:create, :destroy], Place
       can :crud, [Stock, Message, Style], :place => { :user => user }
+    else
+      cannot :all, Place
     end
   end
 end

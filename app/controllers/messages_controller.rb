@@ -2,13 +2,10 @@ class MessagesController < ApplicationController
   load_and_authorize_resource :place, :find_by => :slug
   load_and_authorize_resource :through => :place
 
-
   def new
-    @message = Message.new
   end
 
   def create
-    @message = Message.new(message_params)
     @message.place_id = @place.id
 
     if @message.save
