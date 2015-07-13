@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
   load_and_authorize_resource :find_by => :slug, except: :new
 
   def index
-    @places = Place.all
+    @places = current_user.get_all_places
   end
 
   def new
