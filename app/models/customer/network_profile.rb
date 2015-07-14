@@ -17,6 +17,8 @@ class Customer::NetworkProfile < ActiveRecord::Base
                            FacebookService.get_friends_number(self)
                          when 'vkontakte'
                            VkService.get_friends_number(self)
+                         when 'instagram'
+                           InstagramService.get_friends_number(self)
                          end
   end
 end

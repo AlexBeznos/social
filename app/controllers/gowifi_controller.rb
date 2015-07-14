@@ -110,7 +110,7 @@ class GowifiController < ApplicationController
     end
 
     def edited_message_params
-      params.require(:message).permit(:message, :message_link, :image)
+      #params.require(:message).permit(:message, :message_link, :image)
     end
 
 end
