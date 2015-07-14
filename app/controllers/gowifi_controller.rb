@@ -11,6 +11,7 @@ class GowifiController < ApplicationController
     session[:slug] = @place.slug
     @networks = @place.get_networks
     @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
+    @message = @place.messages.active.where(social_network: 2).first
 
     respond_to do |format|
       format.html
@@ -29,7 +30,7 @@ class GowifiController < ApplicationController
 
   def omniauth
     unless visit_already_created?
-      AdvertisingWorker.perform_async(session[:slug], credentials)
+      AdvertisingWorker.perform_async(session[:slug], credentials, edited_message_params)
     end
 
     clear_session
@@ -106,6 +107,10 @@ class GowifiController < ApplicationController
       cookies.permanent[:customer] = hash[:customer].id
 
       hash[:visit]
+    end
+
+    def edited_message_params
+      params.require(:message).permit(:message, :message_link, :image)
     end
 
 end

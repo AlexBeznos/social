@@ -1,3 +1,4 @@
+//= require ../bootstrap.min.js
 (function(d, w, c) {
   (w[c] = w[c] || []).push(function() {
     try {
