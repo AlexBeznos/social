@@ -8,7 +8,6 @@ class GowifiController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :show
 
   def show
-    session[:slug] = @place.slug
     @networks = @place.get_networks
     @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
     @message = @place.messages.active.where(social_network: 2).first
@@ -77,7 +76,7 @@ class GowifiController < ApplicationController
     end
 
     def find_place_from_session
-      @place = Place.find_by_slug(session[:slug])
+      @place = Place.find_by_slug(request.env['omniauth.params']['place'])
     end
 
     def find_customer
