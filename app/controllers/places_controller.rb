@@ -14,6 +14,7 @@ class PlacesController < ApplicationController
     if @place.save
       redirect_to user_path(@place.user), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
+      params[:user] = @place.user_id
       render :action => :new
     end
   end
