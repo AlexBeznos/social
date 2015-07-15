@@ -35,30 +35,12 @@
             = t('wifi.description').html_safe
           .socials
             - @networks.each do |network|
-              - if network.name == 'facebook'
-                = link_to '#new_person_modal', 'data-toggle' => 'modal', class: 'wifi_link' do
-                  - icon = @place.social_network_icons.find_by(social_network_id: network.id)
-                  - if icon
-                    = image_tag icon.icon.url
-                  - else
-                    = image_tag "wifi/#{@place.template}/#{network.name}.png"
-                #new_person_modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-                  .modal-dialog
-                    .modal-content
-                      .modal-header
-                        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-                        %h4#myModalLabel.modal-title Create new person
-                      .modal-body
-                        = render 'form'
-                      .modal-footer
-                        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-              - else
-                = link_to "#{ENV['APP_URL']}auth/#{network.name}?place=#{@place.slug}", class: 'wifi_link' do
-                  - icon = @place.social_network_icons.find_by(social_network_id: network.id)
-                  - if icon
-                    = image_tag icon.icon.url
-                  - else
-                    = image_tag "wifi/#{@place.template}/#{network.name}.png"
+              = link_to "#{ENV['APP_URL']}auth/#{network.name}?place=#{@place.slug}", class: 'wifi_link' do
+                - icon = @place.social_network_icons.find_by(social_network_id: network.id)
+                - if icon
+                  = image_tag icon.icon.url
+                - else
+                  = image_tag "wifi/#{@place.template}/#{network.name}.png"
           - if @place.enter_by_password
             = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
               %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/

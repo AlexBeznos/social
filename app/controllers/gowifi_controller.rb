@@ -16,6 +16,7 @@ class GowifiController < ApplicationController
       format.html
       format.css
       format.js
+      format.json { render json: @message }
     end
   end
 
@@ -29,11 +30,15 @@ class GowifiController < ApplicationController
 
   def omniauth
     unless visit_already_created?
-      AdvertisingWorker.perform_async(session[:slug], credentials, edited_message_params)
+      AdvertisingWorker.perform_async(session[:slug], credentials, @edited_message)
     end
 
     clear_session
     redirect_to wifi_login_path
+  end
+
+  def edit_message
+    @edited_message = edited_message_params
   end
 
   def auth_failure
@@ -109,7 +114,7 @@ class GowifiController < ApplicationController
     end
 
     def edited_message_params
-      #params.require(:message).permit(:message, :message_link, :image)
+      params.require(:message).permit(:message, :message_link)
     end
 
 end
