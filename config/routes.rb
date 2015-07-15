@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'gowifi#omniauth' # omniauth customers authentication
   get '/auth/failure' => 'gowifi#auth_failure'
+  post '/auth/edit_message' => 'gowifi#edit_message'
   scope '/wifi' do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':slug/status' => 'gowifi#redirect_after_auth'

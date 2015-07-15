@@ -1,17 +1,20 @@
 class PlacesController < ApplicationController
-  load_and_authorize_resource :find_by => :slug
+  load_and_authorize_resource :find_by => :slug, except: :new
 
   def index
     @places = current_user.get_all_places
   end
 
   def new
+    @place = Place.new
+    authorize! :create, Place
   end
 
   def create
     if @place.save
       redirect_to user_path(@place.user), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
+      params[:user] = @place.user_id
       render :action => :new
     end
   end

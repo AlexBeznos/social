@@ -9,7 +9,6 @@ class Message < ActiveRecord::Base
   belongs_to :place
   belongs_to :social_network
 
-  # TODO: links validation
   validates :social_network, presence: true
   validates :message, presence: true, unless: 'social_network_id == 3' # SocialNetwork.find(3).name == 'instagram'
   validates :message_link, :url => true

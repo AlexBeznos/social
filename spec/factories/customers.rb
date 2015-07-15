@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :costumer do
+  factory :customer do
     network 1
 name "MyString"
 s_name "MyString"

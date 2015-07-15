@@ -33,6 +33,8 @@ module Consumerable
               create_facebook_customer(credentials)
             when 'vkontakte'
               create_vkontakte_customer(credentials)
+            when 'instagram'
+              create_instagram_customer(credentials)
             end
   end
 
@@ -68,6 +70,15 @@ module Consumerable
         :last_name => credentials['extra']['raw_info']['last_name'],
         :gender => credentials['extra']['raw_info']['sex'].to_s.to_gender,
         :birthday => get_date(credentials['extra']['raw_info']['bdate']),
+        :network_profiles_attributes => [get_network_profile_params(credentials)]
+      }
+
+      create_customer_by_params(params)
+    end
+
+    def create_vkontakte_customer(credentials)
+      params = {
+        :first_name => 'unfinished#instagram',
         :network_profiles_attributes => [get_network_profile_params(credentials)]
       }
 
@@ -151,6 +162,14 @@ module Consumerable
                   :access_token => credentials['credentials']['token'],
                   :expiration_date => credentials['credentials']['expires_at'].to_i.seconds.from_now,
                   :url => credentials['info']['urls']['Vkontakte'],
+                  :uid => credentials['uid']
+                }
+              when 'instagram'
+                {
+                  :social_network => SocialNetwork.find_by(name: 'instagram'),
+                  :access_token => credentials['credentials']['token'],
+                  :expiration_date => "#{credentials['credentials']['expires'] ? credentials['credentials']['expires'] : '10000000000'}".to_i.seconds.from_now,
+                  :url => "https://instagram.com/#{credentials['info']['nickname']}/",
                   :uid => credentials['uid']
                 }
               end

@@ -4,9 +4,10 @@ class AdvertisingWorker
 
   sidekiq_options :queue => :advertisment, :retry => false
 
-  def perform(place_slug, credentials)
+  def perform(place_slug, credentials, edited_message = nil)
     @place = Place.find_by_slug(place_slug)
     @credentials = credentials
+    @edited_message = edited_message
 
     post_advertisment
   end
@@ -14,7 +15,11 @@ class AdvertisingWorker
   private
     def post_advertisment
       message = get_message(@place, @credentials['provider'])
-      attrs = {:place => @place, :message => message, :credentials => @credentials}
+      if @credentials['provider'] == 'facebook'
+        attrs = {:place => @place, :message => @edited_message, :credentials => @credentials}
+      else
+        attrs = {:place => @place, :message => message, :credentials => @credentials}
+      end
 
       case @credentials['provider']
       when 'twitter'

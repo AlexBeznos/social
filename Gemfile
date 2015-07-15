@@ -34,6 +34,8 @@ gem 'has_unique_slug'
 gem 'mini_magick'
 gem 'high_voltage', '~> 2.3.0'
 gem 'font-awesome-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
 
 
 # lib to get lang from http request header
@@ -120,6 +122,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'forgery'
   gem 'byebug'
 end

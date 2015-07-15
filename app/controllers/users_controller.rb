@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource :user
+  load_and_authorize_resource :user, except: [:new, :create]
 
   def index
     @users = current_user.place_owners
@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
+    authorize! :create, User
   end
 
   def create
@@ -20,6 +22,8 @@ class UsersController < ApplicationController
     else
       render :action => :new
     end
+
+    authorize! :create, @user
   end
 
   def edit

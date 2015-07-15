@@ -8,14 +8,15 @@ class GowifiController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :show
 
   def show
-    session[:slug] = @place.slug
     @networks = @place.get_networks
     @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
+    @message = @place.messages.active.where(social_network: 2).first
 
     respond_to do |format|
       format.html
       format.css
       format.js
+      format.json { render json: @message }
     end
   end
 
@@ -29,11 +30,15 @@ class GowifiController < ApplicationController
 
   def omniauth
     unless visit_already_created?
-      AdvertisingWorker.perform_async(session[:slug], credentials)
+      AdvertisingWorker.perform_async(session[:slug], credentials, @edited_message)
     end
 
     clear_session
     redirect_to wifi_login_path
+  end
+
+  def edit_message
+    @edited_message = edited_message_params
   end
 
   def auth_failure
@@ -76,7 +81,7 @@ class GowifiController < ApplicationController
     end
 
     def find_place_from_session
-      @place = Place.find_by_slug(session[:slug])
+      @place = Place.find_by_slug(request.env['omniauth.params']['place'])
     end
 
     def find_customer
@@ -106,6 +111,10 @@ class GowifiController < ApplicationController
       cookies.permanent[:customer] = hash[:customer].id
 
       hash[:visit]
+    end
+
+    def edited_message_params
+      params.require(:message).permit(:message, :message_link)
     end
 
 end

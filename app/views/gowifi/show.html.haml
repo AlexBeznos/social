@@ -35,7 +35,7 @@
             = t('wifi.description').html_safe
           .socials
             - @networks.each do |network|
-              = link_to "#{ENV['APP_URL']}auth/#{network.name}/", class: 'wifi_link' do
+              = link_to "#{ENV['APP_URL']}auth/#{network.name}?place=#{@place.slug}", class: 'wifi_link' do
                 - icon = @place.social_network_icons.find_by(social_network_id: network.id)
                 - if icon
                   = image_tag icon.icon.url

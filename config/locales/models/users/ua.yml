@@ -1,8 +1,8 @@
 ua:
   models:
     users:
-      created: Користувача добавленно
-      updated: Данні користувача оновленно
+      created: Користувача добавлено
+      updated: Дані користувача оновлено
       user: користувач
       actions:
         index:
