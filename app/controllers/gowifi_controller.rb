@@ -2,7 +2,7 @@ class GowifiController < ApplicationController
   include Consumerable
   layout false
   before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
-  before_action :find_place_from_session, only: :omniauth
+  before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_customer, only: [:show, :omniauth]
   before_filter :check_for_place_activation, only: :show
   skip_before_action :verify_authenticity_token, only: :show
@@ -30,7 +30,7 @@ class GowifiController < ApplicationController
 
   def omniauth
     unless visit_already_created?
-      AdvertisingWorker.perform_async(session[:slug], credentials, @edited_message)
+      AdvertisingWorker.perform_async(@place.slug, credentials, @edited_message)
     end
 
     clear_session
@@ -45,7 +45,7 @@ class GowifiController < ApplicationController
     if params[:provider]
       redirect_to "/auth/#{params[:provider]}"
     else
-      redirect_to gowifi_place_path(:slug => session[:slug])
+      redirect_to gowifi_place_path(:slug => @place.slug)
     end
   end
 
