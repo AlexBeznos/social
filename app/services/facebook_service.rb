@@ -24,7 +24,7 @@ class FacebookService
 
     begin
       graph.put_connections('me', 'feed', {:message => hash[:message].message,
-                                            :picture => hash[:message].image.url,
+                                            :picture => hash[:message].image_file_name,
                                             :link => hash[:message].message_link})
     rescue => e
       raise "Facebook message were not sended. Error: #{e.inspect}"
