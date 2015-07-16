@@ -76,7 +76,7 @@ module Consumerable
       create_customer_by_params(params)
     end
 
-    def create_vkontakte_customer(credentials)
+    def create_instagram_customer(credentials)
       params = {
         :first_name => 'unfinished#instagram',
         :network_profiles_attributes => [get_network_profile_params(credentials)]
