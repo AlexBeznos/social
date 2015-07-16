@@ -10,13 +10,11 @@ class GowifiController < ApplicationController
   def show
     @networks = @place.get_networks
     @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
-    @message = @place.messages.active.where(social_network: 2).first
 
     respond_to do |format|
       format.html
       format.css
       format.js
-      format.json { render json: @message }
     end
   end
 
@@ -38,7 +36,7 @@ class GowifiController < ApplicationController
   end
 
   def edit_message
-    @edited_message = edited_message_params
+    @edited_message = Message.new(edited_message_params)
   end
 
   def auth_failure
@@ -114,7 +112,7 @@ class GowifiController < ApplicationController
     end
 
     def edited_message_params
-      params.require(:message).permit(:message, :message_link)
+      params.require(:message).permit(:message, :message_link, :image_file_name)
     end
 
 end
