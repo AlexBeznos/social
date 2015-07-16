@@ -21,11 +21,16 @@ class FacebookService
 
   def self.advertise(hash)
     graph = Koala::Facebook::API.new(hash[:credentials]['credentials']['token'])
+    attrs = if hash[:hash]
+              { message: hash[:message]['message'], link: hash[:message]['message_link'], picture: hash[:message]['image_file_name'] }
+            else
+              { message: hash[:message].message, link: hash[:message].message_link, picture: hash[:message].image.url }
+            end
 
     begin
-      graph.put_connections('me', 'feed', {:message => hash[:message].message,
-                                            :picture => hash[:message].image_file_name,
-                                            :link => hash[:message].message_link})
+      graph.put_connections('me', 'feed', { :message => attrs[:message],
+                                            :picture => attrs[:picture],
+                                            :link => attrs[:link] })
     rescue => e
       raise "Facebook message were not sended. Error: #{e.inspect}"
     end
