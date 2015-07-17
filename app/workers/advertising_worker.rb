@@ -7,7 +7,7 @@ class AdvertisingWorker
   def perform(place_slug, credentials)
     @place = Place.find_by_slug(place_slug)
     @credentials = credentials
-    load_edited_message
+    @edited_message = JSON.parse(ReadCache.redis.get(request.ip))
 
     post_advertisment
   end
@@ -32,11 +32,6 @@ class AdvertisingWorker
       when 'facebook'
          FacebookService.advertise(attrs)
       end
-    end
-
-    def load_edited_message
-      redis = Redis.new(:url => 'redis://127.0.0.1:6379')
-      @edited_message = JSON.parse(redis.get("edited_message"))
     end
 
 end

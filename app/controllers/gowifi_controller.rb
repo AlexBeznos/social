@@ -3,9 +3,8 @@ class GowifiController < ApplicationController
   layout false
   before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
   before_action :find_place_from_session, only: :omniauth
-  before_action :find_customer, only: [:show, :omniauth]
+  before_action :find_customer, only: [:show, :omniauth, :edit_message]
   before_filter :check_for_place_activation, only: :show
-  before_action :load_redis, only: :edit_message
   skip_before_action :verify_authenticity_token, only: :show
 
   def show
@@ -37,8 +36,8 @@ class GowifiController < ApplicationController
   end
 
   def edit_message
-    edited_message = Message.new(edited_message_params)
-    @redis.set "edited_message", edited_message.to_json
+    edited_message = Message.new(edited_message_params.merge!(subscription: request.ip))
+    ReadCache.redis.set edited_message.subscription, edited_message.to_json
   end
 
   def auth_failure
@@ -115,10 +114,6 @@ class GowifiController < ApplicationController
 
     def edited_message_params
       params.require(:message).permit(:message, :message_link, :image_file_name)
-    end
-
-    def load_redis
-      @redis = Redis.new(:url => 'redis://127.0.0.1:6379')
     end
 
 end
