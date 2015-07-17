@@ -8,6 +8,6 @@ en:
         message_link: "Link in message"
       actions:
         edit:
-          title: 'Update %{place_name}'
+          title: 'Edit message'
         new:
           title: Add message

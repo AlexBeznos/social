@@ -8,6 +8,6 @@ ru:
         message_link: "Ссылка в сообщении"
       actions:
         edit:
-          title: 'Обновление %{place_name}'
+          title: 'Редактировать сообщение'
         new:
           title: Добавить сообщение

@@ -5,9 +5,9 @@ ua:
       attrs:
         message: 'повідомлення'
         subscription: "Підписка на"
-        message_link: "Посилання в повідомленні"
+        message_link: "Посилання у повідомленні"
       actions:
         edit:
-          title: 'Оновлення %{place_name}'
+          title: 'Редагувати повідомлення'
         new:
           title: Додати повідомлення
