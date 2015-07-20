@@ -28,7 +28,7 @@ class GowifiController < ApplicationController
 
   def omniauth
     unless visit_already_created?
-      AdvertisingWorker.perform_async(request.env['omniauth.params']['place'], credentials)
+      AdvertisingWorker.perform_async(request.env['omniauth.params']['place'], credentials, @client_ip)
     end
 
     clear_session
@@ -36,7 +36,8 @@ class GowifiController < ApplicationController
   end
 
   def edit_message
-    edited_message = Message.new(edited_message_params.merge!(subscription: request.ip))
+    @client_ip = request.ip
+    edited_message = Message.new(edited_message_params.merge!(subscription: @client_ip))
     ReadCache.redis.set edited_message.subscription, edited_message.to_json
   end
 
