@@ -6,6 +6,8 @@ RSpec.describe User, :type => :model do
   it { should validate_presence_of :phone }
   it { should ensure_length_of(:phone).is_at_least(10).is_at_most(20) }
   it { should belong_to(:franchisee).class_name('User') }
+  it { should have_many(:places) }
+  it { should have_many(:place_owners).class_name('User') }
 
   describe "Phone" do
     it "has valid number" do
@@ -25,5 +27,14 @@ RSpec.describe User, :type => :model do
     user = build(:user)
 
     expect(user.full_name).to eq "#{user.first_name} #{user.last_name}"
+  end
+
+  describe "default scope" do
+    let!(:user_one) { create(:user, id: 1) }
+    let!(:user_two) { create(:user, id: 2) }
+
+    it "orders by ascending id" do
+      expect(User.all).to eq([user_one, user_two])
+    end
   end
 end
