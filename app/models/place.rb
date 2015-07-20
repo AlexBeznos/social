@@ -21,11 +21,11 @@ class Place < ActiveRecord::Base
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
-  validates_attachment :logo,
-                       :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
+  validates_attachment :logo, :logo_content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
 
- before_save :set_wifi_link_freshnes
- after_save :gen_new_wifi_settings
+  before_save :set_wifi_link_freshnes
+  before_save :set_wifi_username_password
+  after_save :gen_new_wifi_settings
 
 
   def get_networks
@@ -55,7 +55,6 @@ class Place < ActiveRecord::Base
       self.wifi_settings_link_not_fresh = true
     end
 
-    # TODO: should be delayed
     def gen_new_wifi_settings
       WifiSettingsWorker.perform_async(id) unless wifi_settings_link
     end
@@ -63,5 +62,9 @@ class Place < ActiveRecord::Base
     # TODO: should be delayed
     def delete_settings_archive
       S3UploaderService.delete_settings_archive_by_url(wifi_settings_link) if wifi_settings_link
+    end
+
+    def set_wifi_username_password
+      self.wifi_username, self.wifi_password = SecureRandom.hex(6), SecureRandom.hex(6)
     end
 end
