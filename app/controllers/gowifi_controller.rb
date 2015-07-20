@@ -36,8 +36,8 @@ class GowifiController < ApplicationController
   end
 
   def edit_message
-    edited_message = Message.new(edited_message_params.merge!(subscription: request.ip))
-    ReadCache.redis.set edited_message.subscription, edited_message.to_json
+    edited_message = Message.new(edited_message_params)
+    ReadCache.redis.set request.ip, edited_message.to_json
   end
 
   def auth_failure
