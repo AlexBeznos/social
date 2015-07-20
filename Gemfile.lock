@@ -94,6 +94,7 @@ GEM
       equalizer (~> 0.0.9)
     connection_pool (2.2.0)
     cssminify (1.0.2)
+    database_cleaner (1.4.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     domain_name (0.5.24)
@@ -485,6 +486,7 @@ DEPENDENCIES
   codemirror-rails
   coffee-rails (~> 4.0.0)
   cssminify
+  database_cleaner
   factory_girl_rails
   faker
   figaro
@@ -543,3 +545,6 @@ DEPENDENCIES
   unicorn
   vkontakte_api
   yaml_db
+
+BUNDLED WITH
+   1.10.5
