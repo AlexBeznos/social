@@ -7,7 +7,7 @@ class AdvertisingWorker
   def perform(place_slug, credentials, client_ip = nil)
     @place = Place.find_by_slug(place_slug)
     @credentials = credentials
-    @edited_message = JSON.parse(ReadCache.redis.get(client_ip))
+    @edited_message = JSON.parse(ReadCache.redis.get(client_ip)) if @credentials['provider'] == 'facebook'
 
     post_advertisment
   end
