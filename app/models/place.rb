@@ -21,7 +21,7 @@ class Place < ActiveRecord::Base
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
-  validates_attachment :logo, :logo_content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
+  validates_attachment :logo, content_type: { content_type: ["image/jpeg", "image/png", "image/gif"] }
 
   before_save :set_wifi_link_freshnes
   before_save :set_wifi_username_password
