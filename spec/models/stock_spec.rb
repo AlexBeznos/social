@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Stock, :type => :model do
   it { should belong_to(:place) }
   it { should have_attached_file(:image) }
-  it { should validate_presence_of :place_id } # TODO: still not pass
+  it { should validate_presence_of :place_id }
   it { should validate_attachment_content_type(:image).allowing("image/jpeg", "image/png", "image/gif") }
 
   describe "url" do

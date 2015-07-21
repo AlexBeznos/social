@@ -1,7 +1,7 @@
 require 'ext/string'
 
 class Place < ActiveRecord::Base
-  has_unique_slug :subject => Proc.new {|place| "#{Translit.convert(place.name, :english).urlize({:convert_spaces => true})}"}
+  has_unique_slug :subject => Proc.new {|place| Translit.convert(place.name, :english) }
 
   has_attached_file :logo,
                     :storage => :s3,

@@ -7,11 +7,10 @@ class User < ActiveRecord::Base
   has_many :place_owners, class_name: 'User', foreign_key: :user_id
   belongs_to :franchisee, class_name: 'User', foreign_key: :user_id
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :phone, presence: true
   validates :user_id, presence: true, if: 'group.to_sym == :general'
-  validates :phone, presence: true,
-                    length: { minimum: 10, maximum: 20 },
-                    :phone => true
+  validates :phone, length: { minimum: 10, maximum: 20 },
+                    phone: true
 
   enum group: [:general, :franchisee, :admin]
 
