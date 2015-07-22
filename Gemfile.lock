@@ -342,6 +342,8 @@ GEM
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
       rspec-mocks (~> 3.0.0)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -521,6 +523,7 @@ DEPENDENCIES
   rails (= 4.1.7)
   redcarpet
   rollbar (~> 1.5.3)
+  rspec-collection_matchers
   rspec-rails (~> 3.0.0)
   rspec_candy
   rubyzip
@@ -542,3 +545,6 @@ DEPENDENCIES
   unicorn
   vkontakte_api
   yaml_db
+
+BUNDLED WITH
+   1.10.5

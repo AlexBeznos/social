@@ -130,7 +130,7 @@ end
 group :test do
   gem 'shoulda-matchers', require: false
   gem 'shoulda-callback-matchers', '~> 1.0'
-  # gem 'rspec-collection_matchers'
+  gem 'rspec-collection_matchers'
   gem 'json_spec'
   gem 'simplecov', require: false
   gem 'rspec_candy'
