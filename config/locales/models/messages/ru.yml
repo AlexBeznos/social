@@ -5,7 +5,7 @@ ru:
         message:
           attributes:
             image:
-              in_between: Изображение должно быть не меньше 10КБ и не более 10МБ
+              in_between: Изображение должно быть не меньше 11КБ и не более 10МБ
   models:
     messages:
       message_for: "Сообщение для %{name}"

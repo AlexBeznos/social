@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Stock, :type => :model do
+RSpec.describe Stock do
   it { is_expected.to belong_to(:place) }
   it { is_expected.to have_attached_file(:image) }
   it { is_expected.to validate_presence_of :place_id }

@@ -5,7 +5,7 @@ ua:
           message:
             attributes:
               image:
-                in_between: Зображення повинно бути не менш 10КБ та не більш 10МБ
+                in_between: Зображення повинно бути не менш 11КБ та не більш 10МБ
   models:
     messages:
       message_for: "Повідомлення для %{name}"

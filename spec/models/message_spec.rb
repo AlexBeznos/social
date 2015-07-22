@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Message, :type => :model do
+RSpec.describe Message do
   it { is_expected.to have_attached_file(:image) }
   it { is_expected.to belong_to(:place) }
   it { is_expected.to belong_to(:social_network) }

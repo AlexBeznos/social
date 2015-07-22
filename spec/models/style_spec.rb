@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Style, :type => :model do
+RSpec.describe Style do
   it { is_expected.to have_many(:social_network_icons) }
   it { is_expected.to belong_to(:place) }
   it { is_expected.to accept_nested_attributes_for(:social_network_icons) }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SocialNetwork, :type => :model do
+RSpec.describe SocialNetwork do
   it { is_expected.to have_many(:messages) }
   # it { is_expected.to have_many(:customers) } #TODO: there is no foreign key at Customer model
   it { is_expected.to validate_presence_of :name }

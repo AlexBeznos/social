@@ -5,7 +5,7 @@ en:
           message:
             attributes:
               image:
-                in_between: Message should be between 10 kilobytes and 10 megabytes
+                in_between: Message should be between 11 kilobytes and 10 megabytes
   models:
     messages:
       message_for: "Message for %{name}"

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SocialNetworkIcon, :type => :model do
+RSpec.describe SocialNetworkIcon do
   it { is_expected.to have_attached_file(:icon) }
   it { is_expected.to belong_to(:style) }
   it { is_expected.to belong_to(:place) }

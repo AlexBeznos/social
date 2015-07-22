@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Customer, :type => :model do
+RSpec.describe Customer do
   it { is_expected.to have_many(:network_profiles).class_name('Customer::NetworkProfile') }
   it { is_expected.to have_many(:visits).class_name('Customer::Visit') }
   it { is_expected.to have_many(:reputations).class_name('Customer::Reputation') }

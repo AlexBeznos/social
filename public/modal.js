@@ -57,7 +57,7 @@ $("#edit-message").submit(function(e) {
         data: $("#edit-message").serialize(),
         complete: function(){
             $('#edit_message_modal').modal('hide');
-            $(location).attr('href', '/auth/facebook');
+            $(location).attr('href', '/auth/facebook?place=' + location.pathname.split('/')[2]);
         }
     });
 
