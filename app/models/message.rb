@@ -14,6 +14,7 @@ class Message < ActiveRecord::Base
   validates :message_link, :url => true
   validates :subscription, presence: true, if: 'social_network_id == 3'
   validates_attachment :image, :presence => true,
+                                size: { in: 11.kilobytes..10.megabytes },
                                 :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
                                 unless: 'social_network_id == 3'
 

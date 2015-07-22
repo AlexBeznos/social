@@ -16,18 +16,8 @@ class TwitterService
       config.access_token_secret = @credentials['credentials']['secret']
     end
 
-    url = @message.image.url
-    img = open(url)
-    if img.is_a?(StringIO)
-      ext = File.extname(url)
-      name = File.basename(url, ext)
-      Tempfile.new([name, ext])
-    else
-      img
-    end
-
     begin
-      client.update_with_media("#{@message.message}\n#{@message.message_link}", img)
+      client.update_with_media("#{@message.message}\n#{@message.message_link}", open(@message.image.url))
     rescue => e
       Rails.logger.fatal "Twitter message was not posted. Error: #{e}"
     end
