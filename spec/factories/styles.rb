@@ -1,10 +1,7 @@
 FactoryGirl.define do
   factory :style do
-    js "MyText"
-js_min "MyText"
-css "MyText"
-css_min "MyText"
-background ""
+    text_color "#000000"
+    greating_color "#FFFFFF"
   end
 
 end

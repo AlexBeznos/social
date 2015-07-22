@@ -9,7 +9,7 @@ class Message < ActiveRecord::Base
   belongs_to :place
   belongs_to :social_network
 
-  validates :social_network, presence: true
+  validates :social_network_id, presence: true
   validates :message, presence: true, unless: 'social_network_id == 3' # SocialNetwork.find(3).name == 'instagram'
   validates :message_link, :url => true
   validates :subscription, presence: true, if: 'social_network_id == 3'

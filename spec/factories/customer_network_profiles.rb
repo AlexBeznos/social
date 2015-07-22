@@ -1,6 +1,7 @@
 FactoryGirl.define do
-  factory :customer_network_profile do
-    
+  factory :network_profile, :class => Customer::NetworkProfile do
+    association :customer
+    association :social_network
   end
 
 end

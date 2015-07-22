@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  it { should validate_presence_of :first_name }
-  it { should validate_presence_of :last_name }
-  it { should validate_presence_of :phone }
-  it { should ensure_length_of(:phone).is_at_least(10).is_at_most(20) }
-  it { should belong_to(:franchisee).class_name('User') }
-  it { should have_many(:places) }
-  it { should have_many(:place_owners).class_name('User') }
+  it { is_expected.to validate_presence_of :first_name }
+  it { is_expected.to validate_presence_of :last_name }
+  it { is_expected.to validate_presence_of :phone }
+  it { is_expected.to ensure_length_of(:phone).is_at_least(10).is_at_most(20) }
+  it { is_expected.to belong_to(:franchisee).class_name('User') }
+  it { is_expected.to have_many(:places) }
+  it { is_expected.to have_many(:place_owners).class_name('User') }
 
   describe "Phone" do
     it "has valid number" do
