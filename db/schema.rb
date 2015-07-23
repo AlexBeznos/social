@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723091420) do
+ActiveRecord::Schema.define(version: 20150723093743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,9 +105,9 @@ ActiveRecord::Schema.define(version: 20150723091420) do
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "enter_by_password",            default: false
+    t.boolean  "enter_by_password",             default: false
     t.string   "password"
-    t.boolean  "active",                       default: false
+    t.boolean  "active",                        default: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -115,14 +115,16 @@ ActiveRecord::Schema.define(version: 20150723091420) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "redirect_url"
-    t.string   "wifi_username",                default: "P8uDratA"
-    t.string   "wifi_password",                default: "Tac4edrU"
+    t.string   "wifi_username",                 default: "P8uDratA"
+    t.string   "wifi_password",                 default: "Tac4edrU"
     t.string   "wifi_settings_link"
-    t.boolean  "wifi_settings_link_not_fresh", default: true
-    t.boolean  "stocks_active",                default: false
-    t.string   "template",                     default: "default"
-    t.boolean  "reputation_on",                default: false
-    t.integer  "score_amount",                 default: 0
+    t.boolean  "wifi_settings_link_not_fresh",  default: true
+    t.boolean  "stocks_active",                 default: false
+    t.string   "template",                      default: "default"
+    t.boolean  "reputation_on",                 default: false
+    t.integer  "score_amount",                  default: 0
+    t.boolean  "loyalty_program",               default: false
+    t.boolean  "loyalty_program_without_codes", default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
