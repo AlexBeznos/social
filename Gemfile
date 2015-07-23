@@ -135,6 +135,8 @@ group :test do
   gem 'simplecov', require: false
   gem 'rspec_candy'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'test_after_commit'
 end
 
 # Use ActiveModel has_secure_password

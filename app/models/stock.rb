@@ -6,7 +6,7 @@ class Stock < ActiveRecord::Base
                     :path => "/images/stocks/:id/:style.:extension",
                     :url => ":s3_domain_url"
 
-  validate :place_id, presence: true
+  validates :place_id, presence: true
   validates :url, :url => true
   validates_attachment :image, :presence => true,
                                 :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }

@@ -1,13 +1,20 @@
 ua:
+  activerecord:
+      errors:
+        models:
+          message:
+            attributes:
+              image:
+                in_between: Зображення повинно бути не менш 11КБ та не більш 10МБ
   models:
     messages:
       message_for: "Повідомлення для %{name}"
       attrs:
         message: 'повідомлення'
         subscription: "Підписка на"
-        message_link: "Посилання в повідомленні"
+        message_link: "Посилання у повідомленні"
       actions:
         edit:
-          title: 'Оновлення %{place_name}'
+          title: 'Редагувати повідомлення'
         new:
           title: Додати повідомлення

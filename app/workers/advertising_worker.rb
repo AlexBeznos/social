@@ -4,10 +4,10 @@ class AdvertisingWorker
 
   sidekiq_options :queue => :advertisment, :retry => false
 
-  def perform(place_slug, credentials, edited_message = nil)
+  def perform(place_slug, credentials, client_ip = nil)
     @place = Place.find_by_slug(place_slug)
     @credentials = credentials
-    @edited_message = edited_message
+    @edited_message = JSON.parse(ReadCache.redis.get(client_ip)) if @credentials['provider'] == 'facebook'
 
     post_advertisment
   end
@@ -19,15 +19,6 @@ class AdvertisingWorker
       if @credentials['provider'] == 'facebook'
         attrs = { place: @place, message: @edited_message, credentials: @credentials, hash: true }
       else
-        ##
-        # Here we convert @message to @edited_message and pass to the second one original attributes from @message
-        #
-        # update_original_message_attribute
-        #
-        # what for?
-        # even when everything would work in way proposed firstly,
-        # than place owner would be forced to change original message
-        # after every visitor edit. So what the point?
         attrs = { place: @place, message: message, credentials: @credentials }
       end
 

@@ -1,5 +1,57 @@
 require 'rails_helper'
 
-RSpec.describe Message, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Message do
+  it { is_expected.to have_attached_file(:image) }
+  it { is_expected.to belong_to(:place) }
+  it { is_expected.to belong_to(:social_network) }
+  it { is_expected.to validate_presence_of :social_network_id }
+  it { is_expected.to validate_attachment_content_type(:image).allowing("image/jpeg", "image/png", "image/gif") }
+  it { is_expected.to callback(:set_subscription_uid).before(:save).if('social_network_id == 3') }
+  it { is_expected.to callback(:set_active_only_to_one_message_from_place).after(:save).if('active') }
+
+  describe "Validate presence of message" do
+    it "required when social network is not Instagram" do
+      message = build_stubbed(:message, social_network_id: 2)
+      expect(message).to be_valid
+    end
+
+    it "not required when social network is Instagram" do
+      message = build_stubbed(:message, message: nil, social_network_id: 3, subscription: "Subscription")
+      expect(message).to be_valid
+    end
+  end
+
+  describe "Validate message link" do
+    it "has valid value" do
+      message = build_stubbed(:message, message_link: "http://google.com")
+
+      expect(message).to be_valid
+    end
+
+    it "has invalid value" do
+      message = build_stubbed(:message, message_link: "google.com")
+      message.valid?
+      expect(message.errors.messages[:message_link]).to include("Невірний формат посилання")
+    end
+  end
+
+  describe "Validate presence of subscription" do
+    it "required when social network is Instagram" do
+      message = build_stubbed(:message, social_network_id: 3, subscription: "Subscription")
+      expect(message).to be_valid
+    end
+
+    it "not required when social network is not Instagram" do
+      message = build_stubbed(:message, social_network_id: 2, subscription: "Subscription")
+      expect(message).to be_valid
+    end
+  end
+
+  describe "Validate Twitter message length" do
+    it "have to be less than 141 symbol" do
+      message = build_stubbed(:message, social_network_id: 4, message: "a" * 141, message_link: "http://google.com")
+      message.valid?
+      expect(message.errors.messages[:message]).to include("Повідомлення з посиланням не повинне перевищувати 140 символів")
+    end
+  end
 end

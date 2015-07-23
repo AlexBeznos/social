@@ -16,7 +16,7 @@ class Adm::PlacesController < AdministrationController
     @place.user_id = @user.id
 
     if @place.save
-      redirect_to adm_place_path(@user), :notice => 'Place created!'
+      redirect_to adm_place_path(@place), :notice => 'Place created!'
     else
       render :action => :new, :alert => "U pass something wrong. Errors: #{@place.errors}"
     end

@@ -1,4 +1,26 @@
 en:
+  unauthorized:
+    default: You are not authorized to perform this action
+  authlogic:
+    error_messages:
+      login_not_found: not found
+      password_blank: can't be blank
+      user_session: UserSession (or whatever name you are using)
+    attributes:
+      user_session:
+        email: Email
+        password: Password
+        remember_me: remember me
+  activerecord:
+    models:
+      message: message
+      user: user
+      place: place
+      stock: stock
+      style: style
+  notice:
+    create: "%{subject} added"
+    updated: "%{subject} updated"
   date:
     abbr_day_names:
     - Sun
