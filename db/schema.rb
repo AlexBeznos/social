@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712222211) do
+ActiveRecord::Schema.define(version: 20150723091420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20150712222211) do
     t.integer  "customer_network_profile_id"
     t.integer  "place_id"
     t.integer  "customer_id"
-    t.boolean  "by_password"
+    t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 20150712222211) do
     t.datetime "updated_at"
   end
 
+  create_table "menu_items", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price"
+    t.integer  "place_id"
+    t.integer  "items_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menu_items", ["place_id"], name: "index_menu_items_on_place_id", using: :btree
+
   create_table "messages", force: true do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -78,7 +90,7 @@ ActiveRecord::Schema.define(version: 20150712222211) do
     t.text     "message"
     t.string   "message_link"
     t.integer  "place_id"
-    t.boolean  "active"
+    t.boolean  "active",             default: true
     t.string   "subscription"
     t.string   "subscription_uid"
     t.integer  "social_network_id"
