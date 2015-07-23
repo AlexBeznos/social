@@ -231,6 +231,10 @@ en:
     greetings: "Hello, %{customer_name}!"
     description: 'Enter through your favorite<br>social network and <br>get access to the Internet'
     footer: 'Powered by GoFriends'
+  menu_item:
+    greetings: "Welcome to "
+    buy_with_bonuses: Here is the list of gifts you can buy with bonuses
+    bonus_amount: "Your bonuses: "
   navigation:
     logout: 'Logout'
     login: 'Login'
