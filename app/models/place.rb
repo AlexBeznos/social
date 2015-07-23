@@ -23,8 +23,8 @@ class Place < ActiveRecord::Base
   validates :wifi_settings_link, :redirect_url, :url => true
   validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
 
+  before_create :set_wifi_username_password
   before_save :set_wifi_link_freshnes
-  before_save :set_wifi_username_password
   after_save :gen_new_wifi_settings
 
 
