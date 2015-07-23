@@ -54,6 +54,8 @@ Rails.application.routes.draw do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':slug/status' => 'gowifi#redirect_after_auth'
     post ':slug/by_password' => 'gowifi#enter_by_password'
+    get ':slug/welcome' => 'menu_items#index', as: :menu_items_list
+    get ':slug/history' => 'menu_items#taken_items', as: :history
   end
 
   get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale

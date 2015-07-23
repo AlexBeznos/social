@@ -285,6 +285,10 @@ ru:
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'
     footer: 'Powered by GoFriends'
     password_placeholder: 'или введите пароль...'
+  menu_item:
+    greetings: "Добро пожаловать в "
+    buy_with_bonuses: Ниже список того, на что Вы можете потратить свои бонусы
+    bonus_amount: "Начисленные бонусы: "
   navigation:
     logout: 'Выйти'
     login: 'Войти'

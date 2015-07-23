@@ -1,0 +1,27 @@
+!!!
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    = favicon_link_tag 'favicon.ico'
+    %title
+      История всех ваших покупок за бонусы
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "bootstrap", :media => "all"
+    = stylesheet_link_tag "bootstrap-theme", :media => "all"
+    %link{ :href => menu_items_list_path(:format => :css), :media => "all", :rel => "stylesheet" }
+
+  %body
+    .container
+      .row
+        .table-responsive
+          %table.table
+            %thead
+              %th= t('menu_item.table.item_name')
+            - @taken_menu_items.each do |item|
+              %tr
+                %td= item.name

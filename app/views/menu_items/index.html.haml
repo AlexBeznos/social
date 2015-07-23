@@ -1,0 +1,46 @@
+!!!
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    = favicon_link_tag 'favicon.ico'
+    %title
+      #{t('menu_item.greetings')} #{@place.name}
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "bootstrap", :media => "all"
+    = stylesheet_link_tag "bootstrap-theme", :media => "all"
+    %link{ :href => menu_items_list_path(:format => :css), :media => "all", :rel => "stylesheet" }
+
+  %body
+    .container
+      .row
+        .col-md-12
+          %nav.nav.navbar-inverse
+            .container-fluid
+              .col-md-offset-4.col-md-4
+                %h3= link_to 'Перейти в интернет'
+              .col-md-4
+                %ul.nav.navbar-nav.navbar-right
+                  %li
+                    %h3= link_to 'История Ваших покупок', history_path
+      .row
+        .col-sm-12
+          %h1.text-center #{t('menu_item.greetings')} #{@place.name}, #{@customer.full_name}!
+        .col-sm-12
+          %h1.text-center #{t('menu_item.bonus_amount')}
+        .col-sm-12
+          %h1.text-center= @reputation_score
+        .col-sm-12
+          %h2.text-center= t('menu_item.buy_with_bonuses')
+      .row
+        - @menu_items.each do |item|
+          .col-xs-6.col-lg-4
+            %h2.text-center= item.name
+            %img(src="http://c2n.me/3l92n6Y.jpg")
+            %p= item.price
+            %p
+              %a.btn.btn-success Buy
