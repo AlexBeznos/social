@@ -111,6 +111,10 @@ gem 'cancancan', '~> 1.10'
 # Timezone locales
 gem 'i18n-timezones'
 
+# Pagination
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 group :development do
   gem 'spring'
   gem 'mina'

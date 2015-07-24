@@ -286,9 +286,14 @@ ru:
     footer: 'Powered by GoFriends'
     password_placeholder: 'или введите пароль...'
   menu_item:
-    greetings: "Добро пожаловать в "
-    buy_with_bonuses: Ниже список того, на что Вы можете потратить свои бонусы
-    bonus_amount: "Начисленные бонусы: "
+    greetings: "Добро пожаловать, %{customer_name}! Спасибо что зашли к нам через социальную сеть! "
+    buy_with_bonuses: Ниже список того, на что Вы можете потратить свои баллы
+    added_bonus: Вам начислено %{place_score_amount} баллов!
+    bonus_amount: "На Вашем счету: %{customer_reputation_score} баллов"
+    to_internet: "Перейти в интернет"
+    back_to_shopping: "Вернуться к покупкам"
+    shopping_history: "История покупок"
+    confirm_order: "Подтвердить списание %{item_price} баллов?"
   navigation:
     logout: 'Выйти'
     login: 'Войти'

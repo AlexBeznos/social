@@ -232,9 +232,14 @@ en:
     description: 'Enter through your favorite<br>social network and <br>get access to the Internet'
     footer: 'Powered by GoFriends'
   menu_item:
-    greetings: "Welcome to "
-    buy_with_bonuses: Here is the list of gifts you can buy with bonuses
-    bonus_amount: "Your bonuses: "
+    greetings: "Welcome, %{customer_name}! Thanks for coming by social network! "
+    buy_with_bonuses: Here is the list of items you can buy with your points
+    added_bonus: We give you %{place_score_amount} points!
+    bonus_amount: "You have %{customer_reputation_score} points on your account in this place"
+    to_internet: "Go to the internet"
+    back_to_shopping: "Back to shopping"
+    shopping_history: "Shopping history"
+    confirm_order: "You'll be billed with %{item_price} points"
   navigation:
     logout: 'Logout'
     login: 'Login'

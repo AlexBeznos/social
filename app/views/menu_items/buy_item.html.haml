@@ -1,0 +1,50 @@
+!!!
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    = favicon_link_tag 'favicon.ico'
+    %title
+      История всех ваших покупок за бонусы
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "bootstrap", :media => "all"
+    = stylesheet_link_tag "bootstrap-theme", :media => "all"
+    %link{ :href => menu_items_list_path(:format => :css), :media => "all", :rel => "stylesheet" }
+
+  %body
+    .container
+      .row
+        .col-md-12
+          %nav.nav.navbar-inverse
+            .container-fluid
+              .col-md-offset-4.col-md-4
+                %h3= link_to 'Перейти в интернет'
+              .col-md-4
+                %ul.nav.navbar-nav.navbar-right
+                  %li
+                    %h3= link_to 'История Ваших покупок', history_path
+      .row
+        .col-md-12
+          %h3= link_to 'Вернуться к покупкам', menu_items_list_path
+      .row
+        .col-md-12.text-center
+          %h3 Вы купили #{@menu_item.name}!
+        .col-md-8.col-md-offset-2.bg-info
+          %h3.text-center С вашего бонусного счета списано #{@menu_item.price} баллов
+      .row.top-buffer
+        .col-md-6
+          .text-center= image_tag 'http://c2n.me/3l92n6Y.jpg'
+          %h3.text-center= @menu_item.name
+        .col-md-6
+          - if @place.loyalty_program
+            %h3.text-center Please, show this page to waiter
+            .col-md-offset-2.col-md-8.col-md-offset-2.bg-success
+              %h3.text-center HA288ASD7
+          - elsif @place.loyalty_program_without_codes
+            %h3.text-center Please, show this page to waiter
+
+

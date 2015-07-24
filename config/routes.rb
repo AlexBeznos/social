@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     post ':slug/by_password' => 'gowifi#enter_by_password'
     get ':slug/welcome' => 'menu_items#index', as: :menu_items_list
     get ':slug/history' => 'menu_items#taken_items', as: :history
+    get ':slug/buy/:id' => 'menu_items#buy_item', as: :buy
   end
 
   get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale

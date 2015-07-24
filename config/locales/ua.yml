@@ -280,9 +280,14 @@ ua:
     footer: 'Powered by GoFriends'
     password_placeholder: 'або введіть пароль...'
   menu_item:
-    greetings: "Вітаємо у "
-    buy_with_bonuses: Нижче список того, на що Ви можете потратити свої бонуси
-    bonus_amount: "Нараховані бонуси: "
+    greetings: "Ласкаво просимо, %{customer_name}! Дякуємо ща зайшли до нас через соціальну мережу! "
+    buy_with_bonuses: Нижче список того, на що Ви можете потратити свої бали
+    added_bonus: Вам нараховано %{place_score_amount} балів!
+    bonus_amount: "На Вашому рахунку: %{customer_reputation_score} балів"
+    to_internet: "Перейти до інтернету"
+    back_to_shopping: "Повернутися до покупок"
+    shopping_history: "Исторія покупок"
+    confirm_order: "Подтвердити списання %{item_price} балів?"
   navigation:
     logout: 'Вийти'
     login: 'Увійти'

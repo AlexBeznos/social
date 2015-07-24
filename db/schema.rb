@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723153635) do
+ActiveRecord::Schema.define(version: 20150724141417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,11 +70,6 @@ ActiveRecord::Schema.define(version: 20150723153635) do
     t.datetime "updated_at"
   end
 
-  create_table "customers_menu_items", force: true do |t|
-    t.integer "customer_id"
-    t.integer "menu_item_id"
-  end
-
   create_table "menu_items", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -105,6 +100,16 @@ ActiveRecord::Schema.define(version: 20150723153635) do
 
   add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
   add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "menu_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+  add_index "orders", ["menu_item_id"], name: "index_orders_on_menu_item_id", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"
