@@ -5,6 +5,8 @@ class MenuItem < ActiveRecord::Base
 
   validates :name, :price, :place_id, presence: true
 
+  scope :pagination, -> (page_params) { page(page_params).per(3) }
+
   def create_order(reputation, customer)
     if reputation.score >= self.price
       reputation.update(score: reputation.score - self.price)

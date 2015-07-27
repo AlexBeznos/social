@@ -21,6 +21,7 @@ ua:
   notice:
     create: "%{subject} добавленно"
     updated: "%{subject} оновлено"
+    deleted: "%{subject} видалено"
   date:
     abbr_day_names:
     - нд.
@@ -292,6 +293,8 @@ ua:
     successful_buy: "Ви купили %{menu_item_name}!"
     billed_account: "З Вашого бонусного рахунку списано %{item_price} балів"
     show_to_waiter: Покажіть цю сторінку офіціанту
+    item_price: "Ціна: %{item_price}"
+    goods: "Товар/послуга"
   navigation:
     logout: 'Вийти'
     login: 'Увійти'

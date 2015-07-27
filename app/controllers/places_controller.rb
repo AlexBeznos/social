@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
   load_and_authorize_resource :find_by => :slug, except: :new
+  before_action :load_menu_items, only: :settings
+  before_action :load_menu_items, only: :settings
 
   def index
     @places = current_user.get_all_places
@@ -92,6 +94,10 @@ class PlacesController < ApplicationController
                       .inject{ |sum,x| sum.to_i + x.to_i }
 
       number ? number : 0
+    end
+
+    def load_menu_items
+      @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
     end
 
 end

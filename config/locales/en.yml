@@ -21,6 +21,7 @@ en:
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"
+    deleted: "%{subject} deleted"
   date:
     abbr_day_names:
     - Sun
@@ -244,6 +245,8 @@ en:
     successful_buy: "You've bought %{menu_item_name}!"
     billed_account: "You account have been billed with %{item_price} points"
     show_to_waiter: Please, show this page to waiter
+    item_price: "Price: %{item_price}"
+    goods: Item
   navigation:
     logout: 'Logout'
     login: 'Login'
