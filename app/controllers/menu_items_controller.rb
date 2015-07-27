@@ -10,16 +10,12 @@ class MenuItemsController < ApplicationController
   end
 
   def taken_items
-    @orders = @customer.orders.order('created_at DESC').page(params[:page]).per(3)
+    @orders = @customer.orders.pagination(params[:page])
   end
 
   def buy_item
-    if @reputation.score >= @menu_item.price
-      @reputation.update(score: @reputation.score - @menu_item.price)
-      @customer.menu_items << @menu_item
-    else
-      redirect_to menu_items_list_path, notice: "No money, bitch!"
-    end
+    created = @menu_item.create_order(@reputation, @customer)
+    redirect_to menu_items_list_path, notice: t('menu_item.not_enough_points') unless created
   end
 
   private

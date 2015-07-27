@@ -22,29 +22,29 @@
           %nav.nav.navbar-inverse
             .container-fluid
               .col-md-offset-4.col-md-4
-                %h3= link_to 'Перейти в интернет'
+                %h3= link_to t('menu_item.to_internet'), @place.redirect_url
               .col-md-4
                 %ul.nav.navbar-nav.navbar-right
                   %li
-                    %h3= link_to 'История Ваших покупок', history_path
+                    %h3= link_to t('menu_item.shopping_history'), history_path
       .row
         .col-md-12
-          %h3= link_to 'Вернуться к покупкам', menu_items_list_path
+          %h3= link_to t('menu_item.back_to_shopping'), menu_items_list_path
       .row
         .col-md-12.text-center
-          %h3 Вы купили #{@menu_item.name}!
+          %h3= t('menu_item.successful_buy', menu_item_name: @menu_item.name)
         .col-md-8.col-md-offset-2.bg-info
-          %h3.text-center С вашего бонусного счета списано #{@menu_item.price} баллов
+          %h3.text-center= t('menu_item.billed_account', item_price: @menu_item.price)
       .row.top-buffer
         .col-md-6
           .text-center= image_tag 'http://c2n.me/3l92n6Y.jpg'
           %h3.text-center= @menu_item.name
         .col-md-6
           - if @place.loyalty_program
-            %h3.text-center Please, show this page to waiter
+            %h3.text-center= t('menu_item.show_to_waiter')
             .col-md-offset-2.col-md-8.col-md-offset-2.bg-success
               %h3.text-center HA288ASD7
           - elsif @place.loyalty_program_without_codes
-            %h3.text-center Please, show this page to waiter
+            %h3.text-center= t('menu_item.show_to_waiter')
 
 

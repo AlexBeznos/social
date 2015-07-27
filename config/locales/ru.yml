@@ -294,6 +294,10 @@ ru:
     back_to_shopping: "Вернуться к покупкам"
     shopping_history: "История покупок"
     confirm_order: "Подтвердить списание %{item_price} баллов?"
+    not_enough_points: "Недостаточно баллов для покупки"
+    successful_buy: "Вы купили %{menu_item_name}!"
+    billed_account: "С Вашего бонусного счета списано %{item_price} баллов"
+    show_to_waiter: "Покажите эту страницу официанту"
   navigation:
     logout: 'Выйти'
     login: 'Войти'

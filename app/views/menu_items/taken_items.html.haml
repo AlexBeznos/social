@@ -21,7 +21,7 @@
           %nav.nav.navbar-inverse
             .container-fluid
               .col-md-offset-4.col-md-4
-                %h3= link_to t('menu_item.to_internet')
+                %h3= link_to t('menu_item.to_internet'), @place.redirect_url
               .col-md-4
                 %ul.nav.navbar-nav.navbar-right
                   %li
@@ -37,10 +37,7 @@
                 = image_tag 'http://c2n.me/3l92n6Y.jpg'
             .col-md-6.text-center
               %h3= order.menu_item.name
-              %p
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae
-                natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam
-                deleniti eos cupiditate dolore doloribus!
+              %p= order.menu_item.description
               - if @place.loyalty_program
                 .col-md-4.text-center.bg-success
                   %h3 HA288ASD7
