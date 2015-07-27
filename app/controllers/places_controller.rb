@@ -1,7 +1,6 @@
 class PlacesController < ApplicationController
   load_and_authorize_resource :find_by => :slug, except: :new
   before_action :load_menu_items, only: :settings
-  before_action :load_menu_items, only: :settings
 
   def index
     @places = current_user.get_all_places
