@@ -309,6 +309,7 @@ ua:
       stocks: 'Акції'
       guests: 'Top відвідувачів'
       birthdays: "Дні народження"
+      menu_items: Товари/Послуги
   pages:
     places:
       title: 'Заклади'

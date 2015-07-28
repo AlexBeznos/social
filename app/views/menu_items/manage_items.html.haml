@@ -1,3 +1,6 @@
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :title, t('models.places.actions.settings.title', place_name: @place.name)
+
 %h1= t('menu_item.goods')
 .panel.panel-default.panel-settings
   .panel-heading
@@ -27,6 +30,6 @@
                   %li
                     = link_to t('helpers.submit.edit'), edit_place_menu_item_path(@place, item), class: 'btn btn-primary btn-block'
                   %li.navbar-right
-                    = link_to t('helpers.submit.destroy'), place_menu_item_path(@place, item), method: 'DELETE', class: 'btn btn-danger btn-block'
-    .row
-      .col-md-12.text-center= paginate @menu_items
+                    = link_to t('helpers.submit.destroy'), manage_menu_items_path, method: 'DELETE', class: 'btn btn-danger btn-block'
+    -#.row
+    -#  .col-md-12.text-center= paginate @menu_items

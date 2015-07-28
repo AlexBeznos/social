@@ -6,6 +6,5 @@
   - if @menu_item.image.exists?
     = image_tag @menu_item.image.url, height: 100
   = f.input :image, as: :file
-  = f.input :user_id, as: :hidden, :input_html => { :value => "#{params[:user] ? params[:user] : current_user.id}" }
 
   = f.button :submit

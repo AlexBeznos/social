@@ -261,6 +261,7 @@ en:
       stocks: 'Stocks'
       guests: 'Top visitors'
       birthdays: "Visitor's birthdays"
+      menu_items: 'Menu Items'
   pages:
     places:
       title: 'Places'

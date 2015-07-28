@@ -60,6 +60,10 @@ Rails.application.routes.draw do
     get ':slug/buy/:id' => 'menu_items#buy_item', as: :buy
   end
 
+  scope '/places' do
+    get ':slug/menu_items' => 'menu_items#manage_items', as: :manage_menu_items
+  end
+
   get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale
 
   post '/feedback' => 'gowifi#feedback', as: :feedback

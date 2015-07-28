@@ -29,16 +29,6 @@
                 %ul.nav.navbar-nav.navbar-right
                   %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
                   %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
-      -#.row
-      -#  .col-md-12
-      -#    %nav.nav.navbar-inverse
-      -#      .container-fluid
-      -#        .col-md-offset-4.col-md-4
-      -#          %h3= link_to t('menu_item.to_internet'), @place.redirect_url
-      -#        .col-md-4
-      -#          %ul.nav.navbar-nav.navbar-right
-      -#            %li
-      -#              %h3= link_to t('menu_item.back_to_shopping'), menu_items_list_path
       .row
         .col-md-12.text-center
           %h2= t('menu_item.shopping_history')
@@ -55,15 +45,5 @@
                   %h4= t('menu_item.coupon_code', coupon_code: 'HA288ASD7')
                 %p
                   %strong= "Date: #{order.created_at.to_formatted_s(:short)}"
-            -#.col-md-9.text-center
-            -#  %h3= order.menu_item.name
-            -#  %p= order.menu_item.description
-            -#  - if @place.loyalty_program
-            -#    .col-md-4.text-center.bg-success
-            -#      %h3 HA288ASD7
-            -#  - else
-            -#    .col-md-4
-            -#  .col-md-4.col-md-offset-4.text-center.bg-success
-            -#    %p= order.created_at
       .row
         .col-md-12.text-center= paginate @orders

@@ -22,12 +22,14 @@ class Ability
       cannot :destroy, User
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: all_user_ids
       can :download_settings, Place, user_id: all_user_ids
-      can :crud, [Stock, Message, Style, MenuItem], :place => { :user_id => all_user_ids }
+      can :crud, [Stock, Message, Style], :place => { :user_id => all_user_ids }
+      can [:manage_items, :crud], MenuItem
     elsif user.id && user.general?
       can [:show, :update], User, id: user.id
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: user.id
       cannot [:create, :destroy], Place
-      can :crud, [Stock, Message, Style, MenuItem], :place => { :user => user }
+      can :crud, [Stock, Message, Style], :place => { :user => user }
+      can [:manage_items, :crud], MenuItem
     else
       cannot :all, Place
     end

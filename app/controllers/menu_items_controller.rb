@@ -2,9 +2,9 @@ class MenuItemsController < ApplicationController
   layout false, only: [:index, :taken_items, :buy_item]
 
   load_and_authorize_resource :place, :find_by => :slug, except: [:index, :taken_items, :buy_item]
-  load_and_authorize_resource :through => :place, except: [:index, :taken_items, :buy_item]
+  load_and_authorize_resource except: [:index, :taken_items, :buy_item]
 
-  before_action :find_place, only: [:index, :taken_items, :buy_item]
+  before_action :find_place, only: [:index, :taken_items, :buy_item, :manage_items]
   before_action :find_customer, only: [:index, :taken_items, :buy_item]
   before_action :load_menu_item, only: :buy_item
   before_action :load_reputation_score, only: [:index, :buy_item, :taken_items]
@@ -18,7 +18,7 @@ class MenuItemsController < ApplicationController
 
   def create
     if @menu_item.save
-      redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
+      redirect_to manage_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
     else
       render :action => :new
     end
@@ -29,7 +29,7 @@ class MenuItemsController < ApplicationController
 
   def update
     if @menu_item.update(menu_item_params)
-      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
+      redirect_to manage_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
     else
       render :action => :edit
     end
@@ -47,6 +47,10 @@ class MenuItemsController < ApplicationController
   def buy_item
     created = @menu_item.create_order(@reputation, @customer)
     redirect_to menu_items_list_path, notice: t('menu_item.not_enough_points') unless created
+  end
+
+  def manage_items
+      @menu_items = MenuItem.where(place_id: @place.id)
   end
 
   private
