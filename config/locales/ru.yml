@@ -288,6 +288,7 @@ ru:
     password_placeholder: 'или введите пароль...'
   menu_item:
     greetings: "Добро пожаловать, %{customer_name}! Спасибо что зашли к нам через социальную сеть! "
+    greetings_short: Добро пожаловать!
     buy_with_bonuses: Ниже список того, на что Вы можете потратить свои баллы
     added_bonus: Вам начислено %{place_score_amount} баллов!
     bonus_amount: "На Вашем счету: %{customer_reputation_score} баллов"

@@ -234,6 +234,7 @@ en:
     footer: 'Powered by GoFriends'
   menu_item:
     greetings: "Welcome, %{customer_name}! Thanks for coming by social network! "
+    greetings_short: Добро пожаловать!
     buy_with_bonuses: Here is the list of items you can buy with your points
     added_bonus: We give you %{place_score_amount} points!
     bonus_amount: "You have %{customer_reputation_score} points on your account in this place"

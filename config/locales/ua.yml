@@ -282,6 +282,7 @@ ua:
     password_placeholder: 'або введіть пароль...'
   menu_item:
     greetings: "Ласкаво просимо, %{customer_name}! Дякуємо ща зайшли до нас через соціальну мережу! "
+    greetings_short: Добро пожаловать!
     buy_with_bonuses: Нижче список того, на що Ви можете потратити свої бали
     added_bonus: Вам нараховано %{place_score_amount} балів!
     bonus_amount: "На Вашому рахунку: %{customer_reputation_score} балів"

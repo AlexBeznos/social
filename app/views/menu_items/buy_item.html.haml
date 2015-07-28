@@ -36,7 +36,7 @@
           %h3.text-center= t('menu_item.billed_account', item_price: @menu_item.price)
       .row.top-buffer
         .col-md-6
-          .text-center= image_tag 'http://c2n.me/3l92n6Y.jpg'
+          .text-center= image_tag @menu_item.image.url
           %h3.text-center= @menu_item.name
         .col-md-6
           - if @place.loyalty_program
