@@ -294,8 +294,10 @@ ua:
     successful_buy: "Ви купили %{menu_item_name}!"
     billed_account: "З Вашого бонусного рахунку списано %{item_price} балів"
     show_to_waiter: Покажіть цю сторінку офіціанту
+    show_to_waiter_with_code: Покажіть код офіціанту
     item_price: "Ціна: %{item_price}"
     goods: "Товар/послуга"
+    coupon_code: "Код покупки: %{coupon_code}"
   navigation:
     logout: 'Вийти'
     login: 'Увійти'

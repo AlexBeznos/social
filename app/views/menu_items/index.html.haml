@@ -14,35 +14,60 @@
     = javascript_include_tag :application
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    %link{ :href => menu_items_list_path(:format => :css), :media => "all", :rel => "stylesheet" }
+    = stylesheet_link_tag "welcome"
 
   %body
     .container
       .row
         .col-md-12
-          %nav.nav.navbar-inverse
+          %nav.navbar.navbar-default
             .container-fluid
-              .col-md-offset-4.col-md-4
-                %h3= link_to t('menu_item.to_internet'), @place.redirect_url
-              .col-md-4
+              .navbar-headere
+                = link_to @place.name, menu_items_list_path, class: 'navbar-brand'
+              %ul.nav.navbar-nav.navbar-left
+                %li= link_to t('menu_item.to_internet'), @place.redirect_url
+              .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 %ul.nav.navbar-nav.navbar-right
-                  %li
-                    %h3= link_to t('menu_item.shopping_history'), history_path
+                  %li= link_to t('menu_item.shopping_history'), history_path
+                  %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
+                  -#.col-md-offset-4.col-md-4
+                  -#  %h3= link_to t('menu_item.to_internet'), @place.redirect_url
+                  -#.col-md-4
+                  -#  %ul.nav.navbar-nav.navbar-right
+                  -#    %li
+                  -#      %h3= link_to t('menu_item.shopping_history'), history_path
       .inner
         = render 'shared/flash'
       .row
         .col-sm-12
-          %h1.text-center= t('menu_item.greetings', customer_name: @customer.first_name)
+          %h2.text-center.well.well-lg= t('menu_item.greetings', customer_name: @customer.first_name)
         .col-sm-12
-          %h1.text-center #{t('menu_item.added_bonus', place_score_amount: @place.score_amount)}
+          .col-sm-offset-4.col-sm-4.panel.panel-default
+            %h1.text-center #{t('menu_item.added_bonus', place_score_amount: @place.score_amount)}
+          .col-sm-4
         .col-sm-12
-          %h1.text-center #{t('menu_item.bonus_amount', customer_reputation_score: @reputation_score)}
+          -#%h1.text-center #{t('menu_item.bonus_amount', customer_reputation_score: @reputation_score)}
         .col-sm-12
-          %h2.text-center= t('menu_item.buy_with_bonuses')
+          %h3.text-center= t('menu_item.buy_with_bonuses')
       .row
         - @menu_items.each do |item|
-          .col-xs-6.col-lg-4.text-center
-            = image_tag item.image.url, class: 'text-center'
-            %h2= item.name
-            %h2= item.price
-            = link_to 'Buy', buy_path(@place.slug, item.id), class: 'btn btn-success', data: { confirm: t('menu_item.confirm_order', item_price: item.price) }
+          .col-xs-6.col-lg-4.text-center.panel-body
+            .wrapper
+              .ribbon-wrapper-green
+                .ribbon-green= item.price
+              = image_tag item.image.url, class: 'text-center'
+              .caption
+                %h2= item.name
+                = link_to 'Buy', buy_path(@place.slug, item.id), class: 'btn btn-success btn-lg', data: { confirm: t('menu_item.confirm_order', item_price: item.price) }
+      -#.row.popular
+      -#  - @menu_items.each do |item|
+      -#    .col-sm-6.col-md-4
+      -#      .thumbnail
+      -#        .book-cover= image_tag item.image.url
+      -#        .caption
+      -#          %h3= item.name
+      -#          %p= item.description
+      -#          %p
+      -#            = link_to 'Buy', buy_path(@place.slug, item.id), class: 'btn btn-success', data: { confirm: t('menu_item.confirm_order', item_price: item.price) }
+      .row
+        .col-md-12.text-center= paginate @menu_items

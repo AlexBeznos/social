@@ -7,10 +7,10 @@ class MenuItemsController < ApplicationController
   before_action :find_place, only: [:index, :taken_items, :buy_item]
   before_action :find_customer, only: [:index, :taken_items, :buy_item]
   before_action :load_menu_item, only: :buy_item
-  before_action :load_reputation_score, only: [:index, :buy_item]
+  before_action :load_reputation_score, only: [:index, :buy_item, :taken_items]
 
   def index
-    @menu_items = MenuItem.where(place_id: @place.id)
+    @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
   end
 
   def new

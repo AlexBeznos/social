@@ -246,8 +246,10 @@ en:
     successful_buy: "You've bought %{menu_item_name}!"
     billed_account: "You account have been billed with %{item_price} points"
     show_to_waiter: Please, show this page to waiter
+    show_to_waiter_with_code: Show the code below to waiter
     item_price: "Price: %{item_price}"
     goods: Item
+    coupon_code: "Code: %{coupon_code}"
   navigation:
     logout: 'Logout'
     login: 'Login'

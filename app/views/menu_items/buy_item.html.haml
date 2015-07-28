@@ -12,38 +12,38 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    %link{ :href => menu_items_list_path(:format => :css), :media => "all", :rel => "stylesheet" }
+    = stylesheet_link_tag "welcome"
 
   %body
     .container
       .row
         .col-md-12
-          %nav.nav.navbar-inverse
+          %nav.navbar.navbar-default
             .container-fluid
-              .col-md-offset-4.col-md-4
-                %h3= link_to t('menu_item.to_internet'), @place.redirect_url
-              .col-md-4
+              .navbar-headere
+                = link_to @place.name, menu_items_list_path, class: 'navbar-brand'
+              %ul.nav.navbar-nav.navbar-left
+                %li= link_to t('menu_item.to_internet'), @place.redirect_url
+              .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 %ul.nav.navbar-nav.navbar-right
-                  %li
-                    %h3= link_to t('menu_item.shopping_history'), history_path
+                  %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+                  %li= link_to t('menu_item.shopping_history'), history_path
+                  %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
       .row
-        .col-md-12
-          %h3= link_to t('menu_item.back_to_shopping'), menu_items_list_path
-      .row
-        .col-md-12.text-center
-          %h3= t('menu_item.successful_buy', menu_item_name: @menu_item.name)
-        .col-md-8.col-md-offset-2.bg-info
-          %h3.text-center= t('menu_item.billed_account', item_price: @menu_item.price)
-      .row.top-buffer
-        .col-md-6
-          .text-center= image_tag @menu_item.image.url
-          %h3.text-center= @menu_item.name
-        .col-md-6
-          - if @place.loyalty_program
-            %h3.text-center= t('menu_item.show_to_waiter')
-            .col-md-offset-2.col-md-8.col-md-offset-2.bg-success
-              %h3.text-center HA288ASD7
-          - elsif @place.loyalty_program_without_codes
-            %h3.text-center= t('menu_item.show_to_waiter')
+        .container-fluid
+          .col-md-12.well.text-center
+            %h3= t('menu_item.successful_buy', menu_item_name: @menu_item.name)
+            %h3.text-center= t('menu_item.billed_account', item_price: @menu_item.price)
+        .row.top-buffer
+          .col-md-12
+            .text-center= image_tag @menu_item.image.url
+            %h3.text-center= @menu_item.name
+          .col-md-12
+            - if @place.loyalty_program
+              %h4.text-center= t('menu_item.show_to_waiter_with_code')
+              .col-md-offset-2.col-md-8.col-md-offset-2.bg-success
+                %h3.text-center= t('menu_item.coupon_code', coupon_code: 'HA288ASD7')
+            - elsif @place.loyalty_program_without_codes
+              %h3.text-center= t('menu_item.show_to_waiter')
 
 

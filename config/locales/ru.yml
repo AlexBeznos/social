@@ -300,9 +300,11 @@ ru:
     successful_buy: "Вы купили %{menu_item_name}!"
     billed_account: "С Вашего бонусного счета списано %{item_price} баллов"
     show_to_waiter: "Покажите эту страницу официанту"
+    show_to_waiter_with_code: "Покажите код официанту"
     add_new_item: Добавить новый товар/услугу
     item_price: "Цена: %{item_price}"
     goods: "Товар/услуга"
+    coupon_code: "Код покупки: %{coupon_code}"
   navigation:
     logout: 'Выйти'
     login: 'Войти'

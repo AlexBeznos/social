@@ -12,38 +12,58 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    %link{ :href => menu_items_list_path(:format => :css), :media => "all", :rel => "stylesheet" }
+    = stylesheet_link_tag "welcome"
+
 
   %body
     .container
       .row
         .col-md-12
-          %nav.nav.navbar-inverse
+          %nav.navbar.navbar-default
             .container-fluid
-              .col-md-offset-4.col-md-4
-                %h3= link_to t('menu_item.to_internet'), @place.redirect_url
-              .col-md-4
+              .navbar-headere
+                = link_to @place.name, menu_items_list_path, class: 'navbar-brand'
+              %ul.nav.navbar-nav.navbar-left
+                %li= link_to t('menu_item.to_internet'), @place.redirect_url
+              .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 %ul.nav.navbar-nav.navbar-right
-                  %li
-                    %h3= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+                  %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+                  %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
+      -#.row
+      -#  .col-md-12
+      -#    %nav.nav.navbar-inverse
+      -#      .container-fluid
+      -#        .col-md-offset-4.col-md-4
+      -#          %h3= link_to t('menu_item.to_internet'), @place.redirect_url
+      -#        .col-md-4
+      -#          %ul.nav.navbar-nav.navbar-right
+      -#            %li
+      -#              %h3= link_to t('menu_item.back_to_shopping'), menu_items_list_path
       .row
         .col-md-12.text-center
           %h2= t('menu_item.shopping_history')
       .row
         - @orders.each do |order|
-          .col-md-12
-            .col-md-6
-              %p
-                = image_tag order.menu_item.image.url
-            .col-md-6.text-center
-              %h3= order.menu_item.name
-              %p= order.menu_item.description
-              - if @place.loyalty_program
-                .col-md-4.text-center.bg-success
-                  %h3 HA288ASD7
-              - else
-                .col-md-4
-              .col-md-4.col-md-offset-4.text-center.bg-success
-                %p= order.created_at
+          .col-xs-6.col-lg-4
+            .wrapper
+              .ribbon-wrapper-green
+                .ribbon-green= order.menu_item.price
+              .text-center= image_tag order.menu_item.image.url
+              .caption.text-center
+                %h2= order.menu_item.name
+                - if @place.loyalty_program
+                  %h4= t('menu_item.coupon_code', coupon_code: 'HA288ASD7')
+                %p
+                  %strong= "Date: #{order.created_at.to_formatted_s(:short)}"
+            -#.col-md-9.text-center
+            -#  %h3= order.menu_item.name
+            -#  %p= order.menu_item.description
+            -#  - if @place.loyalty_program
+            -#    .col-md-4.text-center.bg-success
+            -#      %h3 HA288ASD7
+            -#  - else
+            -#    .col-md-4
+            -#  .col-md-4.col-md-offset-4.text-center.bg-success
+            -#    %p= order.created_at
       .row
         .col-md-12.text-center= paginate @orders
