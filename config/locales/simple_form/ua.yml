@@ -33,3 +33,5 @@ ua:
         css: CSS
         text_color: Колір основного тексту
         greating_color: Колір привітання
+      menu_item:
+        menu_item: Item

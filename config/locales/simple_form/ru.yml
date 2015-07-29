@@ -35,3 +35,5 @@ ru:
         css: CSS
         text_color: Цвет основного текста
         greating_color: Цвет приветствия
+      menu_item:
+        menu_item: Товар

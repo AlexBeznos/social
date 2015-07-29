@@ -17,6 +17,8 @@ class MenuItemsController < ApplicationController
   end
 
   def create
+    @menu_item.place_id = @place.id
+
     if @menu_item.save
       redirect_to manage_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
     else
@@ -47,10 +49,11 @@ class MenuItemsController < ApplicationController
   def buy_item
     created = @menu_item.create_order(@reputation, @customer)
     redirect_to menu_items_list_path, notice: t('menu_item.not_enough_points') unless created
+    @reputation_score = @reputation.score
   end
 
   def manage_items
-      @menu_items = MenuItem.where(place_id: @place.id)
+    @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
   end
 
   private

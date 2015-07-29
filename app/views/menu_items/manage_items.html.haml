@@ -1,12 +1,9 @@
 = content_for :page_stylesheet, 'dashboard/settings'
 = content_for :title, t('models.places.actions.settings.title', place_name: @place.name)
 
-%h1= t('menu_item.goods')
 .panel.panel-default.panel-settings
-  .panel-heading
-    .panel-title
-      = t('menu_item.goods')
-      = link_to t('menu_item.add_new_item'), new_place_menu_item_path(@place, @menu_item),class: 'btn btn-info btn-xs pull-right'
+  .panel-body
+    = link_to t('menu_item.add_new_item'), new_place_menu_item_path(@place, @menu_item),class: 'btn btn-info btn-xs pull-right'
   .panel-body
     - @menu_items.each do |item|
       .row
@@ -16,9 +13,9 @@
           .col-sm-8
             .panel-heading
               .row
-                .col-sm-8
+                .col-sm-2
                   %strong= item.name
-                .col-sm-4
+                .col-sm-2.col-sm-offset-8
                   %strong= t('menu_item.item_price', item_price: item.price)
             .row
               .panel.panel-default
@@ -27,9 +24,9 @@
             .row
               .panel-body
                 %ul.list-inline
-                  %li
+                  %li.navbar-left
                     = link_to t('helpers.submit.edit'), edit_place_menu_item_path(@place, item), class: 'btn btn-primary btn-block'
                   %li.navbar-right
                     = link_to t('helpers.submit.destroy'), manage_menu_items_path, method: 'DELETE', class: 'btn btn-danger btn-block'
-    -#.row
-    -#  .col-md-12.text-center= paginate @menu_items
+    .row
+      .col-md-12.text-center= paginate @menu_items

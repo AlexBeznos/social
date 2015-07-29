@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    errors:
+      models:
+        menu_item:
+          attributes:
+            image:
+              in_between: Message should be between 11 kilobytes and 10 megabytes
+  models:
+    menu_items:
+      actions:
+        edit:
+          title: Edit item
+        new:
+          title: Add item
