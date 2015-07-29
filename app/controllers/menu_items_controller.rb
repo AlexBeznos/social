@@ -60,7 +60,11 @@ class MenuItemsController < ApplicationController
     end
 
     def find_customer
-      @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
+      if cookies[:customer]
+        @customer = Customer.find(cookies[:customer].to_i)
+      else
+        redirect_to gowifi_place_path
+      end
     end
 
     def load_reputation_score
