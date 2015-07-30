@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :visit, :class => Customer::Visit do
-    association :network_profile
+  factory :reputation, :class => Customer::Reputation do
     association :place
     association :customer
+    score 1000
   end
 
 end
