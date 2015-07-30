@@ -13,8 +13,7 @@ class InstagramService
 
   def self.get_more_customer_info(customer)
     network_profile = customer.network_profiles
-                              .where({:social_network => SocialNetwork.select(:id)
-                              .find_by(name: 'vkontakte')})
+                              .where({:social_network => SocialNetwork.select(:id).find_by(name: 'vkontakte')})
                               .first
 
     user = get_user network_profile

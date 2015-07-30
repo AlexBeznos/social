@@ -35,11 +35,6 @@ class GowifiController < ApplicationController
     redirect_to wifi_login_path
   end
 
-  def edit_message
-    edited_message = Message.new(edited_message_params)
-    ReadCache.redis.set request.ip, edited_message.to_json
-  end
-
   def auth_failure
     if params[:provider]
       redirect_to "/auth/#{params[:provider]}"
