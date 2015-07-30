@@ -1,7 +1,6 @@
 class MenuItem < ActiveRecord::Base
   belongs_to :place
-  has_many :orders, :dependent => :destroy
-  has_many :customers, through: :orders
+  has_and_belongs_to_many :orders
 
   has_attached_file :image,
                     :storage => :s3,
@@ -15,10 +14,10 @@ class MenuItem < ActiveRecord::Base
 
   scope :pagination, -> (page_params) { page(page_params).per(3) }
 
-  def create_order(reputation, customer)
+  def add_to_order(reputation, order)
     if reputation.score >= self.price
       reputation.update(score: reputation.score - self.price)
-      customer.menu_items << self
+      order.menu_items << self
     else
       false
     end

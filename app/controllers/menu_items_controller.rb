@@ -7,6 +7,7 @@ class MenuItemsController < ApplicationController
   before_action :find_place, only: [:index, :taken_items, :buy_item, :manage_items]
   before_action :find_customer, only: [:index, :taken_items, :buy_item]
   before_action :load_menu_item, only: :buy_item
+  before_action :load_order, only: :buy_item
   before_action :load_reputation_score, only: [:index, :buy_item, :taken_items]
 
   def index
@@ -47,7 +48,7 @@ class MenuItemsController < ApplicationController
   end
 
   def buy_item
-    created = @menu_item.create_order(@reputation, @customer)
+    created = @menu_item.add_to_order(@reputation, @order)
     redirect_to menu_items_list_path, notice: t('menu_item.not_enough_points') unless created
     @reputation_score = @reputation.score
   end
@@ -81,5 +82,9 @@ class MenuItemsController < ApplicationController
 
     def menu_item_params
       params.require(:menu_item).permit(:name, :description, :price, :image)
+    end
+
+    def load_order
+      @order = @place.orders.create(customer_id: @customer.id)
     end
 end

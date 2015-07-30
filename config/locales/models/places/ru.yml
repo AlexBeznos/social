@@ -13,6 +13,8 @@ ru:
         wifi_link: "Ссылка на страницу с аутентификацией"
         reputation_active: "Начисление бонусов"
         score_amount: "Размер бонуса"
+        loyalty_program: Программа лояльности
+        loyalty_program_without_codes: Программа лояльности без кода
       actions:
         index:
           title: 'Заведения'

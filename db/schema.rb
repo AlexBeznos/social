@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728092822) do
+ActiveRecord::Schema.define(version: 20150729160037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 20150728092822) do
 
   add_index "menu_items", ["place_id"], name: "index_menu_items_on_place_id", using: :btree
 
+  create_table "menu_items_orders", force: true do |t|
+    t.integer "menu_item_id"
+    t.integer "order_id"
+  end
+
+  add_index "menu_items_orders", ["menu_item_id"], name: "index_menu_items_orders_on_menu_item_id", using: :btree
+  add_index "menu_items_orders", ["order_id"], name: "index_menu_items_orders_on_order_id", using: :btree
+
   create_table "messages", force: true do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -107,13 +115,13 @@ ActiveRecord::Schema.define(version: 20150728092822) do
 
   create_table "orders", force: true do |t|
     t.integer  "customer_id"
-    t.integer  "menu_item_id"
+    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
-  add_index "orders", ["menu_item_id"], name: "index_orders_on_menu_item_id", using: :btree
+  add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"

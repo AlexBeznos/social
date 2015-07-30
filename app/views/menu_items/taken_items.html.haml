@@ -37,10 +37,10 @@
           .col-xs-6.col-lg-4
             .wrapper
               .ribbon-wrapper-green
-                .ribbon-green= order.menu_item.price
-              .text-center= image_tag order.menu_item.image.url
+                .ribbon-green= order.menu_items.first.price
+              .text-center= image_tag order.menu_items.first.image.url
               .caption.text-center
-                %h2= order.menu_item.name
+                %h2= order.menu_items.first.name
                 - if @place.loyalty_program
                   %h4= t('menu_item.coupon_code', coupon_code: 'HA288ASD7')
                 %p
