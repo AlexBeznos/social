@@ -1,0 +1,16 @@
+.row
+  .container-fluid
+    .col-md-12.well.text-center
+      %h3= t('menu_item.successful_buy', menu_item_name: @menu_item.name)
+      %h3.text-center= t('menu_item.billed_account', item_price: @menu_item.price)
+  .row.top-buffer
+    .col-md-12
+      .text-center= image_tag @menu_item.image.url
+      %h3.text-center= @menu_item.name
+    .col-md-12
+      - if @place.loyalty_program
+        %h4.text-center= t('menu_item.show_to_waiter_with_code')
+        .col-md-offset-2.col-md-8.col-md-offset-2.bg-success
+          %h3.text-center= t('menu_item.coupon_code', coupon_code: 'HA288ASD7')
+      - elsif @place.loyalty_program_without_codes
+        %h3.text-center= t('menu_item.show_to_waiter')

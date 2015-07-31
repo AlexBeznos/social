@@ -1,0 +1,25 @@
+.inner
+  = render 'shared/flash'
+.row
+  .col-sm-12
+    %h2.text-center.well.well-lg= t('menu_item.greetings', customer_name: @customer.first_name)
+  .col-sm-12
+    .col-sm-offset-4.col-sm-4.panel.panel-default
+      %h1.text-center #{t('menu_item.added_bonus', place_score_amount: @place.score_amount)}
+    .col-sm-4
+  .col-sm-12
+    -#%h1.text-center #{t('menu_item.bonus_amount', customer_reputation_score: @reputation_score)}
+  .col-sm-12
+    %h3.text-center= t('menu_item.buy_with_bonuses')
+.row
+  - @menu_items.each do |item|
+    .col-xs-6.col-lg-4.text-center.panel-body
+      .wrapper
+        .ribbon-wrapper-green
+          .ribbon-green= item.price
+        = image_tag item.image.url, class: 'text-center'
+        .caption
+          %h2= item.name
+          = link_to 'Buy', order_path(@place.slug, item.id), class: 'btn btn-success btn-lg', method: :post, data: { confirm: t('menu_item.confirm_order', item_price: item.price) }
+.row
+  .col-md-12.text-center= paginate @menu_items #FIXME: generate incorrect paths, because of the same route for both templates at MenuItemsController#index

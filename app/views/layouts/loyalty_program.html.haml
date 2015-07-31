@@ -5,15 +5,16 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     = favicon_link_tag 'favicon.ico'
-    %title= t('menu_item.shopping_history')
+    %title
+      #{t('menu_item.greetings_short')}
     = csrf_meta_tags
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = javascript_include_tag :application
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
     = stylesheet_link_tag "welcome"
-
 
   %body
     .container
@@ -21,29 +22,18 @@
         .col-md-12
           %nav.navbar.navbar-default
             .container-fluid
-              .navbar-headere
+              .navbar-header
                 = link_to @place.name, menu_items_list_path, class: 'navbar-brand'
               %ul.nav.navbar-nav.navbar-left
                 %li= link_to t('menu_item.to_internet'), @place.redirect_url
               .collapse.navbar-collapse#bs-example-navbar-collapse-1
                 %ul.nav.navbar-nav.navbar-right
-                  %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+                  - if request.path_parameters[:action] == 'index' && request.path_parameters[:controller] == 'orders'
+                    %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+                  - elsif request.path_parameters[:action] == 'show' && request.path_parameters[:controller] == 'orders'
+                    %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+                    %li= link_to t('menu_item.shopping_history'), orders_path
+                  - else
+                    %li= link_to t('menu_item.shopping_history'), orders_path
                   %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
-      .row
-        .col-md-12.text-center
-          %h2= t('menu_item.shopping_history')
-      .row
-        - @orders.each do |order|
-          .col-xs-6.col-lg-4
-            .wrapper
-              .ribbon-wrapper-green
-                .ribbon-green= order.menu_items.first.price
-              .text-center= image_tag order.menu_items.first.image.url
-              .caption.text-center
-                %h2= order.menu_items.first.name
-                - if @place.loyalty_program
-                  %h4= t('menu_item.coupon_code', coupon_code: 'HA288ASD7')
-                %p
-                  %strong= "Date: #{order.created_at.to_formatted_s(:short)}"
-      .row
-        .col-md-12.text-center= paginate @orders
+      = yield

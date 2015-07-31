@@ -33,9 +33,9 @@ Rails.application.routes.draw do
 
   resources :places do
     resources :messages, except: [:index, :show]
-    resources :stocks, except: [:show]
+    resources :stocks, except: :show
     resources :styles, except: :index
-    resources :menu_items, except: [:index, :show]
+    resources :menu_items
     member do
       get 'guests'
       get 'birthdays'
@@ -55,14 +55,14 @@ Rails.application.routes.draw do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':slug/status' => 'gowifi#redirect_after_auth'
     post ':slug/by_password' => 'gowifi#enter_by_password'
-    get ':slug/welcome' => 'menu_items#index', as: :menu_items_list
-    get ':slug/history' => 'menu_items#taken_items', as: :history
-    get ':slug/buy/:id' => 'menu_items#buy_item', as: :buy
+    get ':place_id/welcome' => 'menu_items#index', as: :menu_items_list
   end
 
-  scope '/places' do
-    get ':slug/menu_items' => 'menu_items#manage_items', as: :manage_menu_items
+  scope '/wifi/:place_id/' do
+    resources :orders, only: [:index, :show]
   end
+
+  resources :orders, only: :create, path: '/wifi/:place_id/orders/:id'
 
   get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale
 
