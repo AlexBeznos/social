@@ -21,11 +21,7 @@ class FacebookService
 
   def self.advertise(hash)
     graph = Koala::Facebook::API.new(hash[:credentials]['credentials']['token'])
-    attrs = if hash[:hash]
-              { message: hash[:message]['message'], link: hash[:message]['message_link'], picture: hash[:message]['image_file_name'] }
-            else
-              { message: hash[:message].message, link: hash[:message].message_link, picture: hash[:message].image.url }
-            end
+    attrs = { message: hash[:message].message, link: hash[:message].message_link, picture: hash[:message].image.url }
 
     begin
       graph.put_connections('me', 'feed', { :message => attrs[:message],
