@@ -2,6 +2,9 @@ class MenuItemsController < ApplicationController
   load_and_authorize_resource :place, :find_by => :slug
   load_and_authorize_resource
 
+  skip_authorize_resource :only => :index
+  skip_authorize_resource :place, :only => :index
+
   before_action :find_customer, only: :index
   before_action :load_reputation_score, only: :index
 
