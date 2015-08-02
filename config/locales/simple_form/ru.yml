@@ -37,3 +37,7 @@ ru:
         greating_color: Цвет приветствия
       menu_item:
         menu_item: Товар
+        name: Название товара
+        description: Описание
+        image: Картинка
+        price: Стоимость(в балах)

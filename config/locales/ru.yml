@@ -18,6 +18,7 @@ ru:
       place: заведение
       stock: акцию
       style: стиль
+      menu_item: товар
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"

@@ -18,6 +18,7 @@ en:
       place: place
       stock: stock
       style: style
+      menu_item: product
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"

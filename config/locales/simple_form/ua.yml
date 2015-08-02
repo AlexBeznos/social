@@ -35,3 +35,7 @@ ua:
         greating_color: Колір привітання
       menu_item:
         menu_item: Item
+        name: Назва товара
+        description: Опис
+        image: Картинка
+        price: Вартість(у балах)
