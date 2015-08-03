@@ -2,17 +2,19 @@ class MenuItemsController < ApplicationController
   load_and_authorize_resource :place, :find_by => :slug
   load_and_authorize_resource
 
-  skip_authorize_resource :only => :index
-  skip_authorize_resource :place, :only => :index
+  skip_authorize_resource :only => :welcome
+  skip_authorize_resource :place, :only => :welcome
 
-  before_action :find_customer, only: :index
-  before_action :load_reputation_score, only: :index
+  before_action :find_customer, only: :welcome
+  before_action :load_reputation_score, only: :welcome
 
   def index
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
-    if request.path.include?('wifi')
-      render :welcome, layout: 'loyalty_program'
-    end
+  end
+
+  def welcome
+    @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
+    render :layout => 'loyalty_program'
   end
 
   def new

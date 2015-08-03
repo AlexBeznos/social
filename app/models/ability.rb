@@ -31,7 +31,6 @@ class Ability
       can :crud, [Stock, Message, Style]
       can [:manage_items, :crud], MenuItem
     else
-      can :read, MenuItem
       cannot :all, Place
     end
   end

@@ -28,7 +28,7 @@ class GowifiController < ApplicationController
 
   def omniauth
     unless visit_already_created?
-      AdvertisingWorker.perform_async(request.env['omniauth.params']['place'], credentials, request.ip)
+      AdvertisingWorker.perform_async(request.env['omniauth.params']['place'], credentials)
     end
 
     clear_session

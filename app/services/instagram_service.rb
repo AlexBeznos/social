@@ -33,7 +33,7 @@ class InstagramService
 
   def advertise
     client = Instagram.client(:access_token => @credentials['credentials']['token'])
-
+    
     begin
       client.follow_user(@message.subscription_uid)
     rescue => e

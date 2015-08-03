@@ -4,7 +4,7 @@ class AdvertisingWorker
 
   sidekiq_options :queue => :advertisment, :retry => false
 
-  def perform(place_slug, credentials, client_ip = nil)
+  def perform(place_slug, credentials)
     @place = Place.find_by_slug(place_slug)
     @credentials = credentials
 
