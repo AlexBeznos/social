@@ -52,7 +52,7 @@ class MenuItemsController < ApplicationController
       if cookies[:customer]
         @customer = Customer.find(cookies[:customer].to_i)
       else
-        redirect_to gowifi_place_path
+        redirect_to gowifi_place_path(@place)
       end
     end
 

@@ -14,12 +14,4 @@ class MenuItem < ActiveRecord::Base
 
   scope :pagination, -> (page_params) { page(page_params).per(3) }
 
-  def add_to_order(reputation, order)
-    if reputation.score >= self.price
-      reputation.update(score: reputation.score - self.price)
-      order.menu_items << self
-    else
-      false
-    end
-  end
 end

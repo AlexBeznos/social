@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   layout 'loyalty_program'
 
-  before_action :find_customer
   before_action :find_place
+  before_action :find_customer
   before_action :load_reputation_score
   before_action :load_menu_item, except: :index
 
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   def create
     @order = @place.orders.create(customer_id: @customer.id)
 
-    unless @menu_item.add_to_order(@reputation, @order)
+    unless @order.add_menu_item(@reputation, @menu_item)
       redirect_to menu_items_list_path, notice: t('menu_item.not_enough_points')
     end
 
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
       if cookies[:customer]
         @customer = Customer.find(cookies[:customer].to_i)
       else
-        redirect_to gowifi_place_path
+        redirect_to gowifi_place_path(@place)
       end
     end
 
