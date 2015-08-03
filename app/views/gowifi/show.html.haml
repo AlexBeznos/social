@@ -45,6 +45,9 @@
             = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
               %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/
               %input{:type => "submit", :value => ""}/
+          - if @place.simple_enter
+            %br
+            = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg'
           - if @place.stocks_active && @stock
             = render_stock_image(@stock)
 

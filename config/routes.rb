@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':slug/status' => 'gowifi#redirect_after_auth'
     post ':slug/by_password' => 'gowifi#enter_by_password'
+    get ':slug/simple_enter' => 'gowifi#simple_enter'
     get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
   end
 

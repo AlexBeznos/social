@@ -12,6 +12,7 @@ ru:
         redirect_url: "Редирект после аутентификации"
         wifi_link: "Ссылка на страницу с аутентификацией"
         reputation_active: "Начисление бонусов"
+        simple_enter: Вход без авторизации
         score_amount: "Размер бонуса"
         loyalty_program: Программа лояльности
         loyalty_program_without_codes: Программа лояльности без кода

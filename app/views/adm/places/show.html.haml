@@ -31,6 +31,34 @@
               Slug
               %span.text-muted.pull-right= @place.slug
             %li.list-group-item
+              Enter without authorization
+              %span.text-muted.pull-right
+                - if @place.simple_enter
+                  %i.fa.fa-thumbs-o-up
+                - else
+                  %i.fa.fa-thumbs-o-down
+            %li.list-group-item
+              Enable loyalty settings for users
+              %span.text-muted.pull-right
+                - if @place.loyalty_on
+                  %i.fa.fa-thumbs-o-up
+                - else
+                  %i.fa.fa-thumbs-o-down
+            %li.list-group-item
+              Loyalty program
+              %span.text-muted.pull-right
+                - if @place.loyalty_program
+                  %i.fa.fa-thumbs-o-up
+                - else
+                  %i.fa.fa-thumbs-o-down
+            %li.list-group-item
+              Loyalty program without codes
+              %span.text-muted.pull-right
+                - if @place.loyalty_program_without_codes
+                  %i.fa.fa-thumbs-o-up
+                - else
+                  %i.fa.fa-thumbs-o-down
+            %li.list-group-item
               Redirect url
               %span.text-muted.pull-right= link_to 'link', @place.redirect_url
             %li.list-group-item

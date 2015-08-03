@@ -287,6 +287,7 @@ ru:
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'
     footer: 'Powered by GoFriends'
     password_placeholder: 'или введите пароль...'
+    simple_enter: "Войти"
   menu_item:
     greetings: "Добро пожаловать, %{customer_name}! Спасибо что зашли к нам через социальную сеть! "
     greetings_short: Добро пожаловать!

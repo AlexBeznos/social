@@ -234,6 +234,7 @@ en:
     description: 'Enter through your favorite<br>social network and <br>get access to the Internet'
     footer: 'Powered by GoFriends'
     password_placeholder: 'or enter password...'
+    simple_enter: Enter
   menu_item:
     greetings: "Welcome, %{customer_name}! Thanks for coming by social network! "
     greetings_short: Добро пожаловать!

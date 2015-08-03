@@ -52,6 +52,10 @@ class Adm::PlacesController < AdministrationController
                                   :background_active,
                                   :mobile_image,
                                   :tablet_image,
-                                  :desktop_image)
+                                  :desktop_image,
+                                  :simple_enter,
+                                  :loyalty_on,
+                                  :loyalty_program,
+                                  :loyalty_program_without_codes)
   end
 end

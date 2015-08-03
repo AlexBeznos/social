@@ -12,6 +12,7 @@ en:
         redirect_url: "Redirect after authentication"
         wifi_link: "Authentication page link"
         reputation_active: "Bonuses count"
+        simple_enter: Enter without authorization
         score_amount: "Bonus amount"
         loyalty_program: Loyalty program
         loyalty_program_without_codes: Loyalty program without codes

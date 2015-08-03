@@ -82,6 +82,7 @@ class PlacesController < ApplicationController
                                     :user_id,
                                     :stocks_active,
                                     :reputation_on,
+                                    :simple_enter,
                                     :score_amount,
                                     :loyalty_program,
                                     :loyalty_program_without_codes)

@@ -281,6 +281,7 @@ ua:
     description: 'Зайди через свою улюблену<br/>соціальну мережу та отримай<br/>доступ до інтернету'
     footer: 'Powered by GoFriends'
     password_placeholder: 'або введіть пароль...'
+    simple_enter: Увійти
   menu_item:
     greetings: "Ласкаво просимо, %{customer_name}! Дякуємо ща зайшли до нас через соціальну мережу! "
     greetings_short: Добро пожаловать!
