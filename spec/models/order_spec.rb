@@ -4,4 +4,24 @@ RSpec.describe Order do
   it { is_expected.to belong_to(:customer) }
   it { is_expected.to belong_to(:place) }
   it { should have_and_belong_to_many(:menu_items) }
+
+  describe "Add menu item to order" do
+    let(:user) { build(:user) }
+    let(:place) { build(:place, user_id: user.id) }
+    let(:customer) { build(:customer) }
+    let(:order) { place.orders.build(customer_id: customer.id) }
+    let(:menu_item) { build(:menu_item) }
+
+    it "success when enough points" do
+      reputation = Customer::Reputation.new(place_id: place.id, customer_id: customer.id, score: 1000)
+
+      expect{ order.add_menu_item(reputation, menu_item) }.to change{ order.menu_items.size }.by(1)
+    end
+
+    it "fail when not enough points" do
+      reputation = Customer::Reputation.new(place_id: place.id, customer_id: customer.id, score: 20)
+
+      expect{ order.add_menu_item(reputation, menu_item) }.to change{ order.menu_items.size }.by(0)
+    end
+  end
 end
