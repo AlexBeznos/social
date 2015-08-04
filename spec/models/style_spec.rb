@@ -18,21 +18,19 @@ RSpec.describe Style do
     end
 
     context "text color" do
-      # FIXME: does not pass
-      # it "has invalid value" do
-      #   style = build(:style, text_color: "shit")
-      #   style.valid?
-      #   expect(style.errors.messages[:text_color]).to include("не справжній css колір")
-      # end
+      it "has invalid value" do
+        style = build(:style, text_color: "shit")
+        style.valid?
+        expect(style.errors.messages[:text_color]).to include(I18n.t('models.errors.validations.not_valid_css_color'))
+      end
     end
 
     context "greating color" do
-      # FIXME: does not pass
-      # it "has invalid value" do
-      #   style = build(:style, greating_color: "shit")
-      #   style.valid?
-      #   expect(style.errors.messages[:greating_color]).to include("не справжній css колір")
-      # end
+      it "has invalid value" do
+        style = build(:style, greating_color: "shit")
+        style.valid?
+        expect(style.errors.messages[:greating_color]).to include(I18n.t('models.errors.validations.not_valid_css_color'))
+      end
     end
   end
 end

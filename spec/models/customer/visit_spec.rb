@@ -40,7 +40,6 @@ RSpec.describe Customer::Visit do
     end
   end
 
-  # TODO: can't figure out how to test after_commit callback
   describe "Calculate reputation" do
     let(:visit) { create(:visit) }
 

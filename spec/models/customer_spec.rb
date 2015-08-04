@@ -4,6 +4,7 @@ RSpec.describe Customer do
   it { is_expected.to have_many(:network_profiles).class_name('Customer::NetworkProfile') }
   it { is_expected.to have_many(:visits).class_name('Customer::Visit') }
   it { is_expected.to have_many(:reputations).class_name('Customer::Reputation') }
+  it { is_expected.to belong_to(:social_network) }
   it { is_expected.to accept_nested_attributes_for(:network_profiles) }
   it { is_expected.to validate_presence_of :first_name }
   it { is_expected.to callback(:get_more_customer_info).before(:save).if('first_name =~ /unfinished/') }

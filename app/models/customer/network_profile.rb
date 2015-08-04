@@ -6,7 +6,7 @@ class Customer::NetworkProfile < ActiveRecord::Base
   belongs_to :customer
   belongs_to :social_network
 
-  validates :uid, uniqueness: { scope: :social_network } #TODO: is this a right scope? Maybe it should be :social_network_id?
+  validates :uid, uniqueness: { scope: :social_network_id }
   validates :url, :url => true
   before_save :set_friends_count
 
