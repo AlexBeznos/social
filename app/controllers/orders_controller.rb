@@ -16,13 +16,12 @@ class OrdersController < ApplicationController
   def create
     @order = @place.orders.create(customer_id: @customer.id)
 
-    unless @order.add_menu_item(@reputation, @menu_item)
+    if @order.add_menu_item(@reputation, @menu_item)
+      @reputation_score = @reputation.score
+      redirect_to action: :show
+    else
       redirect_to menu_items_list_path, notice: t('menu_item.not_enough_points')
     end
-
-    @reputation_score = @reputation.score
-
-    redirect_to action: :show
   end
 
   private
