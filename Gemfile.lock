@@ -573,6 +573,3 @@ DEPENDENCIES
   unicorn
   vkontakte_api
   yaml_db
-
-BUNDLED WITH
-   1.10.5

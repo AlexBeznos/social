@@ -19,7 +19,7 @@
         - @places.each do |place|
           %tr
             %th= place.id
-            %td= place.name
+            %td= link_to place.name, adm_place_path(place)
             %td= link_to place.user.email, adm_user_path(place.user)
             %td
               = link_to 'edit', edit_adm_place_path(place), class: 'btn btn-warning'
