@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :adm do
     root to: 'dashboard#index'
     get '/' => 'dashboard#index'
+    resources :places, only: :index
     resources :users, :shallow => true do
       resources :places, except: :index do
         resources :styles, except: :index do
@@ -33,8 +34,9 @@ Rails.application.routes.draw do
 
   resources :places do
     resources :messages, except: [:index, :show]
-    resources :stocks, except: [:show]
+    resources :stocks, except: :show
     resources :styles, except: :index
+    resources :menu_items
     member do
       get 'guests'
       get 'birthdays'
@@ -54,7 +56,15 @@ Rails.application.routes.draw do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':slug/status' => 'gowifi#redirect_after_auth'
     post ':slug/by_password' => 'gowifi#enter_by_password'
+    get ':slug/simple_enter' => 'gowifi#simple_enter'
+    get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
   end
+
+  scope '/wifi/:place_id/' do
+    resources :orders, only: [:index, :show]
+  end
+
+  resources :orders, only: :create, path: '/wifi/:place_id/orders/:id'
 
   get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale
 

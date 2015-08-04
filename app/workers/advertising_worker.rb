@@ -2,7 +2,7 @@ class AdvertisingWorker
   include Sidekiq::Worker
   include Consumerable
 
-  sidekiq_options :queue => :advertisment, :retry => false
+  sidekiq_options :queue => :advertisment, :retry => false, :failures => true
 
   def perform(place_slug, credentials)
     @place = Place.find_by_slug(place_slug)
@@ -27,13 +27,4 @@ class AdvertisingWorker
          FacebookService.advertise(attrs)
       end
     end
-
-    ##
-    # Why do u use update_attributes if it is the same as update? update_attributes - old fashioned style of current 'update' method
-    #def update_original_message_attribute
-    #  @edited_message.update_attributes(message: @message.message,
-    #                                    message_link: @message.message_link,
-    #                                    image_file_name: @message.image.url)
-    #end
-
 end

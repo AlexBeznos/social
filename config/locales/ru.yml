@@ -18,9 +18,11 @@ ru:
       place: заведение
       stock: акцию
       style: стиль
+      menu_item: товар
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
+    deleted: "%{subject} удалено"
   date:
     abbr_day_names:
     - Вс
@@ -285,6 +287,26 @@ ru:
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'
     footer: 'Powered by GoFriends'
     password_placeholder: 'или введите пароль...'
+    simple_enter: "Войти"
+  menu_item:
+    greetings: "Добро пожаловать, %{customer_name}! Спасибо что зашли к нам через социальную сеть! "
+    greetings_short: Добро пожаловать!
+    buy_with_bonuses: Ниже список того, на что Вы можете потратить свои баллы
+    added_bonus: Вам начислено %{place_score_amount} баллов!
+    bonus_amount: "На Вашем счету: %{customer_reputation_score} баллов"
+    to_internet: "Перейти в интернет"
+    back_to_shopping: "Вернуться к покупкам"
+    shopping_history: "История покупок"
+    confirm_order: "Подтвердить списание %{item_price} баллов?"
+    not_enough_points: "Недостаточно баллов для покупки"
+    successful_buy: "Вы купили %{menu_item_name}!"
+    billed_account: "С Вашего бонусного счета списано %{item_price} баллов"
+    show_to_waiter: "Покажите эту страницу официанту"
+    show_to_waiter_with_code: "Покажите код официанту"
+    add_new_item: Добавить новый товар/услугу
+    item_price: "Цена: %{item_price}"
+    goods: "Товар/услуга"
+    coupon_code: "Код покупки: %{coupon_code}"
   navigation:
     logout: 'Выйти'
     login: 'Войти'
@@ -296,3 +318,4 @@ ru:
       birthdays: "Дни рождения"
       settings: 'Настройки'
       stocks: 'Акции'
+      menu_items: 'Товары/Услуги'

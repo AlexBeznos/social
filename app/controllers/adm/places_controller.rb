@@ -2,6 +2,10 @@ class Adm::PlacesController < AdministrationController
   load_and_authorize_resource :user
   load_and_authorize_resource :find_by => :slug, :through => :user, :shallow => true
 
+  def index
+    @places = Place.all.order('id ASC')
+  end
+
   def show
     @place = Place.includes(:messages).find_by_slug(params[:id])
     @networks = SocialNetwork.all
@@ -52,6 +56,10 @@ class Adm::PlacesController < AdministrationController
                                   :background_active,
                                   :mobile_image,
                                   :tablet_image,
-                                  :desktop_image)
+                                  :desktop_image,
+                                  :simple_enter,
+                                  :loyalty_on,
+                                  :loyalty_program,
+                                  :loyalty_program_without_codes)
   end
 end

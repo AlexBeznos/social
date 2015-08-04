@@ -95,6 +95,7 @@ gem 'rollbar', '~> 1.5.3'
 # delayed_job
 gem 'sidekiq'
 gem 'sinatra', :require => nil
+gem 'sidekiq-failures'
 
 # css minifier
 gem 'cssminify'
@@ -111,12 +112,17 @@ gem 'cancancan', '~> 1.10'
 # Timezone locales
 gem 'i18n-timezones'
 
+# Pagination
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 group :development do
   gem 'spring'
   gem 'mina'
   gem 'mina-sidekiq', :require => false
   gem 'mina-unicorn', :require => false
   gem 'metric_fu'
+  gem 'thin'
 end
 
 group :development, :test do
@@ -125,6 +131,7 @@ group :development, :test do
   gem 'faker'
   gem 'forgery'
   gem 'byebug'
+  gem 'pry'
 end
 
 group :test do

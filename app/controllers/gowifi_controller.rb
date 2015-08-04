@@ -1,7 +1,7 @@
 class GowifiController < ApplicationController
   include Consumerable
   layout false
-  before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth]
+  before_action :find_place, only: [:show, :enter_by_password, :redirect_after_auth, :simple_enter]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_customer, only: [:show, :omniauth]
   before_filter :check_for_place_activation, only: :show
@@ -26,6 +26,14 @@ class GowifiController < ApplicationController
     end
   end
 
+  def simple_enter
+    if @place.simple_enter
+      redirect_to wifi_login_path
+    else
+      redirect_to gowifi_place_path @place
+    end
+  end
+
   def omniauth
     unless visit_already_created?
       AdvertisingWorker.perform_async(request.env['omniauth.params']['place'], credentials)
@@ -33,11 +41,6 @@ class GowifiController < ApplicationController
 
     clear_session
     redirect_to wifi_login_path
-  end
-
-  def edit_message
-    edited_message = Message.new(edited_message_params)
-    ReadCache.redis.set request.ip, edited_message.to_json
   end
 
   def auth_failure
@@ -50,7 +53,11 @@ class GowifiController < ApplicationController
 
   def redirect_after_auth
     if @place
-      redirect_to @place.redirect_url
+      if @place.loyalty_program || @place.loyalty_program_without_codes
+        redirect_to menu_items_list_path(@place)
+      else
+        redirect_to @place.redirect_url
+      end
     else
       redirect_to root_path
     end

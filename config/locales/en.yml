@@ -18,9 +18,11 @@ en:
       place: place
       stock: stock
       style: style
+      menu_item: product
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"
+    deleted: "%{subject} deleted"
   date:
     abbr_day_names:
     - Sun
@@ -231,6 +233,26 @@ en:
     greetings: "Hello, %{customer_name}!"
     description: 'Enter through your favorite<br>social network and <br>get access to the Internet'
     footer: 'Powered by GoFriends'
+    password_placeholder: 'or enter password...'
+    simple_enter: Enter
+  menu_item:
+    greetings: "Welcome, %{customer_name}! Thanks for coming by social network! "
+    greetings_short: Добро пожаловать!
+    buy_with_bonuses: Here is the list of items you can buy with your points
+    added_bonus: We give you %{place_score_amount} points!
+    bonus_amount: "You have %{customer_reputation_score} points on your account in this place"
+    to_internet: "Go to the internet"
+    back_to_shopping: "Back to shopping"
+    shopping_history: "Shopping history"
+    confirm_order: "You'll be billed with %{item_price} points"
+    not_enough_points: Not enough points
+    successful_buy: "You've bought %{menu_item_name}!"
+    billed_account: "You account have been billed with %{item_price} points"
+    show_to_waiter: Please, show this page to waiter
+    show_to_waiter_with_code: Show the code below to waiter
+    item_price: "Price: %{item_price}"
+    goods: Item
+    coupon_code: "Code: %{coupon_code}"
   navigation:
     logout: 'Logout'
     login: 'Login'
@@ -242,6 +264,7 @@ en:
       stocks: 'Stocks'
       guests: 'Top visitors'
       birthdays: "Visitor's birthdays"
+      menu_items: 'Menu Items'
   pages:
     places:
       title: 'Places'

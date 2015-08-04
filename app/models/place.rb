@@ -14,6 +14,8 @@ class Place < ActiveRecord::Base
   has_many :stocks, :dependent => :destroy
   has_many :reputations, :dependent => :destroy, class_name: 'Customer::Reputation'
   has_many :social_network_icons, :dependent => :destroy
+  has_many :menu_items, :dependent => :destroy
+  has_many :orders, :dependent => :destroy
   belongs_to :user
 
   before_validation :set_password, if: 'enter_by_password'

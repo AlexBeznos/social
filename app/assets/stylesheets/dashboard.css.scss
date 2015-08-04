@@ -94,6 +94,14 @@ span {
   background: #507999;
 }
 
+.nav-inner-custom > ul > li:nth-child(6) {
+  background: #FF9079;
+}
+
+.nav-inner-custom > ul > li:nth-child(6) a:hover {
+  background: #CC7361;
+}
+
 .nav-inner-custom > ul > li:first-child, .nav-inner-custom > ul > li:first-child a {
   border-top-left-radius: 6px;
 }

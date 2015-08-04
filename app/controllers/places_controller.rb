@@ -82,7 +82,10 @@ class PlacesController < ApplicationController
                                     :user_id,
                                     :stocks_active,
                                     :reputation_on,
-                                    :score_amount)
+                                    :simple_enter,
+                                    :score_amount,
+                                    :loyalty_program,
+                                    :loyalty_program_without_codes)
     end
 
     def get_number_of_friends(records)
@@ -93,5 +96,4 @@ class PlacesController < ApplicationController
 
       number ? number : 0
     end
-
 end

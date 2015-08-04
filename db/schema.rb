@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712222211) do
+ActiveRecord::Schema.define(version: 20150803120821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20150712222211) do
     t.integer  "customer_network_profile_id"
     t.integer  "place_id"
     t.integer  "customer_id"
-    t.boolean  "by_password"
+    t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,6 +70,30 @@ ActiveRecord::Schema.define(version: 20150712222211) do
     t.datetime "updated_at"
   end
 
+  create_table "menu_items", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price"
+    t.integer  "place_id"
+    t.integer  "items_count",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "menu_items", ["place_id"], name: "index_menu_items_on_place_id", using: :btree
+
+  create_table "menu_items_orders", force: true do |t|
+    t.integer "menu_item_id"
+    t.integer "order_id"
+  end
+
+  add_index "menu_items_orders", ["menu_item_id"], name: "index_menu_items_orders_on_menu_item_id", using: :btree
+  add_index "menu_items_orders", ["order_id"], name: "index_menu_items_orders_on_order_id", using: :btree
+
   create_table "messages", force: true do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -78,7 +102,7 @@ ActiveRecord::Schema.define(version: 20150712222211) do
     t.text     "message"
     t.string   "message_link"
     t.integer  "place_id"
-    t.boolean  "active"
+    t.boolean  "active",             default: true
     t.string   "subscription"
     t.string   "subscription_uid"
     t.integer  "social_network_id"
@@ -89,13 +113,23 @@ ActiveRecord::Schema.define(version: 20150712222211) do
   add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
   add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
 
+  create_table "orders", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+  add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
+
   create_table "places", force: true do |t|
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "enter_by_password",            default: false
+    t.boolean  "enter_by_password",             default: false
     t.string   "password"
-    t.boolean  "active",                       default: false
+    t.boolean  "active",                        default: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -103,14 +137,18 @@ ActiveRecord::Schema.define(version: 20150712222211) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "redirect_url"
-    t.string   "wifi_username",                default: "P8uDratA"
-    t.string   "wifi_password",                default: "Tac4edrU"
+    t.string   "wifi_username",                 default: "P8uDratA"
+    t.string   "wifi_password",                 default: "Tac4edrU"
     t.string   "wifi_settings_link"
-    t.boolean  "wifi_settings_link_not_fresh", default: true
-    t.boolean  "stocks_active",                default: false
-    t.string   "template",                     default: "default"
-    t.boolean  "reputation_on",                default: false
-    t.integer  "score_amount",                 default: 0
+    t.boolean  "wifi_settings_link_not_fresh",  default: true
+    t.boolean  "stocks_active",                 default: false
+    t.string   "template",                      default: "default"
+    t.boolean  "reputation_on",                 default: false
+    t.integer  "score_amount",                  default: 0
+    t.boolean  "loyalty_program",               default: false
+    t.boolean  "loyalty_program_without_codes", default: false
+    t.boolean  "simple_enter",                  default: false
+    t.boolean  "loyalty_on",                    default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

@@ -1,0 +1,9 @@
+= content_for :page_javascript, 'dashboard/input_binding'
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :title, t('models.menu_items.actions.edit.title', place_name: @place.name)
+
+.row
+  .col-sm-4
+    %h1= t('models.menu_items.actions.edit.title', place_name: '')
+
+    = render 'menu_items/form/edit'

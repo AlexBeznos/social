@@ -41,13 +41,19 @@ RSpec.describe Customer::Visit do
   end
 
   # TODO: can't figure out how to test after_commit callback
-  # describe "Calculate reputation" do
-  #   visit = FactoryGirl.build(:visit)
-  #   it "value sets on commit" do
-  #     expect().to eql(0)
-  #     visit.save!
-  #     expect().to eql(20)
-  #   end
-  # end
+  describe "Calculate reputation" do
+    let(:visit) { create(:visit) }
+
+
+    it "create reputation if does not exist" do
+      expect{ Customer::Reputation.calculate(visit) }.to change{Customer::Reputation.count}.by(1)
+    end
+
+    #FIXME: doesn't update reputation
+    # it "when reputation exists" do
+    #   reputation = Customer::Reputation.find_by(place_id: visit.place_id, customer_id: visit.customer_id)
+    #   expect{ Customer::Reputation.calculate(visit) }.to change{reputation.score}.by(20)
+    # end
+  end
 
 end

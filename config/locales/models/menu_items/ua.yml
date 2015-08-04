@@ -1,0 +1,15 @@
+ua:
+  activerecord:
+    errors:
+      models:
+        menu_item:
+          attributes:
+            image:
+              in_between: Изображение должно быть не меньше 11КБ и не более 10МБ
+  models:
+    menu_items:
+      actions:
+        edit:
+          title: 'Редагувати товар/послугу'
+        new:
+          title: Добавити товар/послугу

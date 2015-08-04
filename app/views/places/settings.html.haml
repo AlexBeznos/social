@@ -23,6 +23,16 @@
         = t('models.places.attrs.reputation_active')
         %span.text-muted.pull-right= fa_plus_minus(@place.reputation_on)
       %li.list-group-item
+        = t('models.places.attrs.simple_enter')
+        %span.text-muted.pull-right= fa_plus_minus(@place.simple_enter)
+      - if @place.loyalty_on
+        %li.list-group-item
+          = t('models.places.attrs.loyalty_program')
+          %span.text-muted.pull-right= fa_plus_minus(@place.loyalty_program)
+        %li.list-group-item
+          = t('models.places.attrs.loyalty_program_without_codes')
+          %span.text-muted.pull-right= fa_plus_minus(@place.loyalty_program_without_codes)
+      %li.list-group-item
         = t('models.places.attrs.score_amount')
         %span.text-muted.pull-right= @place.score_amount
       %li.list-group-item
@@ -63,7 +73,7 @@
               %ul.list-group
                 %li.list-group-item
                   = t('models.messages.attrs.subscription')
-                  %span.text-muted.pull-right= @place.subscription
+                  %span.text-muted.pull-right= @message.subscription
             - else
               .row
                 .col-sm-8

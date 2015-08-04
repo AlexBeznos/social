@@ -11,7 +11,7 @@ class Message < ActiveRecord::Base
 
   validates :social_network_id, presence: true
   validates :message, presence: true, unless: 'social_network_id == 3' # SocialNetwork.find(3).name == 'instagram'
-  validates :message_link, :url => true
+  validates :message_link, :url => true, if: 'message_link && !message_link.empty?'
   validates :subscription, presence: true, if: 'social_network_id == 3'
   validates_attachment :image, :presence => true,
                                 size: { in: 11.kilobytes..10.megabytes },

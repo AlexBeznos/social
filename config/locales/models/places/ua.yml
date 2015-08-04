@@ -12,7 +12,10 @@ ua:
         redirect_url: "Редирект після аутентифікації"
         wifi_link: "Посилання на сторінку аутентифікації"
         reputation_active: "Нарахування бонусів"
+        simple_enter: Вхід без авторизації
         score_amount: "Розмір бонусу"
+        loyalty_program: Програма лояльності
+        loyalty_program_without_codes: Програма лояльності без коду
       actions:
         index:
           title: 'Заклад'

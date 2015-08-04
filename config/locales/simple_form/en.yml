@@ -9,6 +9,10 @@ en:
         active: Hotspot is active
         stocks_active: Stocks are active
         reputation_on: Add bonuses
+        simple_enter: Enter without authorization
+        loyalty_on: Enable loyalty settings for users
+        loyalty_program: Loyalty program
+        loyalty_program_without_codes: Loyalty program without codes
         score_amount: Score amount
         redirect_url: Redirect url after authentication
         enter_by_password: Enter by password
@@ -35,3 +39,5 @@ en:
         css: CSS
         text_color: Main text color
         greating_color: Greating color
+      menu_item:
+        menu_item: Item
