@@ -12,11 +12,11 @@ RSpec.describe Stock do
 
       expect(stock).to be_valid
     end
-    # FIXME: does not pass
-    # it "has invalid value" do
-    #   stock = build(:stock, url: "google.com")
-    #   stock.valid?
-    #   expect(stock.errors.messages[:url]).to include("Невірний формат посилання")
-    # end
+
+    it "has invalid value" do
+      stock = build(:stock, url: "google.com")
+      stock.valid?
+      expect(stock.errors.messages[:url]).to include(I18n.t('models.errors.validations.wrong_link_format'))
+    end
   end
 end

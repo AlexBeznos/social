@@ -16,12 +16,11 @@ RSpec.describe User do
       expect(user).to be_valid
     end
 
-    # FIXME: does not pass
-    # it "has invalid number" do
-    #   user = build(:user, phone: ':3809738338383')
-    #   user.valid?
-    #   expect(user.errors.messages[:phone]).to include("Невірний формат номеру телефона")
-    # end
+    it "has invalid number" do
+      user = build(:user, phone: ':3809738338383')
+      user.valid?
+      expect(user.errors.messages[:phone]).to include(I18n.t('models.errors.validations.wrong_phone_number'))
+    end
   end
 
   it "returns a user's full name as a string" do

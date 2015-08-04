@@ -3,6 +3,7 @@ FactoryGirl.define do
     association :place
     name "Item name"
     price 100
+    image_file_name "picture.jpg"
   end
 
 end

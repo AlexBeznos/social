@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803120821) do
+ActiveRecord::Schema.define(version: 20150804132926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,10 @@ ActiveRecord::Schema.define(version: 20150803120821) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "social_network_id"
   end
+
+  add_index "customers", ["social_network_id"], name: "index_customers_on_social_network_id", using: :btree
 
   create_table "menu_items", force: true do |t|
     t.string   "name"

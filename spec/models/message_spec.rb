@@ -27,12 +27,12 @@ RSpec.describe Message do
 
       expect(message).to be_valid
     end
-    # FIXME: does not pass
-    # it "has invalid value" do
-    #   message = build_stubbed(:message, message_link: "google.com")
-    #   message.valid?
-    #   expect(message.errors.messages[:message_link]).to include("Невірний формат посилання")
-    # end
+
+    it "has invalid value" do
+      message = build_stubbed(:message, message_link: "google.com")
+      message.valid?
+      expect(message.errors.messages[:message_link]).to include(I18n.t('models.errors.validations.wrong_link_format'))
+    end
   end
 
   describe "Validate presence of subscription" do
@@ -48,11 +48,10 @@ RSpec.describe Message do
   end
 
   describe "Validate Twitter message length" do
-    # FIXME: does not pass
-    # it "have to be less than 141 symbol" do
-    #   message = build_stubbed(:message, social_network_id: 4, message: "a" * 141, message_link: "http://google.com")
-    #   message.valid?
-    #   expect(message.errors.messages[:message]).to include("Повідомлення з посиланням не повинне перевищувати 140 символів")
-    # end
+    it "have to be less than 141 symbol" do
+      message = build_stubbed(:message, social_network_id: 4, message: "a" * 141, message_link: "http://google.com")
+      message.valid?
+      expect(message.errors.messages[:message]).to include(I18n.t('models.errors.validations.long_twitter_message'))
+    end
   end
 end
