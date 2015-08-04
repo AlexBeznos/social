@@ -2,7 +2,7 @@ class AdvertisingWorker
   include Sidekiq::Worker
   include Consumerable
 
-  sidekiq_options :queue => :advertisment, :retry => false
+  sidekiq_options :queue => :advertisment, :retry => false, :failures => true
 
   def perform(place_slug, credentials)
     @place = Place.find_by_slug(place_slug)

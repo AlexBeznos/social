@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :adm do
     root to: 'dashboard#index'
     get '/' => 'dashboard#index'
+    resources :places, only: :index
     resources :users, :shallow => true do
       resources :places, except: :index do
         resources :styles, except: :index do
