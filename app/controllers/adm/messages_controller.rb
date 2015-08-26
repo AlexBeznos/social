@@ -1,6 +1,6 @@
 class Adm::MessagesController < AdministrationController
   load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource :style, :through => :place, :shallow => true
+  load_and_authorize_resource :message, :through => :place, :shallow => true
 
 
   def new

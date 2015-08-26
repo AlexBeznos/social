@@ -103,8 +103,10 @@
             - @place.messages.where(social_network: network).each do |message|
               %tr
                 %td= message.id
-                %td= message.message
-                %td= image_tag message.image, height: 100
+                %td= message.message.empty? ? message.subscription : message.message
+                %td
+                  - if message.image.exists?
+                    = image_tag message.image, height: 100
                 %td= message.message_link
                 %td
                   - if message.active
