@@ -3,6 +3,7 @@ class GowifiController < ApplicationController
 
   layout false
   before_action :find_place, only: :show
+  before_action :set_place_slug, only: :show
   before_action :find_customer, only: :show
   before_filter :check_for_place_activation, only: :show
 
@@ -21,6 +22,12 @@ class GowifiController < ApplicationController
 
     def find_place
       @place = Place.find_by_slug(params[:slug])
+    end
+
+    # we add slug to session to make sure
+    # place slug  will be saved in omniauth or at least session
+    def set_place_slug
+      session[:slug] = @place.slug
     end
 
     def find_customer

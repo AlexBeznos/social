@@ -23,7 +23,7 @@ class GowifiAuthController < ApplicationController
 
   def omniauth
     unless visit_already_created?
-      AdvertisingWorker.perform_async(request.env['omniauth.params']['place'], credentials)
+      AdvertisingWorker.perform_async(@place.slug, credentials)
     end
 
     clear_session
@@ -60,7 +60,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def find_place_from_session
-    @place = Place.find_by_slug(request.env['omniauth.params']['place'])
+    @place = Place.find_by_slug(request.env['omniauth.params']['place'] || session[:slug])
   end
 
   def credentials
