@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  helper_method :current_user_session, :current_user, :gen_root_path
+  helper_method :current_user_session, :current_user, :gen_root_path, :wifi_login_path
   protect_from_forgery with: :null_session
   before_action :check_locale
   before_action :set_timezone
@@ -68,6 +68,10 @@ class ApplicationController < ActionController::Base
     def set_timezone
       tz = current_user ? current_user.timezone : nil
       Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
+    end
+
+    def wifi_login_path
+      "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
     end
 
 end

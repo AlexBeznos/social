@@ -50,14 +50,16 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new'
 
   get '/auth/:provider/callback' => 'gowifi#omniauth' # omniauth customers authentication
-  get '/auth/failure' => 'gowifi#auth_failure'
-  post '/auth/edit_message' => 'gowifi#edit_message'
+  get '/auth/failure' => 'gowifi_auth#auth_failure'
+
   scope '/wifi' do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
-    get ':slug/status' => 'gowifi#redirect_after_auth'
-    post ':slug/by_password' => 'gowifi#enter_by_password'
-    get ':slug/simple_enter' => 'gowifi#simple_enter'
     get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
+
+
+    get ':slug/status' => 'gowifi_auth#redirect_after_auth'
+    post ':slug/by_password' => 'gowifi_auth#enter_by_password'
+    get ':slug/simple_enter' => 'gowifi_auth#simple_enter'
   end
 
   scope '/wifi/:place_id/' do
@@ -66,9 +68,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: :create, path: '/wifi/:place_id/orders/:id'
 
-  get '/lang/:locale' => 'gowifi#set_locale', as: :set_locale
+  get '/lang/:locale' => 'basic#set_locale', as: :set_locale
 
-  post '/feedback' => 'gowifi#feedback', as: :feedback
+  post '/feedback' => 'basic#feedback', as: :feedback
 
 
 
