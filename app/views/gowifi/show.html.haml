@@ -16,7 +16,21 @@
     = stylesheet_link_tag "wifi/#{@place.template}/style", :media => "all"
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    %link{ :href => gowifi_place_path(:format => :css), :media => "all", :rel => "stylesheet" }
+    - if @place.style
+      :sass
+        #{@place.style.css_min}
+
+        @if #{@place.style.background.exists?}
+          body
+            background: url(#{ @place.style.background.url }) no-repeat center
+
+        @if #{@place.style.text_color}
+          .content p
+            color: #{ @place.style.text_color }
+
+        @if #{@place.style.greating_color}
+          .content p:first-line
+            color: #{ @place.style.greating_color }
 
   %body
     .wrapper-out
@@ -73,4 +87,5 @@
           .circle4
     = javascript_include_tag "jquery", :media => "all"
     = javascript_include_tag "wifi/#{@place.template}"
-    %script{ :src => gowifi_place_path(:format => :js) }
+    :javascript
+      #{ raw @place.style.js_min if @place.style }

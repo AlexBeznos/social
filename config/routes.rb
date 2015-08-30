@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create, :destroy]
   get 'login' => 'user_sessions#new'
 
-  get '/auth/:provider/callback' => 'gowifi#omniauth' # omniauth customers authentication
+  get '/auth/:provider/callback' => 'gowifi_auth#omniauth' # omniauth customers authentication
   get '/auth/failure' => 'gowifi_auth#auth_failure'
 
   scope '/wifi' do
