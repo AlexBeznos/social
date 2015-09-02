@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :check_locale
   before_action :set_timezone
 
+  before_action do
+    User.current = current_user
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     if current_user
       target = if (request.referer.nil? || request.url == request.referer || request.method == 'POST')
@@ -23,7 +27,6 @@ class ApplicationController < ActionController::Base
   def current_ability
     @current_ability ||= Ability.new(current_user)
   end
-
 
   private
 

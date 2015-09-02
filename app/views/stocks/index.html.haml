@@ -9,13 +9,15 @@
       %tr.row
         %th.col-xs-4= t('models.stocks.attrs.image')
         %th.col-xs-4= t('models.stocks.attrs.url')
+        %th.col-xs-4= t('models.stocks.attrs.day')
         %th.col-xs-4
       - @stocks.each do |stock|
         %tr.row
           %td.col-xs-4= image_tag stock.image.url, width: 100
-          %td.col-xs-4= stock.url
+          %td.col-xs-4= link_to stock.url, stock.url
+          %td.col-xs-4= stock.proper_lang_day
           %td.col-xs-4
-            = link_to t('helpers.submit.edit'), edit_place_stock_path(@place, stock), class: 'btn btn-sm btn-primary'
-            = link_to t('helpers.submit.destroy'), place_stock_path(@place, stock), method: 'DELETE', class: 'btn btn-sm btn-danger'
+            = link_to t('helpers.submit.edit'), edit_place_stock_path(@place, stock), class: 'btn btn-sm btn-primary', style: 'display: block'
+            = link_to t('helpers.submit.destroy'), place_stock_path(@place, stock), method: 'DELETE', class: 'btn btn-sm btn-danger', style: 'display: block'
   - else
     %h1= t('models.stocks.actions.index.no_stocks')

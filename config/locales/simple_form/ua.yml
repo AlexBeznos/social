@@ -32,6 +32,7 @@ ua:
       stock:
         url: Посилання
         image: Картинка
+        day: День показу
       style:
         background: Задній фон
         js: JS

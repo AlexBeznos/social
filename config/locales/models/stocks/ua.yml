@@ -2,6 +2,7 @@ ua:
   models:
     stocks:
       class: 'Акцію'
+      day: 'у будь який день'
       actions:
         index:
           title: "Акції в закладах %{place_name}"
@@ -14,3 +15,4 @@ ua:
       attrs:
         image: Фото
         url: Посилання
+        day: День показу

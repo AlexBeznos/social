@@ -33,6 +33,7 @@ ru:
       stock:
         url: Ссылка
         image: Картинка
+        day: День показа
       style:
         background: Задний фон
         js: JS

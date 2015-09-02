@@ -40,6 +40,13 @@ class Place < ActiveRecord::Base
     SocialNetwork.where(id: networks_ids)
   end
 
+  def get_proper_stock
+    day = Date.today.strftime('%A')
+    days_arr = I18n.t('date.day_names', locale: :en)
+    
+    stocks.where('day = ? or day not in (?)', day, days_arr).order("RANDOM()").first
+  end
+
   private
     def set_password
       if self.id && self.password == ''

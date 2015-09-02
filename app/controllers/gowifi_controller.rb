@@ -9,13 +9,7 @@ class GowifiController < ApplicationController
 
   def show
     @networks = @place.get_networks
-    @stock = Stock.where(place_id: @place.id).order("RANDOM()").first
-
-    respond_to do |format|
-      format.html
-      format.css
-      format.js
-    end
+    @stock = @place.get_proper_stock
   end
 
   private

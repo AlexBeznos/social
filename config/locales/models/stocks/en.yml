@@ -2,6 +2,7 @@ en:
   models:
     stocks:
       class: 'Stock'
+      day: 'any day'
       actions:
         index:
           title: "Stocks in %{place_name}"
@@ -14,3 +15,4 @@ en:
       attrs:
         image: Picture
         url: Redirect url
+        day: Show day

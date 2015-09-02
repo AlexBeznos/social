@@ -33,6 +33,7 @@ en:
       stock:
         url: URL
         image: Image
+        day: Show day
       style:
         background: Background
         js: JS

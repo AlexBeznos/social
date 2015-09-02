@@ -11,21 +11,15 @@ module ApplicationHelper
 
   def render_stock_image(stock)
     push_image = image_tag stock.image.url, class: 'offer'
-    
+
     if stock.url != ''
-      link_to stock.url do
-        push_image
-      end
+      link_to push_image, stock.url
     else
       push_image
     end
   end
 
   def fa_plus_minus(bool)
-    if bool
-      fa_icon 'plus'
-    else
-      fa_icon 'minus'
-    end
+    fa_icon( bool ? 'plus' : 'minus' )
   end
 end
