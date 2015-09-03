@@ -17,18 +17,20 @@
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
     - if @place.style
-      :sass
+      :css
         #{@place.style.css_min}
-        body
-          background: #{@place.style.background.exists? ? "url(#{@place.style.background.url }) no-repeat center" : 'none' }
-
-        // @if #{@place.style.text_color}
-        //   .content p
-        //     color: #{ @place.style.text_color }
-        //
-        // @if #{@place.style.greating_color}
-        //   .content p:first-line
-        //     color: #{ @place.style.greating_color }
+      - if @place.style.background.exists?
+        :sass
+          body
+            background: url(#{@place.style.background.url }) no-repeat center
+      - if @place.style.text_color
+        :sass
+          .content p
+            color: #{ @place.style.text_color }
+      - if @place.style.greating_color
+        :sass
+          .content p:first-line
+            color: #{ @place.style.greating_color }
 
   %body
     .wrapper-out
@@ -60,7 +62,7 @@
           - if @place.simple_enter
             %br
             = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg'
-          - if @place.stocks_active
+          - if @place.stocks_active && @stock
             = render_stock_image @stock
 
         %footer
