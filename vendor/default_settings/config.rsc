@@ -8,8 +8,8 @@ add common-name=common-name country=it key-usage=\
     DNS:my.local.net,IP:172.16.16.1,email:mail@kydaidem.ru unit=\
     organization-unit
 /interface bridge
-add l2mtu=1598 name=bridge1
-add l2mtu=1598 name=bridge2
+add name=bridge1
+add name=bridge2
 /interface wireless
 set [ find default-name=wlan1 ] band=2ghz-b/g/n disabled=no l2mtu=2290 mode=ap-bridge ssid="##ssid##"
 /ip hotspot profile
