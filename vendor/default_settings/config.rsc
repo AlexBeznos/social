@@ -1,17 +1,14 @@
-# jan/21/2015 14:09:32 by RouterOS 6.15
-# software id = 61TG-0USL
-#
-/certificate
-add common-name=common-name country=it key-usage=\
-    digital-signature,key-cert-sign,crl-sign locality=locality name=\
-    common-name organization=organization state=state subject-alt-name=\
-    DNS:my.local.net,IP:172.16.16.1,email:mail@kydaidem.ru unit=\
-    organization-unit
 /interface bridge
 add name=bridge1
 add name=bridge2
+/passwo new-password=gofriends98 confirm-new-password=gofriends98 old-password=""
 /interface wireless
-set [ find default-name=wlan1 ] band=2ghz-b/g/n disabled=no l2mtu=2290 mode=ap-bridge ssid="##ssid##"
+set [ find default-name=wlan1 ] band=2ghz-b/g/n disabled=no l2mtu=2290 mode=ap-bridge ssid="##ssid## | GoFriends WiFi"
+/in wi security-profiles add name=admin mode=dynamic-keys authentication-types=wpa2-psk wpa2-pre-shared-key=gofriends7
+/in wi add master-interface=wlan1 ssid="Go|Friends" security-profile=admin name=admin
+in wi enable [find name=admin]
+/in br po add interface=admin bridge=bridge2
+/ip cloud set enabled=yes
 /ip hotspot profile
 add dns-name=gofriends.com.ua/wifi/##slug## hotspot-address=172.16.16.1 login-by=\
     cookie,http-pap name=hsprof1
@@ -44,6 +41,7 @@ add address=172.16.16.0/20 comment="hotspot network" gateway=172.16.16.1
 add address=192.168.88.0/24 dns-server=192.168.88.1 gateway=192.168.88.1
 /ip dns
 set allow-remote-requests=yes servers=8.8.8.8,8.8.4.4
+/ip firewall filter remove numbers=1,2,3,4,5
 /ip firewall filter
 add action=passthrough chain=unused-hs-chain comment=\
     "place hotspot rules here" disabled=yes
@@ -67,10 +65,8 @@ add dst-host=*vk.me*
 add dst-host=*googleapis*
 add dst-host=*odnoklassniki*
 add dst-host=*mycdn*
-add dst-host=*.ok.ru
 add dst-host=*twitter*
 add dst-host=*twimg*
-add dst-host=*facebook*
 add dst-host=*akamai*
 add dst-host=*gtld-servers.net
 add dst-host=*verisign-grs.com
@@ -96,4 +92,4 @@ add interface=ether3
 /tool mac-server mac-winbox
 set [ find default=yes ] disabled=yes
 add interface=ether2
-add interface=ether3
+add interface=ether3add interface=ether3
