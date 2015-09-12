@@ -14,26 +14,50 @@
     = javascript_include_tag :application
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    = stylesheet_link_tag "welcome"
+    = stylesheet_link_tag "loyalty/style", :media => "all"
 
   %body
-    .container
-      .row
-        .col-md-12
-          %nav.navbar.navbar-default
-            .container-fluid
-              .navbar-header
-                = link_to @place.name, menu_items_list_path, class: 'navbar-brand'
-              %ul.nav.navbar-nav.navbar-left
-                %li= link_to t('menu_item.to_internet'), @place.redirect_url
-              .collapse.navbar-collapse#bs-example-navbar-collapse-1
-                %ul.nav.navbar-nav.navbar-right
-                  - if request.path_parameters[:action] == 'index' && request.path_parameters[:controller] == 'orders'
-                    %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
-                  - elsif request.path_parameters[:action] == 'show' && request.path_parameters[:controller] == 'orders'
-                    %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
-                    %li= link_to t('menu_item.shopping_history'), orders_path
-                  - else
-                    %li= link_to t('menu_item.shopping_history'), orders_path
-                  %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
+    %header
+      %h2
+        = image_tag 'loyalty/header.png'
+        = image_tag 'loyalty/logo.png'
+      .container
+        .name
+          %h1
+            -# %span.back
+              -# a href="index.html"
+              -#   img alt="" src="img/arrow-back.png" /
+            %span.facility-name
+              %b= @place.name
+            %span.points
+              %b= @reputation_score
+              = image_tag 'loyalty/star-violet.png'
       = yield
+
+    -# .container
+    -#   .row
+    -#     .col-md-12
+    -#       %nav.navbar.navbar-default
+    -#         .container-fluid
+    -#           .navbar-header
+    -#             = link_to @place.name, menu_items_list_path, class: 'navbar-brand'
+    -#           %ul.nav.navbar-nav.navbar-left
+    -#             %li= link_to t('menu_item.to_internet'), @place.redirect_url
+    -#           .collapse.navbar-collapse#bs-example-navbar-collapse-1
+    -#             %ul.nav.navbar-nav.navbar-right
+    -#               - if request.path_parameters[:action] == 'index' && request.path_parameters[:controller] == 'orders'
+    -#                 %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+    -#               - elsif request.path_parameters[:action] == 'show' && request.path_parameters[:controller] == 'orders'
+    -#                 %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+    -#                 %li= link_to t('menu_item.shopping_history'), orders_path
+    -#               - else
+    -#                 %li= link_to t('menu_item.shopping_history'), orders_path
+    -#               %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
+
+
+    = javascript_include_tag "jquery"
+    = javascript_include_tag "bootstrap"
+    :javascript
+      $(document).ready(function() {
+      	$("#nav li:has(ul.sub-nav)").addClass("with-drop");
+      });

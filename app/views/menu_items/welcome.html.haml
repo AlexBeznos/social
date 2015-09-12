@@ -1,25 +1,31 @@
-.inner
-  = render 'shared/flash'
-.row
-  .col-sm-12
-    %h2.text-center.well.well-lg= t('menu_item.greetings', customer_name: @customer.first_name)
-  .col-sm-12
-    .col-sm-offset-4.col-sm-4.panel.panel-default
-      %h1.text-center #{t('menu_item.added_bonus', place_score_amount: @place.score_amount)}
-    .col-sm-4
-  .col-sm-12
-    -#%h1.text-center #{t('menu_item.bonus_amount', customer_reputation_score: @reputation_score)}
-  .col-sm-12
-    %h3.text-center= t('menu_item.buy_with_bonuses')
-.row
-  - @menu_items.each do |item|
-    .col-xs-6.col-lg-4.text-center.panel-body
-      .wrapper
-        .ribbon-wrapper-green
-          .ribbon-green= item.price
-        = image_tag item.image.url, class: 'text-center'
-        .caption
-          %h2= item.name
-          = link_to 'Buy', order_path(@place.slug, item.id), class: 'btn btn-success btn-lg', method: :post, data: { confirm: t('menu_item.confirm_order', item_price: item.price) }
-.row
-  .col-md-12.text-center= paginate @menu_items
+.wrapper
+  .container
+    %h2= t('menu_item.greetings', customer_name: @customer.first_name, place_name: @place.name)
+    .outer
+      .button
+        = link_to @place.redirect_url do
+          %b= t('menu_item.to_internet')
+          = image_tag 'loyalty/arrow-inet.png'
+    %p= t('menu_item.added_bonus', place_score_amount: @place.score_amount)
+    .row
+      - @menu_items.each do |item|
+        #product-1.col-xs-6.col-sm-6.col-md-3.products
+          .order
+            = image_tag item.image.url, class: 'product'
+            .price
+              %span
+                %b= item.price
+              = image_tag 'loyalty/star-green.png'
+            .product-name
+              %span
+                %b= item.name
+          - if item.price > @reputation_score
+            .insufficient
+              = link_to '#', onclick: 'return false;' do
+                %b= t('menu_item.not_enough_points')
+                = image_tag 'loyalty/star-white.png'
+          - else
+            .exchange
+              = link_to order_path(@place.slug, item.id), method: :post, data: { confirm: t('menu_item.confirm_order', item_price: item.price) } do
+                %b Buy
+                = image_tag 'loyalty/star-white.png'

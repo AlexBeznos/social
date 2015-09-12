@@ -20,17 +20,20 @@
       :css
         #{@place.style.css_min}
       - if @place.style.background.exists?
-        :sass
-          body
+        :css
+          body {
             background: url(#{@place.style.background.url }) no-repeat center
+          }
       - if @place.style.text_color && !@place.style.text_color.empty?
-        :sass
-          .content p
+        :css
+          .content p {
             color: #{ @place.style.text_color }
+          }
       - if @place.style.greating_color && !@place.style.greating_color.empty?
-        :sass
-          .content p:first-line
+        :css
+          .content p:first-line {
             color: #{ @place.style.greating_color }
+          }
 
   %body
     .wrapper-out

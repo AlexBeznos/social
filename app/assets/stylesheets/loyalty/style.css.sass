@@ -1,0 +1,498 @@
+$green: #19a591
+$violet: #a150dc
+$gray: #c8cbcb
+@font-face
+	font-family: Roboto
+	src: font-url("loyalty/medium.woff")
+	font-weight: bold
+@font-face
+	font-family: Roboto
+	src: font-url("loyalty/light.woff")
+// @font-face
+// 	font-family: Roboto
+// 	src: url("../fonts/bold.woff")
+
+@mixin clearfix
+	&:after
+		content: ""
+		display: table
+		clear: both
+
+body
+	min-height: 100vh
+	// min-height: 100%
+	background-image: image-url("loyalty/bg.png")
+	background-size: cover
+	background-position: bottom center
+	background-repeat: no-repeat
+	@media(max-width: 1199px)
+		// height: auto
+		// padding-bottom: 30px
+	@media (max-width: 640px)
+		background-image: image-url("loyalty/bg-small.png")
+
+/* Header */
+
+header
+	text-align: center
+	max-width: 100%
+	h2
+		padding-left: 5px
+		padding-right: 5px
+		// height: 50px
+		background-color: #FFF
+		margin-top: 0
+		// line-height: 50px
+		max-width: 100%
+		img
+			&:nth-of-type(1)
+				width: 65%
+				max-width: 248px
+			&:nth-of-type(2)
+				width: 30%
+				max-width: 101px
+		@media (max-width: 640px)
+			margin-bottom: 0
+	.name
+		text-align: center
+		border-bottom: 1px dashed $violet
+		font-family: Roboto
+		font-weight: bold
+		// height: 60px
+		position: relative
+		@media (max-width: 640px)
+			height: 30px
+		h1
+			@media (max-width: 640px)
+				margin-top: 5px
+				margin-bottom: 0
+			.facility-name
+				font-size: 32px
+				text-align: left
+				color: $green
+				text-transform: uppercase
+				@media(max-width: 640px)
+					font-size: 24px
+					position: absolute
+					left: 0
+			.points
+				font-size: 32px
+				text-align: right
+				color: $violet
+				@media(max-width: 640px)
+					font-size: 24px
+					position: absolute
+					right: 0
+				img
+					position: relative
+					top: -4px
+					@media(max-width: 640px)
+						height: 22px
+						top: -2px
+			.back
+				@media(max-width: 640px)
+					position: absolute
+					bottom: 0
+					right: 60px
+				a
+					img
+						@media(max-width: 640px)
+							width: 30px
+
+
+/*Header END */
+
+/*Body */
+
+.wrapper
+	text-align: center
+	// padding-bottom: 50px
+	.container
+		h2
+			font-size: 26px
+			font-family: Roboto
+			@media(max-width: 640px)
+				font-size: 17px
+				margin-top: 10px
+				margin-bottom: 0
+		.outer
+			margin-top: 10px
+			margin-bottom: 5px
+			width: 100%
+			padding-left: 10px
+			padding-right: 10px
+		.button
+			height: 50px
+			width: 100%
+			// margin-left: 10%
+			background-color: $green
+			border-radius: 10px
+			a
+				position: relative
+				display: block
+				width: 100%
+				height: 100%
+				font-size: 22px
+				line-height: 50px
+				height: 100%
+				border-radius: 20px
+				text-transform: uppercase
+				text-decoration: none
+				color: #fff
+				outline: none
+				&:link, &:hover, &:active
+					text-decoration: none
+				@media (max-width: 640px)
+					font-size: 14px
+				img
+					position: relative
+					top: -1px
+
+		p
+			font-size: 30px
+			font-family: Roboto
+			@media(max-width: 640px)
+				font-size: 19px
+				margin-bottom: 10px
+			.points
+				color: $violet
+		.row
+			@media (max-width: 767px)
+				// height: 91vw
+			.products
+				text-align: center
+				margin-bottom: 30px
+				max-width: 50%
+				&:nth-of-type(2n+1)
+					padding-left: 25px
+					padding-right: 12px
+				&:nth-of-type(2n)
+					padding-right: 25px
+					padding-left: 12px
+				@media (max-width: 640px)
+					margin-bottom: 5px
+				.order
+					width: 200px
+					max-width: 100%
+					border: 1px solid transparent
+					border-radius: 20px
+					// padding: 10px
+					position: relative
+					margin: 0 auto
+					.product
+						width: 100%
+						border: 1px solid transparent
+						border-radius: 20px
+					.price
+						text-align: center
+						width: 80px
+						height: 50px
+						position: absolute
+						right: 0
+						top: 10px
+						font-size: 24px
+						border: 1px solid transparent
+						border-radius: 6px
+						background-color: #FFF
+						@media (max-width: 640px)
+							width: 60px
+							height: 30px
+							font-size: 16px
+						span
+							line-height: 50px
+							@media (max-width: 640px)
+								line-height: 30px
+						img
+							position: relative
+							top: -1px
+							@media (max-width: 640px)
+								width: 14px
+								height: 14px
+					.product-name
+						width: 100%
+						height: 40px
+						position: absolute
+						bottom: -1px
+						left: -1px
+						font-size: 24px
+						color: $green
+						text-align: center
+						border: 1px solid $gray
+						border-radius: 20px
+						background-color: #FFF
+						box-sizing: content-box
+						@media (max-width: 640px)
+							font-size: 14px
+							height: 18px
+						span
+							line-height: 40px
+							@media (max-width: 640px)
+								line-height: 20px
+
+			.exchange
+				width: 200px
+				height: 50px
+				border: 1px solid transparent
+				border-radius: 10px
+				background-color: #a050db
+				text-align: center
+				margin: 10px auto
+				line-height: 50px
+				max-width: 90%
+				@media(max-width: 640px)
+					height: 25px
+					line-height: 25px
+					margin-top: 3px
+					margin-bottom: 3px
+				a
+					display: block
+					width: 100%
+					height: 100%
+					border-radius: inherit
+					color: #fff
+					font-size: 24px
+					text-decoration: none
+					outline: none
+					@media (max-width: 640px)
+						font-size: 12px
+					img
+						position: relative
+						top: -3px
+						@media (max-width: 640px)
+							width: 14px
+							height: 14px
+			.insufficient
+				width: 200px
+				height: 50px
+				border: 1px solid transparent
+				border-radius: 10px
+				background-color: #bd8ce1
+				text-align: center
+				margin: 10px auto
+				line-height: 50px
+				max-width: 90%
+				@media(max-width: 640px)
+					height: 25px
+					line-height: 25px
+					margin-top: 3px
+					margin-bottom: 3px
+				a
+					display: block
+					width: 100%
+					height: 100%
+					border-radius: inherit
+					cursor: not-allowed
+					color: #fff
+					font-size: 24px
+					text-decoration: none
+					outline: none
+					@media (max-width: 640px)
+						font-size: 12px
+					img
+						position: relative
+						top: -3px
+						@media (max-width: 640px)
+							width: 14px
+							height: 14px
+// .hasScrollbar
+// 	position: static
+
+
+/* order.html */
+#order
+	margin-top: 30px
+	@media(max-width: 767px)
+		margin-top: 0
+	.container
+		.row
+			margin-top: 10px
+			@include clearfix
+			@media(max-width: 767px)
+				text-align: center
+			.buy-info
+				margin-top: 30px
+				float: right
+				width: 50%
+				font-family: Roboto
+				@media (max-width: 767px)
+					float: none
+					width: 100%
+					margin-top: 20px
+				@media (max-width: 640px)
+					margin-top: 0
+				span
+					font-size: 32px
+					line-height: 60px
+					@media(max-width: 991px)
+						font-size: 26px
+						line-height: 50px
+					@media (max-width: 767px)
+						font-size: 28px
+						line-height: auto
+					@media (max-width: 640px)
+						line-height: 30px
+						font-size: 20px
+
+			.bought-product
+				width: 30%
+				margin: 20px 10%
+				margin-bottom: 0
+				text-align: center
+				float: left
+				font-family: Roboto
+				@media (max-width: 767px)
+					display: block
+					width: 400px
+					margin: 0 auto
+					max-width: 80%
+					padding: 0 10%
+					float: none
+				.order
+					border: 1px solid $gray
+					border-radius: 20px
+					position: relative
+					margin: 0 auto
+					img
+						width: 100%
+						border: 1px solid $gray
+						border-radius: 20px
+					.product-name
+						width: 100%
+						height: 40px
+						position: absolute
+						bottom: -1px
+						left: -1px
+						font-size: 24px
+						color: $green
+						text-align: center
+						border: 1px solid $gray
+						border-radius: 20px
+						background-color: #FFF
+						box-sizing: content-box
+						@media(max-width: 640px)
+							height: 25px
+							font-size: 20px
+						span
+							line-height: 40px
+							@media(max-width: 640px)
+								line-height: 25px
+			.buy-code
+				float: right
+				width: 50%
+				font-family: Roboto
+				@media (max-width: 767px)
+					width: 100%
+					float: none
+				p
+					font-size: 32px
+					line-height: 80px
+					font-weight: bold
+					@media(max-width: 991px)
+						font-size: 26px
+						line-height: 50px
+					@media (max-width: 767px)
+						font-size: 20px
+						line-height: auto
+					@media(max-width: 640px)
+						line-height: 40px
+				.code
+					width: 400px
+					height: 60px
+					border-radius: 10px
+					background-color: $violet
+					text-align: center
+					@media (max-width: 991px)
+						width: 300px
+						max-width: 100%
+						margin: 0 auto
+					@media (max-width: 640px)
+						height: 40px
+					span
+						font-size: 24px
+						color: #fff
+						line-height: 60px
+						@media (max-width: 991px)
+							font-size: 20px
+						@media (max-width: 640px)
+							line-height: 40px
+		.button
+			margin-top: 30px
+			padding-bottom: 50px
+			width: 80%
+			margin-left: 10%
+			height: 80px
+			background-color: $green
+			border: 1px solid transparent
+			border-radius: 30px
+			text-align: center
+			line-height: 80px
+			@media(max-width: 640px)
+				width: 100%
+				margin-top: 10px
+				margin-left: 0
+				border-top-right-radius: 10px
+				border-top-left-radius: 10px
+				border-bottom-right-radius: 0
+				border-bottom-left-radius: 0
+				height: 50px
+				padding-bottom: 0
+				line-height: 49px
+			// @media (max-width: 640px) and (min-height: 513px)
+				// position: absolute
+				// bottom: 0
+				// left: 0
+
+
+			a
+				display: block
+				width: 100%
+				height: 100%
+				font-size: 32px
+				color: #FFF
+				text-transform: uppercase
+				outline: none
+				text-decoration: none
+				@media (max-width: 767px)
+					font-size: 24px
+				@media(max-width: 640px)
+					font-size: 16px
+		// .button
+		// margin-top: 10px
+		// background-color: rgba(255,255,255,0.8)
+		// border: 1px solid transparent
+		// border-radius: 30px
+		// text-align: center
+		// width: 80%
+		// height: 80px
+		// line-height: 80px
+		// margin-left: 10%
+
+
+		// @media (max-width: 640px)
+		// 	width: 100%
+		// 	// position: absolute
+		// 	// bottom: 0
+		// 	margin-left: 0
+		// 	margin-top: 0
+		// 	border-top-right-radius: 10px
+		// 	border-top-left-radius: 10px
+		// 	border-bottom-right-radius: 0
+		// 	border-bottom-left-radius: 0
+		// 	height: 40px
+		// 	padding-bottom: 0
+		// 	border-bottom: 0
+		// 	line-height: 39px
+
+		// a
+		// 	display: block
+		// 	width: 100%
+		// 	height: 100%
+		// 	font-size: 32px
+		// 	color: $green
+		// 	text-transform: uppercase
+		// 	outline: none
+		// 	text-decoration: none
+		// 	@media (max-width: 767px)
+		// 		font-size: 24px
+		// 	@media(max-width: 640px)
+		// 		font-size: 16px
