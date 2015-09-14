@@ -4,7 +4,9 @@ RSpec.describe Stock do
   it { is_expected.to belong_to(:place) }
   it { is_expected.to have_attached_file(:image) }
   it { is_expected.to validate_presence_of :place_id }
+  it { is_expected.to validate_presence_of :day }
   it { is_expected.to validate_attachment_content_type(:image).allowing("image/jpeg", "image/png", "image/gif") }
+  it { is_expected.to callback(:normalize_day).before(:save) }
 
   describe "url" do
     it "has valid value" do

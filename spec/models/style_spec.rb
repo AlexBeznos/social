@@ -17,6 +17,11 @@ RSpec.describe Style do
       expect(style).to be_valid
     end
 
+    it "can be blank" do
+      style = build(:style, greating_color: "", text_color: "")
+      expect(style).to be_valid
+    end
+
     context "text color" do
       it "has invalid value" do
         style = build(:style, text_color: "shit")

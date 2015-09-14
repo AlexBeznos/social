@@ -22,6 +22,11 @@ RSpec.describe User do
       expect(user.errors.messages[:phone]).to include(I18n.t('models.errors.validations.wrong_phone_number'))
     end
   end
+  
+  it "returns all places" do 
+    user = build(:user)
+    expect(user.get_all_places).to eq user.places
+  end
 
   it "returns a user's full name as a string" do
     user = build(:user)
