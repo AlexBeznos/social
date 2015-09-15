@@ -27,5 +27,5 @@
           - else
             .exchange
               = link_to order_path(@place.slug, item.id), method: :post, data: { confirm: t('menu_item.confirm_order', item_price: item.price) } do
-                %b Buy
+                %b= t('menu_item.buy')
                 = image_tag 'loyalty/star-white.png'

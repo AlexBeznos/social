@@ -307,6 +307,7 @@ ru:
     item_price: "Цена: %{item_price}"
     goods: "Товар/услуга"
     coupon_code: "Код покупки: %{coupon_code}"
+    buy: Обменять
   navigation:
     logout: 'Выйти'
     login: 'Войти'

@@ -301,6 +301,7 @@ ua:
     goods: "Товар/послуга"
     coupon_code: "Код покупки: %{coupon_code}"
     add_new_item: Додати новий товар/послугу
+    buy: Обміняти
   navigation:
     logout: 'Вийти'
     login: 'Увійти'

@@ -254,6 +254,7 @@ en:
     goods: Item
     add_new_item: Add new item
     coupon_code: "Code: %{coupon_code}"
+    buy: Exchange
   navigation:
     logout: 'Logout'
     login: 'Login'
