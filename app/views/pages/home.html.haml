@@ -116,3 +116,9 @@
       %h2= link_to t('privacy_police.title'), page_path('privacy_policy')
       %a{:href => "http://rabby.com.ua/"}
         = image_tag "rabby.png"
+    :javascript
+      (function(d, w, s) {
+      var widgetId = '21334', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+      gcw.src = '//my.binotel.ua/getcall/widgets/'+ widgetId +'.js';
+      var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+      })(document, window, 'script');
