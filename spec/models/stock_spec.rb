@@ -21,4 +21,13 @@ RSpec.describe Stock do
       expect(stock.errors.messages[:url]).to include(I18n.t('models.errors.validations.wrong_link_format'))
     end
   end
+
+  describe "day" do
+    it "is normalized" do
+      day =  I18n.t('date.day_names').sample
+      stock = build(:stock, day: day)
+      stock.save
+      expect(stock.day).to eq I18n.t('date.day_names', :locale => :en)[I18n.t('date.day_names').index(day)]
+    end
+  end
 end

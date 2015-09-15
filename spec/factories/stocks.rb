@@ -6,6 +6,6 @@ FactoryGirl.define do
   	# not the full date, but since there is no check for entered data for this field 
   	# (it can hold any string) - this behaviour is totally expected. Need to either add some 
   	# format validation for the field or just leave it as is 
-  	day Faker::Date.between(6.days.ago, Date.today) 
+  	day I18n.t('date.day_names').sample
   end
 end

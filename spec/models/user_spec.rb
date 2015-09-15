@@ -24,8 +24,8 @@ RSpec.describe User do
   end
   
   it "returns all places" do 
-    user = build(:user)
-    expect(user.get_all_places).to eq user.places
+    user = create(:user, :with_places, number_of_places: 10)
+    expect(user.get_all_places.length).to eq 10
   end
 
   it "returns a user's full name as a string" do
