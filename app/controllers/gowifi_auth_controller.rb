@@ -28,7 +28,7 @@ class GowifiAuthController < ApplicationController
 
     clear_session
     if @place.loyalty_program
-      redirect_to menu_items_list_path
+      redirect_to menu_items_list_path @place
     else
       redirect_to wifi_login_path
     end
