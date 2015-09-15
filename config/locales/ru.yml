@@ -298,7 +298,7 @@ ru:
     back_to_shopping: "Вернуться к покупкам"
     shopping_history: "История покупок"
     confirm_order: "Подтвердить списание %{item_price} баллов?"
-    not_enough_points: "Недостаточно баллов для покупки"
+    not_enough_points: "Недостаточно"
     successful_buy: "Вы обменяли %{price}%{price_img} на %{menu_item_name}"
     billed_account: "С Вашего бонусного счета списано %{item_price} баллов"
     show_to_waiter: "Покажите эту страницу официанту"
