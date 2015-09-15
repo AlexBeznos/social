@@ -12,7 +12,7 @@ RSpec.describe Customer do
   it { is_expected.to callback(:set_gender).before(:save).unless('gender') }
 
   it "returns a customer's full name as a string" do
-    customer = build(:second_customer)
+    customer = build(:full_name_customer)
 
     expect(customer.full_name).to eq "#{customer.first_name} #{customer.last_name}"
   end
