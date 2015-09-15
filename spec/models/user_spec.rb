@@ -4,6 +4,7 @@ RSpec.describe User do
   it { is_expected.to validate_presence_of :first_name }
   it { is_expected.to validate_presence_of :last_name }
   it { is_expected.to validate_presence_of :phone }
+  it { is_expected.to validate_presence_of(:user_id).on('group.to_sym == :general') }
   it { is_expected.to ensure_length_of(:phone).is_at_least(10).is_at_most(20) }
   it { is_expected.to belong_to(:franchisee).class_name('User') }
   it { is_expected.to have_many(:places) }
