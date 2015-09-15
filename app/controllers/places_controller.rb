@@ -84,8 +84,7 @@ class PlacesController < ApplicationController
                                     :reputation_on,
                                     :simple_enter,
                                     :score_amount,
-                                    :loyalty_program,
-                                    :loyalty_program_without_codes)
+                                    :loyalty_program)
     end
 
     def get_number_of_friends(records)

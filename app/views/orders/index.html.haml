@@ -11,8 +11,6 @@
         .text-center= image_tag order.menu_items.first.image.url
         .caption.text-center
           %h2= order.menu_items.first.name
-          - if @place.loyalty_program
-            %h4= t('menu_item.coupon_code', coupon_code: 'HA288ASD7')
           %p
             %strong= "Date: #{order.created_at.to_formatted_s(:short)}"
 .row

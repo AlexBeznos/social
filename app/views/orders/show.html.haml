@@ -29,9 +29,8 @@
             %span
               %b= @menu_item.name
       .buy-code
-        - if @place.loyalty_program_without_codes
-          %p
-            %b= t('menu_item.show_to_waiter')
+        %p
+          %b= t('menu_item.show_to_waiter')
         -#   %p
         -#     %b= t('menu_item.show_to_waiter_with_code')
         -#   .code

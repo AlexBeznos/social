@@ -252,6 +252,7 @@ en:
     show_to_waiter_with_code: Show the code below to waiter
     item_price: "Price: %{item_price}"
     goods: Item
+    add_new_item: Add new item
     coupon_code: "Code: %{coupon_code}"
   navigation:
     logout: 'Logout'

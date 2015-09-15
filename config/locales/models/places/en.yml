@@ -15,7 +15,6 @@ en:
         simple_enter: Enter without authorization
         score_amount: "Bonus amount"
         loyalty_program: Loyalty program
-        loyalty_program_without_codes: Loyalty program without codes
       actions:
         index:
           title: 'Places'

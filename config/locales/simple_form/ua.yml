@@ -12,7 +12,6 @@ ua:
         simple_enter: Вхід без авторизації
         loyalty_on: Включити налаштування програм лояльності для юзерів
         loyalty_program: Програма лояльності
-        loyalty_program_without_codes: Програма лояльності без коду
         redirect_url: Адреса переадресації після аутентифікації
         enter_by_password: Вхід за паролем
         password: Пароль

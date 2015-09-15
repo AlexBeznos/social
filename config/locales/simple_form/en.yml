@@ -12,7 +12,6 @@ en:
         simple_enter: Enter without authorization
         loyalty_on: Enable loyalty settings for users
         loyalty_program: Loyalty program
-        loyalty_program_without_codes: Loyalty program without codes
         score_amount: Score amount
         redirect_url: Redirect url after authentication
         enter_by_password: Enter by password

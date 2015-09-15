@@ -3,9 +3,6 @@
   = f.input :name
   = f.input :slug
   = f.input :simple_enter, as: :boolean
-  = f.input :loyalty_on, as: :boolean
-  = f.input :loyalty_program, as: :radio_buttons, checked_value: true, unchecked_value: false
-  = f.input :loyalty_program_without_codes, as: :radio_buttons, checked_value: true, unchecked_value: false
   - if @place.logo.present?
     = image_tag @place.logo.url, height: 100
   = f.input :logo, as: :file
