@@ -9,6 +9,10 @@ RSpec.describe Message do
   it { is_expected.to callback(:set_subscription_uid).before(:save).if('social_network_id == 3') }
   it { is_expected.to callback(:set_active_only_to_one_message_from_place).after(:save).if('active') }
 
+  it "should only return active messages" do
+    Message.active.where_values_hash.should eq "active" => true
+  end
+
   describe "Validate presence of message" do
     it "required when social network is not Instagram" do
       message = build_stubbed(:message, social_network_id: 2)
