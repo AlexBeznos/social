@@ -1,0 +1,23 @@
+%h1 Listing answers
+
+%table
+  %thead
+    %tr
+      %th Content
+      %th
+      %th
+      %th
+
+  %tbody
+    - @answers.each do |answer|
+      %tr
+        %td= answer.content
+        %td= link_to 'Show', place_poll_answer_path(id: answer.id, poll_id: @poll.id, place_id: @place.slug)
+        %td= link_to 'Edit', edit_place_poll_answer_path(id: answer.id, poll_id: @poll.id, place_id: @place.slug)
+        %td= link_to 'Destroy', place_poll_answer_path(id: answer.id, poll_id: @poll.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Answer', new_place_poll_answer_path
+\|
+= link_to 'Back', place_poll_path(id: @poll.id, place_id: @place.slug)

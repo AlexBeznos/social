@@ -1,0 +1,7 @@
+%h1 Editing answer
+
+= render 'form'
+
+= link_to 'Show', place_poll_answer_path(id: @answer.id, poll_id: @poll.id, place_id: @place.slug)
+\|
+= link_to 'Back', place_poll_answers_path(@place, @poll)

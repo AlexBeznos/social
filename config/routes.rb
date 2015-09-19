@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+
   require 'sidekiq/web'
   require 'admin_constraint'
 
@@ -33,6 +35,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :places do
+    resources :polls do 
+      resources :answers
+    end
     resources :messages, except: [:index, :show]
     resources :stocks, except: :show
     resources :styles, except: :index

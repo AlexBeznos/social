@@ -1,0 +1,8 @@
+= simple_form_for [@place, @poll] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :question
+
+  .form-actions
+    = f.button :submit
