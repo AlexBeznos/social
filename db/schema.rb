@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150919102839) do
   create_table "answers", force: true do |t|
     t.string   "content"
     t.integer  "poll_id"
+    t.integer  "number_of_selections", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

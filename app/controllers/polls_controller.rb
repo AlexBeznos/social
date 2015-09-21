@@ -1,37 +1,39 @@
 class PollsController < ApplicationController
   load_and_authorize_resource :place, :find_by => :slug
   load_and_authorize_resource :poll, :through => :place
-  
+
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
 
   # GET /polls
   # GET /polls.json
   def index
-    @polls = Poll.where(place_id: @place.id)
+    @polls = @place.polls
   end
 
   # GET /polls/1
   # GET /polls/1.json
   def show
-    @poll = Poll.where(place_id: @place.id).first
   end
 
   # GET /polls/new
   def new
+    @poll = @place.polls.new
+    2.times do
+      @answer = @poll.answers.build
+    end
   end
 
   # GET /polls/1/edit
   def edit
-    @poll = Poll.where(place_id: @place.id).first
   end
 
   # POST /polls
   # POST /polls.json
   def create
-    @poll = Poll.new(poll_params)
-    @poll.place_id = @place.id
+    @poll = @place.polls.new(poll_params)
+
     if @poll.save
-      redirect_to place_polls_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.polls.class'))
+      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.create', subject: I18n.t('models.polls.class'))
     else
       render :action => :new
     end
@@ -41,7 +43,7 @@ class PollsController < ApplicationController
   # PATCH/PUT /polls/1.json
   def update
     if @poll.update(poll_params)
-      redirect_to place_polls_path(@place), :notice => I18n.t('notice.update', subject: I18n.t('models.polls.class'))
+      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.update', subject: I18n.t('models.polls.class'))
     else
       render :action => :edit 
     end
@@ -51,6 +53,7 @@ class PollsController < ApplicationController
   # DELETE /polls/1.json
   def destroy
     @poll.destroy
+
     respond_to do |format|
       format.html { redirect_to place_polls_path(@place), :notice => I18n.t('notice.delete', subject: I18n.t('models.polls.class')) }
       format.json { head :no_content }
@@ -65,6 +68,6 @@ class PollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
-      params.require(:poll).permit(:question)
+      params.require(:poll).permit(:question, answers_attributes: [:id, :content, :_destroy])
     end
 end

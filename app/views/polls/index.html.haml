@@ -4,6 +4,7 @@
   %thead
     %tr
       %th Question
+      %th Answers
       %th
       %th
       %th
@@ -12,8 +13,9 @@
     - @polls.each do |poll|
       %tr
         %td= poll.question
-        %td= link_to 'Show', place_poll_path(id: poll.id, place_id: @place.slug)
-        %td= link_to 'Edit', edit_place_poll_path(id: poll.id, place_id: @place.slug)
+        %td= poll.answers.count
+        %td= link_to 'Show |', place_poll_path(id: poll.id, place_id: @place.slug)
+        %td= link_to 'Edit |', edit_place_poll_path(id: poll.id, place_id: @place.slug)
         %td= link_to 'Destroy', place_poll_path(id: poll.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br

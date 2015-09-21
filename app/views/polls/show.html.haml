@@ -3,6 +3,10 @@
 %p
   %b Question:
   = @poll.question
+%p
+  %b Answers: 
+  - @poll.answers.each do |a|
+    %p= a.content
 
 
 = link_to 'Edit', edit_place_poll_path(id: @poll.id, place_id: @place.slug)

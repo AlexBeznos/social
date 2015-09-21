@@ -3,6 +3,8 @@
 
   .form-inputs
     = f.input :question
-
+    = f.simple_fields_for :answers do |a|
+      = render 'answer_fields', :f => a     
+      
   .form-actions
     = f.button :submit
