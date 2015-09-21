@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   load_and_authorize_resource :place, :find_by => :slug
   load_and_authorize_resource :poll, :through => :place
-  load_and_authorize_resource :through => :poll
+  load_and_authorize_resource :answer, :through => :poll
 
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
@@ -53,7 +53,8 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to place_poll_answers_path(@place, @poll), notice: 'Answer was successfully destroyed.' }
+      format.html { redirect_to place_poll_answers_path(@place, @poll), 
+                    :notice => I18n.t('notice.delete', subject: I18n.t('models.answers.class')) }
       format.json { head :no_content }
     end
   end

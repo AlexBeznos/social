@@ -1,6 +1,7 @@
 class PollsController < ApplicationController
   load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource :through => :place
+  load_and_authorize_resource :poll, :through => :place
+  
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
 
   # GET /polls
@@ -51,7 +52,7 @@ class PollsController < ApplicationController
   def destroy
     @poll.destroy
     respond_to do |format|
-      format.html { redirect_to place_polls_path(@place), :notice => I18n.t('notice.update', subject: I18n.t('models.polls.class')) }
+      format.html { redirect_to place_polls_path(@place), :notice => I18n.t('notice.delete', subject: I18n.t('models.polls.class')) }
       format.json { head :no_content }
     end
   end
