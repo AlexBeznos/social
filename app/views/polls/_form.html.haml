@@ -4,7 +4,17 @@
   .form-inputs
     = f.input :question
     = f.simple_fields_for :answers do |a|
-      = render 'answer_fields', :f => a     
-      
+
+      .duplicatable_nested_form
+        = a.input :content
+
+        - if a.object.new_record?
+          = link_to 'Remove', '', :remote => true, :class => 'destroy_duplicate_nested_form'
+        - else
+          = link_to 'Remove', portfolio_asset_path(@portfolio, assets_form.object), :method => :delete, :remote => true, :class => 'destroy_duplicate_nested_form'
+          = assets_form.input :id, as: :hidden
+
+    = link_to 'Add another answer', '', :class => 'duplicate_nested_form'
+  
   .form-actions
     = f.button :submit

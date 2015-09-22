@@ -52,11 +52,6 @@ class PlacesController < ApplicationController
     @networks = @place.messages.where(active: true).map {|message| message.social_network }.uniq
   end
 
-  def polls
-    @polls = place.polls
-  end
-
-
   def edit
   end
 

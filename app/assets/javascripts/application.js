@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require slick.min
+//= require nested_forms.js.coffee

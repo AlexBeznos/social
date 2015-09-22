@@ -1,34 +1,29 @@
 class PollsController < ApplicationController
   load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource :poll, :through => :place
 
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
 
   # GET /polls
-  # GET /polls.json
   def index
     @polls = @place.polls
   end
 
   # GET /polls/1
-  # GET /polls/1.json
   def show
   end
 
   # GET /polls/new
   def new
     @poll = @place.polls.new
-    2.times do
-      @answer = @poll.answers.build
-    end
+    @poll.answers.build
   end
 
   # GET /polls/1/edit
   def edit
+    @poll.answers.build
   end
 
   # POST /polls
-  # POST /polls.json
   def create
     @poll = @place.polls.new(poll_params)
 
@@ -40,7 +35,6 @@ class PollsController < ApplicationController
   end
 
   # PATCH/PUT /polls/1
-  # PATCH/PUT /polls/1.json
   def update
     if @poll.update(poll_params)
       redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.update', subject: I18n.t('models.polls.class'))
@@ -50,13 +44,11 @@ class PollsController < ApplicationController
   end
 
   # DELETE /polls/1
-  # DELETE /polls/1.json
   def destroy
     @poll.destroy
 
     respond_to do |format|
       format.html { redirect_to place_polls_path(@place), :notice => I18n.t('notice.delete', subject: I18n.t('models.polls.class')) }
-      format.json { head :no_content }
     end
   end
 
