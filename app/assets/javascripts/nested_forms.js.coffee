@@ -3,6 +3,8 @@ jQuery ($) ->
     if $('.duplicatable_nested_form').length
 
       nestedForm = $('.duplicatable_nested_form').last().clone()
+      formsOnPage    = $('.duplicatable_nested_form').length - 1
+
 
       $(".destroy_duplicate_nested_form:first").remove()
 
@@ -15,7 +17,7 @@ jQuery ($) ->
 
         lastNestedForm = $('.duplicatable_nested_form').last()
         newNestedForm  = $(nestedForm).clone()
-        formsOnPage    = $('.duplicatable_nested_form').length
+        formsOnPage += 1
 
         $(newNestedForm).find('label').each ->
           oldLabel = $(this).attr 'for'
