@@ -5,6 +5,7 @@ jQuery ($) ->
       nestedForm = $('.duplicatable_nested_form').last().clone()
       formsOnPage    = $('.duplicatable_nested_form').length - 1
 
+
       $(".destroy_duplicate_nested_form:first").remove()
 
       $('body').on 'click','.destroy_duplicate_nested_form', (e) ->
@@ -32,4 +33,5 @@ jQuery ($) ->
           newName = oldName.replace(new RegExp(/\[[0-9]+\]/), "[#{formsOnPage}]")
           $(this).attr 'name', newName
 
-        $( newNestedForm ).insertAfter( lastNestedForm )
+        $( newNestedForm ).insertAfter( lastNestedForm ) 
+        

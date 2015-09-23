@@ -108,3 +108,22 @@
                     = link_to 'activate', activate_adm_message_path(message), class: 'btn btn-success'
                   = link_to 'edit', edit_adm_message_path(message), class: 'btn btn-warning'
                   = link_to 'destroy', adm_message_path(message), class: 'btn btn-danger', method: 'DELETE'
+  .box
+    .box-header.with-border
+      Polls
+    .box-body
+      - @place.polls.each do |poll|
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Question:
+          %tbody
+            %tr
+              %td= poll.question
+              %thead
+                %tr
+                  %th Answer:
+              - poll.answers.each do |answer|
+                %tbody
+                  %tr
+                    %td= answer.content
