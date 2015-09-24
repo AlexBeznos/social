@@ -1,12 +1,17 @@
-%p#notice= notice
+%p
+  %b= @poll.question
 
-%p
-  %b Question:
-  = @poll.question
-%p
-  %b Answers: 
-  - @poll.answers.each do |a|
-    %p= a.content
+%table.table.table-hover
+  %thead
+    %tr.container-fluid
+      %th.col-md-6 Answer
+      %th.col-md-6 Number of selections
+  %tbody
+    - @poll.answers.each do |a|
+      %tr.container-fluid
+        %td.text-left.col-md-6= a.content
+        %td.text-left.col-md-6= a.number_of_selections
+
 
 
 = link_to 'Edit', edit_place_poll_path(id: @poll.id, place_id: @place.slug)

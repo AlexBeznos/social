@@ -113,17 +113,20 @@
       Polls
     .box-body
       - @place.polls.each do |poll|
-        %table.table.table-striped
+        %table.table
           %thead
             %tr
-              %th Question:
+              %th.col-md-6 Question:
           %tbody
             %tr
-              %td= poll.question
-              %thead
-                %tr
-                  %th Answer:
-              - poll.answers.each do |answer|
-                %tbody
-                  %tr
-                    %td= answer.content
+              %td.col-md-6= poll.question
+              %table.table-bordered
+                %thead
+                  %tr.container-fluid
+                    %th.col-md-6 Answer:
+                    %th.col-md-6 Number of selections:
+                - poll.answers.each do |answer|
+                  %tbody
+                    %tr.container-fluid
+                      %td.col-md-6= answer.content
+                      %td.col-md-6= answer.number_of_selections

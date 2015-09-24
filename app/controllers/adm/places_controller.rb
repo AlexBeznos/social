@@ -39,7 +39,7 @@ class Adm::PlacesController < AdministrationController
 
   def destroy
     @place.destroy
-    redirect_to adm_user_path(@place.user), :notice => 'Place destroied!'
+    redirect_to adm_user_path(@place.user), :notice => 'Place destroyed!'
   end
 
   private
