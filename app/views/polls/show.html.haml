@@ -12,7 +12,8 @@
         %td.text-left.col-md-6= a.content
         %td.text-left.col-md-6= a.number_of_selections
 
-
-
 = link_to 'Edit', edit_place_poll_path(id: @poll.id, place_id: @place.slug)
 = link_to 'Back', place_polls_path(@place)
+
+= pie_chart @poll.answers.group(:content).sum(:number_of_selections)
+

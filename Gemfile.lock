@@ -61,6 +61,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    chartkick (1.4.1)
     chronic (0.10.2)
     churn (0.0.35)
       chronic (>= 0.2.3)
@@ -505,6 +506,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 1.10)
   capybara
+  chartkick
   codemirror-rails
   coffee-rails (~> 4.0.0)
   cssminify
@@ -573,3 +575,6 @@ DEPENDENCIES
   unicorn
   vkontakte_api
   yaml_db
+
+BUNDLED WITH
+   1.10.6

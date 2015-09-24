@@ -267,6 +267,7 @@ en:
       guests: 'Top visitors'
       birthdays: "Visitor's birthdays"
       menu_items: 'Menu Items'
+      polls: 'Polls'
   pages:
     places:
       title: 'Places'
