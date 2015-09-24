@@ -88,7 +88,6 @@ add action=masquerade chain=srcnat comment="masquerade hotspot network" \
 add action=masquerade chain=srcnat comment="masquerade hotspot network" \
     src-address=192.168.88.0/24 to-addresses=0.0.0.0
 /ip hotspot user
-add name=admin password=sp07tc
 add name=##username## password=##password##
 /ip hotspot walled-garden
 add dst-host=*facebook*
