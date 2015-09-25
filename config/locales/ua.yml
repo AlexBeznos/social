@@ -19,8 +19,9 @@ ua:
       stock: акцію
       style: стиль
       menu_item: товар
+      poll: опитування
   notice:
-    create: "%{subject} добавленно"
+    create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
     deleted: "%{subject} видалено"
   date:

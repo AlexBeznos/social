@@ -19,6 +19,7 @@ en:
       stock: stock
       style: style
       menu_item: product
+      poll: poll
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"

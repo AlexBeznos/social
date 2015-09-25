@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   scope '/wifi' do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
+    get ':slug/by_poll' => 'gowifi#enter_by_poll'
+    patch ':slug/poll_enter' => 'gowifi#submit_poll'
 
 
     get ':slug/status' => 'gowifi_auth#redirect_after_auth'

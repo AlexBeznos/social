@@ -19,6 +19,7 @@ ru:
       stock: акцию
       style: стиль
       menu_item: товар
+      poll: опрос
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
