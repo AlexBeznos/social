@@ -31,10 +31,6 @@ class GowifiController < ApplicationController
       @place = Place.find_by_slug(params[:slug])
     end
 
-    def poll_params
-      params.require(:poll).permit(answers_attributes: [:id, :number_of_selections])
-    end
-
     # we add slug to session to make sure
     # place slug  will be saved in omniauth or at least session
     def set_place_slug
