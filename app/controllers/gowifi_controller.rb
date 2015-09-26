@@ -25,7 +25,7 @@ class GowifiController < ApplicationController
         render :action => :enter_by_poll 
       end
     else
-      redirect_to :back
+      redirect_to :back, alert: "You haven't selected an answer!"
     end
   end
 
