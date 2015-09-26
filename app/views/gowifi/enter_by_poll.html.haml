@@ -37,15 +37,16 @@
   
   %body
 
-    = simple_form_for [@place, @poll], url: {action: :submit_poll} do |f|
-      = f.error_notification
+    .wrapper-out
+      .wrapper-in
+        .content
+          = simple_form_for [@place, @poll], url: {action: :submit_poll} do |f|
+            = f.error_notification
         
-      = f.label f.object.question
-      %br
-      %br
+            %h1= f.label f.object.question
+            %br
+            %br
 
-      = f.association :answers,  collection: @poll.answers, label_method: :content, value_method: :id, prompt: "Choose one of the answers below", as: :radio_buttons
-      = f.simple_fields_for :answers do |a|
-        = a.input :id, as: :hidden
-  
-      = button_to :submit, 'Submit'
+            = f.association :answers,  collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
+            
+            = f.button :submit, 'Submit', class: 'btn btn-primary'
