@@ -47,6 +47,6 @@
             %br
             %br
 
-            = f.association :answers,  collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
+            = f.association :answers, label: 'Select one of the answers below to continue', collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
             
             = f.button :submit, 'Submit', class: 'btn btn-primary'

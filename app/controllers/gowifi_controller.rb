@@ -17,11 +17,15 @@ class GowifiController < ApplicationController
   end
 
   def submit_poll
-    @answer = Answer.find(params[:poll][:answer_ids].to_i)
-    if @answer.increment!(:number_of_selections)
-      redirect_to wifi_login_path
+    if params[:poll] then
+      @answer = Answer.find(params[:poll][:answer_ids].to_i)
+      if @answer.increment!(:number_of_selections)
+        redirect_to wifi_login_path
+      else
+        render :action => :enter_by_poll 
+      end
     else
-      render :action => :enter_by_poll 
+      redirect_to :back
     end
   end
 
