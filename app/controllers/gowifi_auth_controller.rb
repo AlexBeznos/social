@@ -21,6 +21,19 @@ class GowifiAuthController < ApplicationController
     end
   end
 
+  def submit_poll
+    if params[:poll] then
+      @answer = Answer.find(params[:poll][:answer_ids].to_i)
+      if @answer.increment!(:number_of_selections)
+        redirect_to wifi_login_path
+      else
+        render :action => :enter_by_poll 
+      end
+    else
+      redirect_to :back, alert: I18n.t('wifi.poll_error')
+    end
+  end
+
   def omniauth
     unless visit_already_created?
       AdvertisingWorker.perform_async(@place.slug, credentials)

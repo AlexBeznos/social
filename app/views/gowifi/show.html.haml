@@ -67,6 +67,23 @@
             = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg'
           - if @place.stocks_active && @stock
             = render_stock_image @stock
+          - if @poll
+            %br
+            %br
+            %p= t('wifi.poll')
+            .container.inner
+              = render 'shared/flash'
+              = yield
+            = simple_form_for [@place, @poll], url: {controller: 'gowifi_auth', action: :submit_poll} do |f|
+              = f.error_notification
+        
+              %h1= f.label f.object.question
+              %br
+              %br
+
+              = f.association :answers, label: 'Select one of the answers below to continue', collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
+            
+              = f.button :submit, 'Submit', class: 'btn btn-primary'
 
         %footer
           %p= t('wifi.footer')

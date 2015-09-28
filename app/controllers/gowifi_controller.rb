@@ -10,23 +10,7 @@ class GowifiController < ApplicationController
   def show
     @networks = @place.get_networks
     @stock = @place.get_proper_stock
-  end
-
-  def enter_by_poll
     @poll = @place.polls.sample
-  end
-
-  def submit_poll
-    if params[:poll] then
-      @answer = Answer.find(params[:poll][:answer_ids].to_i)
-      if @answer.increment!(:number_of_selections)
-        redirect_to wifi_login_path
-      else
-        render :action => :enter_by_poll 
-      end
-    else
-      redirect_to :back, alert: "You haven't selected an answer!"
-    end
   end
 
   private
