@@ -2,7 +2,7 @@ class GowifiController < ApplicationController
   include Consumerable
 
   layout false
-  before_action :find_place, only: [:show, :enter_by_poll, :submit_poll]
+  before_action :find_place, only: :show
   before_action :set_place_slug, only: :show
   before_action :find_customer, only: :show
   before_filter :check_for_place_activation, only: :show

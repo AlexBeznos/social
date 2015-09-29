@@ -22,7 +22,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def submit_poll
-    if params[:poll] then
+    if params[:poll] 
       @answer = Answer.find(params[:poll][:answer_ids].to_i)
       if @answer.increment!(:number_of_selections)
         redirect_to wifi_login_path
