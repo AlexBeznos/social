@@ -62,7 +62,25 @@ class PlacesController < ApplicationController
                                  (extract(month from birthday) = ? and extract(day from birthday) <= ?)", 
                                  month_from, day_from, month_to, day_to)
                          .uniq
-                         .order(:birthday)  
+                         .sort do |a, b|
+                            case 
+                              when a.birthday.strftime('%m%d').to_i < b.birthday.strftime('%m%d').to_i 
+                                if a.birthday.strftime('%m').to_i == 1 and b.birthday.strftime('%m').to_i == 12
+                                  1
+                                else
+                                  -1
+                                end
+                              when a.birthday.strftime('%m%d').to_i > b.birthday.strftime('%m%d').to_i 
+                                if a.birthday.strftime('%m').to_i == 12 and b.birthday.strftime('%m').to_i == 1
+                                  -1
+                                else
+                                  1
+                                end
+                              else
+                                0
+                              end
+                            end
+
   end
 
   def settings
