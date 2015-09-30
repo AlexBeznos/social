@@ -40,11 +40,29 @@ class PlacesController < ApplicationController
   end
 
   def birthdays
+    # @customers = Customer.joins(:visits)
+    #                      .where('customer_visits.place_id = ?', @place.id)
+    #                      .where.not(birthday: nil)
+    #                      .uniq
+    #                      .order(:birthday)
+    if params[:date] 
+      day_from = params[:date].to_date.strftime('%d')
+      month_from = params[:date].to_date.strftime('%m')
+      day_to = (params[:date].to_date + 1.month).strftime('%d')
+      month_to = (params[:date].to_date + 1.month).strftime('%m')
+    else 
+      day_from = Time.zone.now.strftime("%d")
+      month_from = Time.zone.now.strftime("%m")
+      day_to = 1.month.from_now.strftime("%d")
+      month_to = 1.month.from_now.strftime("%m")
+    end
     @customers = Customer.joins(:visits)
                          .where('customer_visits.place_id = ?', @place.id)
-                         .where.not(birthday: nil)
+                         .where("(extract(month from birthday) = ? and extract(day from birthday) >= ?) or 
+                                 (extract(month from birthday) = ? and extract(day from birthday) <= ?)", 
+                                 month_from, day_from, month_to, day_to)
                          .uniq
-                         .order(:birthday)
+                         .order(:birthday)  
   end
 
   def settings
