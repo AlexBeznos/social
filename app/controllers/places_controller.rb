@@ -40,11 +40,6 @@ class PlacesController < ApplicationController
   end
 
   def birthdays
-    # @customers = Customer.joins(:visits)
-    #                      .where('customer_visits.place_id = ?', @place.id)
-    #                      .where.not(birthday: nil)
-    #                      .uniq
-    #                      .order(:birthday)
     if params[:date] 
       day_from = params[:date].to_date.strftime('%d')
       month_from = params[:date].to_date.strftime('%m')
@@ -56,31 +51,8 @@ class PlacesController < ApplicationController
       day_to = 1.month.from_now.strftime("%d")
       month_to = 1.month.from_now.strftime("%m")
     end
-    @customers = Customer.joins(:visits)
-                         .where('customer_visits.place_id = ?', @place.id)
-                         .where("(extract(month from birthday) = ? and extract(day from birthday) >= ?) or 
-                                 (extract(month from birthday) = ? and extract(day from birthday) <= ?)", 
-                                 month_from, day_from, month_to, day_to)
-                         .uniq
-                         .sort do |a, b|
-                            case 
-                              when a.birthday.strftime('%m%d').to_i < b.birthday.strftime('%m%d').to_i 
-                                if a.birthday.strftime('%m').to_i == 1 and b.birthday.strftime('%m').to_i == 12
-                                  1
-                                else
-                                  -1
-                                end
-                              when a.birthday.strftime('%m%d').to_i > b.birthday.strftime('%m%d').to_i 
-                                if a.birthday.strftime('%m').to_i == 12 and b.birthday.strftime('%m').to_i == 1
-                                  -1
-                                else
-                                  1
-                                end
-                              else
-                                0
-                              end
-                            end
-
+    id = @place.id
+    @customers = sort_by_birthday Customer.upcoming_birthdays(id, month_from, day_from, month_to, day_to)
   end
 
   def settings
@@ -130,5 +102,26 @@ class PlacesController < ApplicationController
                       .inject{ |sum,x| sum.to_i + x.to_i }
 
       number ? number : 0
+    end
+
+    def sort_by_birthday p
+      p.sort do |a, b|
+        case 
+          when a.birthday.strftime('%m%d').to_i < b.birthday.strftime('%m%d').to_i 
+            if a.birthday.strftime('%m').to_i == 1 and b.birthday.strftime('%m').to_i == 12
+              1
+            else
+              -1
+            end
+          when a.birthday.strftime('%m%d').to_i > b.birthday.strftime('%m%d').to_i 
+            if a.birthday.strftime('%m').to_i == 12 and b.birthday.strftime('%m').to_i == 1
+              -1
+            else
+              1
+            end
+          else
+            0
+          end
+      end
     end
 end

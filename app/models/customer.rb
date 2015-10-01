@@ -12,7 +12,12 @@ class Customer < ActiveRecord::Base
   
   before_save :get_more_customer_info, if: 'first_name =~ /unfinished/'
   before_save :set_gender, unless: 'gender'
-
+  scope :upcoming_birthdays, -> (id, month_from, day_from, month_to, day_to) { joins(:visits)
+                                .where('customer_visits.place_id = ?', id)
+                                .where("(extract(month from birthday) = ? and extract(day from birthday) >= ?) or 
+                                        (extract(month from birthday) = ? and extract(day from birthday) <= ?)", 
+                                        month_from, day_from, month_to, day_to)
+                                  .uniq }
 
   def full_name
     if first_name && last_name
