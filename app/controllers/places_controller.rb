@@ -40,11 +40,8 @@ class PlacesController < ApplicationController
   end
 
   def birthdays
-    @customers = Customer.joins(:visits)
-                         .where('customer_visits.place_id = ?', @place.id)
-                         .where.not(birthday: nil)
-                         .uniq
-                         .order(:birthday)
+    date_from = params[:date] ? params[:date].to_date : Time.now
+    @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month)
   end
 
   def settings
