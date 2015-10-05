@@ -1,0 +1,23 @@
+%h1 Listing polls
+
+%table.table
+  %thead
+    %tr
+      %th.text-center.col-sm-6 Question
+      %th.text-center Answers number
+      %th
+      %th
+      %th
+
+  %tbody
+    - @polls.each do |poll|
+      %tr
+        %td.col-sm-6= poll.question
+        %td= poll.answers.count
+        %td= link_to 'Show', place_poll_path(id: poll.id, place_id: @place.slug)
+        %td= link_to 'Edit', edit_place_poll_path(id: poll.id, place_id: @place.slug)
+        %td= link_to 'Destroy', place_poll_path(id: poll.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Poll', new_place_poll_path

@@ -10,6 +10,7 @@ class GowifiController < ApplicationController
   def show
     @networks = @place.get_networks
     @stock = @place.get_proper_stock
+    @poll = @place.polls.sample
   end
 
   private

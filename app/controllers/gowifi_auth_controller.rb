@@ -1,7 +1,7 @@
 class GowifiAuthController < ApplicationController
   include Consumerable
 
-  before_action :find_place, only: [:enter_by_password, :simple_enter, :redirect_after_auth]
+  before_action :find_place, only: [:enter_by_password, :simple_enter, :redirect_after_auth, :submit_poll]
   before_action :find_customer, only: :omniauth
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
 
@@ -18,6 +18,19 @@ class GowifiAuthController < ApplicationController
       redirect_to wifi_login_path
     else
       redirect_to gowifi_place_path @place
+    end
+  end
+
+  def submit_poll
+    if params[:poll] 
+      @answer = Answer.find(params[:poll][:answer_ids].to_i)
+      if @answer.increment!(:number_of_selections)
+        redirect_to wifi_login_path
+      else
+        redirect_to gowifi_place_path @place
+      end
+    else
+      redirect_to :back, alert: I18n.t('wifi.poll_error')
     end
   end
 

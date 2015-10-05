@@ -1,0 +1,21 @@
+= simple_form_for [@place, @poll] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :question, placeholder: 'Enter new question'
+    = f.simple_fields_for :answers do |a|
+
+      .duplicatable_nested_form
+        = a.input :content, placeholder: 'Enter new answer'
+
+        - if a.object.new_record?
+          = link_to 'Remove', '', remote: true, class: 'destroy_duplicate_nested_form'
+        - else
+          = a.check_box :_destroy
+          = a.label :_destroy, 'Remove'
+          = a.input :id, as: :hidden
+
+    = link_to 'Add another answer', '', class: 'duplicate_nested_form'
+  
+  .form-actions
+    = f.button :submit

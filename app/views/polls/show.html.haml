@@ -1,0 +1,19 @@
+%p
+  %b= @poll.question
+
+%table.table.table-hover
+  %thead
+    %tr.container-fluid
+      %th.col-md-6 Answer
+      %th.col-md-6 Number of selections
+  %tbody
+    - @poll.answers.each do |a|
+      %tr.container-fluid
+        %td.text-left.col-md-6= a.content
+        %td.text-left.col-md-6= a.number_of_selections
+
+= link_to 'Edit', edit_place_poll_path(id: @poll.id, place_id: @place.slug)
+= link_to 'Back', place_polls_path(@place)
+
+= pie_chart @poll.answers.group(:content).sum(:number_of_selections)
+

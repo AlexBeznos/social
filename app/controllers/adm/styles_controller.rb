@@ -37,7 +37,7 @@ class Adm::StylesController < AdministrationController
 
   def destroy
     @style.destroy
-    redirect_to adm_place_path(@style.place), :notice => 'Styles destroied!'
+    redirect_to adm_place_path(@style.place), :notice => 'Styles destroyed!'
   end
 
   private

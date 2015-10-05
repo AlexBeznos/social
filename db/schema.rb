@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915075224) do
+ActiveRecord::Schema.define(version: 20150919102839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: true do |t|
+    t.string   "content"
+    t.integer  "poll_id"
+    t.integer  "number_of_selections", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["poll_id"], name: "index_answers_on_poll_id", using: :btree
 
   create_table "customer_network_profiles", force: true do |t|
     t.integer  "social_network_id"
@@ -148,12 +158,21 @@ ActiveRecord::Schema.define(version: 20150915075224) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "simple_enter",                 default: false
     t.boolean  "loyalty_program",              default: false
+    t.boolean  "simple_enter",                 default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
+
+  create_table "polls", force: true do |t|
+    t.text     "question"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "polls", ["place_id"], name: "index_polls_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
