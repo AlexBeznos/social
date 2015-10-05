@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :question, label: t('models.polls.attrs.question'), placeholder: t('models.polls.form.placeholder_question')
+    = f.input :question, placeholder: t('models.polls.form.placeholder_question')
     = f.simple_fields_for :answers do |a|
 
       .duplicatable_nested_form
