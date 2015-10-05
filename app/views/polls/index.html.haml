@@ -1,23 +1,27 @@
-%h1 Listing polls
+= content_for :title, t('models.polls.actions.index.title', place_name: @place.name)
 
-%table.table
-  %thead
-    %tr
-      %th.text-center.col-sm-6 Question
-      %th.text-center Answers number
-      %th
-      %th
-      %th
+%h1= t('models.polls.actions.index.title', place_name: @place.name)
 
-  %tbody
-    - @polls.each do |poll|
+- if @polls.any?
+  %table.table
+    %thead
       %tr
-        %td.col-sm-6= poll.question
-        %td= poll.answers.count
-        %td= link_to 'Show', place_poll_path(id: poll.id, place_id: @place.slug)
-        %td= link_to 'Edit', edit_place_poll_path(id: poll.id, place_id: @place.slug)
-        %td= link_to 'Destroy', place_poll_path(id: poll.id), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th.text-center.col-sm-6= t('models.polls.attrs.question')
+        %th.text-center= t('models.polls.attrs.answers_number')
+        %th
+        %th
+        %th
 
-%br
+    %tbody
+      - @polls.each do |poll|
+        %tr
+          %td.col-sm-6= poll.question
+          %td= poll.answers.count
+          %td= link_to t('models.polls.navigation.show'), place_poll_path(id: poll.id, place_id: @place.slug)
+          %td= link_to t('helpers.submit.edit'), edit_place_poll_path(id: poll.id, place_id: @place.slug)
+          %td= link_to t('helpers.submit.destroy'), place_poll_path(id: poll.id), :method => :delete, :data => { :confirm => t('models.polls.actions.index.confirm') }
+  %br
+- else
+  %p= t('models.polls.actions.index.no_polls')
 
-= link_to 'New Poll', new_place_poll_path
+= link_to t('models.polls.actions.index.add'), new_place_poll_path

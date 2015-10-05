@@ -1,7 +1,9 @@
-%h1 Editing poll
+= content_for :title, t('models.polls.actions.edit.title')
+
+%h1= t('models.polls.actions.edit.title')
 
 = render 'form'
 
-= link_to 'Show', place_poll_path(id: @poll.id, place_id: @place.slug)
+= link_to t('models.polls.navigation.show'), place_poll_path(id: @poll.id, place_id: @place.slug)
 \|
-= link_to 'Back', place_polls_path(@place)
+= link_to t('models.polls.navigation.back'), place_polls_path(@place)

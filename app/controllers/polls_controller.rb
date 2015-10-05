@@ -37,7 +37,7 @@ class PollsController < ApplicationController
   # PATCH/PUT /polls/1
   def update
     if @poll.update(poll_params)
-      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.update', subject: I18n.t('models.polls.class'))
+      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.updated', subject: I18n.t('models.polls.class'))
     else
       render :action => :edit 
     end
@@ -48,7 +48,7 @@ class PollsController < ApplicationController
     @poll.destroy
 
     respond_to do |format|
-      format.html { redirect_to place_polls_path(@place), :notice => I18n.t('notice.delete', subject: I18n.t('models.polls.class')) }
+      format.html { redirect_to place_polls_path(@place), :notice => I18n.t('notice.deleted', subject: I18n.t('models.polls.class')) }
     end
   end
 

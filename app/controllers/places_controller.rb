@@ -77,6 +77,7 @@ class PlacesController < ApplicationController
                                     :redirect_url,
                                     :user_id,
                                     :stocks_active,
+                                    :polls_active,
                                     :reputation_on,
                                     :simple_enter,
                                     :score_amount,

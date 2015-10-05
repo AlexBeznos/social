@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919102839) do
+ActiveRecord::Schema.define(version: 20151005102659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 20150919102839) do
     t.integer  "score_amount",                 default: 0
     t.boolean  "loyalty_program",              default: false
     t.boolean  "simple_enter",                 default: false
+    t.boolean  "polls_active",                 default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

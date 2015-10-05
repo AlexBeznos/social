@@ -1,0 +1,30 @@
+en:
+  models:
+    polls:
+      class: 'Poll'
+      actions:
+        index:
+          title: "Polls in %{place_name}"
+          no_polls: You don't have any polls yet
+          add: Add poll
+          confirm: Are you sure?
+        new:
+          title: New poll
+        edit:
+          title: Editing poll
+        show:
+          title: Statistics
+      attrs:
+        question: Question
+        answer: Answer
+        answers_number: Number of answers
+        selections_number: Number of selections
+      form:
+        placeholder_question: Enter new question
+        placeholder_answer: Enter new answer
+        remove: Remove
+        add_answer: Add another answer
+      navigation:
+          show: Show
+          back: Back
+          edit: Edit

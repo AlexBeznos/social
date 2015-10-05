@@ -1,0 +1,30 @@
+ua:
+  models:
+    polls:
+      class: 'Опитування'
+      actions:
+        index:
+          title: "Опитування в %{place_name}"
+          no_polls: У вас поки що немає опитувань
+          add: Додати опитування
+          confirm: Ви впевнені?
+        new:
+          title: Додати опитування
+        edit:
+          title: Редагувати опитування
+        show:
+          title: Статистика
+      attrs:
+        question: Питання
+        answer: Відповідь
+        answers_number: Кількість варіантів відповідей
+        selections_number: Кількість відповідей
+      form:
+        placeholder_question: Введіть питання
+        placeholder_answer: Введіть відповідь
+        remove: Видалити
+        add_answer: Додати ще один варіант відповіді
+      navigation:
+          show: Статистика
+          back: Назад
+          edit: Редагувати

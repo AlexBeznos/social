@@ -15,6 +15,7 @@ ru:
         simple_enter: Вход без авторизации
         score_amount: "Размер бонуса"
         loyalty_program: Программа лояльности
+        polls_active: Вывод опросов на страницу аутентификации
       actions:
         index:
           title: 'Заведения'
