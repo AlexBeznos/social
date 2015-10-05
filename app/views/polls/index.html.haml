@@ -3,7 +3,7 @@
 %h1= t('models.polls.actions.index.title', place_name: @place.name)
 
 - if @polls.any?
-  %table.table
+  %table.table.table-striped
     %thead
       %tr
         %th.text-center.col-sm-6= t('models.polls.attrs.question')
@@ -24,4 +24,4 @@
 - else
   %p= t('models.polls.actions.index.no_polls')
 
-= link_to t('models.polls.actions.index.add'), new_place_poll_path
+= link_to t('models.polls.actions.index.add'), new_place_poll_path, class: 'btn btn-primary'
