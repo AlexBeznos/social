@@ -20,6 +20,7 @@ ru:
       style: стиль
       menu_item: товар
       poll: опрос
+      banner: баннер
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
@@ -324,3 +325,4 @@ ru:
       stocks: 'Акции'
       menu_items: 'Товары/Услуги'
       polls: 'Опросы'
+      banners: 'Баннеры'

@@ -20,6 +20,7 @@ ua:
       style: стиль
       menu_item: товар
       poll: опитування
+      banner: банер
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
@@ -318,6 +319,7 @@ ua:
       birthdays: "Дні народження"
       menu_items: 'Товари/Послуги'
       polls: 'Опитування'
+      banners: 'Банери'
   pages:
     places:
       title: 'Заклади'

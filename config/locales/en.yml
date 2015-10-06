@@ -20,6 +20,7 @@ en:
       style: style
       menu_item: product
       poll: poll
+      banner: banner
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"
@@ -271,6 +272,7 @@ en:
       birthdays: "Visitor's birthdays"
       menu_items: 'Menu Items'
       polls: 'Polls'
+      banners: 'Banners'
   pages:
     places:
       title: 'Places'

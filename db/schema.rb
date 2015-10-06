@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005102659) do
+ActiveRecord::Schema.define(version: 20151006144210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 20151005102659) do
   end
 
   add_index "answers", ["poll_id"], name: "index_answers_on_poll_id", using: :btree
+
+  create_table "banners", force: true do |t|
+    t.string   "name"
+    t.integer  "number_of_viewes"
+    t.integer  "place_id"
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "banners", ["place_id"], name: "index_banners_on_place_id", using: :btree
 
   create_table "customer_network_profiles", force: true do |t|
     t.integer  "social_network_id"
@@ -161,6 +175,9 @@ ActiveRecord::Schema.define(version: 20151005102659) do
     t.boolean  "loyalty_program",              default: false
     t.boolean  "simple_enter",                 default: false
     t.boolean  "polls_active",                 default: false
+    t.string   "city"
+    t.boolean  "display_my_banners",           default: false
+    t.boolean  "display_other_banners",        default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

@@ -1,0 +1,20 @@
+ru:
+  models:
+    banners:
+      class: 'Баннер'
+      actions:
+        index:
+          title: "Баннеры в %{place_name}"
+          no_city: "Для создания баннеров вам необходимо указать город, в котором расположено заведение"
+          no_banners: У вас пока нет баннеров
+          add: Добавить баннер
+          confirm: Вы уверены?
+        new:
+          title: Новый баннер
+        edit:
+          title: Редактировать баннер
+      attrs:
+        name: Название
+        views_number: Количество просмотров
+      navigation:
+          back: Назад
