@@ -8,9 +8,6 @@ class BannersController < ApplicationController
     @banners = @place.banners
   end
 
-  def show
-  end
-
   def new
   end
 
