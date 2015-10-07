@@ -233,7 +233,7 @@ en:
   wifi:
     greetings: "Hello, %{customer_name}!"
     description: 'Enter through your favorite<br>social network and <br>get access to the Internet'
-    poll: 'You can also answer the question to get access to the Internet!'
+    poll: "Enter by poll"
     poll_error: "You haven't selected a single answer"
     footer: 'Powered by GoFriends'
     password_placeholder: 'or enter password...'
