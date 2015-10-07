@@ -16,6 +16,9 @@ ua:
         redirect_url: Адреса переадресації після аутентифікації
         enter_by_password: Вхід за паролем
         password: Пароль
+        city: Місто
+        display_my_banners: Показувати мої банери в інших закладах
+        display_other_banners: Показувати чужі банери в моєму закладі
       user:
         first_name: Ім`я
         last_name: Прізвище

@@ -16,6 +16,9 @@ ua:
         score_amount: "Розмір бонусу"
         loyalty_program: Програма лояльності
         polls_active: Виводити опитування на сторінку аутентифікації
+        city: Місто
+        display_my_banners: Показувати мої банери в інших закладах
+        display_other_banners: Показувати чужі банери в моєму закладі
       actions:
         index:
           title: 'Заклад'

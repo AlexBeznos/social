@@ -16,6 +16,9 @@ en:
         score_amount: "Bonus amount"
         loyalty_program: Loyalty program
         polls_active: Add polls to authentication page
+        city: City
+        display_my_banners: Display my banners in other places
+        display_other_banners: Display other's banners in my place
       actions:
         index:
           title: 'Places'

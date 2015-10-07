@@ -1,6 +1,9 @@
 require 'ext/string'
 
 class Place < ActiveRecord::Base
+  geocoded_by :city
+  after_validation :geocode, :if => :city_changed?
+
   has_unique_slug :subject => Proc.new {|place| Translit.convert(place.name, :english) }
 
   has_attached_file :logo,
@@ -22,6 +25,9 @@ class Place < ActiveRecord::Base
 
   before_validation :set_password, if: 'enter_by_password'
 
+  validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
+  validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
+  
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006144210) do
+ActiveRecord::Schema.define(version: 20151007141301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,8 @@ ActiveRecord::Schema.define(version: 20151006144210) do
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
     t.boolean  "display_other_banners",        default: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

@@ -81,6 +81,9 @@ class PlacesController < ApplicationController
                                     :reputation_on,
                                     :simple_enter,
                                     :score_amount,
+                                    :city,
+                                    :display_other_banners,
+                                    :display_my_banners,
                                     :loyalty_program)
     end
 

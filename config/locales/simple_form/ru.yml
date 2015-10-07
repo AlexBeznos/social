@@ -17,6 +17,9 @@ ru:
         redirect_url: Адрес переадресации после аутентификации
         enter_by_password: Вход по паролю
         password: Пароль
+        city: Город
+        display_my_banners: Показывать мои баннеры в других заведения
+        display_other_banners: Показывать чужые баннеры в моем заведении
       user:
         first_name: Имя
         last_name: Фамилия

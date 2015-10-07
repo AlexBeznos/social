@@ -1,6 +1,7 @@
 class PollsController < ApplicationController
   load_and_authorize_resource :place, find_by: :slug
   load_and_authorize_resource :poll, through: :place
+  
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
 
   # GET /polls
