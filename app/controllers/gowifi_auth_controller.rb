@@ -40,11 +40,7 @@ class GowifiAuthController < ApplicationController
     end
 
     clear_session
-    if @place.loyalty_program
-      redirect_to menu_items_list_path @place
-    else
-      redirect_to wifi_login_path
-    end
+    redirect_to wifi_login_path
   end
 
   def auth_failure
