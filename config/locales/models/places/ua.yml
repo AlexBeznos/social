@@ -15,6 +15,7 @@ ua:
         simple_enter: Вхід без авторизації
         score_amount: "Розмір бонусу"
         loyalty_program: Програма лояльності
+        polls_active: Виводити опитування на сторінку аутентифікації
       actions:
         index:
           title: 'Заклад'

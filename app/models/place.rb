@@ -9,6 +9,7 @@ class Place < ActiveRecord::Base
                     :url => ":s3_domain_url"
 
   has_one :style,  :dependent => :destroy
+  has_many :polls, :dependent => :destroy
   has_many :messages, :dependent => :destroy
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
   has_many :stocks, :dependent => :destroy
@@ -38,6 +39,10 @@ class Place < ActiveRecord::Base
                        .uniq
 
     SocialNetwork.where(id: networks_ids)
+  end
+
+  def get_customers 
+    Customer.joins(:visits).where('customer_visits.place_id = ?', self.id)
   end
 
   def get_proper_stock

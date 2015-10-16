@@ -1,0 +1,30 @@
+ru:
+  models:
+    polls:
+      class: 'Опрос'
+      actions:
+        index:
+          title: "Опросы в %{place_name}"
+          no_polls: У вас пока нет опросов
+          add: Добавить опрос
+          confirm: Вы уверены?
+        new:
+          title: Добавление опроса
+        edit:
+          title: Редактирование опроса
+        show:
+          title: Статистика
+      attrs:
+        question: Вопрос
+        answer: Ответ
+        answers_number: Количество вариантов ответа
+        selections_number: Количество ответов
+      form:
+        placeholder_question: Введите вопрос
+        placeholder_answer: Введите ответ
+        remove: Удалить
+        add_answer: Добавить ещё один вариант ответа
+      navigation:
+          show: Статистика
+          back: Назад
+          edit: Редактировать

@@ -27,7 +27,7 @@ class FacebookService
                                             :picture => hash[:message].image.url,
                                             :link => hash[:message].message_link })
     rescue => e
-      raise "Facebook message were not sended. Error: #{e.inspect}"
+      raise "Facebook message were not sent. Error: #{e.inspect}"
     end
   end
 end

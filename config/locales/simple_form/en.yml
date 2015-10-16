@@ -8,6 +8,7 @@ en:
         logo: 'Logo'
         active: Hotspot is active
         stocks_active: Stocks are active
+        polls_active: Polls are active
         reputation_on: Add bonuses
         simple_enter: Enter without authorization
         loyalty_on: Enable loyalty settings for users
@@ -41,3 +42,9 @@ en:
         greating_color: Greating color
       menu_item:
         menu_item: Item
+        name: Name
+        description: Description
+        image: Image
+        price: Price (in points)
+      poll:
+        question: Question

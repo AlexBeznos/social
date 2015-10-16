@@ -46,7 +46,7 @@ class Adm::UsersController < AdministrationController
 
   def destroy
     @user.destroy
-    redirect_to adm_users_path, :notice => 'User destroied!'
+    redirect_to adm_users_path, :notice => 'User destroyed!'
   end
 
   private

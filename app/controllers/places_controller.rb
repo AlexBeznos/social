@@ -40,18 +40,14 @@ class PlacesController < ApplicationController
   end
 
   def birthdays
-    @customers = Customer.joins(:visits)
-                         .where('customer_visits.place_id = ?', @place.id)
-                         .where.not(birthday: nil)
-                         .uniq
-                         .order(:birthday)
+    date_from = params[:date] ? params[:date].to_date : Time.now
+    @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month)
   end
 
   def settings
     @message = params[:message] ? @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: params[:message])) : @place.messages.where(active: true).first
     @networks = @place.messages.where(active: true).map {|message| message.social_network }.uniq
   end
-
 
   def edit
   end
@@ -81,6 +77,7 @@ class PlacesController < ApplicationController
                                     :redirect_url,
                                     :user_id,
                                     :stocks_active,
+                                    :polls_active,
                                     :reputation_on,
                                     :simple_enter,
                                     :score_amount,

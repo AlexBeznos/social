@@ -102,6 +102,14 @@ span {
   background: #CC7361;
 }
 
+.nav-inner-custom > ul > li:nth-child(7) {
+  background: #30748f;
+}
+
+.nav-inner-custom > ul > li:nth-child(7) a:hover {
+  background: #215063;
+}
+
 .nav-inner-custom > ul > li:first-child, .nav-inner-custom > ul > li:first-child a {
   border-top-left-radius: 6px;
 }

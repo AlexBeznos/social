@@ -19,8 +19,9 @@ ua:
       stock: акцію
       style: стиль
       menu_item: товар
+      poll: опитування
   notice:
-    create: "%{subject} добавленно"
+    create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
     deleted: "%{subject} видалено"
   date:
@@ -279,6 +280,8 @@ ua:
     greetings: "Привіт, <ins>%{customer_name}</ins>!"
     greetings_to_no_one: Привіт
     description: 'Зайди через свою улюблену<br/>соціальну мережу та отримай<br/>доступ до інтернету'
+    poll: 'Пройти опитування, щоб увійти'
+    poll_error: "Ви не обрали жодної з запропонованих відповідей"
     footer: 'Powered by GoFriends'
     password_placeholder: 'або введіть пароль...'
     simple_enter: Увійти
@@ -313,7 +316,8 @@ ua:
       stocks: 'Акції'
       guests: 'Top відвідувачів'
       birthdays: "Дні народження"
-      menu_items: Товари/Послуги
+      menu_items: 'Товари/Послуги'
+      polls: 'Опитування'
   pages:
     places:
       title: 'Заклади'

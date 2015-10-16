@@ -41,7 +41,7 @@ class Adm::MessagesController < AdministrationController
 
   def destroy
     @message.destroy
-    redirect_to adm_place_path(@message.place), :notice => 'Place destroied!'
+    redirect_to adm_place_path(@message.place), :notice => 'Place destroyed!'
   end
 
   private

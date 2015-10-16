@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+
   require 'sidekiq/web'
   require 'admin_constraint'
 
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :places do
+    resources :polls
     resources :messages, except: [:index, :show]
     resources :stocks, except: :show
     resources :styles, except: :index
@@ -55,8 +58,8 @@ Rails.application.routes.draw do
   scope '/wifi' do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
-
-
+    
+    patch ':slug/poll_enter' => 'gowifi_auth#submit_poll'
     get ':slug/status' => 'gowifi_auth#redirect_after_auth'
     post ':slug/by_password' => 'gowifi_auth#enter_by_password'
     get ':slug/simple_enter' => 'gowifi_auth#simple_enter'

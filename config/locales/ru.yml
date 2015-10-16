@@ -19,6 +19,7 @@ ru:
       stock: акцию
       style: стиль
       menu_item: товар
+      poll: опрос
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
@@ -285,6 +286,8 @@ ru:
     greetings: "Здравствуйте, <ins>%{customer_name}</ins>!"
     greetings_to_no_one: Здравствуйте
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'
+    poll: 'Войти, пройдя опрос'
+    poll_error: "Вы не выбрали ни одного из предложенных ответов"
     footer: 'Powered by GoFriends'
     password_placeholder: 'или введите пароль...'
     simple_enter: "Войти"
@@ -320,3 +323,4 @@ ru:
       settings: 'Настройки'
       stocks: 'Акции'
       menu_items: 'Товары/Услуги'
+      polls: 'Опросы'

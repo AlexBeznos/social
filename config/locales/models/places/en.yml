@@ -15,6 +15,7 @@ en:
         simple_enter: Enter without authorization
         score_amount: "Bonus amount"
         loyalty_program: Loyalty program
+        polls_active: Add polls to authentication page
       actions:
         index:
           title: 'Places'

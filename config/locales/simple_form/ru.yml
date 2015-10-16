@@ -8,6 +8,7 @@ ru:
         logo: 'Логотип'
         active: Hotspot активен
         stocks_active: Акции активны
+        polls_active: Опросы активны
         reputation_on: Начисление бонусов
         simple_enter: Вход без авторизации
         loyalty_on: Включить настройки программ лояльности для юзеров
@@ -45,3 +46,5 @@ ru:
         description: Описание
         image: Картинка
         price: Стоимость(в балах)
+      poll:
+        question: Вопрос

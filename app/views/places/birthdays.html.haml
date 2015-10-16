@@ -2,7 +2,21 @@
 = content_for :page_javascript, 'dashboard/guests'
 = content_for :title, t('models.places.actions.birthdays.title', place_name: @place.name)
 
-
+.row.calendar-container
+  .col-sm-2
+    %select#month
+      - t('date.abbr_month_names')[1..-1].each_with_index do |month, index|
+        %option{:value => index}= month
+  .col-sm-8.calendar
+    .calendar-inner
+      .day
+        %h2
+          %a{:href => "#"} 11
+        %a{:href => "#"}
+    .calendar-bar
+      = fa_icon "chevron-left", class: 'aleft'
+      = fa_icon "chevron-right", class: 'aright'
+      
 .row.birthdays-table-container
   %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
     %tr.row
