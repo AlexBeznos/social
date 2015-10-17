@@ -6,6 +6,7 @@ class Banner < ActiveRecord::Base
   belongs_to :place
   validates :place_id, :name, presence: true 
   validates_attachment :content, :presence => true,
-                                size: { in: 11.kilobytes..10.megabytes },
-                                :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
+                                size: { in: 11.kilobytes..20.megabytes },
+                                :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif", 
+                                                                      "video/mp4", "video/webm"] }
 end
