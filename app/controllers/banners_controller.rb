@@ -2,7 +2,7 @@ class BannersController < ApplicationController
   load_and_authorize_resource :place, find_by: :slug
   load_and_authorize_resource :banner, through: :place
 
-  before_action :set_banner, only: [:show, :edit, :update, :destroy]
+  before_action :set_banner, only: [:edit, :update, :destroy]
 
 
   def index
@@ -10,6 +10,7 @@ class BannersController < ApplicationController
   end
 
   def new
+    @banner = @place.banners.new
   end
 
   def edit
