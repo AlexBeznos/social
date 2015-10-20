@@ -40,9 +40,21 @@
 
   %body
     -if @place.display_other_banners && @banner
-      #modal.modalcontent
-        #button.btn.btn-default
-          Close
+      #modal
+        .row
+          .col-sm-6.col-sm-offset-3
+            #close-banner.btn.btn-default
+              Close
+            %br
+            #countdown 
+              = t('wifi.countdown')
+            %br
+            .center-block
+              - if @banner.content_content_type.match(/^image/) 
+                =image_tag @banner.content.url, class: "modalcontent"
+              - else
+                %video{ name: "media", class: "modalcontent", autoplay: '' }
+                  %source{src: "#{@banner.content.url}"}
     .wrapper-out
       .wrapper-in
         .content

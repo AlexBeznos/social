@@ -6,9 +6,9 @@
     .center-block
       %br
       - if @banner.content_content_type.match(/^image/) 
-        =image_tag @banner.content.url, class: 'img-responsive'
+        =image_tag @banner.content.url
       - else
-        %video{ controls: "", name: "media", class: 'img-responsive' }
+        %video{ controls: "", name: "media" }
           %source{src: "#{@banner.content.url}"}
       %br
     = render 'form'

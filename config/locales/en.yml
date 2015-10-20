@@ -239,6 +239,7 @@ en:
     footer: 'Powered by GoFriends'
     password_placeholder: 'or enter password...'
     simple_enter: Enter
+    countdown: " seconds left"
   menu_item:
     greetings: "%{customer_name}, welcome to %{place_name}"
     greetings_short: Добро пожаловать!

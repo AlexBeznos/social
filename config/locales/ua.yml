@@ -286,6 +286,7 @@ ua:
     footer: 'Powered by GoFriends'
     password_placeholder: 'або введіть пароль...'
     simple_enter: Увійти
+    countdown: " секунд залишилось"
   menu_item:
     greetings: "%{customer_name}, ласкаво просимо до %{place_name}"
     greetings_short: Добро пожаловать!
