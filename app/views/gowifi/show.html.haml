@@ -50,8 +50,9 @@
               = t('wifi.countdown')
             %br
             .center-block
-              - if @banner.content_content_type.match(/^image/) 
-                =image_tag @banner.content.url, class: "modalcontent"
+              - case  
+              - when @banner.content_content_type.match(/^image/) 
+                = image_tag @banner.content.url, class: "modalcontent"
               - else
                 %video{ name: "media", class: "modalcontent", autoplay: '' }
                   %source{src: "#{@banner.content.url}"}

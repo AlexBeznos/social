@@ -17,7 +17,7 @@
         - @banners.each do |banner|
           %tr
             %td.col-sm-6= banner.name
-            %td= banner.number_of_viewes
+            %td= banner.number_of_views
             %td= link_to t('helpers.submit.edit'), edit_place_banner_path(id: banner.id, place_id: @place.slug)
             %td= link_to t('helpers.submit.destroy'), place_banner_path(id: banner.id), :method => :delete, :data => { :confirm => t('models.banners.actions.index.confirm') }
     %br

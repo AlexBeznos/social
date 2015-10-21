@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20151007141301) do
 
   create_table "banners", force: true do |t|
     t.string   "name"
-    t.integer  "number_of_viewes"
+    t.integer  "number_of_views",      default: 0, null: false
     t.integer  "place_id"
     t.string   "content_file_name"
     t.string   "content_content_type"

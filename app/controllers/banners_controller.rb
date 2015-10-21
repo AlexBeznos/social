@@ -2,8 +2,7 @@
   load_and_authorize_resource :place, find_by: :slug
   load_and_authorize_resource :banner, through: :place
 
-  before_action :set_banner, only: [:edit, :update, :destroy]
-
+  before_action :check_city, only: [:new, :edit, :update, :create, :destroy]
 
   def index
     @banners = @place.banners
@@ -43,14 +42,14 @@
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_banner
-      @banner = Banner.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def banner_params
       params.require(:banner).permit(:name, :content)
     end
-  
+
+    def check_city
+      if !@place.city?
+        redirect_to place_banners_path
+      end
+    end
 end

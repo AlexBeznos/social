@@ -13,9 +13,13 @@ class GowifiController < ApplicationController
     @poll = @place.polls.sample
     if @place.display_other_banners 
       @banner = Banner.where(place_id: Place.where('latitude > ? and latitude < ? and longitude > ? 
-                                                    and longitude < ? and display_my_banners = ?', 
+                                                    and longitude < ? and display_my_banners = ? and id != ?', 
                                                     @place.latitude-0.2, @place.latitude+0.2, 
-                                                    @place.longitude-0.2, @place.longitude+0.2, true)).sample
+                                                    @place.longitude-0.2, @place.longitude+0.2, 
+                                                    true, @place.id)).sample
+      if @banner
+        @banner.increment!(:number_of_views)
+      end
     end
   end
 
