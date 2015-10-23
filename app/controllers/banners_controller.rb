@@ -2,7 +2,7 @@
   load_and_authorize_resource :place, find_by: :slug
   load_and_authorize_resource :banner, through: :place
 
-  before_action :check_city, only: [:new, :edit, :update, :create, :destroy]
+  before_action :check_city, except: [:index]
 
   def index
     @banners = @place.banners
