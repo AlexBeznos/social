@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(version: 20151005102659) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "loyalty_program",              default: false
     t.boolean  "simple_enter",                 default: false
+    t.boolean  "loyalty_program",              default: false
     t.boolean  "polls_active",                 default: false
   end
 
