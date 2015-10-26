@@ -7,6 +7,14 @@ class Ability
     :birthdays
   ]
 
+  PLACE_RELATED_MODELS = [
+    Stock,
+    Message,
+    Style,
+    Poll,
+    MenuItem
+  ]
+
   def initialize(user)
     user ||= User.new
 
@@ -22,14 +30,12 @@ class Ability
       cannot :destroy, User
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: all_user_ids
       can :download_settings, Place, user_id: all_user_ids
-      can :crud, [Stock, Message, Style]
-      can :crud, MenuItem
+      can :crud, PLACE_RELATED_MODELS
     elsif user.id && user.general?
       can [:show, :update], User, id: user.id
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user: user
       cannot [:create, :destroy], Place
-      can :crud, [Stock, Message, Style]
-      can :crud, MenuItem
+      can :crud, PLACE_RELATED_MODELS
     else
       cannot :all, Place
     end
