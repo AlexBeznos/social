@@ -5,7 +5,7 @@ ua:
         menu_item:
           attributes:
             image:
-              in_between: Изображение должно быть не меньше 11КБ и не более 10МБ
+              in_between: Розмір зображення має бути не менш ніж 11КБ і не більше 10МБ
   models:
     menu_items:
       actions:
