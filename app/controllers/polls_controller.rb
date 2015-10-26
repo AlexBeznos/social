@@ -1,7 +1,8 @@
 class PollsController < ApplicationController
   load_and_authorize_resource :place, find_by: :slug
   load_and_authorize_resource :poll, through: :place
-  
+  before_action :set_poll, only: [:show, :edit, :update, :destroy]
+
   # GET /polls
   def index
     @polls = @place.polls
@@ -52,6 +53,11 @@ class PollsController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_poll
+      @poll = Poll.find(params[:id])
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
       params.require(:poll).permit(:question, answers_attributes: [:id, :content, :_destroy])
