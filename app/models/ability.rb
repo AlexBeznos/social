@@ -12,7 +12,8 @@ class Ability
     Message,
     Style,
     Poll,
-    MenuItem
+    MenuItem,
+    Banner
   ]
 
   def initialize(user)
