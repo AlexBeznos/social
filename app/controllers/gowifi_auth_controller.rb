@@ -23,7 +23,7 @@ class GowifiAuthController < ApplicationController
 
   def submit_poll
     if params[:poll] 
-      @answer = Answer.find(params[:poll][:answer_ids].to_i)
+      @answer = Answer.find(poll_params[:answer_ids])
       if @answer.increment!(:number_of_selections)
         redirect_to wifi_login_path
       else
@@ -40,11 +40,7 @@ class GowifiAuthController < ApplicationController
     end
 
     clear_session
-    if @place.loyalty_program
-      redirect_to menu_items_list_path @place
-    else
-      redirect_to wifi_login_path
-    end
+    redirect_to wifi_login_path
   end
 
   def auth_failure
@@ -68,30 +64,34 @@ class GowifiAuthController < ApplicationController
   end
 
   private
-  def find_place
-    @place = Place.find_by_slug(params[:slug])
-  end
+    def poll_params
+      params.require(:poll).permit(:answer_ids)
+    end
 
-  def find_customer
-    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-  end
+    def find_place
+      @place = Place.find_by_slug(params[:slug])
+    end
 
-  def find_place_from_session
-    @place = Place.find_by_slug(request.env['omniauth.params']['place'] || session[:slug])
-  end
+    def find_customer
+      @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
+    end
 
-  def credentials
-    request.env['omniauth.auth']
-  end
+    def find_place_from_session
+      @place = Place.find_by_slug(request.env['omniauth.params']['place'] || session[:slug])
+    end
 
-  def clear_session
-    session.delete(:slug)
-  end
+    def credentials
+      request.env['omniauth.auth']
+    end
 
-  def visit_already_created?
-    hash = find_or_create_costumer(credentials, @place, @customer)
-    cookies.permanent[:customer] = hash[:customer].id
+    def clear_session
+      session.delete(:slug)
+    end
 
-    hash[:visit]
-  end
+    def visit_already_created?
+      hash = find_or_create_costumer(credentials, @place, @customer)
+      cookies.permanent[:customer] = hash[:customer].id
+
+      hash[:visit]
+    end
 end
