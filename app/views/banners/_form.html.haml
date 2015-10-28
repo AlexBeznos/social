@@ -1,0 +1,9 @@
+= simple_form_for [@place, @banner] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :content, as: :file  
+  .form-actions
+    = f.button :submit
+  

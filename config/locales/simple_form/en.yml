@@ -17,6 +17,9 @@ en:
         redirect_url: Redirect url after authentication
         enter_by_password: Enter by password
         password: Password
+        city: City
+        display_my_banners: Display my banners in other places
+        display_other_banners: Display other's banners in my place
       user:
         first_name: First name
         last_name: Last name

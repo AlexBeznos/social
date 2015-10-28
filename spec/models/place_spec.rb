@@ -22,6 +22,8 @@ RSpec.describe Place do
   it { is_expected.to have_many(:social_network_icons) }
   it { is_expected.to have_many(:menu_items) }
   it { is_expected.to have_many(:orders) }
+  it { is_expected.to have_many(:polls) }
+
 
   it { is_expected.to have_one(:style) }
   it { is_expected.to callback(:set_wifi_username_password).before(:create) }

@@ -20,6 +20,7 @@ ru:
       style: стиль
       menu_item: товар
       poll: опрос
+      banner: баннер
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
@@ -291,6 +292,7 @@ ru:
     footer: 'Powered by GoFriends'
     password_placeholder: 'или введите пароль...'
     simple_enter: "Войти"
+    countdown: " секунд осталось"
   menu_item:
     greetings: "%{customer_name}, добро пожаловать в %{place_name}"
     greetings_short: Добро пожаловать!
@@ -324,3 +326,4 @@ ru:
       stocks: 'Акции'
       menu_items: 'Товары/Услуги'
       polls: 'Опросы'
+      banners: 'Баннеры'

@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :poll do
     question "MyText"
-    place_id 1
+    association :place
   end
-
 end

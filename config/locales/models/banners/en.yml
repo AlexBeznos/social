@@ -1,0 +1,20 @@
+en:
+  models:
+    banners:
+      class: 'Banner'
+      actions:
+        index:
+          title: "Banners in %{place_name}"
+          no_city: "To start creating banners you should set city in your settings"
+          no_banners: You don't have any banners yet
+          add: Add banner
+          confirm: Are you sure?
+        new:
+          title: New banner
+        edit:
+          title: Editing banner
+      attrs:
+        name: Banner name
+        views_number: Number of views
+      navigation:
+          back: Back

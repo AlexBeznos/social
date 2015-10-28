@@ -20,6 +20,7 @@ en:
       style: style
       menu_item: product
       poll: poll
+      banner: banner
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"
@@ -238,6 +239,7 @@ en:
     footer: 'Powered by GoFriends'
     password_placeholder: 'or enter password...'
     simple_enter: Enter
+    countdown: " seconds left"
   menu_item:
     greetings: "%{customer_name}, welcome to %{place_name}"
     greetings_short: Добро пожаловать!
@@ -271,6 +273,7 @@ en:
       birthdays: "Visitor's birthdays"
       menu_items: 'Menu Items'
       polls: 'Polls'
+      banners: 'Banners'
   pages:
     places:
       title: 'Places'

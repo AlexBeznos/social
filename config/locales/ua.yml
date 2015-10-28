@@ -20,6 +20,7 @@ ua:
       style: стиль
       menu_item: товар
       poll: опитування
+      banner: банер
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
@@ -285,6 +286,7 @@ ua:
     footer: 'Powered by GoFriends'
     password_placeholder: 'або введіть пароль...'
     simple_enter: Увійти
+    countdown: " секунд залишилось"
   menu_item:
     greetings: "%{customer_name}, ласкаво просимо до %{place_name}"
     greetings_short: Добро пожаловать!
@@ -318,6 +320,7 @@ ua:
       birthdays: "Дні народження"
       menu_items: 'Товари/Послуги'
       polls: 'Опитування'
+      banners: 'Банери'
   pages:
     places:
       title: 'Заклади'
