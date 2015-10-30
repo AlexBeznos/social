@@ -15,7 +15,7 @@ class GowifiAuthController < ApplicationController
 
   def simple_enter
     if @place.simple_enter
-      redirect_to wifi_login_path
+      redirect_to wifi_login_path "customer_id=10"
     else
       redirect_to gowifi_place_path @place
     end
@@ -52,7 +52,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def redirect_after_auth
-    if @place
+    if @place && params[:customer_id] == 10
       if @place.loyalty_program
         redirect_to menu_items_list_path(@place)
       else
