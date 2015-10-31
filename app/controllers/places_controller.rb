@@ -41,7 +41,7 @@ class PlacesController < ApplicationController
 
   def birthdays
     date_from = params[:date] ? params[:date].to_date : Time.now
-    @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month)
+    @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month).uniq
   end
 
   def settings
