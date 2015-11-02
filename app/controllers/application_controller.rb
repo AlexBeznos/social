@@ -73,12 +73,8 @@ class ApplicationController < ActionController::Base
       Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
     end
 
-    def wifi_login_path opt = nil
-      if opt
-        "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}&#{opt}"
-      else
-        "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
-      end
+    def wifi_login_path
+      "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
     end
 
 end

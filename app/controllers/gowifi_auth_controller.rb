@@ -2,7 +2,7 @@ class GowifiAuthController < ApplicationController
   include Consumerable
 
   before_action :find_place, only: [:enter_by_password, :simple_enter, :redirect_after_auth, :submit_poll]
-  before_action :find_customer, only: :omniauth
+  before_action :find_customer, only: [:omniauth, :redirect_after_auth]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
 
   def enter_by_password
@@ -15,7 +15,7 @@ class GowifiAuthController < ApplicationController
 
   def simple_enter
     if @place.simple_enter
-      redirect_to wifi_login_path "customer_id=10"
+      redirect_to wifi_login_path
     else
       redirect_to gowifi_place_path @place
     end
@@ -52,8 +52,8 @@ class GowifiAuthController < ApplicationController
   end
 
   def redirect_after_auth
-    if @place && params[:customer_id] == 10
-      if @place.loyalty_program
+    if @place
+      if @place.loyalty_program && @customer
         redirect_to menu_items_list_path(@place)
       else
         redirect_to @place.redirect_url
