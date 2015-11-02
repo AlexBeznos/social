@@ -10,7 +10,7 @@ in wi enable [find name=admin]
 /in br po add interface=admin bridge=bridge2
 /ip cloud set enabled=yes
 /ip hotspot profile
-add dns-name=gofriends.com.ua/wifi/##slug## hotspot-address=172.16.16.1 login-by=\
+add dns-name=##root##/wifi/##slug## hotspot-address=172.16.16.1 login-by=\
     cookie,http-pap name=hsprof1
 /ip hotspot user profile
 set [ find default=yes ] idle-timeout=none keepalive-timeout=1d mac-cookie-timeout=1d \
@@ -57,7 +57,7 @@ add name=admin password=sp07tc
 add name=##username## password=##password##
 /ip hotspot walled-garden
 add dst-host=*facebook*
-add dst-host=*gofriends.com.ua*
+add dst-host=*##root##*
 add dst-host=*gowifi-prod.s3.amazonaws.com*
 add dst-host=*akamai*
 add dst-host=*vk.com
