@@ -287,6 +287,8 @@ ua:
     password_placeholder: 'або введіть пароль...'
     simple_enter: Увійти
     countdown: " секунд залишилось"
+    select_answer: "Оберіть одну з запропонованих відповідей"
+    submit: "Відповісти"
   menu_item:
     greetings: "%{customer_name}, ласкаво просимо до %{place_name}"
     greetings_short: Добро пожаловать!

@@ -293,6 +293,8 @@ ru:
     password_placeholder: 'или введите пароль...'
     simple_enter: "Войти"
     countdown: " секунд осталось"
+    select_answer: "Выберите один из предложенных ответов"
+    submit: "Ответить"
   menu_item:
     greetings: "%{customer_name}, добро пожаловать в %{place_name}"
     greetings_short: Добро пожаловать!

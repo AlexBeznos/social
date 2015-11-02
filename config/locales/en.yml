@@ -240,6 +240,8 @@ en:
     password_placeholder: 'or enter password...'
     simple_enter: Enter
     countdown: " seconds left"
+    select_answer: "Select one of the answers below to continue"
+    submit: "Submit"
   menu_item:
     greetings: "%{customer_name}, welcome to %{place_name}"
     greetings_short: Добро пожаловать!
