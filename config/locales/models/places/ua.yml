@@ -4,6 +4,7 @@ ua:
       place: заклад
       attrs:
         name: 'Назва закладу'
+        domen_url: "Адреса домену"
         by_password: 'Вхід через пароль'
         password: 'Пароль для входу'
         active: 'Hotspot активований'

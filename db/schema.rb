@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007141301) do
+ActiveRecord::Schema.define(version: 20151103154323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20151007141301) do
     t.boolean  "display_other_banners",        default: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "domen_url",                    default: "gofriends.com.ua"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
