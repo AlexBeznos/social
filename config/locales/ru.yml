@@ -285,7 +285,7 @@ ru:
     pm: вечера
   wifi:
     greetings: "Здравствуйте, <ins>%{customer_name}</ins>!"
-    greetings_to_no_one: Здравствуйте
+    greetings_to_no_one: Здравствуйте!
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'
     poll: 'Войти, пройдя опрос'
     poll_error: "Вы не выбрали ни одного из предложенных ответов"

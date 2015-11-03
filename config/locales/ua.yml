@@ -279,7 +279,7 @@ ua:
     pm: по полудні
   wifi:
     greetings: "Привіт, <ins>%{customer_name}</ins>!"
-    greetings_to_no_one: Привіт
+    greetings_to_no_one: Привіт!
     description: 'Зайди через свою улюблену<br/>соціальну мережу та отримай<br/>доступ до інтернету'
     poll: 'Пройти опитування, щоб увійти'
     poll_error: "Ви не обрали жодної з запропонованих відповідей"
@@ -291,7 +291,7 @@ ua:
     submit: "Відповісти"
   menu_item:
     greetings: "%{customer_name}, ласкаво просимо до %{place_name}"
-    greetings_short: Добро пожаловать!
+    greetings_short: Ласкаво просимо!
     buy_with_bonuses: Нижче список того, на що Ви можете витратити свої бали
     added_bonus: Вам нараховано %{place_score_amount} балів!
     bonus_amount: "На Вашому рахунку: %{customer_reputation_score} балів"
