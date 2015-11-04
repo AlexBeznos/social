@@ -42,6 +42,30 @@ RSpec.describe Place do
     end
   end
 
+  describe "Banners" do
+    it "can't show other banners if city is not set" do
+      place = build(:place, city: "", display_other_banners: true)
+      expect(place).to_not be_valid
+    end
+
+    it "can't display it's banners in other places if city is not set" do
+      place = build(:place, city: "", display_my_banners: true)
+      expect(place).to_not be_valid
+    end
+  end
+
+  describe "Domain url" do
+    it "can only be from the list of the known domains" do
+      place = build(:place, domen_url: "google.com.ua")
+      expect(place).to_not be_valid
+    end
+
+    it "has valid value" do 
+      place = build(:place, domen_url: "gofriends.com.ua")
+      expect(place).to be_valid
+    end
+  end
+
   describe "Wifi username and password" do
 
     let(:place) { create(:place) }
