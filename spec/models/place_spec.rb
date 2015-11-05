@@ -9,6 +9,7 @@ RSpec.describe Place do
   # it { is_expected.to validate_presence_of :name }
 
   it { is_expected.to validate_presence_of :template }
+  it { is_expected.to validate_inclusion_of(:domen_url).in_array(Place::DOMAIN_LIST) }
   it { is_expected.to validate_attachment_content_type(:logo).allowing("image/jpeg", "image/png", "image/gif") }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to have_attached_file(:logo) }
@@ -51,18 +52,6 @@ RSpec.describe Place do
     it "can't display it's banners in other places if city is not set" do
       place = build(:place, city: "", display_my_banners: true)
       expect(place).to_not be_valid
-    end
-  end
-
-  describe "Domain url" do
-    it "can only be from the list of the known domains" do
-      place = build(:place, domen_url: "google.com.ua")
-      expect(place).to_not be_valid
-    end
-
-    it "has valid value" do 
-      place = build(:place, domen_url: "gofriends.com.ua")
-      expect(place).to be_valid
     end
   end
 
