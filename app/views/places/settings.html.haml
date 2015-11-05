@@ -9,6 +9,9 @@
         = t('models.places.attrs.name')
         %span.text-muted.pull-right= @place.name
       %li.list-group-item
+        = t('models.places.attrs.domen_url')
+        %span.text-muted.pull-right= @place.domen_url
+      %li.list-group-item
         = t('models.places.attrs.city')
         %span.text-muted.pull-right= @place.city
       - if @place.logo.exists?

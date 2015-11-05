@@ -9,6 +9,7 @@ RSpec.describe Place do
   # it { is_expected.to validate_presence_of :name }
 
   it { is_expected.to validate_presence_of :template }
+  it { is_expected.to validate_inclusion_of(:domen_url).in_array(Place::DOMAIN_LIST) }
   it { is_expected.to validate_attachment_content_type(:logo).allowing("image/jpeg", "image/png", "image/gif") }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to have_attached_file(:logo) }
@@ -39,6 +40,18 @@ RSpec.describe Place do
       place = build(:place, wifi_settings_link: "google.com")
       place.valid?
       expect(place.errors.messages[:wifi_settings_link]).to include(I18n.t('models.errors.validations.wrong_link_format'))
+    end
+  end
+
+  describe "Banners" do
+    it "can't show other banners if city is not set" do
+      place = build(:place, city: "", display_other_banners: true)
+      expect(place).to_not be_valid
+    end
+
+    it "can't display it's banners in other places if city is not set" do
+      place = build(:place, city: "", display_my_banners: true)
+      expect(place).to_not be_valid
     end
   end
 

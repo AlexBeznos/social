@@ -4,6 +4,7 @@ en:
       place: places
       attrs:
         name: 'Place name'
+        domen_url: "Domen URL"
         by_password: 'Enter by password'
         password: 'Password'
         active: 'Hotspot enabled'

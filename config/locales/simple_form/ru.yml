@@ -5,6 +5,7 @@ ru:
     labels:
       place:
         name: 'Название заведения'
+        domen_url: 'Адрес домена'
         logo: 'Логотип'
         active: Hotspot активен
         stocks_active: Акции активны

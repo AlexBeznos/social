@@ -5,6 +5,7 @@ en:
     labels:
       place:
         name: 'Place name'
+        domen_url: 'Domen URL'
         logo: 'Logo'
         active: Hotspot is active
         stocks_active: Stocks are active
