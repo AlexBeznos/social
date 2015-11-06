@@ -5,6 +5,7 @@ ua:
     labels:
       place:
         name: 'Назва закладу'
+        domen_url: 'Адреса домену'
         logo: 'Логотип'
         active: Активувати Hotspot
         stocks_active: Активувати Акції

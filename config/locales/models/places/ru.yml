@@ -4,6 +4,7 @@ ru:
       place: заведение
       attrs:
         name: 'Название заведения'
+        domen_url: "Адрес домена"
         by_password: 'Вход по паролю'
         password: 'Пароль для входа'
         active: 'Hotspot активен'

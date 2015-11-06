@@ -1,6 +1,7 @@
 require 'ext/string'
 
 class Place < ActiveRecord::Base
+  DOMAIN_LIST = [ "gofriends.com.ua", "go-friends.ru", "gofriends.by", "gofriends.kz" ]
   geocoded_by :city
   after_validation :geocode, :if => :city_changed?
 
@@ -27,7 +28,7 @@ class Place < ActiveRecord::Base
 
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
-  
+  validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true

@@ -84,7 +84,8 @@ class PlacesController < ApplicationController
                                     :city,
                                     :display_other_banners,
                                     :display_my_banners,
-                                    :loyalty_program)
+                                    :loyalty_program,
+                                    :domen_url)
     end
 
     def get_number_of_friends(records)
