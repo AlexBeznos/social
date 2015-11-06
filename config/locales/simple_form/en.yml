@@ -5,6 +5,7 @@ en:
     labels:
       place:
         name: 'Place name'
+        domen_url: 'Domen URL'
         logo: 'Logo'
         active: Hotspot is active
         stocks_active: Stocks are active
@@ -17,6 +18,9 @@ en:
         redirect_url: Redirect url after authentication
         enter_by_password: Enter by password
         password: Password
+        city: City
+        display_my_banners: Display my banners in other places
+        display_other_banners: Display other's banners in my place
       user:
         first_name: First name
         last_name: Last name

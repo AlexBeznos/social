@@ -1,0 +1,31 @@
+= content_for :title, t('models.banners.actions.index.title', place_name: @place.name)
+
+%h1= t('models.banners.actions.index.title', place_name: @place.name)
+
+- if @place.city?
+
+  - if @banners.any?
+    %table.table.table-striped
+      %thead
+        %tr
+          %th.text-center.col-sm-6= t('models.banners.attrs.name')
+          %th.text-center= t('models.banners.attrs.views_number')
+          %th
+          %th
+
+      %tbody
+        - @banners.each do |banner|
+          %tr
+            %td.col-sm-6= banner.name
+            %td= banner.number_of_views
+            %td= link_to t('helpers.submit.edit'), edit_place_banner_path(id: banner.id, place_id: @place.slug)
+            %td= link_to t('helpers.submit.destroy'), place_banner_path(id: banner.id), :method => :delete, :data => { :confirm => t('models.banners.actions.index.confirm') }
+    %br
+  - else
+    %p= t('models.banners.actions.index.no_banners')
+  = link_to t('models.banners.actions.index.add'), new_place_banner_path, class: 'btn btn-primary'
+- else
+  %a{ href: edit_place_path(@place, user: @place.user_id) }
+    %p= t('models.banners.actions.index.no_city')
+
+

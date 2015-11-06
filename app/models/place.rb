@@ -1,6 +1,10 @@
 require 'ext/string'
 
 class Place < ActiveRecord::Base
+  DOMAIN_LIST = [ "gofriends.com.ua", "go-friends.ru", "gofriends.by", "gofriends.kz" ]
+  geocoded_by :city
+  after_validation :geocode, :if => :city_changed?
+
   has_unique_slug :subject => Proc.new {|place| Translit.convert(place.name, :english) }
 
   has_attached_file :logo,
@@ -10,6 +14,7 @@ class Place < ActiveRecord::Base
 
   has_one :style,  :dependent => :destroy
   has_many :polls, :dependent => :destroy
+  has_many :banners, :dependent => :destroy
   has_many :messages, :dependent => :destroy
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
   has_many :stocks, :dependent => :destroy
@@ -21,6 +26,9 @@ class Place < ActiveRecord::Base
 
   before_validation :set_password, if: 'enter_by_password'
 
+  validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
+  validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
+  validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true

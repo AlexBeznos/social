@@ -20,6 +20,7 @@ en:
       style: style
       menu_item: product
       poll: poll
+      banner: banner
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"
@@ -232,15 +233,19 @@ en:
     pm: pm
   wifi:
     greetings: "Hello, %{customer_name}!"
+    greetings_to_no_one: Hello!
     description: 'Enter through your favorite<br>social network and <br>get access to the Internet'
     poll: "Enter by poll"
     poll_error: "You haven't selected a single answer"
     footer: 'Powered by GoFriends'
     password_placeholder: 'or enter password...'
     simple_enter: Enter
+    countdown: " seconds left"
+    select_answer: "Select one of the answers below to continue"
+    submit: "Submit"
   menu_item:
     greetings: "%{customer_name}, welcome to %{place_name}"
-    greetings_short: Добро пожаловать!
+    greetings_short: Welcome!
     buy_with_bonuses: Here is the list of items you can buy with your points
     added_bonus: We give you %{place_score_amount} points!
     bonus_amount: "You have %{customer_reputation_score} points on your account in this place"
@@ -271,6 +276,7 @@ en:
       birthdays: "Visitor's birthdays"
       menu_items: 'Menu Items'
       polls: 'Polls'
+      banners: 'Banners'
   pages:
     places:
       title: 'Places'

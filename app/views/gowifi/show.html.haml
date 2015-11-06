@@ -12,6 +12,7 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "wifi/modal", :media => "all"
     = stylesheet_link_tag "wifi/spinner", :media => "all"
     = stylesheet_link_tag "wifi/#{@place.template}/style", :media => "all"
     = stylesheet_link_tag "bootstrap", :media => "all"
@@ -38,9 +39,45 @@
           }
 
   %body
+    - if @place.display_other_banners && @banner
+      #modal
+        .row
+          .col-sm-6.col-sm-offset-3
+            #close-banner.btn.btn-default
+              Close
+            %br
+            #countdown 
+              = t('wifi.countdown')
+            %br
+            .center-block
+              - case  
+              - when @banner.content_content_type.match(/^image/) 
+                = image_tag @banner.content.url, class: "modalcontent"
+              - else
+                %video{ name: "media", class: "modalcontent", autoplay: '' }
+                  %source{src: "#{@banner.content.url}"}
     .wrapper-out
       .wrapper-in
         .content
+          - if @place.polls_active && @poll
+            %br
+            %br
+              .container.inner
+                = render 'shared/flash'
+                = yield
+            #poll-button.btn.btn-default.btn-lg 
+              = t('wifi.poll')  
+            #poll-container{ :style => "display: none;" }
+              = simple_form_for [@place, @poll], url: {controller: 'gowifi_auth', action: :submit_poll} do |f|
+                = f.error_notification
+        
+                %h1= f.label f.object.question
+                %br
+                %br
+
+                = f.association :answers, label: t('wifi.select_answer'), collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
+            
+                = f.button :submit, t('wifi.submit'), class: 'btn btn-primary'
           - if @place.logo.file?
             = image_tag @place.logo.url, class: 'logo'
           - else
@@ -69,25 +106,6 @@
             = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg'
           - if @place.stocks_active && @stock
             = render_stock_image @stock
-          - if @place.polls_active && @poll
-            %br
-            %br
-              .container.inner
-                = render 'shared/flash'
-                = yield
-            #poll-button.btn.btn-default.btn-lg 
-              = t('wifi.poll')  
-            #poll-container{ :style => "display: none;" }
-              = simple_form_for [@place, @poll], url: {controller: 'gowifi_auth', action: :submit_poll} do |f|
-                = f.error_notification
-        
-                %h1= f.label f.object.question
-                %br
-                %br
-
-                = f.association :answers, label: 'Select one of the answers below to continue', collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
-            
-                = f.button :submit, 'Submit', class: 'btn btn-primary'
 
         %footer
           %p= t('wifi.footer')

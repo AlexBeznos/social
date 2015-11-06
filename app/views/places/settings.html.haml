@@ -8,6 +8,12 @@
       %li.list-group-item
         = t('models.places.attrs.name')
         %span.text-muted.pull-right= @place.name
+      %li.list-group-item
+        = t('models.places.attrs.domen_url')
+        %span.text-muted.pull-right= @place.domen_url
+      %li.list-group-item
+        = t('models.places.attrs.city')
+        %span.text-muted.pull-right= @place.city
       - if @place.logo.exists?
         %li.list-group-item.img
           = t('models.places.attrs.logo')
@@ -31,6 +37,12 @@
       %li.list-group-item
         = t('models.places.attrs.simple_enter')
         %span.text-muted.pull-right= fa_plus_minus(@place.simple_enter)
+      %li.list-group-item
+        = t('models.places.attrs.display_my_banners')
+        %span.text-muted.pull-right= fa_plus_minus(@place.display_my_banners)
+      %li.list-group-item
+        = t('models.places.attrs.display_other_banners')
+        %span.text-muted.pull-right= fa_plus_minus(@place.display_other_banners)
       %li.list-group-item
         = t('models.places.attrs.score_amount')
         %span.text-muted.pull-right= @place.score_amount

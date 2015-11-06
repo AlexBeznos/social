@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :places do
     resources :polls
+    resources :banners
     resources :messages, except: [:index, :show]
     resources :stocks, except: :show
     resources :styles, except: :index

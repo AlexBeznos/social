@@ -1,0 +1,20 @@
+ua:
+  models:
+    banners:
+      class: 'Банер'
+      actions:
+        index:
+          title: "Банери в %{place_name}"
+          no_city: "Щоб почати створювати банери необхідно вказати місто, де розташован заклад"
+          no_banners: У вас поки що немає банерів
+          add: Додати банер
+          confirm: Ви впевнені?
+        new:
+          title: Новий банер
+        edit:
+          title: Редагувати банер
+      attrs:
+        name: Назва
+        views_number: Кількість просмотрів
+      navigation:
+          back: Назад

@@ -15,18 +15,18 @@ set [ find default-name=ether4 ] master-port=ether2-master-local name=\
 set [ find default-name=ether5 ] master-port=ether2-master-local name=\
     ether5-slave-local
 /interface wireless
-set [ find default-name=wlan1 ] band=2ghz-b/g/n \
-    disabled=no distance=indoors mode=ap-bridge \
-    ssid="##ssid## | GoFriends WiFi"
-/ip neighbor discovery
-set ether1-gateway discover=no
-/interface wireless security-profiles
-add authentication-types=wpa-psk management-protection=allowed mode=\
-    dynamic-keys name=profile1 wpa-pre-shared-key=gofriends98
-/interface wireless
-add disabled=no master-interface=\
-    wlan1 name=wlan2 security-profile=profile1 ssid=Admin wds-default-bridge=\
-    bridge2
+set [ find default-name=wlan1 ] band=2ghz-b/g/n disabled=no l2mtu=2290 mode=ap-bridge ssid="##ssid## | GoFriends WiFi"
+/in wi security-profiles add name=admin mode=dynamic-keys authentication-types=wpa2-psk wpa2-pre-shared-key=gofriends7
+/in wi add master-interface=wlan1 ssid="Go|Friends" security-profile=admin name=admin
+in wi enable [find name=admin]
+/in br po add interface=admin bridge=bridge2
+/ip cloud set enabled=yes
+/ip hotspot profile
+add dns-name=##root##/wifi/##slug## hotspot-address=172.16.16.1 login-by=\
+    cookie,http-pap name=hsprof1
+/ip hotspot user profile
+set [ find default=yes ] idle-timeout=none keepalive-timeout=1d mac-cookie-timeout=1d \
+    session-timeout=1d shared-users=unlimited
 /ip pool
 add name=hs-pool-8 ranges=172.16.16.2-172.16.16.254
 add name=pool1 ranges=192.168.88.2-192.168.88.254
@@ -77,7 +77,7 @@ add action=masquerade chain=srcnat comment="masquerade hotspot network" \
     src-address=192.168.88.0/24 to-addresses=0.0.0.0
 /ip hotspot walled-garden
 add dst-host=*facebook*
-add dst-host=*gofriends.com.ua*
+add dst-host=*##root##*
 add dst-host=*gowifi-prod.s3.amazonaws.com*
 add dst-host=*akamai*
 add dst-host=*vk.com

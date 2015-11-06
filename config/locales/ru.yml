@@ -20,6 +20,7 @@ ru:
       style: стиль
       menu_item: товар
       poll: опрос
+      banner: баннер
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
@@ -284,13 +285,16 @@ ru:
     pm: вечера
   wifi:
     greetings: "Здравствуйте, <ins>%{customer_name}</ins>!"
-    greetings_to_no_one: Здравствуйте
+    greetings_to_no_one: Здравствуйте!
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'
     poll: 'Войти, пройдя опрос'
     poll_error: "Вы не выбрали ни одного из предложенных ответов"
     footer: 'Powered by GoFriends'
     password_placeholder: 'или введите пароль...'
     simple_enter: "Войти"
+    countdown: " секунд осталось"
+    select_answer: "Выберите один из предложенных ответов"
+    submit: "Ответить"
   menu_item:
     greetings: "%{customer_name}, добро пожаловать в %{place_name}"
     greetings_short: Добро пожаловать!
@@ -324,3 +328,4 @@ ru:
       stocks: 'Акции'
       menu_items: 'Товары/Услуги'
       polls: 'Опросы'
+      banners: 'Баннеры'

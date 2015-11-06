@@ -51,6 +51,7 @@ class WifiSettingsService < ActiveType::Object
       config_text.gsub!(/##slug##/, @place.slug)
       config_text.gsub!(/##username##/, @place.wifi_username)
       config_text.gsub!(/##password##/, @place.wifi_password)
+      config_text.gsub!(/##root##/, @place.domen_url)
 
       File.open(config_path, "w") {|file| file.puts config_text }
     end

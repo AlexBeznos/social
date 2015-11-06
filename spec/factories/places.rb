@@ -7,6 +7,7 @@ FactoryGirl.define do
     wifi_password SecureRandom.hex(6)
     reputation_on true
     score_amount 20
+    domen_url "gofriends.com.ua"
   end
 
 end

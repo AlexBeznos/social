@@ -1,0 +1,16 @@
+= content_for :title, t('models.banners.actions.edit.title')
+
+.row
+  .col-sm-6.col-sm-offset-3
+    %h1= t('models.banners.actions.edit.title')
+    .center-block
+      %br
+      - if @banner.content_content_type.match(/^image/) 
+        =image_tag @banner.content.url, class: 'img-responsive'
+      - else
+        %video{ controls: "", name: "media", class: 'img-responsive' }
+          %source{src: "#{@banner.content.url}"}
+      %br
+    = render 'form'
+
+    = link_to t('models.banners.navigation.back'), place_banners_path(@place), class: 'btn btn-default'
