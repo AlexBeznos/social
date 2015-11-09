@@ -53,7 +53,7 @@
               - case  
               - when @banner.content_content_type.match(/^image/) 
                 = image_tag @banner.content.url, class: "modalcontent"
-              - else
+              - when @banner.content_content_type.match(/^video/) 
                 %video{ name: "media", class: "modalcontent", autoplay: '', loop: '' }
                   %source{src: "#{@banner.content.url}"}
     .wrapper-out

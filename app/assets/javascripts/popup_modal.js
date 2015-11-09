@@ -1,4 +1,4 @@
-var myTimer = function() {
+var bannerTimer = function() {
   counter = 15;
   text = $('#countdown').text();
   $('#countdown').html(counter + text);
@@ -21,9 +21,9 @@ $(document).ready(function(){
     });
 
     if ($('video[name = "media"]').length) {
-      $(".modalcontent").get(0).canplay(myTimer());
+      $(".modalcontent").get(0).canplay(bannerTimer());
     } else {
-      myTimer();
+      bannerTimer();
     }
 });
 
