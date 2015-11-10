@@ -21,7 +21,7 @@ $(document).ready(function(){
     });
 
     if ($('video[name = "media"]').length) {
-      $(".modalcontent").get(0).canplaythrough(bannerTimer());
+      $(".modalcontent").get(0).on('canplaythrough', bannerTimer());
     } else {
       bannerTimer();
     }
