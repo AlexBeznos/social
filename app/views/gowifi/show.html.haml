@@ -78,6 +78,7 @@
                 = f.association :answers, label: t('wifi.select_answer'), collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
             
                 = f.button :submit, t('wifi.submit'), class: 'btn btn-primary'
+                %br
           - if @place.logo.file?
             = image_tag @place.logo.url, class: 'logo'
           - else
