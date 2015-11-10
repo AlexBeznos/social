@@ -54,7 +54,7 @@
               - when @banner.content_content_type.match(/^image/) 
                 = image_tag @banner.content.url, class: "modalcontent"
               - when @banner.content_content_type.match(/^video/) 
-                %video{ name: "media", class: "modalcontent", autoplay: '', loop: '' }
+                %video{ name: "media", class: "modalcontent", autoplay: true, loop: true }
                   %source{src: "#{@banner.content.url}"}
     .wrapper-out
       .wrapper-in
