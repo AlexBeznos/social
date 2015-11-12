@@ -225,7 +225,7 @@ footer {
 
 #content .inner .facility {
   padding: 0;
-  white-space: pre-line;
+  white-space: normal;
 }
 
 #content .inner .facility li {
@@ -233,6 +233,8 @@ footer {
   white-space: nowrap;
   padding-top: 8px;
   display: inline-block;
+  width: 33.3%; 
+  float: left;
 }
 
 #content .inner .facility li:after {
