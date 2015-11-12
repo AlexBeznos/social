@@ -20,8 +20,13 @@ $(document).ready(function(){
         $(".modalcontent").get(0).pause();
     });
 
-    if ($('video[name = "media"]').length) {
-      $(".modalcontent").get(0).on('canplaythrough', bannerTimer());
+    alreadyPlayed = false;
+
+    if ($('video[name = "media"]').length){
+        if (!alreadyPlayed){
+          $(".modalcontent").get(0).onplay = bannerTimer();
+          alreadyPlayed = true;
+        }
     } else {
       bannerTimer();
     }
