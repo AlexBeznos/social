@@ -20,8 +20,6 @@
     = javascript_include_tag "wifi_enter"
 
     - if @place.style
-      :css
-        #{@place.style.css_min}
       - if @place.style.background.exists?
         :css
           body {
@@ -43,6 +41,8 @@
           .content p:first-line {
             color: #{ @place.style.greating_color }
           }
+      :css
+        #{@place.style.css_min}
 
   %body
     - if @place.display_other_banners && @banner
