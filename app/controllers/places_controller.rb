@@ -47,9 +47,15 @@ class PlacesController < ApplicationController
   def settings
     @message = params[:message] ? @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: params[:message])) : @place.messages.where(active: true).first
     @networks = @place.messages.where(active: true).map {|message| message.social_network }.uniq
+    @place_owner = User.find_by(id: @place.user_id)
   end
 
   def edit
+    if current_user.franchisee? 
+      @subordinated_users = User.where(user_id: current_user.id) + [current_user]
+    elsif current_user.admin?
+      @subordinated_users = User.all
+    end
   end
 
   def update
