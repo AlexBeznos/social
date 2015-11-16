@@ -1,0 +1,24 @@
+﻿am:
+  models:
+    users:
+      created: Օգտատերն ավելացված է
+      updated: Օգտատերի տվյալները թարմացված են
+      user: Օգտատերի
+      actions:
+        index:
+          title: Օգտատերեր
+          my_users: Ձեր Օգտատերերը
+        show:
+          title: "Օգտատեր %{user}"
+          heading: Օգտատերի կարգավորում
+          places: Օգտատերի հաստատություններ
+        new:
+          title: Ստեղծել նոր օգտատեր
+        edit:
+          title: 'Թարմացում %{name}'
+      attrs:
+        first_name: Անուն
+        last_name: Ազգանուն
+        phone: Հեռախոս
+        email: E-mail
+        timezone: 'Ժամային գոտի'

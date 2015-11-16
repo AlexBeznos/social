@@ -1,0 +1,329 @@
+﻿am:
+  unauthorized:
+    default: Դուք չունեք թույլտվություն նշված էջին
+  authlogic:
+    error_messages:
+      login_not_found: չի գտնվել
+      password_blank: Չի կարող դատարկ լինել
+      user_session: UserSession (or whatever name you are using)
+    attributes:
+      user_session:
+        email: Email
+        password: Գաղտնաբառ
+        remember_me: Հիշել
+  activerecord:
+    models:
+      message: հաղորդագրություն      
+      user: Բաժանորդ
+      place: Հաստատություն
+      stock: ակցիան
+      style: ոճ
+      menu_item: ապրանք
+      poll: հարցում
+      banner: բանները
+  notice:
+    create: "%{subject} Ավելացված է"
+    updated: "%{subject} թարմացված է "
+    deleted: "%{subject} ջնջված է"
+  date:
+    abbr_day_names:
+    - Կիր.    
+    - Երկ.
+    - Երեքշ.
+    - Չորեք.
+    - Հինգշ.
+    - Ուրբ.    
+    - Շաբ.
+    abbr_month_names:
+    - Հունվար
+    - Փետրվար
+    - Մարտ
+    - Ապրիլ
+    - Մայիս
+    - Հունիս
+    - Հուլիս
+    - Օգոստոս
+    - Սեպտեմբեր
+    - Հոկտեմբեր
+    - Նոյեմբեր
+    - Դեկտեմբեր
+    day_names:
+    - Կիրակի    
+    - Երկուշաբթի
+    - Երեքշաբթի
+    - Չորեքշաբթի
+    - Հինգշաբթի
+    - Ուրբաթ
+    - Շաբաթ
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    - հունվարի
+    - փետրվարի
+    - մարտի
+    - ապրիլի
+    - մայիսի
+    - հունիսի    
+    - հուլիսի
+    - օգոստոսի
+    - սեպտեմբերի
+    - հոկտեմբերի    
+    - նոյեմբերի
+    - դեկտեմբերի
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        few: մոտավոր %{count} ժամով
+        many: մոտավոր %{count} ժամվ
+        one: մոտավոր %{count} ժամվա
+        other: մոտավոր %{count} ժամվա
+      about_x_months:
+        few: մոտավոր %{count} ամիս
+        many: մոտավոր %{count} ամիս
+        one: մոտավոր %{count} ամիս
+        other: մոտավոր %{count} ամիս
+      about_x_years:
+        few: մոտավոր %{count} տարի
+        many: մոտավոր %{count} տարի
+        one: մոտավոր %{count} տարի
+        other: մոտավոր %{count} տարի
+      almost_x_years:
+        one: մոտ 1 տարի
+        few: մոտ %{count} տարի
+        many: մոտ %{count} տարի
+        other: մոտ %{count} տարի
+      half_a_minute: րոպեից քիչ
+      less_than_x_minutes:
+        few: քիչ %{count} րոպե
+        many: քիչ %{count} րոպե
+        one: քիչ %{count} րոպեից
+        other: քիչ %{count} րոպեից
+      less_than_x_seconds:
+        few: քիչ %{count} վայրկյան
+        many: քիչ %{count} վայրկյան
+        one: քիչ %{count} վայրկյանից
+        other: քիչ %{count} վայրկյանից
+      over_x_years:
+        few: ավելի քան %{count} տարի
+        many: ավելի քան %{count} տարի
+        one: ավելի քան %{count} տարի
+        other: ավելի քան %{count} տարի
+      x_days:
+        few: "%{count} օր"
+        many: "%{count} օրեր"
+        one: "%{count} օր"
+        other: "%{count} օր"
+      x_minutes:
+        few: "%{count} րոպեներ"
+        many: "%{count} րոպե"
+        one: "%{count} րոպե"
+        other: "%{count} րոպե"
+      x_months:
+        few: "%{count} ամիս"
+        many: "%{count} "
+        one: "%{count} ամիս"
+        other: "%{count} ամիս"
+      x_seconds:
+        few: "%{count} վայրկյաններ"
+        many: "%{count} վայրկյան"
+        one: "%{count} վարկյան"
+        other: "%{count} վարկյան"
+    prompts:
+      day: օր
+      hour: ժամ
+      minute: րոպե
+      month: ամիս
+      second: վարկյան
+      year: Տարի
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: անհրաժեշտ է հաստատել
+      blank: չի կարող լինել դատարկ
+      present: պետք է թողնել դատարկ
+      confirmation: չի համապատասխանում դաշտի արժեքին %{attribute}
+      empty: չի կարող լինել դատարկ
+      equal_to: կարող է ունենալ արժեք, որը հավասար է  %{count}
+      even: կարող է ունենալ միայն կենտ արժեք
+      exclusion: имеет зарезервированное значение
+      greater_than: կարող է ունենալ արժեք մեծ %{count}
+      greater_than_or_equal_to: կարող է ունենալ արժեք մեծ կամ հավասար %{count}
+      inclusion: имеет непредусмотренное значение
+      invalid: ունի ոչ ճիշտ արժեք
+      less_than: կարող է ունենալ արժեք փոքր քան %{count}
+      less_than_or_equal_to: կարող է ունենալ արժեք փոքր կամ հավասար %{count}
+      not_a_number: չի համարվում թիվ
+      not_an_integer: չի համարվում ամբողջ թիվ      
+      odd: կարող է ունենալ միայն զույգ արժեք
+      record_invalid: 'առաջացել է սխալներ: %{errors}'
+      restrict_dependent_destroy:
+        one: 'Հնարավոր չէ ջնջել պահպանվածը, քանի որ օգտագործվում է : %{record}'
+        many: 'Հնարավոր չէ ջնջել պահպանվածը, քանի որ օգտագործվում է : %{record}'
+      taken: արդեն ստեղծված է 
+      too_long:
+        few: շատ մեծ երկարություն (չի կարող լինել շատ քան %{count} նշան)
+        many: շատ մեծ երկարություն (չի կարող լինել շատ քան %{count} նշաններ)
+        one: Շատ մեծ երկարություն (չի կարող լինել շատ քան %{count} նշան)
+        other: Շատ մեծ երկարություն (չի կարող լինել շատ քան %{count} նշան)
+      too_short:
+        few: ոչ բավարար երկարություն (չի կարող լինել քիչ քան %{count} նշան)
+        many: ոչ բավարար երկարություն (չի կարող լինել քիչ քան %{count} նշան)
+        one: ոչ բավարար երկարություն (չի կարող լինել քիչ քան %{count} նշան)
+        other: ոչ բավարար երկարություն (չի կարող լինել քիչ քան %{count} նշան)
+      wrong_length:
+        few: ոչ ճիշտ երկարություն (կարող է լինել երկարությամբ հավասար %{count} նշան)
+        many: ոչ ճիշտ երկարություն (կարող է լինել երկարությամբ հավասար %{count} նշան)
+        one: ոչ ճիշտ երկարություն (կարող է լինել երկարությամբ հավասար %{count} նշան)
+        other: ոչ ճիշտ երկարություն (կարող է լինել երկարությամբ հավասար %{count} նշան)
+      other_than: պետք է տարբերվի %{count}
+    template:
+      body: 'Խնդիրներ առաջացել են հետևյալ դաշտերում:'
+      header:
+        few: "%{model}: պահպանումը չկատարվեց հետևյալ %{count} սխալներից"
+        many: "%{model}: պահպանումը չկատարվեց հետևյալ %{count} սխալներից"
+        one: "%{model}: պահպանումը չկատարվեց հետևյալ %{count} սխալներից"
+        other: "%{model}: պահպանումը չկատարվեց հետևյալ %{count} սխալներից"
+  helpers:
+    select:
+      prompt: 'ընտրել: '
+    submit:
+      create: Ստեղծել %{model}
+      submit: Պահպանել %{model}
+      update: Պահպանել %{model}
+      edit: Փոփոխել
+      add: Ավելացնել նորը %{name}
+      destroy: Ջնջել
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: Դրամ.
+    format:
+      delimiter: " "
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            few: միլիարդ
+            many: միլիարդ
+            one: միլիարդ            
+            other: միլիարդ
+          million:
+            few: միլիոն            
+            many: միլիոն
+            one: միլիոն
+            other: միլիոն
+          quadrillion:
+            few: կվադրիլիոն
+            many: կվադրիլիոն
+            one: կվադրիլիոն            
+            other: կվադրիլիոն
+          thousand:
+            few: հազար
+            many: հազար
+            one: հազար
+            other: հազար
+          trillion:
+            few: տրիլիոն
+            many: տրիլիոն
+            one: տրիլիոն
+            other: տրիլիոն
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            few: բայտ
+            many: բայտ
+            one: բայտ
+            other: բայտ
+          gb: ԳԲ          
+          kb: ԿԲ
+          mb: ՄԲ
+          tb: ՏԲ
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " և "
+      two_words_connector: " և "
+      words_connector: ", "
+  time:
+    am: առավոտյան    
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+    pm: երեկոյան
+  wifi:
+    greetings: "Բարև Ձեզ, <ins>%{customer_name}</ins>!"
+    greetings_to_no_one: Բարև Ձեզ
+    description: 'Մուտք գործեք Ձեր սիրելի<br/>Սոցիալական ցանց և ստացեք<br/>մուտք ինտերնետ'
+    poll: 'Մուտք, անցնելով հարցում'
+    poll_error: "Դուք չեք ընտրել որև առաջարկվող պատասխան"
+    footer: 'Powered by GoFriends'
+    password_placeholder: 'կամ մուտքագրեք գաղտնաբառը...'
+    simple_enter: "Մուտք"
+    countdown: " վայրկյան է մնացել "
+    select_answer: "Ընտրեք առաջարկվող պատասխաններից մեկը"
+    submit: "Պատասխանել"
+  menu_item:
+    greetings: "%{customer_name}, Բարի Գալուստ %{place_name}"
+    greetings_short: Բարի Գալուստ
+    buy_with_bonuses: Ներքևում ցուցակն է, որտեղ Դուք կարող եք օգտագործել Ձեր միավորները
+    added_bonus: Ձեզ հատկացված է %{place_score_amount} Միավոր
+    bonus_amount: "Ձեր հաշվին կա: %{customer_reputation_score} միավոր"
+    to_internet: "Մուտք գործել Ինտերնետ"
+    back_to_shopping: "Վերադառնալ գնումներին"
+    shopping_history: "Գնումների պատմություն"
+    confirm_order: "Հաստատել %{item_price} միավորների փոխանակումը"
+    not_enough_points: "Անբավարար"
+    successful_buy: "Դուք փոխանակեցիք %{price}%{price_img} %{menu_item_name} հետ"
+    billed_account: "Ձեր բոնուսային հաշվից դուրս է գրվել  %{item_price} միավոր"
+    show_to_waiter: "Ցույց տվեք այս էջը մատուցողին"
+    show_to_waiter_with_code: "Ցույց տվեք կոդը մատուցողին"
+    add_new_item: Ավելացնել նոր ապրանք/ծառայություն
+    item_price: "Գին: %{item_price}"
+    goods: "Ապրանք/ծառայություն"
+    coupon_code: "Գնման կոդ: %{coupon_code}"
+    buy: Փոխանակել
+  navigation:
+    logout: 'Դուրս գալ'
+    login: 'Մուտք'
+    users: 'Օգտագործողներ'
+    my_places: 'Իմ հաստատությունները'
+    dashboard:
+      statistic: 'Վիճակագրություն'
+      guests: 'TOP Հաճախորդներ'
+      birthdays: "Ծննդյան Օրեր"
+      settings: 'Կարգավորումներ'
+      stocks: 'Ակցիաներ'
+      menu_items: 'Ապրանքներ / Ծառայություններ'
+      polls: 'Հարցումներ'
+      banners: 'Բաններներ'

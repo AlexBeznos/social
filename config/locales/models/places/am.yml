@@ -1,0 +1,62 @@
+﻿am:
+  models:
+    places:
+      place: Հաստատություններ
+      attrs:
+        name: 'Հաստատության անվանումը'
+        domen_url: "Դոմեն հասցե"
+        by_password: 'մուտք գաղտնաբառով'
+        password: 'Մուտքի գաղտնաբառ'
+        active: 'Hotspot ակտիվ է'
+        stocks_active: Ակցիաի ցուցադրում գլխավոր էջում
+        logo: 'Լոգո'
+        redirect_url: "Տեղափոխում մուտք գործելուց հետո"
+        wifi_link: "հղում մուտքի էջին"
+        reputation_active: "Բոնուսների տրամադրում"
+        simple_enter: Մուտք առանց գրանցման
+        score_amount: "Բոնուսի չափը"
+        loyalty_program: Հավատարմության ծրագիր
+        polls_active: Հարցման արդյունքների ցուցադրումը մուտքի էջում
+        city: քաղաք
+        display_my_banners: Ցույց տալ իմ բաններները այլ հաստատություններում
+        display_other_banners: Ցույց տալ ուրիշների բաններները իմ հաստատությունում
+        owner: սեփականատեր
+      actions:
+        index:
+          title: 'Հաստատություն'
+          my_places: 'Ձեր հաստատությունները '
+        show:
+          title: "Հաստատություն %{place_name}"
+          table:
+            time: Ժամ
+            network: Սոց. Ցանց
+            customer: Օգտագործող
+          info:
+            day: Օրեր
+            week: Շաբաթ
+            month: Ամիս
+            gender: Սեռ
+            men: արական
+            women: իգական
+            auditory: լսարանի ներգրավում
+        new:
+          title: "Ստեղծել հաստատություն"
+        edit:
+          title: 'Թարմացնել %{place_name}'
+        guests:
+          title: "Top հաճախորդները  %{place_name}"
+          table:
+            user: Օգտագործող
+            network: Սոց. Ցանց
+            connection_number: Միացումների քանակ
+        birthdays:
+          title: "Հաճախորդների ծննդյան օրերը %{place_name}"
+          table:
+            user: Օգտագործող
+            network: Սոց. Ցանց
+            birthday: Ծննդյան օրեր
+        settings:
+          title: "Կարգավորումները %{place_name}"
+          wifi:  Wi-Fi կարգավորում
+          messages:  հրապարակումների կարգավորում
+          download_settings: 'Նեբեռնել  WiFi կարգավորումները'

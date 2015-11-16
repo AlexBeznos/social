@@ -1,0 +1,30 @@
+﻿am:
+  models:
+    polls:
+      class: 'հարցում'
+      actions:
+        index:
+          title: "հարցումներ %{place_name}"
+          no_polls: Դուք դեռ չունեք հարցումներ          
+          add: Ավելացնել Հարցում
+          confirm: Դուք համոզված եք
+        new:
+          title: Հարցման ավելացում
+        edit:
+          title: հարցման խմբագրում
+        show:
+          title: Վիճակագրություն
+      attrs:
+        question: Հարց
+        answer: Պատասխան
+        answers_number: Պատասխանների տարբերակների քանակ        
+        selections_number: Պատասխանների քանակ      
+      form:
+        placeholder_question: Մուտքագրեք հարցը
+        placeholder_answer: Մուտքագրեք պատասխանը
+        remove: Ջնջել
+        add_answer: Ավելացնել ևս մեկ պատասխանի տարբերակ
+      navigation:
+          show: Վիճակագրություն
+          back: Ետ
+          edit: Խմբագրել

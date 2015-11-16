@@ -1,0 +1,11 @@
+﻿am:
+  models:
+    errors:
+      validations:
+        wrong_link_format: Հղման սխալ ֆորմատ
+        unique_place_for_customer: Հաստատությունը պետք է լինի յուրահատուկ հաճախորդի համար
+        long_twitter_message: Հղումով հաղորդագրությունը չպետք է գերազանցի 140 նշաններ
+        wrong_phone_number: Հեռախոսահամարի սխալ ֆորմատ
+        not_valid_css_color: ոչ իրական css գույն
+        not_valid_css_websafe_color: не веб безопасный цвет
+        not_valid_css_hexidecimal_color: ոչ իրական hexidecimal գույն

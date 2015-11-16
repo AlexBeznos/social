@@ -1,0 +1,5 @@
+﻿am:
+  models:
+    errors:
+      js_precompilation: կոդի մեջ առկա է սխալ
+      already_logged_in: արդեն մուտք գործել
