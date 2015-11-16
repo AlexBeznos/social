@@ -9,5 +9,5 @@ RSpec.describe Banner do
   it { is_expected.to validate_attachment_content_type(:content).allowing("image/jpeg", "image/png", "image/gif",
                                                                           "video/mp4", "video/webm") }
   it { is_expected.to validate_attachment_size(:content).
-                less_than(20.megabytes).greater_than(11.kilobytes) }
+                less_than(5.megabytes).greater_than(11.kilobytes) }
 end

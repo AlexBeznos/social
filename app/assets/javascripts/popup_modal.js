@@ -1,5 +1,5 @@
 var bannerTimer = function() {
-  counter = 15;
+  counter = 20;
   text = $('#countdown').text();
   $('#countdown').html(counter + text);
   $('#countdown').css("visibility", "visible");

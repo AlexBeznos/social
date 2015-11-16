@@ -2,6 +2,10 @@
   = f.error_notification
   = f.input :name
   = f.input :city
+  - if @subordinated_users
+    = f.input :user_id, collection: @subordinated_users, label_method: ->(obj){ obj.full_name + ' (' + obj.email + ')'}, label: t('models.places.attrs.owner'), include_blank: false
+  - else
+    = f.input :user_id, as: :hidden, :input_html => { :value => "#{params[:user] ? params[:user] : current_user.id}" }
   = f.input :domen_url, collection: Place::DOMAIN_LIST, include_blank: false
   = f.input :logo, as: :file
   = f.input :active, as: :boolean
@@ -17,6 +21,5 @@
   = f.input :enter_by_password, as: :boolean, input_html: { class: 'enter_by_password_check' }
   .enter_by_password
     = f.input :password, as: :string
-  = f.input :user_id, as: :hidden, :input_html => { :value => "#{params[:user] ? params[:user] : current_user.id}" }
 
   = f.button :submit
