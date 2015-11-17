@@ -1,0 +1,54 @@
+﻿am:
+  simple_form:
+    error_notification:
+      default_message: "Խնդրում եմ լուծել ներքևում առկա խնդիրները:"
+    labels:
+      place:
+        name: 'Հաստատության անվանումը'
+        domen_url: 'Դոմեյնի հասցեն'
+        logo: 'Լոգո'
+        active: Hotspot ակտիվ է 
+        stocks_active: Ակցիաները ակտիվ են
+        polls_active: Հարցումները ակտիվ են
+        reputation_on: Բոնուսների հաշվառում
+        simple_enter: Մուտք առանց գրանցման
+        loyalty_on: Միացնել օգտատերի հավատարմության ծրագրի կարգավորումը
+        loyalty_program: Հավատարմության ծրագիր
+        score_amount: Բոնուսի չափը
+        redirect_url: Մուտք գործելուց հետո ցուցադրվող կայքը
+        enter_by_password: Մուտք գաղտնաբառով
+        password: Գաղտնաբառ
+        city: Քաղաք
+        display_my_banners: Ցուցադրել իմ բաններները այլ հաստատություններում
+        display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում
+      user:
+        first_name: Անուն
+        last_name: Ազգանուն
+        phone: Հեռախոսահամար
+        timezone: Ժամային Գոտի
+        password: Մուտքի գաղտնաբառ
+        password_confirmation: Հաստատել գաղտնաբառը
+      message:
+        social_network: Սոցիալական ցանց
+        subscription: Բաժանորդագրվել
+        message_link: Հղում հաղորդագրության մեջ
+        image: Նկար
+        message: Հաղորդագրություն
+      stock:
+        url: Հղում
+        image: Նկար
+        day: Ցուցադրման օր
+      style:
+        background: Հետևի ֆոն
+        js: JS
+        css: CSS
+        text_color: Հիմնական գույնի տեքստը
+        greating_color: Ողջույնի գույնը
+      menu_item:
+        menu_item: Ապրանք
+        name: Ապրանքի անվանումը
+        description: Նկարագրություն
+        image: Նկար
+        price: Արժեք (միավորներով)
+      poll:
+        question: Հարց

@@ -1,0 +1,20 @@
+﻿am:
+  models:
+    banners:
+      class: 'Բաններ'
+      actions:
+        index:
+          title: "%{place_name} բաններները"
+          no_city: "Բաններների պատրաաստման համար Ձեզ անհրաժեշտ է նշել հաստատության գտնվելու վայրը"
+          no_banners: Դուք չունեք բաններներ
+          add: Ավելացնել Բաններ
+          confirm: Դուք համոզված եք
+        new:
+          title: Նոր բաններ
+        edit:
+          title: խմբագրել բանները
+      attrs:
+        name: Անվանում
+        views_number: Դիտումների քանակը
+      navigation:
+          back: Ետ

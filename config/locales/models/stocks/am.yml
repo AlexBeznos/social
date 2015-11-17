@@ -1,0 +1,18 @@
+﻿am:
+  models:
+    stocks:
+      class: 'Ակցիա'
+      day: 'ցանկացած օր'
+      actions:
+        index:
+          title: "%{place_name} հաստատության ակցիաները"
+          no_stocks: Դուք դեռ չունեք ակցիա
+          add: Ավելացնել ակցիա
+        new:
+          title: Ավելացնել ակցիա
+        edit:
+          title: Խմբագրել ակցիան
+      attrs:
+        image: Նկար
+        url: Հղում
+        day: Ցուցադրման օր

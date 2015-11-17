@@ -135,7 +135,7 @@ span {
 
 .nav-inner-custom > ul > li > a {
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 20px !important;
   margin-bottom: 0;
 }
@@ -172,7 +172,7 @@ span {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) { 
   .nav-inner-custom > ul > li:last-child, .nav-inner-custom > ul > li:last-child a {
     border-top-right-radius: 6px;
   }

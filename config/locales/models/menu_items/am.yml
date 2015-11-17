@@ -1,0 +1,15 @@
+﻿am:
+  activerecord:
+    errors:
+      models:
+        menu_item:
+          attributes:
+            image:
+              in_between: նկարը պետք մեծ լինի 11КБ-ից և փոքր  10МБ
+  models:
+    menu_items:
+      actions:
+        edit:
+          title: 'Խմբագրել ապրանք/ծառայություն'
+        new:
+          title: Ավելացնել ապրանք/ծառայություն

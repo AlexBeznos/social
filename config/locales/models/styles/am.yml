@@ -1,0 +1,8 @@
+﻿am:
+  models:
+    style:
+      class: 'Ձևակերպում'
+      page: Մուտքի էջ
+      actions:
+        edit:
+          title: Խմբագրել հաճախորդի մուտքի էջի արտաքին տեսքը
