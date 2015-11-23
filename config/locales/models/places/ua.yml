@@ -5,6 +5,7 @@ ua:
       attrs:
         name: 'Назва закладу'
         domen_url: "Адреса домену"
+        category: Група
         by_password: 'Вхід через пароль'
         password: 'Пароль для входу'
         active: 'Hotspot активований'

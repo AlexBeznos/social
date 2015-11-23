@@ -1,0 +1,11 @@
+am:
+  models:
+    categories:
+      class: 'խմբի հաստատությունները'
+      actions:
+        new:
+          title: Ավելացնել խումբ հաստատությունների
+        edit:
+          title: Խմբագրել է մի խումբ հաստատությունների
+      attrs:
+        name: կոչում

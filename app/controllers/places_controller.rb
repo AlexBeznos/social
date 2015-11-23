@@ -3,6 +3,9 @@ class PlacesController < ApplicationController
 
   def index
     @places = current_user.get_all_places
+    if current_user.franchisee? || current_user.admin?
+      @categories = current_user.categories
+    end
   end
 
   def new
@@ -91,7 +94,8 @@ class PlacesController < ApplicationController
                                     :display_other_banners,
                                     :display_my_banners,
                                     :loyalty_program,
-                                    :domen_url)
+                                    :domen_url,
+                                    :category_id)
     end
 
     def get_number_of_friends(records)

@@ -1,0 +1,11 @@
+en:
+  models:
+    categories:
+      class: 'Category'
+      actions:
+        new:
+          title: New category
+        edit:
+          title: Editing category
+      attrs:
+        name: Category name

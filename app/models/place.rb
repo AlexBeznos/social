@@ -23,7 +23,8 @@ class Place < ActiveRecord::Base
   has_many :menu_items, :dependent => :destroy
   has_many :orders, :dependent => :destroy
   belongs_to :user
-
+  belongs_to :category
+  
   before_validation :set_password, if: 'enter_by_password'
 
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"

@@ -1,0 +1,11 @@
+ru:
+  models:
+    categories:
+      class: 'Группа заведений'
+      actions:
+        new:
+          title: Добавить группу заведений
+        edit:
+          title: Редактирование группы заведений
+      attrs:
+        name: Название

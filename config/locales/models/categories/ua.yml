@@ -1,0 +1,11 @@
+ua:
+  models:
+    categories:
+      class: 'Група закладів'
+      actions:
+        new:
+          title: Додати групу закладів
+        edit:
+          title: Редагування групи закладів
+      attrs:
+        name: Назва

@@ -33,6 +33,12 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :categories, except: [:index, :show] do
+    member do
+      post "set_group_message"
+    end
+  end
+
 
   resources :places do
     resources :polls

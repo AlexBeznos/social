@@ -5,6 +5,7 @@ ru:
       attrs:
         name: 'Название заведения'
         domen_url: "Адрес домена"
+        category: Группа
         by_password: 'Вход по паролю'
         password: 'Пароль для входа'
         active: 'Hotspot активен'

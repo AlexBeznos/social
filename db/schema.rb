@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103154323) do
+ActiveRecord::Schema.define(version: 20151120025529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20151103154323) do
   end
 
   add_index "banners", ["place_id"], name: "index_banners_on_place_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
 
   create_table "customer_network_profiles", force: true do |t|
     t.integer  "social_network_id"
@@ -172,8 +181,8 @@ ActiveRecord::Schema.define(version: 20151103154323) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "simple_enter",                 default: false
     t.boolean  "loyalty_program",              default: false
+    t.boolean  "simple_enter",                 default: false
     t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
@@ -181,8 +190,10 @@ ActiveRecord::Schema.define(version: 20151103154323) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
+    t.integer  "category_id"
   end
 
+  add_index "places", ["category_id"], name: "index_places_on_category_id", using: :btree
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 

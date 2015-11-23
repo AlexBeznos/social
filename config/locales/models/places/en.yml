@@ -5,6 +5,7 @@ en:
       attrs:
         name: 'Place name'
         domen_url: "Domen URL"
+        category: Category
         by_password: 'Enter by password'
         password: 'Password'
         active: 'Hotspot enabled'

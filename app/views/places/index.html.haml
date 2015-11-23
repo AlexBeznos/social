@@ -7,6 +7,29 @@
     (
     %span= @places.length
     )
-%ul.facility
-  - @places.each do |place|
-    %li= link_to place.name, place_path(place)
+%p= link_to t('models.categories.actions.new.title'), new_category_path, class: 'btn btn-primary'
+
+- if @categories
+  - @categories.each do |category|
+    %br
+    %br
+    %br
+    %br
+    %h1= category.name
+    %p= link_to t('helpers.submit.edit'), edit_category_path(category)
+    %ul.facility
+      - category.places.each do |place|
+        %li= link_to place.name, place_path(place)
+  %br
+  %br
+  %br
+  %br     
+  %h1 Uncategorized places
+  %ul.facility
+    - @places.each do |place|
+      -if !place.category_id
+        %li= link_to place.name, place_path(place)
+- else
+  %ul.facility
+    - @places.each do |place|
+      %li= link_to place.name, place_path(place)

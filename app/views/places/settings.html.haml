@@ -12,6 +12,10 @@
         = t('models.places.attrs.owner')
         %span.text-muted.pull-right= @place_owner.full_name
       %li.list-group-item
+        = t('models.places.attrs.category')
+        - if @place.category
+          %span.text-muted.pull-right= @place.category.name
+      %li.list-group-item
         = t('models.places.attrs.domen_url')
         %span.text-muted.pull-right= @place.domen_url
       %li.list-group-item
