@@ -1,0 +1,123 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title GoFriends - Больше друзей в вашем заведении
+    = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "home", :media => "all"
+    = javascript_include_tag "home"
+  %body
+    %nav.navbar.navbar-custom.navbar-fixed-top.gradient
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Навигация
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "mailto:info@gofriends.com.ua", :style => 'margin-top: 16px;'} gofriends@gofriends.am
+        / Collect the nav links, forms, and other content for toggling
+        #navbar-collapse.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a.scrollTo{:href => "#guests"} Նոր Հյուրեր
+            %li
+              %a.scrollTo{:href => "#how"} Ինչպես է աշխատում
+            %li
+              %a.scrollTo{:href => "#benefits"} Ինչ եք Դուք շահում
+            %li
+              %a.scrollTo{:href => "#contact"} Անվճար
+            %li
+              = link_to 'Մուտք', login_path
+        / /.navbar-collapse
+      / /.container-fluid
+    %header#header
+      #logo
+        = image_tag 'logo.png'
+    #guests
+      %h1 Ձեր հյուրերը կպատմեն Ձեր մասին:
+      = image_tag 'socials/fb.png'
+      = image_tag 'socials/vk.png'
+      = image_tag 'socials/tw.png'
+      = image_tag 'socials/ok.png'
+      .container-fluid
+        .row
+          .col-sm-4
+            = image_tag 'photos/1.jpg'
+          .col-sm-4
+            = image_tag 'photos/2.jpg'
+          .col-sm-4
+            = image_tag 'photos/3.jpg'
+    #how
+      %h1 Ինչպես ենք մենք ներգրավում նոր հյուրերի
+      .container
+        .row
+          .col-sm-7
+            = image_tag 'how/1.jpg'
+          .col-sm-5
+            .carousel
+              .carousel-inner
+                %p
+                  Ձեր հյուրին պետք է ինտերնետ և նա միանում է անվճար WIFI - ին.
+              .carousel-inner
+                %p Ձեր հյուրը մուտք է գործում իր նախընտրած սոց. Ցանցերից մեկի միջոցով: Այդ էջի վրա Դուք  նաև կարող եք ավելացնել Ձեր հաստատության ակցիաները և կատարվելիք միջոցառումները:
+              .carousel-inner
+                %p Ձեր հյուրը միանում է ինտերնետին և առաջին էջը, որ նա տեսնում է Գլխավոր էջի փոխարեն Ձեր հաստատության խումբն է սոց ցանցերում կամ Ձեր կայքը: Ինչպես նաև հյուրի պատի վրա տեղադրվում է հրապարակում Ձեր հաստատության մասին , որը տեսնում են նրա ԲՈԼՈՐ ԸՆԿԵՐՆԵՐԸ:
+    #benefits
+      %h1 Ինչ եք Դուք շահում
+      .container
+        .row
+          .col-md-4
+            #head
+              = image_tag 'benefits/3.png'
+            #body
+              %h1 Նոր հաճախորդներ
+              %p GoFriends - Ընկերները Կգան: Հյուրը իր կողմից կգովազդի Ձեզ  իր ընկերներին , բարեկամներին, աշխատակիցներին, համակուրսեցիներին, համադասարանցիներին, հարևաններին և ուղղակի ծանոթներին, ինչպես նաև կգովազդի Ձեր հաստատության ակցիաները, կատարվելիք միջոցառումները և այլ իրադարձություններ:
+          .col-md-4
+            #head
+              = image_tag 'benefits/1.png'
+            #body
+              %h1 Ձեր բրենդի ճանաչումը  սոց ցանցերում
+              %p Ձեր հյուրերը իրենք կտարածեն ինֆորմացիա Ձեր մասին սոց ցանցերում, ինչպես նաև կդառնան Ձեր բաժանորդը: Ամբողջ պրոցեսը լիովին ավտոմատացված է և այլևս կարիք չկա լրացուցիչ վճարելու IT կամ SMM  մասնագետներին:
+          .col-md-4
+            #head
+              = image_tag 'benefits/2.png'
+            #body
+              %h1 Ձեր եկամուտի աճը
+              %p Ձեր հյուրերը հավատարմության ծրագրի շնորհիվ կդառնան մշտական հաճախորդներ և նորից կվերադառնան Ձեր մոտ: Ինչպես նաև կգան նշելու ծննդյան տարեդարձներ , հարսանիքներ, խնջույքներ և այլ միջոցառումներ:
+    #contact
+      .container
+        .row
+          .col-md-6
+            #test
+              %h1 Ցանկանում եք նոր հաճախորդներ
+              = image_tag '7days.png'
+              %p Անվճար փորձարկում
+            = image_tag 'contact.jpg'
+          .col-md-6
+            = form_tag("/feedback", id: 'signup', method: 'post') do
+              %input{:name => "name", :placeholder => "Անունը եւ ազգանունը", :required => "", :type => "text"}/
+              %input{:name => "email", :placeholder => "E-mail", :required => "", :type => "text"}/
+              %input{:name => "tel", :placeholder => "հեռախոս", :required => "", :type => "text"}/
+              %input{:type => "submit", :value => "Թողնել հաղորդագրություն կամ զանգահարել"}/
+              %h1 կամ
+              %h1
+                կոչ
+                %span +37495492737
+    %footer#footer
+      %h1 +37495492737
+      %h2= link_to t('privacy_police.title'), page_path('privacy_policy')
+      %a{:href => "http://rabby.com.ua/"}
+        = image_tag "rabby.png"
+    :javascript
+      (function(d, w, s) {
+      var widgetId = '21334', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+      gcw.src = '//my.binotel.ua/getcall/widgets/'+ widgetId +'.js';
+      var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+      })(document, window, 'script');
