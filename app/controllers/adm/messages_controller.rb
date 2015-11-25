@@ -9,7 +9,7 @@ class Adm::MessagesController < AdministrationController
 
   def create
     @message = Message.new(message_params)
-    @message.place_id = @place.id
+    @message.with_message = @place
 
     if @message.save
       redirect_to adm_place_path(@place), :notice => 'Message created!'

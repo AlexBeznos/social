@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Message do
   it { is_expected.to have_attached_file(:image) }
-  it { is_expected.to belong_to(:place) }
+  it { is_expected.to belong_to(:with_message) }
   it { is_expected.to belong_to(:social_network) }
   it { is_expected.to validate_presence_of :social_network_id }
   it { is_expected.to validate_attachment_content_type(:image).allowing("image/jpeg", "image/png", "image/gif") }

@@ -13,6 +13,8 @@ class Message < ActiveRecord::Base
   validates :message, presence: true, unless: 'social_network_id == 3' # SocialNetwork.find(3).name == 'instagram'
   validates :message_link, :url => true, if: 'message_link && !message_link.empty?'
   validates :subscription, presence: true, if: 'social_network_id == 3'
+  validates :with_message_type, inclusion: { in: ["Place", "PlaceGroup"] }
+
   validates_attachment :image, :presence => true,
                                 size: { in: 11.kilobytes..10.megabytes },
                                 :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
@@ -31,7 +33,7 @@ class Message < ActiveRecord::Base
     if with_message_type == "Place" 
       place = Place.includes(:messages).find(with_message_id)
       place.messages.where(social_network_id: social_network_id).each do |message|
-        if place.place_group.messages.find_by(social_network_id: social_network_id, active: true)
+        if place.place_group && place.place_group.messages.find_by(social_network_id: social_network_id, active: true)
           message.update(active: false)
         else
           message.update(active: false) unless message == self

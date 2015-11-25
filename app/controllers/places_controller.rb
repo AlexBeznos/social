@@ -109,14 +109,21 @@ class PlacesController < ApplicationController
 
     def active_message social_network = nil
       if social_network
-        @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network)) || 
-        @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
+        if @place.place_group
+          @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
+        else
+          @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
+        end
       else
-        @place.place_group.messages.where(active: true).first || @place.messages.where(active:true).first
+        if @place.place_group
+          @place.place_group.messages.where(active: true).first
+        else
+          @place.messages.where(active:true).first
+        end
       end
     end
 
     def all_networks
-      (@place.messages.where(active: true) + @place.place_group.messages.where(active: true)).map {|message| message.social_network }.uniq
+      (@place.messages.where(active: true) + (@place.place_group ? @place.place_group.messages.where(active: true) : [])).map {|message| message.social_network }.uniq
     end
 end
