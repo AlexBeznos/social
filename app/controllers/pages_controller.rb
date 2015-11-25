@@ -5,6 +5,6 @@ class PagesController < ApplicationController
 
   private
   def throw_home_am
-    params[:id] = 'home_am' if request.host.match /gofriends.am/
+    params[:id] = 'home_am' if request.host.match /gofriends\.am/
   end
 end
