@@ -76,6 +76,7 @@ add action=masquerade chain=srcnat comment="masquerade hotspot network" \
 add action=masquerade chain=srcnat comment="masquerade hotspot network" \
     src-address=192.168.88.0/24 to-addresses=0.0.0.0
 /ip hotspot walled-garden
+add dst-host=*static.xx.fbcdn.net*
 add dst-host=*facebook*
 add dst-host=*##root##*
 add dst-host=*gowifi-prod.s3.amazonaws.com*
