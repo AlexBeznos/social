@@ -1,6 +1,6 @@
 ua:
   models:
-    categories:
+    place_groups:
       class: 'Група закладів'
       actions:
         new:

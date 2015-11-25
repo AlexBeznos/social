@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   def index
     @places = current_user.get_all_places
     if current_user.franchisee? || current_user.admin?
-      @categories = current_user.categories
+      @place_groups = current_user.place_groups
     end
   end
 
@@ -48,8 +48,8 @@ class PlacesController < ApplicationController
   end
 
   def settings
-    @message = params[:message] ? @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: params[:message])) : @place.messages.where(active: true).first
-    @networks = @place.messages.where(active: true).map {|message| message.social_network }.uniq
+    @message = params[:message] ? active_message(params[:message]) : active_message
+    @networks = all_networks
     @place_owner = User.find_by(id: @place.user_id)
   end
 
@@ -95,7 +95,7 @@ class PlacesController < ApplicationController
                                     :display_my_banners,
                                     :loyalty_program,
                                     :domen_url,
-                                    :category_id)
+                                    :place_group_id)
     end
 
     def get_number_of_friends(records)
@@ -105,5 +105,18 @@ class PlacesController < ApplicationController
                       .inject{ |sum,x| sum.to_i + x.to_i }
 
       number ? number : 0
+    end
+
+    def active_message social_network = nil
+      if social_network
+        @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network)) || 
+        @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
+      else
+        @place.place_group.messages.where(active: true).first || @place.messages.where(active:true).first
+      end
+    end
+
+    def all_networks
+      (@place.messages.where(active: true) + @place.place_group.messages.where(active: true)).map {|message| message.social_network }.uniq
     end
 end

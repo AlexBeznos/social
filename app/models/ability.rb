@@ -9,7 +9,6 @@ class Ability
 
   PLACE_RELATED_MODELS = [
     Stock,
-    Message,
     Style,
     Poll,
     MenuItem,
@@ -27,17 +26,19 @@ class Ability
       user_ids = user.place_owners.map(&:id)
       all_user_ids = [user.id] + user_ids
 
-      can :manage, Category
+      can :crud, PlaceGroup, id: user.id
       can :crud, User, id: user_ids + [user.id]
       cannot :destroy, User
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: all_user_ids
       can :download_settings, Place, user_id: all_user_ids
       can :crud, PLACE_RELATED_MODELS
+      can :crud, Message
     elsif user.id && user.general?
       can [:show, :update], User, id: user.id
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user: user
       cannot [:create, :destroy], Place
       can :crud, PLACE_RELATED_MODELS
+      can :crud, Message, with_message_type: 'Place'
     else
       cannot :all, Place
     end

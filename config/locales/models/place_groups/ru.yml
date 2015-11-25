@@ -1,6 +1,6 @@
 ru:
   models:
-    categories:
+    place_groups:
       class: 'Группа заведений'
       actions:
         new:

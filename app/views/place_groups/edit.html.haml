@@ -1,0 +1,10 @@
+= content_for :title, t('models.place_groups.actions.edit.title')
+= content_for :navigation, 'false'
+
+.row
+  .col-sm-6.col-sm-offset-3
+    %h1= t('models.place_groups.actions.edit.title')
+
+    = render 'form'
+
+    = render 'place_groups/message_form/new'

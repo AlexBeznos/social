@@ -5,7 +5,7 @@
       attrs:
         name: 'Հաստատության անվանումը'
         domen_url: "Դոմեն հասցե"
-        category: խումբ
+        place_group: խումբ
         by_password: 'մուտք գաղտնաբառով'
         password: 'Մուտքի գաղտնաբառ'
         active: 'Hotspot ակտիվ է'

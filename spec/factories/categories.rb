@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :category do
+  factory :place_group do
     string ""
   end
 

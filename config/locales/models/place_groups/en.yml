@@ -1,0 +1,11 @@
+en:
+  models:
+    place_group:
+      class: 'Place group'
+      actions:
+        new:
+          title: New place group
+        edit:
+          title: Editing place group
+      attrs:
+        name: Place group name

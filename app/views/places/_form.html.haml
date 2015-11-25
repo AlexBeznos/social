@@ -2,7 +2,7 @@
   = f.error_notification
   = f.input :name
   = f.input :city
-  = f.input :category_id, collection: current_user.categories.all, label_method: ->(obj){ obj.name }, label: t('models.categories.class')
+  = f.input :place_group_id, collection: current_user.place_groups.all, label_method: ->(obj){ obj.name }, label: t('models.place_groups.class')
   - if @subordinated_users
     = f.input :user_id, collection: @subordinated_users, label_method: ->(obj){ obj.full_name + ' (' + obj.email + ')'}, label: t('models.places.attrs.owner'), include_blank: false
   - else

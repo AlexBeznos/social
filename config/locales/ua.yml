@@ -21,7 +21,7 @@ ua:
       menu_item: товар
       poll: опитування
       banner: банер
-      category: групу закладів
+      place_group: групу закладів
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"

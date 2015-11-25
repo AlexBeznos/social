@@ -15,7 +15,7 @@ class Place < ActiveRecord::Base
   has_one :style,  :dependent => :destroy
   has_many :polls, :dependent => :destroy
   has_many :banners, :dependent => :destroy
-  has_many :messages, :dependent => :destroy
+  has_many :messages, as: :with_message, :dependent => :destroy
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
   has_many :stocks, :dependent => :destroy
   has_many :reputations, :dependent => :destroy, class_name: 'Customer::Reputation'
@@ -23,7 +23,7 @@ class Place < ActiveRecord::Base
   has_many :menu_items, :dependent => :destroy
   has_many :orders, :dependent => :destroy
   belongs_to :user
-  belongs_to :category
+  belongs_to :place_group
   
   before_validation :set_password, if: 'enter_by_password'
 

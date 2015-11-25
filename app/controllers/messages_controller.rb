@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message.place_id = @place.id
+    @message.with_message_id = @place.id
 
     if @message.save
       redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))

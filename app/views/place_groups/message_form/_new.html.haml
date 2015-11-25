@@ -1,4 +1,4 @@
-= simple_form_for Message.new, :url => url_for(:action => 'set_group_message', :controller => 'categories'), :method => 'post' do |f|
+= simple_form_for @message, :url => url_for(:action => 'create_group_message', :controller => 'place_groups'), :method => 'post' do |f|
   = f.error_notification
   = f.association :social_network
   .facebook.vkontakte.twitter

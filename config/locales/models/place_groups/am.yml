@@ -1,6 +1,6 @@
 am:
   models:
-    categories:
+    place_groups:
       class: 'խմբի հաստատությունները'
       actions:
         new:

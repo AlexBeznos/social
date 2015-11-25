@@ -33,9 +33,9 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :categories, except: [:index, :show] do
+  resources :place_groups, except: [:index, :show] do
     member do
-      post "set_group_message"
+      post "create_group_message"
     end
   end
 

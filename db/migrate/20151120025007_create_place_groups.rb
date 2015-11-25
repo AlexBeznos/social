@@ -1,6 +1,6 @@
-class CreateCategories < ActiveRecord::Migration
+class CreatePlaceGroups < ActiveRecord::Migration
   def change
-    create_table :categories do |t|
+    create_table :place_groups do |t|
       t.string :name
       t.references :user, index: true
       t.timestamps
