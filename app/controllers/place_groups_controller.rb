@@ -16,6 +16,8 @@ class PlaceGroupsController < ApplicationController
 
   def edit
     @message = @place_group.messages.new
+    @networks = SocialNetwork.all
+    @messages = @place_group.messages
   end
 
   def update
@@ -31,7 +33,7 @@ class PlaceGroupsController < ApplicationController
     @message = @place_group.messages.new(msg_params)
     
     if @message.save
-      redirect_to edit_place_group_path, :notice => I18n.t('notice.created', subject: I18n.t('models.message.class'))
+      redirect_to edit_place_group_path, :notice => I18n.t('notice.create', subject: I18n.t('models.message.class'))
     else
       render :action => :edit
     end

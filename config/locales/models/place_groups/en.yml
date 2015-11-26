@@ -1,6 +1,6 @@
 en:
   models:
-    place_group:
+    place_groups:
       class: 'Place group'
       actions:
         new:

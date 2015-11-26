@@ -1,10 +1,47 @@
+= content_for :page_javascript, 'dashboard/input_binding'
 = content_for :title, t('models.place_groups.actions.edit.title')
 = content_for :navigation, 'false'
 
+
 .row
-  .col-sm-6.col-sm-offset-3
+  .col-sm-5
     %h1= t('models.place_groups.actions.edit.title')
 
     = render 'form'
+  .col-sm-7
+    %h1= t('models.messages.actions.new.title')
+
 
     = render 'place_groups/message_form/new'
+.row
+  - @networks.each do |network|
+    .box
+      .box-header.with-border
+        = network.name
+        messages
+      .box-body
+        %table.table.table-striped
+          %thead
+            %tr
+              %th id
+              %th message
+              %th attachments
+              %th post link
+              %th active
+              %th
+          %tbody
+            - @messages.where(social_network: network).each do |message|
+              %tr
+                %td= message.id
+                %td= message.message.empty? ? message.subscription : message.message
+                %td
+                  - if message.image.exists?
+                    = image_tag message.image, height: 100
+                %td= message.message_link
+                %td
+                  - if message.active
+                    %i.fa.fa-thumbs-o-up
+                  - else
+                    %i.fa.fa-thumbs-o-down
+                %td
+              
