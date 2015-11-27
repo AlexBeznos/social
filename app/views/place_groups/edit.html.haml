@@ -4,16 +4,13 @@
 
 
 .row
-  .col-sm-5
+  .col-sm-6-offset-3
     %h1= t('models.place_groups.actions.edit.title')
 
     = render 'form'
-  .col-sm-7
-    %h1= t('models.messages.actions.new.title')
-
-
-    = render 'place_groups/message_form/new'
 .row
+  %br
+  = link_to t('models.messages.actions.new.title'), new_place_group_message_path(@place_group), class: 'btn btn-primary'
   - @networks.each do |network|
     .box
       .box-header.with-border
@@ -44,4 +41,12 @@
                   - else
                     %i.fa.fa-thumbs-o-down
                 %td
+              %tr
+                %td{:colspan => '6'}
+                  - if message.active
+                    = link_to 'deactivate', deactivate_place_group_message_path(@place_group, message), class: 'btn btn-danger'
+                  - else
+                    = link_to 'activate', activate_place_group_message_path(@place_group, message), class: 'btn btn-success'
+                  = link_to 'edit', edit_place_group_message_path(@place_group, message), class: 'btn btn-warning'
+                  = link_to 'destroy', place_group_message_path(@place_group, message), class: 'btn btn-danger', method: :delete
               

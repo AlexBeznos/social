@@ -1,4 +1,4 @@
-= simple_form_for @message do |f|
+= simple_form_for [@place_group, @message]  do |f|
   = f.error_notification
   .facebook.vkontakte.twitter
     = f.input :message_link

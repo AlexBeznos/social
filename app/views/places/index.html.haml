@@ -9,7 +9,11 @@
     )
 %p= link_to t('models.place_groups.actions.new.title'), new_place_group_path, class: 'btn btn-primary'
 
-- if !@place_groups.empty?
+- if !@place_groups || @place_groups.empty?
+  %ul.facility
+    - @places.each do |place|
+      %li= link_to place.name, place_path(place)
+- else
   - @place_groups.each do |place_group|
     %h1= place_group.name
     %p= link_to t('helpers.submit.edit'), edit_place_group_path(place_group)
@@ -26,7 +30,3 @@
       - @places.each do |place|
         - if !place.place_group_id
           %li= link_to place.name, place_path(place)
-- else
-  %ul.facility
-    - @places.each do |place|
-      %li= link_to place.name, place_path(place)

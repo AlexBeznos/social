@@ -34,8 +34,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :place_groups, except: [:index, :show] do
-    member do
-      post "create_group_message"
+    resources :messages, :controller => "place_group_messages", except: [:index, :show] do
+      member do
+          get 'activate'
+          get 'deactivate'
+      end
     end
   end
 

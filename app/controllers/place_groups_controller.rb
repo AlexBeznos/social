@@ -1,6 +1,6 @@
 class PlaceGroupsController < ApplicationController
   load_and_authorize_resource :place_group
-  
+
   def new
     @place_group = PlaceGroup.new
   end
@@ -21,7 +21,6 @@ class PlaceGroupsController < ApplicationController
   end
 
   def update
-
     if @place_group.update(place_group_params)
       redirect_to places_path, :notice => I18n.t('notice.updated', subject: I18n.t('models.place_groups.class'))
     else
