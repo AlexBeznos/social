@@ -2,6 +2,7 @@ en:
   models:
     place_groups:
       class: 'Place group'
+      uncategorized: 'Uncategorized places'
       actions:
         new:
           title: New place group

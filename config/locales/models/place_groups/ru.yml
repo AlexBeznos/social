@@ -2,6 +2,7 @@ ru:
   models:
     place_groups:
       class: 'Группа заведений'
+      uncategorized: 'Без группы'
       actions:
         new:
           title: Добавить группу заведений

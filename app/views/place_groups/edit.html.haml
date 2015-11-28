@@ -1,46 +1,44 @@
 = content_for :page_javascript, 'dashboard/input_binding'
+= content_for :page_stylesheet, 'dashboard/place_groups'
 = content_for :title, t('models.place_groups.actions.edit.title')
 = content_for :navigation, 'false'
 
 
 .row
-  .col-sm-6-offset-3
+  .col-sm-6.col-sm-offset-3
     %h1= t('models.place_groups.actions.edit.title')
-
     = render 'form'
 .row
-  %br
-  = link_to t('models.messages.actions.new.title'), new_place_group_message_path(@place_group), class: 'btn btn-primary'
+  %h1= t('models.places.actions.settings.messages') 
+  = link_to t('models.messages.actions.new.title'), new_place_group_message_path(@place_group), class: 'btn btn-primary btn-xs'
   - @networks.each do |network|
-    .box
-      .box-header.with-border
+    .panel.panel-info.panel-adjusted
+      .panel-heading
         = network.name
         messages
-      .box-body
-        %table.table.table-striped
+      .panel-body
+        %table.table.table-stripped
           %thead
             %tr
-              %th id
-              %th message
-              %th attachments
-              %th post link
-              %th active
-              %th
+              %th.col-xs-1.text-center id
+              %th.col-xs-4.text-center message
+              %th.col-xs-4.text-center attachments
+              %th.col-xs-2.text-center post link
+              %th.col-xs-1.text-center active
           %tbody
             - @messages.where(social_network: network).each do |message|
               %tr
-                %td= message.id
-                %td= message.message.empty? ? message.subscription : message.message
-                %td
+                %td.col-xs-1= message.id
+                %td.col-xs-4= message.message.empty? ? message.subscription : message.message
+                %td.col-xs-4
                   - if message.image.exists?
-                    = image_tag message.image, height: 100
-                %td= message.message_link
-                %td
+                    = image_tag message.image, class: "msg-image"
+                %td.col-xs-2= message.message_link
+                %td.col-xs-1
                   - if message.active
                     %i.fa.fa-thumbs-o-up
                   - else
                     %i.fa.fa-thumbs-o-down
-                %td
               %tr
                 %td{:colspan => '6'}
                   - if message.active

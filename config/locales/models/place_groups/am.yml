@@ -2,6 +2,7 @@ am:
   models:
     place_groups:
       class: 'խմբի հաստատությունները'
+      uncategorized: ոչ խումբ
       actions:
         new:
           title: Ավելացնել խումբ հաստատությունների

@@ -2,6 +2,7 @@ ua:
   models:
     place_groups:
       class: 'Група закладів'
+      uncategorized: 'Без групи'
       actions:
         new:
           title: Додати групу закладів
