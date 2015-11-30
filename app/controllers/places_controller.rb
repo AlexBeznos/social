@@ -2,9 +2,18 @@ class PlacesController < ApplicationController
   load_and_authorize_resource :find_by => :slug, except: :new
 
   def index
-    @places = current_user.get_all_places
-    if current_user.franchisee? || current_user.admin?
-      @place_groups = current_user.place_groups
+    if !current_user.admin?
+      @places = current_user.get_all_places
+    else 
+      @places = Place.all
+    end
+
+    if current_user.general?
+      @place_groups = PlaceGroup.where(user_id: current_user.id)
+    elsif current_user.franchisee? 
+      @place_groups = PlaceGroup.where(user_id: User.where(user_id: current_user.id))
+    elsif current_user.admin?
+      @place_groups = PlaceGroup.all
     end
   end
 

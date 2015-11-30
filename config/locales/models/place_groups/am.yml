@@ -3,6 +3,8 @@ am:
     place_groups:
       class: 'խմբի հաստատությունները'
       uncategorized: ոչ խումբ
+      errors:
+        not_general: 'Սեփականատերը պետք է լինի, որ "ընդհանուր"'
       actions:
         new:
           title: Ավելացնել խումբ հաստատությունների

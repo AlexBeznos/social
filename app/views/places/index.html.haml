@@ -19,7 +19,8 @@
     .panel.panel-info.panel-adjusted
       .panel-heading
         %h1= place_group.name
-        %p= link_to t('helpers.submit.edit'), edit_place_group_path(place_group), class: 'btn btn-primary btn-xs'
+        = link_to t('helpers.submit.edit'), edit_place_group_path(place_group), class: 'btn btn-primary btn-xs'
+        = link_to t('helpers.submit.destroy'), place_group_path(place_group), class: 'btn btn-danger btn-xs', method: :delete
       .panel-body
         %ul.facility
           - place_group.places.each do |place|

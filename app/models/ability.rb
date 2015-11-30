@@ -26,7 +26,7 @@ class Ability
       user_ids = user.place_owners.map(&:id)
       all_user_ids = [user.id] + user_ids
 
-      can :crud, PlaceGroup, id: user.id
+      can :crud, PlaceGroup
       can :crud, User, id: user_ids + [user.id]
       cannot :destroy, User
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: all_user_ids
@@ -34,6 +34,7 @@ class Ability
       can :crud, PLACE_RELATED_MODELS
       can :crud, Message
     elsif user.id && user.general?
+      can :crud, PlaceGroup, user: user
       can [:show, :update], User, id: user.id
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user: user
       cannot [:create, :destroy], Place
