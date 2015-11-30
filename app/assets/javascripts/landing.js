@@ -6,7 +6,8 @@ $(document).ready(function(){
         arrows: false
     });
     $('.carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-        $('#how .col-sm-7 img').attr('src', 'https://s3-us-west-2.amazonaws.com/gowifi-prod/landing/slides/' + (nextSlide + 1) + '.jpg');
+        $('#how .col-sm-7 img').css('display', 'none');
+        $($('#how .col-sm-7 img')[nextSlide]).fadeIn();
     });
     $(".scrollTo").click(function(event){
         //prevent the default action for the click event
