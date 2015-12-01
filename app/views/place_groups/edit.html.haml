@@ -16,16 +16,18 @@
     .panel.panel-info.panel-adjusted
       .panel-heading
         = network.name
-        messages
       .panel-body
         %table.table.table-stripped
           %thead
             %tr
-              %th.col-xs-1.text-center id
-              %th.col-xs-4.text-center message
-              %th.col-xs-4.text-center attachments
-              %th.col-xs-2.text-center post link
-              %th.col-xs-1.text-center active
+              %th.col-xs-1.text-center ID
+              - if network.name == 'instagram'
+                %th.col-xs-10.text-center= t('models.messages.attrs.subscription') 
+              - else
+                %th.col-xs-4.text-center= t('models.messages.attrs.message') 
+                %th.col-xs-4.text-center= t('models.messages.attrs.attachment') 
+                %th.col-xs-2.text-center= t('models.messages.attrs.message_link') 
+              %th.col-xs-1.text-center= t('models.messages.attrs.active')
           %tbody
             - @messages.where(social_network: network).each do |message|
               %tr
@@ -43,9 +45,9 @@
               %tr
                 %td{:colspan => '6'}
                   - if message.active
-                    = link_to 'deactivate', deactivate_place_group_message_path(@place_group, message), class: 'btn btn-danger'
+                    = link_to t('models.messages.actions.deactivate.title'), deactivate_place_group_message_path(@place_group, message), class: 'btn btn-danger'
                   - else
-                    = link_to 'activate', activate_place_group_message_path(@place_group, message), class: 'btn btn-success'
-                  = link_to 'edit', edit_place_group_message_path(@place_group, message), class: 'btn btn-warning'
-                  = link_to 'destroy', place_group_message_path(@place_group, message), class: 'btn btn-danger', method: :delete
+                    = link_to t('models.messages.actions.activate.title'), activate_place_group_message_path(@place_group, message), class: 'btn btn-success'
+                  = link_to t('helpers.submit.edit'), edit_place_group_message_path(@place_group, message), class: 'btn btn-warning'
+                  = link_to t('helpers.submit.destroy'), place_group_message_path(@place_group, message), class: 'btn btn-danger', method: :delete
               

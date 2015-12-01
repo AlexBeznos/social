@@ -10,6 +10,8 @@
     messages:
       message_for: "Հաղորդագրություն %{name} համար"
       attrs:
+        attachment: կցված ֆայլը
+        active: ակտիվ
         message: 'հաղորդգագրություն'
         subscription: "Բաժանորդագրություն"
         message_link: "հղում հաղորդագրության մեջ"
@@ -18,3 +20,8 @@
           title: 'խմբագրել հաղորդագրությունը'
         new:
           title: Ավելացնել հաղորդագրությունը
+        activate:
+          title: ակտիվացնել
+        deactivate:
+          title: ապաակտիվացնել
+

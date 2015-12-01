@@ -26,7 +26,7 @@ class Ability
       user_ids = user.place_owners.map(&:id)
       all_user_ids = [user.id] + user_ids
 
-      can :crud, PlaceGroup
+      can :crud, PlaceGroup, user_id: user_ids
       can :crud, User, id: user_ids + [user.id]
       cannot :destroy, User
       can [:crud] + PLACE_ADDITIONAL_ACTINS, Place, user_id: all_user_ids
