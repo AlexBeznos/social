@@ -1,6 +1,8 @@
 ru:
   models:
     places:
+      errors:
+        different_owners: "Прежде чем сменить владельца - уберите это заведение из группы"
       place: заведение
       attrs:
         name: 'Название заведения'

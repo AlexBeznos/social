@@ -34,11 +34,17 @@ class Place < ActiveRecord::Base
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
   validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
+  validate :place_and_place_group_have_same_owner, if: 'self.place_group'
 
   before_create :set_wifi_username_password
   before_save :set_wifi_link_freshnes
   after_save :gen_new_wifi_settings
 
+  def place_and_place_group_have_same_owner
+    if self.place_group.user_id != self.user_id
+      errors.add(:place_group_id, I18n.t('models.places.errors.different_owners'))
+    end
+  end
 
   def get_networks
     networks_ids = self.messages

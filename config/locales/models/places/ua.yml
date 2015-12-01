@@ -1,6 +1,8 @@
 ua:
   models:
     places:
+      errors:
+        different_owners: "Перед тим як змінити власника - приберіть цій заклад з групи"
       place: заклад
       attrs:
         name: 'Назва закладу'

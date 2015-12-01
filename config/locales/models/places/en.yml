@@ -1,6 +1,8 @@
 en:
   models:
     places:
+      errors:
+        different_owners: "If you want to set another owner in this place - remove it from Group first"
       place: places
       attrs:
         name: 'Place name'
