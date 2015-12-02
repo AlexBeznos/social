@@ -17,6 +17,7 @@
     = stylesheet_link_tag "wifi/#{@place.template}/style", :media => "all"
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
+    = stylesheet_link_tag "wifi/poll_styling", :media => "all"
     = javascript_include_tag "wifi_enter"
 
     - if @place.style
@@ -65,26 +66,6 @@
     .wrapper-out
       .wrapper-in
         .content
-          - if @place.polls_active && @poll
-            %br
-            %br
-              .container.inner
-                = render 'shared/flash'
-                = yield
-            #poll-button.btn.btn-default.btn-lg 
-              = t('wifi.poll')  
-            #poll-container{ :style => "display: none;" }
-              = simple_form_for [@place, @poll], url: {controller: 'gowifi_auth', action: :submit_poll} do |f|
-                = f.error_notification
-        
-                %h1= f.label f.object.question
-                %br
-                %br
-
-                = f.association :answers, label: t('wifi.select_answer'), collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
-            
-                = f.button :submit, t('wifi.submit'), class: 'btn btn-primary'
-          %br
           - if @place.logo.file?
             = image_tag @place.logo.url, class: 'logo'
           - else
@@ -111,6 +92,20 @@
           - if @place.simple_enter
             %br
             = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg'
+          - if @place.polls_active && @poll
+            .container.inner
+              = render 'shared/flash'
+              = yield
+            #poll-button.btn.btn-lg.poll-btn 
+              = t('wifi.poll')  
+            #poll-container{ :style => "display: none;" }
+              = simple_form_for [@place, @poll], url: {controller: 'gowifi_auth', action: :submit_poll} do |f|
+                = f.error_notification
+                %h3= f.label f.object.question, class: "question"
+                = f.association :answers, label: t('wifi.select_answer'), collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
+            
+                = f.button :submit, t('wifi.submit'), class: 'btn-lg poll-btn'
+          %br
           - if @place.stocks_active && @stock
             = render_stock_image @stock
 
