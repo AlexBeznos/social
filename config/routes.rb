@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  
+
 
   require 'sidekiq/web'
   require 'admin_constraint'
 
   mount Sidekiq::Web => '/sidekiq', :constraints => AdminConstraint.new
+  root to: 'pages#show', id: 'home'
 
   namespace :adm do
     root to: 'dashboard#index'
@@ -59,7 +60,7 @@ Rails.application.routes.draw do
   scope '/wifi' do
     get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
-    
+
     patch ':slug/poll_enter' => 'gowifi_auth#submit_poll'
     get ':slug/status' => 'gowifi_auth#redirect_after_auth'
     post ':slug/by_password' => 'gowifi_auth#enter_by_password'
@@ -79,7 +80,7 @@ Rails.application.routes.draw do
 
 
   # static pages
-  get "/:id" => "high_voltage/pages#show", :as => :page, :format => false
+  get "/:id" => "pages#show", as: :page, format: false
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
