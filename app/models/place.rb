@@ -47,7 +47,7 @@ class Place < ActiveRecord::Base
   end
 
   def get_networks
-    networks_ids = self.messages
+    networks_ids = Message.where("with_message_id = ? and with_message_type = 'Place' or with_message_id = ? and with_message_type = 'PlaceGroup'", self.id, self.place_group_id)
                        .where(active: true)
                        .select('social_network_id')
                        .map { |message| message.social_network_id }
