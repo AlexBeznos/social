@@ -1,0 +1,49 @@
+@import 'dashboard/opensans';
+
+.poll-btn {
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    background: #fff; 
+    opacity: 0.45; 
+    filter: alpha(Opacity=45);
+    border: 1px solid #000;
+    border-radius: 8px;
+    min-width: 240px;
+} 
+
+.poll-btn:hover {
+    opacity: 0.8; 
+    filter: alpha(Opacity=80);
+}
+
+.question {
+    font-weight: bold;
+}
+
+.radio label {
+    font-size: 1.1em;
+    font-weight: 100;
+    padding: 5.5px;
+    text-align: left;
+    position: relative;
+    left: 47%;
+}
+
+
+label {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+.radio input[type="radio"] {
+    margin-left: -30px;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin: 0px;
+}
+
+
