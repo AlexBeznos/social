@@ -57,7 +57,7 @@ class PlacesController < ApplicationController
   end
 
   def settings
-    @message = params[:message] ? active_message(params[:message]) : active_message
+    @message = active_message(params[:message])
     @networks = all_networks
     @place_owner = User.find_by(id: @place.user_id)
   end
