@@ -10,7 +10,7 @@ RSpec.describe Message do
   it { is_expected.to callback(:set_active_only_to_one_message_from_place).after(:save).if('active') }
 
   it "should only return active messages" do
-    Message.active.where_values_hash.should eq "active" => true
+    expect(Message.active.where_values_hash).to eq "active" => true
   end
 
   describe "Validate presence of message" do

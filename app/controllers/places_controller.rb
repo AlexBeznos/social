@@ -118,13 +118,13 @@ class PlacesController < ApplicationController
 
     def active_message social_network = nil
       if social_network
-        if @place.place_group
+        if @place.place_group && @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
           @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
         else
           @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
         end
       else
-        if @place.place_group
+        if @place.place_group && @place.place_group.messages.where(active: true).first
           @place.place_group.messages.where(active: true).first
         else
           @place.messages.where(active:true).first

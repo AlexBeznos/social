@@ -6,6 +6,10 @@ FactoryGirl.define do
     message "Hello!"
     image_file_name "picture.jpg"
     social_network_id 2
-  end
 
+    trait :group_message do
+      with_message_id :place_group
+      with_message_type "PlaceGroup"
+    end
+  end
 end
