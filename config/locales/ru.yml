@@ -21,6 +21,7 @@ ru:
       menu_item: товар
       poll: опрос
       banner: баннер
+      place_group: группу заведений
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"

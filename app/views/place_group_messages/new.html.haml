@@ -1,0 +1,9 @@
+= content_for :page_javascript, 'dashboard/input_binding'
+= content_for :title, t('models.messages.actions.new.title')
+= content_for :navigation, 'false'
+
+.row
+  .col-sm-4
+    %h1= t('models.messages.actions.new.title')
+
+    = render 'place_group_messages/form/new'
