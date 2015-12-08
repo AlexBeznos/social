@@ -1,10 +1,9 @@
 require 'rails_helper'
+require 'adm/places_controller'
 
-RSpec.describe PlacesController do
-  
-
-  describe "Test active_message" do      
-    it "return Place's message if Place is in Place group, but Place group's message for the same social network is inactive" do
+RSpec.describe Adm::PlacesController do
+  describe "Test all_messages" do      
+    it "should return both Place group's and Place's messages" do
       user = create(:user, :user_general)
       place_group = create(:place_group, user: user)
       place = create(:place, user: user, place_group: place_group)
@@ -12,7 +11,7 @@ RSpec.describe PlacesController do
       message = create(:message, with_message: place_group, active: false)
       social_network = create(:social_network, name: "facebook", id: 2)
       controller.instance_variable_set(:@place, place)
-      expect(controller.send(:active_message, "facebook").with_message_type).to eq "Place"
+      expect(controller.send(:all_messages).count).to eq 2
     end
   end
 end
