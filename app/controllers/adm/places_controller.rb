@@ -58,6 +58,7 @@ class Adm::PlacesController < AdministrationController
                                   :tablet_image,
                                   :desktop_image,
                                   :simple_enter,
-                                  :loyalty_program)
+                                  :loyalty_program,
+                                  :sms_auth)
   end
 end

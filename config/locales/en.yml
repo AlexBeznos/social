@@ -124,6 +124,7 @@ en:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      not_found: 'record not found'
       accepted: must be accepted
       blank: can't be blank
       present: must be blank
@@ -242,6 +243,10 @@ en:
     simple_enter: Enter
     countdown: " seconds left"
     select_answer: "Select one of the answers below to continue"
+    sms_placeholder: "number for sms"
+    sms_code_placeholder: "code from sms"
+    sms_resend: 'resend sms'
+    sms_try_more: 'code is incorect. Try one more time.'
     submit: "Submit"
   menu_item:
     greetings: "%{customer_name}, welcome to %{place_name}"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103154323) do
+ActiveRecord::Schema.define(version: 20151206211846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 20151103154323) do
 
   add_index "customers", ["social_network_id"], name: "index_customers_on_social_network_id", using: :btree
 
+  create_table "gowifi_sms", force: true do |t|
+    t.string   "phone"
+    t.string   "code"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
+
   create_table "menu_items", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -181,6 +191,7 @@ ActiveRecord::Schema.define(version: 20151103154323) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
+    t.boolean  "sms_auth",                     default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

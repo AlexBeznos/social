@@ -9,13 +9,12 @@ module ApplicationHelper
     render 'shared/navigation' if navigation == '' || navigation.to_bool
   end
 
-  def render_stock_image(stock)
-    push_image = image_tag stock.image.url, class: 'offer'
+  def render_stock_image(place)
+    stock = place.get_proper_stock
 
-    if stock.url != ''
-      link_to push_image, stock.url
-    else
-      push_image
+    if place.stocks_active && stock
+      push_image = image_tag stock.image.url, class: 'offer'
+      stock.url.blank? ? push_image : link_to(push_image, stock.url)
     end
   end
 

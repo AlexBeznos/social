@@ -50,6 +50,9 @@
         = t('models.places.attrs.score_amount')
         %span.text-muted.pull-right= @place.score_amount
       %li.list-group-item
+        = t('models.places.attrs.sms_auth')
+        %span.text-muted.pull-right= fa_plus_minus(@place.sms_auth)
+      %li.list-group-item
         = t('models.places.attrs.by_password')
         %span.text-muted.pull-right= fa_plus_minus(@place.enter_by_password)
       - if @place.enter_by_password

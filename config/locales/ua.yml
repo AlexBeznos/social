@@ -146,6 +146,7 @@ ua:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      not_found: запис не знайдено
       accepted: має бути прийнятий
       blank: не може бути пустим
       confirmation: не збігається з підтвердженням
@@ -289,6 +290,9 @@ ua:
     countdown: " секунд залишилось"
     select_answer: "Оберіть одну з запропонованих відповідей"
     submit: "Відповісти"
+    sms_placeholder: "номер для смс"
+    sms_code_placeholder: "код з смс"
+    sms_resend: 'відправити смс ще раз'
   menu_item:
     greetings: "%{customer_name}, ласкаво просимо до %{place_name}"
     greetings_short: Ласкаво просимо!

@@ -51,7 +51,7 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    if current_user.franchisee? 
+    if current_user.franchisee?
       @subordinated_users = User.where(user_id: current_user.id) + [current_user]
     elsif current_user.admin?
       @subordinated_users = User.all
@@ -91,7 +91,8 @@ class PlacesController < ApplicationController
                                     :display_other_banners,
                                     :display_my_banners,
                                     :loyalty_program,
-                                    :domen_url)
+                                    :domen_url,
+                                    :sms_auth)
     end
 
     def get_number_of_friends(records)
