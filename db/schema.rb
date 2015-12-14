@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151206211846) do
+=======
+ActiveRecord::Schema.define(version: 20151124201825) do
+>>>>>>> d16fd74695a2b798f91b5387e090eb72dd697732
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,17 +142,18 @@ ActiveRecord::Schema.define(version: 20151206211846) do
     t.datetime "image_updated_at"
     t.text     "message"
     t.string   "message_link"
-    t.integer  "place_id"
+    t.integer  "with_message_id"
     t.boolean  "active",             default: true
     t.string   "subscription"
     t.string   "subscription_uid"
     t.integer  "social_network_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "with_message_type",  default: "Place"
   end
 
-  add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
   add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
+  add_index "messages", ["with_message_id"], name: "index_messages_on_with_message_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "customer_id"
@@ -159,6 +164,15 @@ ActiveRecord::Schema.define(version: 20151206211846) do
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
+
+  create_table "place_groups", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "place_groups", ["user_id"], name: "index_place_groups_on_user_id", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"
@@ -182,8 +196,8 @@ ActiveRecord::Schema.define(version: 20151206211846) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "simple_enter",                 default: false
     t.boolean  "loyalty_program",              default: false
+    t.boolean  "simple_enter",                 default: false
     t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
@@ -191,9 +205,14 @@ ActiveRecord::Schema.define(version: 20151206211846) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
+<<<<<<< HEAD
     t.boolean  "sms_auth",                     default: false
+=======
+    t.integer  "place_group_id"
+>>>>>>> d16fd74695a2b798f91b5387e090eb72dd697732
   end
 
+  add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 

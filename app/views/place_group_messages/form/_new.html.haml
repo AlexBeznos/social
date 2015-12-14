@@ -1,0 +1,12 @@
+= simple_form_for [@place_group, @message] do |f|
+  = f.error_notification
+  = f.association :social_network
+  .facebook.vkontakte.twitter
+    = f.input :message_link
+    = f.input :image, as: :file
+    = f.input :message, as: :text
+  .instagram
+    = f.input :subscription
+
+
+  = f.button :submit

@@ -1,10 +1,13 @@
 en:
   models:
     places:
+      errors:
+        different_owners: "If you want to set another owner in this place - remove it from Group first"
       place: places
       attrs:
         name: 'Place name'
         domen_url: "Domen URL"
+        place_group: Place group
         by_password: 'Enter by password'
         password: 'Password'
         active: 'Hotspot enabled'

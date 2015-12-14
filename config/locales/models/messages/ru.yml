@@ -10,7 +10,9 @@ ru:
     messages:
       message_for: "Сообщение для %{name}"
       attrs:
-        message: 'сообщение'
+        attachment: Прикрепленный файл
+        active: Активно
+        message: 'Сообщение'
         subscription: "Подписка на"
         message_link: "Ссылка в сообщении"
       actions:
@@ -18,3 +20,7 @@ ru:
           title: 'Редактировать сообщение'
         new:
           title: Добавить сообщение
+        activate:
+          title: Активировать
+        deactivate:
+          title: Деактивировать

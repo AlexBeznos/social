@@ -1,0 +1,12 @@
+= simple_form_for @place_group do |f|
+  = f.error_notification
+
+  .form-inputs
+    - if @subordinated_users
+      = f.input :user_id, collection: @subordinated_users, label_method: ->(obj){ obj.full_name + ' (' + obj.email + ')'}, label: t('models.places.attrs.owner'), include_blank: false
+    - else 
+      = f.input :user_id, as: :hidden, :input_html => { :value => "#{current_user.id}" }
+    = f.input :name
+  .form-actions
+    = f.button :submit
+  

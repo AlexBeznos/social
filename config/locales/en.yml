@@ -21,6 +21,7 @@ en:
       menu_item: product
       poll: poll
       banner: banner
+      place_group: place group
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"

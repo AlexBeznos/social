@@ -1,10 +1,13 @@
 ua:
   models:
     places:
+      errors:
+        different_owners: "Перед тим як змінити власника - приберіть цій заклад з групи"
       place: заклад
       attrs:
         name: 'Назва закладу'
         domen_url: "Адреса домену"
+        place_group: Група
         by_password: 'Вхід через пароль'
         password: 'Пароль для входу'
         active: 'Hotspot активований'

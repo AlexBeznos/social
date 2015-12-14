@@ -9,7 +9,7 @@ class Adm::MessagesController < AdministrationController
 
   def create
     @message = Message.new(message_params)
-    @message.place_id = @place.id
+    @message.with_message = @place
 
     if @message.save
       redirect_to adm_place_path(@place), :notice => 'Message created!'
@@ -23,7 +23,7 @@ class Adm::MessagesController < AdministrationController
 
   def update
     if @message.update(message_params)
-      redirect_to adm_place_path(@message.place), :notice => 'Message updated!'
+      redirect_to adm_place_path(message_path), :notice => 'Message updated!'
     else
       render :action => :edit, :alert => "U pass something wrong. Errors: #{@message.errors}"
     end
@@ -31,22 +31,30 @@ class Adm::MessagesController < AdministrationController
 
   def activate
     @message.update(active: true)
-    redirect_to adm_place_path(@message.place)
+    redirect_to adm_place_path(message_path)
   end
 
   def deactivate
     @message.update(active: false)
-    redirect_to adm_place_path(@message.place)
+    redirect_to adm_place_path(message_path)
   end
 
   def destroy
     @message.destroy
-    redirect_to adm_place_path(@message.place), :notice => 'Place destroyed!'
+    redirect_to adm_place_path(message_path), :notice => 'Place destroyed!'
   end
 
   private
 
-  def message_params
-    params.require(:message).permit(:social_network_id, :message, :message_link, :image, :active, :subscription)
-  end
+    def message_params
+      params.require(:message).permit(:social_network_id, :message, :message_link, :image, :active, :subscription)
+    end
+
+    def message_path
+      if @message.with_message_type == "Place"
+        Place.find_by(id: @message.with_message_id) 
+      elsif @message.with_message_type == "PlaceGroup"
+        Place.find_by(place_group_id: @message.with_message_id)
+      end
+    end
 end

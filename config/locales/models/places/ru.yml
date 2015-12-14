@@ -1,10 +1,13 @@
 ru:
   models:
     places:
+      errors:
+        different_owners: "Прежде чем сменить владельца - уберите это заведение из группы"
       place: заведение
       attrs:
         name: 'Название заведения'
         domen_url: "Адрес домена"
+        place_group: Группа
         by_password: 'Вход по паролю'
         password: 'Пароль для входа'
         active: 'Hotspot активен'
