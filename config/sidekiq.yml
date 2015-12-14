@@ -1,6 +1,8 @@
 ---
 :concurrency:  25
 :queues:
+  - [sms_send, 6]
   - [advertisment, 5]
   - [wifi_settings, 4]
-  - [default, 1] 
+  - [sms_remove, 3]
+  - [default, 1]
