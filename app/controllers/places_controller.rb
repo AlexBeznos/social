@@ -104,7 +104,7 @@ class PlacesController < ApplicationController
                                     :display_my_banners,
                                     :loyalty_program,
                                     :domen_url,
-                                    :sms_auth)
+                                    :sms_auth,
                                     :place_group_id)
     end
 
