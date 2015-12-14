@@ -24,6 +24,7 @@ ru:
         display_my_banners: Показывать мои баннеры в других заведения
         display_other_banners: Показывать чужие баннеры в моем заведении
         owner: Владелец
+        sms_auth: SMS аутентификация
       actions:
         index:
           title: 'Заведения'

@@ -33,17 +33,11 @@
             %li.list-group-item
               Enter without authorization
               %span.text-muted.pull-right
-                - if @place.simple_enter
-                  %i.fa.fa-thumbs-o-up
-                - else
-                  %i.fa.fa-thumbs-o-down
+                = thumb @place.simple_enter
             %li.list-group-item
               Loyalty program
               %span.text-muted.pull-right
-                - if @place.loyalty_program
-                  %i.fa.fa-thumbs-o-up
-                - else
-                  %i.fa.fa-thumbs-o-down
+                = thumb @place.loyalty_program
             %li.list-group-item
               Redirect url
               %span.text-muted.pull-right= link_to 'link', @place.redirect_url
@@ -53,17 +47,15 @@
             %li.list-group-item
               Place active
               %span.text-muted.pull-right
-                - if @place.active
-                  %i.fa.fa-thumbs-o-up
-                - else
-                  %i.fa.fa-thumbs-o-down
+                = thumb @place.active
             %li.list-group-item
               Enter by password
               %span.text-muted.pull-right
-                - if @place.enter_by_password
-                  %i.fa.fa-thumbs-o-up
-                - else
-                  %i.fa.fa-thumbs-o-down
+                = thumb @place.enter_by_password
+            %li.list-group-item
+              Enter by sms
+              %span.text-muted.pull-right
+                = thumb @place.sms_auth
             - if @place.enter_by_password
               %li.list-group-item
                 Password
@@ -94,11 +86,7 @@
                   - if message.image.exists?
                     = image_tag message.image, height: 100
                 %td= message.message_link
-                %td
-                  - if message.active
-                    %i.fa.fa-thumbs-o-up
-                  - else
-                    %i.fa.fa-thumbs-o-down
+                %td= thumb message.active
                 %td
               %tr
                 %td{:colspan => '6'}

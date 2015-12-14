@@ -4,13 +4,13 @@ class PlacesController < ApplicationController
   def index
     if !current_user.admin?
       @places = current_user.get_all_places
-    else 
+    else
       @places = Place.all
     end
 
     if current_user.general?
       @place_groups = PlaceGroup.where(user_id: current_user.id)
-    elsif current_user.franchisee? 
+    elsif current_user.franchisee?
       @place_groups = PlaceGroup.where(user_id: User.where(user_id: current_user.id))
     elsif current_user.admin?
       @place_groups = PlaceGroup.all
@@ -63,7 +63,7 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    if current_user.franchisee? 
+    if current_user.franchisee?
       @subordinated_users = User.where(user_id: current_user.id) + [current_user]
     elsif current_user.admin?
       @subordinated_users = User.all
@@ -104,6 +104,7 @@ class PlacesController < ApplicationController
                                     :display_my_banners,
                                     :loyalty_program,
                                     :domen_url,
+                                    :sms_auth)
                                     :place_group_id)
     end
 

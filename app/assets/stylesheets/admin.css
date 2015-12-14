@@ -15,5 +15,6 @@
  *= require AdminLTE
  *= require skins/skin-blue
  *= require admin_style
+ *= require font-awesome
  *= require_self
  */

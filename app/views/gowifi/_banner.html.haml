@@ -1,0 +1,16 @@
+#modal
+  .row
+    .col-sm-6.col-sm-offset-3
+      #close-banner.btn.btn-default
+        Close
+      %br
+      #countdown
+        = t('wifi.countdown')
+      %br
+      .center-block
+        - case
+        - when @banner.content_content_type.match(/^image/)
+          = image_tag @banner.content.url, class: "modalcontent"
+        - when @banner.content_content_type.match(/^video/)
+          %video{ name: "media", class: "modalcontent", autoplay: true, loop: true }
+            %source{src: "#{@banner.content.url}"}

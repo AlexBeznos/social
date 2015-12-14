@@ -38,6 +38,7 @@ gem 'high_voltage', '~> 2.3.0'
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
+gem 'default_value_for'
 
 
 # lib to get lang from http request header
@@ -118,6 +119,9 @@ gem 'i18n-timezones'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+# smsc
+gem 'smsc'
+
 group :development do
   gem 'spring'
   gem 'mina'
@@ -134,6 +138,7 @@ group :development, :test do
   gem 'forgery'
   gem 'byebug'
   gem 'pry'
+  gem 'timecop'
 end
 
 group :test do
@@ -146,6 +151,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'test_after_commit'
+  gem 'rspec-sidekiq'
 end
 
 # Use ActiveModel has_secure_password

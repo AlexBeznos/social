@@ -45,24 +45,25 @@ class Adm::PlacesController < AdministrationController
 
   private
 
-    def place_params
-      params.require(:place).permit(:name,
-                                    :logo,
-                                    :slug,
-                                    :enter_by_password,
-                                    :password,
-                                    :active,
-                                    :redirect_url,
-                                    :template,
-                                    :background_active,
-                                    :mobile_image,
-                                    :tablet_image,
-                                    :desktop_image,
-                                    :simple_enter,
-                                    :loyalty_program)
-    end
+  def place_params
+    params.require(:place).permit(:name,
+                                  :logo,
+                                  :slug,
+                                  :enter_by_password,
+                                  :password,
+                                  :active,
+                                  :redirect_url,
+                                  :template,
+                                  :background_active,
+                                  :mobile_image,
+                                  :tablet_image,
+                                  :desktop_image,
+                                  :simple_enter,
+                                  :loyalty_program,
+                                  :sms_auth)
+  end
 
-    def all_messages
-      Message.where("with_message_id = ? and with_message_type = 'Place' or with_message_id = ? and with_message_type = 'PlaceGroup'", @place.id, @place.place_group_id)
-    end
+  def all_messages
+    Message.where("with_message_id = ? and with_message_type = 'Place' or with_message_id = ? and with_message_type = 'PlaceGroup'", @place.id, @place.place_group_id)
+  end
 end

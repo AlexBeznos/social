@@ -24,6 +24,7 @@
         display_my_banners: Ցույց տալ իմ բաններները այլ հաստատություններում
         display_other_banners: Ցույց տալ ուրիշների բաններները իմ հաստատությունում
         owner: սեփականատեր
+        sms_auth: SMS վավերացման
       actions:
         index:
           title: 'Հաստատություն'
