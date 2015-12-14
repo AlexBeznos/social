@@ -18,13 +18,17 @@ RSpec.describe GowifiSms, :type => :model do
     let(:place) { create :place }
     let(:sms) { create(:gowifi_sms, place: place) }
 
-    it 'should add job to queue' do
-      expect{ sms }.to change(GowifiSmsWorker.jobs, :size).by(1)
+    it 'should add job to sms_send queue' do
+      expect{ sms }.to change(GowifiSmsSendWorker.jobs, :size).by(1)
+    end
+
+    it 'should add job to sms_remove queue' do
+      expect{ sms }.to change(GowifiSmsRemoveWorker.jobs, :size).by(1)
     end
 
     it 'should send message only one at 25 seconds' do
-      expect{ sms }.to change(GowifiSmsWorker.jobs, :size).by(1)
-      expect{ sms.resend }.to change(GowifiSmsWorker.jobs, :size).by(0)
+      expect{ sms }.to change(GowifiSmsSendWorker.jobs, :size).by(1)
+      expect{ sms.resend_sms }.to change(GowifiSmsSendWorker.jobs, :size).by(0)
     end
   end
 end

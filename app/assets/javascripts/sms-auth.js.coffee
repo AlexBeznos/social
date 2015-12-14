@@ -3,7 +3,20 @@ $(document).ready ->
   currentPath = ->
     return window.location.pathname.replace /login/, ''
 
-  resend_sms = (e) ->
+  sendSmsCode = (e) ->
+    e.preventDefault()
+    data = $(e.currentTarget).serialize()
+
+    $.ajax
+      type: 'POST',
+      url: "#{currentPath()}by_sms",
+      data: data,
+      success: (data) ->
+        window.location.replace data.url
+      error: (xhr, str) ->
+        alert(JSON.parse(xhr.responseText).error)
+
+  resendSms = (e) ->
     e.preventDefault()
 
     $.ajax
@@ -21,11 +34,12 @@ $(document).ready ->
       url: "#{currentPath()}gowifi_sms",
       data: data,
       success: (data) ->
-        [$id, resend_link] = [data.id, $('#resend_sms')]
+        [$id, resendLink] = [data.id, $('#resend_sms')]
 
         $(e.currentTarget).hide()
         $('.by_sms_form').show()
-        resend_link.click(resend_sms)
-        resend_link.show()
+        $('.by_sms_form').submit(sendSmsCode)
+        resendLink.click(resendSms)
+        resendLink.show()
       error: (xhr, str) ->
         alert(JSON.parse(xhr.responseText).error)

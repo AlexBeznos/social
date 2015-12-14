@@ -18,9 +18,9 @@ class GowifiAuthController < ApplicationController
 
     if sms.any?
       sms.first.destroy
-      redirect_to wifi_login_path
+      render json: { url: wifi_login_path }, status: :ok
     else
-      redirect_to :back, alert: I18n.t('wifi.sms_try_more')
+      render json: { error: I18n.t('wifi.sms_try_more').humanize }, status: :unprocessable_entity
     end
   end
 

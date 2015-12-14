@@ -5,7 +5,7 @@ class GowifiSmsController < ApplicationController
     if @gowifi_sms.save
       render json: { id: @gowifi_sms.id }, status: :ok
     else
-      render json: { error: @gowifi_sms.errors.messages.first.join(' ') },
+      render json: { error: @gowifi_sms.errors.messages.first.last },
              status: :not_acceptable
     end
   end

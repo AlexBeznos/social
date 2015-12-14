@@ -1,4 +1,4 @@
-class GowifiSmsWorker
+class GowifiSmsSendWorker
   include Sidekiq::Worker
 
   sidekiq_options :queue => :sms_send, :retry => false, :failures => true

@@ -46,7 +46,6 @@ RSpec.describe GowifiSmsController, :type => :controller do
 
       include_examples "with_status", :not_acceptable
 
-
       it 'should have error in body' do
         expect(response.body).to include('error')
       end

@@ -11,9 +11,10 @@ class GowifiSms < ActiveRecord::Base
   validates :code, length: { is: 6 }
 
   after_create :send_sms
+  after_create :remove_gowifi_sms_record
 
   def send_sms
-    GowifiSmsWorker.perform_async(id)
+    GowifiSmsSendWorker.perform_async(id)
   end
 
   def resend_sms
@@ -21,5 +22,10 @@ class GowifiSms < ActiveRecord::Base
       send_sms
       self.touch
     end
+  end
+
+  private
+  def remove_gowifi_sms_record
+    GowifiSmsRemoveWorker.perform_in(1.hours, id)
   end
 end
