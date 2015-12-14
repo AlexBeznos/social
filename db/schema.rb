@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20151206211846) do
-=======
-ActiveRecord::Schema.define(version: 20151124201825) do
->>>>>>> d16fd74695a2b798f91b5387e090eb72dd697732
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,11 +201,8 @@ ActiveRecord::Schema.define(version: 20151124201825) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
-<<<<<<< HEAD
     t.boolean  "sms_auth",                     default: false
-=======
     t.integer  "place_group_id"
->>>>>>> d16fd74695a2b798f91b5387e090eb72dd697732
   end
 
   add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree
