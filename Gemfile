@@ -138,6 +138,7 @@ group :development, :test do
   gem 'forgery'
   gem 'byebug'
   gem 'pry'
+  gem 'timecop'
 end
 
 group :test do

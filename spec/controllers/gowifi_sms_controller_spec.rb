@@ -33,8 +33,11 @@ RSpec.describe GowifiSmsController, :type => :controller do
         expect(GowifiSms.all.length).to eq 1
       end
 
+      it 'should include id in response' do
+        expect(response.body).to include 'id'
+      end
+
       include_examples "with_status", :ok
-      include_examples "with_blank_response"
     end
 
     context 'with failure' do
@@ -54,16 +57,17 @@ RSpec.describe GowifiSmsController, :type => :controller do
   end
 
   context '#resend' do
-    before do
-      post :resend, id: id, slug: place.slug
-    end
-
     context 'with success' do
       let(:gowifi_sms) { create(:gowifi_sms, place: place) }
       let(:id) { gowifi_sms.id }
 
+      before do
+        Timecop.travel( gowifi_sms.updated_at + 26.seconds )
+        post :resend, id: id, slug: place.slug
+      end
+
       it 'should add job to queue' do
-        expect(GowifiSmsWorker.jobs.size).to eq 2 # 1 after save + 1 after resend
+        expect(GowifiSmsSendWorker.jobs.size).to eq 2 # 1 after save + 1 after resend
       end
 
       include_examples "with_status", :ok
@@ -73,8 +77,12 @@ RSpec.describe GowifiSmsController, :type => :controller do
     context 'with failure' do
       let(:id) { Faker::Number.number(Faker::Number.number(1).to_i) }
 
+      before do
+        post :resend, id: id, slug: place.slug
+      end
+
       it 'should not add job to queue' do
-        expect(GowifiSmsWorker.jobs.size).to eq 0
+        expect(GowifiSmsSendWorker.jobs.size).to eq 0
       end
 
       include_examples "with_status", :not_acceptable

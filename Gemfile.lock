@@ -454,6 +454,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    timecop (0.8.0)
     timers (4.0.1)
       hitimes
     translit (0.1.5)
@@ -580,6 +581,7 @@ DEPENDENCIES
   test_after_commit
   therubyracer
   thin
+  timecop
   translit
   turbolinks
   twitter
