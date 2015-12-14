@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206211846) do
+ActiveRecord::Schema.define(version: 20151214225337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "ahoy_events", id: :uuid, force: true do |t|
+    t.uuid     "visit_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.json     "properties"
+    t.datetime "time"
+  end
+
+  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
+  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
+  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -192,8 +205,8 @@ ActiveRecord::Schema.define(version: 20151206211846) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "loyalty_program",              default: false
     t.boolean  "simple_enter",                 default: false
+    t.boolean  "loyalty_program",              default: false
     t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
@@ -203,6 +216,7 @@ ActiveRecord::Schema.define(version: 20151206211846) do
     t.string   "domen_url",                    default: "gofriends.com.ua"
     t.boolean  "sms_auth",                     default: false
     t.integer  "place_group_id"
+    t.boolean  "demo",                         default: false
   end
 
   add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree
@@ -308,5 +322,35 @@ ActiveRecord::Schema.define(version: 20151206211846) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["last_request_at"], name: "index_users_on_last_request_at", using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", using: :btree
+
+  create_table "visits", id: :uuid, force: true do |t|
+    t.uuid     "visitor_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "user_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.integer  "screen_height"
+    t.integer  "screen_width"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "postal_code"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.datetime "started_at"
+  end
+
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
 end
