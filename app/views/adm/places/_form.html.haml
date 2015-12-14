@@ -8,6 +8,7 @@
   = f.input :logo, as: :file
   = f.input :template, collection: Dir.entries("#{Rails.root}/app/assets/stylesheets/wifi").select {|entry| File.directory? File.join("#{Rails.root}/app/assets/stylesheets/wifi",entry) and !(entry =='.' || entry == '..') }
   = f.input :sms_auth, as: :boolean
+  = f.input :demo, as: :boolean
   = f.input :enter_by_password, as: :boolean
   .adm_place_password
     = f.input :password

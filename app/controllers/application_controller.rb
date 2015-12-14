@@ -81,6 +81,7 @@ class ApplicationController < ActionController::Base
     end
 
     def wifi_login_path
+      return status_path(@place) if @place.demo
       "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
     end
 

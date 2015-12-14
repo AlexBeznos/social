@@ -60,6 +60,7 @@ class Adm::PlacesController < AdministrationController
                                   :desktop_image,
                                   :simple_enter,
                                   :loyalty_program,
+                                  :demo,
                                   :sms_auth)
   end
 

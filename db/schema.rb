@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214224610) do
+ActiveRecord::Schema.define(version: 20151214225337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(version: 20151214224610) do
     t.string   "domen_url",                    default: "gofriends.com.ua"
     t.boolean  "sms_auth",                     default: false
     t.integer  "place_group_id"
+    t.boolean  "demo",                         default: false
   end
 
   add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree
