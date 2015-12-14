@@ -1,0 +1,14 @@
+- poll = place.polls.sample
+
+.container.inner
+  = render 'shared/flash'
+  = yield
+#poll-button.btn.btn-lg.poll-btn
+  = t('wifi.poll')
+#poll-container{ :style => "display: none;" }
+  = simple_form_for [place, poll], url: {controller: 'gowifi_auth', action: :submit_poll} do |f|
+    = f.error_notification
+    %h3= f.label f.object.question, class: "question"
+    = f.association :answers, label: t('wifi.select_answer'), collection: poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
+
+    = f.button :submit, t('wifi.submit'), class: 'btn-lg poll-btn'

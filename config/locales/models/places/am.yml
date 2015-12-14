@@ -1,10 +1,13 @@
 ﻿am:
   models:
     places:
+      errors:
+        different_owners: "Հեռացնել այս հիմնարկ խմբում, նախքան փոխելով սեփականատիրոջը"
       place: Հաստատություններ
       attrs:
         name: 'Հաստատության անվանումը'
         domen_url: "Դոմեն հասցե"
+        place_group: խումբ
         by_password: 'մուտք գաղտնաբառով'
         password: 'Մուտքի գաղտնաբառ'
         active: 'Hotspot ակտիվ է'
@@ -21,6 +24,7 @@
         display_my_banners: Ցույց տալ իմ բաններները այլ հաստատություններում
         display_other_banners: Ցույց տալ ուրիշների բաններները իմ հաստատությունում
         owner: սեփականատեր
+        sms_auth: SMS վավերացման
       actions:
         index:
           title: 'Հաստատություն'

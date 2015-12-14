@@ -24,7 +24,7 @@ RSpec.describe Place do
   it { is_expected.to have_many(:menu_items) }
   it { is_expected.to have_many(:orders) }
   it { is_expected.to have_many(:polls) }
-
+  it { is_expected.to have_many(:gowifi_sms) }
 
   it { is_expected.to have_one(:style) }
   it { is_expected.to callback(:set_wifi_username_password).before(:create) }
@@ -52,21 +52,6 @@ RSpec.describe Place do
     it "can't display it's banners in other places if city is not set" do
       place = build(:place, city: "", display_my_banners: true)
       expect(place).to_not be_valid
-    end
-  end
-
-  describe "Wifi username and password" do
-
-    let(:place) { create(:place) }
-
-    it "should not be default" do
-      expect(place.wifi_username).not_to include("P8uDratA")
-      expect(place.wifi_password).not_to include("Tac4edrU")
-    end
-
-    it "should not be empty" do
-      expect(place.wifi_username).not_to be_empty
-      expect(place.wifi_password).not_to be_empty
     end
   end
 end

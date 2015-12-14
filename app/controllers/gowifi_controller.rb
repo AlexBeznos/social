@@ -9,20 +9,8 @@ class GowifiController < ApplicationController
 
   def show
     @networks = @place.get_networks
-    @stock = @place.get_proper_stock
-    @poll = @place.polls.sample
-    if @place.display_other_banners
-      values = { left_border: @place.longitude-0.2, right_border: @place.longitude+0.2, 
-                 top_border: @place.latitude+0.2, bottom_border: @place.latitude-0.2,
-                 self_id: @place.id } 
-      @banner = Banner.where(place_id: Place.where('latitude > :bottom_border and latitude < :top_border 
-                                                    and longitude > :left_border and longitude < :right_border 
-                                                    and id != :self_id and display_my_banners = true', 
-                                                    values)).sample
-      if @banner
-        @banner.increment!(:number_of_views)
-      end
-    end
+    @banner = find_banner if @place.display_other_banners
+    @banner.increment!(:number_of_views) if @banner
   end
 
   private
@@ -39,6 +27,22 @@ class GowifiController < ApplicationController
 
     def find_customer
       @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
+    end
+
+    # TODO: make banner injection by simple method and visits incrementation by ajax call
+    def find_banner
+      values = {
+        left_border: @place.longitude-0.2,
+        right_border: @place.longitude+0.2,
+        top_border: @place.latitude+0.2,
+        bottom_border: @place.latitude-0.2,
+        self_id: @place.id
+      }
+
+      Banner.where(place_id: Place.where('latitude > :bottom_border and latitude < :top_border
+                                          and longitude > :left_border and longitude < :right_border
+                                          and id != :self_id and display_my_banners = true',
+                                          values)).sample
     end
 
     def check_for_place_activation

@@ -1,0 +1,14 @@
+ru:
+  models:
+    place_groups:
+      class: 'Группа заведений'
+      uncategorized: 'Без группы'
+      errors:
+        not_general: 'Владелец должен быть из группы "общие"'
+      actions:
+        new:
+          title: Добавить группу заведений
+        edit:
+          title: Редактирование группы заведений
+      attrs:
+        name: Название

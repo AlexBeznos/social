@@ -21,6 +21,7 @@ ru:
         city: Город
         display_my_banners: Показывать мои баннеры в других заведения
         display_other_banners: Показывать чужые баннеры в моем заведении
+        sms_auth: SMS аутенификация
       user:
         first_name: Имя
         last_name: Фамилия

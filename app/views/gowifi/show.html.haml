@@ -13,123 +13,30 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "wifi/modal", :media => "all"
-    = stylesheet_link_tag "wifi/spinner", :media => "all"
     = stylesheet_link_tag "wifi/#{@place.template}/style", :media => "all"
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
     = stylesheet_link_tag "wifi/poll_styling", :media => "all"
     = javascript_include_tag "wifi_enter"
-
-    - if @place.style
-      - if @place.style.background.exists?
-        :css
-          body {
-            background: url(#{@place.style.background.url }) no-repeat center
-          }
-      - if @place.style.text_color && !@place.style.text_color.empty?
-        :css
-          .content p {
-            color: #{ @place.style.text_color }
-          }
-          .content h1 {
-            color: #{ @place.style.text_color }
-          }
-          .content label {
-            color: #{ @place.style.text_color }
-          }
-      - if @place.style.greating_color && !@place.style.greating_color.empty?
-        :css
-          .content p:first-line {
-            color: #{ @place.style.greating_color }
-          }
-      :css
-        #{@place.style.css_min}
-
+    = render 'style', place: @place, customer: @customer if @place.style
   %body
-    - if @place.display_other_banners && @banner
-      #modal
-        .row
-          .col-sm-6.col-sm-offset-3
-            #close-banner.btn.btn-default
-              Close
-            %br
-            #countdown 
-              = t('wifi.countdown')
-            %br
-            .center-block
-              - case  
-              - when @banner.content_content_type.match(/^image/) 
-                = image_tag @banner.content.url, class: "modalcontent"
-              - when @banner.content_content_type.match(/^video/) 
-                %video{ name: "media", class: "modalcontent", autoplay: true, loop: true }
-                  %source{src: "#{@banner.content.url}"}
+    = render 'banner', place: @place if @place.display_other_banners && @banner
     .wrapper-out
       .wrapper-in
         .content
-          - if @place.logo.file?
-            = image_tag @place.logo.url, class: 'logo'
-          - else
-            %h1= @place.name
-          %p
-            - if @customer
-              = t('wifi.greetings', customer_name: @customer.full_name).html_safe
-            - else
-              = t('wifi.greetings_to_no_one')
-            %br
-            = t('wifi.description').html_safe
-          .socials
-            - @networks.each do |network|
-              = link_to "#{ENV['APP_URL']}auth/#{network.name}?place=#{@place.slug}", class: 'wifi_link' do
-                - icon = @place.social_network_icons.find_by(social_network_id: network.id)
-                - if icon
-                  = image_tag icon.icon.url
-                - else
-                  = image_tag "wifi/#{@place.template}/#{network.name}.png"
-          - if @place.enter_by_password
-            = form_tag("/wifi/#{@place.slug}/by_password", id: 'manual', method: 'post', class: 'password_form') do
-              %input{:name => "password", :placeholder => "#{t('wifi.password_placeholder')}", :required => "", :type => "password"}/
-              %input{:type => "submit", :value => ""}/
-          - if @place.simple_enter
-            %br
-            = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg'
-          - if @place.polls_active && @poll
-            .container.inner
-              = render 'shared/flash'
-              = yield
-            #poll-button.btn.btn-lg.poll-btn 
-              = t('wifi.poll')  
-            #poll-container{ :style => "display: none;" }
-              = simple_form_for [@place, @poll], url: {controller: 'gowifi_auth', action: :submit_poll} do |f|
-                = f.error_notification
-                %h3= f.label f.object.question, class: "question"
-                = f.association :answers, label: t('wifi.select_answer'), collection: @poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
-            
-                = f.button :submit, t('wifi.submit'), class: 'btn-lg poll-btn'
+          = render 'header', place: @place, customer: @customer
+          = render 'networks', place: @place, networks: @networks
+          = render 'by_password', place: @place if @place.enter_by_password
+          = render 'by_sms', place: @place if @place.sms_auth
+          = render 'poll', place: @place if @place.polls_active && @place.polls.any?
           %br
-          - if @place.stocks_active && @stock
-            = render_stock_image @stock
+          = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg' if @place.simple_enter
+          %br
+          = render_stock_image @place
 
         %footer
           %p= t('wifi.footer')
           = link_to t('privacy_police.title'), page_path('privacy_policy')
-    .loading{:hidden => "true"}
-      .spinner
-        .spinner-container.container1
-          .circle1
-          .circle2
-          .circle3
-          .circle4
-        .spinner-container.container2
-          .circle1
-          .circle2
-          .circle3
-          .circle4
-        .spinner-container.container3
-          .circle1
-          .circle2
-          .circle3
-          .circle4
-    = javascript_include_tag "jquery", :media => "all"
     = javascript_include_tag "wifi/#{@place.template}"
     :javascript
       #{ raw @place.style.js_min if @place.style }

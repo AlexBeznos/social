@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :message do
-    association :place
+    with_message_id :place
+    with_message_type "Place"
     # association :social_network
     message "Hello!"
     image_file_name "picture.jpg"

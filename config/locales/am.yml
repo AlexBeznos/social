@@ -13,7 +13,7 @@
         remember_me: Հիշել
   activerecord:
     models:
-      message: հաղորդագրություն      
+      message: հաղորդագրություն
       user: Բաժանորդ
       place: Հաստատություն
       stock: ակցիան
@@ -21,18 +21,19 @@
       menu_item: ապրանք
       poll: հարցում
       banner: բանները
+      place_group: մի խումբ հաստատությունների
   notice:
     create: "%{subject} Ավելացված է"
     updated: "%{subject} թարմացված է "
     deleted: "%{subject} ջնջված է"
   date:
     abbr_day_names:
-    - Կիր.    
+    - Կիր.
     - Երկ.
     - Երեքշ.
     - Չորեք.
     - Հինգշ.
-    - Ուրբ.    
+    - Ուրբ.
     - Շաբ.
     abbr_month_names:
     - Հունվար
@@ -48,7 +49,7 @@
     - Նոյեմբեր
     - Դեկտեմբեր
     day_names:
-    - Կիրակի    
+    - Կիրակի
     - Երկուշաբթի
     - Երեքշաբթի
     - Չորեքշաբթի
@@ -65,11 +66,11 @@
     - մարտի
     - ապրիլի
     - մայիսի
-    - հունիսի    
+    - հունիսի
     - հուլիսի
     - օգոստոսի
     - սեպտեմբերի
-    - հոկտեմբերի    
+    - հոկտեմբերի
     - նոյեմբերի
     - դեկտեմբերի
     order:
@@ -144,6 +145,7 @@
   errors:
     format: "%{attribute} %{message}"
     messages:
+      not_found: ռեկորդային չի գտնվել
       accepted: անհրաժեշտ է հաստատել
       blank: չի կարող լինել դատարկ
       present: պետք է թողնել դատարկ
@@ -159,13 +161,13 @@
       less_than: կարող է ունենալ արժեք փոքր քան %{count}
       less_than_or_equal_to: կարող է ունենալ արժեք փոքր կամ հավասար %{count}
       not_a_number: չի համարվում թիվ
-      not_an_integer: չի համարվում ամբողջ թիվ      
+      not_an_integer: չի համարվում ամբողջ թիվ
       odd: կարող է ունենալ միայն զույգ արժեք
       record_invalid: 'առաջացել է սխալներ: %{errors}'
       restrict_dependent_destroy:
         one: 'Հնարավոր չէ ջնջել պահպանվածը, քանի որ օգտագործվում է : %{record}'
         many: 'Հնարավոր չէ ջնջել պահպանվածը, քանի որ օգտագործվում է : %{record}'
-      taken: արդեն ստեղծված է 
+      taken: արդեն ստեղծված է
       too_long:
         few: շատ մեծ երկարություն (չի կարող լինել շատ քան %{count} նշան)
         many: շատ մեծ երկարություն (չի կարող լինել շատ քան %{count} նշաններ)
@@ -222,17 +224,17 @@
           billion:
             few: միլիարդ
             many: միլիարդ
-            one: միլիարդ            
+            one: միլիարդ
             other: միլիարդ
           million:
-            few: միլիոն            
+            few: միլիոն
             many: միլիոն
             one: միլիոն
             other: միլիոն
           quadrillion:
             few: կվադրիլիոն
             many: կվադրիլիոն
-            one: կվադրիլիոն            
+            one: կվադրիլիոն
             other: կվադրիլիոն
           thousand:
             few: հազար
@@ -258,7 +260,7 @@
             many: բայտ
             one: բայտ
             other: բայտ
-          gb: ԳԲ          
+          gb: ԳԲ
           kb: ԿԲ
           mb: ՄԲ
           tb: ՏԲ
@@ -275,24 +277,27 @@
       two_words_connector: " և "
       words_connector: ", "
   time:
-    am: առավոտյան    
+    am: առավոտյան
     formats:
       default: "%a, %d %b %Y, %H:%M:%S %z"
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: երեկոյան
   wifi:
-    greetings: "Բարև Ձեզ, <ins>%{customer_name}</ins>!"
+    greetings: Բարև Ձեզ, <ins>%{customer_name}</ins>!
     greetings_to_no_one: Բարև Ձեզ
-    description: 'Մուտք գործեք Ձեր սիրելի<br/>Սոցիալական ցանց և ստացեք<br/>մուտք ինտերնետ'
-    poll: 'Մուտք, անցնելով հարցում'
-    poll_error: "Դուք չեք ընտրել որև առաջարկվող պատասխան"
-    footer: 'Powered by GoFriends'
-    password_placeholder: 'կամ մուտքագրեք գաղտնաբառը...'
-    simple_enter: "Մուտք"
-    countdown: " վայրկյան է մնացել "
-    select_answer: "Ընտրեք առաջարկվող պատասխաններից մեկը"
-    submit: "Պատասխանել"
+    description: Մուտք գործեք Ձեր սիրելի<br/>Սոցիալական ցանց և ստացեք<br/>մուտք ինտերնետ
+    poll: Մուտք, անցնելով հարցում
+    poll_error: Դուք չեք ընտրել որև առաջարկվող պատասխան
+    footer: Powered by GoFriends
+    password_placeholder: կամ մուտքագրեք գաղտնաբառը...
+    simple_enter: Մուտք
+    countdown: վայրկյան է մնացել
+    select_answer: Ընտրեք առաջարկվող պատասխաններից մեկը
+    sms_code_placeholder: ծածկագիրը SMS
+    submit: Պատասխանել
+    sms_placeholder: համարը ուղարկելով SMS
+    sms_resend: ուղարկել SMS, նորից
   menu_item:
     greetings: "%{customer_name}, Բարի Գալուստ %{place_name}"
     greetings_short: Բարի Գալուստ

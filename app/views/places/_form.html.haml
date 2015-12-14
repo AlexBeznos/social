@@ -2,6 +2,8 @@
   = f.error_notification
   = f.input :name
   = f.input :city
+  - if @place.user
+    = f.input :place_group_id, collection: @place.user.place_groups.all, label_method: ->(obj){ obj.name }, label: t('models.place_groups.class')
   - if @subordinated_users
     = f.input :user_id, collection: @subordinated_users, label_method: ->(obj){ obj.full_name + ' (' + obj.email + ')'}, label: t('models.places.attrs.owner'), include_blank: false
   - else
@@ -16,6 +18,7 @@
   = f.input :loyalty_program, as: :boolean
   = f.input :display_my_banners, as: :boolean
   = f.input :display_other_banners, as: :boolean
+  = f.input :sms_auth, as: :boolean
   = f.input :score_amount
   = f.input :redirect_url
   = f.input :enter_by_password, as: :boolean, input_html: { class: 'enter_by_password_check' }

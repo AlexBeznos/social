@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103154323) do
+ActiveRecord::Schema.define(version: 20151214225337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "ahoy_events", id: :uuid, force: true do |t|
+    t.uuid     "visit_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.json     "properties"
+    t.datetime "time"
+  end
+
+  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
+  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
+  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -97,6 +110,16 @@ ActiveRecord::Schema.define(version: 20151103154323) do
 
   add_index "customers", ["social_network_id"], name: "index_customers_on_social_network_id", using: :btree
 
+  create_table "gowifi_sms", force: true do |t|
+    t.string   "phone"
+    t.string   "code"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
+
   create_table "menu_items", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -128,17 +151,18 @@ ActiveRecord::Schema.define(version: 20151103154323) do
     t.datetime "image_updated_at"
     t.text     "message"
     t.string   "message_link"
-    t.integer  "place_id"
+    t.integer  "with_message_id"
     t.boolean  "active",             default: true
     t.string   "subscription"
     t.string   "subscription_uid"
     t.integer  "social_network_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "with_message_type",  default: "Place"
   end
 
-  add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
   add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
+  add_index "messages", ["with_message_id"], name: "index_messages_on_with_message_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "customer_id"
@@ -149,6 +173,15 @@ ActiveRecord::Schema.define(version: 20151103154323) do
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
+
+  create_table "place_groups", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "place_groups", ["user_id"], name: "index_place_groups_on_user_id", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"
@@ -181,8 +214,12 @@ ActiveRecord::Schema.define(version: 20151103154323) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
+    t.boolean  "sms_auth",                     default: false
+    t.integer  "place_group_id"
+    t.boolean  "demo",                         default: false
   end
 
+  add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 
@@ -285,5 +322,35 @@ ActiveRecord::Schema.define(version: 20151103154323) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["last_request_at"], name: "index_users_on_last_request_at", using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", using: :btree
+
+  create_table "visits", id: :uuid, force: true do |t|
+    t.uuid     "visitor_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "user_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.integer  "screen_height"
+    t.integer  "screen_width"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "postal_code"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.datetime "started_at"
+  end
+
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
 end

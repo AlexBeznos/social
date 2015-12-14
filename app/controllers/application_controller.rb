@@ -28,6 +28,13 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_user)
   end
 
+  def append_info_to_payload(payload)
+    super
+    payload[:request_id] = request.uuid
+    payload[:user_id] = current_user.id if current_user
+    payload[:visit_id] = ahoy.visit_id # if you use Ahoy
+  end
+
   private
 
     def current_user_session
@@ -74,6 +81,7 @@ class ApplicationController < ActionController::Base
     end
 
     def wifi_login_path
+      return status_path(@place) if @place.demo
       "http://172.16.16.1/login?user=#{@place.wifi_username}&password=#{@place.wifi_password}"
     end
 

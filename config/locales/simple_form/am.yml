@@ -7,7 +7,7 @@
         name: 'Հաստատության անվանումը'
         domen_url: 'Դոմեյնի հասցեն'
         logo: 'Լոգո'
-        active: Hotspot ակտիվ է 
+        active: Hotspot ակտիվ է
         stocks_active: Ակցիաները ակտիվ են
         polls_active: Հարցումները ակտիվ են
         reputation_on: Բոնուսների հաշվառում
@@ -21,6 +21,7 @@
         city: Քաղաք
         display_my_banners: Ցուցադրել իմ բաններները այլ հաստատություններում
         display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում
+        sms_auth: SMS վավերացման
       user:
         first_name: Անուն
         last_name: Ազգանուն

@@ -34,6 +34,15 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :place_groups, except: [:index, :show] do
+    resources :messages, :controller => "place_group_messages", except: [:index, :show] do
+      member do
+          get 'activate'
+          get 'deactivate'
+      end
+    end
+  end
+
 
   resources :places do
     resources :polls
@@ -58,13 +67,22 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'gowifi_auth#auth_failure'
 
   scope '/wifi' do
-    get ':slug/login' => 'gowifi#show', as: :gowifi_place
     get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
 
-    patch ':slug/poll_enter' => 'gowifi_auth#submit_poll'
-    get ':slug/status' => 'gowifi_auth#redirect_after_auth'
-    post ':slug/by_password' => 'gowifi_auth#enter_by_password'
-    get ':slug/simple_enter' => 'gowifi_auth#simple_enter'
+    scope ':slug' do
+      get '/login' => 'gowifi#show', as: :gowifi_place
+      patch '/poll_enter' => 'gowifi_auth#submit_poll'
+      get '/status' => 'gowifi_auth#redirect_after_auth'
+      post '/by_password' => 'gowifi_auth#enter_by_password'
+      post '/by_sms' => 'gowifi_auth#enter_by_sms'
+      get '/simple_enter' => 'gowifi_auth#simple_enter'
+
+      resources :gowifi_sms, only: :create do
+        member do
+          post 'resend' => 'gowifi_sms#resend'
+        end
+      end
+    end
   end
 
   scope '/wifi/:place_id/' do

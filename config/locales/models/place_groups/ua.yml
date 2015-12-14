@@ -1,0 +1,14 @@
+ua:
+  models:
+    place_groups:
+      class: 'Група закладів'
+      uncategorized: 'Без групи'
+      errors:
+        not_general: 'Власник має бути з групи "загальні"'
+      actions:
+        new:
+          title: Додати групу закладів
+        edit:
+          title: Редагування групи закладів
+      attrs:
+        name: Назва

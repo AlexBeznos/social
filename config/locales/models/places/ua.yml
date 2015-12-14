@@ -1,10 +1,13 @@
 ua:
   models:
     places:
+      errors:
+        different_owners: "Перед тим як змінити власника - приберіть цій заклад з групи"
       place: заклад
       attrs:
         name: 'Назва закладу'
         domen_url: "Адреса домену"
+        place_group: Група
         by_password: 'Вхід через пароль'
         password: 'Пароль для входу'
         active: 'Hotspot активований'
@@ -21,6 +24,7 @@ ua:
         display_my_banners: Показувати мої банери в інших закладах
         display_other_banners: Показувати чужі банери в моєму закладі
         owner: Власник
+        sms_auth: SMS аутентифікація
       actions:
         index:
           title: 'Заклад'

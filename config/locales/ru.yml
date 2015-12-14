@@ -21,6 +21,7 @@ ru:
       menu_item: товар
       poll: опрос
       banner: баннер
+      place_group: группу заведений
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
@@ -146,6 +147,7 @@ ru:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      not_found: запись не найдена
       accepted: нужно подтвердить
       blank: не может быть пустым
       present: нужно оставить пустым
@@ -295,6 +297,9 @@ ru:
     countdown: " секунд осталось"
     select_answer: "Выберите один из предложенных ответов"
     submit: "Ответить"
+    sms_placeholder: "номер для смс"
+    sms_code_placeholder: "код из смс"
+    sms_resend: 'отправить смс еще раз'
   menu_item:
     greetings: "%{customer_name}, добро пожаловать в %{place_name}"
     greetings_short: Добро пожаловать!

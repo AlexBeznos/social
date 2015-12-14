@@ -2,7 +2,19 @@ class PlacesController < ApplicationController
   load_and_authorize_resource :find_by => :slug, except: :new
 
   def index
-    @places = current_user.get_all_places
+    if !current_user.admin?
+      @places = current_user.get_all_places
+    else
+      @places = Place.all
+    end
+
+    if current_user.general?
+      @place_groups = PlaceGroup.where(user_id: current_user.id)
+    elsif current_user.franchisee?
+      @place_groups = PlaceGroup.where(user_id: User.where(user_id: current_user.id))
+    elsif current_user.admin?
+      @place_groups = PlaceGroup.all
+    end
   end
 
   def new
@@ -45,13 +57,13 @@ class PlacesController < ApplicationController
   end
 
   def settings
-    @message = params[:message] ? @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: params[:message])) : @place.messages.where(active: true).first
-    @networks = @place.messages.where(active: true).map {|message| message.social_network }.uniq
+    @message = active_message(params[:message])
+    @networks = all_networks
     @place_owner = User.find_by(id: @place.user_id)
   end
 
   def edit
-    if current_user.franchisee? 
+    if current_user.franchisee?
       @subordinated_users = User.where(user_id: current_user.id) + [current_user]
     elsif current_user.admin?
       @subordinated_users = User.all
@@ -91,7 +103,9 @@ class PlacesController < ApplicationController
                                     :display_other_banners,
                                     :display_my_banners,
                                     :loyalty_program,
-                                    :domen_url)
+                                    :domen_url,
+                                    :sms_auth,
+                                    :place_group_id)
     end
 
     def get_number_of_friends(records)
@@ -101,5 +115,25 @@ class PlacesController < ApplicationController
                       .inject{ |sum,x| sum.to_i + x.to_i }
 
       number ? number : 0
+    end
+
+    def active_message social_network = nil
+      if social_network
+        if @place.place_group
+          @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
+        else
+          @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
+        end
+      else
+        if @place.place_group
+          @place.place_group.messages.where(active: true).first
+        else
+          @place.messages.where(active:true).first
+        end
+      end
+    end
+
+    def all_networks
+      (@place.messages.where(active: true) + (@place.place_group ? @place.place_group.messages.where(active: true) : [])).map {|message| message.social_network }.uniq
     end
 end
