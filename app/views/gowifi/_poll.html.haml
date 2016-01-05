@@ -11,4 +11,4 @@
     %h3= f.label f.object.question, class: "question"
     = f.association :answers, label: t('wifi.select_answer'), collection: poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
 
-    = f.button :submit, t('wifi.submit'), class: 'btn-lg poll-btn'
+    = f.button :submit, t('wifi.submit'), class: 'btn-lg poll-btn', :'data-disable-with' => t('wifi.submit')
