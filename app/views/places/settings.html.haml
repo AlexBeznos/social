@@ -106,6 +106,9 @@
                       = link_to @message.message_link, @message.message_link
                 .col-sm-4
                   = image_tag @message.image.url, class: 'img-responsive'
+              %li.list-group-item
+                = t('models.places.attrs.redirect_url')
+                %span.text-muted.pull-right= link_to fa_icon('external-link'), @message.redirect_url
           .panel-footer
             - if @message.with_message_type == "Place"
               = link_to t('helpers.submit.edit'), edit_place_message_path(@place, @message), class: 'btn btn-primary btn-block'

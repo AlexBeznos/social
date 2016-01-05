@@ -35,6 +35,7 @@ ru:
         message_link: Ссылка в сообщении
         image: Картинка
         message: Сообщение
+        redirect_url: Адрес переадресации после аутентификации
       stock:
         url: Ссылка
         image: Картинка

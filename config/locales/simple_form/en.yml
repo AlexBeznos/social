@@ -35,6 +35,7 @@ en:
         message_link: Message link
         image: Image
         message: Message
+        redirect_url: Redirect url after authentication
       stock:
         url: URL
         image: Image
