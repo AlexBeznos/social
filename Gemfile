@@ -6,7 +6,6 @@ gem 'pg'
 
 # Assets
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'chartkick'
 gem 'font-awesome-rails'
 gem 'jquery-minicolors-rails'
