@@ -27,7 +27,7 @@ class S3UploaderService
     end
 
     def self.get_bucket_name
-      Rails.env.development? ? 'gowifi-dev' : 'gowifi-prod'
+      'gowifi-prod' # NOTE: Change it before deployment
     end
 
     def self.uri?(string)
