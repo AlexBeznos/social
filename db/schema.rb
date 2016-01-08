@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214225337) do
+ActiveRecord::Schema.define(version: 20160106115354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,15 @@ ActiveRecord::Schema.define(version: 20151214225337) do
 
   add_index "customers", ["social_network_id"], name: "index_customers_on_social_network_id", using: :btree
 
+  create_table "facebook_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.string   "redirect_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gowifi_sms", force: true do |t|
     t.string   "phone"
     t.string   "code"
@@ -204,8 +213,8 @@ ActiveRecord::Schema.define(version: 20151214225337) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "loyalty_program",              default: false
     t.boolean  "simple_enter",                 default: false
+    t.boolean  "loyalty_program",              default: false
     t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
@@ -213,8 +222,8 @@ ActiveRecord::Schema.define(version: 20151214225337) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
-    t.integer  "place_group_id"
     t.boolean  "sms_auth",                     default: false
+    t.integer  "place_group_id"
     t.boolean  "demo",                         default: false
   end
 
@@ -297,6 +306,15 @@ ActiveRecord::Schema.define(version: 20151214225337) do
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
 
+  create_table "twitter_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.string   "redirect_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -351,5 +369,14 @@ ActiveRecord::Schema.define(version: 20151214225337) do
   end
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
+  create_table "vkontakte_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.string   "redirect_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
