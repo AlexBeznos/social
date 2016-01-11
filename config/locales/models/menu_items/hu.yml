@@ -1,0 +1,15 @@
+hu:
+  activerecord:
+    errors:
+      models:
+        menu_item:
+          attributes:
+            image:
+              in_between: A kép kell lennie legalább 11 KB és nem több, mint 10 MB
+  models:
+    menu_items:
+      actions:
+        edit:
+          title: 'Szerkesztés termék / szolgáltatás'
+        new:
+          title: Add a termék / szolgáltatás

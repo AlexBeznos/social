@@ -20,8 +20,8 @@ ru:
         password: Пароль
         city: Город
         display_my_banners: Показывать мои баннеры в других заведения
-        display_other_banners: Показывать чужые баннеры в моем заведении
-        sms_auth: SMS аутенификация
+        display_other_banners: Показывать чужие баннеры в моем заведении
+        sms_auth: SMS аутентификация
       user:
         first_name: Имя
         last_name: Фамилия
@@ -51,6 +51,6 @@ ru:
         name: Название товара
         description: Описание
         image: Картинка
-        price: Стоимость(в балах)
+        price: Стоимость(в баллах)
       poll:
         question: Вопрос

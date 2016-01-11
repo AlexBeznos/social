@@ -1,0 +1,26 @@
+hu:
+  activerecord:
+    errors:
+      models:
+        message:
+          attributes:
+            image:
+              in_between: A kép kell lennie legalább 11 KB és nem több, mint 10 MB
+  models:
+    messages:
+      message_for: "jelentés %{name}"
+      attrs:
+        attachment: Csatolt fájl
+        active: aktív
+        message: 'Üzenet'
+        subscription: "Előfizetés"
+        message_link: "Link a jelentés"
+      actions:
+        edit:
+          title: 'hozzászólás szerkesztése'
+        new:
+          title: Válasz
+        activate:
+          title: Aktiválja
+        deactivate:
+          title: Kapcsolja ki

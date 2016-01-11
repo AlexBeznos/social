@@ -28,13 +28,13 @@ pl:
     deleted: "%{subject} usunięto"
   date:
     abbr_day_names:
-    - Вс
-    - Пн
-    - Вт
-    - Ср
-    - Чт
-    - Пт
-    - Сб
+    - Ni
+    - Po
+    - Wt
+    - Śr
+    - Cz
+    - Pi
+    - So
     abbr_month_names:
     -
     - tycz
@@ -275,8 +275,8 @@ pl:
         delimiter: ''
   support:
     array:
-      last_word_connector: " и "
-      two_words_connector: " и "
+      last_word_connector: " i "
+      two_words_connector: " i "
       words_connector: ", "
   time:
     am: rano
