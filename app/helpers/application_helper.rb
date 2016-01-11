@@ -21,4 +21,11 @@ module ApplicationHelper
   def fa_plus_minus(bool)
     fa_icon( bool ? 'plus' : 'minus' )
   end
+
+  def localization_links
+    links_string = I18n.available_locales
+               .map { |locale| link_to locale, set_locale_path(locale) }
+               .join ("|")
+    raw links_string
+  end
 end
