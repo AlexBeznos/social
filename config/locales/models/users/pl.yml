@@ -1,0 +1,24 @@
+pl:
+  models:
+    users:
+      created: Użytkownik nie dodał
+      updated: Aktualizacja danych użytkownika
+      user: użytkownik
+      actions:
+        index:
+          title: Użytkownicy
+          my_users: Użytkownicy
+        show:
+          title: "Uytkownik %{user}"
+          heading: Preferencje użytkownika
+          places: Restauracje użytkownika
+        new:
+          title: Utwórz nowe konto
+        edit:
+          title: 'Update %{name}'
+      attrs:
+        first_name: Imię
+        last_name: Nazwisko
+        phone: Telefonu
+        email: E-mail
+        timezone: 'Strefa czasu'
