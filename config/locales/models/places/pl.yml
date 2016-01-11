@@ -1,0 +1,66 @@
+pl:
+  models:
+    places:
+      errors:
+        different_owners: "Przed zmianą właściciela - usunąć tę instytucję z grupy"
+      place: instytucja
+      attrs:
+        name: 'Nazwa instytucji'
+        domen_url: "Adres domeny"
+        place_group: Grupa
+        by_password: 'Zaloguj hasło'
+        password: 'Hasło do logowania'
+        active: 'Hotspot aktywne'
+        stocks_active: Akcji wyjścia w stronę uwierzytelniania
+        logo: 'Logotyp'
+        redirect_url: "Przekierowanie po uwierzytelnieniu"
+        wifi_link: "Link do tego uwierzytelniania strona"
+        reputation_active: "Obliczanie bonusy"
+        simple_enter: Zaloguj się bez zezwolenia
+        score_amount: "Rozmiar bonus"
+        loyalty_program: Program lojalnościowy
+        polls_active: Wnioski bada stronę uwierzytelniania
+        city: Miasto
+        display_my_banners: Pokaż swoje banery w innych miejscach
+        display_other_banners: Pokaż banery innych ludzi na moim miejscu
+        owner: Właściciel
+        sms_auth: Uwierzytelniania SMS
+      actions:
+        index:
+          title: 'Miejsca'
+          my_places: 'Twoje miejsca'
+        show:
+          title: "Instytucja %{place_name}"
+          table:
+            time: podczas gdy
+            network: Sieć społeczna
+            customer: Użytkownik
+          info:
+            day: Dzień
+            week: Tydzień
+            month: Miesiąc
+            gender: Płeć
+            men: mężczyzna
+            women: żeński
+            auditory: Docieranie do odbiorców
+        new:
+          title: "Tworzenie Instytucji"
+        edit:
+          title: 'Aktualizacje %{place_name}'
+        guests:
+          title: "Najczęściej odwiedzający %{place_name}"
+          table:
+            user: Użytkownik
+            network: Sieć społeczna
+            connection_number: Liczba połączeń
+        birthdays:
+          title: "Urodziny gości %{place_name}"
+          table:
+            user: Użytkownik
+            network: Sieć społeczna
+            birthday: Urodziny
+        settings:
+          title: "Ustawienia %{place_name}"
+          wifi:  Ustawienia Wi-Fi
+          messages:  Stacje ustawianie
+          download_settings: 'Pobierz konfigurację WiFi'
