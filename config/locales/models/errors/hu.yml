@@ -1,0 +1,5 @@
+hu:
+  models:
+    errors:
+      js_precompilation: Meg van egy hiba a kódban
+      already_logged_in: már megkötött

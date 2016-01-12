@@ -1,0 +1,20 @@
+hu:
+  models:
+    banners:
+      class: 'Transzparens'
+      actions:
+        index:
+          title: "Bannerek %{place_name}"
+          no_city: "Ahhoz, hogy hozzon létre egy banner akkor meg kell adnia a város, ahol az intézmény található"
+          no_banners: Ön nincs bannerek
+          add: Add banner
+          confirm: Biztos benne?
+        new:
+          title: új Banner
+        edit:
+          title: Szerkesztés banner
+      attrs:
+        name: cím
+        views_number: megtekintések száma
+      navigation:
+          back: ezelőtt

@@ -8,6 +8,7 @@ RSpec.describe Message do
   it { is_expected.to validate_attachment_content_type(:image).allowing("image/jpeg", "image/png", "image/gif") }
   it { is_expected.to callback(:set_subscription_uid).before(:save).if('social_network_id == 3') }
   it { is_expected.to callback(:set_active_only_to_one_message_from_place).after(:save).if('active') }
+  #it { is_expected.to validate_presence_of :redirect_url}  NOTE: IT`S FROM OTHER TASK FROM BRANCH "redirect" AND IT`S APPEARED HERE SOMEHOW
 
   it "should only return active messages" do
     Message.active.where_values_hash.should eq "active" => true

@@ -1,0 +1,66 @@
+hu:
+  models:
+    places:
+      errors:
+        different_owners: "A változás előtt a tulajdonos - távolítsa el ezt az intézményt a csoportból"
+      place: intézmény
+      attrs:
+        name: 'Az intézmény neve'
+        domen_url: "Cím Domain"
+        place_group: Csoport
+        by_password: 'Bejelentkezési jelszó'
+        password: 'Jelszavát a bejelentkezéshez'
+        active: 'Hotspot aktív'
+        stocks_active: Output részvények a hitelesítés oldal
+        logo: 'Logó'
+        redirect_url: "Redirect hitelesítés után"
+        wifi_link: "Link erre az oldalra hitelesítés"
+        reputation_active: "bónuszok"
+        simple_enter: Bejelentkezés engedély nélkül
+        score_amount: "a bónusz"
+        loyalty_program: hűségprogram
+        polls_active: Következtetés felmérések hitelesítési oldal
+        city: City
+        display_my_banners: Mutassa a reklámokat, más helyeken
+        display_other_banners: Mutasd mások bannerek a helyemben
+        owner: tulajdonos
+        sms_auth: SMS hitelesítés
+      actions:
+        index:
+          title: 'Helyek'
+          my_places: 'Az Ön helyeken'
+        show:
+          title: "intézmény %{place_name}"
+          table:
+            time: míg
+            network: szociális háló
+            customer: felhasználó
+          info:
+            day: nap
+            week: Hét
+            month: hónap
+            gender: nem
+            men: férfi
+            women: női
+            auditory: A közönség elérése
+        new:
+          title: "Hozzon létre Intézmény"
+        edit:
+          title: 'frissítés %{place_name}'
+        guests:
+          title: "Top látogatók %{place_name}"
+          table:
+            user: felhasználó
+            network: szociális háló
+            connection_number: kapcsolatok száma
+        birthdays:
+          title: "Születésnap látogatók %{place_name}"
+          table:
+            user: felhasználó
+            network: szociális háló
+            birthday: Születésnap
+        settings:
+          title: "beállításai %{place_name}"
+          wifi:  testreszabása Wi-Fi
+          messages:  beállítás állomások
+          download_settings: 'Letöltés beállítások WiFi'

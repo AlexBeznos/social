@@ -1,0 +1,15 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        menu_item:
+          attributes:
+            image:
+              in_between: Obraz musi być co najmniej 11 KB i nie więcej niż 10 MB
+  models:
+    menu_items:
+      actions:
+        edit:
+          title: 'Edycja produktu / usługi'
+        new:
+          title: Dodaj produkt / usługę
