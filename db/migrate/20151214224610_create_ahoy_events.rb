@@ -1,7 +1,10 @@
 class CreateAhoyEvents < ActiveRecord::Migration
   def change
-    execute "create extension uuid-ossp"
-    create_table :ahoy_events, id: :uuid do |t|
+    self.execute <<-EOF
+      CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+    EOF
+
+    create_table :ahoy_events, id: false do |t|
       t.uuid :id, default: nil, primary_key: true
       t.uuid :visit_id, default: nil
 

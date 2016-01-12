@@ -1,7 +1,10 @@
 class CreateVisits < ActiveRecord::Migration
   def change
-    execute "create extension uuid-ossp"
-    create_table :visits, id: :uuid do |t|
+    self.execute <<-EOF
+      CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+    EOF
+
+    create_table :visits, id: false do |t|
       t.uuid :id, default: nil, primary_key: true
       t.uuid :visitor_id, default: nil
 
