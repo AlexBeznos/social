@@ -14,7 +14,7 @@ class Message < ActiveRecord::Base
   validates :message_link, :url => true, if: 'message_link && !message_link.empty?'
   validates :subscription, presence: true, if: 'social_network_id == 3'
   validates :with_message_type, inclusion: { in: ["Place", "PlaceGroup"] }
-  validates :redirect_url, presence: true, url: true
+  #validates :redirect_url, presence: true, url: true    NOTE: IT`S FROM OTHER TASK FROM BRANCH "redirect" AND IT`S APPEARED HERE SOMEHOW
 
   validates_attachment :image, :presence => true,
                                 size: { in: 11.kilobytes..10.megabytes },

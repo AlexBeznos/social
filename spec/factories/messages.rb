@@ -6,7 +6,7 @@ FactoryGirl.define do
     message "Hello!"
     image_file_name "picture.jpg"
     social_network_id 2
-    redirect_url 'http://hello.com'
+    # redirect_url 'http://hello.com'   NOTE: IT`S FROM OTHER TASK FROM BRANCH "redirect" AND IT`S APPEARED HERE SOMEHOW
   end
 
 end
