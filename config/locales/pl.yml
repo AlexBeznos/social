@@ -202,7 +202,7 @@ pl:
       update: Zapisz %{model}
       edit: Edycja
       add: Dodaj nowe %{name}
-      destroy: usunąć
+      destroy: Usunąć
   number:
     currency:
       format:
@@ -315,15 +315,15 @@ pl:
     billed_account: "Z konta premii odpisane %{item_price} punktów"
     show_to_waiter: "Pokaż tę stronę kelnera"
     show_to_waiter_with_code: "Pokaż kod do kelnera"
-    add_new_item: odaj nowy produkt / usługę
+    add_new_item: Odaj nowy produkt / usługę
     item_price: "Cena: %{item_price}"
     goods: "Produkt / usługę"
     coupon_code: "Kod zamówienia: %{coupon_code}"
     buy: wymiana
   navigation:
     logout: 'Wyloguj się'
-    login: 'login'
-    users: 'użytkownicy'
+    login: 'Zaloguj się'
+    users: 'Użytkownicy'
     my_places: 'Moje miejsca'
     dashboard:
       statistic: 'Statystyki'
