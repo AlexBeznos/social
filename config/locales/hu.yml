@@ -14,7 +14,7 @@ hu:
   activerecord:
     models:
       message: üzenet
-        user: felhasználó
+      user: felhasználó
       place: intézmény
       stock: részesedés
       style: stílus
@@ -29,52 +29,52 @@ hu:
   date:
     abbr_day_names:
     - va
-    - hé
-    - ke
-    - sz
-    - cs
-    - pé
-    - sz
+    - hé
+    - ke
+    - sz
+    - cs
+    - pé
+    - sz
     abbr_month_names:
     -
-    - jan
-    - feb
-    - már
-    - ápr
-    - máj
-    - jún
-    - júl
-    - aug
-    - szep
-    - okt
-    - nov
-    - dec
+    - jan
+    - feb
+    - már
+    - ápr
+    - máj
+    - jún
+    - júl
+    - aug
+    - szep
+    - okt
+    - nov
+    - dec
     day_names:
     - vasárnap
-    - hétfő
-    - kedd
-    - szerda
-    - csütörtök
-    - péntek
-    - szombat
+    - hétfő
+    - kedd
+    - szerda
+    - csütörtök
+    - péntek
+    - szombat
     formats:
       default: "%d.%m.%Y"
       long: "%-d %B %Y"
       short: "%-d %b"
     month_names:
     -
-    - január
-    - február
-    - március
-    - április
-    - május
-    - június
-    - július
-    - augusztus
-    - szeptember
-    - október
-    - november
-    - december
+    - január
+    - február
+    - március
+    - április
+    - május
+    - június
+    - július
+    - augusztus
+    - szeptember
+    - október
+    - november
+    - december
     order:
     - :day
     - :month

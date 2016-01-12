@@ -29,12 +29,12 @@ pl:
   date:
     abbr_day_names:
     - Ni
-    - Po
-    - Wt
-    - Śr
-    - Cz
-    - Pi
-    - So
+    - Po
+    - Wt
+    - Śr
+    - Cz
+    - Pi
+    - So
     abbr_month_names:
     -
     - tycz
@@ -51,12 +51,12 @@ pl:
     - grud
     day_names:
     - Niedziela
-    - Poniedziałek
-    - Wtorek
-    - Środa
-    - Czwartek
-    - Piątek
-    - Sobota
+    - Poniedziałek
+    - Wtorek
+    - Środa
+    - Czwartek
+    - Piątek
+    - Sobota
     formats:
       default: "%d.%m.%Y"
       long: "%-d %B %Y"
@@ -77,8 +77,8 @@ pl:
     - grudzień
     order:
     - :dzień
-    - :miesiąc
-    - :rok
+    - :miesiąc
+    - :rok
   datetime:
     distance_in_words:
       about_x_hours:
@@ -94,7 +94,7 @@ pl:
       about_x_years:
         few: o %{count} lat
         many: o %{count} lat
-          one: o %{count} lat
+        one: o %{count} lat
         other: o %{count} lat
       almost_x_years:
         one: około 1 rok
@@ -118,7 +118,7 @@ pl:
         one: więcej niż %{count} lat
         other: więcej niż %{count} lat
       x_days:
-          few: "%{count} dni"
+        few: "%{count} dni"
         many: "%{count} dni"
         one: "%{count} dni"
         other: "%{count} dni"
@@ -288,7 +288,7 @@ pl:
   wifi:
     greetings: "Halo, <ins>%{customer_name}</ins>!"
     greetings_to_no_one: Halo!
-      description: 'Wchodźcie przez ulubionej <br/> social network <br/> i uzyskać dostęp do Internetu'
+    description: 'Wchodźcie przez ulubionej <br/> social network <br/> i uzyskać dostęp do Internetu'
     poll: 'Zaloguj się, przechodząc ankieta'
     poll_error: "Nie wybrano żadnej z proponowanych odpowiedzi"
     footer: 'Powered by GoFriends'
