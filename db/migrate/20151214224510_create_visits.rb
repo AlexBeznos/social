@@ -1,6 +1,6 @@
 class CreateVisits < ActiveRecord::Migration
   def change
-    enable_extension 'uuid-ossp'
+    execute "create extension uuid-ossp"
     create_table :visits, id: :uuid do |t|
       t.uuid :id, default: nil, primary_key: true
       t.uuid :visitor_id, default: nil

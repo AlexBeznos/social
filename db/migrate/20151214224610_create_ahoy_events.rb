@@ -1,6 +1,6 @@
 class CreateAhoyEvents < ActiveRecord::Migration
   def change
-    enable_extension 'uuid-ossp'
+    execute "create extension uuid-ossp"
     create_table :ahoy_events, id: :uuid do |t|
       t.uuid :id, default: nil, primary_key: true
       t.uuid :visit_id, default: nil
