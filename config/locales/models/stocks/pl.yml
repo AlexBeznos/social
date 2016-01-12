@@ -1,0 +1,18 @@
+pl:
+  models:
+    stocks:
+      class: 'Akcję'
+      day: 'Dowolny dzień'
+      actions:
+        index:
+          title: "Udziały w instytucji %{place_name}"
+          no_stocks: Nie masz jeszcze akcji
+          add: Dodaj akcję
+        new:
+          title: Dodaj akcję
+        edit:
+          title: Edycja akcję
+      attrs:
+        image: Fotografia
+        url: Link
+        day: Dzień pokazu

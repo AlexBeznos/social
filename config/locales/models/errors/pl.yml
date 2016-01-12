@@ -1,0 +1,5 @@
+pl:
+  models:
+    errors:
+      js_precompilation: Ma błąd w kodzie
+      already_logged_in: już wprowadzone

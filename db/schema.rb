@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214225337) do
+ActiveRecord::Schema.define(version: 20160105141737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
 
-  create_table "ahoy_events", id: :uuid, force: true do |t|
-    t.uuid     "visit_id"
+  create_table "ahoy_events", force: true do |t|
+    t.integer  "visit_id"
     t.integer  "user_id"
     t.string   "name"
     t.json     "properties"
@@ -159,6 +158,7 @@ ActiveRecord::Schema.define(version: 20151214225337) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "with_message_type",  default: "Place"
+    t.string   "redirect_url"
   end
 
   add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
@@ -205,8 +205,8 @@ ActiveRecord::Schema.define(version: 20151214225337) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "simple_enter",                 default: false
     t.boolean  "loyalty_program",              default: false
+    t.boolean  "simple_enter",                 default: false
     t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
@@ -214,8 +214,8 @@ ActiveRecord::Schema.define(version: 20151214225337) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
-    t.boolean  "sms_auth",                     default: false
     t.integer  "place_group_id"
+    t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
   end
 

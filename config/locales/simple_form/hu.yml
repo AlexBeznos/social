@@ -1,0 +1,56 @@
+hu:
+  simple_form:
+    error_notification:
+      default_message: "Kérjük, oldja meg a problémát a következőképpen:"
+    labels:
+      place:
+        name: 'Az intézmény neve'
+        domen_url: 'Cím Domain'
+        logo: 'Logó'
+        active: Hotspot aktív
+        stocks_active: Részvények aktív
+        polls_active: Szavazás
+        reputation_on: Bónuszok
+        simple_enter: Bejelentkezés engedély nélkül
+        loyalty_on: Engedélyezze a konfigurációs hűségprogramok felhasználók számára
+        loyalty_program: Hűségprogram
+        score_amount: A bónusz
+        redirect_url: Cím továbbítása hitelesítés után
+        enter_by_password: Bejelentkezési jelszó
+        password: Jelszó
+        city: City
+        display_my_banners: Mutassa a reklámokat, más helyeken
+        display_other_banners: Mutasd mások bannerek a helyemben
+        sms_auth: SMS hitelesítés
+      user:
+        first_name: Első neve
+        last_name: Név
+        phone: Telefon
+        timezone: Jelenlegi időzóna
+        password: Jelszó belépés
+        password_confirmation: Jelszó megerősítése
+      message:
+        social_network: Szociális háló
+        subscription: Jelentkezzen be
+        message_link: Link a jelentés
+        image: Kép
+        message: Üzenet
+        redirect_url: Cím továbbítása hitelesítés után
+      stock:
+        url: Link
+        image: Kép
+        day: Napos show
+      style:
+        background: A háttérben
+        js: JS
+        css: CSS
+        text_color: A szín a fő szöveg
+        greating_color: színes üdvözlet
+      menu_item:
+        menu_item: Áruk
+        name: Termék megnevezése
+        description: Leírás
+        image: Kép
+        price: Költség (pont)
+      poll:
+        question: Kérdés

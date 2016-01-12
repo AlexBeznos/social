@@ -1,0 +1,24 @@
+hu:
+  models:
+    users:
+      created: Felhasználói hozzáadott
+      updated: Felhasználói adatok módosítva
+      user: felhasználó
+      actions:
+        index:
+          title: Felhasználók
+          my_users: A felhasználók
+        show:
+          title: "Felhasználó %{user}"
+          heading: Felhasználói beállítások
+          places: Éttermek Felhasználó
+        new:
+          title: Új fiók létrehozása
+        edit:
+          title: 'Frissítés %{name}'
+      attrs:
+        first_name: Első neve
+        last_name: Név
+        phone: Telefon
+        email: E-mail
+        timezone: 'Minden időpont'

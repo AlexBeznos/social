@@ -1,0 +1,11 @@
+pl:
+  models:
+    errors:
+      validations:
+        wrong_link_format: Nieprawidłowe linki formacie
+        unique_place_for_customer: Instytucja musi być unikalny użytkownik
+        long_twitter_message: Wiadomość z linkiem nie może przekraczać 140 znaków
+        wrong_phone_number: Неверный формат номера телефона
+        not_valid_css_color: nie prawdziwy kolor css
+        not_valid_css_websafe_color: nie internetowej bezpieczne kolor
+        not_valid_css_hexidecimal_color: nie prawdziwe kolor szesnastkowy

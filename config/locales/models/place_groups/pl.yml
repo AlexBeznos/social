@@ -1,0 +1,14 @@
+pl:
+  models:
+    place_groups:
+      class: 'Instytucje grupowe'
+      uncategorized: 'Brak grupy'
+      errors:
+        not_general: 'Właściciel musi być z "wspólne"'
+      actions:
+        new:
+          title: Dodaj grupę zakładów
+        edit:
+          title: Grupy Edycja zakładów
+      attrs:
+        name: Tytuł

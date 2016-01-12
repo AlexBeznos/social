@@ -1,0 +1,30 @@
+pl:
+  models:
+    polls:
+      class: 'Ankietę'
+      actions:
+        index:
+          title: "Аnkiety w %{place_name}"
+          no_polls: Nie masz jeszcze żadnych ankiet
+          add: Dodaj ankietę
+          confirm: Czy na pewno?
+        new:
+          title: Dodawanie ankietę
+        edit:
+          title: Edycja ankieta
+        show:
+          title: Statystyki
+      attrs:
+        question: Pytanie
+        answer: Odpowiedź
+        answers_number: Liczba opcji ankiety
+        selections_number: Liczba odpowiedzi
+      form:
+        placeholder_question: Wpisz pytanie
+        placeholder_answer: Wpisz odpowiedź
+        remove: Usunąć
+        add_answer: Dodać jeszcze jeden wariant odpowiedzi
+      navigation:
+          show: Statystyki
+          back: Temu
+          edit: Edycja

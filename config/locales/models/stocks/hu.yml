@@ -1,0 +1,18 @@
+hu:
+  models:
+    stocks:
+      class: 'Az akció'
+      day: 'minden nap'
+      actions:
+        index:
+          title: "Részvények az intézményben %{place_name}"
+          no_stocks: Nem kell részvényeket még
+          add: Add részvény
+        new:
+          title: Add részvény
+        edit:
+          title: Szerkesztés kampány
+      attrs:
+        image: Photography
+        url: Link
+        day: Napos show
