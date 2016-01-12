@@ -12,7 +12,7 @@ RSpec.describe GowifiSmsController, :type => :controller do
   end
 
   it do
-    sms = create :gowifi_sms
+    sms = create :gowifi_sms, place: place
     should route(:post, "/wifi/#{place.slug}/gowifi_sms/#{sms.id}/resend").to(
       action: :resend,
       controller: :gowifi_sms,
