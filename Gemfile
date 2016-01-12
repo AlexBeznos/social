@@ -43,7 +43,7 @@ gem 'i18n-timezones'
 gem 'ahoy_matey'
 
 gem 'carrierwave'
-gem 'fog-aws'
+gem 'carrierwave-aws'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'

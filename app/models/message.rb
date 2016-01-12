@@ -30,7 +30,7 @@ class Message < ActiveRecord::Base
   end
 
   def set_active_only_to_one_message_from_place
-    if with_message_type == "Place" 
+    if with_message_type == "Place"
       place = Place.includes(:messages).find(with_message_id)
       place.messages.where(social_network_id: social_network_id).each do |message|
         if place.place_group && place.place_group.messages.find_by(social_network_id: social_network_id, active: true)
@@ -48,7 +48,7 @@ class Message < ActiveRecord::Base
       if places = Place.where(place_group_id: with_message_id)
         places.each do |place|
           place.messages.where(social_network_id: social_network_id).each do |message|
-            message.update(active: false) 
+            message.update(active: false)
           end
         end
       end
