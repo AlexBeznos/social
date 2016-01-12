@@ -4,27 +4,27 @@ hu:
       class: 'Szavazás'
       actions:
         index:
-          title: "közvélemény-kutatások %{place_name}"
+          title: "Közvélemény-kutatások %{place_name}"
           no_polls: Ön nincs-kutatások
           add: Add közvélemény-kutatás
           confirm: Biztos benne?
         new:
-          title: felvett közvélemény-kutatási
+          title: Felvett közvélemény-kutatási
         edit:
           title: Szerkesztés felmérés
         show:
-          title: statisztikai
+          title: Statisztikai
       attrs:
-        question: kérdés
-        answer: kérdés
+        question: Kérdés
+        answer: Kérdés
         answers_number: Száma fórumhoz
-        selections_number: válaszok száma
+        selections_number: Válaszok száma
       form:
         placeholder_question: Adja meg a kérdést
         placeholder_answer: Írja be a választ
         remove: Távolítsuk
         add_answer: Újabb válasz
       navigation:
-          show: statisztikai
-          back: ezelőtt
+          show: Statisztikai
+          back: Ezelőtt
           edit: Szerkesztés

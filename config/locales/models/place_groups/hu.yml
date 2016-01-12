@@ -2,7 +2,7 @@ hu:
   models:
     place_groups:
       class: 'Csoport intézmények'
-      uncategorized: 'nincs csoport'
+      uncategorized: 'Nincs csoport'
       errors:
         not_general: 'A tulajdonos kell a "közös"'
       actions:

@@ -7,5 +7,5 @@ hu:
         long_twitter_message: Üzenet egy linket nem haladhatja meg a 140 karaktert
         wrong_phone_number: Érvénytelen telefonszám formátum
         not_valid_css_color: nem egy igazi színes css
-        not_valid_css_websafe_color: Nem biztonságos webes színek
+        not_valid_css_websafe_color: nem biztonságos webes színek
         not_valid_css_hexidecimal_color: nem valós hexadecimális
