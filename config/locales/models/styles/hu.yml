@@ -1,0 +1,8 @@
+hu:
+  models:
+    style:
+      class: 'Megjelenés'
+      page: bejelentkezési oldal
+      actions:
+        edit:
+          title: Edit a megjelenése a bejelentkező oldalra látogató

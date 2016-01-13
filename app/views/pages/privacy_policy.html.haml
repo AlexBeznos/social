@@ -13,13 +13,8 @@
   %body
     .container
       .lang.pull-right{:style => 'margin-top: 5px'}
-        = link_to 'en', set_locale_path('en')
-        |
-        = link_to 'ua', set_locale_path('ua')
-        |
-        = link_to 'ru', set_locale_path('ru')
-        |
-        = link_to 'am', set_locale_path('am')
+        =  localization_links
+        
       :markdown
         # #{ t('privacy_police.title') }
         ## #{ t('privacy_police.part_1.title') }

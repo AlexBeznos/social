@@ -1,0 +1,30 @@
+hu:
+  models:
+    polls:
+      class: 'Szavazás'
+      actions:
+        index:
+          title: "Közvélemény-kutatások %{place_name}"
+          no_polls: Ön nincs-kutatások
+          add: Add közvélemény-kutatás
+          confirm: Biztos benne?
+        new:
+          title: Felvett közvélemény-kutatási
+        edit:
+          title: Szerkesztés felmérés
+        show:
+          title: Statisztikai
+      attrs:
+        question: Kérdés
+        answer: Kérdés
+        answers_number: Száma fórumhoz
+        selections_number: Válaszok száma
+      form:
+        placeholder_question: Adja meg a kérdést
+        placeholder_answer: Írja be a választ
+        remove: Távolítsuk
+        add_answer: Újabb válasz
+      navigation:
+          show: Statisztikai
+          back: Ezelőtt
+          edit: Szerkesztés

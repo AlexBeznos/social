@@ -1,0 +1,8 @@
+pl:
+  models:
+    style:
+      class: 'Wygląd'
+      page: stronę logowania
+      actions:
+        edit:
+          title: Edytować wygląd strony logowania

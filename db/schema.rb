@@ -201,8 +201,8 @@ ActiveRecord::Schema.define(version: 20160111154539) do
     t.string   "template",                     default: "default"
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
-    t.boolean  "simple_enter",                 default: false
     t.boolean  "loyalty_program",              default: false
+    t.boolean  "simple_enter",                 default: false
     t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
@@ -210,8 +210,8 @@ ActiveRecord::Schema.define(version: 20160111154539) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
-    t.boolean  "sms_auth",                     default: false
     t.integer  "place_group_id"
+    t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
   end
 

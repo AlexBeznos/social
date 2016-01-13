@@ -1,0 +1,20 @@
+pl:
+  models:
+    banners:
+      class: 'Sztandar'
+      actions:
+        index:
+          title: "Banery %{place_name}"
+          no_city: " Do tworzenia banerów należy podać miasto, w którym znajduje się lokal"
+          no_banners: Nie masz jeszcze żadnych ankiet
+          add: Dodaj baner
+          confirm: Czy na pewno?
+        new:
+          title: Nowy banner
+        edit:
+          title: Edytuj banner
+      attrs:
+        name: Nazwa
+        views_number: Liczba wyświetleń
+      navigation:
+          back: powrót 

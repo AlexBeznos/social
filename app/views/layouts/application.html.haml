@@ -12,7 +12,7 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag yield(:page_stylesheet) if content_for?(:page_stylesheet)
-    = javascript_include_tag "//www.google.com/jsapi", "chartkick" 
+    = javascript_include_tag "//www.google.com/jsapi", "chartkick"
 
   %body
     %nav.navbar.navbar-custom.navbar-fixed-top.gradient
@@ -46,13 +46,7 @@
           = yield
     %footer
       .lang
-        = link_to 'en', set_locale_path('en')
-        |
-        = link_to 'ua', set_locale_path('ua')
-        |
-        = link_to 'ru', set_locale_path('ru')
-        |
-        = link_to 'am', set_locale_path('am')
+        = localization_links
 
     /
       Javascripts
