@@ -64,6 +64,9 @@
               %li.list-group-item
                 Password
                 %span.text-muted.pull-right= @place.password
+            %li.list-group-item
+              Created at
+              %span.text-muted.pull-right= @place.created_at.strftime('%d/%m/%Y')
 
   - @networks.each do |network|
     .box
