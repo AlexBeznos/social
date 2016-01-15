@@ -21,6 +21,7 @@ ua:
         display_my_banners: Показувати мої банери в інших закладах
         display_other_banners: Показувати чужі банери в моєму закладі
         sms_auth: SMS аутентифікація
+        auth_default_lang: Стандартная мова аутентифікації
       user:
         first_name: Ім`я
         last_name: Прізвище

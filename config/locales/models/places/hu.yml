@@ -60,6 +60,7 @@ hu:
             network: szociális háló
             birthday: Születésnap
         settings:
+          auth_default_lang: Hitelesítés alapértelmezett nyelv
           title: "beállításai %{place_name}"
           wifi:  testreszabása Wi-Fi
           messages:  beállítás állomások

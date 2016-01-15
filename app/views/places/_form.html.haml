@@ -21,6 +21,7 @@
   = f.input :sms_auth, as: :boolean
   = f.input :score_amount
   = f.input :redirect_url
+  = f.input :auth_default_lang, collection: I18n.available_locales
   = f.input :enter_by_password, as: :boolean, input_html: { class: 'enter_by_password_check' }
   .enter_by_password
     = f.input :password, as: :string

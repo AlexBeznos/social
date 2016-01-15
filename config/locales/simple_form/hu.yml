@@ -22,6 +22,7 @@ hu:
         display_my_banners: Mutassa a reklámokat, más helyeken
         display_other_banners: Mutasd mások bannerek a helyemben
         sms_auth: SMS hitelesítés
+        auth_default_lang: Hitelesítés alapértelmezett nyelv
       user:
         first_name: első neve
         last_name: Név

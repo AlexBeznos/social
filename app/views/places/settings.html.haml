@@ -70,6 +70,9 @@
         = t('models.places.attrs.wifi_link')
         %span.text-muted.pull-right= link_to fa_icon('external-link'), gowifi_place_path(@place) ,target:"_blank"
       %li.list-group-item
+        =  t('models.places.actions.settings.auth_default_lang')
+        %span.text-muted.pull-right= @place.auth_default_lang.to_s
+      %li.list-group-item
         = link_to t('helpers.submit.edit'), edit_place_path(@place, user: @place.user_id), class: 'btn btn-primary btn-block'
       %li.list-group-item
         = link_to "#{t('helpers.submit.edit')} #{t('models.style.page')}", @place.style ? edit_place_style_path(@place, @place.style) : new_place_style_path(@place), class: 'btn btn-success btn-block'

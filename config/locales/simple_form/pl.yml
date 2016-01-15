@@ -22,6 +22,7 @@ pl:
         display_my_banners: Pokaż swoje banery w innych miejscach
         display_other_banners: Pokaż banery innych ludzi na moim miejscu
         sms_auth: uwierzytelniania SMS
+        auth_default_lang: Domyślnym językiem uwierzytelniania 
       user:
         first_name: Imię
         last_name: Nazwisko
