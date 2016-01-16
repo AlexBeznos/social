@@ -14,7 +14,6 @@
 //= require jquery-ui
 //= require jbox.min
 //= require slick.min
-//= require landing
 //= require bootstrap
 
 $(document).ready(function(){
