@@ -1,0 +1,683 @@
+@media (max-width: 1600px) {
+    header, #tel_section {
+        background-size: cover;
+    }
+}
+
+@media (max-width: 980px) {
+    .top_form_block button, .tel_text, .benefit_description, .router_characteristic, .footer_description {
+        font-size: 12px;
+    }
+    .top_phone, .footer_title, .navbar-nav>li>a, .penalty_description, .tel_title, .business_description, #pizza .text_block_2, .router_description {
+        font-size: 14px;
+    }
+    .top_form_block {
+        width: 40%;
+    }
+    .top_form {
+        padding-right: 0;
+    }
+    .navbar-nav>li {
+        margin-right: 10px;
+    }
+    .header_content {
+        float: none;
+    }
+    #penalty img, .col-sm-12 img, .footer_img img, .tel_number img, .tel_img img, .img_block img, .image_block_1 img, .image_block_2 img, .image_block_3 img, .client_block img  {
+        width: 100%;
+    }
+    #penalty a {
+        font-size: 11px;
+    }
+    .tel_description_inner {
+        padding: 0px 0px 30px 44px;
+    }
+    .tel_number img {
+        margin-top: 40px;
+    }
+    .tel_text {
+        margin-right: 0;
+    }
+    .benefit_title {
+        font-size: 14px;
+        padding: 17px 40px 0;
+    }
+    .benefit_padd {
+        padding-left: 0px;
+    }
+    .form_description_2 {
+        font-size: 44px;
+    }
+    .form_description {
+        font-size: 28px;
+    }
+    .text_block_1, .text_block_2, .text_block_3, .text_block_4 {
+        font-size: 18px;
+    }
+    #router .image_block_1 {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    #router .image_block_2 {
+        margin-top: 0;
+        margin-bottom: 23px;
+    }
+    #bottom_form .form_description, #bottom_form .form_description_2, .form_description_3 {
+        font-size: 22px;
+    }
+    .footer_description {
+        font-size: 9px;
+        padding: 10px 5px;
+    }
+    .footer_title {
+        padding: 0 18px;
+    }
+    .footer_padd {
+        padding-bottom: 18px;
+    }
+    .sd_title {
+        font-size: 16px;
+    }
+    #tel_section {
+        height: 600px;
+    }
+    .tel_n1 img {
+        margin-top: 37px;
+    }
+    .tel_n2 {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .top_form_block button, .tel_text, .benefit_description, .router_characteristic, .footer_description {
+        font-size: 12px;
+    }
+    .top_phone, .footer_title, .navbar-nav>li>a, .penalty_description, .tel_title, .business_description, #pizza .text_block_2, .router_description {
+        font-size: 14px;
+    }
+    .top_form_block {
+        width: 40%;
+    }
+    .top_form {
+        padding-right: 0;
+    }
+    .navbar-nav>li {
+        margin-right: 10px;
+    }
+    .header_content {
+        float: none;
+    }
+    #penalty img, .col-sm-12 img, .footer_img img, .tel_number img, .tel_img img, .img_block img, .image_block_1 img, .image_block_2 img, .image_block_3 img, .client_block img  {
+        width: 100%;
+    }
+    #penalty a {
+        font-size: 11px;
+    }
+    .tel_description_inner {
+        padding: 0px 0px 30px 44px;
+    }
+    .tel_number img {
+        margin-top: 40px;
+    }
+    .tel_text {
+        margin-right: 0;
+    }
+    .benefit_title {
+        font-size: 14px;
+        padding: 17px 40px 0;
+    }
+    .benefit_padd {
+        padding-left: 0px;
+    }
+    .form_description_2 {
+        font-size: 44px;
+    }
+    .form_description {
+        font-size: 28px;
+    }
+    .text_block_1, .text_block_2, .text_block_3, .text_block_4 {
+        font-size: 18px;
+    }
+    #router .image_block_1 {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    #router .image_block_2 {
+        margin-top: 0;
+        margin-bottom: 23px;
+    }
+    #bottom_form .form_description, #bottom_form .form_description_2, .form_description_3 {
+        font-size: 22px;
+    }
+    .footer_description {
+        font-size: 9px;
+        padding: 10px 5px;
+    }
+    .footer_title {
+        padding: 0 18px;
+    }
+    .footer_padd {
+        padding-bottom: 18px;
+    }
+    .sd_title {
+        font-size: 16px;
+    }
+    #tel_section {
+        height: 600px;
+    }
+    .enter {
+        position: relative;
+        top: 25px;
+    }
+    .tel_n1 img {
+        margin-top: 37px;
+    }
+    .tel_n2 {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .top_form_block button, .tel_text, .benefit_description, .router_characteristic, .footer_description, .tel_title, .navbar-nav>li>a {
+        font-size: 12px;
+    }
+    .top_phone, .footer_title, .penalty_description, .business_description, #pizza .text_block_2, .router_description {
+        font-size: 14px;
+    }
+    .top_form_block {
+        width: 40%;
+    }
+    .top_form {
+        padding-right: 0;
+    }
+    .navbar-nav>li {
+        margin-right: 10px;
+    }
+    .header_content {
+        float: none;
+    }
+    #penalty img, .col-sm-12 img, .footer_img img, .tel_number img, .tel_img img, .img_block img, .image_block_1 img, .image_block_2 img, .image_block_3 img, .client_block img  {
+        width: 100%;
+    }
+    #penalty a {
+        font-size: 11px;
+    }
+    .tel_description_inner {
+        padding: 0px 0px 30px 44px;
+    }
+    .tel_number img {
+        margin-top: 40px;
+    }
+    .tel_text {
+        margin-right: 0;
+    }
+    .benefit_title {
+        font-size: 14px;
+        padding: 17px 40px 0;
+    }
+    .benefit_padd {
+        padding-left: 0px;
+    }
+    .form_description_2 {
+        font-size: 44px;
+    }
+    .form_description {
+        font-size: 28px;
+    }
+    .text_block_1, .text_block_2, .text_block_3, .text_block_4 {
+        font-size: 18px;
+    }
+    #router .image_block_1 {
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    #router .image_block_2 {
+        margin-top: 0;
+        margin-bottom: 23px;
+    }
+    #bottom_form .form_description, #bottom_form .form_description_2, .form_description_3 {
+        font-size: 22px;
+    }
+    .footer_description {
+        font-size: 9px;
+        padding: 10px 5px;
+    }
+    .footer_title {
+        padding: 0 18px;
+    }
+    .footer_padd {
+        padding-bottom: 18px;
+    }
+    .sd_title {
+        font-size: 16px;
+    }
+    #tel_section {
+        height: 600px;
+    }
+    .enter {
+        position: relative;
+        top: 25px;
+    }
+    .tel_n1 img {
+        margin-top: 37px;
+    }
+    .tel_n2 {
+        margin-top: 0;
+    }
+}
+@media (max-width: 600px) {
+    #tel_section .title h3 {
+        font-size: 20px;
+    }
+
+    .tel_number img {
+        margin-top: 0px;
+        width: 80%;
+        margin-left: -14px;
+    }
+
+    .tel_img img {
+        width: 80%;
+    }
+
+    .column_business {
+        float: left;
+        width: 20%;
+    }
+
+    #pizza .text_block_1, #pizza .text_block_2, #pizza .text_block_3, #pizza .text_block_4 {
+        text-align: center;
+    }
+
+    .footer_img img, #penalty img {
+        width: 50%;
+    }
+
+    .top_form_block {
+        width: 60%;
+    }
+
+    .top_phone {
+        padding-left: 30px;
+    }
+
+    #penalty .title {
+        text-align: center;
+    }
+
+    .penalty_block {
+        text-align: center;
+    }
+
+    #tel_section {
+        height: 900px;
+    }
+
+    #router .image_block_1, #router .image_block_2, #router .image_block_3 {
+        text-align: center;
+    }
+
+    .image_block_1 img, .image_block_2 img, .image_block_3 img {
+        width: 70%;
+    }
+
+    .client_block img {
+        width: 65%;
+    }
+
+    .client_block {
+        height: 150px;
+    }
+    .footer_description {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+    .footer_margin {
+        margin-bottom: 15px;
+    }
+    .navbar-toggle {
+        top: -32px;
+    }
+    .top_socials {
+        width: 23%;
+    }
+    .top_form_block {
+        width: 27%;
+    }
+    .tel_n1 img {
+        margin-top: -4px;
+    }
+    .enter {
+        top: 0;
+    }
+    .footer_description {
+        padding: 10px 12px;
+    }
+    .tel_n2 {
+        margin-top: 0;
+    }
+    .tel_block_2, .tel_block_3, .tel_block_4 {
+        margin-top: 0;
+    }
+}
+
+
+@media (max-width: 568px) {
+    #tel_section .title h3 {
+        font-size: 20px;
+    }
+
+    .tel_number img {
+        margin-top: 0px;
+        width: 80%;
+        margin-left: -14px;
+    }
+
+    .tel_img img {
+        width: 80%;
+    }
+
+    .column_business {
+        float: left;
+        width: 20%;
+    }
+
+    #pizza .text_block_1, #pizza .text_block_2, #pizza .text_block_3, #pizza .text_block_4 {
+        text-align: center;
+    }
+
+    .footer_img img, #penalty img {
+        width: 50%;
+    }
+
+    .top_form_block {
+        width: 60%;
+    }
+
+    .top_phone {
+        padding-left: 30px;
+    }
+
+    #penalty .title {
+        text-align: center;
+    }
+
+    .penalty_block {
+        text-align: center;
+    }
+
+    #tel_section {
+        height: 900px;
+    }
+
+    #router .image_block_1, #router .image_block_2, #router .image_block_3 {
+        text-align: center;
+    }
+
+    .image_block_1 img, .image_block_2 img, .image_block_3 img {
+        width: 70%;
+    }
+
+    .client_block img {
+        width: 65%;
+    }
+
+    .client_block {
+        height: 150px;
+    }
+    .footer_description {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+    .footer_margin {
+        margin-bottom: 15px;
+    }
+
+}
+@media (max-width: 414px) {
+    #penalty a {
+        font-size: 14px;
+        width: 100%;
+    }
+    #penalty .title {
+        text-align: center;
+    }
+    .column_business {
+        width: 33%;
+    }
+    #pizza .text_block_1, #pizza .text_block_2, #pizza .text_block_3 {
+        text-align: center;
+    }
+    #pizza .text_block_4 {
+        margin-top: 20px;
+        padding: 0 10px;
+        text-align: center;
+    }
+    #pizza .title h3 {
+        font-size: 18px;
+    }
+    .client_block {
+        height: 150px;
+    }
+    .footer_description {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+    .form_block {
+        padding: 0;
+    }
+    #tel_section {
+        height: 800px;
+    }
+    .tel_number img {
+        margin-top: 27px;
+    }
+}
+
+
+@media (max-width: 414px) {
+    .footer_img img {
+        width: 50%;
+    }
+    #penalty img {
+        width: 50%;
+    }
+    #penalty .title h3 {
+        font-size: 14px;
+    }
+    .penalty_description {
+        font-size: 12px;
+        text-align: justify;
+        letter-spacing: 0.1px;
+    }
+    .tel_text {
+        font-size: 10px;
+    }
+    .benefit_description {
+        padding-bottom: 5px;
+    }
+    #benefit .title {
+        margin: 0;
+    }
+    #benefit .title h3, .form_description, #router .title h3, .sd_title, #footer_form .title h3{
+        font-size: 20px;
+    }
+    .form_description_2 {
+        font-size: 35px;
+    }
+    .form_description {
+        line-height: 1.42857143;
+    }
+    #pizza .text_block_1 {
+        padding: 0;
+    }
+    #pizza .title {
+        margin: 0;
+    }
+    .client_position img, .client_position_curves img {
+        top: 7%;
+    }
+    #bottom_form .form_description, #bottom_form .form_description_2, .form_description_3 {
+        font-size: 18px;
+    }
+    .swiper-slide {
+        width: 50% !important;
+    }
+    .slider_description .col-xs-6 {
+        width: 49%;
+    }
+    .footer_margin {
+        margin-bottom: 19px;
+    }
+    .top_socials {
+        padding-right: 35px;
+    }
+    .navbar-toggle {
+        top: -32px;
+    }
+    .top_form_block {
+        width: 55%;
+    }
+    .top_socials {
+        width: 45%;
+    }
+    .tel_n1 img {
+        margin-top: 25px;
+    }
+}
+
+
+@media (max-width: 384px) {
+    .footer_description {
+        font-size: 14px;
+        padding: 10px 9px;
+    }
+}
+
+@media (max-width: 375px) {
+    .header_content {
+        font-size: 20px;
+    }
+    .tel_description_inner {
+        padding: 0px 0px 30px 25px;
+    }
+    .tel_number img {
+        width: 80%;
+    }
+    .tel_text {
+        font-size: 9px;
+    }
+    #tel_section {
+        height: 700px;
+    }
+    .client_block img {
+        width: 100%;
+    }
+    .tel_n1 img {
+        margin-top: 25px;
+    }
+    .tel_padd {
+        padding-right: 14px;
+    }
+    .footer_description {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+}
+@media (max-width: 360px) {
+    .header_content {
+        font-size: 20px;
+    }
+    .tel_description_inner {
+        padding: 0px 0px 30px 25px;
+    }
+    .tel_number img {
+        width: 80%;
+    }
+    .tel_text {
+        font-size: 9px;
+    }
+    #tel_section {
+        height: 700px;
+    }
+    .client_block img {
+        width: 100%;
+    }
+    .top_form_block, .top_socials {
+        width: 50%;
+    }
+    .footer_margin {
+        margin-bottom: 20px;
+    }
+    .footer_description {
+        font-size: 14px;
+        padding: 10px 13px;
+    }
+    .wrap {
+        padding-bottom: 29px;
+    }
+}
+@media (max-width: 320px) {
+    .header_content {
+        font-size: 20px;
+    }
+    .tel_description_inner {
+        padding: 0px 0px 30px 25px;
+    }
+    .tel_number img {
+        width: 80%;
+    }
+    .tel_text {
+        font-size: 9px;
+    }
+    .top_form_block {
+        width: 59%;
+    }
+    .tel_number img {
+        margin-top: 37px;
+    }
+    .client_block img {
+        width: 100%;
+    }
+    .footer_btn .btn {
+        font-size: 12px;
+        padding: 4px;
+    }
+    .footer_img img {
+        width: 100%;
+    }
+    .footer_title {
+        font-size: 12px;
+    }
+    .footer_description {
+        letter-spacing: normal;
+    }
+    .footer_margin {
+        margin-bottom: 0px;
+    }
+    #footer_form .wrap {
+        padding-bottom: 48px;
+    }
+    .top_socials, .top_form_block {
+        width: 50%;
+    }
+    .top_socials {
+        padding-right: 0;
+    }
+    .top_phone, .top_form {
+        padding-left: 0;
+    }
+    .tel_n1 img {
+        margin-top: 34px;
+    }
+    .footer_description {
+        padding: 10px 5px;
+    }
+    #bottom_form .form_description, #bottom_form .form_description_2, .form_description_3 {
+        font-size: 17px;
+    }
+    .navbar-nav {
+        margin: 7.5px -111px;
+    }
+}
