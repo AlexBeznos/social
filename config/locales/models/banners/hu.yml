@@ -10,11 +10,11 @@ hu:
           add: Add banner
           confirm: Biztos benne?
         new:
-          title: új Banner
+          title: Új banner
         edit:
           title: Szerkesztés banner
       attrs:
-        name: cím
-        views_number: megtekintések száma
+        name: Cím
+        views_number: Megtekintések száma
       navigation:
-          back: ezelőtt
+          back: Ezelőtt

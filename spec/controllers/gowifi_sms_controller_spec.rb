@@ -12,12 +12,12 @@ RSpec.describe GowifiSmsController, :type => :controller do
   end
 
   it do
-    id = Faker::Number.number(Faker::Number.number(1).to_i)
-    should route(:post, "/wifi/#{place.slug}/gowifi_sms/#{id}/resend").to(
+    sms = create :gowifi_sms, place: place
+    should route(:post, "/wifi/#{place.slug}/gowifi_sms/#{sms.id}/resend").to(
       action: :resend,
       controller: :gowifi_sms,
       slug: place.slug,
-      id: id
+      id: sms.id
     )
   end
 

@@ -1,124 +1,635 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
     %title GoFriends - Больше друзей в вашем заведении
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag "home", :media => "all"
-    = javascript_include_tag "home"
+    = stylesheet_link_tag "landing_new", :media => "all"
+    = javascript_include_tag "landing_new"
+    / HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   %body
-    %nav.navbar.navbar-custom.navbar-fixed-top.gradient
-      .container-fluid
-        / Brand and toggle get grouped for better mobile display
-        .navbar-header
-          %button.navbar-toggle.collapsed{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Навигация
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{:href => "mailto:info@gofriends.com.ua", :style => 'margin-top: 16px;'} info@gofriends.com.ua
-        / Collect the nav links, forms, and other content for toggling
-        #navbar-collapse.collapse.navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li
-              %a.scrollTo{:href => "#guests"} Новые гости
-            %li
-              %a.scrollTo{:href => "#how"} Как это работает
-            %li
-              %a.scrollTo{:href => "#benefits"} Выгоды
-            %li
-              %a.scrollTo{:href => "#contact"} Бесплатно
-            %li
-              = link_to 'Войти', login_path
-        / /.navbar-collapse
-      / /.container-fluid
-    %header#header
-      #logo
-        = image_tag 'logo.png'
-    #guests
-      %h1 Ваши гости расскажут о Вас:
-      = image_tag 'socials/fb.png'
-      = image_tag 'socials/vk.png'
-      = image_tag 'socials/tw.png'
-      = image_tag 'socials/ok.png'
-      .container-fluid
-        .row
-          .col-sm-4
-            = image_tag 'photos/1.jpg'
-          .col-sm-4
-            = image_tag 'photos/2.jpg'
-          .col-sm-4
-            = image_tag 'photos/3.jpg'
-    #how
-      %h1 Как это работает
+    %header
+      .top_line
       .container
         .row
-          .col-sm-7
-            = image_tag 'how/1.jpg'
-            = image_tag 'how/2.jpg', style: 'display: none'
-            = image_tag 'how/3.jpg', style: 'display: none'
+          .col-sm-12.header_block
+            = link_to root_path do
+              .logo_block
+                .wi-fi__left_block
+                  .wi-fi__left_block_inner
+                    .wi-fi_text
+                      WI-FI
+                    .icon-signal
+                .wi-fi__right_block
+                  .logo
+                    %strong Go
+                    %span.logo_img
+                    %span.logo_text Friends
+                  .logo_description Друзья придут
+            .top_socials.pull-right
+              .socials
+                .socials_item
+                  %a.icon-vkontakte{:href => "#1", :target => "_blank"}
+                .socials_item
+                  %a.icon-facebook{:href => "#2", :target => "_blank"}
+                .socials_item
+                  %a.icon-linkedin-1{:href => "#3", :target => "_blank"}
+            .top_form_block
+              .top_form_block_inner
+                .top_phone +38(068) 999 93 98
+                .top_form
+                  %a{ href: '#bottom_form'}
+                    %button.btn.btn-default Заказать звонок
+        .row
+          .top_menu
+            .enter
+              = link_to login_path do
+                Вход
+                %span.icon-login
+            %button.navbar-toggle{"data-target" => "#responsive-menu", "data-toggle" => "collapse", :type => "button"}
+              %span.icon-menu
+            %nav#responsive-menu.menu.text-center.collapse.navbar-collapse
+              %ul#mainmenu.navbar.navbar-nav
+                %li.menu_item.active
+                  %a.button3d{:href => "#tel_section"}
+                    %span{"data-text" => "О НАС"} О НАС
+                %li.menu_item
+                  %a.button3d{:href => "#partners"}
+                    %span{"data-text" => "ПРЕДСТАВИТЕЛЬСТВА"} ПРЕДСТАВИТЕЛЬСТВА
+                %li.menu_item
+                  %a.button3d{:href => "#footer_form"}
+                    %span{"data-text" => "СТАТЬ ПАРТНЕРОМ"} СТАТЬ ПАРТНЕРОМ
+                %li.menu_item
+                  %a.button3d{:href => "#clients"}
+                    %span{"data-text" => "НАШИ КЛИЕНТЫ"} НАШИ КЛИЕНТЫ
+                %li.menu_item
+                  %a.button3d{:href => "#bottom_form"}
+                    %span{"data-text" => "КОНТАКТЫ"} КОНТАКТЫ
+        .row
+          .col-sm-12{:style => "padding-right: 0"}
+            .header_content
+              .header_description1
+                Ваши гости расскажут о вас
+              .header_socials
+                %span.icon-vkontakte
+                %span.icon-facebook
+                %span.icon-twitter
+              .header_description2
+                в обмен на бесплатный
+              .header_description3
+                %strong WI-FI
+    %section#tel_section
+      .container
+        .row
+          .col-sm-12
+            .title.text-center
+              %h3 МЫ СДЕЛАЛИ СОЦСЕТИ ЭФФЕКТИВНЫМИ ДЛЯ ВАС
+        .row
+          .col-sm-3.col-xs-6
+            .tel_block
+              .tel_description
+                .tel_description_inner
+                  .tel_title ПОДКЛЮЧЕНИЕ
+                  .tel_text
+                    Выберите Wi-Fi cеть с
+                    названием заведения
+                .tel_number.tel_n1
+                  = image_tag 'landing/1.png'
+              .tel_img
+                = image_tag 'landing/tel_1.png'
+          .col-sm-3.col-xs-6.tel_padd
+            .tel_block_2
+              .tel_description
+                .tel_description_inner
+                  .tel_title АВТОРИЗАЦИЯ
+                  .tel_text
+                    Нажмите на иконку
+                    соцсети, чтобыввести логин
+                    и парольсвоей соцсети
+                .tel_number.tel_n2
+                  = image_tag 'landing/2.png'
+              .tel_img
+                = image_tag 'landing/tel_2.png'
+          .col-sm-3.col-xs-6
+            .tel_block_3
+              .tel_description
+                .tel_description_inner
+                  .tel_title ПОСТ
+                  .tel_text Приложение расскажет Вам об акциях, событиях, скидках заведения - фото в соцсети.
+                .tel_number
+                  = image_tag 'landing/3.png'
+              .tel_img
+                = image_tag 'landing/tel_3.png'
+          .col-sm-3.col-xs-6
+            .tel_block_4
+              .tel_description
+                .tel_description_inner
+                  .tel_title ПРОГРАММА ЛОЯЛЬНОСТИ
+                  .tel_text За каждый вход через соцсеть, Вы получаете баллы, которые можете обменять на меню
+                .tel_number
+                  = image_tag 'landing/4.png'
+              .tel_img
+                = image_tag 'landing/tel_4.png'
+    %section#benefit
+      .container
+        .row
+          .col-sm-12
+            .title.text-center
+              %h3 ВЫГОДЫ ДЛЯ ВАС
+        .row
+          .col-sm-3
+            .benefit_img.text-center
+              = image_tag 'landing/benefit_1.png'
+            .benefit_title.text-center.benefit_padd АВТОМАТИЗИРОВАННАЯ РЕКЛАМА
+            %hr.line/
+            .benefit_description.text-center Реклама через посты в соцсетяз без лишних затрат на сотрудников, и экономия времени
+          .col-sm-3
+            .benefit_img_2.text-center
+              = image_tag 'landing/benefit_2.png'
+            .benefit_title.text-center СВЯЗЬ С КЛИЕНТАМИ
+            %hr.line/
+            .benefit_description.text-center Реклама через посты в соцсетях без лишних затрат на сотрудников, и экономия времени
+          .col-sm-3
+            .benefit_img.text-center
+              = image_tag 'landing/benefit_3.png'
+            .benefit_title.text-center ПРОГРАММА ЛОЯЛЬНОСТИ
+            %hr.line/
+            .benefit_description.text-center Реклама через посты в соцсетяз без лишних затрат на сотрудников, и экономия времени
+          .col-sm-3
+            .benefit_img_4.text-center
+              = image_tag 'landing/benefit_4.png'
+            .benefit_title.text-center РЕКЛАМА ДОВЕРИЯ
+            %hr.line/
+            .benefit_description.text-center Реклама через посты в соцсетяз без лишних затрат на сотрудников, и экономия времени
+    %section#top_form
+      .container
+        .row
+          .col-md-4.col-sm-6.col-xs-12.pull-left.form_block
+            %h6.title_form.text-center
+              ОТПРАВЬТЕ ЗАЯВКУ
+            = form_tag("/feedback", class: 'feedback', method: 'post', 'data-toggle' => 'validator') do
+              .row
+                .form-group.col-sm-12
+                  %input.form-control{:name => "name", :placeholder => "Как Вас зовут?", :required => "", :type => "text"}/
+                .form-group.col-sm-12
+                  %input.form-control{:name => "tel", :placeholder => "Контактный телефон", :required => "", :type => "text"}/
+                .form-group.col-sm-12
+                  %input.form-control{:name => "email", :placeholder => "E-mail", :required => "", :type => "email"}/
+                .form-group.col-sm-12
+                  %button.btn.btn-default.btn-lg.pull-right{:name => "form-submit", :type => "submit"} Отправить
+          .col-md-8.col-sm-6.col-xs-12.form_content.pull-right
+            %span.form_description К ВАМ в заведение придут
+            %br/
+            %span.form_description_2 НОВЫЕ ГОСТИ
+            %br/
+    %section#business
+      .container
+        .row
+          .col-sm-12
+            .title.text-center
+              %h3 НАШЕ РЕШЕНИЕ ПОДХОДИТ ДЛЯ ЛЮБОГО ВИДА БИЗНЕСА
+        .row
+          .column_business.col-sm-1
+            .business_img.text-center
+              = image_tag 'landing/business_1.png'
+            .business_description.text-center Рестораны
+          .column_business.col-sm-1
+            .business_img_2.text-center
+              = image_tag 'landing/business_2.png'
+            .business_description.business_padd_2.text-center Кафе
+          .column_business.col-sm-1
+            .business_img_3.text-center
+              = image_tag 'landing/business_3.png'
+            .business_description.text-center Бары, Кальянные
+          .column_business.col-sm-1
+            .business_img_4.text-center
+              = image_tag 'landing/business_4.png'
+            .business_description.business_padd_4.text-center Ночные Клубы
+          .column_business.col-sm-1
+            .business_img_5.text-center
+              = image_tag 'landing/business_5.png'
+            .business_description.text-center Спортивные центры
+          .column_business.col-sm-1
+            .business_img_6.text-center
+              = image_tag 'landing/business_6.png'
+            .business_description.business_padd_6.text-center Мед. учреждения
+          .column_business.col-sm-1
+            .business_img.text-center
+              = image_tag 'landing/business_7.png'
+            .business_description.text-center Учебные учреждения
+          .column_business.col-sm-1
+            .business_img_8.text-center
+              = image_tag 'landing/business_8.png'
+            .business_description.text-center Гостиницы и хостелы
+          .column_business.col-sm-1
+            .business_img.text-center
+              = image_tag 'landing/business_9.png'
+            .business_description.text-center Торговые центры
+          .column_business.col-sm-1
+            .business_img_10.text-center
+              = image_tag 'landing/business_10.png'
+            .business_description.text-center Автозаправки
+          .column_business.col-sm-1
+            .business_img_11.text-center
+              = image_tag 'landing/business_11.png'
+            .business_description.text-center Тренинговые агенства
+          .column_business.col-sm-1
+            .business_img.text-center
+              = image_tag 'landing/business_12.png'
+            .business_description.text-center Кинотеатры
+          .column_business.col-sm-1
+            .business_img_13.text-center
+              = image_tag 'landing/business_13.png'
+            .business_description.business_padd_13.text-center Концертные площатки и залы
+          .column_business.col-sm-1
+            .business_img_14.text-center
+              = image_tag 'landing/business_14.png'
+            .business_description.text-center Такси
+        .row{:style => "margin-top:25px;"}
+    %section#pizza
+      .container
+        .row
+          .col-sm-12
+            .title.text-center
+              %h3 РЕКЛАМА - КОТОРАЯ ПРИНОСИТ ДЕНЬГИ
+        .row
+          .col-sm-4
+            .text_block_1
+              Наш сервис
+              %strong GoFriends
+            .text_block_2
+              ПРИВЕДЕТ к Вам
+              %strong новых клиентов
+            .text_block_3 и дополнительную ПРИБЫЛЬ
           .col-sm-5
-            .carousel
-              .carousel-inner
-                %p
-                  Вашему гостю нужен интернет и он подключается к бесплатной Wi-fi сети.
-              .carousel-inner
-                %p Гость получает доступ к интернету с помощью входа через свою любимую социальную сеть. На этой странице Вы так же можете разместить акцию или мероприятие Вашего заведения.
-              .carousel-inner
-                %p Ваш гость получил доступ в интернет, и первая страница, которую он видит вместо своей стартовой - Ваше сообщество в социальной сети или Ваш сайт! А так же на стене у гостя размещается пост о Вашем заведении, который видят все его друзья.
-    #benefits
-      %h1 Выгоды
+            .img_block
+              = image_tag 'landing/pizza.png'
+          .col-sm-3
+            .text_block_4 А вы поделитель с нами кусочком
+    %section#router
       .container
         .row
-          .col-md-4
-            #head
-              = image_tag 'benefits/3.png'
-            #body
-              %h1 Новые клиенты
-              %p GoFriends - друзья придут! Гости от своего имени порекомендуют Вас своим друзьям, родственникам, коллегам, одногруппникам, одноклассникам, соседям и просто знакомым. Они так же расскажут о Ваших акциях, мероприятиях и других событиях.
-          .col-md-4
-            #head
-              = image_tag 'benefits/1.png'
-            #body
-              %h1 Популяризация бренда в соц.сетях
-              %p Ваши гости сами распространят информацию о Вас в социальных медиа, а так же станут Вашими подписчиками - эффект сарафанного радио! Весь процесс полностью автоматизирован, и поэтому больше не нужно платить IT или SMM специалисту.
-          .col-md-4
-            #head
-              = image_tag 'benefits/2.png'
-            #body
-              %h1 Увеличение среднего чека
-              %p Ваши гости благодаря программе лояльности станут постоянными клиентами и вернуться к Вам снова! И после утреннего кофе придут со своими друзьями отмечать свой День Рождение, корпоратив, День Свадьбы и другие праздники.
-    #contact
+          .col-sm-12
+            .title.text-center
+              %h3 КАК ПОДЛЮЧИТЬ СЕРВИС
+        .row
+          .col-sm-4
+            .router_block
+              .image_block_1
+                = image_tag 'landing/router_1.png'
+              .router_content
+                .title_router
+                  Назначение:
+                .router_description SMS АВТОРИЗАЦИЯ НА ВАШ РОУТЕР
+                .router_characteristic
+                  Характеристики:
+                  = succeed "\u{41f}\u{438}\u{442}\u{430}\u{43d}\u{438}\u{435}" do
+                    %br/
+                  = succeed "\u{41f}\u{43e}\u{434}\u{43a}\u{43b}\u{44e}\u{447}\u{435}\u{43d}\u{438}\u{435}" do
+                    %br/
+                  = succeed "\u{41d}\u{430}\u{434}\u{435}\u{436}\u{43d}\u{43e}\u{441}\u{442}\u{44c}," do
+                    %br/
+                  = succeed "\u{410}\u{432}\u{442}\u{43e}\u{43c}\u{430}\u{442}\u{438}\u{447}\u{435}\u{441}\u{43a}\u{43e}\u{435}" do
+                    %br/
+          .col-sm-4
+            .router_block
+              .image_block_2
+                = image_tag 'landing/router_2.png'
+              .router_content
+                .title_router
+                  Назначение:
+                .router_description ДЛЯ СОЦСЕТЕЙ ПРОФЕССИОНАЛЬНЫЙ
+                .router_characteristic
+                  Характеристики:
+                  = succeed "\u{41f}\u{438}\u{442}\u{430}\u{43d}\u{438}\u{435}" do
+                    %br/
+                  = succeed "\u{41f}\u{43e}\u{434}\u{43a}\u{43b}\u{44e}\u{447}\u{435}\u{43d}\u{438}\u{435}" do
+                    %br/
+                  = succeed "\u{41d}\u{430}\u{434}\u{435}\u{436}\u{43d}\u{43e}\u{441}\u{442}\u{44c}," do
+                    %br/
+                  = succeed "\u{410}\u{432}\u{442}\u{43e}\u{43c}\u{430}\u{442}\u{438}\u{447}\u{435}\u{441}\u{43a}\u{43e}\u{435}" do
+                    %br/
+          .col-sm-4
+            .router_block
+              .image_block_3
+                = image_tag 'landing/router_3.png'
+              .router_content
+                .title_router
+                  Назначение:
+                .router_description
+                  ДЛЯ БОЛЬШИХ
+                  = succeed "\u{417}\u{410}\u{412}\u{415}\u{414}\u{415}\u{41d}\u{418}\u{419}" do
+                    %br/
+                .router_characteristic
+                  Характеристики:
+                  = succeed "\u{41f}\u{438}\u{442}\u{430}\u{43d}\u{438}\u{435}" do
+                    %br/
+                  = succeed "\u{41f}\u{43e}\u{434}\u{43a}\u{43b}\u{44e}\u{447}\u{435}\u{43d}\u{438}\u{435}" do
+                    %br/
+                  = succeed "\u{41d}\u{430}\u{434}\u{435}\u{436}\u{43d}\u{43e}\u{441}\u{442}\u{44c}," do
+                    %br/
+                  = succeed "\u{410}\u{432}\u{442}\u{43e}\u{43c}\u{430}\u{442}\u{438}\u{447}\u{435}\u{441}\u{43a}\u{43e}\u{435}" do
+                    %br/
+    %section#clients
       .container
         .row
-          .col-md-6
-            #test
-              %h1 Хотите новых гостей?
-            = image_tag 'contact.jpg'
-          .col-md-6
-            = form_tag("/feedback", id: 'signup', method: 'post') do
-              %input{:name => "name", :placeholder => "Имя и фамилия", :required => "", :type => "text"}/
-              %input{:name => "email", :placeholder => "E-mail", :required => "", :type => "text"}/
-              %input{:name => "tel", :placeholder => "Номер телефона", :required => "", :type => "text"}/
-              %input{:type => "submit", :value => "Оставить заявку"}/
-              %h1 или
-              %h1
-                позвонить
-                %span 8(063)01-01-797
-    %footer#footer
-      %h1 8(063)01-01-797
-      %h1 8(067)97-97-253
-      %h2= link_to t('privacy_police.title'), page_path('privacy_policy')
-      %a{:href => "http://rabby.com.ua/"}
-        = image_tag "rabby.png"
-    :javascript
-      (function(d, w, s) {
-      var widgetId = '21334', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
-      gcw.src = '//my.binotel.ua/getcall/widgets/'+ widgetId +'.js';
-      var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
-      })(document, window, 'script');
+          .col-sm-12
+            .title.text-center
+              %h3 НАШИ КЛИЕНТЫ
+        .row
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/kfc.png'
+          .col-sm-2.col-xs-4
+            .client_block.client_position
+              = image_tag 'landing/wings.png'
+          .col-sm-2.col-xs-4
+            .client_block.client_position_curves
+              = image_tag 'landing/curves.png'
+          .col-sm-2.col-xs-4
+            .client_block.client_position
+              = image_tag 'landing/chicken.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/karp.png'
+          .col-sm-2.col-xs-4
+            .client_block.client_position
+              = image_tag 'landing/garden.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c1.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c2.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c3.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c4.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c5.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c6.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c7.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c8.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c9.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c10.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c11.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c12.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c13.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c14.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c15.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c16.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c17.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c18.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c19.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c20.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c21.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c22.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c23.png'
+          .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/c24.png'
+    %section#bottom_form
+      .container
+        .row
+          .col-sm-6.col-xs-12.form_content.pull-left
+            %span.form_description вы СМОЖЕТЕ РАССКАЗЫВАТЬ
+            %br/
+            %span.form_description_2 о своих акциях, мероприятиях
+            %br/
+            %span.form_description_3 ВСЕМ КЛИЕНТАМ и их друзьям
+          .col-md-4.col-sm-6.col-xs-12.pull-right.form_block
+            %h6.title_form.text-center
+              ОТПРАВЬТЕ ЗАЯВКУ
+            = form_tag("/feedback", class: 'feedback', method: 'post', 'data-toggle' => 'validator') do
+              .row
+                .form-group.col-sm-12
+                  %input.form-control{:name => "name", :placeholder => "Как Вас зовут?", :required => "", :type => "text"}/
+                .form-group.col-sm-12
+                  %input.form-control{:name => "tel", :placeholder => "Контактный телефон", :required => "", :type => "text"}/
+                .form-group.col-sm-12
+                  %input.form-control{:name => "email", :placeholder => "E-mail", :required => "", :type => "email"}/
+                .form-group.col-sm-12
+                  %button.btn.btn-default.btn-lg.pull-right{:name => "form-submit", :type => "submit"} Отправить
+    %section#partners
+      .container
+        .row
+          .col-sm-12
+            .title.text-center
+              %h3 НАШИ ПАРТНЕРЫ
+        .row
+          .col-sm-12.text-center
+            = image_tag 'landing/maps.png'
+        .row
+          .col-sm-12
+            .swiper-container
+              .swiper-wrapper.flag-buttons
+                #ua.swiper-slide
+                  = image_tag 'landing/ua.png'
+                #rus.swiper-slide
+                  = image_tag 'landing/rus.png'
+                #kz.swiper-slide
+                  = image_tag 'landing/kz.png'
+                #bel.swiper-slide
+                  = image_tag 'landing/bel.png'
+                #arm.swiper-slide
+                  = image_tag 'landing/arm.png'
+                #arm.swiper-slide
+                  = image_tag 'landing/jordan.png'
+              .swiper-pagination
+              .slider_description
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location>
+                    Киев
+                  .sd_content
+                    .sd_name Моисеев Евгений
+                    .sd_tel +38(063)01-01-797
+                  .sd_content
+                    .sd_name Гавриленко Егор
+                    .sd_tel +38(068)99-99-398
+                  .sd_content
+                    .sd_name Сапожников Антон
+                    .sd_tel +38(067)50-22-732
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location>
+                    Львов
+                  .sd_content
+                    .sd_name Ременюк Светлана
+                    .sd_tel skype: remennv
+                  .sd_content
+                    .sd_name Конолюк Максим
+                    .sd_tel skype:bazukin2
+                  .sd_content
+                    .sd_name Ротар Максим
+                    .sd_tel +38(068)99-99-398
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location>
+                    Харьков
+                  .sd_content
+                    .sd_name Руслан Олександрович
+                    .sd_tel +38(093)44-18-649
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location>
+                    Чернигов
+                  .sd_content
+                    .sd_name Алексеенко Илья
+                    .sd_tel +38(063)01-01-797
+                .slider_description_block.col-sm-3.col-xs-12
+                  .sd_title
+                    %span.icon-location
+                    Днепропетровск
+                  .sd_content
+                    .sd_name Станислав Борисов
+                    .sd_tel +38(063)01-01-797
+                -# .slider_description_block.col-sm-3.col-xs-12
+                -#   .sd_title
+                -#     %span.icon-location>
+                -#     Ивано-Франковск
+                -#   .sd_content
+                -#     .sd_name Юрий Павлов
+                -#     .sd_tel +38(063)10-01-663
+              .slider_description
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location
+                    Москва
+                  .sd_content
+              .slider_description
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location
+                    Алматы
+                  .sd_content
+                    .sd_name Азамат Бисарин
+                    .sd_tel 87776470077
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location
+                    Актобе
+                  .sd_content
+                    .sd_name Толгат Жакешев
+              .slider_description
+                .slider_description_block.col-sm-2.col-xs-6
+                  .sd_title
+                    %span.icon-location
+                    Минск
+              .slider_description
+                .slider_description_block.col-sm-3.col-xs-12
+                  .sd_title
+                    %span.icon-location
+                    Ереван
+              .slider_description
+                .slider_description_block.col-sm-3.col-xs-12
+                  .sd_title
+                    %span.icon-location
+                    Аман
+    %footer#footer_form
+      .container
+        .row
+          .col-sm-12
+            .title.text-center
+              %h3 ОСТАВИТЬ ЗАЯВКУ
+        .row
+          .col-sm-3.col-xs-6
+            .footer_column
+              .footer_img.text-center
+                = image_tag 'landing/f1.png'
+              .footer_title.text-center ВЛАДЕЛЬЦАМ ЗАВЕДЕНИЙ
+              .footer_description.wrap.footer_margin.text-center
+                У вас есть свое заведение
+                либо вы частное лицо?
+                Подключитесь системе GoFriends
+              .footer_btn.text-center
+                %a{ href: '#bottom_form' }
+                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
+          .col-sm-3.col-xs-6
+            .footer_column
+              .footer_img.text-center
+                = image_tag 'landing/f2.png'
+              .footer_title.text-center СТАТЬ ПРЕДСТАВИТЕЛЕМ
+              .footer_description.text-center
+                Купите представительство GoFriends
+                Развивайте сеть в своем регионе и
+                зарабатывайте вместе с нами.
+              .footer_btn.text-center
+                %a{ href: '#bottom_form'}
+                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
+          .col-sm-3.col-xs-6
+            .footer_column
+              .footer_img.text-center
+                = image_tag 'landing/f1.png'
+              .footer_title.footer_padd.text-center РЕКЛАМОДАТЕЛЯМ
+              .footer_description.footer_margin.text-center
+                Размещайте свою рекламу в сети
+                Gofriends и повышайте
+                узнаваемость бренда.
+              .footer_btn.text-center
+                %a{ href: '#bottom_form' }
+                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
+          .col-sm-3.col-xs-6
+            .footer_column
+              .footer_img.text-center
+                = image_tag 'landing/f1.png'
+              .footer_title.footer_padd.text-center ПРОВАЙДЕРАМ
+              .footer_description.footer_margin.text-center
+                Получите преимущества перед
+                другими провайдерами, внедрив
+                лучшее Hot-spot решение
+              .footer_btn.text-center
+                %a{ href: '#bottom_form' }
+                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
+    %a#back-to-top.btn.btn-primary.btn-lg.back-to-top{"data-placement" => "left", "data-toggle" => "tooltip", :href => "#", :role => "button", :title => "Жми, чтобы попасть наверх страницы"}
+      %span.glyphicon.glyphicon-chevron-up.icon-up-open

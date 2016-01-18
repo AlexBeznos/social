@@ -4,13 +4,13 @@ hu:
   authlogic:
     error_messages:
       login_not_found: nem találtam
-      password_blank: Ez nem lehet üres
+      password_blank: ez nem lehet üres
       user_session: UserSession (or whatever name you are using)
     attributes:
       user_session:
         email: Email
         password: Jelszó
-        remember_me: Emlékezz rám
+        remember_me: emlékezz rám
   activerecord:
     models:
       message: üzenet
@@ -28,111 +28,57 @@ hu:
     deleted: "%{subject} az eltávolított"
   date:
     abbr_day_names:
-    - Вс
-    - Пн
-    - Вт
-    - Ср
-    - Чт
-    - Пт
-    - Сб
+    - Va
+    - Hé
+    - Ke
+    - Sze
+    - Cs
+    - Pé
+    - Szo
     abbr_month_names:
     -
-    - янв.
-    - февр.
-    - март
-    - апр.
-    - мая
-    - июнь
-    - июль
-    - авг.
-    - сент.
-    - окт.
-    - нояб.
-    - дек.
+    - Jan
+    - Feb
+    - Már
+    - Ápr
+    - Máj
+    - Jún
+    - Júl
+    - Aug
+    - Szep
+    - Okt
+    - Nov
+    - Dec
     day_names:
-    - воскресенье
-    - понедельник
-    - вторник
-    - среда
-    - четверг
-    - пятница
-    - суббота
+    - vasárnap
+    - hétfő
+    - kedd
+    - szerda
+    - csütörtök
+    - péntek
+    - szombat
     formats:
       default: "%d.%m.%Y"
       long: "%-d %B %Y"
       short: "%-d %b"
     month_names:
     -
-    - января
-    - февраля
-    - марта
-    - апреля
-    - мая
-    - июня
-    - июля
-    - августа
-    - сентября
-    - октября
-    - ноября
-    - декабря
+    - január
+    - február
+    - március
+    - április
+    - május
+    - június
+    - július
+    - augusztus
+    - szeptember
+    - október
+    - november
+    - december
     order:
     - :day
     - :month
     - :year
-
-#   date:
-#     abbr_day_names:
-#     - va
-#     - hé
-#     - ke
-#     - sz
-#     - cs
-#     - pé
-#     - sz
-#     abbr_month_names:
-#     -
-#     - jan
-#     - feb
-#     - már
-#     - ápr
-#     - máj
-#     - jún
-#     - júl
-#     - aug
-#     - szep
-#     - okt
-#     - nov
-#     - dec
-#     day_names:
-#     - vasárnap
-#     - hétfő
-#     - kedd
-#     - szerda
-#     - csütörtök
-#     - péntek
-#     - szombat
-#     formats:
-#       default: "%d.%m.%Y"
-#       long: "%-d %B %Y"
-#       short: "%-d %b"
-#     month_names:
-#     -
-#     - január
-#     - február
-#     - március
-#     - április
-#     - május
-#     - június
-#     - július
-#     - augusztus
-#     - szeptember
-#     - október
-#     - november
-#     - december
-#     order:
-#     - :day
-#     - :month
-#     - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -192,33 +138,33 @@ hu:
         one: "%{count} másodperc"
         other: "%{count} másodperc"
     prompts:
-      day: nap
+      day: Nap
       hour: Óra
       minute: Percek
-      month: hónap
-      second: másodperc
-      year: év
+      month: Hónap
+      second: Másodperc
+      year: Év
   errors:
     format: "%{attribute} %{message}"
     messages:
-      not_found: Rekord talált
+      not_found: rekord talált
       accepted: megerősítendő
-      blank: Ez nem lehet üres
+      blank: ez nem lehet üres
       present: üresen kell hagyni
-      confirmation: Ez nem esik egybe a mező értéke %{attribute}
-      empty: Ez nem lehet üres
-      equal_to: Lehet, hogy az értéke egyenlő %{count}
-      even: Lehet, hogy csak a páratlan értékeket
-      exclusion: Ez egy fenntartott értéke
-      greater_than: Ez lehet egy érték nagyobb, mint %{count}
-      greater_than_or_equal_to: Ez lehet egy érték nagyobb vagy egyenlő%{count}
-      inclusion: Azt a nem kívánt érték
-      invalid: Ez érvénytelen
-      less_than: Lehet, hogy kisebb érték %{count}
-      less_than_or_equal_to: Ez lehet egy érték kisebb vagy egyenlő, %{count}
+      confirmation: ez nem esik egybe a mező értéke %{attribute}
+      empty: ez nem lehet üres
+      equal_to: lehet, hogy az értéke egyenlő %{count}
+      even: lehet, hogy csak a páratlan értékeket
+      exclusion: ez egy fenntartott értéke
+      greater_than: ez lehet egy érték nagyobb, mint %{count}
+      greater_than_or_equal_to: ez lehet egy érték nagyobb vagy egyenlő%{count}
+      inclusion: azt a nem kívánt érték
+      invalid: ez érvénytelen
+      less_than: lehet, hogy kisebb érték %{count}
+      less_than_or_equal_to: ez lehet egy érték kisebb vagy egyenlő, %{count}
       not_a_number: nem szám
-      not_an_integer: Ez nem egy egész szám
-      odd: Ez csak egy még érték
+      not_an_integer: ez nem egy egész szám
+      odd: ez csak egy még érték
       record_invalid: 'Voltak hibák: %{errors}'
       restrict_dependent_destroy:
         one: 'Nem lehet törölni egy rekordot, mivel fennáll a kapcsolat: %{record}'
@@ -333,12 +279,12 @@ hu:
       two_words_connector: " és "
       words_connector: ", "
   time:
-    am: утра
+    am: reggel
     formats:
       default: "%a, %d %b %Y, %H:%M:%S %z"
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
-    pm: вечера
+    pm: este
   wifi:
     greetings: "Helló, <ins>%{customer_name}</ins>!"
     greetings_to_no_one: Helló!
@@ -347,7 +293,7 @@ hu:
     poll_error: "Ön nem választott ki a javasolt válaszok"
     footer: 'Powered by GoFriends'
     password_placeholder: 'vagy írja be a jelszót...'
-    simple_enter: "bejelentkezés"
+    simple_enter: "Bejelentkezés"
     countdown: " másodperc van hátra"
     select_answer: "Válassza ki az egyik válasz"
     submit: "válasz"
@@ -355,7 +301,7 @@ hu:
     sms_code_placeholder: "A kódex sms"
     sms_resend: 'küldjön SMS-t újra'
   menu_item:
-    greetings: "%{customer_name}, Üdvözöljük %{place_name}"
+    greetings: "%{customer_name}, üdvözöljük %{place_name}"
     greetings_short: Ön szívesen!
     buy_with_bonuses: Az alábbiakban egy listát, amit meg lehet tölteni a pontokat
     added_bonus: Akkor kerül jóváírásra %{place_score_amount} pont!
@@ -376,15 +322,15 @@ hu:
     buy: Az Exchange
   navigation:
     logout: 'Kijelentkezés'
-    login: 'bejelentkezés'
-    users: 'felhasználók'
+    login: 'Bejelentkezés'
+    users: 'Felhasználók'
     my_places: 'Saját helyek'
     dashboard:
-      statistic: 'statisztikai'
+      statistic: 'Statisztikai'
       guests: 'Top látogatók'
       birthdays: "Születésnap"
-      settings: 'beállítások'
+      settings: 'Beállítások'
       stocks: 'Akciók'
       menu_items: 'Termékek / Szolgáltatások'
       polls: 'Szavazás'
-      banners: 'bannerek'
+      banners: 'Bannerek'

@@ -46,7 +46,7 @@
             %th slug
             %th
         %tbody
-        - @user.places.each do |place|
+        - @user.get_all_places.each do |place|
           %tr
             %th= place.id
             %td= link_to place.name, adm_place_path(place)

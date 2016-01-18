@@ -1,7 +1,7 @@
 hu:
   models:
     stocks:
-      class: 'az akció'
+      class: 'Az akció'
       day: 'minden nap'
       actions:
         index:
@@ -14,5 +14,5 @@ hu:
           title: Szerkesztés kampány
       attrs:
         image: Photography
-        url: link
-        day: napos show
+        url: Link
+        day: Napos show

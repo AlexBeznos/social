@@ -15,15 +15,15 @@ hu:
         logo: 'Logó'
         redirect_url: "Redirect hitelesítés után"
         wifi_link: "Link erre az oldalra hitelesítés"
-        reputation_active: "bónuszok"
+        reputation_active: "Bónuszok"
         simple_enter: Bejelentkezés engedély nélkül
-        score_amount: "a bónusz"
-        loyalty_program: hűségprogram
+        score_amount: "A bónusz"
+        loyalty_program: Hűségprogram
         polls_active: Következtetés felmérések hitelesítési oldal
         city: City
         display_my_banners: Mutassa a reklámokat, más helyeken
         display_other_banners: Mutasd mások bannerek a helyemben
-        owner: tulajdonos
+        owner: Tulajdonos
         sms_auth: SMS hitelesítés
       actions:
         index:
@@ -32,36 +32,34 @@ hu:
         show:
           title: "intézmény %{place_name}"
           table:
-            time: míg
-            network: szociális háló
-            customer: felhasználó
+            time: Míg
+            network: Szociális háló
+            customer: Felhasználó
           info:
-            day: nap
+            day: Nap
             week: Hét
-            month: hónap
-            gender: nem
+            month: Hónap
+            gender: Nem
             men: férfi
             women: női
             auditory: A közönség elérése
         new:
           title: "Hozzon létre Intézmény"
         edit:
-          title: 'frissítés %{place_name}'
+          title: 'Frissítés %{place_name}'
         guests:
           title: "Top látogatók %{place_name}"
           table:
-            user: felhasználó
-            network: szociális háló
-            connection_number: kapcsolatok száma
+            user: Felhasználó
+            network: Szociális háló
+            connection_number: Kapcsolatok száma
         birthdays:
           title: "Születésnap látogatók %{place_name}"
           table:
-            user: felhasználó
-            network: szociális háló
+            user: Felhasználó
+            network: Szociális háló
             birthday: Születésnap
         settings:
-          auth_default_lang: Hitelesítés alapértelmezett nyelv
-          title: "beállításai %{place_name}"
-          wifi:  testreszabása Wi-Fi
-          messages:  beállítás állomások
-          download_settings: 'Letöltés beállítások WiFi'
+          title: "Beállításai %{place_name}"
+          wifi:  Testreszabása Wi-Fi
+          messages:  Beállítás állomások

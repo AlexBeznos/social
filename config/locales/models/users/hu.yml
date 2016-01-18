@@ -7,18 +7,18 @@ hu:
       actions:
         index:
           title: Felhasználók
-          my_users: a felhasználók
+          my_users: A felhasználók
         show:
-          title: "felhasználó %{user}"
-          heading: felhasználói beállítások
-          places: éttermek Felhasználó
+          title: "Felhasználó %{user}"
+          heading: Felhasználói beállítások
+          places: Éttermek Felhasználó
         new:
           title: Új fiók létrehozása
         edit:
-          title: 'frissítés %{name}'
+          title: 'Frissítés %{name}'
       attrs:
-        first_name: első neve
+        first_name: Első neve
         last_name: Név
         phone: Telefon
         email: E-mail
-        timezone: 'minden időpont'
+        timezone: 'Minden időpont'

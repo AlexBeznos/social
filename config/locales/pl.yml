@@ -28,111 +28,57 @@ pl:
     deleted: "%{subject} usunięto"
   date:
     abbr_day_names:
-    - Вс
-    - Пн
-    - Вт
-    - Ср
-    - Чт
-    - Пт
-    - Сб
+    - Ni
+    - Po
+    - Wt
+    - Śr
+    - Cz
+    - Pi
+    - So
     abbr_month_names:
     -
-    - янв.
-    - февр.
-    - март
-    - апр.
-    - мая
-    - июнь
-    - июль
-    - авг.
-    - сент.
-    - окт.
-    - нояб.
-    - дек.
+    - tycz
+    - luty
+    - mar
+    - kwiec
+    - maj
+    - czer
+    - lip
+    - sier
+    - wrzes
+    - paźd
+    - listo
+    - grud
     day_names:
-    - воскресенье
-    - понедельник
-    - вторник
-    - среда
-    - четверг
-    - пятница
-    - суббота
+    - Niedziela
+    - Poniedziałek
+    - Wtorek
+    - Środa
+    - Czwartek
+    - Piątek
+    - Sobota
     formats:
       default: "%d.%m.%Y"
       long: "%-d %B %Y"
       short: "%-d %b"
     month_names:
     -
-    - января
-    - февраля
-    - марта
-    - апреля
-    - мая
-    - июня
-    - июля
-    - августа
-    - сентября
-    - октября
-    - ноября
-    - декабря
+    - tyczeń
+    - luty
+    - marzec
+    - kwiecień
+    - maj
+    - czerwiec
+    - lipiec
+    - sierpień
+    - wrzesień
+    - październik
+    - listopad
+    - grudzień
     order:
-    - :day
-    - :month
-    - :year
-
-#   date:
-#     abbr_day_names:
-#     - Ni
-#     - Po
-#     - Wt
-#     - Śr
-#     - Cz
-#     - Pi
-#     - So
-#     abbr_month_names:
-#     -
-#     - tycz
-#     - luty
-#     - mar
-#     - kwiec
-#     - maj
-#     - czer
-#     - lip
-#     - sier
-#     - wrzes
-#     - paźd
-#     - listo
-#     - grud
-#     day_names:
-#     - Niedziela
-#     - Poniedziałek
-#     - Wtorek
-#     - Środa
-#     - Czwartek
-#     - Piątek
-#     - Sobota
-#     formats:
-#       default: "%d.%m.%Y"
-#       long: "%-d %B %Y"
-#       short: "%-d %b"
-#     month_names:
-#     -
-#     - tyczeń
-#     - luty
-#     - marzec
-#     - kwiecień
-#     - maj
-#     - czerwiec
-#     - lipiec
-#     - sierpień
-#     - wrzesień
-#     - październik
-#     - listopad
-#     - grudzień
-#     order:
-#     - :dzień
-#     - :miesiąc
-#     - :rok
+    - :dzień
+    - :miesiąc
+    - :rok
   datetime:
     distance_in_words:
       about_x_hours:
@@ -256,7 +202,7 @@ pl:
       update: Zapisz %{model}
       edit: Edycja
       add: Dodaj nowe %{name}
-      destroy: usunąć
+      destroy: Usunąć
   number:
     currency:
       format:
@@ -369,15 +315,15 @@ pl:
     billed_account: "Z konta premii odpisane %{item_price} punktów"
     show_to_waiter: "Pokaż tę stronę kelnera"
     show_to_waiter_with_code: "Pokaż kod do kelnera"
-    add_new_item: odaj nowy produkt / usługę
+    add_new_item: Odaj nowy produkt / usługę
     item_price: "Cena: %{item_price}"
     goods: "Produkt / usługę"
     coupon_code: "Kod zamówienia: %{coupon_code}"
     buy: wymiana
   navigation:
     logout: 'Wyloguj się'
-    login: 'login'
-    users: 'użytkownicy'
+    login: 'Zaloguj się'
+    users: 'Użytkownicy'
     my_places: 'Moje miejsca'
     dashboard:
       statistic: 'Statystyki'
