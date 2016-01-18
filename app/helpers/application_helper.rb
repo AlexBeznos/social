@@ -23,9 +23,10 @@ module ApplicationHelper
   end
 
   def localization_links
-    links_string = I18n.available_locales
-               .map { |locale| link_to locale, set_locale_path(locale) }
-               .join ("|")
+    links_string = I18n.available_locales.map do |locale|
+      link_to locale, set_locale_path(locale)
+    end.join ("|")
+    
     raw links_string
   end
 end
