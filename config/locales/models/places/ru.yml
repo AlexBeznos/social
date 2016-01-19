@@ -60,6 +60,7 @@ ru:
             network: Соц. сеть
             birthday: День рождения
         settings:
+          auth_default_lang: Язык для аутентификации по умолчанию 
           title: "Настройки для %{place_name}"
           wifi:  Настройка Wi-Fi
           messages:  Настройка постов

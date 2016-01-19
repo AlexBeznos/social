@@ -105,7 +105,8 @@ class PlacesController < ApplicationController
                                     :loyalty_program,
                                     :domen_url,
                                     :sms_auth,
-                                    :place_group_id)
+                                    :place_group_id,
+                                    :auth_default_lang)
     end
 
     def get_number_of_friends(records)

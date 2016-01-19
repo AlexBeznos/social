@@ -35,8 +35,14 @@
           = render_stock_image @place
 
         %footer
-          %p= t('wifi.footer')
-          = link_to t('privacy_police.title'), page_path('privacy_policy')
+          .col-lg-2.col-sm-12.localization_links
+            - I18n.available_locales.each do |lang|
+              = link_to lang, gowifi_place_path(@place, lang: lang)
+          .col-lg-8.col-sm-12.wifi_footer
+            %p
+              = t('wifi.footer')
+              %br
+                = link_to t('privacy_police.title'), page_path('privacy_policy')
     = javascript_include_tag "wifi/#{@place.template}"
     :javascript
       #{ raw @place.style.js_min if @place.style }
