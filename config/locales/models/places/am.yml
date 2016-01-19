@@ -60,6 +60,7 @@
             network: Սոց. Ցանց
             birthday: Ծննդյան օրեր
         settings:
+          auth_default_lang: Նույնականացման լռելյայն լեզու 
           title: "Կարգավորումները %{place_name}"
           wifi:  Wi-Fi կարգավորում
           messages:  հրապարակումների կարգավորում

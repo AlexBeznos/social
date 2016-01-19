@@ -22,6 +22,7 @@
         display_my_banners: Ցուցադրել իմ բաններները այլ հաստատություններում
         display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում
         sms_auth: SMS վավերացման
+        auth_default_lang: Նույնականացման լռելյայն լեզու
       user:
         first_name: Անուն
         last_name: Ազգանուն

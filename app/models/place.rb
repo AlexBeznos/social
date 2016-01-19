@@ -12,7 +12,7 @@ class Place < ActiveRecord::Base
                     :path => "/images/logos/:id/:style.:extension",
                     :url => ":s3_domain_url"
 
-  has_one :style,  :dependent => :destroy
+  has_one  :style,  :dependent => :destroy
   has_many :polls, :dependent => :destroy
   has_many :banners, :dependent => :destroy
   has_many :messages, as: :with_message, :dependent => :destroy
@@ -25,7 +25,9 @@ class Place < ActiveRecord::Base
   has_many :gowifi_sms, :dependent => :destroy, class_name: 'GowifiSms'
   belongs_to :user
   belongs_to :place_group
-  
+
+  default_value_for :auth_default_lang, I18n.default_locale.to_s
+
   before_validation :set_password, if: 'enter_by_password'
 
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"

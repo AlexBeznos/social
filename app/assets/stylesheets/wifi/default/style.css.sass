@@ -45,6 +45,7 @@ body
 		background: asset-url('wifi/default/bg.jpg', image) no-repeat center
 		background-size: cover
 		position: relative
+		background-attachment: fixed
 
 .wrapper-out
 		width: 100%
@@ -112,6 +113,8 @@ body
 								margin-top: -66px
 								margin-left: -466px
 						.offer
+								margin-bottom: 20px
+								max-height: 250px
 								margin-top: $mbig
 								@media all and (max-height: 767px)
 										margin-top: $msmall
@@ -123,18 +126,32 @@ body
 				bottom: 0
 				width: 100%
 				background-color: rgba(0, 0, 0, 0.75)
-				p, a
-						color: white
-						margin: 0
-				p
-						font-size: 11.61px
-						padding-top: 8.61px
-						line-height: 4px
-				a
-						text-decoration: underline
-						font-size: 7.74px
-						&:hover
+				margin-top: 10px
+				.wifi_footer
+						p, a
 								color: white
+								margin: 0
+						p
+								font-size: 11.61px
+								padding-top: 7.61px
+								line-height: 4px
+								margin-bottom: 4px
+						a
+								text-decoration: underline
+								font-size: 7.74px
+								margin-bottom: 4px
+								&:hover
+										color: white
+						br
+								margin-bottom: 4px
+				.localization_links
+						color: white
+						padding-top: 5px
+						margin-top: 5px
+						line-height: 8px
+						a
+								color: white
+
 
 .loading
 		width: 100%
