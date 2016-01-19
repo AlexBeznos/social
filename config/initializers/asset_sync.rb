@@ -15,7 +15,7 @@ if defined? AssetSync
     config.fog_region = ENV['AWS_REGION']
     #
     # Don't delete files from the store
-    # config.existing_remote_files = "keep"
+    config.existing_remote_files = "delete"
     #
     # Automatically replace files with their equivalent gzip compressed version
     # config.gzip_compression = true
@@ -26,5 +26,6 @@ if defined? AssetSync
     #
     # Fail silently.  Useful for environments such as Heroku
     # config.fail_silently = true
+
   end
 end
