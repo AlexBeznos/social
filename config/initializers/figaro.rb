@@ -15,6 +15,6 @@ Figaro.require_keys(
                     "AWS_REGION",
                     "AWS_BUCKET",
                     "SENDGRID_USERNAME",
-                    "SENDGRID_PASSWORD"
-
+                    "SENDGRID_PASSWORD",
+                    "SLACK_WEB_HOOK"
                    )
