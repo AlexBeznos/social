@@ -44,6 +44,9 @@ gem 'ahoy_matey'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 
+gem 'exception_notification'
+gem 'slack-notifier'
+
 # Parsers
 gem 'rabl'
 gem 'oj'
