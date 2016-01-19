@@ -1,4 +1,4 @@
-if defined? AssetSync
+if defined?(AssetSync) && Rails.env.production?
   AssetSync.configure do |config|
     config.fog_provider = 'AWS'
     config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
