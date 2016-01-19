@@ -12,6 +12,8 @@ gem 'jquery-minicolors-rails'
 gem 'codemirror-rails'
 gem 'jquery-modal-rails'
 gem 'jquery-ui-rails'
+gem "fog-aws"
+gem "asset_sync"
 
 # Precompiles
 gem 'sass-rails', '~> 4.0.3'
