@@ -669,7 +669,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
-  fog (~> 1.20)
+  fog-aws
   font-awesome-rails
   geocoder
   guess
