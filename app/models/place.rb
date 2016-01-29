@@ -33,12 +33,12 @@ class Place < ActiveRecord::Base
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
-  validates :name, :template, presence: true
+  validates :name, :template, presence: true, length: { maximum: 9 }, format: { with: /\A[a-zA-Zа-яА-Я]+\z/, message: "only allows letters(english/chirilic)"  }
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
   validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
   validate :place_and_place_group_have_same_owner, if: 'self.place_group'
-
+  
   before_create :set_wifi_username_password
   before_save :set_wifi_link_freshnes
   after_save :gen_new_wifi_settings
