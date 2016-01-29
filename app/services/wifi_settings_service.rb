@@ -3,8 +3,6 @@ class WifiSettingsService < ActiveType::Object
   attribute :settings_exist
 
   validates :place_id, presence: true
-  validates :place_name, length: { maximum: 9 }, format: { with: /[a-zA-Zа-яА-Я]/,
-    message: "only allows letters(english/chirilic)"  }
   after_validation :get_place
 
   before_save :check_settings_existence
