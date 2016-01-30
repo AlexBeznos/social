@@ -6,6 +6,7 @@ hu:
       place: intézmény
       attrs:
         name: 'Az intézmény neve'
+        ssid: 'SSID helyek'
         domen_url: "Cím Domain"
         place_group: Csoport
         by_password: 'Bejelentkezési jelszó'

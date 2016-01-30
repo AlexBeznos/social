@@ -88,6 +88,7 @@ class PlacesController < ApplicationController
     def place_params
       params.require(:place).permit(:name,
                                     :logo,
+                                    :ssid,
                                     :slug,
                                     :enter_by_password,
                                     :password,

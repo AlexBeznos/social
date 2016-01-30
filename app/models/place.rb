@@ -5,7 +5,7 @@ class Place < ActiveRecord::Base
   geocoded_by :city
   after_validation :geocode, :if => :city_changed?
 
-  has_unique_slug :subject => Proc.new {|place| Translit.convert(place.name, :english) }
+  has_unique_slug :subject => :ssid
 
   has_attached_file :logo,
                     :storage => :s3,
@@ -30,13 +30,13 @@ class Place < ActiveRecord::Base
 
   before_validation :set_password, if: 'enter_by_password'
 
+  validates :ssid , presence: true ,length: { maximum: 9 }, format: { with: /\A[ a-zA-Z]+\z/, message: I18n.t("models.errors.validations.english_letters_and_spaces") }
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
-  validates :creating_normal_place_name, length: { maximum: 9 }, format: { with: /\A[a-zA-Zа-яА-Я]+\z/, message: "only allows letters(english/chirilic)"  }
   validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
   validate :place_and_place_group_have_same_owner, if: 'self.place_group'
 
@@ -101,7 +101,5 @@ class Place < ActiveRecord::Base
       self.wifi_username, self.wifi_password = SecureRandom.hex(6), SecureRandom.hex(6)
     end
 
-    def creating_normal_place_name
-      self.name
-    end
+
 end

@@ -2,6 +2,7 @@ en:
   models:
     errors:
       validations:
+        english_letters_and_spaces: Allows only English lettes and spaces 
         wrong_link_format: Wrong link format
         unique_place_for_customer: Place should be unique for customer
         long_twitter_message: Twitter message with link should not be longer than 140 symbols

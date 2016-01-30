@@ -1,6 +1,7 @@
 = simple_form_for @place do |f|
   = f.error_notification
   = f.input :name
+  = f.input :ssid
   = f.input :city
   - if @place.user
     = f.input :place_group_id, collection: @place.user.place_groups.all, label_method: ->(obj){ obj.name }, label: t('models.place_groups.class')

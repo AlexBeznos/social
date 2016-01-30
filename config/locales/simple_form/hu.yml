@@ -5,6 +5,7 @@ hu:
     labels:
       place:
         name: 'Az intézmény neve'
+        ssid: 'SSID helyek'
         domen_url: 'Cím Domain'
         logo: 'Logó'
         active: Hotspot aktív

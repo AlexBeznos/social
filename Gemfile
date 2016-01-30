@@ -61,6 +61,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-instagram'
 gem 'omniauth-vkontakte'
 
+
 # Api
 gem 'vkontakte_api'
 gem 'instagram'
