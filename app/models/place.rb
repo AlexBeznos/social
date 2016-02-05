@@ -30,7 +30,7 @@ class Place < ActiveRecord::Base
 
   before_validation :set_password, if: 'enter_by_password'
 
-  validates :ssid , presence: true ,length: { maximum: 9 }, format: { with: /\A[ a-zA-Z]+\z/, message: I18n.t("models.errors.validations.english_letters_and_spaces") }
+  validates :ssid , presence: true ,length: { maximum: 9 }, format: { with: /\A[a-zA-Z]+\z/, message: I18n.t("models.errors.validations.english_letters_and_spaces") }
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
