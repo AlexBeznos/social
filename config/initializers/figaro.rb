@@ -13,8 +13,8 @@ Figaro.require_keys(
                     "AWS_ACCESS_KEY_ID",
                     "AWS_SECRET_ACCESS_KEY",
                     "AWS_REGION",
-                    "AWS_BUCKET",
+                    # "AWS_BUCKET",
                     "SENDGRID_USERNAME",
                     "SENDGRID_PASSWORD",
-                    "SLACK_WEB_HOOK"
+                    # "SLACK_WEB_HOOK"
                    )

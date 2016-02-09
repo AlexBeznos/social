@@ -7,10 +7,11 @@ class Place < ActiveRecord::Base
 
   has_unique_slug :subject => Proc.new {|place| Translit.convert(place.name, :english) }
 
-  has_attached_file :logo,
-                    :storage => :s3,
-                    :path => "/images/logos/:id/:style.:extension",
-                    :url => ":s3_domain_url"
+  # has_attached_file :logo,
+  #                   :storage => :s3,
+  #                   :path => "/images/logos/:id/:style.:extension",
+  #                   :url => ":s3_domain_url"
+  mount_uploader :logo, LogoUploader, mount_on: :logo_file_name
 
   has_one  :style,  :dependent => :destroy
   has_many :polls, :dependent => :destroy
@@ -36,7 +37,7 @@ class Place < ActiveRecord::Base
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
-  validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
+  # validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
   validate :place_and_place_group_have_same_owner, if: 'self.place_group'
 
   before_create :set_wifi_username_password

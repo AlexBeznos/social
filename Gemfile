@@ -42,6 +42,7 @@ gem 'guess'
 gem 'rubyzip'
 gem 'i18n-timezones'
 gem 'ahoy_matey'
+gem 'carrierwave'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
