@@ -79,6 +79,7 @@ gem 'sidekiq-failures'
 # Other
 gem 'authlogic'
 gem 'cancancan', '~> 1.10'
+gem 'pundit' 
 gem 'lograge'
 gem 'high_voltage', '~> 2.3.0'
 

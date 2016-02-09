@@ -439,6 +439,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rabl (0.11.6)
       activesupport (>= 2.3.14)
     rack (1.5.2)
@@ -708,6 +710,7 @@ DEPENDENCIES
   paperclip (~> 4.2)
   pg
   pry-rails
+  pundit
   rabl
   rails (= 4.1.7)
   redcarpet
@@ -740,3 +743,6 @@ DEPENDENCIES
   unicorn
   vkontakte_api
   yaml_db
+
+BUNDLED WITH
+   1.11.2
