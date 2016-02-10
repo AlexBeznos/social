@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   # load_and_authorize_resource :find_by => :slug, except: :new
-  before_action :set_place_params , except:[:new, :create , :index ]
+  before_action :set_place , except:[:new, :create , :index ]
 
   after_action :verify_authorized
   after_action :verify_policy_scoped , except:[:new, :create ]
@@ -105,7 +105,7 @@ class PlacesController < ApplicationController
 
   private
 
-    def set_place_params
+    def set_place
       @place = Place.find_by(slug: params[:id])
     end
 
