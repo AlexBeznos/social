@@ -1,8 +1,9 @@
 class Message < ActiveRecord::Base
-  has_attached_file :image,
-                    :storage => :s3,
-                    :path => "/images/:id/:style.:extension",
-                    :url => ":s3_domain_url"
+  # has_attached_file :image,
+  #                   :storage => :s3,
+  #                   :path => "/images/:id/:style.:extension",
+  #                   :url => ":s3_domain_url"
+  mount_uploader :image, ImageUploader, mount_on: :image_file_name
 
   scope :active, -> { where(active: true) }
 
@@ -16,10 +17,10 @@ class Message < ActiveRecord::Base
   validates :with_message_type, inclusion: { in: ["Place", "PlaceGroup"] }
   #validates :redirect_url, presence: true, url: true    NOTE: IT`S FROM OTHER TASK FROM BRANCH "redirect" AND IT`S APPEARED HERE SOMEHOW
 
-  validates_attachment :image, :presence => true,
-                                size: { in: 11.kilobytes..10.megabytes },
-                                :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
-                                unless: 'social_network_id == 3'
+  # validates_attachment :image, :presence => true,
+  #                               size: { in: 11.kilobytes..10.megabytes },
+  #                               :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
+  #                               unless: 'social_network_id == 3'
 
   validate :twitter_message_length, if: 'social_network_id == 4'
 
