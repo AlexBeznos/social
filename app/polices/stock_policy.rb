@@ -7,4 +7,8 @@ class StockPolicy < ApplicationPolicy
     end
   end
 
+  def permitted_attributes
+    [:url, :image, :day]
+  end
+
 end
