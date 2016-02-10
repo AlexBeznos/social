@@ -5,7 +5,7 @@ class PlaceGroupsController < ApplicationController
 
 
   def new
-    authorize PlaceGroup , :new?
+    authorize PlaceGroup
     @place_group = PlaceGroup.new
     @subordinated_users = find_subordinated_users
   end
