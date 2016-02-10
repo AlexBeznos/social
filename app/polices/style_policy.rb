@@ -7,4 +7,11 @@ class StylePolicy < ApplicationPolicy
     end
   end
 
+  def permitted_attributes
+    [:background,
+     :text_color,
+     :greating_color,
+     :css,
+     :network_icons ]
+  end
 end
