@@ -11,6 +11,16 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def destroy? user.franchisee?; end
-  def create? user.franchisee?; end
+  def destroy?; user.franchisee?||user.admin?; end
+  def create?; user.franchisee?||user.admin?; end
+
+  def permitted_attributes
+    [:email, 
+     :first_name,
+     :last_name,
+     :phone,
+     :timezone,
+     :password,
+     :password_confirmation]
+  end
 end
