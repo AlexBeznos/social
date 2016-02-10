@@ -7,13 +7,13 @@ class PlaceGroupMessagesController < ApplicationController
   after_action :verify_policy_scoped , except: [:new ]
 
   def new
-    authorize PlaceGroup
+    authorize @place_group
     authorize Message
     @message = @place_group.messages.new
   end
 
   def create
-    authorize PlaceGroup
+    authorize @place_group , :update?
     authorize Message
     @message = @place_group.messages.new (permitted_attributes(Message))
 
@@ -28,7 +28,7 @@ class PlaceGroupMessagesController < ApplicationController
   end
 
   def update
-    authorize @place_group
+    authorize @place_group , :update?
     authorize @message
     if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
       if @message.update(permitted_attributes(Message))
