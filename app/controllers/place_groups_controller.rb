@@ -1,7 +1,7 @@
 class PlaceGroupsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped , except:[:new, :create]
-  before_action :set_place_group , except:[:new, :create]
+  before_action :set_place_group_params , except:[:new, :create]
 
 
   def new
@@ -73,7 +73,7 @@ class PlaceGroupsController < ApplicationController
       end
     end
 
-    def set_place_group
+    def set_place_group_params
       @place_group = PlaceGroup.find(params[:id])
     end
 
