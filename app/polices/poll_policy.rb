@@ -7,5 +7,11 @@ class PollPolicy < ApplicationPolicy
     end
   end
 
-
+  def permitted_attributes
+    [:question,
+     answers_attributes:
+        [:id,
+         :content,
+         :_destroy]]
+  end
 end
