@@ -5,8 +5,8 @@ class MessagePolicy < ApplicationPolicy
         scope.all
       elsif user.general? && user.id
         scope.where(with_message_type: 'Place')
-      else
-        super
+      elsif user.admin?
+        scope.all
       end
     end
   end

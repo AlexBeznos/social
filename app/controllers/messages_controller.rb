@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
+
+  before_action :set_place
+  before_action :set_message, except:[:new, :create ]
+
   after_action :verify_authorized
   after_action :verify_policy_scoped
-  before_action :set_place
-  before_action :set_message ,except:[:new, :create ]
 
   def new
     authorize @place , :show?

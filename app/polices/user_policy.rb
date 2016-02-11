@@ -5,8 +5,8 @@ class UserPolicy < ApplicationPolicy
         scope.where(id: user_ids + [user.id])
       elsif user.general? && user.id
         scope.where(id: user.id)
-      else
-        super
+      elsif user.admin?
+        scope.all
       end
     end
   end
@@ -15,7 +15,7 @@ class UserPolicy < ApplicationPolicy
   def create?; user.franchisee?||user.admin?; end
 
   def permitted_attributes
-    [:email, 
+    [:email,
      :first_name,
      :last_name,
      :phone,

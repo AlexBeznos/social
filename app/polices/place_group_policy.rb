@@ -5,8 +5,8 @@ class PlaceGroupPolicy < ApplicationPolicy
         scope.where(user_id: user_ids)
       elsif user.general? && user.id
         scope.where(user: user)
-      else
-        super
+      elsif user.admin?
+        scope.all
       end
     end
   end

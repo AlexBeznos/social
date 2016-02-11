@@ -3,13 +3,14 @@
   load_and_authorize_resource :banner, through: :place
 
   before_action :set_place
-  before_action :set_banner , except: [:index, :new, :create]
+  абуbefore_action :set_banner, except: [:index, :new, :create]
   before_action :check_city, except: [:index]
 
-  after_action :verify_authorized , :verify_policy_scoped
+  after_action :verify_authorized,
+  after_action :verify_policy_scoped
 
   def index
-    authorize @place , :show?
+    authorize @place, :show?
     authorize Banner
 
     if policy_scope(Place).include?(@place)
@@ -18,7 +19,7 @@
   end
 
   def new
-    authorize @place , :show?
+    authorize @place, :show?
     authorize Banner
     if policy_scope(Place).include?(@place)
       @banner = @place.banners.new
@@ -27,13 +28,13 @@
 
   def edit
     if policy_scope(Place).include?(@place) && policy_scope(Place).include?(@place)
-      authorize @place , :show?
+      authorize @place, :show?
       authorize @banner
     end
   end
 
   def create
-    authorize @place , :update?
+    authorize @place, :update?
     authorize Banner
 
     if policy_scope(Place).include?(@place)
@@ -48,7 +49,7 @@
   end
 
   def update
-    authorize @place , :update?
+    authorize @place, :update?
     authorize @banner
 
     if policy_scope(Place).include?(@place) && policy_scope(Place).include?(@place)
@@ -61,7 +62,7 @@
   end
 
   def destroy
-    authorize @place , :update?
+    authorize @place, :update?
     authorize @banner
 
     if policy_scope(Place).include?(@place) && policy_scope(Place).include?(@place)
