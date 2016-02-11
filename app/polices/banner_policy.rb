@@ -11,4 +11,8 @@ class BannerPolicy < ApplicationPolicy
   def read? user.franchisee?||user.general?; end
   def update? user.franchisee?||user.general?; end
   def destroy? user.franchisee?||user.general?; end
+
+  def permitted_attributes
+    [:name , :content]
+  end
 end

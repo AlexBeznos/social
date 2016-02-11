@@ -22,13 +22,13 @@ class ApplicationPolicy
     @record = record
   end
 
-  def index?    ; user.franchisee?||user.general?||user.admin?; end
-  def new?      ; user.franchisee?||user.general?||user.admin?; end
-  def edit?     ; user.franchisee?||user.general?||user.admin?; end
-  def create?   ; user.franchisee?||user.general?||user.admin?; end
-  def show?     ; user.franchisee?||user.general?||user.admin?; end
-  def update?   ; user.franchisee?||user.general?||user.admin?; end
-  def destroy?  ; user.franchisee?||user.general?||user.admin?; end
+  def index?    ; everyone; end
+  def new?      ; everyone; end
+  def edit?     ; everyone; end
+  def create?   ; everyone; end
+  def show?     ; everyone; end
+  def update?   ; everyone; end
+  def destroy?  ; everyone; end
 
   private
 
@@ -38,6 +38,10 @@ class ApplicationPolicy
 
   def user_ids
     user.place_owners.map(&:id)
+  end
+
+  def everyone
+    user.franchisee?||user.general?||user.admin?
   end
 
 end
