@@ -5,19 +5,21 @@ class PlacePolicy < ApplicationPolicy
         scope.where(user_id: all_user_ids).find_by(:slug)
       elsif user.general? && user.id
         scope.where(user: user).find_by(:slug)
-      else
-        super
+      elsif user.admin?
+        scope.all
       end
     end
   end
 
-  def settings?; user.franchisee?||user.general?||user.admin?; end
-  def guests?; user.franchisee?||user.general?||user.admin?; end
-  def birthdays?; user.franchisee?||user.general?||user.admin?; end
-  def download_settings?; user.franchisee?||user.admin?; end
+
+
   def new?; user.franchisee?||user.admin?; end
   def create?; user.franchisee?||user.admin?; end
   def destroy?; user.franchisee?||user.admin?; end
+  def download_settings?; user.franchisee?||user.admin?; end
+  def settings?; everyone; end
+  def guests?; everyone; end
+  def birthdays?; everyone; end
 
   def permitted_attributes
      [:name,

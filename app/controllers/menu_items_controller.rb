@@ -1,15 +1,20 @@
 class MenuItemsController < ApplicationController
-  load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource
-
-  skip_authorize_resource :only => :welcome
-  skip_authorize_resource :place, :only => :welcome
 
   before_action :find_customer, only: :welcome
   before_action :load_reputation_score, only: :welcome
+  before_action :set_menu_item, except: [:index , :welcome , :new , :create]
+  before_action :set_place
+
+  after_action  :verify_authorized, except: :welcome
+  after_action  :verify_policy_scoped, except: :welcome
 
   def index
-    @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
+    authorize Place , :show?
+    authorize MenuItem
+
+    if policy_scope(Place).include?(@place)
+      @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
+    end
   end
 
   def welcome
@@ -18,35 +23,66 @@ class MenuItemsController < ApplicationController
   end
 
   def new
+    if policy_scope(Place).include?(@place)
+      authorize @place , :show?
+      authorize MenuItem
+      @menu_item = MenuItem.new
+    end
   end
 
   def create
-    @menu_item.place_id = @place.id
+    authorize @place , :update?
+    authorize MenuItem
 
-    if @menu_item.save
-      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
-    else
-      render :action => :new
+    if policy_scope(Place).include?(@place)
+      @menu_item = MenuItem.new(permitted_attributes(MenuItem))
+      @menu_item.place_id = @place.id
+
+      if @menu_item.save
+        redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
+      else
+        render :action => :new
+      end
     end
   end
 
   def edit
+    if policy_scope(Place).include?(@place)&&policy_scope(MenuItem).include?(@menu_item)
+      authorize @place , :show?
+      authorize @menu_item
+    end
   end
 
   def update
-    if @menu_item.update(menu_item_params)
-      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
-    else
-      render :action => :edit
+    authorize @place , :update?
+    authorize @menu_item
+    if policy_scope(Place).include?(@place)&&policy_scope(MenuItem).include?(@menu_item)
+      if @menu_item.update(permitted_attributes(MenuItem))
+        redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
+      else
+        render :action => :edit
+      end
     end
   end
 
   def destroy
-    @menu_item.destroy
-    redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.deleted', subject: t('menu_item.goods'))
-  end
+    authorize @place , :update?
+    authorize @menu_item
 
+    if policy_scope(Place).include?(@place)&&policy_scope(MenuItem).include?(@menu_item)
+      @menu_item.destroy
+      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.deleted', subject: t('menu_item.goods'))
+    end
+  end
   private
+
+    def set_place
+      @place = Place.find_by(slug:params[:place_id])
+    end
+
+    def set_menu_item
+      @menu_item = MenuItem.find(params[:id])
+    end
 
     def find_customer
       if cookies[:customer]
@@ -61,7 +97,4 @@ class MenuItemsController < ApplicationController
       @reputation_score = @reputation.nil? ? 0 : @reputation.score
     end
 
-    def menu_item_params
-      params.require(:menu_item).permit(:name, :description, :price, :image)
-    end
 end

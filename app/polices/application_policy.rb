@@ -1,4 +1,6 @@
 class ApplicationPolicy
+  attr_reader :user , :record
+
   class Scope
     attr_reader :user , :scope
 
@@ -8,13 +10,15 @@ class ApplicationPolicy
     end
 
     def resolve
-        scope.all if user.admin?
+      if user.admin?||user.franchisee?||user.general?
+        scope.all
+      end
     end
   end
 
 
 
-  attr_reader :user , :record
+
 
   def initialize (user,record)
     raise Pundit::NotAuthorizedError , "You must be authorized" unless user
@@ -41,7 +45,7 @@ class ApplicationPolicy
   end
 
   def everyone
-    user.franchisee?||user.general?||user.admin?
+    user.franchisee?||user.general?||user.admin?;
   end
 
 end
