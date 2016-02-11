@@ -1,6 +1,4 @@
 class StylesController < ApplicationController
-  # load_and_authorize_resource :place, :find_by => :slug
-  # load_and_authorize_resource :through => :place, :singleton => true
 
   before_action :icons_save, only: [:create, :update]
   before_action :set_style , except: [:new , :create]
