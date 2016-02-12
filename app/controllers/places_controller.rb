@@ -32,6 +32,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+
     date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
     @visits_by_date_without_join = @place.visits.by_date(date)
     @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
@@ -42,6 +43,8 @@ class PlacesController < ApplicationController
     @number_of_friends_by_week = get_number_of_friends @visits_this_week
     @number_of_friends_by_month = get_number_of_friends @visits_this_month
   end
+
+
 
   def guests
     @customers = Customer::NetworkProfile.joins(:visits)
@@ -82,6 +85,7 @@ class PlacesController < ApplicationController
     @place.destroy
     redirect_to request.referer
   end
+
 
   private
 

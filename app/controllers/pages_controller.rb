@@ -3,6 +3,10 @@ class PagesController < ApplicationController
 
   before_action :throw_to_proper_home, if: "params[:id] == 'home'"
 
+  def preview_redirect
+  end
+
+
   private
   def throw_to_proper_home
     if request.host.match /gofriends\.am/
@@ -11,4 +15,4 @@ class PagesController < ApplicationController
       params[:id] = 'home_ru'
     end
   end
-end
+ end

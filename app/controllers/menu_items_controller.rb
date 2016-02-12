@@ -13,6 +13,7 @@ class MenuItemsController < ApplicationController
   end
 
   def welcome
+
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
     render :layout => 'loyalty_program'
   end
@@ -30,7 +31,7 @@ class MenuItemsController < ApplicationController
     end
   end
 
-  def edit
+    def edit
   end
 
   def update

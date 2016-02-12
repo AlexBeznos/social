@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115113644) do
+ActiveRecord::Schema.define(version: 20160209113356) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -219,6 +219,8 @@ ActiveRecord::Schema.define(version: 20160115113644) do
     t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
     t.string   "auth_default_lang"
+    t.string   "preview_redirect_url"
+    t.boolean  "has_preview",                  default: false
   end
 
   add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree
@@ -233,6 +235,11 @@ ActiveRecord::Schema.define(version: 20160115113644) do
   end
 
   add_index "polls", ["place_id"], name: "index_polls_on_place_id", using: :btree
+
+  create_table "previews", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false

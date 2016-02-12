@@ -68,6 +68,7 @@ Rails.application.routes.draw do
 
   scope '/wifi' do
     get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
+    get ':slug/preview/:id' => 'gowifi#preview',  as: :preview
 
     scope ':slug' do
       get '/login' => 'gowifi#show', as: :gowifi_place
@@ -99,6 +100,7 @@ Rails.application.routes.draw do
 
   # static pages
   get "/:id" => "pages#show", as: :page, format: false
+  # get ":place_id/preview" => "pages#preview_redirect"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

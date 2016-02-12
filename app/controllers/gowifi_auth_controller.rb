@@ -74,6 +74,7 @@ class GowifiAuthController < ApplicationController
     end
   end
 
+
   private
     def poll_params
       params.require(:poll).permit(:answer_ids)
@@ -91,7 +92,11 @@ class GowifiAuthController < ApplicationController
       @place = Place.find_by_slug(request.env['omniauth.params']['place'] || session[:slug])
     end
 
-    def credentials
+    def show
+    end
+
+
+  def credentials
       request.env['omniauth.auth']
     end
 
@@ -105,4 +110,5 @@ class GowifiAuthController < ApplicationController
 
       hash[:visit]
     end
+
 end

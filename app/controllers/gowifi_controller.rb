@@ -2,7 +2,7 @@ class GowifiController < ApplicationController
   include Consumerable
 
   layout false
-  before_action :find_place, only: :show
+  before_action :find_place, only: [:show, :preview]
   before_action :set_place_slug, only: :show
   before_action :find_customer, only: :show
   before_action :set_locale, only: :show
@@ -11,7 +11,17 @@ class GowifiController < ApplicationController
   def show
     @networks = @place.get_networks
     @banner = find_banner if @place.display_other_banners
+
     @banner.increment!(:number_of_views) if @banner
+  end
+
+  def has_preview?; has_preview; end
+
+  def preview
+    @message = @place.messages.find_by(id: params[:id])
+    if @place.has_preview?
+      redirect_to preview_path
+    end
   end
 
   private
