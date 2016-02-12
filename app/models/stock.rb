@@ -9,8 +9,9 @@ class Stock < ActiveRecord::Base
 
   validates :place_id, :day, presence: true
   validates :url, :url => true
-  # validates_attachment :image, :presence => true,
-  #                               :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
+  validates :image,
+            :presence => true,
+            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
 
   before_save :normalize_day
 

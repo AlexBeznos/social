@@ -9,6 +9,10 @@ class MenuItem < ActiveRecord::Base
   mount_uploader :image, ImageUploader, mount_on: :image_file_name
 
   validates :name, :price, :place_id, presence: true
+  validates :image,
+            :presence => true,
+            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
+            file_size: { in: 11.kilobytes..10.megabytes }
   # validates_attachment :image, :presence => true,
   #                      size: { in: 11.kilobytes..10.megabytes },
   #                      :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }

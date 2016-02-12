@@ -17,10 +17,11 @@ class Message < ActiveRecord::Base
   validates :with_message_type, inclusion: { in: ["Place", "PlaceGroup"] }
   #validates :redirect_url, presence: true, url: true    NOTE: IT`S FROM OTHER TASK FROM BRANCH "redirect" AND IT`S APPEARED HERE SOMEHOW
 
-  # validates_attachment :image, :presence => true,
-  #                               size: { in: 11.kilobytes..10.megabytes },
-  #                               :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] },
-  #                               unless: 'social_network_id == 3'
+  validates :image,
+            :presence => true,
+            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
+            file_size: { in: 11.kilobytes..10.megabytes }
+                                # unless: 'social_network_id == 3'
 
   validate :twitter_message_length, if: 'social_network_id == 4'
 

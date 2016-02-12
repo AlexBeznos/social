@@ -43,6 +43,8 @@ gem 'rubyzip'
 gem 'i18n-timezones'
 gem 'ahoy_matey'
 gem 'carrierwave'
+gem 'carrierwave-aws'
+gem 'file_validators'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'

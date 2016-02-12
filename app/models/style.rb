@@ -12,7 +12,8 @@ class Style < ActiveRecord::Base
   mount_uploader :background, BackgroundUploader, mount_on: :background_file_name
 
   validates :text_color, :greating_color, :css_colour => true, :allow_blank => true
-  # validates_attachment :background, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
+  validates :background,
+            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
 
   before_save :precompile_css, if: 'css'
   before_save :precompile_js, if: 'js'
