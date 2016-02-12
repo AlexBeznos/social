@@ -13,7 +13,7 @@ class Style < ActiveRecord::Base
 
   validates :text_color, :greating_color, :css_colour => true, :allow_blank => true
   validates :background,
-            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
+            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] }
 
   before_save :precompile_css, if: 'css'
   before_save :precompile_js, if: 'js'

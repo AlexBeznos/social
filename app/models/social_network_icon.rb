@@ -13,7 +13,7 @@ class SocialNetworkIcon < ActiveRecord::Base
   validates :place, :social_network, :style, presence: true
   validates :icon,
             :presence => true,
-            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
+            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] }
 
   before_save :delete_unneeded_icons
 
