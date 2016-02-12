@@ -17,4 +17,8 @@ Figaro.require_keys(
                     "SENDGRID_USERNAME",
                     "SENDGRID_PASSWORD",
                     # "SLACK_WEB_HOOK"
+<<<<<<< HEAD
                    )
+=======
+                   )
+>>>>>>> preview

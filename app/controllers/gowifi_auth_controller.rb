@@ -65,6 +65,7 @@ class GowifiAuthController < ApplicationController
   def redirect_after_auth
     if @place
       if @place.loyalty_program && @customer
+        redirect_to
         redirect_to menu_items_list_path(@place)
       else
         redirect_to @place.redirect_url
