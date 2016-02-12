@@ -4,31 +4,26 @@ class PlaceGroupMessagesController < ApplicationController
   before_action :set_place_group
 
   after_action :verify_authorized
-  after_action :verify_policy_scoped , except: [:new ]
 
   def new
-    authorize @place_group
     authorize Message
+
     @message = @place_group.messages.new
   end
 
   def create
-    authorize @place_group , :update?
     authorize Message
+
     @message = @place_group.messages.new (permitted_attributes(Message))
 
-    if policy_scope(PlaceGroup).include?(@place_group)
-      if @message.save
-        p @place_group
-        redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
-      else
-        render :action => :new
-      end
+    if @message.save
+      redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+    else
+      render :action => :new
     end
   end
 
   def update
-    authorize @place_group , :update?
     authorize @message
     if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
       if @message.update(permitted_attributes(Message))
@@ -40,20 +35,14 @@ class PlaceGroupMessagesController < ApplicationController
   end
 
   def edit
-    if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
-      authorize @place_group
-      authorize @message
-    end
+    authorize @message
   end
 
   def destroy
-    authorize @place_group
     authorize @message
 
-    if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
-      @message.destroy
-      redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.deleted', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
-    end
+    @message.destroy
+    redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.deleted', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
   end
 
   def activate

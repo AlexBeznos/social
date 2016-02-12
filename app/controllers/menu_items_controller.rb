@@ -6,15 +6,10 @@ class MenuItemsController < ApplicationController
   before_action :set_place
 
   after_action  :verify_authorized, except: :welcome
-  after_action  :verify_policy_scoped, except: :welcome
 
   def index
-    authorize Place , :show?
     authorize MenuItem
-
-    if policy_scope(Place).include?(@place)
-      @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
-    end
+    @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
   end
 
   def welcome
@@ -23,56 +18,42 @@ class MenuItemsController < ApplicationController
   end
 
   def new
-    if policy_scope(Place).include?(@place)
-      authorize @place , :show?
-      authorize MenuItem
-      @menu_item = MenuItem.new
-    end
+    authorize MenuItem
+    @menu_item = MenuItem.new
   end
 
   def create
-    authorize @place , :update?
     authorize MenuItem
 
-    if policy_scope(Place).include?(@place)
-      @menu_item = MenuItem.new(permitted_attributes(MenuItem))
-      @menu_item.place_id = @place.id
+    @menu_item = MenuItem.new(permitted_attributes(MenuItem))
+    @menu_item.place_id = @place.id
 
-      if @menu_item.save
-        redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
-      else
-        render :action => :new
-      end
+    if @menu_item.save
+      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
+    else
+      render :action => :new
     end
+
   end
 
   def edit
-    if policy_scope(Place).include?(@place)&&policy_scope(MenuItem).include?(@menu_item)
-      authorize @place , :show?
-      authorize @menu_item
-    end
+    authorize @menu_item
   end
 
   def update
-    authorize @place , :update?
     authorize @menu_item
-    if policy_scope(Place).include?(@place)&&policy_scope(MenuItem).include?(@menu_item)
-      if @menu_item.update(permitted_attributes(MenuItem))
-        redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
-      else
-        render :action => :edit
-      end
+    if @menu_item.update(permitted_attributes(MenuItem))
+      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
+    else
+      render :action => :edit
     end
   end
 
   def destroy
-    authorize @place , :update?
     authorize @menu_item
 
-    if policy_scope(Place).include?(@place)&&policy_scope(MenuItem).include?(@menu_item)
-      @menu_item.destroy
-      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.deleted', subject: t('menu_item.goods'))
-    end
+    @menu_item.destroy
+    redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.deleted', subject: t('menu_item.goods'))
   end
   private
 

@@ -16,23 +16,27 @@ class ApplicationPolicy
     end
   end
 
-
-
-
-
-  def initialize (user,record)
+  def initialize (user, record)
     raise Pundit::NotAuthorizedError , "You must be authorized" unless user
     @user = user
     @record = record
+
+    if record && !record.is_a?(Class)
+      if !Scope.new(user, record.class).resolve.include?(record)
+        p "----------------------------"
+        p "OK"
+        # raise Pundit::NotAuthorizedError ,"Scope Error"
+      end
+    end
   end
 
-  def index?    ; everyone; end
-  def new?      ; everyone; end
-  def edit?     ; everyone; end
-  def create?   ; everyone; end
-  def show?     ; everyone; end
-  def update?   ; everyone; end
-  def destroy?  ; everyone; end
+  def index?    ; true; end
+  def new?      ; true; end
+  def edit?     ; true; end
+  def create?   ; true; end
+  def show?     ; true; end
+  def update?   ; true; end
+  def destroy?  ; true; end
 
   private
 
@@ -42,10 +46,6 @@ class ApplicationPolicy
 
   def user_ids
     user.place_owners.map(&:id)
-  end
-
-  def everyone
-    user.franchisee?||user.general?||user.admin?;
   end
 
 end

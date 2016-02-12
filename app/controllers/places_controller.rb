@@ -3,11 +3,10 @@ class PlacesController < ApplicationController
   before_action :set_place , except:[:new, :create , :index ]
 
   after_action :verify_authorized
-  after_action :verify_policy_scoped , except:[:new, :create ]
+  after_action :verify_policy_scoped , only: [:index ]
 
   def index
     authorize Place
-    authorize PlaceGroup , :index?
 
     @places = policy_scope(Place)
     @place_groups = policy_scope(PlaceGroup)
@@ -16,7 +15,6 @@ class PlacesController < ApplicationController
   def new
     authorize Place
     @place = Place.new
-    # authorize! :create, Place
   end
 
   def create
@@ -32,75 +30,71 @@ class PlacesController < ApplicationController
 
   def show
     authorize @place
-    if policy_scope(Place).include?(@place)
-      date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
-      @visits_by_date_without_join = @place.visits.by_date(date)
-      @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
-      @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
-      @visits_this_month = @place.visits.joins(:customer).by_date_from_to(date - 1.month, date)
 
-      @number_of_friends_by_day = get_number_of_friends @visits_by_date_without_join
-      @number_of_friends_by_week = get_number_of_friends @visits_this_week
-      @number_of_friends_by_month = get_number_of_friends @visits_this_month
-    end
+    date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
+    @visits_by_date_without_join = @place.visits.by_date(date)
+    @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
+    @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
+    @visits_this_month = @place.visits.joins(:customer).by_date_from_to(date - 1.month, date)
+
+    @number_of_friends_by_day = get_number_of_friends @visits_by_date_without_join
+    @number_of_friends_by_week = get_number_of_friends @visits_this_week
+    @number_of_friends_by_month = get_number_of_friends @visits_this_month
+
   end
 
   def guests
     authorize @place
-    if policy_scope(Place).include?(@place)
-      @customers = Customer::NetworkProfile.joins(:visits)
-                                         .where('customer_visits.place_id = ?', @place.id)
-                                         .uniq
-                                         .sort_by { |np| np.visits.where(place: @place).count }
-                                         .reverse
-    end
+    @customers = Customer::NetworkProfile.joins(:visits)
+                                       .where('customer_visits.place_id = ?', @place.id)
+                                       .uniq
+                                       .sort_by { |np| np.visits.where(place: @place).count }
+                                       .reverse
+
   end
 
   def birthdays
     authorize @place
-    if policy_scope(Place).include?(@place)
-      date_from = params[:date] ? params[:date].to_date : Time.now
-      @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month).uniq
-    end
+
+    date_from = params[:date] ? params[:date].to_date : Time.now
+    @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month).uniq
   end
 
   def settings
     authorize @place
-    if policy_scope(Place).include?(@place)
-      @message = active_message(params[:message])
-      @networks = all_networks
-      @place_owner = User.find_by(id: @place.user_id)
-    end
+
+    @message = active_message(params[:message])
+    @networks = all_networks
+    @place_owner = User.find_by(id: @place.user_id)
+
   end
 
   def edit
     authorize @place
-    if policy_scope(Place).include?(@place)
-      if current_user.franchisee?
-        @subordinated_users = User.where(user_id: current_user.id) + [current_user]
-      elsif current_user.admin?
-        @subordinated_users = User.all
-      end
+    
+    if current_user.franchisee?
+      @subordinated_users = User.where(user_id: current_user.id) + [current_user]
+    elsif current_user.admin?
+      @subordinated_users = User.all
     end
   end
 
   def update
     authorize @place
-    if policy_scope(Place).include?(@place)
-      if @place.update(permitted_attributes(@place))
-        redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
-      else
-        render :action => :edit
-      end
+
+    if @place.update(permitted_attributes(@place))
+      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
+    else
+      render :action => :edit
     end
   end
 
   def destroy
     authorize @place
-    if policy_scope(Place).include?(@place)
-      @place.destroy
-      redirect_to request.referer
-    end
+
+    @place.destroy
+    redirect_to request.referer
+
   end
 
   private

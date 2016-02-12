@@ -17,9 +17,9 @@ class PlacePolicy < ApplicationPolicy
   def create?; user.franchisee?||user.admin?; end
   def destroy?; user.franchisee?||user.admin?; end
   def download_settings?; user.franchisee?||user.admin?; end
-  def settings?; everyone; end
-  def guests?; everyone; end
-  def birthdays?; everyone; end
+  def settings?; true; end
+  def guests?; true; end
+  def birthdays?; true; end
 
   def permitted_attributes
      [:name,

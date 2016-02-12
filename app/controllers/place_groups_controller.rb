@@ -1,11 +1,12 @@
 class PlaceGroupsController < ApplicationController
+  before_action :set_place_group, except:[:new, :create]
+
   after_action :verify_authorized
-  after_action :verify_policy_scoped , except:[:new, :create]
-  before_action :set_place_group , except:[:new, :create]
 
 
   def new
     authorize PlaceGroup
+
     @place_group = PlaceGroup.new
     @subordinated_users = find_subordinated_users
   end
@@ -22,8 +23,6 @@ class PlaceGroupsController < ApplicationController
 
   def edit
     authorize @place_group
-    authorize Message , :new?
-    authorize Message , :index?
 
     @subordinated_users = find_subordinated_users
     @message = @place_group.messages.new
@@ -34,7 +33,7 @@ class PlaceGroupsController < ApplicationController
   def update
     authorize @place_group
 
-    if @place_group.update(permitted_attributes(@place_group)) && policy_scope(PlaceGroup).include?(@place_group)
+    if @place_group.update(permitted_attributes(@place_group))
       redirect_to places_path, :notice => I18n.t('notice.updated', subject: I18n.t('models.place_groups.class'))
     else
       render :action => :edit
@@ -42,12 +41,10 @@ class PlaceGroupsController < ApplicationController
   end
 
   def create_group_message
-    authorize @place_group , :update?
     authorize @message , :create?
 
     @message = @place_group.messages.new(permitted_attributes(Message))
-
-    if @message.save && policy_scope(PlaceGroup).include?(@place_group)
+    if @message.save
       redirect_to edit_place_group_path, :notice => I18n.t('notice.create', subject: I18n.t('models.message.class'))
     else
       render :action => :edit
@@ -56,7 +53,7 @@ class PlaceGroupsController < ApplicationController
 
   def destroy
     authorize @place_group
-    @place_group.destroy if policy_scope(PlaceGroup).include?(@place_group)
+    @place_group.destroy 
     redirect_to places_path, :notice => I18n.t('notice.deleted', subject: I18n.t('models.place_groups.class'))
   end
 
