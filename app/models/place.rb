@@ -1,4 +1,4 @@
-require 'ext/string'
+# require 'ext/string'
 
 class Place < ActiveRecord::Base
   DOMAIN_LIST = [ "gofriends.com.ua", "go-friends.ru", "gofriends.by", "gofriends.kz" ]
@@ -37,7 +37,7 @@ class Place < ActiveRecord::Base
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
-  # validates_attachment :logo, :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"]}
+  validates_integrity_of :logo
   validate :place_and_place_group_have_same_owner, if: 'self.place_group'
 
   before_create :set_wifi_username_password
