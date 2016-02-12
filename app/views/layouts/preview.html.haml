@@ -10,15 +10,9 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
     = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag "gowifi/preview_style", :media => "all"
-    = stylesheet_link_tag "gowifi/preview/_vkontakte", :media =>  "all"
-    = stylesheet_link_tag "gowifi/preview/_facebook", :media =>  "all"
+    = stylesheet_link_tag "gowifi/preview", :media => "all"
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"
 
   %body
-    .container
-      .row
-        %h1 Расскажите друзьям о нас!
 
-        = render "gowifi/preview/#{@message.social_network.name}", message: @message
 
