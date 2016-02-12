@@ -4,25 +4,19 @@ class MessagesController < ApplicationController
   before_action :set_message, except:[:new, :create ]
 
   after_action :verify_authorized
-  after_action :verify_policy_scoped
 
   def new
-    authorize @place , :show?
     authorize Message
-
     @place = Place.find_by(slug:params[:place_id])
-    if policy_scope(Place).include?(@place)
-      @message = Message.new
-    end
+    @message = Message.new
   end
 
   def create
-    authorize @place , :update?
     authorize Message
     @message = Message.new(permitted_attributes(Message))
     @message.with_message = @place
 
-    if @message.save && policy_scope(Place).include?(@place)
+    if @message.save
       redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
     else
       render :action => :new
@@ -30,31 +24,27 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    if policy_scope(Message).include?(@message) && policy_scope(Place).include?(@place)
-      authorize @place , :update?
+
+
       authorize @message
-    end
+
   end
 
   def update
-    authorize @place , :update?
     authorize @message
-    if policy_scope(Message).include?(@message) && policy_scope(Place).include?(@place)
-      if @message.update(permitted_attributes(Message))
-        redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
-      else
-        render :action => :edit
-      end
+
+    if @message.update(permitted_attributes(Message))
+      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+    else
+      render :action => :edit
     end
   end
 
   def destroy
-    authorize @place , :update?
     authorize @message
-    if policy_scope(Message)include?(@message) && policy_scope(Place).include?(@place)
-      @message.destroy
-      redirect_to settings_place_path(@place)
-    end
+
+    @message.destroy
+    redirect_to settings_place_path(@place)
   end
 
   private

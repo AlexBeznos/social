@@ -5,67 +5,51 @@ class StylesController < ApplicationController
   before_action :set_place
 
   after_action :verify_authorized
-  after_action :verify_policy_scoped
-
 
 
   def new
-    authorize @place
     authorize Style
-    if policy_scope(Place).include?(@place)
-      @style = Style.new
-    end
+    @style = Style.new
   end
 
   def create
-    authorize @place
     authorize Style
 
-    if policy_scope(Place).include?(@place)
-      @style.place = @place
+    @style = Style.new(permitted_attributes(Style))
+    @style.place = @place
 
-      if @style.save
-        redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.style.class'))
-      else
-        render :action => :new
-      end
+    if @style.save
+      redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.style.class'))
+    else
+      render :action => :new
     end
   end
 
   def edit
-    if policy_scope(Place).include?(@place)||policy_scope(Style).include?(@style)
-      authorize @place
-      authorize @style
-    end
+    authorize @style
   end
 
   def update
-    authorize @place
     authorize @style
-
-    if policy_scope(Place).include?(@place)||policy_scope(Style).include?(@style)
-      if @style.update(style_params)
-        redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.style.class'))
-      else
-        render :action => :edit
-      end
+    
+    if @style.update(permitted_attributes(Place))
+      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.style.class'))
+    else
+      render :action => :edit
     end
   end
 
   def destroy
-    authorize @place
     authorize @style
 
-    if policy_scope(Place).include?(@place)||policy_scope(Style).include?(@style)
-      @style.destroy
-      redirect_to settings_place_path(@place)
-    end
+    @style.destroy
+    redirect_to settings_place_path(@place)
   end
 
   private
 
     def set_place
-      @place = Place.find_by(slug: params[:user_id])
+      @place = Place.find_by(slug: params[:place_id])
     end
 
     def set_style
@@ -79,6 +63,4 @@ class StylesController < ApplicationController
 
       params[:style].delete(:network_icons)
     end
-
-
 end
