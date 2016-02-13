@@ -1,5 +1,4 @@
 class PlacesController < ApplicationController
-  # load_and_authorize_resource :find_by => :slug, except: :new
   before_action :set_place , except:[:new, :create , :index ]
 
   after_action :verify_authorized
@@ -14,11 +13,13 @@ class PlacesController < ApplicationController
 
   def new
     authorize Place
+
     @place = Place.new
   end
 
   def create
     authorize Place
+
     @place = Place.new(permitted_attributes (Place))
     if @place.save
       redirect_to user_path(@place.user), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
@@ -45,6 +46,7 @@ class PlacesController < ApplicationController
 
   def guests
     authorize @place
+    
     @customers = Customer::NetworkProfile.joins(:visits)
                                        .where('customer_visits.place_id = ?', @place.id)
                                        .uniq
@@ -71,7 +73,7 @@ class PlacesController < ApplicationController
 
   def edit
     authorize @place
-    
+
     if current_user.franchisee?
       @subordinated_users = User.where(user_id: current_user.id) + [current_user]
     elsif current_user.admin?

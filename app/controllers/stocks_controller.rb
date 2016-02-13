@@ -1,3 +1,4 @@
+
 class StocksController < ApplicationController
   before_action :set_place
   before_action :set_stock , only: [:update , :destroy , :edit]
@@ -6,11 +7,13 @@ class StocksController < ApplicationController
 
   def index
     authorize Stock
+    
     @stocks = Stock.where(place_id: @place.id)
   end
 
   def new
     authorize Stock
+    
     @stock = Stock.new
   end
 
