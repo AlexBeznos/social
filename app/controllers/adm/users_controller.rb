@@ -1,19 +1,29 @@
 class Adm::UsersController < AdministrationController
-  load_and_authorize_resource :user
+  before_action :set_user, except:[:index, :create, :new]
+
+  after_action :verify_policy_scoped, only:[:index]
+  after_action :verify_authorized
 
   def index
-    @users = User.all
+    authorize User
+
+    @users = policy_scope(User)
   end
 
   def show
+    authorize @user
   end
 
   def new
+    authorize User
+
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
+    authorize User
+
+    @user = User.new(permitted_attributes(User, true))
 
     if @user.save
       redirect_to adm_users_path, :notice => 'User created!'
@@ -23,10 +33,13 @@ class Adm::UsersController < AdministrationController
   end
 
   def edit
+    authorize @user
   end
 
   def update
-    if @user.update(user_params)
+    authorize @user
+
+    if @user.update(permitted_attributes(User, true))
       redirect_to adm_users_path, :notice => 'User updated!'
     else
       render :action => :edit, :alert => "U pass something wrong. Errors: #{@user.errors}"
@@ -34,10 +47,13 @@ class Adm::UsersController < AdministrationController
   end
 
   def edit_password
+    authorize @user, :edit?
   end
 
   def update_password
-    if @user.update(user_params)
+    authorize @user, :update?
+
+    if @user.update(permitted_attributes(User, true))
       redirect_to adm_users_path, :notice => 'User updated!'
     else
       render :action => :new, :alert => "U pass something wrong. Errors: #{@user.errors}"
@@ -45,12 +61,15 @@ class Adm::UsersController < AdministrationController
   end
 
   def destroy
+    authorize @user
+
     @user.destroy
     redirect_to adm_users_path, :notice => 'User destroyed!'
   end
 
   private
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :phone, :password, :password_confirmation, :group)
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
