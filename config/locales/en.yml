@@ -1,5 +1,5 @@
 en:
-  unauthorized:
+  pundit:
     default: You are not authorized to perform this action
   authlogic:
     error_messages:
