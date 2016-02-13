@@ -68,6 +68,4 @@ class PollsController < ApplicationController
   def set_place
     @place = Place.find_by(slug:params[:place_id])
   end
-
-
 end
