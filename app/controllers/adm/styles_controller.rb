@@ -1,13 +1,19 @@
 class Adm::StylesController < AdministrationController
-  load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource :style, :through => :place, :shallow => true, :singleton => true
+  before_action :set_place
+  before_action :set_style, except:[:new,:create]
+
+  after_action :verify_authorized
 
   def new
+    authorize Style
+
     @style = Style.new
   end
 
   def create
-    @style = Style.new(style_params)
+    authorize Style
+
+    @style = Style.new(permitted_attributes(Style))
     @style.place_id = @place.id
 
     if @style.save
@@ -18,10 +24,13 @@ class Adm::StylesController < AdministrationController
   end
 
   def edit
+    authorize @style
   end
 
   def update
-    if @style.update(style_params)
+    authorize @style
+
+    if @style.update(permitted_attributes(Style))
       redirect_to adm_place_path(@style.place), :notice => 'Styles updated!'
     else
       render :action => :edit, :alert => "U pass something wrong. Errors: #{@style.errors}"
@@ -29,6 +38,8 @@ class Adm::StylesController < AdministrationController
   end
 
   def remove_background
+    authorize @style, :update?
+
     @style.background.destroy
     @style.background.clear
     @style.save
@@ -36,17 +47,19 @@ class Adm::StylesController < AdministrationController
   end
 
   def destroy
+    authorize Style
+
     @style.destroy
     redirect_to adm_place_path(@style.place), :notice => 'Styles destroyed!'
   end
 
   private
 
-  def style_params
-    params.require(:style).permit(:background,
-                                  :js,
-                                  :css,
-                                  :text_color,
-                                  :greating_color)
+  def set_place
+    @place = Place.find_by(slug:params[:place_id])
+  end
+
+  def set_style
+    @style = Style.find(params[:id])
   end
 end
