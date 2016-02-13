@@ -1,14 +1,20 @@
 class Adm::MessagesController < AdministrationController
-  load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource :message, :through => :place, :shallow => true
+before_action :set_place
+before_action :set_message, except:[:new, :create]
+
+after_action :verify_authorized
 
 
   def new
+    authorize Message
+
     @message = Message.new
   end
 
   def create
-    @message = Message.new(message_params)
+    authorize Message
+
+    @message = Message.new(permitted_attributes(Message))
     @message.with_message = @place
 
     if @message.save
@@ -19,10 +25,13 @@ class Adm::MessagesController < AdministrationController
   end
 
   def edit
+    authorize @message
   end
 
   def update
-    if @message.update(message_params)
+    authorize @message
+
+    if @message.update(permitted_attributes(Message))
       redirect_to adm_place_path(message_path), :notice => 'Message updated!'
     else
       render :action => :edit, :alert => "U pass something wrong. Errors: #{@message.errors}"
@@ -30,24 +39,34 @@ class Adm::MessagesController < AdministrationController
   end
 
   def activate
+    authorize @message, :update?
+
     @message.update(active: true)
     redirect_to adm_place_path(message_path)
   end
 
   def deactivate
+    authorize @message, :update?
+
     @message.update(active: false)
     redirect_to adm_place_path(message_path)
   end
 
   def destroy
+    authorize @message
+
     @message.destroy
     redirect_to adm_place_path(message_path), :notice => 'Place destroyed!'
   end
 
   private
 
-    def message_params
-      params.require(:message).permit(:social_network_id, :message, :message_link, :image, :active, :subscription)
+    def set_place
+      @place = Place.find_by(slug:params[:place_id])
+    end
+
+    def set_message
+      @message = Message.find(params[:id])
     end
 
     def message_path
