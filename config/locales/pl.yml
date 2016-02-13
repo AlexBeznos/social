@@ -1,5 +1,5 @@
 pl:
-  unauthorized:
+  pundit:
     default: Nie masz dostępu do tej strony
   authlogic:
     error_messages:

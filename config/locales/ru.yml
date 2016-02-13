@@ -1,5 +1,5 @@
 ru:
-  unauthorized:
+  pundit:
     default: У вас нет доступа к этой странице
   authlogic:
     error_messages:
