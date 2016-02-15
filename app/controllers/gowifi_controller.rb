@@ -8,6 +8,8 @@ class GowifiController < ApplicationController
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
 
+  skip_after_action :verify_authorized
+
   def show
     @networks = @place.get_networks
     @banner = find_banner if @place.display_other_banners
@@ -34,7 +36,7 @@ class GowifiController < ApplicationController
       if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
         return I18n.locale = params[:lang]
       end
-      
+
       I18n.locale = @place.auth_default_lang
     end
 

@@ -1,15 +1,11 @@
 class StylesController < ApplicationController
-
   before_action :icons_save, only: [:create, :update]
   before_action :set_style , except: [:new , :create]
   before_action :set_place
 
-  after_action :verify_authorized
-
-
   def new
     authorize Style
-    
+
     @style = Style.new
   end
 
@@ -50,7 +46,7 @@ class StylesController < ApplicationController
   private
 
     def set_place
-      @place = Place.find_by(slug: params[:place_id])
+      @place = Place.find_by_slug(params[:place_id])
     end
 
     def set_style

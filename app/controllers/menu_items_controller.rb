@@ -4,8 +4,6 @@ class MenuItemsController < ApplicationController
   before_action :set_menu_item, except: [:index , :welcome , :new , :create]
   before_action :set_place
 
-  after_action  :verify_authorized, except: :welcome
-
   def index
     authorize MenuItem
 
@@ -15,6 +13,7 @@ class MenuItemsController < ApplicationController
   def welcome
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
     render :layout => 'loyalty_program'
+    skip_authorization
   end
 
   def new
@@ -42,7 +41,7 @@ class MenuItemsController < ApplicationController
 
   def update
     authorize @menu_item
-    
+
     if @menu_item.update(permitted_attributes(MenuItem))
       redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
     else
@@ -59,7 +58,7 @@ class MenuItemsController < ApplicationController
   private
 
     def set_place
-      @place = Place.find_by(slug:params[:place_id])
+      @place = Place.find_by_slug(params[:place_id])
     end
 
     def set_menu_item

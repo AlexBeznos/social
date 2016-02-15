@@ -1,7 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll , except: [:index , :new , :create ]
   before_action :set_place
-  after_action :verify_authorized
 
   def index
     authorize Poll
@@ -64,6 +63,6 @@ class PollsController < ApplicationController
   end
 
   def set_place
-    @place = Place.find_by(slug:params[:place_id])
+    @place = Place.find_by_slug(params[:place_id])
   end
 end

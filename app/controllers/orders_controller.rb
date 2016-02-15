@@ -6,6 +6,8 @@ class OrdersController < ApplicationController
   before_action :load_reputation_score
   before_action :load_menu_item, except: :index
 
+  skip_after_action :verify_authorized
+
   def index
     @orders = @customer.orders.pagination(params[:page])
   end

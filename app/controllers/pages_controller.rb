@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   before_action :throw_to_proper_home, if: "params[:id] == 'home'"
 
+  skip_after_action :verify_authorized
+
   private
   def throw_to_proper_home
     if request.host.match /gofriends\.am/

@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :create]
   after_action :verify_policy_scoped, only:[ :index ]
-  after_action :verify_authorized
-
 
   def index
     authorize User

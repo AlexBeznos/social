@@ -1,19 +1,16 @@
-
 class StocksController < ApplicationController
   before_action :set_place
   before_action :set_stock , only: [:update , :destroy , :edit]
 
-  after_action :verify_authorized
-
   def index
     authorize Stock
-    
+
     @stocks = Stock.where(place_id: @place.id)
   end
 
   def new
     authorize Stock
-    
+
     @stock = Stock.new
   end
 
@@ -58,7 +55,7 @@ class StocksController < ApplicationController
   end
 
   def set_place
-    @place = Place.find_by(slug:params[:place_id])
+    @place = Place.find_by_slug(params[:place_id])
   end
 
 end

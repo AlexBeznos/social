@@ -1,9 +1,6 @@
 class PlaceGroupsController < ApplicationController
   before_action :set_place_group, except:[:new, :create]
 
-  after_action :verify_authorized
-
-
   def new
     authorize PlaceGroup
 

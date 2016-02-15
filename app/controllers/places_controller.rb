@@ -1,7 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place , except:[:new, :create , :index ]
 
-  after_action :verify_authorized
   after_action :verify_policy_scoped , only: [:index ]
 
   def index
@@ -46,7 +45,7 @@ class PlacesController < ApplicationController
 
   def guests
     authorize @place
-    
+
     @customers = Customer::NetworkProfile.joins(:visits)
                                        .where('customer_visits.place_id = ?', @place.id)
                                        .uniq
@@ -102,7 +101,7 @@ class PlacesController < ApplicationController
   private
 
     def set_place
-      @place = Place.find_by(slug: params[:id])
+      @place = Place.find_by_slug(params[:id])
     end
 
     def get_number_of_friends(records)

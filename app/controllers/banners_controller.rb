@@ -3,8 +3,6 @@ class BannersController < ApplicationController
   before_action :set_banner, except: [:index, :new, :create]
   before_action :check_city, except: [:index]
 
-  after_action :verify_authorized
-
   def index
     authorize Banner
 
@@ -55,7 +53,7 @@ class BannersController < ApplicationController
 
   private
     def set_place
-      @place = Place.find_by(slug: params[:place_id])
+      @place = Place.find_by_slug(params[:place_id])
     end
 
     def set_banner
