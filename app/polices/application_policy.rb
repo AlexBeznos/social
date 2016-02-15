@@ -14,6 +14,16 @@ class ApplicationPolicy
         scope.all
       end
     end
+
+    protected
+
+    def all_user_ids
+      [user.id] + user_ids
+    end
+
+    def user_ids
+      user.place_owners.map(&:id)
+    end
   end
 
   def initialize (user, record)
@@ -35,15 +45,5 @@ class ApplicationPolicy
   def show?     ; true; end
   def update?   ; true; end
   def destroy?  ; true; end
-
-  private
-
-  def all_user_ids
-    [user.id] + user_ids
-  end
-
-  def user_ids
-    user.place_owners.map(&:id)
-  end
 
 end
