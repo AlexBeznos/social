@@ -6,6 +6,7 @@ en:
       place: places
       attrs:
         name: 'Place name'
+        ssid: 'Place SSID'
         domen_url: "Domen URL"
         place_group: Place group
         by_password: 'Enter by password'
@@ -60,7 +61,7 @@ en:
             network: Soc. network
             birthday: Birthday
         settings:
-          auth_default_lang: Authentication default language 
+          auth_default_lang: Authentication default language
           title: "Settings for %{place_name}"
           wifi: Wi-Fi settings
           messages: Posts settings

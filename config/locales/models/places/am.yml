@@ -6,6 +6,7 @@
       place: Հաստատություններ
       attrs:
         name: 'Հաստատության անվանումը'
+        ssid: 'SSID տեղերը'
         domen_url: "Դոմեն հասցե"
         place_group: խումբ
         by_password: 'մուտք գաղտնաբառով'
@@ -60,7 +61,7 @@
             network: Սոց. Ցանց
             birthday: Ծննդյան օրեր
         settings:
-          auth_default_lang: Նույնականացման լռելյայն լեզու 
+          auth_default_lang: Նույնականացման լռելյայն լեզու
           title: "Կարգավորումները %{place_name}"
           wifi:  Wi-Fi կարգավորում
           messages:  հրապարակումների կարգավորում

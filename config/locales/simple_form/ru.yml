@@ -5,6 +5,7 @@ ru:
     labels:
       place:
         name: 'Название заведения'
+        ssid: 'SSID заведения'
         domen_url: 'Адрес домена'
         logo: 'Логотип'
         active: Hotspot активен
@@ -22,7 +23,7 @@ ru:
         display_my_banners: Показывать мои баннеры в других заведения
         display_other_banners: Показывать чужие баннеры в моем заведении
         sms_auth: SMS аутентификация
-        auth_default_lang: Язык для аутентификации по умолчанию 
+        auth_default_lang: Язык для аутентификации по умолчанию
       user:
         first_name: Имя
         last_name: Фамилия

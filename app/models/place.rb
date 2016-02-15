@@ -5,7 +5,7 @@ class Place < ActiveRecord::Base
   geocoded_by :city
   after_validation :geocode, :if => :city_changed?
 
-  has_unique_slug :subject => Proc.new {|place| Translit.convert(place.name, :english) }
+  has_unique_slug :subject => :ssid
 
   has_attached_file :logo,
                     :storage => :s3,
@@ -30,6 +30,7 @@ class Place < ActiveRecord::Base
 
   before_validation :set_password, if: 'enter_by_password'
 
+  validates :ssid , presence: true ,length: { maximum: 9 }, format: { with: /\A[a-zA-Z]+\z/, message: I18n.t("models.errors.validations.english_letters_and_spaces") }
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
@@ -99,4 +100,6 @@ class Place < ActiveRecord::Base
     def set_wifi_username_password
       self.wifi_username, self.wifi_password = SecureRandom.hex(6), SecureRandom.hex(6)
     end
+
+
 end
