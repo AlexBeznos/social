@@ -12,17 +12,14 @@
     /[if lt IE 9]
     = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "gowifi/preview_style", :media => "all"
-    = stylesheet_link_tag "gowifi/preview/_vkontakte", :media =>  "all"
-    = stylesheet_link_tag "gowifi/preview/_facebook", :media =>  "all"
-    = javascript_include_tag "//www.google.com/jsapi", "chartkick"
+    = stylesheet_link_tag "gowifi/preview/#{@message.social_network.name}", :media =>  "all"
 
   %body
     .container
       .row
         %h1 Расскажите друзьям о нас!
 
+        .vk-image{:class => 'vk-image'}
+        .timestamps{:class => 'timestamps'} 2 минуты назад | Ответить
+        .like{:class => 'like'} Мне нравится
         = render "gowifi/preview/#{@message.social_network.name}", message: @message
-
-=======
-%h1 test
->>>>>>> preview
