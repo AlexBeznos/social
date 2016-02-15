@@ -2,9 +2,11 @@
 
 .vk-image {
   width: 540px;
-  height: 355px;
+  height: 315px;
   border-top: 1.5px solid #DAE1E8;
   border-bottom: 1.5px solid #DAE1E8;
+  padding-top: 3px;
+  padding-bottom: 3px;
   img {
     width: auto;
     height : auto;
@@ -19,18 +21,23 @@
   color: #999;
   padding-left: 8px;
   padding-top: 15px;
+  display:inline;
+
 }
 
 .like {
   font-family: tahoma, arial, verdana, sans-serif, Lucida Sans;
-  font-size: 11px;
+  font-size: 10px;
   color: #2F5879;
   position: absolute;
-  padding-left: 465px;
-  padding-bottom: 5px;
+  padding-left: 315px;
+  padding-bottom: 10px;
+  padding-top: 3px;
+
+  display:inline;
   .heart {
     float: right;
-    margin: 3px 3px  0px;
+    margin: 3px 3px 0px;
     width: 10px;
     height: 10px;
     background: url('http://vk.com/images/icons/like.gif?') 0 0 no-repeat;
