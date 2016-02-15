@@ -19,13 +19,6 @@
       .row
         %h1 Расскажите друзьям о нас!
 
-        / FB post
-        .fb-image{:class => 'fb-image'}
-        .timestamps{:class => 'timestamps'}
-        .like{:class => 'like'}
-
-
-
         = render "gowifi/preview/#{@message.social_network.name}", message: @message
 
 

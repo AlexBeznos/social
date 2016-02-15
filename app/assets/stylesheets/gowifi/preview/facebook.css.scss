@@ -1,3 +1,13 @@
-body {
-  background-color: red;
+.fb-image {
+  width: 450px;
+  height: 250px;
+  border-bottom: 1.5px solid #9197a3;
+  border-top: 1.5px solid #9197a3;
+  padding: 5px 0px 5px 0;
+  img {
+    width: auto;
+    height : auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
 }

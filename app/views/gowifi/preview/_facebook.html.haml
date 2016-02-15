@@ -1,3 +1,8 @@
 
+/ FB post
+
 %p= @message.message
-=image_tag @message.image
+.fb-image{:class => 'fb-image'}
+  =image_tag @message.image
+.timestamps{:class => 'timestamps'}
+.like{:class => 'like'}
