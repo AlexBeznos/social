@@ -5,6 +5,12 @@
   height: 355px;
   border-top: 1.5px solid #DAE1E8;
   border-bottom: 1.5px solid #DAE1E8;
+  img {
+    width: auto;
+    height : auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
 
 .timestamps {
@@ -22,4 +28,11 @@
   position: absolute;
   padding-left: 465px;
   padding-bottom: 5px;
+  .heart {
+    float: right;
+    margin: 3px 3px  0px;
+    width: 10px;
+    height: 10px;
+    background: url('http://vk.com/images/icons/like.gif?') 0 0 no-repeat;
+  }
 }

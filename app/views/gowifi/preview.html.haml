@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 !!!
 %html(lang="en")
   %head
@@ -19,7 +19,14 @@
       .row
         %h1 Расскажите друзьям о нас!
 
-        .vk-image{:class => 'vk-image'}
-        .timestamps{:class => 'timestamps'} 2 минуты назад | Ответить
-        .like{:class => 'like'} Мне нравится
+        / FB post
+        .fb-image{:class => 'fb-image'}
+        .timestamps{:class => 'timestamps'}
+        .like{:class => 'like'}
+
+
+
         = render "gowifi/preview/#{@message.social_network.name}", message: @message
+
+
+
