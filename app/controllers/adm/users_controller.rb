@@ -23,7 +23,7 @@ class Adm::UsersController < AdministrationController
   def create
     authorize User
 
-    @user = User.new(permitted_attributes(User, true))
+    @user = User.new(permitted_attributes(User))
 
     if @user.save
       redirect_to adm_users_path, :notice => 'User created!'

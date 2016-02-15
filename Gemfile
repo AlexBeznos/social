@@ -112,6 +112,7 @@ group :test do
   gem 'database_cleaner'
   gem 'test_after_commit'
   gem 'rspec-sidekiq'
+  gem 'pundit-matchers' ,'~> 1.0.0'
 end
 
 # Use ActiveModel has_secure_password
