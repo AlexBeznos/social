@@ -1,36 +1,59 @@
 class PlaceGroupMessagesController < ApplicationController
-  load_and_authorize_resource :place_group
-  load_and_authorize_resource :message, :through => :place_group
-  before_action :set_message, only: [:edit, :destroy, :activate, :deactivate, :update]
+
+  before_action :set_message, except: [:new , :create]
+  before_action :set_place_group
+
+  after_action :verify_authorized
+  after_action :verify_policy_scoped , except: [:new ]
 
   def new
+    authorize PlaceGroup
+    authorize Message
     @message = @place_group.messages.new
   end
 
   def create
-    @message = @place_group.messages.new(message_params)
-    
-    if @message.save
-      redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
-    else
-      render :action => :new
+    authorize PlaceGroup
+    authorize Message
+    @message = @place_group.messages.new (permitted_attributes(Message))
+
+    if policy_scope(PlaceGroup).include?(@place_group)
+      if @message.save
+        p @place_group
+        redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+      else
+        render :action => :new
+      end
     end
   end
 
   def update
-    if @message.update(message_params)
-      redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
-    else
-      render :action => :edit
+    authorize @place_group
+    authorize @message
+    if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
+      if @message.update(permitted_attributes(Message))
+        redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+      else
+        render :action => :edit
+      end
     end
   end
 
   def edit
+    if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
+      authorize @place_group
+      authorize @message
+    end
   end
 
   def destroy
-    @message.destroy
-    redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.deleted', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+    authorize @place_group
+    authorize @message
+
+    if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
+      @message.destroy
+      redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.deleted', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+    end
   end
 
   def activate
@@ -45,8 +68,8 @@ class PlaceGroupMessagesController < ApplicationController
 
   private
 
-    def message_params
-      params.require(:message).permit(:social_network_id, :message, :message_link, :image, :subscription)
+    def set_place_group
+      @place_group = PlaceGroup.find(params[:place_group_id])
     end
 
     def set_message

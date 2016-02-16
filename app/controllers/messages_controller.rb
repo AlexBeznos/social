@@ -1,24 +1,26 @@
 class MessagesController < ApplicationController
   after_action :verify_authorized
-  after_action :verify_policy_scoped , except:[:new, :create ]
-  before_action :set_place_params
-  before_action :set_message_params ,except:[:new, :create ]
+  after_action :verify_policy_scoped
+  before_action :set_place
+  before_action :set_message ,except:[:new, :create ]
 
   def new
-    authorize Place
+    authorize Place , :show?
     authorize Message
 
     @place = Place.find_by(slug:params[:place_id])
-    @message = Message.new
+    if policy_scope(Place).include?(@place)
+      @message = Message.new
+    end
   end
 
   def create
-    authorize Place
+    authorize Place , :update?
     authorize Message
     @message = Message.new(permitted_attributes(Message))
     @message.with_message = @place
 
-    if @message.save
+    if @message.save && policy_scope(Place).include?(@place)
       redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
     else
       render :action => :new
@@ -26,16 +28,16 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    if policy_scope(Message)&&policy_scope(Place)
-      authorize @place
+    if policy_scope(Message).include?(@message) && policy_scope(Place).include?(@place)
+      authorize @place , :update?
       authorize @message
     end
   end
 
   def update
-    authorize @place
+    authorize @place , :update?
     authorize @message
-    if policy_scope(Message)&&policy_scope(Place)
+    if policy_scope(Message).include?(@message) && policy_scope(Place).include?(@place)
       if @message.update(permitted_attributes(Message))
         redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
       else
@@ -45,9 +47,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    authorize @place
+    authorize @place , :update?
     authorize @message
-    if policy_scope(Message)&&policy_scope(Place)
+    if policy_scope(Message)include?(@message) && policy_scope(Place).include?(@place)
       @message.destroy
       redirect_to settings_place_path(@place)
     end
@@ -55,11 +57,11 @@ class MessagesController < ApplicationController
 
   private
 
-    def set_place_params
+    def set_place
       @place = Place.find_by(slug:params[:place_id])
     end
 
-    def set_message_params
+    def set_message
       @message = Message.find(params[:id])
     end
 end
