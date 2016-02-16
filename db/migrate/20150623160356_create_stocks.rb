@@ -7,7 +7,7 @@ class CreateStocks < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :stocks, :place_id
   end
 end
