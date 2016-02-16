@@ -52,7 +52,7 @@ class Adm::MessagesController < AdministrationController
 
     def message_path
       if @message.with_message_type == "Place"
-        Place.find_by(id: @message.with_message_id) 
+        Place.find_by(id: @message.with_message_id)
       elsif @message.with_message_type == "PlaceGroup"
         Place.find_by(place_group_id: @message.with_message_id)
       end

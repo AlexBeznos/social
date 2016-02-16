@@ -23,9 +23,7 @@ class ApplicationPolicy
 
     if record && !record.is_a?(Class)
       if !Scope.new(user, record.class).resolve.include?(record)
-        p "----------------------------"
-        p "OK"
-        # raise Pundit::NotAuthorizedError ,"Scope Error"
+        raise Pundit::NotAuthorizedError ,"Scope Error"
       end
     end
   end
