@@ -1,28 +1,24 @@
 class PlacesController < ApplicationController
-  load_and_authorize_resource :find_by => :slug, except: :new
+  before_action :set_place
+  after_action :verify_authorized
+  after_action :verify_policy_scoped , except:[:new, :create ]
 
   def index
-    if !current_user.admin?
-      @places = current_user.get_all_places
-    else
-      @places = Place.all
-    end
+    authorize Place
+    authorize PlaceGroup , :index?
 
-    if current_user.general?
-      @place_groups = PlaceGroup.where(user_id: current_user.id)
-    elsif current_user.franchisee?
-      @place_groups = PlaceGroup.where(user_id: User.where(user_id: current_user.id))
-    elsif current_user.admin?
-      @place_groups = PlaceGroup.all
-    end
+    @places = policy_scope(Place)
+    @place_groups = policy_scope(PlaceGroup)
   end
 
   def new
+    authorize Place
     @place = Place.new
-    authorize! :create, Place
   end
 
   def create
+    authorize Place
+    @place = Place.new(permitted_attributes (Place))
     if @place.save
       redirect_to user_path(@place.user), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
@@ -32,82 +28,82 @@ class PlacesController < ApplicationController
   end
 
   def show
-    date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
-    @visits_by_date_without_join = @place.visits.by_date(date)
-    @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
-    @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
-    @visits_this_month = @place.visits.joins(:customer).by_date_from_to(date - 1.month, date)
+    authorize @place
+    if policy_scope(Place).include?(@place)
+      date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
+      @visits_by_date_without_join = @place.visits.by_date(date)
+      @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
+      @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
+      @visits_this_month = @place.visits.joins(:customer).by_date_from_to(date - 1.month, date)
 
-    @number_of_friends_by_day = get_number_of_friends @visits_by_date_without_join
-    @number_of_friends_by_week = get_number_of_friends @visits_this_week
-    @number_of_friends_by_month = get_number_of_friends @visits_this_month
+      @number_of_friends_by_day = get_number_of_friends @visits_by_date_without_join
+      @number_of_friends_by_week = get_number_of_friends @visits_this_week
+      @number_of_friends_by_month = get_number_of_friends @visits_this_month
+    end
   end
 
   def guests
-    @customers = Customer::NetworkProfile.joins(:visits)
+    authorize @place
+    if policy_scope(Place).include?(@place)
+      @customers = Customer::NetworkProfile.joins(:visits)
                                          .where('customer_visits.place_id = ?', @place.id)
                                          .uniq
                                          .sort_by { |np| np.visits.where(place: @place).count }
                                          .reverse
+    end
   end
 
   def birthdays
-    date_from = params[:date] ? params[:date].to_date : Time.now
-    @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month).uniq
+    authorize @place
+    if policy_scope(Place).include?(@place)
+      date_from = params[:date] ? params[:date].to_date : Time.now
+      @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month).uniq
+    end
   end
 
   def settings
-    @message = active_message(params[:message])
-    @networks = all_networks
-    @place_owner = User.find_by(id: @place.user_id)
+    authorize @place
+    if policy_scope(Place).include?(@place)
+      @message = active_message(params[:message])
+      @networks = all_networks
+      @place_owner = User.find_by(id: @place.user_id)
+    end
   end
 
   def edit
-    if current_user.franchisee?
-      @subordinated_users = User.where(user_id: current_user.id) + [current_user]
-    elsif current_user.admin?
-      @subordinated_users = User.all
+    authorize @place
+    if policy_scope(Place).include?(@place)
+      if current_user.franchisee?
+        @subordinated_users = User.where(user_id: current_user.id) + [current_user]
+      elsif current_user.admin?
+        @subordinated_users = User.all
+      end
     end
   end
 
   def update
-    if @place.update(place_params)
-      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
-    else
-      render :action => :edit
+    authorize @place
+    if policy_scope(Place).include?(@place)
+      if @place.update(permitted_attributes(@place))
+        redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
+      else
+        render :action => :edit
+      end
     end
   end
 
   def destroy
-    @place.destroy
-    redirect_to request.referer
+    authorize @place
+    if policy_scope(Place).include?(@place)
+      @place.destroy
+      redirect_to request.referer
+    end
   end
 
   private
 
-    def place_params
-      params.require(:place).permit(:name,
-                                    :logo,
-                                    :ssid,
-                                    :slug,
-                                    :enter_by_password,
-                                    :password,
-                                    :active,
-                                    :redirect_url,
-                                    :user_id,
-                                    :stocks_active,
-                                    :polls_active,
-                                    :reputation_on,
-                                    :simple_enter,
-                                    :score_amount,
-                                    :city,
-                                    :display_other_banners,
-                                    :display_my_banners,
-                                    :loyalty_program,
-                                    :domen_url,
-                                    :sms_auth,
-                                    :place_group_id,
-                                    :auth_default_lang)
+    def set_place
+      @place = Place.find_by(slug: params[:id])
     end
 
     def get_number_of_friends(records)
