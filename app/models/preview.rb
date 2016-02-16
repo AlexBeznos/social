@@ -1,3 +1,3 @@
 class Preview < ActiveRecord::Base
-  :has_many :places
+  has_many :places
 end
