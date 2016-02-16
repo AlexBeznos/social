@@ -1,7 +1,7 @@
 class Adm::DashboardController < AdministrationController
 
   def index
-    @users = User.all
-    authorize! :show, @users
+    authorize User
+    @users = policy_scope(User)
   end
 end

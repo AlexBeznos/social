@@ -5,6 +5,8 @@ class GowifiAuthController < ApplicationController
   before_action :find_customer, only: [:omniauth, :redirect_after_auth]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
 
+  skip_after_action :verify_authorized
+
   def enter_by_password
     if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
       redirect_to wifi_login_path
@@ -25,6 +27,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def simple_enter
+
     if @place.simple_enter
       redirect_to wifi_login_path
     else
@@ -33,6 +36,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def submit_poll
+
     if params[:poll]
       @answer = Answer.find(poll_params[:answer_ids])
       if @answer.increment!(:number_of_selections)
@@ -63,7 +67,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def redirect_after_auth
-    if @place
+        if @place
       if @place.loyalty_program && @customer
         redirect_to menu_items_list_path(@place)
       else

@@ -8,6 +8,8 @@
   before_action :check_locale
   before_action :set_timezone
 
+  after_action :verify_authorized
+
   before_action do
     User.current = current_user
   end
@@ -24,10 +26,6 @@
     else
       redirect_to login_path, :alert => exception.message
     end
-  end
-
-  def current_ability
-    @current_ability ||= Ability.new(current_user)
   end
 
   def append_info_to_payload(payload)

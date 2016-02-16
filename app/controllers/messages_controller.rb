@@ -2,8 +2,6 @@ class MessagesController < ApplicationController
   before_action :set_place
   before_action :set_message, except:[:new, :create ]
 
-  after_action :verify_authorized
-
   def new
     authorize Message
 
