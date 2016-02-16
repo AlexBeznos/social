@@ -14,7 +14,8 @@
         = n_form.input :place_id, as: :hidden, input_html: { value: @place.id }
         = n_form.input :style_id, as: :hidden, input_html: { value: @style.id }
         = n_form.input :social_network_id, as: :hidden, input_html: { value: network.id }
-  = image_tag @style.background.url, height: 100
+  - if @style.background.present?
+    = image_tag @style.background.url, height: 100
   = f.input :background, as: :file
   = f.input :css, as: :text
 
