@@ -1,4 +1,4 @@
-- if place.logo.file?
+- if place.logo.present?
   = image_tag @place.logo.url, class: 'logo'
 - else
   %h1= place.name

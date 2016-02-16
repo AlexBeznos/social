@@ -5,7 +5,7 @@
     %h1= t('models.banners.actions.edit.title')
     .center-block
       %br
-      - if @banner.content_content_type.match(/^image/) 
+      - if @banner.content.content_type.match(/^image/) 
         =image_tag @banner.content.url, class: 'img-responsive'
       - else
         %video{ controls: "", name: "media", class: 'img-responsive' }
