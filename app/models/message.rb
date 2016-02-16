@@ -20,8 +20,8 @@ class Message < ActiveRecord::Base
   validates :image,
             :presence => true,
             file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
-            file_size: { in: 11.kilobytes..10.megabytes }
-                                # unless: 'social_network_id == 3'
+            file_size: { in: 11.kilobytes..10.megabytes },
+                                unless: 'social_network_id == 3'
 
   validate :twitter_message_length, if: 'social_network_id == 4'
 
