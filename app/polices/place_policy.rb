@@ -2,9 +2,9 @@ class PlacePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.franchisee?
-        scope.where(user_id: all_user_ids).find_by(:slug)
+        scope.where(user_id: all_user_ids)
       elsif user.general? && user.id
-        scope.where(user: user).find_by(:slug)
+        scope.where(user: user)
       elsif user.admin?
         scope.all
       end
