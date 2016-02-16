@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :place_group do
-    string ""
+    association :user
+    name Faker::Company.name
   end
-
 end
