@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   before_action :set_place
   before_action :set_message, except:[:new, :create ]
 
@@ -7,12 +6,14 @@ class MessagesController < ApplicationController
 
   def new
     authorize Message
+
     @place = Place.find_by(slug:params[:place_id])
     @message = Message.new
   end
 
   def create
     authorize Message
+
     @message = Message.new(permitted_attributes(Message))
     @message.with_message = @place
 
@@ -24,10 +25,7 @@ class MessagesController < ApplicationController
   end
 
   def edit
-
-
-      authorize @message
-
+    authorize @message
   end
 
   def update

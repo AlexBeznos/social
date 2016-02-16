@@ -1,5 +1,4 @@
-  class BannersController < ApplicationController
-
+class BannersController < ApplicationController
   before_action :set_place
   before_action :set_banner, except: [:index, :new, :create]
   before_action :check_city, except: [:index]

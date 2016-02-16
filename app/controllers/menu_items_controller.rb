@@ -1,5 +1,4 @@
 class MenuItemsController < ApplicationController
-
   before_action :find_customer, only: :welcome
   before_action :load_reputation_score, only: :welcome
   before_action :set_menu_item, except: [:index , :welcome , :new , :create]
@@ -9,6 +8,7 @@ class MenuItemsController < ApplicationController
 
   def index
     authorize MenuItem
+
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
   end
 
@@ -42,6 +42,7 @@ class MenuItemsController < ApplicationController
 
   def update
     authorize @menu_item
+    
     if @menu_item.update(permitted_attributes(MenuItem))
       redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
     else

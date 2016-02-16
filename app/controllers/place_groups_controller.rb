@@ -53,7 +53,8 @@ class PlaceGroupsController < ApplicationController
 
   def destroy
     authorize @place_group
-    @place_group.destroy 
+
+    @place_group.destroy
     redirect_to places_path, :notice => I18n.t('notice.deleted', subject: I18n.t('models.place_groups.class'))
   end
 
@@ -74,11 +75,4 @@ class PlaceGroupsController < ApplicationController
       @place_group = PlaceGroup.find(params[:id])
     end
 
-    # def place_group_params
-    #   params.require(:place_group).permit(:name, :user_id)
-    # end
-    #
-    # def msg_params
-    #   params.require(:message).permit(:social_network_id, :message, :message_link, :image, :subscription)
-    # end
 end
