@@ -1,4 +1,4 @@
-RSpec.shared_examples "with_status" do |status|
+ RSpec.shared_examples "with_status" do |status|
   it "should response with #{status} status" do
     expect(response).to have_http_status(status)
   end
