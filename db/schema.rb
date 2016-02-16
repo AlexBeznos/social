@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209161909) do
+ActiveRecord::Schema.define(version: 20160130105723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -218,11 +218,7 @@ ActiveRecord::Schema.define(version: 20160209161909) do
     t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
     t.string   "auth_default_lang"
-<<<<<<< HEAD
     t.string   "ssid"
-=======
-    t.string   "logo"
->>>>>>> a747fe1629639c104e83b9d4339c331543a3d6fa
   end
 
   add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree
