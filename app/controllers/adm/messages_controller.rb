@@ -1,9 +1,6 @@
 class Adm::MessagesController < AdministrationController
 before_action :set_place
-before_action :set_message, except:[:new, :create]
-
-after_action :verify_authorized
-
+before_action :set_message, except: [:new, :create]
 
   def new
     authorize Message

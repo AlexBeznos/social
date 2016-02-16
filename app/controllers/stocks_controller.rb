@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   before_action :set_place
-  before_action :set_stock , only: [:update , :destroy , :edit]
+  before_action :set_stock, only: [:update, :destroy, :edit]
 
   def index
     authorize Stock

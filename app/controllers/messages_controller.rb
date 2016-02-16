@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
   before_action :set_place
-  before_action :set_message, except:[:new, :create ]
+  before_action :set_message, except: [:new, :create ]
 
   def new
     authorize Message
 
-    @place = Place.find_by(slug:params[:place_id])
+    @place = Place.find_by(slug: params[:place_id])
     @message = Message.new
   end
 

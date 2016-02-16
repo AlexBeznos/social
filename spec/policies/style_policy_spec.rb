@@ -15,7 +15,7 @@ RSpec.describe BannerPolicy do
   context "for admin" do
     let(:user){create :user_admin}
 
-    it "scope includes user with id: current_user.id" do
+    it "scope includes all styles" do
       expect(resolved_scope).to include(record)
     end
 
@@ -49,7 +49,7 @@ RSpec.describe BannerPolicy do
   context "for general" do
     let(:user){create :user_general}
 
-    it "scope includes user with id: current_user.id" do
+    it "scope includes all styles" do
       expect(resolved_scope).to include(record)
     end
 

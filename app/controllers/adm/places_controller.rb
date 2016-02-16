@@ -1,9 +1,8 @@
 class Adm::PlacesController < AdministrationController
-  before_action :set_place , except:[:index, :new, :create]
-  before_action :set_user , only: [:new,:create]
+  before_action :set_place, except: [:index, :new, :create]
+  before_action :set_user, only: [:new, :create]
 
-  after_action :verify_policy_scoped, only:[:index]
-  after_action :verify_authorized
+  after_action :verify_policy_scoped, only: [:index]
 
 
   def index

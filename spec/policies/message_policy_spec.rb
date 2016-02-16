@@ -16,7 +16,7 @@ RSpec.describe MessagePolicy do
   context "for admin" do
     let(:user){create :user_admin}
 
-    it "scope includes user with id: current_user.id" do
+    it "scope includes user messages" do
       expect(resolved_scope).to include(record)
     end
 
@@ -33,7 +33,7 @@ RSpec.describe MessagePolicy do
   context "for franchisee" do
     let(:user){create :user_franchisee}
 
-    it "scope includes user with id: current_user.id" do
+    it "scope includes all messages" do
       expect(resolved_scope).to include(record)
     end
 
@@ -50,7 +50,7 @@ RSpec.describe MessagePolicy do
   context "for general" do
     let(:user){create :user_general}
 
-    it "scope includes user with id: current_user.id" do
+    it "scope includes all messages" do
       expect(resolved_scope).to include(record)
     end
 

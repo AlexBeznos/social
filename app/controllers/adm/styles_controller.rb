@@ -1,8 +1,6 @@
 class Adm::StylesController < AdministrationController
   before_action :set_place
-  before_action :set_style, except:[:new,:create]
-
-  after_action :verify_authorized
+  before_action :set_style, except: [:new, :create]
 
   def new
     authorize Style

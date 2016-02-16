@@ -1,5 +1,5 @@
 class PlaceGroupsController < ApplicationController
-  before_action :set_place_group, except:[:new, :create]
+  before_action :set_place_group, except: [:new, :create]
 
   def new
     authorize PlaceGroup

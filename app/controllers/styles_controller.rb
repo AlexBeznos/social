@@ -1,6 +1,6 @@
 class StylesController < ApplicationController
   before_action :icons_save, only: [:create, :update]
-  before_action :set_style , except: [:new , :create]
+  before_action :set_style, except: [:new, :create]
   before_action :set_place
 
   def new

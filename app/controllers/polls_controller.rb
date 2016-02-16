@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :set_poll , except: [:index , :new , :create ]
+  before_action :set_poll, except: [:index, :new, :create ]
   before_action :set_place
 
   def index

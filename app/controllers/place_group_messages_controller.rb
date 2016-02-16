@@ -1,5 +1,5 @@
 class PlaceGroupMessagesController < ApplicationController
-  before_action :set_message, except: [:new , :create]
+  before_action :set_message, except: [:new, :create]
   before_action :set_place_group
 
   def new

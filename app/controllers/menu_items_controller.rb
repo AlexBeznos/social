@@ -1,7 +1,7 @@
 class MenuItemsController < ApplicationController
   before_action :find_customer, only: :welcome
   before_action :load_reputation_score, only: :welcome
-  before_action :set_menu_item, except: [:index , :welcome , :new , :create]
+  before_action :set_menu_item, except: [:index, :welcome, :new, :create]
   before_action :set_place
 
   def index
