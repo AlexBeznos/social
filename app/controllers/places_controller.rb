@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
-  before_action :set_place
+  before_action :set_place, except:[:new, :create , :index ]
+
   after_action :verify_authorized
   after_action :verify_policy_scoped , except:[:new, :create ]
 
