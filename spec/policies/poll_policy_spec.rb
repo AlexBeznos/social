@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe BannerPolicy do
+RSpec.describe PollPolicy do
   include_examples "visitor"
 
   subject { PollPolicy.new(user,record) }

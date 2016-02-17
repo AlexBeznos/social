@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe BannerPolicy do
+RSpec.describe StockPolicy do
   include_examples "visitor"
 
   subject { StockPolicy.new(user,record) }
