@@ -13,7 +13,7 @@ class Message < ActiveRecord::Base
   validates :social_network_id, presence: true
   validates :message, presence: true, unless: 'social_network_id == 3' # SocialNetwork.find(3).name == 'instagram'
   validates :message_link, :url => true, if: 'message_link && !message_link.empty?'
-  validates :subscription, presence: true, if: 'social_network_id == 3'
+  validates :subscription, presence: true, unless: 'social_network_id == 3'
   validates :with_message_type, inclusion: { in: ["Place", "PlaceGroup"] }
   #validates :redirect_url, presence: true, url: true    NOTE: IT`S FROM OTHER TASK FROM BRANCH "redirect" AND IT`S APPEARED HERE SOMEHOW
 

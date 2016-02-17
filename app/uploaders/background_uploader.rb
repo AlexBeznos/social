@@ -4,7 +4,7 @@ class BackgroundUploader < CarrierWave::Uploader::Base
   include CarrierWave::Compatibility::Paperclip
 
   def paperclip_path
-    "/style/bachground/:id/:style.:extension"
+    "style/bachground/:id/:style.:extension"
   end
 
   # Include RMagick or MiniMagick support:
@@ -12,7 +12,6 @@ class BackgroundUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
