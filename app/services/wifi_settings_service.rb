@@ -47,7 +47,7 @@ class WifiSettingsService < ActiveType::Object
       config_path = "#{get_path}config.rsc"
       config_text = File.read(config_path)
 
-      config_text.gsub!(/##ssid##/, Translit.convert(@place.name, :english))
+      config_text.gsub!(/##ssid##/, @place.ssid)
       config_text.gsub!(/##slug##/, @place.slug)
       config_text.gsub!(/##username##/, @place.wifi_username)
       config_text.gsub!(/##password##/, @place.wifi_password)

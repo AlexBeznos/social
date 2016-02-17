@@ -4,6 +4,7 @@ class GowifiController < ApplicationController
   layout false
   before_action :find_place, only: :show
   before_action :set_place_slug, only: :show
+  before_action :set_default_format, only: :show
   before_action :find_customer, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
@@ -26,6 +27,10 @@ class GowifiController < ApplicationController
       session[:slug] = @place.slug
     end
 
+    def set_default_format
+      request.format = :html
+    end
+
     def find_customer
       @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
     end
@@ -34,8 +39,8 @@ class GowifiController < ApplicationController
       if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
         return I18n.locale = params[:lang]
       end
-      
-      I18n.locale = @place.auth_default_lang
+
+      I18n.locale = @place.auth_default_lang unless @place.auth_default_lang.blank?
     end
 
     # TODO: make banner injection by simple method and visits incrementation by ajax call

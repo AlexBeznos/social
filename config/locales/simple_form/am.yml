@@ -5,6 +5,7 @@
     labels:
       place:
         name: 'Հաստատության անվանումը'
+        ssid: 'SSID տեղերը'
         domen_url: 'Դոմեյնի հասցեն'
         logo: 'Լոգո'
         active: Hotspot ակտիվ է

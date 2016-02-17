@@ -12,6 +12,8 @@ gem 'jquery-minicolors-rails'
 gem 'codemirror-rails'
 gem 'jquery-modal-rails'
 gem 'jquery-ui-rails'
+gem "fog-aws"
+gem "asset_sync"
 
 # Precompiles
 gem 'sass-rails', '~> 4.0.3'
@@ -40,9 +42,13 @@ gem 'guess'
 gem 'rubyzip'
 gem 'i18n-timezones'
 gem 'ahoy_matey'
+gem 'rack-attack'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+
+gem 'exception_notification'
+gem 'slack-notifier'
 
 # Parsers
 gem 'rabl'
@@ -56,6 +62,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-instagram'
 gem 'omniauth-vkontakte'
 
+
 # Api
 gem 'vkontakte_api'
 gem 'instagram'
@@ -63,7 +70,6 @@ gem 'koala'
 gem 'twitter'
 gem 'aws-sdk', '< 2.0'
 gem 'sendgrid'
-gem 'rollbar', '~> 1.5.3'
 gem 'smsc'
 
 # Jobs

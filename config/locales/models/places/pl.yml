@@ -6,6 +6,7 @@ pl:
       place: instytucja
       attrs:
         name: 'Nazwa instytucji'
+        ssid: 'miejsca SSID'
         domen_url: "Adres domeny"
         place_group: Grupa
         by_password: 'Zaloguj hasło'
@@ -60,7 +61,7 @@ pl:
             network: Sieć społeczna
             birthday: Urodziny
         settings:
-          auth_default_lang: Domyślnym językiem uwierzytelniania 
+          auth_default_lang: Domyślnym językiem uwierzytelniania
           title: "Ustawienia %{place_name}"
           wifi:  Ustawienia Wi-Fi
           messages:  Stacje ustawianie

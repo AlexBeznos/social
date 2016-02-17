@@ -5,6 +5,7 @@ en:
     labels:
       place:
         name: 'Place name'
+        ssid: 'Place SSID'
         domen_url: 'Domen URL'
         logo: 'Logo'
         active: Hotspot is active

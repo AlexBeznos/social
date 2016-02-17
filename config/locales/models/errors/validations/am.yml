@@ -2,6 +2,7 @@
   models:
     errors:
       validations:
+        english_letters_and_spaces: Թույլատրում է միայն անգլերեն տառերով եւ տարածքներ
         wrong_link_format: Հղման սխալ ֆորմատ
         unique_place_for_customer: Հաստատությունը պետք է լինի յուրահատուկ հաճախորդի համար
         long_twitter_message: Հղումով հաղորդագրությունը չպետք է գերազանցի 140 նշաններ

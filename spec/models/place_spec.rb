@@ -8,6 +8,8 @@ RSpec.describe Place do
   # we need to figure out why.
   # it { is_expected.to validate_presence_of :name }
 
+
+  it { is_expected.to validate_presence_of :ssid }
   it { is_expected.to validate_presence_of :template }
   it { is_expected.to validate_inclusion_of(:domen_url).in_array(Place::DOMAIN_LIST) }
   it { is_expected.to validate_attachment_content_type(:logo).allowing("image/jpeg", "image/png", "image/gif") }

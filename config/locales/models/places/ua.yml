@@ -6,6 +6,7 @@ ua:
       place: заклад
       attrs:
         name: 'Назва закладу'
+        ssid: 'SSID закладу'
         domen_url: "Адреса домену"
         place_group: Група
         by_password: 'Вхід через пароль'
@@ -60,7 +61,7 @@ ua:
             network: Соц. мережа
             birthday: День народження
         settings:
-          auth_default_lang: Стандартная мова аутентифікації 
+          auth_default_lang: Стандартная мова аутентифікації
           title: "Налаштування для %{place_name}"
           wifi:  Налаштування Wi-Fi
           messages:  Налаштування постів

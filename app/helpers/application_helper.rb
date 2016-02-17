@@ -23,10 +23,10 @@ module ApplicationHelper
   end
 
   def localization_links
-    to_anchor = lambda { |l| link_to(l, set_locale_path(l)) }
+    to_link = lambda { |l| link_to(l, set_locale_path(l)) }
     locals    = I18n.available_locales
-    links     = locals.map { |l| to_anchor.call(l) }.join(' | ')
+    links     = locals.map { |l| to_link.call(l) }
 
-    raw links
+    raw links.join(' | ')
   end
 end
