@@ -88,7 +88,10 @@ class GowifiAuthController < ApplicationController
     end
 
     def find_place_from_session
-      @place = Place.find_by_slug(request.env['omniauth.params']['place'] || session[:slug])
+      slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
+      slug_by_session = session[:slug]
+
+      @place = Place.find_by_slug(slug_by_omni || slug_by_session)
     end
 
     def credentials
