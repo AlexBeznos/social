@@ -1,13 +1,97 @@
-.fb-image {
-  width: 450px;
-  height: 250px;
-  border-bottom: 1.5px solid #9197a3;
-  border-top: 1.5px solid #9197a3;
-  padding: 5px 0px 5px 0;
-  img {
-    width: auto;
-    height : auto;
-    max-height: 100%;
+
+.button {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+h1, p {
+  text-align: center;
+}
+
+
+.fb-frame {
+  position: relative;
+  padding-left: 340px;
+}
+
+
+.fb-pic {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  margin-left: -230px;
+  width: 460px;
+  height: 236px;
+}
+
+
+
+// tablets < 1000px
+
+@media only screen and (max-width: 1100px) {
+  .fb-frame {
+    padding-left: 25%;
+  }
+  .fb-pic {
+    margin-left: -230px;
+  }
+}
+
+// tablets < 990px
+@media only screen and (max-width: 990px) {
+  .fb-frame {
+    padding-left: 20%;
+  }
+  .fb-pic {
+    margin-left: -29%;
+  }
+;
+}
+// tablets-vertical < 765px
+@media only screen and (max-width: 765px) {
+  .fb-frame {
+    padding-left: 5%;
+    margin-right: 25%;
+  }
+  .fb-pic {
+    margin-left: -40%;
+  }
+}
+
+// mobile < 600px
+
+@media only screen and (max-width: 600px) {
+  .fb-frame {
+    margin-right: 5%;
+  }
+  .frame {
+    width: 100%;
+  }
+  .fb-pic {
+    top: 140px;
+    left: 50%;
+    margin-left: -220px;
     max-width: 100%;
+    height: 220px;
+
+  }
+}
+
+
+// mobile < 500px
+
+@media only screen and (max-width: 500px) {
+  .fb-frame {
+    margin-right: 5%;
+  }
+  .frame {
+    width: 100%
+  }
+  .fb-pic {
+    top: 105px;
+    left: 50%;
+    margin-left: -180px;
+    max-width: 88%;
+    height: 200px;
   }
 }

@@ -1,45 +1,88 @@
 
+h1 {
+  text-align: center;
+}
 
-.vk-image {
-  width: 540px;
-  height: 315px;
-    border-top: 1.5px solid #DAE1E8;
-  border-bottom: 1.5px solid #DAE1E8;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  img {
-    width: auto;
-    height : auto;
-    max-height: 100%;
-    max-width: 100%;
+p {
+  text-align: center;
+}
+
+.button {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+
+.vk-frame {
+  position: relative;
+  padding-left: 250px;
+}
+
+
+.vk-pic {
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  margin-left: -260px;
+  width: 520px;
+  height: 310px;
+}
+
+
+
+
+  // tablets < 1000px
+
+@media only screen and (max-width: 1110px) {
+  .vk-frame {
+    padding-left: 5%;
   }
 }
 
-.timestamps {
-  font-family: tahoma, arial, verdana, sans-serif, Lucida Sans;
-  font-size: 11px;
-  color: #999;
-  padding-left: 8px;
-  padding-top: 15px;
-  display:inline;
-
+ // tablets-vertical < 765px
+@media only screen and (max-width: 765px) {
+  .vk-frame {
+    margin-right: 5%;
+  }
+  .vk-pic {
+    padding-left: 5%;
+  }
 }
 
-.like {
-  font-family: tahoma, arial, verdana, sans-serif, Lucida Sans;
-  font-size: 10px;
-  color: #2F5879;
-  position: absolute;
-  padding-left: 315px;
-  padding-bottom: 10px;
-  padding-top: 3px;
+ // mobile < 600px
 
-  display:inline;
-  .heart {
-    float: right;
-    margin: 3px 3px 0px;
-    width: 10px;
-    height: 10px;
-    background: url('http://vk.com/images/icons/like.gif?') 0 0 no-repeat;
+@media only screen and (max-width: 600px) {
+  .vk-frame {
+    padding-left: 0px;
+  }
+  .frame {
+    width: 100%;
+  }
+  .vk-pic {
+    top: 100px;
+    left: 50%;
+    margin-left: -200px;
+    max-width:80%;
+    height: 230px;
+
+  }
+}
+
+
+ // mobile < 500px
+
+@media only screen and (max-width: 500px) {
+  .vk-frame {
+    padding-left: 0px;
+  }
+  .frame {
+    width: 100%
+  }
+  .vk-pic {
+    top: 50px;
+    left: 50%;
+    margin-left: -180px;
+    max-width: 70%;
+    height: 230px;
   }
 }

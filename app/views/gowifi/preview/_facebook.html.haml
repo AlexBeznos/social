@@ -1,8 +1,8 @@
+.container
+  .row
 
-/ FB post
+    / VK post
 
-%p= @message.message
-.fb-image{:class => 'fb-image'}
-  =image_tag @message.image
-.timestamps{:class => 'timestamps'}
-.like{:class => 'like'}
+    .fb-frame{:class => 'fb-frame'}
+      =image_tag('fb-frame.png', :class => 'frame')
+      =image_tag @message.image, :class => 'fb-pic'

@@ -1,12 +1,22 @@
 .container
   .row
+    .col-md-2
 
     / VK post
 
-    %p= @message.message
-    .vk-image{:class => 'vk-image'}
-      =image_tag @message.image
-    .timestamps{:class => 'timestamps'} 2 минуты назад | Ответить
-    .like{:class => 'like'}
-      Мне нравится
-      .heart
+    -#%p= @message.message
+
+
+    .vk-frame{:class => 'vk-frame'}
+      =image_tag("vk-frame.png", :class => 'frame')
+      =image_tag(@message.image, :class => 'vk-pic')
+
+    -#.content
+    -#  .timestamps{:class => 'timestamps'} 3 минуты назад | Ответить
+    -#  .like{:class => 'like'}
+    -#    Мне нравится
+    -#    .heart
+    -#  .repost{:class => 'repost'}
+    -#    .repost-icon
+    -#    .repost-text
+    -#      Поделиться
