@@ -1,0 +1,45 @@
+
+.button {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+h1, p {
+  text-align: center;
+}
+
+
+.twitter-frame {
+  position: relative;
+  width: 574px;
+  margin: 0 auto;
+}
+
+
+.twitter-pic {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  margin-left: -222px;
+  width: 500px;
+  height: 282px;
+}
+
+
+// mobile < 500px
+
+@media only screen and (max-width: 500px) {
+
+  .twitter-frame {
+    max-width: 100%;
+  }
+
+
+  .twitter-pic {
+    top: 50px;
+    left: 50%;
+    margin-left: -180px;
+    max-width: 83%;
+    height: 200px;
+  }
+}

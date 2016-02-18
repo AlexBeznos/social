@@ -11,7 +11,8 @@ h1, p {
 
 .fb-frame {
   position: relative;
-  padding-left: 340px;
+  width: 485px;
+  margin: 0 auto;
 }
 
 
@@ -25,44 +26,9 @@ h1, p {
 }
 
 
-
-// tablets < 1000px
-
-@media only screen and (max-width: 1100px) {
-  .fb-frame {
-    padding-left: 25%;
-  }
-  .fb-pic {
-    margin-left: -230px;
-  }
-}
-
-// tablets < 990px
-@media only screen and (max-width: 990px) {
-  .fb-frame {
-    padding-left: 20%;
-  }
-  .fb-pic {
-    margin-left: -29%;
-  }
-;
-}
-// tablets-vertical < 765px
-@media only screen and (max-width: 765px) {
-  .fb-frame {
-    padding-left: 5%;
-    margin-right: 25%;
-  }
-  .fb-pic {
-    margin-left: -40%;
-  }
-}
-
-// mobile < 600px
-
 @media only screen and (max-width: 600px) {
   .fb-frame {
-    margin-right: 5%;
+    max-width: 100%;
   }
   .frame {
     width: 100%;
@@ -70,7 +36,7 @@ h1, p {
   .fb-pic {
     top: 140px;
     left: 50%;
-    margin-left: -220px;
+    margin-left: -230px;
     max-width: 100%;
     height: 220px;
 
@@ -82,16 +48,16 @@ h1, p {
 
 @media only screen and (max-width: 500px) {
   .fb-frame {
-    margin-right: 5%;
+    max-width: 100%;
   }
   .frame {
     width: 100%
   }
   .fb-pic {
-    top: 105px;
+    top: 130px;
     left: 50%;
-    margin-left: -180px;
-    max-width: 88%;
+    margin-left: -210px;
+    max-width: 89%;
     height: 200px;
   }
 }

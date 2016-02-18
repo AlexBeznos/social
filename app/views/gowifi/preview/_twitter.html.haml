@@ -1,15 +1,8 @@
 .container
   .row
 
-    / VK post
+    / TW post
 
-    %p= @message.message
-    .twitter-image{:class => 'twitter-image'}
-      =image_tag @message.image
-    .timestamps{:class => 'timestamps'}
-    .comment{:class => 'comment'}
-      .comment
-    .retweet{:class => 'retweet'}
-      .retweet-icon
-    .favouite{:class => 'favourite'}
-      .favourite
+    .twitter-frame{:class => 'twitter-frame'}
+      =image_tag('twitter-frame.png', :class => 'twitter-frame')
+      =image_tag @message.image, :class => 'twitter-pic'

@@ -15,7 +15,8 @@ p {
 
 .vk-frame {
   position: relative;
-  padding-left: 250px;
+  width: 630px;
+  margin: 0 auto;
 }
 
 
@@ -30,59 +31,22 @@ p {
 
 
 
-
-  // tablets < 1000px
-
-@media only screen and (max-width: 1110px) {
-  .vk-frame {
-    padding-left: 5%;
-  }
-}
-
- // tablets-vertical < 765px
-@media only screen and (max-width: 765px) {
-  .vk-frame {
-    margin-right: 5%;
-  }
-  .vk-pic {
-    padding-left: 5%;
-  }
-}
-
- // mobile < 600px
-
-@media only screen and (max-width: 600px) {
-  .vk-frame {
-    padding-left: 0px;
-  }
-  .frame {
-    width: 100%;
-  }
-  .vk-pic {
-    top: 100px;
-    left: 50%;
-    margin-left: -200px;
-    max-width:80%;
-    height: 230px;
-
-  }
-}
-
-
  // mobile < 500px
 
 @media only screen and (max-width: 500px) {
   .vk-frame {
-    padding-left: 0px;
+    max-width: 100%;
   }
+
   .frame {
-    width: 100%
+    max-width: 100%;
   }
+
   .vk-pic {
-    top: 50px;
+    top: 60px;
     left: 50%;
-    margin-left: -180px;
-    max-width: 70%;
+    margin-left: -185px;
+    max-width: 85%;
     height: 230px;
   }
 }
