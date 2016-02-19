@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :poll do
-    question "MyText"
+    question { Faker::Lorem.sentence }
     association :place
   end
 end
