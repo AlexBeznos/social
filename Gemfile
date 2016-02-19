@@ -45,6 +45,7 @@ gem 'ahoy_matey'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'file_validators'
+gem 'rack-attack'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
@@ -72,7 +73,6 @@ gem 'koala'
 gem 'twitter'
 gem 'aws-sdk', '< 2.0'
 gem 'sendgrid'
-gem 'rollbar', '~> 1.5.3'
 gem 'smsc'
 
 # Jobs

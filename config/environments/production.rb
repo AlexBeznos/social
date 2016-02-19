@@ -56,7 +56,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "//s3-us-west-2.amazonaws.com/#{ENV['AWS_BUCKET']}"
+  config.action_controller.asset_host = "//#{ENV['AWS_BUCKET']}.s3.amazonaws.com/"
   config.assets.initialize_on_precompile = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
