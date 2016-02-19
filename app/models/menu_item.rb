@@ -6,7 +6,7 @@ class MenuItem < ActiveRecord::Base
   #                   :storage => :s3,
   #                   :path => "/images/:id/:style.:extension",
   #                   :url => ":s3_domain_url"
-  mount_uploader :image, ImageUploader, mount_on: :image_file_name
+  mount_uploader :image, MenuItemUploader, mount_on: :image_file_name
 
   validates :name, :price, :place_id, presence: true
   validates :image,

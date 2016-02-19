@@ -3,7 +3,7 @@ class Banner < ActiveRecord::Base
   #                   :storage => :s3,
   #                   :path => "/banners/:id/:style.:extension",
                     # :url => ":s3_domain_url"
-  mount_uploader :content, ContentUploader, mount_on: :content_file_name
+  mount_uploader :content, BannerUploader, mount_on: :content_file_name
 
   belongs_to :place
   validates :place_id, :name, :content, presence: true

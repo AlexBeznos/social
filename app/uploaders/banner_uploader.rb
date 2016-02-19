@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ContentUploader < CarrierWave::Uploader::Base
+class BannerUploader < CarrierWave::Uploader::Base
   include CarrierWave::Compatibility::Paperclip
 
   def paperclip_path
