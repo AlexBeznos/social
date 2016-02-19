@@ -36,8 +36,8 @@ RSpec.describe User do
   end
 
   describe "default scope" do
-    let!(:user_one) { create(:user, id: 1) }
-    let!(:user_two) { create(:user, id: 2) }
+    let!(:user_one) { create(:user) }
+    let!(:user_two) { create(:user) }
 
     it "orders by ascending id" do
       expect(User.all).to eq([user_one, user_two])

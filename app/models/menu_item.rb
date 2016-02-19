@@ -10,8 +10,8 @@ class MenuItem < ActiveRecord::Base
 
   validates :name, :price, :place_id, presence: true
   validates :image,
-            :presence => true,
-            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
+            presence: true,
+            file_content_type: { allow: ["image/jpg", "image/png", "image/gif"] },
             file_size: { in: 11.kilobytes..10.megabytes }
   # validates_attachment :image, :presence => true,
   #                      size: { in: 11.kilobytes..10.megabytes },

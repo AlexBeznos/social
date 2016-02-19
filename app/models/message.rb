@@ -11,15 +11,14 @@ class Message < ActiveRecord::Base
   belongs_to :social_network
 
   validates :social_network_id, presence: true
-  validates :message, presence: true, unless: 'social_network_id == 3' # SocialNetwork.find(3).name == 'instagram'
+  validates :message, presence: true, unless: 'social_network == 3' # SocialNetwork.find(3).name == 'instagram'
   validates :message_link, :url => true, if: 'message_link && !message_link.empty?'
   validates :subscription, presence: true, if: 'social_network_id == 3'
   validates :with_message_type, inclusion: { in: ["Place", "PlaceGroup"] }
-  #validates :redirect_url, presence: true, url: true    NOTE: IT`S FROM OTHER TASK FROM BRANCH "redirect" AND IT`S APPEARED HERE SOMEHOW
 
   validates :image,
-            :presence => true,
-            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
+            presence: true,
+            file_content_type: { allow: ["image/jpg", "image/png", "image/gif"] },
             file_size: { in: 11.kilobytes..10.megabytes },
                                 unless: 'social_network_id == 3'
 
