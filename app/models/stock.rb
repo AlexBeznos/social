@@ -5,7 +5,7 @@ class Stock < ActiveRecord::Base
   #                   :storage => :s3,
   #                   :path => "/images/stocks/:id/:style.:extension",
   #                   :url => ":s3_domain_url"
-  mount_uploader :image, ImageUploader, mount_on: :image_file_name
+  mount_uploader :image, StockUploader, mount_on: :image_file_name
 
   validates :place_id, :day, presence: true
   validates :url, :url => true
