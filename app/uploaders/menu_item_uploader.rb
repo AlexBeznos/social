@@ -4,7 +4,7 @@ class MenuItemUploader < CarrierWave::Uploader::Base
   include CarrierWave::Compatibility::Paperclip
 
   def paperclip_path
-    "menu_item/:id/:style.:extension"
+    "menu_item/images/:id/:style.:extension"
   end
 
   # Include RMagick or MiniMagick support:
