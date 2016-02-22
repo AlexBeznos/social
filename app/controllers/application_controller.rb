@@ -10,10 +10,6 @@
 
   after_action :verify_authorized
 
-  before_action do
-    User.current = current_user
-  end
-
   rescue_from Pundit::NotAuthorizedError do |exception|
     if current_user
       target = if (request.referer.nil? || request.url == request.referer || request.method == 'POST')
@@ -24,7 +20,7 @@
 
       redirect_to target, alert: exception.message
     else
-      redirect_to login_path, :alert => exception.message
+      redirect_to login_path, alert: exception.message
     end
   end
 

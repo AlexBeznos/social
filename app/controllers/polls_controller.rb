@@ -38,7 +38,7 @@ class PollsController < ApplicationController
   end
 
   def update
-    authorize @p
+    authorize @poll
 
     if @poll.update(permitted_attributes(Poll))
       redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.updated', subject: I18n.t('models.polls.class'))
@@ -57,7 +57,6 @@ class PollsController < ApplicationController
   end
 
   private
-
   def set_poll
     @poll = Poll.find(params[:id])
   end

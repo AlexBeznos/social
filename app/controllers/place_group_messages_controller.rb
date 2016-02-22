@@ -11,10 +11,10 @@ class PlaceGroupMessagesController < ApplicationController
   def create
     authorize Message
 
-    @message = @place_group.messages.new (permitted_attributes(Message))
+    @message = @place_group.messages.new(permitted_attributes(Message))
 
     if @message.save
-      redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+      redirect_to edit_place_group_path(@place_group), notice: I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
     else
       render :action => :new
     end
@@ -25,9 +25,9 @@ class PlaceGroupMessagesController < ApplicationController
 
     if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
       if @message.update(permitted_attributes(Message))
-        redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+        redirect_to edit_place_group_path(@place_group), notice: I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
       else
-        render :action => :edit
+        render action: :edit
       end
     end
   end
@@ -40,7 +40,7 @@ class PlaceGroupMessagesController < ApplicationController
     authorize @message
 
     @message.destroy
-    redirect_to edit_place_group_path(@place_group), :notice => I18n.t('notice.deleted', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+    redirect_to edit_place_group_path(@place_group), notice: I18n.t('notice.deleted', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
   end
 
   def activate

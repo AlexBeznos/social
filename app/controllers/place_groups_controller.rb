@@ -9,12 +9,13 @@ class PlaceGroupsController < ApplicationController
   end
 
   def create
-    authorize PlaceGroup , :new?
+    authorize PlaceGroup, :new?
+
     @place_group = PlaceGroup.new(permitted_attributes(PlaceGroup))
     if @place_group.save
-      redirect_to places_path, :notice => I18n.t('notice.create', subject: I18n.t('models.place_groups.class'))
+      redirect_to places_path, notice: I18n.t('notice.create', subject: I18n.t('models.place_groups.class'))
     else
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -31,20 +32,20 @@ class PlaceGroupsController < ApplicationController
     authorize @place_group
 
     if @place_group.update(permitted_attributes(@place_group))
-      redirect_to places_path, :notice => I18n.t('notice.updated', subject: I18n.t('models.place_groups.class'))
+      redirect_to places_path, notice: I18n.t('notice.updated', subject: I18n.t('models.place_groups.class'))
     else
       render :action => :edit
     end
   end
 
   def create_group_message
-    authorize @message , :create?
+    authorize @message, :create?
 
     @message = @place_group.messages.new(permitted_attributes(Message))
     if @message.save
-      redirect_to edit_place_group_path, :notice => I18n.t('notice.create', subject: I18n.t('models.message.class'))
+      redirect_to edit_place_group_path, notice: I18n.t('notice.create', subject: I18n.t('models.message.class'))
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 
@@ -52,7 +53,7 @@ class PlaceGroupsController < ApplicationController
     authorize @place_group
 
     @place_group.destroy
-    redirect_to places_path, :notice => I18n.t('notice.deleted', subject: I18n.t('models.place_groups.class'))
+    redirect_to places_path, notice: I18n.t('notice.deleted', subject: I18n.t('models.place_groups.class'))
   end
 
   private

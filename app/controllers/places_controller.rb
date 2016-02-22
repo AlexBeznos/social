@@ -1,8 +1,8 @@
 class PlacesController < ApplicationController
-  before_action :set_place , except: [:new, :create , :index ]
+  before_action :set_place, except: [:new, :create , :index ]
 
   after_action :verify_authorized
-  after_action :verify_policy_scoped , only: [:index]
+  after_action :verify_policy_scoped, only: [:index]
 
   def index
     authorize Place
@@ -22,7 +22,7 @@ class PlacesController < ApplicationController
 
     @place = Place.new(permitted_attributes (Place))
     if @place.save
-      redirect_to user_path(@place.user), :notice => I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
+      redirect_to user_path(@place.user), notice: I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
       params[:user] = @place.user_id
       render :action => :new
@@ -48,10 +48,10 @@ class PlacesController < ApplicationController
     authorize @place
 
     @customers = Customer::NetworkProfile.joins(:visits)
-                                       .where('customer_visits.place_id = ?', @place.id)
-                                       .uniq
-                                       .sort_by { |np| np.visits.where(place: @place).count }
-                                       .reverse
+                                         .where('customer_visits.place_id = ?', @place.id)
+                                         .uniq
+                                         .sort_by { |np| np.visits.where(place: @place).count }
+                                         .reverse
 
   end
 
@@ -85,7 +85,7 @@ class PlacesController < ApplicationController
     authorize @place
 
     if @place.update(permitted_attributes(@place))
-      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
+      redirect_to settings_place_path(@place), notice: I18n.t('notice.updated', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
       render :action => :edit
     end
@@ -96,41 +96,39 @@ class PlacesController < ApplicationController
 
     @place.destroy
     redirect_to request.referer
-
   end
 
   private
+  def set_place
+    @place = Place.find_by_slug(params[:id])
+  end
 
-    def set_place
-      @place = Place.find_by_slug(params[:id])
-    end
+  def get_number_of_friends(records)
+    number = records.map { |visit| visit.network_profile }
+                    .uniq
+                    .map { |np| np.try(:friends_count) }
+                    .inject{ |sum,x| sum.to_i + x.to_i }
 
-    def get_number_of_friends(records)
-      number = records.map { |visit| visit.network_profile }
-                      .uniq
-                      .map { |np| np.try(:friends_count) }
-                      .inject{ |sum,x| sum.to_i + x.to_i }
+    number ? number : 0
+  end
 
-      number ? number : 0
-    end
-
-    def active_message social_network = nil
-      if social_network
-        if @place.place_group
-          @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
-        else
-          @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
-        end
+  def active_message social_network = nil
+    if social_network
+      if @place.place_group
+        @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
       else
-        if @place.place_group
-          @place.place_group.messages.where(active: true).first
-        else
-          @place.messages.where(active:true).first
-        end
+        @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
+      end
+    else
+      if @place.place_group
+        @place.place_group.messages.where(active: true).first
+      else
+        @place.messages.where(active:true).first
       end
     end
+  end
 
-    def all_networks
-      (@place.messages.where(active: true) + (@place.place_group ? @place.place_group.messages.where(active: true) : [])).map {|message| message.social_network }.uniq
-    end
+  def all_networks
+    (@place.messages.where(active: true) + (@place.place_group ? @place.place_group.messages.where(active: true) : [])).map {|message| message.social_network }.uniq
+  end
 end
