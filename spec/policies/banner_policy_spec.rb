@@ -25,7 +25,6 @@ RSpec.describe BannerPolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
       attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
