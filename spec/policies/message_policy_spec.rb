@@ -5,8 +5,7 @@ RSpec.describe MessagePolicy do
 
   subject { MessagePolicy.new(user,record) }
 
-
-  let(:permitted_attributes){
+  let(:permitted_attributes) do
     [
       :social_network_id,
       :message,
@@ -14,7 +13,7 @@ RSpec.describe MessagePolicy do
       :image,
       :subscription
     ]
-  }
+  end
   let(:place){ create :place }
   let(:record){ create :message, with_message: place}
   let(:resolved_scope) {

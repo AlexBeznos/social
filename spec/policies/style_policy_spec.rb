@@ -5,7 +5,6 @@ RSpec.describe StylePolicy do
 
   subject { StylePolicy.new(user,record) }
 
-
   let(:permitted_attributes) do
     [
       :background,
@@ -27,7 +26,6 @@ RSpec.describe StylePolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
       permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
@@ -43,7 +41,6 @@ RSpec.describe StylePolicy do
     it "scope includes user with id: current_user.id" do
       expect(resolved_scope).to include(record)
     end
-
 
     it "permit mass assigment of all attributes" do
       permitted_attributes.each do |attr|

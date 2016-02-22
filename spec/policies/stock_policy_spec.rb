@@ -5,7 +5,6 @@ RSpec.describe StockPolicy do
 
   subject { StockPolicy.new(user,record) }
 
-
   let(:permitted_attributes) do
     [
       :url,
@@ -24,7 +23,6 @@ RSpec.describe StockPolicy do
     it "scope includes all stocks" do
       expect(resolved_scope).to include(record)
     end
-
 
     it "permit mass assigment of all attributes" do
       permitted_attributes.each do |attr|

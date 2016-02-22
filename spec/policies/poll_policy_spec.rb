@@ -27,7 +27,6 @@ RSpec.describe PollPolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
       permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
@@ -43,7 +42,6 @@ RSpec.describe PollPolicy do
     it "scope includes all polls" do
       expect(resolved_scope).to include(record)
     end
-
 
     it "permit mass assigment of all attributes" do
       permitted_attributes.each do |attr|

@@ -5,7 +5,6 @@ RSpec.describe UserPolicy do
 
   subject { UserPolicy.new(user,record) }
 
-
   let(:permitted_attributes) do
     [
       :email,
@@ -29,7 +28,6 @@ RSpec.describe UserPolicy do
       expect(resolved_scope).to include(user)
     end
 
-
     it "permit mass assigment of all attributes" do
       (permitted_attributes + [:group]).each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
@@ -45,7 +43,6 @@ RSpec.describe UserPolicy do
     it "scope includes user with id: current_user.id" do
       expect(resolved_scope).to include(user)
     end
-
 
     it "permit mass assigment of all attributes" do
       permitted_attributes.each do |attr|
