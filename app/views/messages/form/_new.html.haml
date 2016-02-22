@@ -3,12 +3,12 @@
   = f.association :social_network
   .facebook.vkontakte.twitter
     = f.input :message_link
-    - if @message.image.exists?
+    - if @message.image.present?
       = image_tag @message.image.url, height: 100
     = f.input :image, as: :file
     = f.input :message, as: :text
   .instagram
     = f.input :subscription
-  
+
 
   = f.button :submit

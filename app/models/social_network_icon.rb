@@ -1,18 +1,21 @@
 class SocialNetworkIcon < ActiveRecord::Base
 
-  has_attached_file :icon,
-                    :storage => :s3,
-                    :path => "/style/icons/:id/:style.:extension",
-                    :url => ":s3_domain_url"
+  # has_attached_file :icon,
+  #                   :storage => :s3,
+  #                   :path => "/style/icons/:id/:style.:extension",
+  #                   :url => ":s3_domain_url"
+  mount_uploader :icon, IconUploader, mount_on: :icon_file_name
 
   belongs_to :style
   belongs_to :place
   belongs_to :social_network
 
   validates :place, :social_network, :style, presence: true
-  validates_attachment :icon,
-                       :presence => true,
-                       :content_type => { :content_type => ["image/jpeg", "image/png", "image/gif"] }
+  validates :icon,
+            presence: true,
+            file_content_type: { allow: ["image/jpg", "image/png", "image/gif"] },
+            file_size: { in: 11.kilobytes..10.megabytes }
+
 
   before_save :delete_unneeded_icons
 
