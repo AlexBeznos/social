@@ -25,7 +25,6 @@ class PlacePolicy < ApplicationPolicy
     [
       :name,
       :logo,
-      :slug,
       :enter_by_password,
       :password,
       :active,
@@ -43,7 +42,8 @@ class PlacePolicy < ApplicationPolicy
       :domen_url,
       :sms_auth,
       :place_group_id,
-      :auth_default_lang 
+      :auth_default_lang,
+      :ssid
     ]
   end
 
