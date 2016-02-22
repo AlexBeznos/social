@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :social_network do
-    name "MyString"
+    name { Faker::Lorem.word }
   end
 
 end

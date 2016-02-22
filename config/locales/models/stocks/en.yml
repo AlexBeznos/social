@@ -1,17 +1,17 @@
 en:
   models:
     stocks:
-      class: 'Stock'
+      class: 'Promo'
       day: 'any day'
       actions:
         index:
-          title: "Stocks in %{place_name}"
-          no_stocks: You don't have any stocks yet
-          add: Add stock
+          title: "Promos in %{place_name}"
+          no_stocks: You don't have any promos yet
+          add: Add promo
         new:
-          title: Add stock
+          title: Add promo
         edit:
-          title: Edit stock
+          title: Edit promo
       attrs:
         image: Picture
         url: Redirect url

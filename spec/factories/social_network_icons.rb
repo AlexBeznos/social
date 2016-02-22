@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :social_network_icon do
-    place_id 1
-	icon ""
-	social_network_id 1
-	style_id 1
+    association :place
+    association :social_network
+    association :style
+    icon { File.new(Rails.root.join('spec', 'fixtures', 'image.jpg')) }
   end
 end

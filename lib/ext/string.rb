@@ -8,6 +8,12 @@ class String
   def to_gender
     return 'male' if self =~ (/^(male|M|m|2)$/i)
     return 'female' if self =~ (/^(female|w|W|f|F|1)$/i)
-    raise ArgumentError.new("invalid value for Boolean: \"#{self}\"")
+    raise ArgumentError.new("unexpected value for gender: \"#{self}\"")
+  end
+
+  def to_gender!
+    to_gender
+  rescue ArgumentError
+    nil
   end
 end

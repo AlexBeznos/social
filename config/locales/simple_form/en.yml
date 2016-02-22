@@ -9,7 +9,7 @@ en:
         domen_url: 'Domen URL'
         logo: 'Logo'
         active: Hotspot is active
-        stocks_active: Stocks are active
+        stocks_active: Promos are active
         polls_active: Polls are active
         reputation_on: Add bonuses
         simple_enter: Enter without authorization

@@ -24,7 +24,7 @@
       %li.list-group-item
         = t('models.places.attrs.city')
         %span.text-muted.pull-right= @place.city
-      - if @place.logo.exists?
+      - if @place.logo.present?
         %li.list-group-item.img
           = t('models.places.attrs.logo')
           .pull-right
