@@ -18,9 +18,9 @@
                  request.referer
                end
 
-      redirect_to target, alert: exception.message
+      redirect_to target, alert: t('pundit.default')
     else
-      redirect_to login_path, alert: exception.message
+      redirect_to login_path, alert: t('pundit.default')
     end
   end
 
