@@ -9,7 +9,7 @@ class AdministrationController < ApplicationController
 
   def verify_user_role
     if current_user && !current_user.admin?
-      raise Pundit::NotAuthorizedError, "Your are not admit to perform this"
+      raise Pundit::NotAuthorizedError
     end
   end
 
