@@ -1,23 +1,31 @@
 class Adm::PlacesController < AdministrationController
-  load_and_authorize_resource :user
-  load_and_authorize_resource :find_by => :slug, :through => :user, :shallow => true
+  before_action :set_place, except: [:index, :new, :create]
+  before_action :set_user, only: [:new, :create]
+
+  after_action :verify_policy_scoped, only: [:index]
+
 
   def index
-    @places = Place.all.order('id ASC')
+    authorize Place
+    @places = policy_scope(Place).order('id ASC')
   end
 
   def show
+    authorize @place
+
     @place = Place.includes(:messages).find_by_slug(params[:id])
     @networks = SocialNetwork.all
     @messages = all_messages
   end
 
   def new
+    authorize Place
     @place = Place.new
   end
 
   def create
-    @place = Place.new(place_params)
+    authorize Place
+    @place = Place.new(permitted_attributes(Place))
     @place.user_id = @user.id
 
     if @place.save
@@ -28,10 +36,12 @@ class Adm::PlacesController < AdministrationController
   end
 
   def edit
+    authorize @place
   end
 
   def update
-    if @place.update(place_params)
+    authorize @place
+    if @place.update(permitted_attributes(Place))
       redirect_to adm_place_path(@place), :notice => 'Place updated!'
     else
       render :action => :edit, :alert => "U pass something wrong. Errors: #{@place.errors}"
@@ -39,29 +49,19 @@ class Adm::PlacesController < AdministrationController
   end
 
   def destroy
+    authorize @place
     @place.destroy
     redirect_to adm_user_path(@place.user), :notice => 'Place destroyed!'
   end
 
   private
 
-  def place_params
-    params.require(:place).permit(:name,
-                                  :logo,
-                                  :slug,
-                                  :enter_by_password,
-                                  :password,
-                                  :active,
-                                  :redirect_url,
-                                  :template,
-                                  :background_active,
-                                  :mobile_image,
-                                  :tablet_image,
-                                  :desktop_image,
-                                  :simple_enter,
-                                  :loyalty_program,
-                                  :demo,
-                                  :sms_auth)
+  def set_place
+    @place = Place.find_by(slug: params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
   def all_messages

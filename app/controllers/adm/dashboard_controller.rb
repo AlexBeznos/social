@@ -1,7 +1,7 @@
 class Adm::DashboardController < AdministrationController
 
   def index
+    authorize User
     @users = User.all
-    authorize! :show, @users
   end
 end

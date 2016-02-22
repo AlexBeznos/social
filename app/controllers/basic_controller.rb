@@ -1,4 +1,5 @@
 class BasicController < ApplicationController
+  skip_after_action :verify_authorized
 
   def set_locale
     if I18n.available_locales.include?(params[:locale].to_sym)
