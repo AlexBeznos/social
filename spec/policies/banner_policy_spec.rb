@@ -5,7 +5,14 @@ RSpec.describe BannerPolicy do
 
   subject { BannerPolicy.new(user,record) }
 
-  let(:attributes){subject.permitted_attributes;}
+  let(:permitted_attributes){
+    [
+      :name,
+      :content
+    ]
+  }
+
+
   let(:record){ create :banner}
   let(:resolved_scope) {
     BannerPolicy::Scope.new(user, Banner.all).resolve
@@ -36,8 +43,8 @@ RSpec.describe BannerPolicy do
     end
 
 
-    it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+    it "permit mass assigment of attributes" do
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
