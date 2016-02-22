@@ -1,12 +1,18 @@
 class StylesController < ApplicationController
-  load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource :through => :place, :singleton => true
   before_action :icons_save, only: [:create, :update]
+  before_action :set_style, except: [:new, :create]
+  before_action :set_place
 
   def new
+    authorize Style
+
+    @style = Style.new
   end
 
   def create
+    authorize Style
+
+    @style = Style.new(permitted_attributes(Style))
     @style.place = @place
 
     if @style.save
@@ -17,10 +23,13 @@ class StylesController < ApplicationController
   end
 
   def edit
+    authorize @style
   end
 
   def update
-    if @style.update(style_params)
+    authorize @style
+
+    if @style.update(permitted_attributes(Place))
       redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.style.class'))
     else
       render :action => :edit
@@ -28,19 +37,20 @@ class StylesController < ApplicationController
   end
 
   def destroy
+    authorize @style
+
     @style.destroy
     redirect_to settings_place_path(@place)
   end
 
   private
 
-    def style_params
-      params.require(:style).permit(
-                                    :background,
-                                    :text_color,
-                                    :greating_color,
-                                    :css,
-                                    :network_icons)
+    def set_place
+      @place = Place.find_by_slug(params[:place_id])
+    end
+
+    def set_style
+      @style = Style.find(params[:id])
     end
 
     def icons_save
@@ -50,6 +60,4 @@ class StylesController < ApplicationController
 
       params[:style].delete(:network_icons)
     end
-
-
 end

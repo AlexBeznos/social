@@ -66,7 +66,6 @@ GEM
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
-    cancancan (1.12.0)
     cane (2.6.2)
       parallel
     capybara (2.4.4)
@@ -450,6 +449,12 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
+    pundit-matchers (1.0.0)
+      pundit (~> 1.0, >= 1.0.0)
+      rspec (~> 3.0, >= 3.0.0)
+      rspec-rails (~> 3.0, >= 3.0.0)
     rabl (0.11.6)
       activesupport (>= 2.3.14)
     rack (1.5.2)
@@ -674,7 +679,6 @@ DEPENDENCIES
   authlogic
   aws-sdk (< 2.0)
   byebug
-  cancancan (~> 1.10)
   capybara
   carrierwave
   carrierwave-aws
@@ -723,6 +727,8 @@ DEPENDENCIES
   paperclip (~> 4.2)
   pg
   pry-rails
+  pundit
+  pundit-matchers (~> 1.0.0)
   rabl
   rack-attack
   rails (= 4.1.7)

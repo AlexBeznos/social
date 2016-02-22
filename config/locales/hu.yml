@@ -1,5 +1,5 @@
 hu:
-  unauthorized:
+  pundit:
     default: Nem kell hozzáférése ehhez az oldalhoz
   authlogic:
     error_messages:

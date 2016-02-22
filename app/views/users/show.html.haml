@@ -23,15 +23,16 @@
         %span.text-muted.pull-right= @user.timezone
       %li.list-group-item
         = link_to t('helpers.submit.edit'), edit_user_path(@user), class: 'btn btn-primary btn-block'
-        - if can? :destroy, User
+        - if policy(@user).destroy?
           = link_to t('helpers.submit.destroy'), user_path(@user), method: 'DELETE', class: 'btn btn-danger btn-block'
   .col-sm-7
-    %h1=  t('models.users.actions.show.places')
-    %ul.list-group
-      - @user.places.each do |place|
-        %li.list-group-item
-          = link_to place.name, place_path(place)
-          - if can? :destroy, Place
-            = link_to t('helpers.submit.destroy'), place_path(place), method: 'DELETE', class: 'btn btn-danger btn-xs pull-right'
-      - if can? :create, Place
-        %li.list-group-item= link_to t('helpers.submit.create', model: t('models.places.place')), new_place_path(user: @user.id), class: 'btn btn-info btn-block'
+    -if @user.places && policy(Place).create?
+      %h1=  t('models.users.actions.show.places')
+      %ul.list-group
+        - @user.places.each do |place|
+          %li.list-group-item
+            = link_to place.name, place_path(place)
+            - if policy(place).destroy?
+              = link_to t('helpers.submit.destroy'), place_path(place), method: 'DELETE', class: 'btn btn-danger btn-xs pull-right'
+        - if policy(Place).create?
+          %li.list-group-item= link_to t('helpers.submit.create', model: t('models.places.place')), new_place_path(user: @user.id), class: 'btn btn-info btn-block'

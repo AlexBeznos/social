@@ -1,6 +1,8 @@
 class UserSessionsController < ApplicationController
   before_filter :redirect_user, except: :destroy
 
+  skip_after_action :verify_authorized
+
   def new
     @user_session = UserSession.new
   end

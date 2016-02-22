@@ -1,16 +1,16 @@
-class ApplicationController < ActionController::Base
+ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  include Pundit
+
   helper_method :current_user_session, :current_user, :gen_root_path, :wifi_login_path
   protect_from_forgery with: :null_session
   before_action :check_locale
   before_action :set_timezone
 
-  before_action do
-    User.current = current_user
-  end
+  after_action :verify_authorized
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from Pundit::NotAuthorizedError do |exception|
     if current_user
       target = if (request.referer.nil? || request.url == request.referer || request.method == 'POST')
                  places_path
@@ -18,14 +18,10 @@ class ApplicationController < ActionController::Base
                  request.referer
                end
 
-      redirect_to target, alert: exception.message
+      redirect_to target, alert: t('pundit.default')
     else
-      redirect_to login_path, :alert => exception.message
+      redirect_to login_path, alert: t('pundit.default')
     end
-  end
-
-  def current_ability
-    @current_ability ||= Ability.new(current_user)
   end
 
   def append_info_to_payload(payload)
