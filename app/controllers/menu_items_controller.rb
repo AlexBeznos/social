@@ -13,7 +13,7 @@ class MenuItemsController < ApplicationController
   end
 
   def welcome
-
+    @place = Place.find_by_slug(params[:slug])
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
     render :layout => 'loyalty_program'
   end

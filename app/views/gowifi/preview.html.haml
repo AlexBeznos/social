@@ -19,14 +19,13 @@
     .container
       .vertical-center-row
         .col-md-2-lg-1
-        -#%h1 Приветствуем вас
 
-        .button{:class => 'btn btn-md btn-success center-block'} Рассказать!
+
+        = button_to 'Рассказать!', "#{ENV['APP_URL']}auth/#{@message.social_network.name}", :class => 'btn btn-md btn-default btn-success btn-block'
 
         = render "gowifi/preview/#{@message.social_network.name}", message: @message
 
-        .button{:class =>'btn btn-md btn-default center-block'}  Нет, спасибо
-
+        = button_to 'Нет, спасибо', gowifi_place_path, :class => 'btn btn-md btn-default center-block', method: 'get'
 
 
 

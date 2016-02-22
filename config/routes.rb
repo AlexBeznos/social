@@ -61,9 +61,9 @@ Rails.application.routes.draw do
 
   # customers level accessed pages
   resources :user_sessions, only: [:create, :destroy]
-  get 'login' => 'user_sessions#new'
+  get 'login' => 'user_sessions#new', as: :login
 
-  get '/auth/:provider/callback' => 'gowifi_auth#omniauth' # omniauth customers authentication
+  get '/auth/:provider/callback' => 'gowifi_auth#omniauth', as: :auth # omniauth customers authentication
   get '/auth/failure' => 'gowifi_auth#auth_failure'
 
   scope '/wifi' do
@@ -74,7 +74,6 @@ Rails.application.routes.draw do
       get '/login' => 'gowifi#show', as: :gowifi_place
       patch '/poll_enter' => 'gowifi_auth#submit_poll'
       get '/status' => 'gowifi_auth#redirect_after_auth'
-      get '/preview' => 'gowifi_auth#redirect_after_auth'
       post '/by_password' => 'gowifi_auth#enter_by_password'
       post '/by_sms' => 'gowifi_auth#enter_by_sms'
       get '/simple_enter' => 'gowifi_auth#simple_enter'
