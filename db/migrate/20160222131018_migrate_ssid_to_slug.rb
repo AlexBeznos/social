@@ -1,8 +1,6 @@
 class MigrateSsidToSlug < ActiveRecord::Migration
   def self.up
-    Place.find_each do |place|
-      place.update(ssid: place.slug)
-    end
+    update "UPDATE places SET ssid = slug"
   end
 
   def self.down
