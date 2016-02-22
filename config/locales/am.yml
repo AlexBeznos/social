@@ -1,5 +1,5 @@
 ﻿am:
-  unauthorized:
+  pundit:
     default: Դուք չունեք թույլտվություն նշված էջին
   authlogic:
     error_messages:

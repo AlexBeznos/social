@@ -5,6 +5,8 @@ class GowifiAuthController < ApplicationController
   before_action :find_customer, only: [:omniauth, :redirect_after_auth]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
 
+  skip_after_action :verify_authorized
+
   def enter_by_password
     if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
       redirect_to wifi_login_path

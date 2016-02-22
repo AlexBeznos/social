@@ -1,67 +1,76 @@
 class PlaceGroupsController < ApplicationController
-  load_and_authorize_resource :place_group
+  before_action :set_place_group, except: [:new, :create]
 
   def new
-    @subordinated_users = find_subordinated_users
+    authorize PlaceGroup
+
     @place_group = PlaceGroup.new
+    @subordinated_users = find_subordinated_users
   end
 
   def create
+    authorize PlaceGroup, :new?
+
+    @place_group = PlaceGroup.new(permitted_attributes(PlaceGroup))
     if @place_group.save
-      redirect_to places_path, :notice => I18n.t('notice.create', subject: I18n.t('models.place_groups.class'))
+      redirect_to places_path, notice: I18n.t('notice.create', subject: I18n.t('models.place_groups.class'))
     else
-      render :action => :new
+      render action: :new
     end
   end
 
   def edit
+    authorize @place_group
+
     @subordinated_users = find_subordinated_users
     @message = @place_group.messages.new
     @networks = SocialNetwork.all
-    @messages = @place_group.messages
+    @messages = policy_scope(@place_group.messages)
   end
 
   def update
-    if @place_group.update(place_group_params)
-      redirect_to places_path, :notice => I18n.t('notice.updated', subject: I18n.t('models.place_groups.class'))
+    authorize @place_group
+
+    if @place_group.update(permitted_attributes(@place_group))
+      redirect_to places_path, notice: I18n.t('notice.updated', subject: I18n.t('models.place_groups.class'))
     else
       render :action => :edit
     end
   end
 
   def create_group_message
-    @message = @place_group.messages.new(msg_params)
-    
+    authorize @message, :create?
+
+    @message = @place_group.messages.new(permitted_attributes(Message))
     if @message.save
-      redirect_to edit_place_group_path, :notice => I18n.t('notice.create', subject: I18n.t('models.message.class'))
+      redirect_to edit_place_group_path, notice: I18n.t('notice.create', subject: I18n.t('models.message.class'))
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 
   def destroy
+    authorize @place_group
+
     @place_group.destroy
-    redirect_to places_path, :notice => I18n.t('notice.deleted', subject: I18n.t('models.place_groups.class'))
+    redirect_to places_path, notice: I18n.t('notice.deleted', subject: I18n.t('models.place_groups.class'))
   end
 
   private
     def find_subordinated_users
-      if current_user.franchisee? 
+      if current_user.franchisee?
         User.where(user_id: current_user.id, group: 0)
       elsif current_user.admin?
         if @place_group.user
-          User.where(user_id: @place_group.user.user_id, group: 0) 
+          User.where(user_id: @place_group.user.user_id, group: 0)
         else
           User.where(group: 0)
-        end 
+        end
       end
     end
 
-    def place_group_params
-      params.require(:place_group).permit(:name, :user_id)
+    def set_place_group
+      @place_group = PlaceGroup.find(params[:id])
     end
 
-    def msg_params
-      params.require(:message).permit(:social_network_id, :message, :message_link, :image, :subscription)
-    end
 end

@@ -82,7 +82,7 @@ gem 'sidekiq-failures'
 
 # Other
 gem 'authlogic'
-gem 'cancancan', '~> 1.10'
+gem 'pundit'
 gem 'lograge'
 gem 'high_voltage', '~> 2.3.0'
 
@@ -115,6 +115,7 @@ group :test do
   gem 'database_cleaner'
   gem 'test_after_commit'
   gem 'rspec-sidekiq'
+  gem 'pundit-matchers' ,'~> 1.0.0'
 end
 
 # Use ActiveModel has_secure_password

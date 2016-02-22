@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include SentientModel
   acts_as_authentic
 
   default_scope { order(:id) }
