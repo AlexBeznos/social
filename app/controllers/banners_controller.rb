@@ -26,7 +26,7 @@ class BannersController < ApplicationController
     @banner.place_id = @place.id
 
     if @banner.save
-      redirect_to place_banners_path(:notice => I18n.t('notice.create', subject: I18n.t('models.banners.class')))
+      redirect_to place_banners_path(notice: I18n.t('notice.create', subject: I18n.t('models.banners.class')))
     else
       render :action => :new
     end
@@ -36,7 +36,7 @@ class BannersController < ApplicationController
     authorize @banner
 
     if @banner.update(permitted_attributes(Banner))
-      redirect_to place_banners_path(:notice => I18n.t('notice.updated', subject: I18n.t('models.banners.class')))
+      redirect_to place_banners_path(notice: I18n.t('notice.updated', subject: I18n.t('models.banners.class')))
     else
       render :action => :edit
     end
@@ -47,7 +47,7 @@ class BannersController < ApplicationController
 
     @banner.destroy
     respond_to do |format|
-      format.html { redirect_to place_banners_path(@place), :notice => I18n.t('notice.deleted', subject: I18n.t('models.banners.class')) }
+      format.html { redirect_to place_banners_path(@place), notice: I18n.t('notice.deleted', subject: I18n.t('models.banners.class')) }
     end
   end
 

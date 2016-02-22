@@ -52,7 +52,7 @@ class PollsController < ApplicationController
 
     @poll.destroy
     respond_to do |format|
-      format.html { redirect_to place_polls_path(@place), :notice => I18n.t('notice.deleted', subject: I18n.t('models.polls.class')) }
+      format.html { redirect_to place_polls_path(@place), notice: I18n.t('notice.deleted', subject: I18n.t('models.polls.class')) }
     end
   end
 

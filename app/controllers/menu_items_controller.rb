@@ -27,7 +27,7 @@ class MenuItemsController < ApplicationController
     @menu_item.place_id = @place.id
 
     if @menu_item.save
-      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
+      redirect_to place_menu_items_path(@place), notice: I18n.t('notice.create', subject: t('menu_item.goods'))
     else
       render :action => :new
     end
@@ -41,7 +41,7 @@ class MenuItemsController < ApplicationController
     authorize @menu_item
 
     if @menu_item.update(permitted_attributes(MenuItem))
-      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
+      redirect_to place_menu_items_path(@place), notice: I18n.t('notice.updated', subject: t('menu_item.goods'))
     else
       render :action => :edit
     end
@@ -51,7 +51,7 @@ class MenuItemsController < ApplicationController
     authorize @menu_item
 
     @menu_item.destroy
-    redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.deleted', subject: t('menu_item.goods'))
+    redirect_to place_menu_items_path(@place), notice: I18n.t('notice.deleted', subject: t('menu_item.goods'))
   end
 
   private
