@@ -43,13 +43,13 @@ en:
             gender: Gender
             men: men
             women: women
-            auditory: Auditory
+            auditory: Audience
         new:
           title: "Create a place"
         edit:
           title: 'Update %{place_name}'
         guests:
-          title: "Top visitors in %{place_name}"
+          title: "Top Visitors in %{place_name}"
           table:
             user: Visitor
             network: Soc. network

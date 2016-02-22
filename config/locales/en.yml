@@ -16,7 +16,7 @@ en:
       message: message
       user: user
       place: place
-      stock: stock
+      stock: promo
       style: style
       menu_item: product
       poll: poll
@@ -288,7 +288,7 @@ en:
       stocks: 'Stocks'
       guests: 'Top visitors'
       birthdays: "Visitor's birthdays"
-      menu_items: 'Menu Items'
+      menu_items: 'Loyalty Items'
       polls: 'Polls'
       banners: 'Banners'
   pages:
@@ -298,4 +298,4 @@ en:
     place:
       title: "Place %{place_name}"
     guests:
-      title: "Top visitors in %{place_name}"
+      title: "Top Visitors in %{place_name}"
