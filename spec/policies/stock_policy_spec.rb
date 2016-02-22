@@ -6,7 +6,13 @@ RSpec.describe StockPolicy do
   subject { StockPolicy.new(user,record) }
 
 
-  let(:attributes){subject.permitted_attributes;}
+  let(:permitted_attributes) do
+    [
+      :url,
+      :image,
+      :day
+    ]
+  end
   let(:record){ create :stock}
   let(:resolved_scope) {
     StockPolicy::Scope.new(user, Stock.all).resolve
@@ -21,7 +27,7 @@ RSpec.describe StockPolicy do
 
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -38,7 +44,7 @@ RSpec.describe StockPolicy do
 
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -54,7 +60,7 @@ RSpec.describe StockPolicy do
     end
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
