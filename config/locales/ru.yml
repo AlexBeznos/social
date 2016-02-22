@@ -147,6 +147,14 @@ ru:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      file_size_is_in: ! 'размер файла должен быть между %{min} и %{max}'
+      file_size_is_less_than: ! 'размер файла должен быть меньше %{count}'
+      file_size_is_less_than_or_equal_to: ! 'размер файла должен быть меньше или ровнятся %{count}'
+      file_size_is_greater_than: ! 'размер файла должен быть больше %{count}'
+      file_size_is_greater_than_or_equal_to: ! 'размер файла должен быть больше или ровнятся %{count}'
+      spoofed_file_media_type: содержание файла не соответствует его формату
+      allowed_file_content_types: ! 'разрешение следующие форматы файлов %{types}'
+      excluded_file_content_types: ! 'следующие форматы файло не разрешены %{types}'
       not_found: запись не найдена
       accepted: нужно подтвердить
       blank: не может быть пустым
