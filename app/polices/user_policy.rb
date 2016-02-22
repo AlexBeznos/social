@@ -11,21 +11,23 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def index?; user.franchisee?||user.admin?; end
-  def destroy?; user.franchisee?||user.admin?; end
-  def create?; user.franchisee?||user.admin?; end
-  def new?; user.franchisee?||user.admin?; end
+  def index?; user.franchisee? || user.admin?; end
+  def destroy?; user.franchisee? || user.admin?; end
+  def create?; user.franchisee? || user.admin?; end
+  def new?; user.franchisee? || user.admin?; end
 
   def permitted_attributes
-    params = [:email,
-              :first_name,
-              :last_name,
-              :phone,
-              :timezone,
-              :password,
-              :password_confirmation]
+    params = [
+      :email,
+      :first_name,
+      :last_name,
+      :phone,
+      :timezone,
+      :password,
+      :password_confirmation
+    ]
 
-    return params+[:group] if @user.admin?
+    return params + [:group] if @user.admin?
     params
   end
 end

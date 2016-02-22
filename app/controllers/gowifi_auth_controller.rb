@@ -27,7 +27,6 @@ class GowifiAuthController < ApplicationController
   end
 
   def simple_enter
-
     if @place.simple_enter
       redirect_to wifi_login_path
     else
@@ -36,7 +35,6 @@ class GowifiAuthController < ApplicationController
   end
 
   def submit_poll
-
     if params[:poll]
       @answer = Answer.find(poll_params[:answer_ids])
       if @answer.increment!(:number_of_selections)
@@ -67,7 +65,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def redirect_after_auth
-        if @place
+    if @place
       if @place.loyalty_program && @customer
         redirect_to menu_items_list_path(@place)
       else

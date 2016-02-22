@@ -18,52 +18,50 @@ class GowifiController < ApplicationController
   end
 
   private
+  def find_place
+    @place = Place.find_by_slug(params[:slug])
+  end
 
-    def find_place
-      @place = Place.find_by_slug(params[:slug])
+  # we add slug to session to make sure
+  # place slug  will be saved in omniauth or at least session
+  def set_place_slug
+    session[:slug] = @place.slug
+  end
+
+  def set_default_format
+    request.format = :html
+  end
+
+  def find_customer
+    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
+  end
+
+  def set_locale
+    if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
+      return I18n.locale = params[:lang]
     end
 
-    # we add slug to session to make sure
-    # place slug  will be saved in omniauth or at least session
-    def set_place_slug
-      session[:slug] = @place.slug
-    end
+    I18n.locale = @place.auth_default_lang unless @place.auth_default_lang.blank?
+  end
 
-    def set_default_format
-      request.format = :html
-    end
+  # TODO: make banner injection by simple method and visits incrementation by ajax call
+  def find_banner
+    values = {
+      left_border: @place.longitude-0.2,
+      right_border: @place.longitude+0.2,
+      top_border: @place.latitude+0.2,
+      bottom_border: @place.latitude-0.2,
+      self_id: @place.id
+    }
 
-    def find_customer
-      @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-    end
+    Banner.where(place_id: Place.where('latitude > :bottom_border and latitude < :top_border
+                                        and longitude > :left_border and longitude < :right_border
+                                        and id != :self_id and display_my_banners = true',
+                                        values)).sample
+  end
 
-    def set_locale
-      if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
-        return I18n.locale = params[:lang]
-      end
-
-      I18n.locale = @place.auth_default_lang unless @place.auth_default_lang.blank?
-
-    end
-
-    # TODO: make banner injection by simple method and visits incrementation by ajax call
-    def find_banner
-      values = {
-        left_border: @place.longitude-0.2,
-        right_border: @place.longitude+0.2,
-        top_border: @place.latitude+0.2,
-        bottom_border: @place.latitude-0.2,
-        self_id: @place.id
-      }
-
-      Banner.where(place_id: Place.where('latitude > :bottom_border and latitude < :top_border
-                                          and longitude > :left_border and longitude < :right_border
-                                          and id != :self_id and display_my_banners = true',
-                                          values)).sample
-    end
-
-    def check_for_place_activation
-      return redirect_to '/404.html' unless @place
-      redirect_to wifi_login_path unless @place.try(:active)
-    end
+  def check_for_place_activation
+    return redirect_to '/404.html' unless @place
+    redirect_to wifi_login_path unless @place.try(:active)
+  end
 end

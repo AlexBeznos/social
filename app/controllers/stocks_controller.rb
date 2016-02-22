@@ -21,7 +21,7 @@ class StocksController < ApplicationController
     @stock.place = @place
 
     if @stock.save
-      redirect_to place_stocks_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.stocks.class'))
+      redirect_to place_stocks_path(@place), notice: I18n.t('notice.create', subject: I18n.t('models.stocks.class'))
     else
       render :action => :new
     end
@@ -35,7 +35,7 @@ class StocksController < ApplicationController
     authorize @stock
 
     if @stock.update(permitted_attributes(Stock))
-      redirect_to place_stocks_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.stocks.class'))
+      redirect_to place_stocks_path(@place), notice: I18n.t('notice.updated', subject: I18n.t('models.stocks.class'))
     else
       render :action => :edit
     end

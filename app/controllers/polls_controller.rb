@@ -25,15 +25,15 @@ class PollsController < ApplicationController
     @poll.answers.build
   end
 
-  def creatу
+  def create
     authorize Poll
 
     @poll = @place.polls.new(permitted_attributes(Poll))
 
     if @poll.save
-      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.create', subject: I18n.t('models.polls.class'))
+      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), notice: I18n.t('notice.create', subject: I18n.t('models.polls.class'))
     else
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -41,9 +41,9 @@ class PollsController < ApplicationController
     authorize @poll
 
     if @poll.update(permitted_attributes(Poll))
-      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), :notice => I18n.t('notice.updated', subject: I18n.t('models.polls.class'))
+      redirect_to place_poll_path(id: @poll.id, place_id: @place.slug), notice: I18n.t('notice.updated', subject: I18n.t('models.polls.class'))
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 

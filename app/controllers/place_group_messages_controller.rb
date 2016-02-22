@@ -23,12 +23,10 @@ class PlaceGroupMessagesController < ApplicationController
   def update
     authorize @message
 
-    if policy_scope(Message).include?(@message) && policy_scope(PlaceGroup).include?(@place_group)
-      if @message.update(permitted_attributes(Message))
-        redirect_to edit_place_group_path(@place_group), notice: I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
-      else
-        render action: :edit
-      end
+    if @message.update(permitted_attributes(Message))
+      redirect_to edit_place_group_path(@place_group), notice: I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+    else
+      render action: :edit
     end
   end
 
@@ -58,12 +56,11 @@ class PlaceGroupMessagesController < ApplicationController
   end
 
   private
+  def set_place_group
+    @place_group = PlaceGroup.find(params[:place_group_id])
+  end
 
-    def set_place_group
-      @place_group = PlaceGroup.find(params[:place_group_id])
-    end
-
-    def set_message
-      @message = Message.find(params[:id])
-    end
+  def set_message
+    @message = Message.find(params[:id])
+  end
 end

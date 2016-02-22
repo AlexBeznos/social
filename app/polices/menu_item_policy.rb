@@ -1,8 +1,10 @@
 class MenuItemPolicy < ApplicationPolicy
   def  permitted_attributes
-     [:name,
+    [
+      :name,
       :price,
       :description,
-      :image]
+      :image
+    ]
   end
 end

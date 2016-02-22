@@ -32,7 +32,6 @@ class MenuItemsController < ApplicationController
     else
       render :action => :new
     end
-
   end
 
   def edit
@@ -55,27 +54,26 @@ class MenuItemsController < ApplicationController
     @menu_item.destroy
     redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.deleted', subject: t('menu_item.goods'))
   end
+
   private
+  def set_place
+    @place = Place.find_by_slug(params[:place_id])
+  end
 
-    def set_place
-      @place = Place.find_by_slug(params[:place_id])
+  def set_menu_item
+    @menu_item = MenuItem.find(params[:id])
+  end
+
+  def find_customer
+    if cookies[:customer]
+      @customer = Customer.find(cookies[:customer].to_i)
+    else
+      redirect_to gowifi_place_path(@place)
     end
+  end
 
-    def set_menu_item
-      @menu_item = MenuItem.find(params[:id])
-    end
-
-    def find_customer
-      if cookies[:customer]
-        @customer = Customer.find(cookies[:customer].to_i)
-      else
-        redirect_to gowifi_place_path(@place)
-      end
-    end
-
-    def load_reputation_score
-      @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
-      @reputation_score = @reputation.nil? ? 0 : @reputation.score
-    end
-
+  def load_reputation_score
+    @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
+    @reputation_score = @reputation.nil? ? 0 : @reputation.score
+  end
 end

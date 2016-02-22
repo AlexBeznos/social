@@ -44,12 +44,11 @@ class MessagesController < ApplicationController
   end
 
   private
+  def set_place
+    @place = Place.find_by(slug:params[:place_id])
+  end
 
-    def set_place
-      @place = Place.find_by(slug:params[:place_id])
-    end
-
-    def set_message
-      @message = Message.find(params[:id])
-    end
+  def set_message
+    @message = Message.find(params[:id])
+  end
 end

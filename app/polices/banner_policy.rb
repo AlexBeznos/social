@@ -1,6 +1,6 @@
 class BannerPolicy < ApplicationPolicy
 
   def permitted_attributes
-    [:name,:content]
+    [:name, :content]
   end
 end

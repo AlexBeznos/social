@@ -1,16 +1,16 @@
 class ApplicationPolicy
-  attr_reader :user , :record
+  attr_reader :user, :record
 
   class Scope
-    attr_reader :user , :scope
+    attr_reader :user, :scope
 
-    def initialize(user,scope)
+    def initialize(user, scope)
       @user = user
       @scope = scope
     end
 
     def resolve
-      if user.admin?||user.franchisee?||user.general?
+      if user.admin? || user.franchisee? || user.general?
         scope.all
       end
     end
@@ -26,7 +26,7 @@ class ApplicationPolicy
     end
   end
 
-  def initialize (user, record)
+  def initialize(user, record)
     raise Pundit::NotAuthorizedError, I18n.t('pundit.default') unless user
     @user = user
     @record = record
