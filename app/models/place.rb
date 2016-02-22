@@ -38,7 +38,9 @@ class Place < ActiveRecord::Base
   validates :name, :template, presence: true
   validates :password, presence: true, if: 'enter_by_password'
   validates :wifi_settings_link, :redirect_url, :url => true
-  validates_integrity_of :logo
+  validates :logo, file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
+                   file_size: { in: 11.kilobytes..10.megabytes }
+
   validate :place_and_place_group_have_same_owner, if: 'self.place_group'
 
   before_create :set_wifi_username_password

@@ -3,7 +3,7 @@ FactoryGirl.define do
     association :place
     name { Faker::Lorem.sentence }
     price 100
-    image { Rack::Test::UploadedFile.new("#{::Rails.root}/spec/fixtures/image.jpg", "image/jpg") }
+    image { File.new(Rails.root.join('spec', 'fixtures', 'image.jpg')) }
   end
 
 end

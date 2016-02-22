@@ -3,6 +3,6 @@ FactoryGirl.define do
     association :place
     association :social_network
     association :style
-    icon { Rack::Test::UploadedFile.new("#{::Rails.root}/spec/fixtures/image.jpg", "image/jpg") }
+    icon { File.new(Rails.root.join('spec', 'fixtures', 'image.jpg')) }
   end
 end
