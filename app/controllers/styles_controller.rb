@@ -29,7 +29,7 @@ class StylesController < ApplicationController
   def update
     authorize @style
 
-    if @style.update(permitted_attributes(Place))
+    if @style.update(permitted_attributes(Style))
       redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.style.class'))
     else
       render :action => :edit
