@@ -19,12 +19,13 @@ class GowifiController < ApplicationController
 
   def preview
     @message = @place.messages.find_by(id: params[:id])
-    if @place.has_preview?
-      redirect_to preview_path
-    end
   end
 
   private
+
+    def find_vk_preview
+      @place = @place.message(  )
+    end
 
     def find_place
       @place = Place.find_by_slug(params[:slug])

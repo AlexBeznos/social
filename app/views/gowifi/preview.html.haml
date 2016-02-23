@@ -23,10 +23,25 @@
 
         = button_to 'Рассказать!', "#{ENV['APP_URL']}auth/#{@message.social_network.name}", :class => 'btn btn-md btn-default btn-success btn-block'
 
-        = render "gowifi/preview/#{@message.social_network.name}", message: @message
+        -#= render "gowifi/preview/#{@message.social_network.name}", message: @message
+
+        - if @message.social_network_id == 1
+          .vk-frame{:class => 'vk-frame'}
+            =image_tag("vk-frame.png", :class => 'frame')
+            =image_tag(@message.image, :class => 'vk-pic')
+
+
+
+        - if @message.social_network_id == 2
+          .fb-frame{:class => 'fb-frame'}
+            = image_tag('fb-frame.png', :class => 'frame')
+            = image_tag @message.image, :class => 'fb-pic'
+
+
+        - if @message.social_network_id == 4
+          .twitter-frame{:class => 'twitter-frame'}
+            = image_tag('twitter-frame.png', :class => 'twitter-frame')
+            = image_tag @message.image, :class => 'twitter-pic'
+
 
         = button_to 'Нет, спасибо', gowifi_place_path, :class => 'btn btn-md btn-default center-block', method: 'get'
-
-
-
-
