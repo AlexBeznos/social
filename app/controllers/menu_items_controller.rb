@@ -5,6 +5,7 @@ class MenuItemsController < ApplicationController
   before_action :load_reputation_score, only: :welcome
 
   def index
+    authorize MenuItem
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
   end
 
@@ -22,7 +23,6 @@ class MenuItemsController < ApplicationController
 
   def create
     authorize MenuItem
-
     @menu_item = MenuItem.new(permitted_attributes(MenuItem))
     @menu_item.place_id = @place.id
 
