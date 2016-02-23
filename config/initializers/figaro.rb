@@ -18,7 +18,6 @@ dev_keys = %w(
 )
 
 prod_keys = %w(
-  AWS_BUCKET
   SECRET_KEY_BASE
   SLACK_WEB_HOOK
 )
