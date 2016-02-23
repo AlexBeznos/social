@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
   def new
     authorize Message
-
+    
     @place = Place.find_by_slug(params[:place_id])
     @message = Message.new
   end

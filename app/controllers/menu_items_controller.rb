@@ -39,7 +39,6 @@ class MenuItemsController < ApplicationController
 
   def update
     authorize @menu_item
-
     if @menu_item.update(permitted_attributes(MenuItem))
       redirect_to place_menu_items_path(@place), notice: I18n.t('notice.updated', subject: t('menu_item.goods'))
     else
@@ -49,7 +48,6 @@ class MenuItemsController < ApplicationController
 
   def destroy
     authorize @menu_item
-
     @menu_item.destroy
     redirect_to place_menu_items_path(@place), notice: I18n.t('notice.deleted', subject: t('menu_item.goods'))
   end
