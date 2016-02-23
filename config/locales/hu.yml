@@ -21,7 +21,6 @@ hu:
       menu_item: áruk
       poll: kihallgatás
       banner: zászló
-      place_group: egy csoport létesítmények
   notice:
     create: "%{subject} hozzáadott"
     updated: "%{subject} frissítve"

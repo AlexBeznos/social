@@ -8,7 +8,6 @@ en:
         name: 'Place name'
         ssid: 'Place SSID'
         domen_url: "Domen URL"
-        place_group: Place group
         by_password: 'Enter by password'
         password: 'Password'
         active: 'Hotspot enabled'

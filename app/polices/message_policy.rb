@@ -1,13 +1,7 @@
 class MessagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.franchisee?
-        scope.all
-      elsif user.general? && user.id
-        scope.where(with_message_type: 'Place')
-      elsif user.admin?
-        scope.all
-      end
+      scope.all
     end
   end
 

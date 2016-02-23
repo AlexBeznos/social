@@ -21,7 +21,6 @@
       menu_item: ապրանք
       poll: հարցում
       banner: բանները
-      place_group: մի խումբ հաստատությունների
   notice:
     create: "%{subject} Ավելացված է"
     updated: "%{subject} թարմացված է "

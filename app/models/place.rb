@@ -7,16 +7,12 @@ class Place < ActiveRecord::Base
 
   has_unique_slug :subject => :ssid
 
-  # has_attached_file :logo,
-  #                   :storage => :s3,
-  #                   :path => "/images/logos/:id/:style.:extension",
-  #                   :url => ":s3_domain_url"
   mount_uploader :logo, LogoUploader, mount_on: :logo_file_name
 
   has_one  :style,  :dependent => :destroy
   has_many :polls, :dependent => :destroy
   has_many :banners, :dependent => :destroy
-  has_many :messages, as: :with_message, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
   has_many :stocks, :dependent => :destroy
   has_many :reputations, :dependent => :destroy, class_name: 'Customer::Reputation'
@@ -25,7 +21,6 @@ class Place < ActiveRecord::Base
   has_many :orders, :dependent => :destroy
   has_many :gowifi_sms, :dependent => :destroy, class_name: 'GowifiSms'
   belongs_to :user
-  belongs_to :place_group
 
   default_value_for :auth_default_lang, I18n.default_locale.to_s
 
@@ -43,24 +38,14 @@ class Place < ActiveRecord::Base
   validates :logo, file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
                    file_size: { in: 11.kilobytes..10.megabytes }
 
-  validate :place_and_place_group_have_same_owner, if: 'self.place_group'
-
   before_create :set_wifi_username_password
   before_save :set_wifi_link_freshnes
   after_save :gen_new_wifi_settings
 
-  def place_and_place_group_have_same_owner
-    if self.place_group.user_id != self.user_id
-      errors.add(:place_group_id, I18n.t('models.places.errors.different_owners'))
-    end
-  end
-
   def get_networks
-    networks_ids = Message.where("with_message_id = ? and with_message_type = 'Place' or with_message_id = ? and with_message_type = 'PlaceGroup'", self.id, self.place_group_id)
-                       .where(active: true)
-                       .select('social_network_id')
-                       .map { |message| message.social_network_id }
-                       .uniq
+    networks_ids = messages.active
+                           .pluck(:social_network_id)
+                           .uniq
 
     SocialNetwork.where(id: networks_ids)
   end
