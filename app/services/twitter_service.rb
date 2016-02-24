@@ -16,6 +16,6 @@ class TwitterService
       config.access_token_secret = @credentials['credentials']['secret']
     end
 
-    client.update_with_media("#{@message.message}\n#{@message.message_link}", open(@message.image.url))
+    client.update_with_media("#{@message.message}\n#{@message.message_link}", open("http:#{@message.image.url}"))
   end
 end

@@ -50,7 +50,7 @@ class VkService
     end
 
     def save_image_localy(message)
-      img_url = message.image.url
+      img_url = "http:#{message.image.url}"
       url = URI.parse(img_url)
       ext = File.extname(url.path)
       path = "#{Rails.root}/public/vk/#{message.id}#{ext}"
