@@ -1,12 +1,10 @@
 class Adm::UsersController < AdministrationController
   before_action :set_user, except: [:index, :create, :new]
 
-  after_action :verify_policy_scoped, only: [:index]
-
   def index
     authorize User
 
-    @users = policy_scope(User)
+    @users = User.all
   end
 
   def show
