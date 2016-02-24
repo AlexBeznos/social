@@ -9,7 +9,7 @@ class GowifiAuthController < ApplicationController
 
   def enter_by_password
     if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
-      redirect_to wifi_login_path
+      redirect_to wifi_login_path(@place)
     else
       redirect_to gowifi_place_path @place
     end
@@ -20,7 +20,7 @@ class GowifiAuthController < ApplicationController
 
     if sms.any?
       sms.first.destroy
-      render json: { url: wifi_login_path }, status: :ok
+      render json: { url: wifi_login_path(@place) }, status: :ok
     else
       render json: { error: I18n.t('wifi.sms_try_more').humanize }, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class GowifiAuthController < ApplicationController
 
   def simple_enter
     if @place.simple_enter
-      redirect_to wifi_login_path
+      redirect_to wifi_login_path(@place)
     else
       redirect_to gowifi_place_path @place
     end
@@ -38,7 +38,7 @@ class GowifiAuthController < ApplicationController
     if params[:poll]
       @answer = Answer.find(poll_params[:answer_ids])
       if @answer.increment!(:number_of_selections)
-        redirect_to wifi_login_path
+        redirect_to wifi_login_path(@place)
       else
         redirect_to gowifi_place_path @place
       end
@@ -53,7 +53,7 @@ class GowifiAuthController < ApplicationController
     end
 
     clear_session
-    redirect_to wifi_login_path
+    redirect_to wifi_login_path(@place)
   end
 
   def auth_failure
