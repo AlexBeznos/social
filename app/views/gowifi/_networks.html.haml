@@ -2,4 +2,4 @@
   - networks.each do |network|
     = link_to preview_path(@place, @place.messages.joins(:social_network).active.where("social_networks.name = ?", network.name).first), class: 'wifi_link' do
       - icon = place.social_network_icons.find_by(social_network_id: network.id)
-      = image_tag icon ? icon.icon.url : "wifi/#{place.template }/#{network.name}.png"  
+      = image_tag icon ? icon.icon.url : "wifi/#{place.template }/#{network.name}.png"

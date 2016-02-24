@@ -218,7 +218,6 @@ ActiveRecord::Schema.define(version: 20160209113356) do
     t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
     t.string   "auth_default_lang"
-    t.string   "preview_redirect_url"
     t.boolean  "has_preview",                  default: false
   end
 
@@ -234,11 +233,6 @@ ActiveRecord::Schema.define(version: 20160209113356) do
   end
 
   add_index "polls", ["place_id"], name: "index_polls_on_place_id", using: :btree
-
-  create_table "previews", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
