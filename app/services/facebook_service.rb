@@ -23,7 +23,7 @@ class FacebookService
     graph = Koala::Facebook::API.new(hash[:credentials]['credentials']['token'])
 
     graph.put_connections('me', 'feed', { :message => hash[:message].message,
-                                          :picture => hash[:message].image.url,
+                                          :picture => "http:#{hash[:message].image.url}",
                                           :link => hash[:message].message_link })
   end
 end
