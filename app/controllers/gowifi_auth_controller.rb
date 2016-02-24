@@ -67,6 +67,7 @@ class GowifiAuthController < ApplicationController
   def redirect_after_auth
     if @place
       if @place.loyalty_program && @customer
+        redirect_to
         redirect_to menu_items_list_path(@place)
       else
         redirect_to @place.redirect_url
@@ -75,6 +76,7 @@ class GowifiAuthController < ApplicationController
       redirect_to root_path
     end
   end
+
 
   private
     def poll_params
@@ -96,7 +98,11 @@ class GowifiAuthController < ApplicationController
       @place = Place.find_by_slug(slug_by_omni || slug_by_session)
     end
 
-    def credentials
+    def show
+    end
+
+
+  def credentials
       request.env['omniauth.auth']
     end
 
@@ -110,4 +116,5 @@ class GowifiAuthController < ApplicationController
 
       hash[:visit]
     end
+
 end
