@@ -2,11 +2,7 @@ class StockPolicy < ApplicationPolicy
 
 
   def permitted_attributes
-    [
-      :url,
-      :image,
-      :day
-    ]
+    [:url, :image, :day]
   end
 
 end
