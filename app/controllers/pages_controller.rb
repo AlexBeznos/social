@@ -3,9 +3,6 @@ class PagesController < ApplicationController
 
   before_action :throw_to_proper_home, if: "params[:id] == 'home'"
 
-  def preview_redirect
-  end
-
 
   private
   def throw_to_proper_home
