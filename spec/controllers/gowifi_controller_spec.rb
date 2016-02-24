@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe GowifiController, :type => :controller do
-  let( :place ){ create :place, auth_default_lang: 'en' }
+  let(:place) { create :place, auth_default_lang: I18n.available_locales.sample }
 
   describe "GET login" do
     it "uses auth_default_lang" do

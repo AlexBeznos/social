@@ -3,7 +3,7 @@
   = f.input :name
   = f.input :description
   = f.input :price
-  - if @menu_item.image.exists?
+  - if @menu_item.image.present?
     = image_tag @menu_item.image.url, height: 100
   = f.input :image, as: :file
   = f.input :user_id, as: :hidden, :input_html => { :value => "#{params[:user] ? params[:user] : current_user.id}" }

@@ -2,6 +2,7 @@ pl:
   models:
     errors:
       validations:
+        english_letters_and_spaces: Pozwala tylko angielskich liter i spacji
         wrong_link_format: Nieprawidłowe linki formacie
         unique_place_for_customer: Instytucja musi być unikalny użytkownik
         long_twitter_message: Wiadomość z linkiem nie może przekraczać 140 znaków

@@ -1,5 +1,5 @@
 ﻿am:
-  unauthorized:
+  pundit:
     default: Դուք չունեք թույլտվություն նշված էջին
   authlogic:
     error_messages:
@@ -145,6 +145,14 @@
   errors:
     format: "%{attribute} %{message}"
     messages:
+      file_size_is_in: ! 'ֆայլի չափը պետք է լինի, %{min} եւ %{max}'
+      file_size_is_less_than: ! 'ֆայլի չափը պետք է լինի ոչ պակաս, քան %{count} '
+      file_size_is_less_than_or_equal_to: ! 'ֆայլի չափը պետք է լինի ոչ պակաս, քան կամ հավասար է %{count}'
+      file_size_is_greater_than: ! 'ֆայլի չափը պետք է լինի ավելի մեծ, քան %{count}'
+      file_size_is_greater_than_or_equal_to: ! 'ֆայլի չափը պետք է լինի ավելի մեծ, քան կամ հավասար է %{count}'
+      spoofed_file_media_type: Ֆայլը ունի երկարաձգում, որը չի համապատասխանում դրա բովանդակությունը
+      allowed_file_content_types: ! 'ֆայլը պետք է լինի մեկը, %{types}'
+      excluded_file_content_types: ! 'Ֆայլը չի կարող լինել %{types}'
       not_found: ռեկորդային չի գտնվել
       accepted: անհրաժեշտ է հաստատել
       blank: չի կարող լինել դատարկ

@@ -1,41 +1,61 @@
 class StocksController < ApplicationController
-  load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource :through => :place
+  before_action :set_place
+  before_action :set_stock, only: [:update, :destroy, :edit]
 
   def index
+    authorize Stock
+
     @stocks = Stock.where(place_id: @place.id)
   end
 
   def new
+    authorize Stock
+
+    @stock = Stock.new
   end
 
   def create
+    authorize Stock
+
+    @stock = Stock.new(permitted_attributes(Stock))
     @stock.place = @place
 
     if @stock.save
-      redirect_to place_stocks_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.stocks.class'))
+      redirect_to place_stocks_path(@place), notice: I18n.t('notice.create', subject: I18n.t('models.stocks.class'))
     else
       render :action => :new
     end
   end
 
+  def edit
+    authorize Stock
+  end
+
   def update
-    if @stock.update(stock_params)
-      redirect_to place_stocks_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.stocks.class'))
+    authorize @stock
+
+    if @stock.update(permitted_attributes(Stock))
+      redirect_to place_stocks_path(@place), notice: I18n.t('notice.updated', subject: I18n.t('models.stocks.class'))
     else
       render :action => :edit
     end
   end
 
   def destroy
+    authorize @stock
+
     @stock.destroy
     redirect_to place_stocks_path(@place)
   end
 
   private
 
-    def stock_params
-      params.require(:stock).permit(:url, :image, :day)
-    end
+  def set_stock
+    @stock = Stock.find(params[:id])
+  end
+
+  def set_place
+    @place = Place.find_by_slug(params[:place_id])
+  end
 
 end

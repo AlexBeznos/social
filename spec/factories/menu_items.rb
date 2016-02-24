@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :menu_item do
     association :place
-    name "Item name"
+    name { Faker::Lorem.sentence }
     price 100
-    image_file_name "picture.jpg"
+    image { File.new(Rails.root.join('spec', 'fixtures', 'image.jpg')) }
   end
 
 end

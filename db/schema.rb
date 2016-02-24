@@ -219,6 +219,7 @@ ActiveRecord::Schema.define(version: 20160224124440) do
     t.boolean  "demo",                         default: false
     t.string   "auth_default_lang"
     t.boolean  "has_preview",                  default: false
+    t.string   "ssid"
   end
 
   add_index "places", ["place_group_id"], name: "index_places_on_place_group_id", using: :btree

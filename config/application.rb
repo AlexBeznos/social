@@ -33,6 +33,7 @@ module Social
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.middleware.use Rack::Deflater
+    config.middleware.use Rack::Attack
     config.time_zone = 'Kyiv'
   end
 end

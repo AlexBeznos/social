@@ -42,6 +42,10 @@ gem 'guess'
 gem 'rubyzip'
 gem 'i18n-timezones'
 gem 'ahoy_matey'
+gem 'carrierwave'
+gem 'carrierwave-aws'
+gem 'file_validators'
+gem 'rack-attack'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
@@ -61,6 +65,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-instagram'
 gem 'omniauth-vkontakte'
 
+
 # Api
 gem 'vkontakte_api'
 gem 'instagram'
@@ -68,7 +73,6 @@ gem 'koala'
 gem 'twitter'
 gem 'aws-sdk', '< 2.0'
 gem 'sendgrid'
-gem 'rollbar', '~> 1.5.3'
 gem 'smsc'
 
 # Jobs
@@ -78,7 +82,7 @@ gem 'sidekiq-failures'
 
 # Other
 gem 'authlogic'
-gem 'cancancan', '~> 1.10'
+gem 'pundit'
 gem 'lograge'
 gem 'high_voltage', '~> 2.3.0'
 
@@ -111,6 +115,7 @@ group :test do
   gem 'database_cleaner'
   gem 'test_after_commit'
   gem 'rspec-sidekiq'
+  gem 'pundit-matchers' ,'~> 1.0.0'
 end
 
 # Use ActiveModel has_secure_password

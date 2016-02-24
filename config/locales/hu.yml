@@ -1,5 +1,5 @@
 hu:
-  unauthorized:
+  pundit:
     default: Nem kell hozzáférése ehhez az oldalhoz
   authlogic:
     error_messages:
@@ -147,6 +147,14 @@ hu:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      file_size_is_in: ! 'fájlméret között kell lennie %{min} és %{max}'
+      file_size_is_less_than: ! 'fájl mérete ne legyen kisebb, mint %{count}'
+      file_size_is_less_than_or_equal_to: ! 'file size must be less than or equal to %{count}'
+      file_size_is_greater_than: ! 'fájl mérete ne legyen kisebb vagy egyenlő, mint %{count}'
+      file_size_is_greater_than_or_equal_to: ! 'fájl mérete ne legyen nagyobb, mint %{count}'
+      spoofed_file_media_type: fájl kiterjesztése, amely nem egyezik a tartalmát
+      allowed_file_content_types: ! 'fájlt kell egy %{types}'
+      excluded_file_content_types: ! 'Fájlt nem lehet %{types}'
       not_found: rekord talált
       accepted: megerősítendő
       blank: ez nem lehet üres

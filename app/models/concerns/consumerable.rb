@@ -68,7 +68,7 @@ module Consumerable
       params = {
         :first_name => credentials['extra']['raw_info']['first_name'],
         :last_name => credentials['extra']['raw_info']['last_name'],
-        :gender => credentials['extra']['raw_info']['sex'].to_s.to_gender,
+        :gender => credentials['extra']['raw_info']['sex'].to_s.to_gender!,
         :birthday => get_date(credentials['extra']['raw_info']['bdate']),
         :network_profiles_attributes => [get_network_profile_params(credentials)]
       }
@@ -100,7 +100,7 @@ module Consumerable
       params = {
                 :first_name => credentials['info']['first_name'],
                 :last_name => credentials['info']['last_name'],
-                :gender => credentials['extra']['raw_info']['gender'].to_gender,
+                :gender => credentials['extra']['raw_info']['gender'].to_gender!,
                 :network_profiles_attributes => [get_network_profile_params(credentials)]
                 }
 

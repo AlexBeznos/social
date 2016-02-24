@@ -1,5 +1,5 @@
 pl:
-  unauthorized:
+  pundit:
     default: Nie masz dostępu do tej strony
   authlogic:
     error_messages:
@@ -147,6 +147,14 @@ pl:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      file_size_is_in: ! 'rozmiar pliku musi być między %{min} i %{max}'
+      file_size_is_less_than: ! 'rozmiar pliku musi być mniejsza niż %{count}'
+      file_size_is_less_than_or_equal_to: ! 'rozmiar pliku musi być mniejsza lub równa %{count} '
+      file_size_is_greater_than: ! 'rozmiar pliku musi być większa niż %{count}'
+      file_size_is_greater_than_or_equal_to: ! 'rozmiar pliku musi być większa lub równa %{count}'
+      spoofed_file_media_type: plik ma rozszerzenie, który nie pasuje do jego zawartość
+      allowed_file_content_types: ! 'plik powinien być jednym z %{types} '
+      excluded_file_content_types: ! 'plik nie może być %{types}'
       not_found: Znalezione
       accepted: być potwierdzone
       blank: To nie może być pusty

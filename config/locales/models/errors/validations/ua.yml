@@ -2,6 +2,7 @@ ua:
   models:
     errors:
       validations:
+        english_letters_and_spaces: Дозволено тільки англійскі букви і пробіли
         wrong_link_format: Невірний формат посилання
         unique_place_for_customer: Заклад має бути унікальним для відвідувача
         long_twitter_message: Повідомлення з посиланням не повинне перевищувати 140 символів

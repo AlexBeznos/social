@@ -1,14 +1,13 @@
 class MenuItemsController < ApplicationController
-  load_and_authorize_resource :place, :find_by => :slug
-  load_and_authorize_resource
-
-  skip_authorize_resource :only => :welcome
-  skip_authorize_resource :place, :only => :welcome
+  before_action :set_place
+  before_action :set_menu_item, except: [:index, :welcome, :new, :create]
 
   before_action :find_customer, only: :welcome
   before_action :load_reputation_score, only: :welcome
 
   def index
+    authorize MenuItem
+
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
   end
 
@@ -16,12 +15,18 @@ class MenuItemsController < ApplicationController
     @place = Place.find_by_slug(params[:slug])
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
     render :layout => 'loyalty_program'
+    skip_authorization
   end
 
   def new
+    authorize MenuItem
+    @menu_item = MenuItem.new
   end
 
   def create
+    authorize MenuItem
+
+    @menu_item = MenuItem.new(permitted_attributes(MenuItem))
     @menu_item.place_id = @place.id
 
     if @menu_item.save
@@ -31,11 +36,18 @@ class MenuItemsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
     def edit
+=======
+  def edit
+    authorize @menu_item
+>>>>>>> 08b97ce0896f3819056c893821af0d3475f8a6cd
   end
 
   def update
-    if @menu_item.update(menu_item_params)
+    authorize @menu_item
+
+    if @menu_item.update(permitted_attributes(MenuItem))
       redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.updated', subject: t('menu_item.goods'))
     else
       render :action => :edit
@@ -43,26 +55,31 @@ class MenuItemsController < ApplicationController
   end
 
   def destroy
+    authorize @menu_item
+
     @menu_item.destroy
     redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.deleted', subject: t('menu_item.goods'))
   end
 
   private
+  def set_place
+    @place = Place.find_by_slug(params[:place_id])
+  end
 
-    def find_customer
-      if cookies[:customer]
-        @customer = Customer.find(cookies[:customer].to_i)
-      else
-        redirect_to gowifi_place_path(@place)
-      end
-    end
+  def set_menu_item
+    @menu_item = MenuItem.find(params[:id])
+  end
 
-    def load_reputation_score
-      @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
-      @reputation_score = @reputation.nil? ? 0 : @reputation.score
+  def find_customer
+    if cookies[:customer]
+      @customer = Customer.find(cookies[:customer].to_i)
+    else
+      redirect_to gowifi_place_path(@place)
     end
+  end
 
-    def menu_item_params
-      params.require(:menu_item).permit(:name, :description, :price, :image)
-    end
+  def load_reputation_score
+    @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
+    @reputation_score = @reputation.nil? ? 0 : @reputation.score
+  end
 end

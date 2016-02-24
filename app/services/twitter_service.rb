@@ -16,10 +16,6 @@ class TwitterService
       config.access_token_secret = @credentials['credentials']['secret']
     end
 
-    begin
-      client.update_with_media("#{@message.message}\n#{@message.message_link}", open(@message.image.url))
-    rescue => e
-      Rails.logger.fatal "Twitter message was not posted. Error: #{e}"
-    end
+    client.update_with_media("#{@message.message}\n#{@message.message_link}", open("http:#{@message.image.url}"))
   end
 end

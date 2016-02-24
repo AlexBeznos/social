@@ -1,20 +1,29 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource :user, except: [:new, :create]
+  before_action :set_user, except: [:index, :new, :create]
+  after_action :verify_policy_scoped, only:[ :index ]
 
   def index
-    @users = current_user.place_owners
+    authorize User
+
+    @users = policy_scope(User)
   end
 
   def show
+    authorize @user
+
+    policy_scope(User)
   end
 
   def new
+    authorize User
+
     @user = User.new
-    authorize! :create, User
   end
 
   def create
-    @user = current_user.place_owners.new(user_params)
+    authorize User
+
+    @user = current_user.place_owners.new(permitted_attributes(User))
     @user.user_id = current_user.id
 
     if @user.save
@@ -23,14 +32,16 @@ class UsersController < ApplicationController
       render :action => :new
     end
 
-    authorize! :create, @user
   end
 
   def edit
+    authorize @user
   end
 
   def update
-    if @user.update(user_params)
+    authorize @user
+
+    if @user.update(permitted_attributes(@user))
       redirect_to user_path(@user), :notice => I18n.t('models.users.updated')
     else
       render :action => :edit
@@ -39,13 +50,15 @@ class UsersController < ApplicationController
 
 
   def destroy
+    authorize @user
+
     @user.destroy
     redirect_to users_path
   end
 
   private
 
-    def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :phone, :timezone, :password, :password_confirmation)
+    def set_user
+      @user = User.find(params[:id])
     end
 end

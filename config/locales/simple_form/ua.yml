@@ -5,6 +5,7 @@ ua:
     labels:
       place:
         name: 'Назва закладу'
+        ssid: 'SSID закладу'
         domen_url: 'Адреса домену'
         logo: 'Логотип'
         active: Активувати Hotspot

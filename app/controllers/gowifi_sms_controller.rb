@@ -1,4 +1,6 @@
 class GowifiSmsController < ApplicationController
+  skip_after_action :verify_authorized
+
   def create
     @gowifi_sms = GowifiSms.new(gowifi_sms_params)
 

@@ -1,5 +1,5 @@
 ua:
-  unauthorized:
+  pundit:
     default: У Вас немае доступу до цієї строрінки
   authlogic:
     error_messages:
@@ -147,6 +147,14 @@ ua:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      file_size_is_in: ! 'розмір файла має бути від %{min} до %{max}'
+      file_size_is_less_than: ! 'розмір фала має бути менеше ніж %{count}'
+      file_size_is_less_than_or_equal_to: ! 'розмір файла має бути меншим або доривнюваті %{count}'
+      file_size_is_greater_than: ! 'розмір фала має бути бильшім за %{count}'
+      file_size_is_greater_than_or_equal_to: ! 'розмір фала має бути більше або доривнювати %{count}'
+      spoofed_file_media_type: розширення файла не відповідає вимогам
+      allowed_file_content_types: ! 'файл має відповідаті таким типам: %{types}'
+      excluded_file_content_types: ! 'файл не може бути %{types}'
       not_found: запис не знайдено
       accepted: має бути прийнятий
       blank: не може бути пустим
