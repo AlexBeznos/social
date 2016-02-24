@@ -30,6 +30,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+
     authorize @place
 
     date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
@@ -43,6 +44,8 @@ class PlacesController < ApplicationController
     @number_of_friends_by_month = get_number_of_friends @visits_this_month
 
   end
+
+
 
   def guests
     authorize @place
@@ -97,6 +100,7 @@ class PlacesController < ApplicationController
     @place.destroy
     redirect_to request.referer
   end
+
 
   private
   def set_place

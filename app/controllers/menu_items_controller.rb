@@ -12,6 +12,7 @@ class MenuItemsController < ApplicationController
   end
 
   def welcome
+    @place = Place.find_by_slug(params[:slug])
     @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
     render :layout => 'loyalty_program'
     skip_authorization
@@ -35,8 +36,12 @@ class MenuItemsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+    def edit
+=======
   def edit
     authorize @menu_item
+>>>>>>> 08b97ce0896f3819056c893821af0d3475f8a6cd
   end
 
   def update
