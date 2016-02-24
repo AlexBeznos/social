@@ -8,7 +8,6 @@ pl:
         name: 'Nazwa instytucji'
         ssid: 'miejsca SSID'
         domen_url: "Adres domeny"
-        place_group: Grupa
         by_password: 'Zaloguj hasło'
         password: 'Hasło do logowania'
         active: 'Hotspot aktywne'

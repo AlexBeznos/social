@@ -8,7 +8,6 @@ class PlacesController < ApplicationController
     authorize Place
 
     @places = policy_scope(Place)
-    @place_groups = policy_scope(PlaceGroup)
   end
 
   def new
@@ -113,22 +112,13 @@ class PlacesController < ApplicationController
   end
 
   def active_message social_network = nil
-    if social_network
-      if @place.place_group
-        @place.place_group.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
-      else
-        @place.messages.where(active: true).find_by(social_network: SocialNetwork.find_by(name: social_network))
-      end
-    else
-      if @place.place_group
-        @place.place_group.messages.where(active: true).first
-      else
-        @place.messages.where(active:true).first
-      end
-    end
+    messages = @place.messages.active
+    return messages.first unless social_network
+
+    messages.find_by(social_network: SocialNetwork.find_by(name: social_network))
   end
 
   def all_networks
-    (@place.messages.where(active: true) + (@place.place_group ? @place.place_group.messages.where(active: true) : [])).map {|message| message.social_network }.uniq
+    @place.messages.active.map { |message| message.social_network }.uniq
   end
 end

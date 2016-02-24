@@ -8,7 +8,7 @@ RSpec.describe MessagePolicy do
 
   let(:attributes){subject.permitted_attributes;}
   let(:place){ create :place }
-  let(:record){ create :message, with_message: place}
+  let(:record){ create :message, place: place}
   let(:resolved_scope) {
     MessagePolicy::Scope.new(user, Message.all).resolve
   }

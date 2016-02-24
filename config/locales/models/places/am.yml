@@ -8,7 +8,6 @@
         name: 'Հաստատության անվանումը'
         ssid: 'SSID տեղերը'
         domen_url: "Դոմեն հասցե"
-        place_group: խումբ
         by_password: 'մուտք գաղտնաբառով'
         password: 'Մուտքի գաղտնաբառ'
         active: 'Hotspot ակտիվ է'

@@ -8,7 +8,6 @@ ua:
         name: 'Назва закладу'
         ssid: 'SSID закладу'
         domen_url: "Адреса домену"
-        place_group: Група
         by_password: 'Вхід через пароль'
         password: 'Пароль для входу'
         active: 'Hotspot активований'

@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :message do
-    with_message_id :place
-    with_message_type "Place"
+    association :place
     social_network_id 1
     message { Faker::Lorem.paragraph }
     image { File.new(Rails.root.join('spec', 'fixtures', 'image.jpg')) }

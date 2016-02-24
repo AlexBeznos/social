@@ -1,36 +1,14 @@
 = content_for :title, t('models.places.actions.index.title')
-= content_for :page_stylesheet, 'dashboard/place_groups'
 = content_for :navigation, 'false'
 
-.header
-  %h1
-    = t ('models.places.actions.index.my_places')
-    (
-    %span= @places.length
-    )
-%p= link_to t('models.place_groups.actions.new.title'), new_place_group_path, class: 'btn btn-primary'
-
-- if !@place_groups || @place_groups.empty?
-  %ul.facility
-    - @places.each do |place|
-      %li= link_to place.name, place_path(place)
-- else
-  - @place_groups.each do |place_group|
-    .panel.panel-info.panel-adjusted
-      .panel-heading
-        %h1= place_group.name
-        = link_to t('helpers.submit.edit'), edit_place_group_path(place_group), class: 'btn btn-primary btn-xs'
-        = link_to t('helpers.submit.destroy'), place_group_path(place_group), class: 'btn btn-danger btn-xs', method: :delete
-      .panel-body
-        %ul.facility
-          - place_group.places.each do |place|
-            %li= link_to place.name, place_path(place)
-  - if @places.include? Place.find_by(place_group_id: nil)
-    .panel.panel-info.panel-adjusted
-      .panel-heading   
-        %h1= t('models.place_groups.uncategorized')
-      .panel-body
-        %ul.facility
-          - @places.each do |place|
-            - if !place.place_group_id
-              %li= link_to place.name, place_path(place)
+.panel.panel-info.panel-adjusted
+  .panel-heading
+    %h1
+      = t('models.places.actions.index.my_places')
+      (
+      %span= @places.length
+      )
+  .panel-body
+    %ul.facility
+      - @places.each do |place|
+        %li= link_to place.name, place_path(place)

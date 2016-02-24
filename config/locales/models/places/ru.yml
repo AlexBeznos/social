@@ -8,7 +8,6 @@ ru:
         name: 'Название заведения'
         ssid: 'SSID заведения'
         domen_url: "Адрес домена"
-        place_group: Группа
         by_password: 'Вход по паролю'
         password: 'Пароль для входа'
         active: 'Hotspot активен'
