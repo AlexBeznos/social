@@ -34,16 +34,6 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :place_groups, except: [:index, :show] do
-    resources :messages, :controller => "place_group_messages", except: [:index, :show] do
-      member do
-          get 'activate'
-          get 'deactivate'
-      end
-    end
-  end
-
-
   resources :places do
     resources :polls
     resources :banners

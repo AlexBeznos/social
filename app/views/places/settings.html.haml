@@ -15,10 +15,6 @@
         = t('models.places.attrs.ssid')
         %span.text-muted.pull-right= @place.ssid
       %li.list-group-item
-        = t('models.places.attrs.place_group')
-        - if @place.place_group
-          %span.text-muted.pull-right= @place.place_group.name
-      %li.list-group-item
         = t('models.places.attrs.domen_url')
         %span.text-muted.pull-right= @place.domen_url
       %li.list-group-item
@@ -113,9 +109,8 @@
                 .col-sm-4
                   = image_tag @message.image.url, class: 'img-responsive'
           .panel-footer
-            - if @message.with_message_type == "Place"
-              = link_to t('helpers.submit.edit'), edit_place_message_path(@place, @message), class: 'btn btn-primary btn-block'
-              = link_to t('helpers.submit.destroy'), place_message_path(@place, @message), method: 'DELETE', class: 'btn btn-danger btn-block'
+            = link_to t('helpers.submit.edit'), edit_place_message_path(@place, @message), class: 'btn btn-primary btn-block'
+            = link_to t('helpers.submit.destroy'), place_message_path(@place, @message), method: 'DELETE', class: 'btn btn-danger btn-block'
       - else
         %ul.list-group
           %li.list-group-item= link_to t('helpers.submit.add', name: t('models.messages.attrs.message')), new_place_message_path(@place), class: 'btn btn-info btn-block'

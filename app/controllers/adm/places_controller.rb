@@ -15,7 +15,6 @@ class Adm::PlacesController < AdministrationController
 
     @place = Place.includes(:messages).find_by_slug(params[:id])
     @networks = SocialNetwork.all
-    @messages = all_messages
   end
 
   def new
@@ -62,9 +61,5 @@ class Adm::PlacesController < AdministrationController
 
   def set_user
     @user = User.find(params[:user_id])
-  end
-
-  def all_messages
-    Message.where("with_message_id = ? and with_message_type = 'Place' or with_message_id = ? and with_message_type = 'PlaceGroup'", @place.id, @place.place_group_id)
   end
 end

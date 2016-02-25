@@ -41,7 +41,6 @@ class PlacePolicy < ApplicationPolicy
       :loyalty_program,
       :domen_url,
       :sms_auth,
-      :place_group_id,
       :auth_default_lang,
       :ssid
     ]

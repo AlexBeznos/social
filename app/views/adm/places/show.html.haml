@@ -85,7 +85,7 @@
               %th active
               %th
           %tbody
-            - @messages.where(social_network: network).each do |message|
+            - @place.messages.where(social_network: network).each do |message|
               %tr
                 %td= message.id
                 %td= message.message.empty? ? message.subscription : message.message

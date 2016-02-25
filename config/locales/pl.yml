@@ -21,7 +21,6 @@ pl:
       menu_item: towary
       poll: przesłuchanie
       banner: sztandar
-      place_group: grupa zakładów
   notice:
     create: "%{subject} dodano"
     updated: "%{subject} zaktualizowany"
