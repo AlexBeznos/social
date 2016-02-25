@@ -95,15 +95,6 @@ Rails.application.configure do
   end
 end
 
-Rails.application.config.middleware.use ExceptionNotification::Rack,
-  :slack => {
-    :webhook_url => ENV['SLACK_WEB_HOOK'],
-    :channel => "#exceptions",
-    :additional_parameters => {
-      :mrkdwn => true
-    }
-  }
-
 CarrierWave.configure do |config|
   config.storage    = :aws
   config.aws_bucket = ENV['AWS_BUCKET']
