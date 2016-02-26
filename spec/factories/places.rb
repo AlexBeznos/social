@@ -9,6 +9,7 @@ FactoryGirl.define do
     reputation_on true
     score_amount 20
     domen_url { Place::DOMAIN_LIST.sample }
+    created_at { Date.today } 
   end
 
 end
