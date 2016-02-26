@@ -18,7 +18,6 @@ class GowifiController < ApplicationController
     @banner.increment!(:number_of_views) if @banner
   end
 
-  def has_preview?; has_preview; end
 
   def preview
     @message = @place.messages.find_by(id: params[:id])

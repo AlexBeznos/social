@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include HighVoltage::StaticPage
 
   before_action :throw_to_proper_home, if: "params[:id] == 'home'"
-  skip_after_action :verify_authorization
+  skip_after_action :verify_authorized
 
   private
   def throw_to_proper_home
