@@ -5,8 +5,17 @@ RSpec.describe UserPolicy do
 
   subject { UserPolicy.new(user,record) }
 
-
-  let(:attributes){subject.permitted_attributes;}
+  let(:permitted_attributes) do
+    [
+      :email,
+      :first_name,
+      :last_name,
+      :phone,
+      :timezone,
+      :password,
+      :password_confirmation
+    ]
+  end
   let(:record){ create :user}
   let(:resolved_scope) {
     UserPolicy::Scope.new(user, User.all).resolve
@@ -19,9 +28,8 @@ RSpec.describe UserPolicy do
       expect(resolved_scope).to include(user)
     end
 
-
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      (permitted_attributes + [:group]).each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -36,9 +44,8 @@ RSpec.describe UserPolicy do
       expect(resolved_scope).to include(user)
     end
 
-
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -54,7 +61,7 @@ RSpec.describe UserPolicy do
     end
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end

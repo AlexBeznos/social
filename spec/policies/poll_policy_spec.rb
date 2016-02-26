@@ -5,7 +5,16 @@ RSpec.describe PollPolicy do
 
   subject { PollPolicy.new(user,record) }
 
-  let(:attributes){subject.permitted_attributes;}
+  let(:permitted_attributes) do
+    [
+      :question,
+      answers_attributes: [
+        :id,
+        :content,
+        :_destroy
+      ]
+    ]
+  end
   let(:record){ create :poll}
   let(:resolved_scope) {
     PollPolicy::Scope.new(user, Poll.all).resolve
@@ -18,9 +27,8 @@ RSpec.describe PollPolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -35,9 +43,8 @@ RSpec.describe PollPolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -53,7 +60,7 @@ RSpec.describe PollPolicy do
     end
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end

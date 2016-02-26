@@ -5,8 +5,15 @@ RSpec.describe StylePolicy do
 
   subject { StylePolicy.new(user,record) }
 
-
-  let(:attributes){subject.permitted_attributes;}
+  let(:permitted_attributes) do
+    [
+      :background,
+      :text_color,
+      :greating_color,
+      :css,
+      :network_icons
+    ]
+  end
   let(:record){ create :style}
   let(:resolved_scope) {
     StylePolicy::Scope.new(user, Style.all).resolve
@@ -19,9 +26,8 @@ RSpec.describe StylePolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -36,9 +42,8 @@ RSpec.describe StylePolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -54,7 +59,7 @@ RSpec.describe StylePolicy do
     end
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end

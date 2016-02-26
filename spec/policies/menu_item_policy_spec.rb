@@ -5,7 +5,14 @@ RSpec.describe MenuItemPolicy do
 
   subject { MenuItemPolicy.new(user,record) }
 
-  let(:attributes){subject.permitted_attributes;}
+  let(:permitted_attributes) do
+    [
+      :name,
+      :price,
+      :description,
+      :image
+    ]
+  end
   let(:record){ create :menu_item}
   let(:resolved_scope) {
     MenuItemPolicy::Scope.new(user, MenuItem.all).resolve
@@ -20,7 +27,7 @@ RSpec.describe MenuItemPolicy do
 
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -37,7 +44,7 @@ RSpec.describe MenuItemPolicy do
 
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -53,7 +60,7 @@ RSpec.describe MenuItemPolicy do
     end
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end

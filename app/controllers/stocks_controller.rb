@@ -37,7 +37,7 @@ class StocksController < ApplicationController
     if @stock.update(permitted_attributes(Stock))
       redirect_to place_stocks_path(@place), notice: I18n.t('notice.updated', subject: I18n.t('models.stocks.class'))
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 

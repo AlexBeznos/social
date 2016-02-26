@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :create]
-  after_action :verify_policy_scoped, only:[ :index ]
-
+  
   def index
     authorize User
 
-    @users = policy_scope(User)
+    if current_user.franchisee?
+      @users = current_user.place_owners
+    elsif current_user.admin?
+      @users = User.all
+    end
   end
 
   def show
@@ -27,7 +30,7 @@ class UsersController < ApplicationController
     @user.user_id = current_user.id
 
     if @user.save
-      redirect_to users_path, :notice => I18n.t('models.users.created')
+      redirect_to users_path, notice: I18n.t('models.users.created')
     else
       render :action => :new
     end
@@ -42,7 +45,7 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update(permitted_attributes(@user))
-      redirect_to user_path(@user), :notice => I18n.t('models.users.updated')
+      redirect_to user_path(@user), notice: I18n.t('models.users.updated')
     else
       render :action => :edit
     end

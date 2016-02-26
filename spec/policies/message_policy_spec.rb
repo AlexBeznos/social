@@ -5,8 +5,15 @@ RSpec.describe MessagePolicy do
 
   subject { MessagePolicy.new(user,record) }
 
-
-  let(:attributes){subject.permitted_attributes;}
+  let(:permitted_attributes) do
+    [
+      :social_network_id,
+      :message,
+      :message_link,
+      :image,
+      :subscription
+    ]
+  end
   let(:place){ create :place }
   let(:record){ create :message, place: place}
   let(:resolved_scope) {
@@ -20,9 +27,8 @@ RSpec.describe MessagePolicy do
       expect(resolved_scope).to include(record)
     end
 
-
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -39,7 +45,7 @@ RSpec.describe MessagePolicy do
 
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
@@ -55,7 +61,7 @@ RSpec.describe MessagePolicy do
     end
 
     it "permit mass assigment of all attributes" do
-      attributes.each do |attr|
+      permitted_attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end

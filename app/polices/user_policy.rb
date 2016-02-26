@@ -26,7 +26,6 @@ class UserPolicy < ApplicationPolicy
       :password,
       :password_confirmation
     ]
-
     return params + [:group] if @user.admin?
     params
   end

@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
 
   def new
     authorize Message
-
-    @place = Place.find_by(slug: params[:place_id])
+    
+    @place = Place.find_by_slug(params[:place_id])
     @message = Message.new
   end
 
@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
     @message.place = @place
 
     if @message.save
-      redirect_to settings_place_path(@place), :notice => I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+      redirect_to settings_place_path(@place), notice: I18n.t('notice.create', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
     else
       render :action => :new
     end
@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
     authorize @message
 
     if @message.update(permitted_attributes(Message))
-      redirect_to settings_place_path(@place), :notice => I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
+      redirect_to settings_place_path(@place), notice: I18n.t('notice.updated', subject: I18n.t('models.messages.message_for', name: @message.social_network.name))
     else
       render :action => :edit
     end
@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
 
   private
   def set_place
-    @place = Place.find_by(slug:params[:place_id])
+    @place = Place.find_by_slug(params[:place_id])
   end
 
   def set_message

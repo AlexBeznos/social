@@ -4,10 +4,9 @@ class Adm::PlacesController < AdministrationController
 
   after_action :verify_policy_scoped, only: [:index]
 
-
   def index
     authorize Place
-    @places = policy_scope(Place).order('id ASC')
+    @places = Place.all.order('id ASC')
   end
 
   def show
