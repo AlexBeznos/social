@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :places do
+    resources :auths, except: :index
     resources :polls
     resources :banners
     resources :messages, except: [:index, :show]

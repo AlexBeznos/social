@@ -1,0 +1,2 @@
+class AuthPolicy < ApplicationPolicy
+end

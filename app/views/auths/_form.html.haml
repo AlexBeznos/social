@@ -1,0 +1,18 @@
+= content_for :page_javascript, 'dashboard/auth_method_select'
+
+= simple_form_for [place, auth] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :resource_type, collection: Auth::METHODS.map {|n| [n, "#{n.capitalize}Auth"] }, input_html: { class: 'authMethodSelect', disabled: !auth.new_record? }
+
+  = f.simple_fields_for save_method do |r|
+    - Auth::METHODS.each do |method|
+      %div{ class: "#{method.capitalize}Auth" }
+        = render partial: "#{method}_auths/form", locals: { resource: auth.resource, form: r }
+
+  .form-inputs
+    = f.input :redirect_url
+
+  .form-actions
+    = f.button :submit

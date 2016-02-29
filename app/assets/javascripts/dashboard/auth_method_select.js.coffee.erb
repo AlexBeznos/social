@@ -1,0 +1,14 @@
+$ ->
+  methods = '<%= Auth::METHODS.map { |m| ".#{m.capitalize}Auth" }.join(", ") %>'
+  select = '.authMethodSelect'
+  showForm = (target) ->
+    $(methods).hide()
+
+    if target.val()
+      $(".#{target.val()}").show()
+
+  $(methods).hide()
+  showForm($(select))
+
+  $(select).on 'change', (e) ->
+    showForm($(e.target))

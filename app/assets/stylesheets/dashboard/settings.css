@@ -102,6 +102,9 @@
     .settings .list-group-item.img {
       height: 70px;
     }
+    .settings .panel-settings {
+      margin-top: 30px;
+    }
     @media (min-width: 769px) {
       .settings .panel-settings {
         margin-right: 15px;

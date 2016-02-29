@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226161243) do
+ActiveRecord::Schema.define(version: 20160229150618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20160226161243) do
   end
 
   add_index "answers", ["poll_id"], name: "index_answers_on_poll_id", using: :btree
+
+  create_table "auths", force: true do |t|
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.integer  "place_id"
+    t.string   "redirect_url"
+    t.boolean  "active",        default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "auths", ["place_id"], name: "index_auths_on_place_id", using: :btree
+  add_index "auths", ["resource_id"], name: "index_auths_on_resource_id", using: :btree
 
   create_table "banners", force: true do |t|
     t.string   "name"
@@ -342,5 +355,13 @@ ActiveRecord::Schema.define(version: 20160226161243) do
   end
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
+  create_table "vk_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

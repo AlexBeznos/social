@@ -1,0 +1,8 @@
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :title, 'Edit auth'
+
+.row
+  .col-sm-4
+    %h1 Edit auth
+
+    = render 'form', auth: @auth, place: @place, save_method: :resource

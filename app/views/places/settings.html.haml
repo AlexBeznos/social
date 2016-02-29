@@ -10,7 +10,7 @@
         %span.text-muted.pull-right= @place.name
       %li.list-group-item
         = t('models.places.attrs.owner')
-        %span.text-muted.pull-right= @place_owner.full_name
+        %span.text-muted.pull-right= @place.user.full_name
       %li.list-group-item
         = t('models.places.attrs.ssid')
         %span.text-muted.pull-right= @place.ssid
@@ -80,37 +80,13 @@
           = link_to t('models.places.actions.settings.download_settings'), @place.wifi_settings_link, class: 'btn btn-block btn-info'
   .col-sm-7
     %h1= t('models.places.actions.settings.messages')
-    %form{ :action => "#{settings_place_path(@place)}",  :method => "get"}
-      .row
-        .col-sm-4.col-sm-offset-4
-          = select_tag "message", options_from_collection_for_select(@networks, "name", "name"), include_blank: true, onchange: "this.form.submit();"
     .row
-      - if @message
+      %div{ style: 'position: absolute; right: 15px; top: 20px;' }
+        = link_to 'Add new auth', new_place_auth_path(@place), class: 'btn btn-info btn-xs'
+      - @place.auths.each do |auth|
+        = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
+      - unless @place.auths.any?
         .panel.panel-default.panel-settings
-          .panel-heading
-            .panel-title
-              = t('models.messages.message_for', name: @message.social_network.font_awesome_name)
-              = link_to t('helpers.submit.add', name: t('models.messages.attrs.message')), new_place_message_path(@place), class: 'btn btn-info btn-xs pull-right'
           .panel-body
-            - if @message.social_network.name == 'instagram'
-              %ul.list-group
-                %li.list-group-item
-                  = t('models.messages.attrs.subscription')
-                  %span.text-muted.pull-right= @message.subscription
-            - else
-              .row
-                .col-sm-8
-                  = "#{t('models.messages.attrs.message').capitalize}:"
-                  .panel.panel-default
-                    .panel-body
-                      = @message.message
-                      %br
-                      = link_to @message.message_link, @message.message_link
-                .col-sm-4
-                  = image_tag @message.image.url, class: 'img-responsive'
-          .panel-footer
-            = link_to t('helpers.submit.edit'), edit_place_message_path(@place, @message), class: 'btn btn-primary btn-block'
-            = link_to t('helpers.submit.destroy'), place_message_path(@place, @message), method: 'DELETE', class: 'btn btn-danger btn-block'
-      - else
-        %ul.list-group
-          %li.list-group-item= link_to t('helpers.submit.add', name: t('models.messages.attrs.message')), new_place_message_path(@place), class: 'btn btn-info btn-block'
+            .row
+              .col-sm-8 U have no auths
