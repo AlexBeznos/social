@@ -207,7 +207,6 @@ ActiveRecord::Schema.define(version: 20160226131400) do
     t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
     t.string   "auth_default_lang"
-    t.boolean  "has_preview",                  default: false
     t.string   "ssid"
   end
 
