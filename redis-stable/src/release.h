@@ -1,3 +1,0 @@
-#define REDIS_GIT_SHA1 "881934ee"
-#define REDIS_GIT_DIRTY "67"
-#define REDIS_BUILD_ID "r0uder-X550LB-1455008764"

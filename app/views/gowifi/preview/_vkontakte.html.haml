@@ -1,10 +1,6 @@
-.container
-  .row
-    .col-md-2
 
-    / VK post.
+/ VK post.
 
-    .vk-frame{:class => 'vk-frame'}
-      =image_tag("vk-frame.png", :class => 'frame')
-      =image_tag(@message.image, :class => 'vk-pic')
-
+.vk-frame
+  =image_tag("vk-frame.png", :class => 'frame')
+  =image_tag(@message.image, :class => 'vk-pic')

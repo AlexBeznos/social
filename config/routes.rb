@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
   # customers level accessed pages
   resources :user_sessions, only: [:create, :destroy]
-  get 'login' => 'user_sessions#new', as: :login
+  get 'login' => 'user_sessions#new'
 
   get '/auth/:provider/callback' => 'gowifi_auth#omniauth', as: :auth # omniauth customers authentication
   get '/auth/failure' => 'gowifi_auth#auth_failure'
@@ -91,7 +91,6 @@ Rails.application.routes.draw do
 
   # static pages
   get "/:id" => "pages#show", as: :page, format: false
-  # get ":place_id/preview" => "pages#preview_redirect"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

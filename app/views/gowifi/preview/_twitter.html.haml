@@ -1,8 +1,6 @@
-.container
-  .row
 
-    / TW post
+/ TW post
 
-    .twitter-frame{:class => 'twitter-frame'}
-      =image_tag('twitter-frame.png', :class => 'twitter-frame')
-      =image_tag @message.image, :class => 'twitter-pic'
+.twitter-frame
+  =image_tag('twitter-frame.png', :class => 'twitter-frame')
+  =image_tag(@message.image, :class => 'twitter-pic')

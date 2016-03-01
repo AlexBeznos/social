@@ -1,9 +1,6 @@
-.container
-  .row
 
-    / FB post
+/ FB post
 
-    .fb-frame{:class => 'fb-frame'}
-      =image_tag('fb-frame.png', :class => 'frame')
-      =image_tag @message.image, :class => 'fb-pic'
-
+.fb-frame
+  =image_tag('fb-frame.png', :class => 'frame')
+  =image_tag(@message.image, :class => 'fb-pic')

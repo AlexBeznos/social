@@ -20,6 +20,6 @@
       .vertical-center-row
         .col-md-2-lg-1
 
-        = button_to 'Рассказать!', "#{ENV['APP_URL']}auth/#{@message.social_network.name}", :class => 'btn btn-md btn-default btn-success btn-block'
+        = button_to 'Рассказать!', "/auth/#{@message.social_network.name}", :class => 'btn btn-md btn-default btn-success btn-block'
         = render "gowifi/preview/#{@message.social_network.name}", message: @message
-        = button_to 'Нет, спасибо', gowifi_place_path, :class => 'btn btn-md btn-default center-block', method: 'get'
+        = link_to 'Нет, спасибо', gowifi_place_path, :class => 'btn btn-md center-block'
