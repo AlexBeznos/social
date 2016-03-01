@@ -25,19 +25,7 @@
       .container
         .row
           .col-sm-12.header_block
-            = link_to root_path do
-              .logo_block
-                .wi-fi__left_block
-                  .wi-fi__left_block_inner
-                    .wi-fi_text
-                      WI-FI
-                    .icon-signal
-                .wi-fi__right_block
-                  .logo
-                    %strong Go
-                    %span.logo_img
-                    %span.logo_text Friends
-                  .logo_description Друзья придут
+            %a.logo{:href => "/"}
             .top_socials.pull-right
               .socials
                 .socials_item
