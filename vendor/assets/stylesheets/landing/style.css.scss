@@ -29,6 +29,12 @@ a {
 .clear-fix:after {
     clear: both;
 }
+.logo {
+    display: inline-block;
+    width: 324px;
+    height: 103px;
+    background-image: image-url('landing/logo.png');
+}
 .top_line {
     background-color:  #72c2c9;
     height: 21px;
@@ -37,31 +43,6 @@ header {
     background: image-url('landing/header_background.jpg') ;
     height: 781px;
     background-size: cover;
-}
-.logo_img:before {
-    content: image-url('landing/logo.png');
-}
-.wi-fi__left_block, .wi-fi__right_block {
-    float:left;
-}
-.wi-fi__left_block {
-    color: #fff;
-    border-radius: 50%;
-    background: -webkit-linear-gradient(-51deg, #9b45da 3%, #5e5dac 39%, #689fc8 66%, #73cba0 97%);
-    background: -moz-linear-gradient(-51deg, #9b45da 3%, #5e5dac 39%, #689fc8 66%, #73cba0 97%);
-    background: -o-linear-gradient(-51deg, #9b45da 3%, #5e5dac 39%, #689fc8 66%, #73cba0 97%);
-    background: -ms-linear-gradient(-51deg, #9b45da 3%, #5e5dac 39%, #689fc8 66%, #73cba0 97%);
-    background: linear-gradient(141deg, #9b45da 3%, #5e5dac 39%, #689fc8 66%, #73cba0 97%);
-}
-.wi-fi__left_block_inner {
-    padding: 20px 20px 8px;
-}
-.wi-fi__right_block {
-    padding-left: 8px;
-}
-.wi-fi_text {
-    font-size: 22px;
-    line-height: 1;
 }
 .header_block {
     padding-top: 20px;
@@ -176,23 +157,18 @@ header {
     border-radius: 20px;
 }
 .header_content {
+    font-family: 'Roboto';
     font-size: 32px;
     text-align: center;
     float: right;
     padding: 48px 0;
     letter-spacing: 1.5px;
 }
-.header_socials span {
-    color: #72c2c9;
-    font-size: 64px;
-}
 .header_description1 {
     margin-bottom: 10px;
-    font-family: 'Roboto';
 }
 .header_description2,
 .header_description3 {
-    font-family: 'Roboto';
     font-style: italic;
 }
 
