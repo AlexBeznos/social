@@ -22,6 +22,8 @@
 
 .idea/
 
+.idea/vcs.xml
+
 coverage/
 
 db/data.yml
