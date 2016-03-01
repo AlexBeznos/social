@@ -11,6 +11,7 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag href='https://fonts.googleapis.com/css?family=Roboto:300italic,300,400&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css'
     = stylesheet_link_tag "landing_new", :media => "all"
     = javascript_include_tag "landing_new"
     / HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -47,7 +48,7 @@
                   %a.icon-linkedin-1{:href => "#3", :target => "_blank"}
             .top_form_block
               .top_form_block_inner
-                .top_phone +38(068) 999 93 98
+                .top_phone +38(063) 010-17-97
                 .top_form
                   %a{ href: '#bottom_form'}
                     %button.btn.btn-default Заказать звонок
@@ -82,13 +83,13 @@
               .header_description1
                 Ваши гости расскажут о вас
               .header_socials
-                %span.icon-vkontakte
-                %span.icon-facebook
-                %span.icon-twitter
+                %span.social.social-vk
+                %span.social.social-fb
+                %span.social.social-tw
               .header_description2
                 в обмен на бесплатный
               .header_description3
-                %strong WI-FI
+                WI-FI
     %section#tel_section
       .container
         .row
