@@ -2,7 +2,7 @@ module Consumerable
   require 'ext/string'
 
   def get_message(place, network)
-    place.messages.active.where(social_network: SocialNetwork.find_by(name: network)).first
+    place.messages.joins(:social_network).active.where("social_networks.name = ?", network).first
   end
 
   def find_or_create_costumer(credentials, place, customer = false)

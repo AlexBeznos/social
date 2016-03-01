@@ -20,10 +20,11 @@
 
 .DS_Store
 
-.idea/
+.idea
 
 coverage/
 
 db/data.yml
 
 public/uploads
+
