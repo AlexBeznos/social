@@ -1,0 +1,52 @@
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.btn {
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+
+.vk-frame {
+  position: relative;
+  width: 630px;
+  margin: 0 auto;
+}
+
+
+.vk-pic {
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  margin-left: -260px;
+  width: 520px;
+  height: 310px;
+}
+
+
+
+ // mobile < 500px
+
+@media only screen and (max-width: 500px) {
+  .vk-frame {
+    max-width: 100%;
+  }
+
+  .frame {
+    max-width: 100%;
+  }
+
+  .vk-pic {
+    top: 60px;
+    left: 50%;
+    margin-left: -185px;
+    max-width: 85%;
+    height: 230px;
+  }
+}
