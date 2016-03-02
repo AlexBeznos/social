@@ -230,6 +230,25 @@ header {
     -ms-transition: all ease .5s;
     -o-transition: all ease .5s;
 }
+
+.actual-info {
+    font-family: 'Roboto';
+
+    &:after {
+        content: '';
+        display: block;
+        border: 1px solid black;
+        margin-top: 50px;
+    }
+}
+
+.actual-info__title {
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
+}
+
 #tel_section {
     background: image-url('landing/tel_background.png') ;
     height: 903px;
