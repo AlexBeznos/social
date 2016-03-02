@@ -9,8 +9,10 @@ class AuthsController < ApplicationController
 
   def create
     authorize Auth
+
     @auth = Auth.new(auth_params(:method))
     @auth.place = @place
+
 
     if @auth.save
       redirect_to settings_place_path(@place)
@@ -35,6 +37,7 @@ class AuthsController < ApplicationController
 
   def destroy
     authorize Auth
+
     @auth.update(active: false)
     redirect_to settings_place_path(@place), notice: 'Auth destroyed'
   end

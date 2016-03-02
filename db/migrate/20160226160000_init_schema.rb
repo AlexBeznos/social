@@ -330,7 +330,7 @@ class InitSchema < ActiveRecord::Migration
     end
 
     add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
-    
+
   end
 
   def down
