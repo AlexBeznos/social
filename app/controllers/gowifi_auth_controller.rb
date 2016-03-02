@@ -76,38 +76,41 @@ class GowifiAuthController < ApplicationController
     end
   end
 
+
   private
-    def poll_params
-      params.require(:poll).permit(:answer_ids)
-    end
 
-    def find_place
-      @place = Place.find_by_slug(params[:slug])
-    end
+  def poll_params
+    params.require(:poll).permit(:answer_ids)
+  end
 
-    def find_customer
-      @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-    end
+  def find_place
+    @place = Place.find_by_slug(params[:slug])
+  end
 
-    def find_place_from_session
-      slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
-      slug_by_session = session[:slug]
+  def find_customer
+    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
+  end
 
-      @place = Place.find_by_slug(slug_by_omni || slug_by_session)
-    end
+  def find_place_from_session
+    slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
+    slug_by_session = session[:slug]
 
-    def credentials
+    @place = Place.find_by_slug(slug_by_omni || slug_by_session)
+  end
+
+  def credentials
       request.env['omniauth.auth']
-    end
+  end
 
-    def clear_session
-      session.delete(:slug)
-    end
+  def clear_session
+    session.delete(:slug)
+  end
 
-    def visit_already_created?
-      hash = find_or_create_costumer(credentials, @place, @customer)
-      cookies.permanent[:customer] = hash[:customer].id
+  def visit_already_created?
+    hash = find_or_create_costumer(credentials, @place, @customer)
+    cookies.permanent[:customer] = hash[:customer].id
 
-      hash[:visit]
-    end
+    hash[:visit]
+  end
+
 end
