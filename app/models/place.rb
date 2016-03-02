@@ -10,7 +10,7 @@ class Place < ActiveRecord::Base
   mount_uploader :logo, LogoUploader, mount_on: :logo_file_name
 
   has_one  :style,  :dependent => :destroy
-  has_many :poll_auths, :dependent => :destroy # TODO: remove
+  has_many :polls, :dependent => :destroy # TODO: remove
   has_many :banners, :dependent => :destroy
   has_many :messages, :dependent => :destroy # TODO: remove
   has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
@@ -33,6 +33,7 @@ class Place < ActiveRecord::Base
   validates :ssid, length: { maximum: 9 },
                    format: { with: /\A[a-zA-Z]+\z/, message: I18n.t("models.errors.validations.english_letters_and_spaces") },
                    if: 'persisted? && created_at > Date.new(2016,02,12)' # NOTE: remove after implementation of remote router control
+                     
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
