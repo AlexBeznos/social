@@ -301,10 +301,10 @@ header {
 .benefit_description {
     padding: 0 25px;
     padding-bottom: 67px;
-    width: 270px;
+    width: 279px;
     color: black;
     font-family: Roboto;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 300;
     font-style: italic;
     line-height: 18px;
@@ -371,10 +371,12 @@ header {
     background-size: cover;
     color: #fff;
     padding-bottom: 63px;
+    font-family: Roboto;
 }
 #business .title {
     color: #fff;
     margin: 44px 0 62px;
+    font-size: 24px;
 }
 .column_business {
     float: left;
@@ -472,7 +474,6 @@ header {
 }
 .router_characteristic {
     font-size: 16px;
-    line-height: 1.1;
 }
 #router .image_block {
     margin-top: 28px;
@@ -480,6 +481,11 @@ header {
 }
 .router_content {
     padding-left: 86px;
+    width: 375px;
+    line-height: initial;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 200;
 }
 #router .image_block_1 {
     margin-top: 28px;
@@ -720,4 +726,7 @@ form .row {
     bottom: 20px;
     right: 20px;
     display:none;
+}
+.col-sm-3 {
+  margin-left: 0px;
 }
