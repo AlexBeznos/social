@@ -13,7 +13,7 @@
  * Released on: January 10, 2016
  */
 .swiper-container {
-    margin: 0 auto;
+    margin: 35px auto 0;
     position: relative;
     overflow: hidden;
     /* Fix of Webkit flickering */
