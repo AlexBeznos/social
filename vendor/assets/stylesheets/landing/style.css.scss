@@ -543,51 +543,6 @@ header {
     line-height: 72px;
     float: right;
 }
-footer {
-    background-image: image-url('landing/footer.jpg');
-    background-size: cover;
-}
-.footer_column {
-    border: 1px solid #fff;
-}
-.footer_title {
-    color:  #fff;
-    font-size: 18px;
-    padding: 0 34px;
-}
-.footer_description {
-    font-size: 14px;
-    padding: 10px 17px;
-}
-#footer_form .title{
-    color: #fff;
-    margin: 40px 0 30px;
-}
-.footer_img img {
-    padding: 15px;
-}
-.footer_btn .btn {
-    color: #794ec0;
-    border-color: #794ec0;
-    border-radius: 10px;
-    line-height: 0.7;
-    font-size: 14px;
-}
- #footer_form button:hover {
-    color: #fff;
-    border-color: #689fc8;
-    background: linear-gradient(to bottom, #34b8c0 0%, #6f51c7 100%);
-    -webkit-transition: all ease .5s;
-    -moz-transition: all ease .5s;
-    -ms-transition: all ease .5s;
-    -o-transition: all ease .5s;
-}
-.footer_btn {
-    padding-bottom: 15px;
- }
-.footer_padd {
-    padding-bottom: 25px;
-}
 #penalty img, .col-sm-12 img, .footer_img img, .tel_number img, .tel_img img, .img_block img, .image_block_1 img, .image_block_2 img, .image_block_3 img  {
     width: 100%;
 }
@@ -729,4 +684,94 @@ form .row {
 }
 .col-sm-3 {
   margin-left: 0px;
+}
+
+.footer {
+    margin-top: 200px;
+    padding: 40px 30px 10px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    opacity: 0.84;
+    background-image: linear-gradient(to top, #61a7ab 0%, white 100%);
+
+    vertical-align: middle;
+
+    p {
+        margin: 10px 0px;
+    }
+}
+
+.footer__copyright {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+}
+
+.footer__address {
+    width: 33.3%;
+    float: left;
+}
+
+.footer__social-icons-wrap {
+    display: inline-block;
+    width: 33.3%;
+    float: right;
+
+    font-size: 0;
+    text-align: right;
+}
+
+.footer__social-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 34px;
+    height: 34px;
+
+    margin-right: 15px;
+    background: image-url('landing/footer-soc-ico.png') no-repeat -19px -19px;
+}
+
+.footer__social-icon:last-child {
+    margin-right: 0px;
+}
+
+.footer__social-icon--vk {
+    background-position: -19px -19px;
+}
+
+.footer__social-icon--fb {
+    background-position: -19px -91px;
+}
+
+.footer__social-icon--tw {
+    background-position: -19px -163px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .footer__copyright {
+        width: 100%;
+        float: none;
+        margin-bottom: 10px;
+
+        text-align: center;
+    }
+
+    .footer__address {
+        width: 100%;
+        float: none;
+        margin-bottom: 15px;
+
+        text-align: center;
+    }
+
+    .footer__social-icons-wrap {
+        width: 100%;
+        float: none;
+        margin-bottom: 15px;
+
+        text-align: center;
+    }
 }
