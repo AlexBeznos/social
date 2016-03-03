@@ -525,10 +525,12 @@ header {
     color: #ffffff;
     width: 100%;
     padding: 7px 16px;
+    font-family: Roboto;
 }
 #bottom_form .form_content {
     letter-spacing: 2px;
     padding: 0;
+    position: absolute;
 }
 #bottom_form .form_description {
     font-size: 39px;
@@ -542,10 +544,6 @@ header {
     color: #fff;
     line-height: 72px;
     float: right;
-}
-.icon-menu {
-    font-size: 35px;
-    color: #72c2ca;
 }
  .tel_block_2 {
     margin-top: 50px;
