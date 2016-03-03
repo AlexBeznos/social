@@ -253,6 +253,7 @@ header {
     background: image-url('landing/tel_background.png') ;
     height: 903px;
     background-size: cover;
+    font-family: Roboto;
 }
 .tel_title {
     font-size: 20px;
@@ -290,6 +291,7 @@ header {
     font-size: 18px;
     line-height: 29px;
     padding: 17px 55px 0;
+    font-family: Roboto;
 }
 .line {
     color:  #814bc5;
@@ -311,15 +313,19 @@ header {
 }
 #benefit .title{
     margin: 52px 0 42px;
+    font-family: Roboto;
 }
 .benefit_img_2 {
     margin: 33px 0 14px;
+    font-family: Roboto;
 }
 .benefit_img_4 {
     margin-bottom: -3px;
+    font-family: Roboto;
 }
 .benefit_padd {
     padding-left: 28px;
+    font-family: Roboto;
 }
 .form_block {
     background: #ffffff;
@@ -356,6 +362,7 @@ header {
 #top_form {
     background-image: image-url('landing/bg_top_form.png');
     background-size: cover;
+    font-family: Roboto;
 }
 .form_content {
     padding-top: 26px;
@@ -444,7 +451,7 @@ header {
   font-size: 36px;
   font-weight: 300;
   padding-top: 15px;
-  font-family: inherit;  
+  font-family: inherit;
 }
 #pizza .text_block_1 {
     text-align: right;
@@ -503,6 +510,7 @@ header {
     background-image: image-url('landing/bg_router.png');
     background-size: cover;
     padding-bottom: 46px;
+    font-family: Roboto;
 }
 #router .title {
     color:  #fff;
@@ -553,6 +561,7 @@ header {
 }
 #clients .title {
     margin: 63px 0 10px;
+    font-family: Roboto;
 }
 .client_position img{
     top: 20%;
@@ -565,6 +574,7 @@ header {
 #bottom_form {
     background-image: image-url('landing/bg_bottom_form.png');
     background-size: cover;
+    font-family: Roboto;
 }
 #bottom_form .form_block .btn {
     background-color: #61a7ab;
@@ -590,6 +600,9 @@ header {
     color: #fff;
     line-height: 72px;
     float: right;
+}
+#partners {
+  font-family: Roboto;
 }
  .tel_block_2 {
     margin-top: 50px;
