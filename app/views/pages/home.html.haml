@@ -11,7 +11,7 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag href='https://fonts.googleapis.com/css?family=Roboto:300italic,200,300,400&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css'
+    = stylesheet_link_tag href='https://fonts.googleapis.com/css?family=Roboto:300italic,200,300,400italic,400&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css'
     = stylesheet_link_tag "landing_new", :media => "all"
     = javascript_include_tag "landing_new"
     / HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -256,21 +256,19 @@
         .row
           .col-sm-12
             .title.text-center
-              %h3 РЕКЛАМА - КОТОРАЯ ПРИНОСИТ ДЕНЬГИ
+              %h3 РЕКЛАМА - КОТОРАЯ ПРИНОСИТ ПРИБЫЛЬ
+            %a.logo{:href => "/"}
         .row
           .col-sm-4
-            .text_block_1
-              Наш сервис
-              %strong GoFriends
-            .text_block_2
-              ПРИВЕДЕТ к Вам
-              %strong новых клиентов
-            .text_block_3 и дополнительную ПРИБЫЛЬ
+            .text_block_1 Благодаря нам:
+            .text_block_2 Вы сможете увеличить посещаемость вашего заведение
+            .text_block_3 Повысить лояльность ваших клиентов
+            .text_block_5 Брендинг- вы сможете рассказать о себе на большую  аудиторию в соц сетях 150 тыс. человек
           .col-sm-5
             .img_block
               = image_tag 'landing/pizza.png'
           .col-sm-3
-            .text_block_4 А вы поделитель с нами кусочком
+            .text_block_4 А вы поделитесь с нами кусочком:)
     %section#router
       .container
         .row

@@ -424,33 +424,79 @@ header {
 }
 #pizza {
     margin-bottom: 71px;
+    font-family: Roboto;
+}
+#pizza .container .row .col-sm-5 .img_block img {
+    height: 464px;
+    width: 583px;
+}
+#pizza .container .row .col-sm-12 {
+      margin-top: -35px;
 }
 #pizza .title {
     margin: 73px 0 37px;
+    color: #441664;
+    font-style: italic;
+}
+#pizza .title h3 {
+  position: absolute;
+  margin-left: 377px;
+  font-size: 36px;
+  font-weight: 300;
+  padding-top: 15px;
+  font-family: inherit;  
 }
 #pizza .text_block_1 {
-    padding-top: 46px;
     text-align: right;
-    margin-right: -19px;
+    font-weight: 400;
+    font-size: 42px;
+    color: #1e1313;
+    width: 415px;
+    margin-bottom: 50px;
 }
 #pizza .text_block_2{
-    padding: 25px 54px 0;
     line-height: 1.1;
-    text-align: right;
-    margin-right: -19px;
     font-size: 27px;
     letter-spacing: 2px;
-}
-#pizza .text_block_2 strong {
-    letter-spacing: normal;
+    color: #0f0813;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 31px;
+    text-transform: uppercase;
+    width: 467px;
+    text-align: left;
+    margin-bottom: 104px;
 }
 #pizza .text_block_3 {
     padding: 13px 29px;
     text-align: right;
+    color: #1e1313;
+    font-size: 35px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 32px;
+    width: 412px;
 }
 #pizza .text_block_4 {
     margin-top: 144px;
     padding: 0 10px;
+    color: #1e1313;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 29px;
+    width: 343px;
+}
+#pizza .text_block_5 {
+    width: 906px;
+    color: #1e1313;
+    font-family: Roboto;
+    font-size: 35px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 30px;
+    margin-left: 285px;
+    margin-top: 80px;
 }
 
 #router {
