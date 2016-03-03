@@ -12,6 +12,8 @@ var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
 
 $(document).ready(function() {
   var swiper = new Swiper('.swiper-container', {
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
     pagination: '.swiper-pagination',
     paginationClickable: true,
     slidesPerView: 5,
