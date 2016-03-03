@@ -1,11 +1,12 @@
 .form-inputs
   = form.input :question, placeholder: t('models.polls.form.placeholder_question')
+
   = form.simple_fields_for :answers do |a|
 
     .duplicatable_nested_form
       = a.input :content, label: t('models.polls.attrs.answer'), placeholder: t('models.polls.form.placeholder_answer')
 
-      - if a.object.new_record?
+      - if a
         = link_to t('models.polls.form.remove'), '', remote: true, class: 'destroy_duplicate_nested_form'
       - else
         = a.check_box :_destroy
