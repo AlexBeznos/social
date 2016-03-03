@@ -697,13 +697,10 @@ form .row {
     background-image: linear-gradient(to top, #61a7ab 0%, white 100%);
 
     vertical-align: middle;
-
-    p {
-        margin: 10px 0px;
-    }
 }
 
 .footer__copyright {
+    margin-top: 40px;
     width: 33.3%;
     float: left;
     text-align: center;
@@ -715,6 +712,7 @@ form .row {
 }
 
 .footer__social-icons-wrap {
+    margin-top: 30px;
     display: inline-block;
     width: 33.3%;
     float: right;

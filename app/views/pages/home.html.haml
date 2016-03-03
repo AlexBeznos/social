@@ -345,17 +345,20 @@
             .client_block
               = image_tag 'landing/karp.png'
           .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/bukovel.png'
+          .col-sm-2.col-xs-4
             .client_block.client_position
-              = image_tag 'landing/garden.png'
+              = image_tag 'landing/c13.png'
+          .col-sm-2.col-xs-4
+            .client_block.client_position
+              = image_tag 'landing/nuga-best.jpg'
+          .col-sm-2.col-xs-4
+            .client_block.client_position
+              = image_tag 'landing/cross.jpg'
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c1.png'
-          .col-sm-2.col-xs-4
-            .client_block
-              = image_tag 'landing/c2.png'
-          .col-sm-2.col-xs-4
-            .client_block
-              = image_tag 'landing/c3.png'
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c4.png'
@@ -383,9 +386,6 @@
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c12.png'
-          .col-sm-2.col-xs-4
-            .client_block
-              = image_tag 'landing/c13.png'
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c14.png'
@@ -557,60 +557,16 @@
                   .sd_title
                     %span.icon-location
                     Аман
-    %footer#footer_form
+    %footer.footer
       .container
-        .row
-          .col-sm-12
-            .title.text-center
-              %h3 ОСТАВИТЬ ЗАЯВКУ
-        .row
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f1.png'
-              .footer_title.text-center ВЛАДЕЛЬЦАМ ЗАВЕДЕНИЙ
-              .footer_description.wrap.footer_margin.text-center
-                У вас есть свое заведение
-                либо вы частное лицо?
-                Подключитесь системе GoFriends
-              .footer_btn.text-center
-                %a{ href: '#bottom_form' }
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f2.png'
-              .footer_title.text-center СТАТЬ ПРЕДСТАВИТЕЛЕМ
-              .footer_description.text-center
-                Купите представительство GoFriends
-                Развивайте сеть в своем регионе и
-                зарабатывайте вместе с нами.
-              .footer_btn.text-center
-                %a{ href: '#bottom_form'}
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f1.png'
-              .footer_title.footer_padd.text-center РЕКЛАМОДАТЕЛЯМ
-              .footer_description.footer_margin.text-center
-                Размещайте свою рекламу в сети
-                Gofriends и повышайте
-                узнаваемость бренда.
-              .footer_btn.text-center
-                %a{ href: '#bottom_form' }
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f1.png'
-              .footer_title.footer_padd.text-center ПРОВАЙДЕРАМ
-              .footer_description.footer_margin.text-center
-                Получите преимущества перед
-                другими провайдерами, внедрив
-                лучшее Hot-spot решение
-              .footer_btn.text-center
-                %a{ href: '#bottom_form' }
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
+        %p.footer__address Юридический адрес <br> Украина, Киев <br> ул.Вереснева 24
+        %p.footer__copyright
+          %b 2015 ©  OOO «Гоу Френдс»
+        .footer__social-icons-wrap
+          %a.footer__social-icon.footer__social-icon--vk{href: "#"}
+          %a.footer__social-icon.footer__social-icon--fb{href: "#"}
+          %a.footer__social-icon.footer__social-icon--tw{href: "#"}
     %a#back-to-top.btn.btn-primary.btn-lg.back-to-top{"data-placement" => "left", "data-toggle" => "tooltip", :href => "#", :role => "button", :title => "Жми, чтобы попасть наверх страницы"}
       %span.glyphicon.glyphicon-chevron-up.icon-up-open
+
+
