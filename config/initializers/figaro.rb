@@ -12,14 +12,14 @@ dev_keys = %w(
   AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY
   AWS_REGION
-  SENDGRID_USERNAME
-  SENDGRID_PASSWORD
 )
 
 prod_keys = %w(
   AWS_BUCKET
   SECRET_KEY_BASE
   SLACK_WEB_HOOK
+  SENDGRID_USERNAME
+  SENDGRID_PASSWORD
 )
 
 figaro_required = if Rails.env.production?

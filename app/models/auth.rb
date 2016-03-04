@@ -15,7 +15,7 @@ class Auth < ActiveRecord::Base
   belongs_to :resource, polymorphic: true, autosave: true
 
   validates :redirect_url, presence: true, url: true
-  validates :resource_type, uniqueness: { scope: :place_id }
+  validates :resource_type, uniqueness: { conditions: -> { where(active: true) }, scope: :place_id }
 
   accepts_nested_attributes_for :resource
 

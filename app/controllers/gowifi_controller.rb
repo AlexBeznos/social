@@ -12,7 +12,6 @@ class GowifiController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
-    @networks = @place.get_networks
     @banner = find_banner if @place.display_other_banners
     @banner.increment!(:number_of_views) if @banner
   end

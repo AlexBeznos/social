@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160229150618) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "ahoy_events", id: :uuid, force: true do |t|
+  create_table "ahoy_events", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.uuid     "visit_id"
     t.integer  "user_id"
     t.string   "name"
@@ -326,7 +326,7 @@ ActiveRecord::Schema.define(version: 20160229150618) do
   add_index "users", ["last_request_at"], name: "index_users_on_last_request_at", using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", using: :btree
 
-  create_table "visits", id: :uuid, force: true do |t|
+  create_table "visits", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.uuid     "visitor_id"
     t.string   "ip"
     t.text     "user_agent"
