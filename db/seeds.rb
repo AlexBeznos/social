@@ -8,7 +8,7 @@ User.create(email: 'd@u.com', password: 'qwerty', password_confirmation: 'qwerty
 
 
 # Do not change order
-SocialNetwork.create(name: 'vkontakte')
-SocialNetwork.create(name: 'facebook')
-SocialNetwork.create(name: 'instagram')
-SocialNetwork.create(name: 'twitter')
+# SocialNetwork.create(name: 'vkontakte')
+# SocialNetwork.create(name: 'facebook')
+# SocialNetwork.create(name: 'instagram')
+# SocialNetwork.create(name: 'twitter')

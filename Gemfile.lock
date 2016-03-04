@@ -562,7 +562,6 @@ GEM
       rdoc (~> 4.0)
     sendgrid (1.2.0)
       json
-      json
     sexp_processor (4.5.0)
     shoulda-callback-matchers (1.1.1)
       activesupport (>= 3)

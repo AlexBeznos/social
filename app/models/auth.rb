@@ -7,6 +7,8 @@ class Auth < ActiveRecord::Base
 
   METHODS = NETWORKS + %w(
     poll
+    sms
+    password
   )
 
   default_scope { where(active: true) }
