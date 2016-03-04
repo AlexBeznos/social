@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303034357) do
+ActiveRecord::Schema.define(version: 20160304121929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,10 @@ ActiveRecord::Schema.define(version: 20160303034357) do
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
 
+  create_table "password_auths", force: true do |t|
+    t.string "password"
+  end
+
   create_table "places", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -226,9 +230,12 @@ ActiveRecord::Schema.define(version: 20160303034357) do
 
   create_table "poll_auths", force: true do |t|
     t.text     "question"
+    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "poll_auths", ["place_id"], name: "index_poll_auths_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -243,9 +250,13 @@ ActiveRecord::Schema.define(version: 20160303034357) do
   create_table "sms_auths", force: true do |t|
     t.string   "phone"
     t.string   "code"
+    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sms_content"
   end
+
+  add_index "sms_auths", ["place_id"], name: "index_sms_auths_on_place_id", using: :btree
 
   create_table "social_network_icons", force: true do |t|
     t.integer  "place_id"

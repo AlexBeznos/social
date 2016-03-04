@@ -38,7 +38,7 @@ class Place < ActiveRecord::Base
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
   validates :name, :template, presence: true
-  validates :password, presence: true, if: 'enter_by_password'
+  validates :password, presence: true, if: 'enter_by_password' #NOTE: remove
   validates :wifi_settings_link, :redirect_url, :url => true
   validates :logo, file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
                    file_size: { in: 11.kilobytes..10.megabytes }
