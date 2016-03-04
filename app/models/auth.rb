@@ -6,7 +6,9 @@ class Auth < ActiveRecord::Base
   }
 
   ALTERNATIVE = {
-    poll: 'poll'
+    poll: 'poll',
+    sms: 'sms',
+    password: 'password'
   }
 
   METHODS = NETWORKS.values + ALTERNATIVE.values
