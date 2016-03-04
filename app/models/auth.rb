@@ -1,15 +1,15 @@
 class Auth < ActiveRecord::Base
-  NETWORKS = %w(
-    vk
-    facebook
-    twitter
-  )
+  NETWORKS = {
+    vk: 'vk',
+    facebook: 'facebook',
+    twitter: 'twitter'
+  }
 
-  METHODS = NETWORKS + %w(
-    poll
-    sms
-    password
-  )
+  ALTERNATIVE = {
+    poll: 'poll'
+  }
+
+  METHODS = NETWORKS.values + ALTERNATIVE.values
 
   default_scope { where(active: true) }
 
@@ -22,6 +22,14 @@ class Auth < ActiveRecord::Base
   accepts_nested_attributes_for :resource
 
   def resource_attributes=(attributes, options = {})
-    self.resource = resource_type.constantize.new(attributes, options)
+    if persisted?
+      super attributes
+    else
+      self.resource = resource_type.constantize.new(attributes, options)
+    end
+  end
+
+  def auth_methods
+    persisted? ? [resource.class::NAME] : Auth::METHODS
   end
 end

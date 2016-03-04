@@ -6,7 +6,7 @@
     = f.input :resource_type, collection: Auth::METHODS.map {|n| [n, "#{n.capitalize}Auth"] }, input_html: { class: 'authMethodSelect', disabled: auth.persisted?  }
 
   = f.simple_fields_for save_method do |r|
-    - Auth::METHODS.each do |method|
+    - auth.auth_methods.each do |method|
       %div{ class: "#{method.capitalize}Auth"}
         = render partial: "#{method}_auths/form", locals: { resource: auth.resource, form: r }
 

@@ -1,5 +1,5 @@
 class VkAuth < ActiveRecord::Base
-  NAME = 'vk'
+  NAME = Auth::NETWORKS[:vk]
 
   mount_uploader :image, NetworksAuthUploader
 
