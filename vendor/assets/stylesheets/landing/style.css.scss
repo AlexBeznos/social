@@ -839,13 +839,13 @@ form .row {
     }
 }
 
-.partnerss-contacts {
+.partners-contacts {
     width: 100%;
 
     font-size: 0;
 }
 
-.partnerss-contacts__5-col {
+.partners-contacts__5-col {
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -856,7 +856,7 @@ form .row {
     vertical-align: top;
 }
 
-.partnerss-contacts__5-col h3 {
+.partners-contacts__5-col h3 {
     margin: 0;
     margin-bottom: 15px;
 
@@ -864,7 +864,7 @@ form .row {
     font-weight: 400;
 }
 
-.partnerss-contacts__5-col p {
+.partners-contacts__5-col p {
     margin: 0;
     margin-bottom: 15px;
 
@@ -874,19 +874,19 @@ form .row {
 }
 
 @media screen and (max-width: 1040px) {
-    .partnerss-contacts__5-col {
+    .partners-contacts__5-col {
         width: 33.3%;
     }
 }
 
 @media screen and (max-width: 640px) {
-    .partnerss-contacts__5-col {
+    .partners-contacts__5-col {
         width: 50%;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .partnerss-contacts__5-col {
+    .partners-contacts__5-col {
         width: 100%;
     }
 }
