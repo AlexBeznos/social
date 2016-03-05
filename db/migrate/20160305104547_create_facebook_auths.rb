@@ -1,4 +1,4 @@
-class CreateFacebookAuth < ActiveRecord::Migration
+class CreateFacebookAuths < ActiveRecord::Migration
   def change
     create_table :facebook_auths do |t|
       t.text :message

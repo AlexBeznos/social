@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305110915) do
+ActiveRecord::Schema.define(version: 20160305233049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160305110915) do
     t.integer  "number_of_selections", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "poll_auth_id"
   end
 
   add_index "answers", ["poll_id"], name: "index_answers_on_poll_id", using: :btree
@@ -194,6 +195,10 @@ ActiveRecord::Schema.define(version: 20160305110915) do
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
 
+  create_table "password_auths", force: true do |t|
+    t.string "password"
+  end
+
   create_table "places", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -234,6 +239,12 @@ ActiveRecord::Schema.define(version: 20160305110915) do
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 
+  create_table "poll_auths", force: true do |t|
+    t.text     "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "polls", force: true do |t|
     t.text     "question"
     t.integer  "place_id"
@@ -252,6 +263,14 @@ ActiveRecord::Schema.define(version: 20160305110915) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "sms_auths", force: true do |t|
+    t.string   "phone"
+    t.string   "code"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "social_network_icons", force: true do |t|
     t.integer  "place_id"

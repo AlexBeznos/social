@@ -1,4 +1,4 @@
-class CreateVkAuth < ActiveRecord::Migration
+class CreateVkAuths < ActiveRecord::Migration
   def change
     create_table :vk_auths do |t|
       t.text :message

@@ -1,6 +1,5 @@
 .form-inputs
   = form.input :question, placeholder: t('models.polls.form.placeholder_question')
-
   = form.simple_fields_for :answers do |a|
 
     .duplicatable_nested_form
