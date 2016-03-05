@@ -1,0 +1,13 @@
+.panel.panel-default.panel-settings
+  .panel-heading
+    .panel-title= "#{resource.class::NAME.capitalize} auth"
+  .panel-body
+    .row
+      .col-sm-8
+        Message:
+        .panel.panel-default
+          .panel-body
+            = "Password to authentication #{resource.password}."
+  .panel-footer
+    = link_to 'Edit', edit_place_auth_path(place, resource.auth), class: 'btn btn-primary btn-block'
+    = link_to 'Destroy', place_auth_path(place, resource.auth), method: 'DELETE', class: 'btn btn-danger btn-block'
