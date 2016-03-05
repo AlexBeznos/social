@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304121929) do
+ActiveRecord::Schema.define(version: 20160302130052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "ahoy_events", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+  create_table "ahoy_events", id: :uuid, force: true do |t|
     t.uuid     "visit_id"
     t.integer  "user_id"
     t.string   "name"
     t.json     "properties"
     t.datetime "time"
+    t.integer  "place_id"
   end
 
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
@@ -31,13 +32,13 @@ ActiveRecord::Schema.define(version: 20160304121929) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
-    t.integer  "poll_auth_id"
+    t.integer  "poll_id"
     t.integer  "number_of_selections", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "answers", ["poll_auth_id"], name: "index_answers_on_poll_auth_id", using: :btree
+  add_index "answers", ["poll_id"], name: "index_answers_on_poll_id", using: :btree
 
   create_table "auths", force: true do |t|
     t.string   "resource_type"
@@ -123,13 +124,15 @@ ActiveRecord::Schema.define(version: 20160304121929) do
 
   add_index "customers", ["social_network_id"], name: "index_customers_on_social_network_id", using: :btree
 
-  create_table "facebook_auths", force: true do |t|
-    t.text     "message"
-    t.string   "message_url"
-    t.string   "image"
+  create_table "gowifi_sms", force: true do |t|
+    t.string   "phone"
+    t.string   "code"
+    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
 
   create_table "menu_items", force: true do |t|
     t.string   "name"
@@ -184,10 +187,6 @@ ActiveRecord::Schema.define(version: 20160304121929) do
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
 
-  create_table "password_auths", force: true do |t|
-    t.string "password"
-  end
-
   create_table "places", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -228,14 +227,14 @@ ActiveRecord::Schema.define(version: 20160304121929) do
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 
-  create_table "poll_auths", force: true do |t|
+  create_table "polls", force: true do |t|
     t.text     "question"
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "poll_auths", ["place_id"], name: "index_poll_auths_on_place_id", using: :btree
+  add_index "polls", ["place_id"], name: "index_polls_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -246,17 +245,6 @@ ActiveRecord::Schema.define(version: 20160304121929) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
-
-  create_table "sms_auths", force: true do |t|
-    t.string   "phone"
-    t.string   "code"
-    t.integer  "place_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "sms_content"
-  end
-
-  add_index "sms_auths", ["place_id"], name: "index_sms_auths_on_place_id", using: :btree
 
   create_table "social_network_icons", force: true do |t|
     t.integer  "place_id"
@@ -314,14 +302,6 @@ ActiveRecord::Schema.define(version: 20160304121929) do
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
 
-  create_table "twitter_auths", force: true do |t|
-    t.text     "message"
-    t.string   "message_url"
-    t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -347,7 +327,7 @@ ActiveRecord::Schema.define(version: 20160304121929) do
   add_index "users", ["last_request_at"], name: "index_users_on_last_request_at", using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", using: :btree
 
-  create_table "visits", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+  create_table "visits", id: :uuid, force: true do |t|
     t.uuid     "visitor_id"
     t.string   "ip"
     t.text     "user_agent"

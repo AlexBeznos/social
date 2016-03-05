@@ -1,16 +1,14 @@
 $ ->
   methods = '<%= Auth::METHODS.map { |m| ".#{m.capitalize}Auth" }.join(", ") %>'
   select = '.authMethodSelect'
-  static_input = [".btn-default", ".btn-default input", ".select", "#auth_redirect_url"].join(", ")
 
   showForm = (target) ->
     $(methods).hide()
-    #$(":input").attr("disabled", true)
-    $(static_input).attr("disabled", false)
+    $(methods).find(":input").attr("disabled", true)
 
     if target.val()
       $(".#{target.val()}").show()
-      $(".#{target.val()} :input").attr("disabled", false)
+      $(".#{target.val()}").find(":input").attr("disabled", false)
 
 
   $(methods).hide()
