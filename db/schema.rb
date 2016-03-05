@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305104547) do
+ActiveRecord::Schema.define(version: 20160305110915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -308,6 +308,14 @@ ActiveRecord::Schema.define(version: 20160305104547) do
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
+
+  create_table "twitter_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
