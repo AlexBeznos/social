@@ -1,17 +1,13 @@
 .panel.panel-default.panel-settings
   .panel-heading
-    .panel-title= "#{resource.class::NAME.upcase} auth"
+    .panel-title= "#{resource.class::NAME.capitalize} auth"
   .panel-body
     .row
       .col-sm-8
         Message:
         .panel.panel-default
           .panel-body
-            = resource.message
-            %br
-            = link_to resource.message_url, resource.message_url
-      .col-sm-4
-        = image_tag resource.image.url, class: 'img-responsive' if resource.image
+            = "#{resource.message} #{resource.code}"
   .panel-footer
     = link_to 'Edit', edit_place_auth_path(place, resource.auth), class: 'btn btn-primary btn-block'
     = link_to 'Destroy', place_auth_path(place, resource.auth), method: 'DELETE', class: 'btn btn-danger btn-block'

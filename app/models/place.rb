@@ -27,7 +27,7 @@ class Place < ActiveRecord::Base
 
   default_value_for :auth_default_lang, I18n.default_locale.to_s
 
-  before_validation :set_password, if: 'enter_by_password'
+  before_validation :set_password, if: 'enter_by_password' #TODO: remove
 
   validates :ssid, presence: true
   validates :ssid, length: { maximum: 9 },
