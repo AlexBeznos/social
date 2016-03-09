@@ -1,24 +1,24 @@
-en:
+pl:
   models:
     auths:
-      name: "authentication"
-      Primary: "Primary"
-      Secondary: "Secondary"
+      name: "poświadczenie"
+      Primary: "Podstawowa"
+      Secondary: "Wtórny"
       methods:
-        vkontakte: "vkontakte"
-        facebook: "facebook"
-        twitter: "twitter"
-        sms: "sms"
-        poll: "poll"
-        simple: "simple"
-        password: "password"
+        vkontakte: "VKontakte"
+        facebook: "Facebook"
+        twitter: "Twitter"
+        sms: "Sms"
+        poll: "Głosowanie"
+        simple: "Prosty"
+        password: "Hasło"
       actions:
         new:
-          title: "New authentication"
-          button: "Add new authentication"
+          title: "Nowy uwierzytelnienie"
+          button: "Dodaj nowy uwierzytelniania"
         edit:
-          title: "Update authentication"
-          button: "Edit"
+          title: "aktualizacja uwierzytelnienie"
+          button: "Edytować"
         destroy:
-          button: "Destroy"
-      no_auth: "You have no authentications."
+          button: "Zniszczyć"
+      no_auth: "Nie masz poświadczeń ."

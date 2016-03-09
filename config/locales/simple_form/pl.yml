@@ -4,8 +4,17 @@ pl:
       default_message: "Należy rozwiązać problem w następujący sposób:"
     labels:
       auth:
-        redirect_url: "Przekierowanie linku po athentication"
+        redirect_url: "Przekierowanie po uwierzytelnieniu"
         resource_type: "Typ uwierzytelniania"
+        resource:
+          message_url: "Wiadomość url"
+          message: "Wiadomość"
+          image: "Obraz"
+          password: "Hasło"
+          question: "Pytanie"
+          answer: "Odpowiedź"
+          add_answer: "Dodaj odpowiedź"
+          remove: "Usunąć"
       place:
         name: 'nazwa instytucji'
         ssid: 'miejsca SSID'
