@@ -81,6 +81,12 @@
   .col-sm-7
     %h1= t('models.places.actions.settings.messages')
     .row
+      %ul.nav.nav-tabs{ style: 'margin: -30px 15px 0 0; ' }
+        %li.active{ role: "presentation" }
+          %a{ href: "#home", aria: { controls: "home" }, role: "tab", data: { toggle: "tab"} } First
+        %li{ role: "presentation" }
+          %a{ href: "#home", aria: { controls: "home" }, role: "tab", data: { toggle: "tab"} } Second
+    .row
       %div{ style: 'position: absolute; right: 15px; top: 20px;' }
         = link_to 'Add new auth', new_place_auth_path(@place), class: 'btn btn-info btn-xs'
       - @place.auths.each do |auth|
