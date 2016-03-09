@@ -1,24 +1,24 @@
-en:
+hu:
   models:
     auths:
-      name: "authentication"
-      Primary: "Primary"
-      Secondary: "Secondary"
+      name: "hitelesítés"
+      Primary: "Elsődleges"
+      Secondary: "Másodlagos"
       methods:
         vkontakte: "vkontakte"
         facebook: "facebook"
         twitter: "twitter"
         sms: "sms"
-        poll: "poll"
-        simple: "simple"
-        password: "password"
+        poll: "Közvélemény kutatás"
+        simple: "Egyszerű"
+        password: "Jelszó"
       actions:
         new:
-          title: "New authentication"
-          button: "Add new authentication"
+          title: "új hitelesítés"
+          button: "Új hitelesítés"
         edit:
-          title: "Update authentication"
-          button: "Edit"
+          title: "frissítés hitelesítés"
+          button: "szerkesztése"
         destroy:
-          button: "Destroy"
-      no_auth: "You have no authentications."
+          button: "Elpusztítani"
+      no_auth: "Nincsenek hitelesítések."
