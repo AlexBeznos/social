@@ -8,17 +8,18 @@ class Auth < ActiveRecord::Base
   ALTERNATIVE = {
     poll: 'poll',
     sms: 'sms',
-    password: 'password'
+    password: 'password',
+    simple: 'simple'
   }
 
   METHODS = NETWORKS.values + ALTERNATIVE.values
 
   enum step: %i( primary secondary )
 
-  default_scope { where(active: true) }
+  scope :active, -> { where(active: true) }
 
   belongs_to :place
-  belongs_to :resource, polymorphic: true, autosave: true
+  belongs_to :resource, polymorphic: true, autosave: true, dependent: :destroy
 
   validates :redirect_url, presence: true, url: true
   validates :resource_type, uniqueness: { conditions: -> { where(active: true) }, scope: [ :place_id, :step ] }

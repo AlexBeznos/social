@@ -92,7 +92,7 @@
       .tab-content
         - Auth.steps.keys.each do |step|
           .tab-pane{ role: 'tabpanel', class: "#{ 'active' if step == Auth.steps.first.first }", id: step }
-            - @place.auths.send(step).each do |auth|
+            - @place.auths.active.send(step).each do |auth|
               .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
                 .panel-heading
                   .panel-title= "#{auth.resource.class::NAME.upcase} auth"
@@ -102,7 +102,7 @@
                   = link_to 'Edit', edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
                   = link_to 'Destroy', place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
 
-      - unless @place.auths.any?
+      - unless @place.auths.active.any?
         .panel.panel-default.panel-settings
           .panel-body
             .row

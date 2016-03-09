@@ -37,8 +37,13 @@ class AuthsController < ApplicationController
 
   def destroy
     authorize Auth
+    
+    if Auth::NETWORKS.values.include? @auth.resource.class::NAME
+      @auth.update(active: false)
+    else
+      @auth.destroy
+    end
 
-    @auth.update(active: false)
     redirect_to settings_place_path(@place), notice: 'Auth destroyed'
   end
 
