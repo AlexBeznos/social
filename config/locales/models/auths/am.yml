@@ -1,24 +1,24 @@
-en:
+am:
   models:
     auths:
-      name: "authentication"
-      Primary: "Primary"
-      Secondary: "Secondary"
+      name: "իսկությունը"
+      Primary: "հիմնական"
+      Secondary: "միջնակարգ"
       methods:
         vkontakte: "vkontakte"
         facebook: "facebook"
         twitter: "twitter"
         sms: "sms"
-        poll: "poll"
-        simple: "simple"
-        password: "password"
+        poll: "քվեարկություն"
+        simple: "պարզ"
+        password: "գաղտնաբառ"
       actions:
         new:
-          title: "New authentication"
-          button: "Add new authentication"
+          title: "իսկությունը"
+          button: "Ավելացնել նոր իսկությունը"
         edit:
-          title: "Update authentication"
-          button: "Edit"
+          title: "Թարմացնել իսկությունը"
+          button: "խմբագրել"
         destroy:
-          button: "Destroy"
-      no_auth: "You have no authentications."
+          button: "ոչնչացնել"
+      no_auth: Դուք չունեք."
