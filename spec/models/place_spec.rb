@@ -18,6 +18,7 @@ RSpec.describe Place do
   it { is_expected.to callback(:set_wifi_link_freshnes).before(:save) }
   it { is_expected.to callback(:gen_new_wifi_settings).after(:save) }
   it { is_expected.to callback(:set_password).before(:validation).if('enter_by_password') }
+  it { is_expected.to have_many(:auths) }
   it { is_expected.to have_many(:messages) }
   it { is_expected.to have_many(:visits).class_name('Customer::Visit') }
   it { is_expected.to have_many(:stocks) }

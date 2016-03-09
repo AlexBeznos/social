@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :vk_auth do
-    message "MyText"
-message_url "MyString"
-image "MyString"
+    message Faker::Hacker.say_something_smart
+    message_url Faker::Internet.url("example.com")
+    image { File.new(Rails.root.join('spec', 'fixtures', 'image.jpg')) }
   end
-
 end
