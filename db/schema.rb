@@ -390,7 +390,7 @@ ActiveRecord::Schema.define(version: 20160309113652) do
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
-  create_table "vk_auths", force: true do |t|
+  create_table "vkontakte_auths", force: true do |t|
     t.text     "message"
     t.string   "message_url"
     t.string   "image"

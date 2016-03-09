@@ -1,6 +1,6 @@
 class Auth < ActiveRecord::Base
   NETWORKS = {
-    vk: 'vk',
+    vkontakte: 'vkontakte',
     facebook: 'facebook',
     twitter: 'twitter'
   }
@@ -17,6 +17,7 @@ class Auth < ActiveRecord::Base
   enum step: %i( primary secondary )
 
   scope :active, -> { where(active: true) }
+  scope :resource_like, -> (meth) { where("resource_type LIKE ?", "#{meth}%") }
 
   belongs_to :place
   belongs_to :resource, polymorphic: true, autosave: true, dependent: :destroy

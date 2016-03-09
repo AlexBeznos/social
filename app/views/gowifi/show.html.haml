@@ -25,10 +25,10 @@
       .wrapper-in
         .content
           = render 'header', place: @place, customer: @customer
-          = render 'networks', place: @place, networks: @networks
-          = render 'by_password', place: @place if @place.enter_by_password
-          = render 'by_sms', place: @place if @place.sms_auth
-          = render 'poll', place: @place if @place.polls_active && @place.polls.any?
+          = render 'networks', place: @place
+          = render 'by_password', place: @place
+          = render 'by_sms', place: @place
+          = render 'poll', place: @place
           %br
           = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg' if @place.simple_enter
           %br

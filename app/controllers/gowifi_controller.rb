@@ -12,6 +12,7 @@ class GowifiController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
+    @auths = @place.auths.where(step: params[:step] || Auth.steps.first.first})
     @banner = find_banner if @place.display_other_banners
     @banner.increment!(:number_of_views) if @banner
   end
@@ -62,5 +63,9 @@ class GowifiController < ApplicationController
   def check_for_place_activation
     return redirect_to '/404.html' unless @place
     redirect_to wifi_login_path(@place) unless @place.try(:active)
+  end
+
+  def get_step
+    params[:step] || Auth.steps.first.first
   end
 end
