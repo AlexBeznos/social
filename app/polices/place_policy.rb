@@ -42,7 +42,8 @@ class PlacePolicy < ApplicationPolicy
       :domen_url,
       :sms_auth,
       :auth_default_lang,
-      :ssid
+      :ssid,
+      :mfa
     ]
   end
 

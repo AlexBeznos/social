@@ -13,13 +13,15 @@ class Auth < ActiveRecord::Base
 
   METHODS = NETWORKS.values + ALTERNATIVE.values
 
+  enum step: %i( primary secondary )
+
   default_scope { where(active: true) }
 
   belongs_to :place
   belongs_to :resource, polymorphic: true, autosave: true
 
   validates :redirect_url, presence: true, url: true
-  validates :resource_type, uniqueness: { conditions: -> { where(active: true) }, scope: :place_id }
+  validates :resource_type, uniqueness: { conditions: -> { where(active: true) }, scope: [ :place_id, :step ] }
 
   accepts_nested_attributes_for :resource
 

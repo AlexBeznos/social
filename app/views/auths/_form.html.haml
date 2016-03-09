@@ -2,6 +2,7 @@
 
 = simple_form_for [place, auth] do |f|
   = f.error_notification
+  = f.hidden_field :step, value: "#{params[:step] && Auth.steps.keys.include?(params[:step]) ? params[:step] : Auth.steps.first.first}"
   .form-inputs
     = f.input :resource_type, collection: Auth::METHODS.map {|n| [n, "#{n.capitalize}Auth"] }, input_html: { class: 'authMethodSelect', disabled: auth.persisted?  }
 

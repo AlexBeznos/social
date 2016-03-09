@@ -1,4 +1,5 @@
 = content_for :page_stylesheet, 'dashboard/settings'
+= content_for :page_javascript, 'dashboard/settings'
 = content_for :title, t('models.places.actions.settings.title', place_name: @place.name)
 
 .row.settings
@@ -80,24 +81,26 @@
           = link_to t('models.places.actions.settings.download_settings'), @place.wifi_settings_link, class: 'btn btn-block btn-info'
   .col-sm-7
     %h1= t('models.places.actions.settings.messages')
+    - if @place.mfa
+      %ul.nav.nav-tabs{ style: 'margin: -30px 15px 0 0;', id: 'authTabs' }
+        - Auth.steps.keys.each do |step|
+          %li{ role: "presentation", class: "#{ 'active' if step == 'primary' }" }
+            %a{ href: "##{step}", aria: { controls: step }, role: "tab", data: { toggle: "tab"} }= step.humanize
+    %div{ style: "position: absolute; right: 15px; top: 30px;" }
+      = link_to 'Add new auth', new_place_auth_path(@place, step: Auth.steps.first.first), class: 'btn btn-info btn-xs', id: 'newAuthLink'
     .row
-      %ul.nav.nav-tabs{ style: 'margin: -30px 15px 0 0; ' }
-        %li.active{ role: "presentation" }
-          %a{ href: "#home", aria: { controls: "home" }, role: "tab", data: { toggle: "tab"} } First
-        %li{ role: "presentation" }
-          %a{ href: "#home", aria: { controls: "home" }, role: "tab", data: { toggle: "tab"} } Second
-    .row
-      %div{ style: 'position: absolute; right: 15px; top: 20px;' }
-        = link_to 'Add new auth', new_place_auth_path(@place), class: 'btn btn-info btn-xs'
-      - @place.auths.each do |auth|
-        .panel.panel-default.panel-settings
-          .panel-heading
-            .panel-title= "#{auth.resource.class::NAME.upcase} auth"
-          .panel-body
-            = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
-          .panel-footer
-            = link_to 'Edit', edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
-            = link_to 'Destroy', place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
+      .tab-content
+        - Auth.steps.keys.each do |step|
+          .tab-pane{ role: 'tabpanel', class: "#{ 'active' if step == Auth.steps.first.first }", id: step }
+            - @place.auths.send(step).each do |auth|
+              .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
+                .panel-heading
+                  .panel-title= "#{auth.resource.class::NAME.upcase} auth"
+                .panel-body
+                  = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
+                .panel-footer
+                  = link_to 'Edit', edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
+                  = link_to 'Destroy', place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
 
       - unless @place.auths.any?
         .panel.panel-default.panel-settings
