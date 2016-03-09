@@ -85,9 +85,9 @@
       %ul.nav.nav-tabs{ style: 'margin: -30px 15px 0 0;', id: 'authTabs' }
         - Auth.steps.keys.each do |step|
           %li{ role: "presentation", class: "#{ 'active' if step == 'primary' }" }
-            %a{ href: "##{step}", aria: { controls: step }, role: "tab", data: { toggle: "tab"} }= step.humanize
+            %a{ href: "##{step}", aria: { controls: step }, role: "tab", data: { toggle: "tab"} }= t("models.auths.#{step.humanize}")
     %div{ style: "position: absolute; right: 15px; top: 30px;" }
-      = link_to 'Add new auth', new_place_auth_path(@place, step: Auth.steps.first.first), class: 'btn btn-info btn-xs', id: 'newAuthLink'
+      = link_to t("models.auths.actions.new.button"), new_place_auth_path(@place, step: Auth.steps.first.first), class: 'btn btn-info btn-xs', id: 'newAuthLink'
     .row
       .tab-content
         - Auth.steps.keys.each do |step|
@@ -95,13 +95,13 @@
             .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
               - @place.auths.active.send(step).each do |auth|
                 .panel-heading
-                  .panel-title= "#{auth.resource.class::NAME.upcase} auth"
+                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize + " " +t("models.auths.name")
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer
-                  = link_to 'Edit', edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
-                  = link_to 'Destroy', place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
+                  = link_to t("models.auths.actions.edit.button"),edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
+                  = link_to t("models.auths.actions.destroy.button"), place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
               - unless @place.auths.active.send(step).any?
                 .panel-body
                   .row
-                    .col-sm-8 U have no auths
+                    .col-sm-8= t("models.auths.no_auth")

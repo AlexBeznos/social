@@ -2,6 +2,6 @@
   .col-md-12
     %ul.list-group
       %li.list-group-item
-        Password for authentication:
+        = t("simple_form.labels.auth.resource.password")
         %code.pull-right= resource.password
     = link_to 'Redirect after auth', resource.auth.redirect_url, class: 'btn btn-info'

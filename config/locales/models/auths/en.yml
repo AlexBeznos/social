@@ -1,6 +1,9 @@
 en:
   models:
     auths:
+      name: "authentication"
+      Primary: "Primary"
+      Secondary: "Secondary"
       methods:
         vkontakte: "vkontakte"
         facebook: "facebook"
@@ -9,3 +12,13 @@ en:
         poll: "poll"
         simple: "simple"
         password: "password"
+      actions:
+        new:
+          title: "New authentication"
+          button: "Add new authentication"
+        edit:
+          title: "Update authentication"
+          button: "Edit"
+        destroy:
+          button: "Destroy"
+      no_auth: "You have no authentications."
