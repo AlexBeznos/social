@@ -3,6 +3,9 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      auth:
+        redirect_url: "Redirect url after authentication"
+        resource_type: "Authentication type"
       place:
         name: 'Place name'
         ssid: 'Place SSID'

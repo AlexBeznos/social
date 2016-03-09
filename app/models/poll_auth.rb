@@ -3,7 +3,7 @@ class PollAuth < ActiveRecord::Base
 
   has_one :auth, as: :resource
   has_many :answers, dependent: :destroy
-  validates :poll_auth_id, :question, presence: true
+  validates :question, presence: true
 
   accepts_nested_attributes_for :answers, reject_if: lambda { |a| a[:content].blank? }, allow_destroy: true
 

@@ -3,6 +3,9 @@ ru:
     error_notification:
       default_message: "Пожалуйста решите проблемы ниже:"
     labels:
+      auth:
+        redirect_url: "Адрес переадресации после аутентификации"
+        resource_type: "Тип аутентификации"
       place:
         name: 'Название заведения'
         ssid: 'SSID заведения'

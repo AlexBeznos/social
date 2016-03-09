@@ -1,0 +1,11 @@
+ru:
+  models:
+    auths:
+      methods:
+        vkontakte: "vkontakte"
+        facebook: "facebook"
+        twitter: "twitter"
+        sms: "sms"
+        poll: "опрос"
+        simple: "простая"
+        password: "пароль"

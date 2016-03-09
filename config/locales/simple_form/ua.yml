@@ -3,6 +3,9 @@ ua:
     error_notification:
       default_message: "Будь ласка вирішіть проблеми нижче:"
     labels:
+      auth:
+        redirect_url: "Адреса переадресації після аутентифікації"
+        resource_type: "Тип аутентифікації"
       place:
         name: 'Назва закладу'
         ssid: 'SSID закладу'

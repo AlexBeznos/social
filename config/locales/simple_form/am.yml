@@ -3,6 +3,9 @@
     error_notification:
       default_message: "Խնդրում եմ լուծել ներքևում առկա խնդիրները:"
     labels:
+      auth:
+        redirect_url: "Վերահղման URL- ը , հետո authenticatio"
+        resource_type: "Նույնականացման տեսակը"
       place:
         name: 'Հաստատության անվանումը'
         ssid: 'SSID տեղերը'

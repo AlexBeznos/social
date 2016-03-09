@@ -3,6 +3,9 @@ pl:
     error_notification:
       default_message: "Należy rozwiązać problem w następujący sposób:"
     labels:
+      auth:
+        redirect_url: "Przekierowanie linku po athentication"
+        resource_type: "Typ uwierzytelniania"
       place:
         name: 'nazwa instytucji'
         ssid: 'miejsca SSID'

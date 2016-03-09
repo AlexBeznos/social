@@ -1,0 +1,11 @@
+am:
+  models:
+    auths:
+      methods:
+        vkontakte: "vkontakte"
+        facebook: "facebook"
+        twitter: "twitter"
+        sms: "sms"
+        poll: "քվեարկություն"
+        simple: "պարզ"
+        password: "գաղտնաբառ"

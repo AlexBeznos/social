@@ -1,0 +1,11 @@
+pl:
+  models:
+    auths:
+      methods:
+        vkontakte: "vkontakte"
+        facebook: "facebook"
+        twitter: "twitter"
+        sms: "sms"
+        poll: "głosowanie"
+        simple: "prosty"
+        password: "Hasło"

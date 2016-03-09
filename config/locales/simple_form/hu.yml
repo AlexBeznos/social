@@ -3,6 +3,9 @@ hu:
     error_notification:
       default_message: "Kérjük, oldja meg a problémát a következőképpen:"
     labels:
+      auth:
+        redirect_url: "Átirányító link után athentication"
+        resource_type: "Typ uwierzytelniania"
       place:
         name: 'Az intézmény neve'
         ssid: 'SSID helyek'
