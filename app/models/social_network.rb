@@ -1,6 +1,7 @@
 class SocialNetwork < ActiveRecord::Base
-  has_many :messages
   has_many :customers
+
+  scope :by_name, -> (name) { find_by(name: name) }
 
   validates :name, :presence => true, :uniqueness => true
 

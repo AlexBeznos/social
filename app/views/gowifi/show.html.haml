@@ -25,7 +25,7 @@
       .wrapper-in
         .content
           = render 'header', place: @place, customer: @customer
-          = render 'networks', place: @place
+          = render 'networks', place: @place, auths: @auths
           = render 'by_password', place: @place
           = render 'by_sms', place: @place
           = render 'poll', place: @place

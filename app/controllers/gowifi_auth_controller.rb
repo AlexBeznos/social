@@ -9,9 +9,9 @@ class GowifiAuthController < ApplicationController
 
   def enter_by_password
     if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
-      redirect_to wifi_login_path(@place)
+      redirect_to succed_auth_path(@place)
     else
-      redirect_to gowifi_place_path @place
+      redirect_to gowifi_place_path(@place)
     end
   end
 
@@ -20,7 +20,7 @@ class GowifiAuthController < ApplicationController
 
     if sms.any?
       sms.first.destroy
-      render json: { url: wifi_login_path(@place) }, status: :ok
+      render json: { url: succed_auth_path(@place) }, status: :ok
     else
       render json: { error: I18n.t('wifi.sms_try_more').humanize }, status: :unprocessable_entity
     end
@@ -28,9 +28,9 @@ class GowifiAuthController < ApplicationController
 
   def simple_enter
     if @place.simple_enter
-      redirect_to wifi_login_path(@place)
+      redirect_to succed_auth_path(@place)
     else
-      redirect_to gowifi_place_path @place
+      redirect_to gowifi_place_path(@place)
     end
   end
 
@@ -38,7 +38,7 @@ class GowifiAuthController < ApplicationController
     if params[:poll]
       @answer = Answer.find(poll_params[:answer_ids])
       if @answer.increment!(:number_of_selections)
-        redirect_to wifi_login_path(@place)
+        redirect_to succed_auth_path(@place)
       else
         redirect_to gowifi_place_path @place
       end
@@ -53,7 +53,7 @@ class GowifiAuthController < ApplicationController
     end
 
     clear_session
-    redirect_to wifi_login_path(@place)
+    redirect_to succed_auth_path(@place)
   end
 
   def auth_failure
@@ -77,37 +77,47 @@ class GowifiAuthController < ApplicationController
   end
 
   private
-    def poll_params
-      params.require(:poll).permit(:answer_ids)
+  def poll_params
+    params.require(:poll).permit(:answer_ids)
+  end
+
+  def find_place
+    @place = Place.find_by_slug(params[:slug])
+  end
+
+  def find_customer
+    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
+  end
+
+  def find_place_from_session
+    slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
+    slug_by_session = session[:slug]
+
+    @place = Place.find_by_slug(slug_by_omni || slug_by_session)
+  end
+
+  def succed_auth_path(place)
+    if place.mfa && cookies[:step] == 'primary'
+      cookies[:step] = 'secondary'
+      gowifi_place_path(place)
+    else
+      cookies.delete(:step)
+      wifi_login_path(place)
     end
+  end
 
-    def find_place
-      @place = Place.find_by_slug(params[:slug])
-    end
+  def credentials
+    request.env['omniauth.auth']
+  end
 
-    def find_customer
-      @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-    end
+  def clear_session
+    session.delete(:slug)
+  end
 
-    def find_place_from_session
-      slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
-      slug_by_session = session[:slug]
+  def visit_already_created?
+    hash = find_or_create_costumer(credentials, @place, @customer)
+    cookies.permanent[:customer] = hash[:customer].id
 
-      @place = Place.find_by_slug(slug_by_omni || slug_by_session)
-    end
-
-    def credentials
-      request.env['omniauth.auth']
-    end
-
-    def clear_session
-      session.delete(:slug)
-    end
-
-    def visit_already_created?
-      hash = find_or_create_costumer(credentials, @place, @customer)
-      cookies.permanent[:customer] = hash[:customer].id
-
-      hash[:visit]
-    end
+    hash[:visit]
+  end
 end
