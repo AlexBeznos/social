@@ -6,6 +6,15 @@ ru:
       auth:
         redirect_url: "Адрес переадресации после аутентификации"
         resource_type: "Тип аутентификации"
+        resource:
+          message_url: "Ссылка в сообщении"
+          message: "Сообщение"
+          image: "Картинка"
+          password: "Пароль"
+          question: "Вопрос"
+          answer: "Ответ"
+          add_answer: "Добавить вопрос"
+          remove: "Удалить вопрос"
       place:
         name: 'Название заведения'
         ssid: 'SSID заведения'

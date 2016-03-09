@@ -1,11 +1,24 @@
 ru:
   models:
     auths:
+      name: "аутентификация"
+      Primary: "Первичная"
+      Secondary: "Вторичная"
       methods:
-        vkontakte: "vkontakte"
-        facebook: "facebook"
-        twitter: "twitter"
-        sms: "sms"
-        poll: "опрос"
+        vkontakte: "вконтакте"
+        facebook: "фейсбук"
+        twitter: "твиттер"
+        sms: "смс"
+        poll: "опросная"
         simple: "простая"
-        password: "пароль"
+        password: "запароленая"
+      actions:
+        new:
+          title: "Создать аутентификацию"
+          button: "Создать аутентификацию"
+        edit:
+          title: "Редактировать аутентификацию"
+          button: "Редактировать"
+        destroy:
+          button: "Удалить"
+      no_auth: "У вас нету аутентификаций."
