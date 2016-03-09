@@ -6,6 +6,15 @@ en:
       auth:
         redirect_url: "Redirect url after authentication"
         resource_type: "Authentication type"
+        resource:
+          message_url: "Message url"
+          message: "Message suka"
+          image: "Image"
+          password: "Password"
+          question: "Question"
+          answer: "Answer"
+          add_answer: "Add answer"
+          remove: "Remove"
       place:
         name: 'Place name'
         ssid: 'Place SSID'
