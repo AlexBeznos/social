@@ -5,13 +5,13 @@ ru:
       Primary: "Первичная"
       Secondary: "Вторичная"
       methods:
-        vkontakte: "вконтакте"
-        facebook: "фейсбук"
-        twitter: "твиттер"
-        sms: "смс"
-        poll: "опросная"
-        simple: "простая"
-        password: "запароленая"
+        vkontakte: "Bконтакте"
+        facebook: "Фейсбук"
+        twitter: "Твиттер"
+        sms: "Смс"
+        poll: "Опросная"
+        simple: "Оростая"
+        password: "Запароленая"
       actions:
         new:
           title: "Создать аутентификацию"

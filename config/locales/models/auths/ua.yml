@@ -1,24 +1,24 @@
-en:
+ua:
   models:
     auths:
-      name: "authentication"
-      Primary: "Primary"
-      Secondary: "Secondary"
+      name: "аутентифікація"
+      Primary: "Первинна"
+      Secondary: "Вторинна"
       methods:
-        vkontakte: "vkontakte"
-        facebook: "facebook"
-        twitter: "twitter"
-        sms: "sms"
-        poll: "poll"
-        simple: "simple"
-        password: "password"
+        vkontakte: "Вконтакті"
+        facebook: "Фейсбук"
+        twitter: "Твіттер"
+        sms: "Спс"
+        poll: "Опитувальна"
+        simple: "Звичайна"
+        password: "Запаролена"
       actions:
         new:
-          title: "New authentication"
-          button: "Add new authentication"
+          title: "Створити аутентифікацію"
+          button: "Створити аутентифікацію"
         edit:
-          title: "Update authentication"
-          button: "Edit"
+          title: "Редагувати аутентифікацію"
+          button: "Редагувати"
         destroy:
-          button: "Destroy"
-      no_auth: "You have no authentications."
+          button: "Видалити"
+      no_auth: "У вас немає аутентифікацій ."

@@ -8,7 +8,7 @@ en:
         resource_type: "Authentication type"
         resource:
           message_url: "Message url"
-          message: "Message suka"
+          message: "Message"
           image: "Image"
           password: "Password"
           question: "Question"

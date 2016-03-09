@@ -3,6 +3,6 @@
 
 .row
   .col-sm-4
-    %h1 Edit auth
+    %h1  t("models.auth.actions.edit.title").capitalize
 
     = render 'form', auth: @auth, place: @place, save_method: :resource

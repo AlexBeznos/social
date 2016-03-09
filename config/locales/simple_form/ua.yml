@@ -6,6 +6,15 @@ ua:
       auth:
         redirect_url: "Адреса переадресації після аутентифікації"
         resource_type: "Тип аутентифікації"
+        resource:
+          message_url: "Посилання в повідомленні"
+          message: "Повідомлення"
+          image: "Картинка"
+          password: "Пароль"
+          question: "Питання"
+          answer: "Відповідь"
+          add_answer: "Додати відповідь"
+          remove: "Видалити"
       place:
         name: 'Назва закладу'
         ssid: 'SSID закладу'
