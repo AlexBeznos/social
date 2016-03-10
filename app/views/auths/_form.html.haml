@@ -2,11 +2,12 @@
 
 = simple_form_for [place, auth] do |f|
   = f.error_notification
-  = f.hidden_field :step, value: "#{params[:step] && Auth.steps.keys.include?(params[:step]) ? params[:step] : Auth.steps.first.first}"
+  = f.hidden_field :step, value: "#{params[:step] && Auth.steps.keys.include?(params[:step]) ? params[:step] : Auth.steps.first.first}" unless auth.persisted?
   .form-inputs
-    = f.input :resource_type, collection: Auth::METHODS.map {|n| [t("models.auths.methods.#{n}"), "#{n.capitalize}Auth"] }, input_html: { class: 'authMethodSelect', disabled: auth.persisted?  }
+    = f.input :resource_type, collection: Auth::METHODS.map {|n| [t(n, scope: ['models', 'auths', 'methods']), "#{n.capitalize}Auth"] }, input_html: { class: 'authMethodSelect', disabled: auth.persisted?  }
 
   = f.simple_fields_for save_method do |r|
+    = r.hidden_field :id, value: r.object.id if r.object.persisted?
     - auth.auth_methods.each do |method|
       %div{ class: "#{method.capitalize}Auth"}
         = render partial: "#{method}_auths/form", locals: { resource: auth.resource, form: r }
