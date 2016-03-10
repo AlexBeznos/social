@@ -4,6 +4,7 @@ ua:
       name: "аутентифікація"
       Primary: "Первинна"
       Secondary: "Вторинна"
+      add_auth: Додати аутентифікацію
       methods:
         vkontakte: "Вконтакті"
         facebook: "Фейсбук"
@@ -12,13 +13,4 @@ ua:
         poll: "Опитувальна"
         simple: "Звичайна"
         password: "Запаролена"
-      actions:
-        new:
-          title: "Створити аутентифікацію"
-          button: "Створити аутентифікацію"
-        edit:
-          title: "Редагувати аутентифікацію"
-          button: "Редагувати"
-        destroy:
-          button: "Видалити"
       no_auth: "У вас немає аутентифікацій ."

@@ -36,6 +36,7 @@
         display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում
         sms_auth: SMS վավերացման
         auth_default_lang: Նույնականացման լռելյայն լեզու
+        mfa: Multi-Factor իսկությունը
       user:
         first_name: Անուն
         last_name: Ազգանուն

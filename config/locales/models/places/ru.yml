@@ -46,7 +46,7 @@ ru:
         new:
           title: "Создать заведение"
         edit:
-          title: 'Обновление %{place_name}'
+          title: 'Редаткирование %{place_name}'
         guests:
           title: "Top посетителей в %{place_name}"
           table:

@@ -97,7 +97,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def succed_auth_path(place)
-    if place.mfa && cookies[:step] == 'primary'
+    if place.mfa && cookies[:step] == 'primary' && place.auths.active.where(step: Auth.steps[:secondary]).any?
       cookies[:step] = 'secondary'
       gowifi_place_path(place)
     else

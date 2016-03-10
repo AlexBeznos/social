@@ -36,6 +36,7 @@ hu:
         display_other_banners: Mutasd mások bannerek a helyemben
         sms_auth: SMS hitelesítés
         auth_default_lang: Hitelesítés alapértelmezett nyelv
+        mfa: Többváltozós autentifіkatsіya
       user:
         first_name: Első neve
         last_name: Név

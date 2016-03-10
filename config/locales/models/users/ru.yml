@@ -15,7 +15,7 @@ ru:
         new:
           title: Создать нового пользователя
         edit:
-          title: 'Обновление %{name}'
+          title: 'Редактирование %{name}'
       attrs:
         first_name: Имя
         last_name: Фамилия

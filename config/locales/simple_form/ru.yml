@@ -36,6 +36,7 @@ ru:
         display_other_banners: Показывать чужие баннеры в моем заведении
         sms_auth: SMS аутентификация
         auth_default_lang: Язык для аутентификации по умолчанию
+        mfa: Мультифакторная аутентификация
       user:
         first_name: Имя
         last_name: Фамилия
