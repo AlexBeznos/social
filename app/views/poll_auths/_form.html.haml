@@ -1,3 +1,5 @@
+- obj = PollAuth.new; obj.answers.build; form.object = obj unless form.object # Dirty hack
+
 .form-inputs
   = form.input :question, placeholder: t("simple_form.labels.auth.resource.question")
   = form.simple_fields_for :answers do |a|
@@ -13,3 +15,5 @@
         = a.input :id, as: :hidden
 
   = link_to t('simple_form.labels.auth.resource.add_answer'), '', class: 'duplicate_nested_form'
+
+- form.object = nil # More dirty hacks
