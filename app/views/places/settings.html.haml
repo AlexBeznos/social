@@ -92,16 +92,17 @@
       .tab-content
         - Auth.steps.keys.each do |step|
           .tab-pane{ role: 'tabpanel', class: "#{ 'active' if step == Auth.steps.first.first }", id: step }
-            .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
-              - @place.auths.active.send(step).each do |auth|
+            - @place.auths.active.send(step).each do |auth|
+              .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
                 .panel-heading
-                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize + " " +t("models.auths.name")
+                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer
                   = link_to t("helpers.submit.edit"), edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
                   = link_to t("helpers.submit.destroy"), place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
-              - unless @place.auths.active.send(step).any?
+            - unless @place.auths.active.send(step).any?
+              .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
                 .panel-body
                   .row
                     .col-sm-8= t("models.auths.no_auth")

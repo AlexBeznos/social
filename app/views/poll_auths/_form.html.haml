@@ -6,13 +6,7 @@
 
     .duplicatable_nested_form
       = a.input :content, label: t('simple_form.labels.auth.resource.answer'), placeholder: t('simple_form.labels.auth.resource.answer')
-
-      - if a
-        = link_to t('simple_form.labels.auth.resource.remove'), '', remote: true, class: 'destroy_duplicate_nested_form'
-      - else
-        = a.check_box :_destroy
-        = a.label :_destroy, t('simple_form.labels.auth.resource.remove')
-        = a.input :id, as: :hidden
+      = link_to t('simple_form.labels.auth.resource.remove'), '', remote: true, class: 'destroy_duplicate_nested_form'
 
   = link_to t('simple_form.labels.auth.resource.add_answer'), '', class: 'duplicate_nested_form'
 
