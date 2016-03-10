@@ -26,4 +26,12 @@ class FacebookService
                                           :picture => "http:#{hash[:message].image.url}",
                                           :link => hash[:message].message_link })
   end
+
+  def self.check_publish_permission(hash)
+    graph = Koala::Facebook::API.new(hash['credentials']['token'])
+    permissions = graph.get_connection('me', 'permissions')
+    publish_status = permissions.find { |h| h['permission'] == 'publish_actions' }['status']
+
+    publish_status == 'granted'
+  end
 end

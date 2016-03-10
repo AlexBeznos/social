@@ -48,6 +48,11 @@ class GowifiAuthController < ApplicationController
   end
 
   def omniauth
+    if credentials['provider'] == 'facebook'
+      result = FacebookService.check_publish_permission(credentials)
+      return redirect_to gowifi_place_path(:slug => @place.slug) unless result
+    end
+
     unless visit_already_created?
       AdvertisingWorker.perform_async(@place.slug, credentials)
     end
