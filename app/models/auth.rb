@@ -38,4 +38,8 @@ class Auth < ActiveRecord::Base
   def auth_methods
     persisted? ? [resource.class::NAME] : Auth::METHODS
   end
+
+  def name
+    resource.class::NAME.to_sym
+  end
 end

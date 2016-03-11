@@ -1,4 +1,4 @@
-class InstagramService
+class InstagramService # NOTICE: Refactore class to general style in case of using
   attr_accessor :hash
 
   def initialize(hash)
@@ -33,7 +33,7 @@ class InstagramService
 
   def advertise
     client = Instagram.client(:access_token => @credentials['credentials']['token'])
-    
+
     begin
       client.follow_user(@message.subscription_uid)
     rescue => e

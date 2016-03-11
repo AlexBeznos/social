@@ -8,7 +8,9 @@ class GowifiAuthController < ApplicationController
   skip_after_action :verify_authorized
 
   def enter_by_password
-    if @place.enter_by_password && @place.password == params[:password] && create_visit_by_password(@place)
+    auth = @place.auths.find_by({ resource_type: PasswordAuth, step: Auth.steps[cookies[:step]] })
+
+    if auth && auth.resource.password == params[:password] && create_visit_by_password(@place)
       redirect_to succed_auth_path(@place)
     else
       redirect_to gowifi_place_path(@place)
@@ -27,20 +29,23 @@ class GowifiAuthController < ApplicationController
   end
 
   def simple_enter
-    if @place.simple_enter
-      redirect_to succed_auth_path(@place)
+    auth = @place.auths.find_by({ resource_type: SimpleAuth, step: Auth.steps[cookies[:step]] })
+
+    if auth
+      redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_place_path(@place)
     end
   end
 
   def submit_poll
-    if params[:poll]
-      @answer = Answer.find(poll_params[:answer_ids])
-      if @answer.increment!(:number_of_selections)
-        redirect_to succed_auth_path(@place)
+    if params[:poll_auth]
+      answer = Answer.find(poll_params[:answer_ids])
+
+      if answer.increment!(:number_of_selections)
+        redirect_to succed_auth_path(@place, answer.poll_auth.auth)
       else
-        redirect_to gowifi_place_path @place
+        redirect_to gowifi_place_path(@place)
       end
     else
       redirect_to :back, alert: I18n.t('wifi.poll_error')
@@ -48,19 +53,29 @@ class GowifiAuthController < ApplicationController
   end
 
   def omniauth
+    auth = @place.auths
+      .active
+      .resource_like(credentials['provider'].capitalize)
+      .where(step: Auth.steps[cookies[:step]])
+      .first
+
     unless visit_already_created?
-      AdvertisingWorker.perform_async(@place.slug, credentials)
+      AdvertisingWorker.perform_async(
+        @place.slug,
+        auth.id,
+        redis_ready_credentials(credentials)
+      )
     end
 
     clear_session
-    redirect_to succed_auth_path(@place)
+    redirect_to succed_auth_path(@place, auth)
   end
 
   def auth_failure
     if params[:provider]
       redirect_to "/auth/#{params[:provider]}"
     else
-      redirect_to gowifi_place_path(:slug => @place.slug)
+      redirect_to gowifi_place_path(slug: @place.slug)
     end
   end
 
@@ -69,7 +84,7 @@ class GowifiAuthController < ApplicationController
       if @place.loyalty_program && @customer
         redirect_to menu_items_list_path(@place)
       else
-        redirect_to @place.redirect_url
+        redirect_to params[:dst]
       end
     else
       redirect_to root_path
@@ -78,7 +93,7 @@ class GowifiAuthController < ApplicationController
 
   private
   def poll_params
-    params.require(:poll).permit(:answer_ids)
+    params.require(:poll_auth).permit(:answer_ids)
   end
 
   def find_place
@@ -96,13 +111,13 @@ class GowifiAuthController < ApplicationController
     @place = Place.find_by_slug(slug_by_omni || slug_by_session)
   end
 
-  def succed_auth_path(place)
-    if place.mfa && cookies[:step] == 'primary' && place.auths.active.where(step: Auth.steps[:secondary]).any?
+  def succed_auth_path(place, auth)
+    if place.mfa && cookies[:step] == 'primary' && auth.step == 'primary'
       cookies[:step] = 'secondary'
       gowifi_place_path(place)
     else
       cookies.delete(:step)
-      wifi_login_path(place)
+      wifi_login_path(place, auth)
     end
   end
 

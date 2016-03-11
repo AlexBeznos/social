@@ -13,7 +13,6 @@ class AuthsController < ApplicationController
     @auth = Auth.new(auth_params(:method))
     @auth.place = @place
 
-
     if @auth.save
       redirect_to settings_place_path(@place)
     else
@@ -37,14 +36,14 @@ class AuthsController < ApplicationController
 
   def destroy
     authorize Auth
-    
-    if Auth::NETWORKS.values.include? @auth.resource.class::NAME
+
+    if Auth::NETWORKS.keys.include? @auth.name
       @auth.update(active: false)
     else
       @auth.destroy
     end
 
-    redirect_to settings_place_path(@place), notice: 'Auth destroyed'
+    redirect_to settings_place_path(@place)
   end
 
   private

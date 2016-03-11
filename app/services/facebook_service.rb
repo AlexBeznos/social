@@ -1,4 +1,5 @@
 class FacebookService
+  include Imagable
   attr_accessor :hash
 
   def initialize(hash)
@@ -7,23 +8,26 @@ class FacebookService
     @credentials = hash[:credentials]
   end
 
-  def self.get_friends_number(costumer)
-    graph = Koala::Facebook::API.new(costumer.access_token)
-
-    begin
-      friends = graph.get_connections('me', 'friends')
-      friends.raw_response['summary']['total_count']
-    rescue => e
-      Rails.logger.error "Facebook friends number error. Error: #{e.inspect}"
-      0
-    end
+  def self.get_token(credentials)
+    {
+      'provider' => credentials['provider'],
+      'token' => credentials['credentials']['token']
+    }
   end
 
-  def self.advertise(hash)
-    graph = Koala::Facebook::API.new(hash[:credentials]['credentials']['token'])
+  def self.get_friends_number(costumer)
+    graph = Koala::Facebook::API.new(costumer.access_token)
+    friends = graph.get_connections('me', 'friends')
+    friends.raw_response['summary']['total_count']
+  end
 
-    graph.put_connections('me', 'feed', { :message => hash[:message].message,
-                                          :picture => "http:#{hash[:message].image.url}",
-                                          :link => hash[:message].message_link })
+  def advertise
+    graph = Koala::Facebook::API.new(@credentials['token'])
+
+    graph.put_connections('me', 'feed', {
+      message: @message.message,
+      picture: to_full_url(@message.image.url),
+      link: @message.message_url
+    })
   end
 end
