@@ -9,10 +9,10 @@ class GowifiAuthController < ApplicationController
   skip_after_action :verify_authorized
 
   def enter_by_password
-    auth = @place.auths.find_by({ resource_type: PasswordAuth, step: Auth.steps[cookies[:step]] })
+    auth = @place.auths.active.find_by({ resource_type: PasswordAuth, step: Auth.steps[cookies[:step]] })
 
     if auth && auth.resource.password == params[:password] && create_visit_by_password(@place)
-      redirect_to succed_auth_path(@place)
+      redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_place_path(@place)
     end
@@ -30,7 +30,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def simple_enter
-    auth = @place.auths.find_by({ resource_type: SimpleAuth, step: Auth.steps[cookies[:step]] })
+    auth = @place.auths.active.find_by({ resource_type: SimpleAuth, step: Auth.steps[cookies[:step]] })
 
     if auth
       redirect_to succed_auth_path(@place, auth)

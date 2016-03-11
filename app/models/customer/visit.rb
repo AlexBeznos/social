@@ -11,12 +11,12 @@ class Customer::Visit < ActiveRecord::Base
                                foreign_key: :customer_network_profile_id
 
   validates :network_profile, :place,  presence: true, unless: 'by_password'
-  validate :visiting_ones_a_half_an_hour, unless: 'by_password'
+  validate :ones_a_day_visit, unless: 'by_password'
 
   after_commit :calculate_reputation
 
   private
-  def visiting_ones_a_half_an_hour
+  def ones_a_day_visit
     now = DateTime.now
     visits =  Customer::Visit.joins(:network_profile).where({
       customer_network_profiles: {
@@ -27,7 +27,7 @@ class Customer::Visit < ActiveRecord::Base
       place_id: place_id
     })
 
-    # self.errors.add(:customer, I18n.t('models.errors.already_logged_in')) if visits.any?
+    self.errors.add(:customer, I18n.t('models.errors.already_logged_in')) if visits.any?
   end
 
   def calculate_reputation

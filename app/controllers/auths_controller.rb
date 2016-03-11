@@ -16,7 +16,7 @@ class AuthsController < ApplicationController
     if @auth.save
       redirect_to settings_place_path(@place)
     else
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -30,7 +30,7 @@ class AuthsController < ApplicationController
     if @auth.update(auth_params(:resource_attributes))
       redirect_to settings_place_path(@place)
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 
