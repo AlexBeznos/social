@@ -24,18 +24,16 @@ hu:
         stocks_active: Részvények aktív
         polls_active: Szavazás
         reputation_on: Bónuszok
-        simple_enter: Bejelentkezés engedély nélkül
         loyalty_on: Engedélyezze a konfigurációs hűségprogramok felhasználók számára
         loyalty_program: Hűségprogram
         score_amount: A bónusz
         redirect_url: Cím továbbítása hitelesítés után
-        enter_by_password: Bejelentkezési jelszó
-        password: Jelszó
         city: City
         display_my_banners: Mutassa a reklámokat, más helyeken
         display_other_banners: Mutasd mások bannerek a helyemben
         sms_auth: SMS hitelesítés
         auth_default_lang: Hitelesítés alapértelmezett nyelv
+        mfa: Többváltozós autentifіkatsіya
       user:
         first_name: Első neve
         last_name: Név

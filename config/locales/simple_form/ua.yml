@@ -24,17 +24,15 @@ ua:
         stocks_active: Активувати Акції
         polls_active: Активувати опитування
         reputation_on: Нарахування бонусів
-        simple_enter: Вхід без авторизації
         loyalty_on: Включити налаштування програм лояльності для юзерів
         loyalty_program: Програма лояльності
         redirect_url: Адреса переадресації після аутентифікації
-        enter_by_password: Вхід за паролем
-        password: Пароль
         city: Місто
         display_my_banners: Показувати мої банери в інших закладах
         display_other_banners: Показувати чужі банери в моєму закладі
         sms_auth: SMS аутентифікація
         auth_default_lang: Стандартная мова аутентифікації
+        mfa: Мультифакторна аутентифікація
       user:
         first_name: Ім`я
         last_name: Прізвище

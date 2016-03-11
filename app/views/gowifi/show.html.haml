@@ -26,11 +26,10 @@
         .content
           = render 'header', place: @place, customer: @customer
           = render 'networks', place: @place, auths: @auths
-          = render 'by_password', place: @place
-          = render 'by_sms', place: @place
-          = render 'poll', place: @place
-          %br
-          = link_to t('wifi.simple_enter'), "/wifi/#{@place.slug}/simple_enter", class: 'btn btn-primary btn-lg' if @place.simple_enter
+          = render 'by_password', place: @place, auths: @auths
+          = render 'by_sms', place: @place, auths: @auths
+          = render 'poll', place: @place, auths: @auths
+          = render 'simple_enter', place: @place, auths: @auths
           %br
           = render_stock_image @place
 

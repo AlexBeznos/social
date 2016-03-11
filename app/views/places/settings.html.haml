@@ -42,9 +42,6 @@
         = t('models.places.attrs.loyalty_program')
         %span.text-muted.pull-right= fa_plus_minus(@place.loyalty_program)
       %li.list-group-item
-        = t('models.places.attrs.simple_enter')
-        %span.text-muted.pull-right= fa_plus_minus(@place.simple_enter)
-      %li.list-group-item
         = t('models.places.attrs.display_my_banners')
         %span.text-muted.pull-right= fa_plus_minus(@place.display_my_banners)
       %li.list-group-item
@@ -56,13 +53,6 @@
       %li.list-group-item
         = t('models.places.attrs.sms_auth')
         %span.text-muted.pull-right= fa_plus_minus(@place.sms_auth)
-      %li.list-group-item
-        = t('models.places.attrs.by_password')
-        %span.text-muted.pull-right= fa_plus_minus(@place.enter_by_password)
-      - if @place.enter_by_password
-        %li.list-group-item
-          = t('models.places.attrs.password')
-          %span.text-muted.pull-right= @place.password
       %li.list-group-item
         = t('models.places.attrs.redirect_url')
         %span.text-muted.pull-right= link_to fa_icon('external-link'), @place.redirect_url ,target:"_blank"
@@ -85,23 +75,24 @@
       %ul.nav.nav-tabs{ style: 'margin: -30px 15px 0 0;', id: 'authTabs' }
         - Auth.steps.keys.each do |step|
           %li{ role: "presentation", class: "#{ 'active' if step == 'primary' }" }
-            %a{ href: "##{step}", aria: { controls: step }, role: "tab", data: { toggle: "tab"} }= t("models.auths.#{step.humanize}")
+            %a{ href: "##{step}", aria: { controls: step }, role: "tab", data: { toggle: "tab"} }= t(step.humanize, scope: ['models', 'auths'])
     %div{ style: "position: absolute; right: 15px; top: 30px;" }
-      = link_to t("models.auths.actions.new.button"), new_place_auth_path(@place, step: Auth.steps.first.first), class: 'btn btn-info btn-xs', id: 'newAuthLink'
+      = link_to t("models.auths.add_auth"), new_place_auth_path(@place, step: Auth.steps.first.first), class: 'btn btn-info btn-xs', id: 'newAuthLink'
     .row
       .tab-content
         - Auth.steps.keys.each do |step|
           .tab-pane{ role: 'tabpanel', class: "#{ 'active' if step == Auth.steps.first.first }", id: step }
-            .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
-              - @place.auths.active.send(step).each do |auth|
+            - @place.auths.active.send(step).each do |auth|
+              .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
                 .panel-heading
-                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize + " " +t("models.auths.name")
+                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer
-                  = link_to t("models.auths.actions.edit.button"),edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
-                  = link_to t("models.auths.actions.destroy.button"), place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
-              - unless @place.auths.active.send(step).any?
+                  = link_to t("helpers.submit.edit"), edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
+                  = link_to t("helpers.submit.destroy"), place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
+            - unless @place.auths.active.send(step).any?
+              .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
                 .panel-body
                   .row
                     .col-sm-8= t("models.auths.no_auth")

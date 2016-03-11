@@ -24,18 +24,16 @@ en:
         stocks_active: Promos are active
         polls_active: Polls are active
         reputation_on: Add bonuses
-        simple_enter: Enter without authorization
         loyalty_on: Enable loyalty settings for users
         loyalty_program: Loyalty program
         score_amount: Score amount
         redirect_url: Redirect url after authentication
-        enter_by_password: Enter by password
-        password: Password
         city: City
         display_my_banners: Display my banners in other places
         display_other_banners: Display other's banners in my place
         sms_auth: SMS authentication
         auth_default_lang: Authentication default language
+        mfa: Multi-factor authentication
       user:
         first_name: First name
         last_name: Last name

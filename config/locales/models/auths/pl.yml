@@ -4,6 +4,7 @@ pl:
       name: "poświadczenie"
       Primary: "Podstawowa"
       Secondary: "Wtórny"
+      add_auth: Tworzenie uwierzytelniania
       methods:
         vkontakte: "VKontakte"
         facebook: "Facebook"
@@ -12,13 +13,4 @@ pl:
         poll: "Głosowanie"
         simple: "Prosty"
         password: "Hasło"
-      actions:
-        new:
-          title: "Nowy uwierzytelnienie"
-          button: "Dodaj nowy uwierzytelniania"
-        edit:
-          title: "aktualizacja uwierzytelnienie"
-          button: "Edytować"
-        destroy:
-          button: "Zniszczyć"
       no_auth: "Nie masz poświadczeń ."

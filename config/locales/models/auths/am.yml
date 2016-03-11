@@ -4,6 +4,7 @@ am:
       name: "իսկությունը"
       Primary: "հիմնական"
       Secondary: "միջնակարգ"
+      add_auth: Ստեղծել իսկությունը
       methods:
         vkontakte: "vkontakte"
         facebook: "facebook"
@@ -12,13 +13,4 @@ am:
         poll: "քվեարկություն"
         simple: "պարզ"
         password: "գաղտնաբառ"
-      actions:
-        new:
-          title: "իսկությունը"
-          button: "Ավելացնել նոր իսկությունը"
-        edit:
-          title: "Թարմացնել իսկությունը"
-          button: "խմբագրել"
-        destroy:
-          button: "ոչնչացնել"
       no_auth: Դուք չունեք."

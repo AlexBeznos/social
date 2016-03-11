@@ -1,17 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe MenuItemsController do
+RSpec.describe MenuItemsController, type: :controller do
   # FIXME: does not pass
-  # let(:place) { create(:place) }
+  # it happens because of of pundit authorization
+  # figure out how to properly stub policies is controller specs
+  # let(:user) { create(:user) }
+  # let(:place) { create(:place, user: place) }
   #
   # describe 'GET #index' do
   #   let(:menu_items) { create_list(:menu_item, 2) }
   #
   #   before do
-  #     get :index, { :place_id => place  }
+  #     get :index, { place_id: place  }
   #   end
   #
-  #   it 'populates an array with all menu_items' do
+  #   it 'populates an instance with menu_items' do
   #     expect(assigns(:menu_items)).to match_array(menu_items)
   #   end
   #

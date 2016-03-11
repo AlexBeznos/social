@@ -8,12 +8,12 @@ class MenuItemsController < ApplicationController
   def index
     authorize MenuItem
 
-    @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
+    @menu_items = @place.menu_items.pagination(params[:page])
   end
 
   def welcome
-    @menu_items = MenuItem.where(place_id: @place.id).pagination(params[:page])
-    render :layout => 'loyalty_program'
+    @menu_items = @place.menu_items.pagination(params[:page])
+    render layout: 'loyalty_program'
     skip_authorization
   end
 
@@ -29,9 +29,9 @@ class MenuItemsController < ApplicationController
     @menu_item.place_id = @place.id
 
     if @menu_item.save
-      redirect_to place_menu_items_path(@place), :notice => I18n.t('notice.create', subject: t('menu_item.goods'))
+      redirect_to place_menu_items_path(@place), notice: I18n.t('notice.create', subject: t('menu_item.goods'))
     else
-      render :action => :new
+      render action: :new
     end
   end
 

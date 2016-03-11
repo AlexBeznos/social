@@ -4,6 +4,7 @@ hu:
       name: "hitelesítés"
       Primary: "Elsődleges"
       Secondary: "Másodlagos"
+      add_auth: Készítsen hitelesítés
       methods:
         vkontakte: "vkontakte"
         facebook: "facebook"
@@ -12,13 +13,4 @@ hu:
         poll: "Közvélemény kutatás"
         simple: "Egyszerű"
         password: "Jelszó"
-      actions:
-        new:
-          title: "új hitelesítés"
-          button: "Új hitelesítés"
-        edit:
-          title: "frissítés hitelesítés"
-          button: "szerkesztése"
-        destroy:
-          button: "Elpusztítani"
       no_auth: "Nincsenek hitelesítések."

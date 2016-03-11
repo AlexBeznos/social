@@ -24,18 +24,16 @@ ru:
         stocks_active: Акции активны
         polls_active: Опросы активны
         reputation_on: Начисление бонусов
-        simple_enter: Вход без авторизации
         loyalty_on: Включить настройки программ лояльности для юзеров
         loyalty_program: Программа лояльности
         score_amount: Размер бонуса
         redirect_url: Адрес переадресации после аутентификации
-        enter_by_password: Вход по паролю
-        password: Пароль
         city: Город
         display_my_banners: Показывать мои баннеры в других заведения
         display_other_banners: Показывать чужие баннеры в моем заведении
         sms_auth: SMS аутентификация
         auth_default_lang: Язык для аутентификации по умолчанию
+        mfa: Мультифакторная аутентификация
       user:
         first_name: Имя
         last_name: Фамилия

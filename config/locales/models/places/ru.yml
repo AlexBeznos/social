@@ -16,7 +16,6 @@ ru:
         redirect_url: "Редирект после аутентификации"
         wifi_link: "Ссылка на страницу с аутентификацией"
         reputation_active: "Начисление бонусов"
-        simple_enter: Вход без авторизации
         score_amount: "Размер бонуса"
         loyalty_program: Программа лояльности
         polls_active: Вывод опросов на страницу аутентификации
@@ -46,7 +45,7 @@ ru:
         new:
           title: "Создать заведение"
         edit:
-          title: 'Обновление %{place_name}'
+          title: 'Редаткирование %{place_name}'
         guests:
           title: "Top посетителей в %{place_name}"
           table:
