@@ -1,11 +1,21 @@
 class UrlValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    return false unless value
-    record.errors[attribute] << (options[:message] || I18n.t('models.errors.validations.wrong_link_format')) unless self.class.matches?(value)
+
+  def initialize(options)
+    options.reverse_merge!(:schemes => %w(http https))
+    options.reverse_merge!(:no_local => false)
+
+    super(options)
   end
 
-  def self.matches?(value)
-    return false unless value
-    /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix.match(value).nil? ? false : true
+  def validate_each(record, attribute, value)
+    schemes = [*options.fetch(:schemes)].map(&:to_s)
+    begin
+      uri = Addressable::URI.parse(value)
+      unless uri && uri.host && schemes.include?(uri.scheme) && (!options.fetch(:no_local) || uri.host.include?('.'))
+        record.errors.add(attribute, I18n.t('models.errors.validations.wrong_link_format'), value: value)
+      end
+    rescue Addressable::URI::InvalidURIError
+      record.errors.add(attribute, I18n.t('models.errors.validations.wrong_link_format'), value: value)
+    end
   end
 end
