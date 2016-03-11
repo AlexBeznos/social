@@ -4,4 +4,5 @@ FactoryGirl.define do
     active true
     redirect_url Faker::Internet.url('example.com')
     resource_type "VkontakteAuth"
+  end
 end
