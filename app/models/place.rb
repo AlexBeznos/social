@@ -8,15 +8,14 @@ class Place < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader, mount_on: :logo_file_name
 
-  has_one  :style,  :dependent => :destroy
-  has_many :banners, :dependent => :destroy
-  has_many :visits, :dependent => :destroy, class_name: 'Customer::Visit'
-  has_many :stocks, :dependent => :destroy
-  has_many :reputations, :dependent => :destroy, class_name: 'Customer::Reputation'
-  has_many :social_network_icons, :dependent => :destroy
-  has_many :menu_items, :dependent => :destroy
-  has_many :orders, :dependent => :destroy
-
+  has_one  :style, dependent: :destroy
+  has_many :banners, dependent: :destroy
+  has_many :visits, dependent: :destroy, class_name: 'Customer::Visit'
+  has_many :stocks, dependent: :destroy
+  has_many :reputations, dependent: :destroy, class_name: 'Customer::Reputation'
+  has_many :social_network_icons, dependent: :destroy
+  has_many :menu_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_many :auths, dependent: :destroy
 
   belongs_to :user
@@ -40,14 +39,6 @@ class Place < ActiveRecord::Base
   before_create :set_wifi_username_password
   before_save :set_wifi_link_freshnes
   after_save :gen_new_wifi_settings
-
-  def get_networks
-    networks_ids = messages.active
-                           .pluck(:social_network_id)
-                           .uniq
-
-    SocialNetwork.where(id: networks_ids)
-  end
 
   def get_customers
     Customer.joins(:visits).where('customer_visits.place_id = ?', self.id)
