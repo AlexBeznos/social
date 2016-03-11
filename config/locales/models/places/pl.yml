@@ -16,7 +16,6 @@ pl:
         redirect_url: "Przekierowanie po uwierzytelnieniu"
         wifi_link: "Link do tego uwierzytelniania strona"
         reputation_active: "Obliczanie bonusy"
-        simple_enter: Zaloguj się bez zezwolenia
         score_amount: "Rozmiar bonus"
         loyalty_program: Program lojalnościowy
         polls_active: Wnioski bada stronę uwierzytelniania

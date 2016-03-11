@@ -24,7 +24,6 @@ pl:
         stocks_active: akcje aktywne
         polls_active: Sonda
         reputation_on: Bonusy
-        simple_enter: Zaloguj się bez zezwolenia
         loyalty_on: Włącz konfiguracji programów lojalnościowych dla członków
         loyalty_program: Program lojalnościowy
         score_amount: Bonus

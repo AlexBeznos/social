@@ -31,7 +31,6 @@ class PlacePolicy < ApplicationPolicy
       :stocks_active,
       :polls_active,
       :reputation_on,
-      :simple_enter,
       :score_amount,
       :city,
       :display_other_banners,

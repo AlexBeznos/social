@@ -16,7 +16,6 @@ en:
         redirect_url: "Redirect after authentication"
         wifi_link: "Authentication page link"
         reputation_active: "Bonuses count"
-        simple_enter: Enter without authorization
         score_amount: "Bonus amount"
         loyalty_program: Loyalty program
         polls_active: Add polls to authentication page
