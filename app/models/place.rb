@@ -17,6 +17,7 @@ class Place < ActiveRecord::Base
   has_many :menu_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :auths, dependent: :destroy
+  has_many :gowifi_sms, :dependent => :destroy, class_name: 'GowifiSms'
 
   belongs_to :user
 
