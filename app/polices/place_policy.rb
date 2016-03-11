@@ -25,8 +25,6 @@ class PlacePolicy < ApplicationPolicy
     [
       :name,
       :logo,
-      :enter_by_password,
-      :password,
       :active,
       :redirect_url,
       :user_id,

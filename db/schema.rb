@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309113652) do
+ActiveRecord::Schema.define(version: 20160311025904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,8 +205,6 @@ ActiveRecord::Schema.define(version: 20160309113652) do
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "enter_by_password",            default: false
-    t.string   "password"
     t.boolean  "active",                       default: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"

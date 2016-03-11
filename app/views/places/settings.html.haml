@@ -57,13 +57,6 @@
         = t('models.places.attrs.sms_auth')
         %span.text-muted.pull-right= fa_plus_minus(@place.sms_auth)
       %li.list-group-item
-        = t('models.places.attrs.by_password')
-        %span.text-muted.pull-right= fa_plus_minus(@place.enter_by_password)
-      - if @place.enter_by_password
-        %li.list-group-item
-          = t('models.places.attrs.password')
-          %span.text-muted.pull-right= @place.password
-      %li.list-group-item
         = t('models.places.attrs.redirect_url')
         %span.text-muted.pull-right= link_to fa_icon('external-link'), @place.redirect_url ,target:"_blank"
       %li.list-group-item
