@@ -27,24 +27,20 @@ gem 'therubyracer',  platforms: :ruby
 # Utils
 gem 'geocoder'
 gem 'active_type'
-gem 'aasm'
 gem 'mini_magick'
 gem 'default_value_for'
 gem 'has_unique_slug'
 gem 'http_accept_language'
 gem 'simple_form'
-gem 'translit'
 gem 'yaml_db'
 gem 'mimemagic'
 gem 'figaro'
-gem 'paperclip', '~> 4.2'
 gem 'guess'
 gem 'rubyzip'
 gem 'i18n-timezones'
 gem 'ahoy_matey'
 gem 'carrierwave'
 gem 'carrierwave-aws'
-gem 'file_validators'
 gem 'rack-attack'
 
 gem 'kaminari'
@@ -53,18 +49,14 @@ gem 'kaminari-bootstrap'
 gem 'exception_notification'
 gem 'slack-notifier'
 
-# Parsers
-gem 'rabl'
-gem 'oj'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+# Validatiors
+gem 'file_validators'
 
 # Auth
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-instagram'
 gem 'omniauth-vkontakte'
-
 
 # Api
 gem 'vkontakte_api'

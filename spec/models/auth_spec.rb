@@ -9,15 +9,8 @@ RSpec.describe Auth do
   it { is_expected.to validate_uniqueness_of(:resource_type).scoped_to([:place_id, :step]) }
   it { is_expected.to validate_presence_of(:redirect_url) }
   it { is_expected.to accept_nested_attributes_for :resource }
+  it_behaves_like 'with url validation for', :url, :network_profile
 
-  describe "redirect_url validation" do
-    it { expect(build(:auth, redirect_url: "fuck")).to_not be_valid }
-    it { expect(build(:auth, redirect_url: "http://www.example.com")).to be_valid }
-  end
-
-  describe "valid active scope" do 
-
-  end
 
 
   describe "Constant values" do

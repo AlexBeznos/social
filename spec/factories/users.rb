@@ -19,14 +19,14 @@ FactoryGirl.define do
       group 2
     end
 
-    # trait :with_places do
-    #   ignore do
-    #     number_of_places 5
-    #   end
-    #
-    #   after(:create) do |user, evaluator|
-    #     create_list(:place, evaluator.number_of_places, user: user)
-    #   end
-    # end
+    trait :with_places do
+      ignore do
+        number_of_places 5
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:place, evaluator.number_of_places, user: user)
+      end
+    end
   end
 end

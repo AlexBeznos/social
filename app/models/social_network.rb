@@ -3,7 +3,7 @@ class SocialNetwork < ActiveRecord::Base
 
   scope :by_name, -> (name) { find_by(name: name) }
 
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, presence: true, uniqueness: true
 
   def font_awesome_name
     case name
