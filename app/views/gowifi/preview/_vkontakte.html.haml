@@ -4,3 +4,22 @@
 .vk-frame
   =image_tag("vk-frame.png", :class => 'frame')
   =image_tag(@message.image, :class => 'vk-pic')
+
+
+%article.vk-post
+  %img.vk-post__user-photo{:alt => "user-photo", :src => "user-photo.jpg"}
+    %span.vk-post__user-name User name
+    %img.vk-post__post-img{:alt => "post-img", :src => "#"}
+      %p.vk-post__description
+        = @message.des
+      .vk-post__options.clearfix
+        .vk-post__options--left-column
+          %span.vk-post__adding-time час назад |
+          %span.vk-post__reply{:href => ""} Ответить
+        .vk-post__options--right-column
+          .vk-post__actions.vk-post__actions--share
+            %span.vk-post__action--title Поделиться
+            %span.vk-post__action--quantity.vk-post__action--quantity--share 525
+          .vk-post__actions
+            %span.vk-post__action--title Мне нравится
+            %span.vk-post__action--quantity.vk-post__action--quantity--like 4256
