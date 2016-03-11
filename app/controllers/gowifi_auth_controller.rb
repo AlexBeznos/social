@@ -19,13 +19,14 @@ class GowifiAuthController < ApplicationController
   end
 
   def enter_by_sms
-    sms = @place.gowifi_sms.where(code: params[:code])
+    sms = @place.gowifi_sms.find_by(code: params[:code])
+    auth = @place.auths.active.find_by({ resource_type: SmsAuth, step: Auth.steps[cookies[:step]] })
 
-    if sms.any?
-      sms.first.destroy
-      render json: { url: succed_auth_path(@place) }, status: :ok
+    if sms
+      sms.destroy
+      redirect_to succed_auth_path(@place, auth)
     else
-      render json: { error: I18n.t('wifi.sms_try_more').humanize }, status: :unprocessable_entity
+      redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
     end
   end
 
