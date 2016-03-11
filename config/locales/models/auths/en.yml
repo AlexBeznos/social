@@ -21,4 +21,4 @@ en:
           button: "Edit"
         destroy:
           button: "Destroy"
-      no_auth: "You have no authentications"
+      no_auth: "You have no authentications."
