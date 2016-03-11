@@ -23,7 +23,6 @@ pl:
         display_my_banners: Pokaż swoje banery w innych miejscach
         display_other_banners: Pokaż banery innych ludzi na moim miejscu
         owner: Właściciel
-        sms_auth: Uwierzytelniania SMS
       actions:
         index:
           title: 'Miejsca'

@@ -23,7 +23,6 @@ ua:
         display_my_banners: Показувати мої банери в інших закладах
         display_other_banners: Показувати чужі банери в моєму закладі
         owner: Власник
-        sms_auth: SMS аутентифікація
       actions:
         index:
           title: 'Заклад'

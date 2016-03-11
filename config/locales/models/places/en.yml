@@ -23,7 +23,6 @@ en:
         display_my_banners: Display my banners in other places
         display_other_banners: Display other's banners in my place
         owner: Place owner
-        sms_auth: SMS authentication
       actions:
         index:
           title: 'Places'
