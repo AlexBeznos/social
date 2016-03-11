@@ -20,7 +20,7 @@ class Auth < ActiveRecord::Base
   scope :resource_like, -> (meth) { where("resource_type LIKE ?", "#{meth}%") }
 
   belongs_to :place
-  belongs_to :resource, polymorphic: true, autosave: true, dependent: :destroy
+  belongs_to :resource, polymorphic: true, dependent: :destroy
 
   validates :redirect_url, presence: true, url: true
   validates :resource_type, uniqueness: { conditions: -> { where(active: true) }, scope: [ :place_id, :step ] }

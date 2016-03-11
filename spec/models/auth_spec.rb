@@ -15,6 +15,10 @@ RSpec.describe Auth do
     it { expect(build(:auth, redirect_url: "http://www.example.com")).to be_valid }
   end
 
+  describe "valid active scope" do 
+
+  end
+
 
   describe "Constant values" do
     it "NETWORKS contains proper auth network methods" do
