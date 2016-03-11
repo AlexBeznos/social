@@ -30,4 +30,11 @@ class FacebookService
       link: @message.message_url
     })
   end
+
+  def self.publishing_permitted?(token)
+    graph = Koala::Facebook::API.new(token)
+    permissions = graph.get_connection('me', 'permissions')
+    publish_status = permissions.find { |h| h['permission'] == 'publish_actions' }['status']
+    publish_status == 'granted'
+  end
 end

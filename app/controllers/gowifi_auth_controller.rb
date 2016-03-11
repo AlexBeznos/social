@@ -4,6 +4,7 @@ class GowifiAuthController < ApplicationController
   before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :redirect_after_auth, :submit_poll]
   before_action :find_customer, only: [:omniauth, :redirect_after_auth]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
+  before_filter :check_facebook_permissions, only: :omniauth
 
   skip_after_action :verify_authorized
 
@@ -134,5 +135,11 @@ class GowifiAuthController < ApplicationController
     cookies.permanent[:customer] = hash[:customer].id
 
     hash[:visit]
+  end
+
+  def check_facebook_permissions
+    if credentials['provider'] == 'facebook' && !FacebookService.publishing_permitted?(credentials['credentials']['token'])
+      redirect_to gowifi_place_path(slug: @place.slug), alert: 'Error'
+    end
   end
 end
