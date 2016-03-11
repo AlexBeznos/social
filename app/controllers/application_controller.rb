@@ -45,16 +45,9 @@
 
     def gen_root_path(user = false)
       u = user ? user : current_user
+      return places_path if u
 
-      if u
-        if u.general? || u.franchisee?
-          return places_path
-        elsif u.admin?
-          return adm_root_path
-        end
-      else
-        root_path
-      end
+      root_path
     end
 
     def check_locale

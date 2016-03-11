@@ -1,12 +1,4 @@
-- if false
+- if auths.resource_like(Auth::ALTERNATIVE[:sms].capitalize).any?
   = form_tag("/wifi/#{@place.slug}/gowifi_sms", id: 'manual', method: 'post', class: 'gowifi_sms_form') do
-    %input{ name: "gowifi_sms[phone]", placeholder: "#{t('wifi.sms_placeholder')}", required: "", type: "tel" }/
-    %input{ type: "submit" }/
-
-  = form_tag("/wifi/#{@place.slug}/by_sms", id: 'manual', method: 'post', class: 'by_sms_form', style: 'display:none') do
-    %input{ name: "code", placeholder: "#{t('wifi.sms_code_placeholder')}", required: "", type: "number" }/
-    %input{ type: "submit" }/
-
-  = link_to t('wifi.sms_resend'), '#', style: 'display: none', id: 'resend_sms'
-
-  = javascript_include_tag "sms-auth"
+    %input{ name: "gowifi_sms[phone]", placeholder: "#{t('wifi.sms_placeholder')}", required: "", type: "tel" }
+    %input{ type: "submit" }

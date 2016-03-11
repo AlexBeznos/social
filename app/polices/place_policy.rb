@@ -37,7 +37,6 @@ class PlacePolicy < ApplicationPolicy
       :display_my_banners,
       :loyalty_program,
       :domen_url,
-      :sms_auth,
       :auth_default_lang,
       :ssid,
       :mfa

@@ -51,9 +51,6 @@
         = t('models.places.attrs.score_amount')
         %span.text-muted.pull-right= @place.score_amount
       %li.list-group-item
-        = t('models.places.attrs.sms_auth')
-        %span.text-muted.pull-right= fa_plus_minus(@place.sms_auth)
-      %li.list-group-item
         = t('models.places.attrs.redirect_url')
         %span.text-muted.pull-right= link_to fa_icon('external-link'), @place.redirect_url ,target:"_blank"
       %li.list-group-item

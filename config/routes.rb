@@ -36,9 +36,7 @@ Rails.application.routes.draw do
   resources :users
   resources :places do
     resources :auths, except: :index
-    resources :polls
     resources :banners
-    resources :messages, except: [:index, :show]
     resources :stocks, except: :show
     resources :styles, except: :index
     resources :menu_items
@@ -67,6 +65,7 @@ Rails.application.routes.draw do
       post '/by_password' => 'gowifi_auth#enter_by_password'
       post '/by_sms' => 'gowifi_auth#enter_by_sms'
       get '/simple_enter' => 'gowifi_auth#simple_enter'
+      get '/gowifi_sms/:id' => 'gowifi_sms#show', as: :gowifi_sms_confirmation
 
       resources :gowifi_sms, only: :create do
         member do

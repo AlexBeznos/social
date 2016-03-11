@@ -1,7 +1,7 @@
 class GowifiController < ApplicationController
   include Consumerable
 
-  layout false
+  layout 'gowifi'
   before_action :find_place, only: :show
   before_action :set_place_slug, only: :show
   before_action :set_step, only: :show

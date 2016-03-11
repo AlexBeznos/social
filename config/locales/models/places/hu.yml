@@ -23,7 +23,6 @@ hu:
         display_my_banners: Mutassa a reklámokat, más helyeken
         display_other_banners: Mutasd mások bannerek a helyemben
         owner: Tulajdonos
-        sms_auth: SMS hitelesítés
       actions:
         index:
           title: 'Helyek'

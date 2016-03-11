@@ -31,7 +31,6 @@ en:
         city: City
         display_my_banners: Display my banners in other places
         display_other_banners: Display other's banners in my place
-        sms_auth: SMS authentication
         auth_default_lang: Authentication default language
         mfa: Multi-factor authentication
       user:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311031816) do
+ActiveRecord::Schema.define(version: 20160311163619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -229,7 +229,6 @@ ActiveRecord::Schema.define(version: 20160311031816) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
-    t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
     t.string   "auth_default_lang"
     t.string   "ssid"
