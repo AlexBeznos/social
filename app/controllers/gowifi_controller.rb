@@ -70,6 +70,6 @@ class GowifiController < ApplicationController
 
   def check_for_place_activation
     return redirect_to '/404.html' unless @place
-    redirect_to wifi_login_path(@place) unless @place.try(:active)
+    redirect_to wifi_login_path(@place, Auth.new(redirect_url: "http://#{request.host}")) unless @place.try(:active)
   end
 end
