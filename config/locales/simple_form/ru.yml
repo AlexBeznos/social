@@ -29,8 +29,6 @@ ru:
         loyalty_program: Программа лояльности
         score_amount: Размер бонуса
         redirect_url: Адрес переадресации после аутентификации
-        enter_by_password: Вход по паролю
-        password: Пароль
         city: Город
         display_my_banners: Показывать мои баннеры в других заведения
         display_other_banners: Показывать чужие баннеры в моем заведении

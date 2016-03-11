@@ -29,8 +29,6 @@ hu:
         loyalty_program: Hűségprogram
         score_amount: A bónusz
         redirect_url: Cím továbbítása hitelesítés után
-        enter_by_password: Bejelentkezési jelszó
-        password: Jelszó
         city: City
         display_my_banners: Mutassa a reklámokat, más helyeken
         display_other_banners: Mutasd mások bannerek a helyemben

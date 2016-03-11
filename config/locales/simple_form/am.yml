@@ -29,8 +29,6 @@
         loyalty_program: Հավատարմության ծրագիր
         score_amount: Բոնուսի չափը
         redirect_url: Մուտք գործելուց հետո ցուցադրվող կայքը
-        enter_by_password: Մուտք գաղտնաբառով
-        password: Գաղտնաբառ
         city: Քաղաք
         display_my_banners: Ցուցադրել իմ բաններները այլ հաստատություններում
         display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում

@@ -29,8 +29,6 @@ pl:
         loyalty_program: Program lojalnościowy
         score_amount: Bonus
         redirect_url: Adres do korespondencji po uwierzytelnieniu
-        enter_by_password: Zaloguj hasło
-        password: hasło
         city: miasto
         display_my_banners: Pokaż swoje banery w innych miejscach
         display_other_banners: Pokaż banery innych ludzi na moim miejscu
