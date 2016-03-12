@@ -16,7 +16,20 @@
   border-left: 0;
   border-right: 0;
   box-sizing: border-box;
+  margin: 0 auto;
 
+
+  &__post-img {
+    margin-bottom: 6px;
+    margin-top: 7px;
+    width: 100%;
+    min-height: 260px;
+    background: #ccc;
+  }
+
+  &__link {
+    color: #2B587A;
+  }
 
   &__user-photo {
     position: absolute;
@@ -89,7 +102,7 @@
         left: 2px;
         width: 15px;
         height: 15px;
-        background: image-url('icons.png') no-repeat 0px 3px;
+        background: image-url('vk-icons.png') no-repeat 0px 3px;
         opacity: 0.4;
       }
 
