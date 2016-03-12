@@ -33,8 +33,8 @@ RSpec.describe GowifiSmsController, :type => :controller do
         expect(GowifiSms.all.length).to eq 1
       end
 
-      it 'should include id in response' do
-        expect(response.body).to include 'id'
+      it 'should redirect to confirmaytion path' do
+        expect(response).to redirect_to(gowifi_sms_confirmation_path(place.slug, GowifiSms.last ))
       end
 
       include_examples "with_status", :ok
@@ -49,8 +49,12 @@ RSpec.describe GowifiSmsController, :type => :controller do
 
       include_examples "with_status", :not_acceptable
 
-      it 'should have error in body' do
-        expect(response.body).to include('error')
+      it 'should redirect to gowifi place' do
+        expect(response).to redirect_to(gowifi_place_path(place))
+      end
+
+      it 'should have proper alert message' do
+        expect(flash[:alert]).to be_present
       end
     end
 
