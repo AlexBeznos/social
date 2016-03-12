@@ -15,7 +15,7 @@ class GowifiSmsController < ApplicationController
     if @gowifi_sms.save
       redirect_to gowifi_sms_confirmation_path(params[:slug], @gowifi_sms)
     else
-      redirect_to gowifi_place_path(@place), alert: @gowifi_sms.errors.messages.first.last
+      redirect_to gowifi_place_path(@place), alert: @gowifi_sms.errors.messages.first.last.first
     end
   end
 
