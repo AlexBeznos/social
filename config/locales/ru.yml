@@ -293,6 +293,7 @@ ru:
       short: "%d %b, %H:%M"
     pm: вечера
   wifi:
+    sms_try_more: 'Код неправильный. Попробуйте еще раз.'
     greetings: "Здравствуйте, <ins>%{customer_name}</ins>!"
     greetings_to_no_one: Здравствуйте!
     description: 'Войдите через свою любимую<br/>социальную сеть и получите<br/>доступ в интернет'

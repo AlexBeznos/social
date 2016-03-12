@@ -21,6 +21,7 @@
     = render 'style', place: @place, customer: @customer if @place.style
   %body
     = render 'banner', place: @place if @place.display_other_banners && @banner
+    = render 'shared/flash'
     .wrapper-out
       .wrapper-in
         .content

@@ -254,7 +254,7 @@ en:
     sms_placeholder: "number for sms"
     sms_code_placeholder: "code from sms"
     sms_resend: 'resend sms'
-    sms_try_more: 'code is incorect. Try one more time.'
+    sms_try_more: 'the wrong code. Try again.'
     submit: "Submit"
   menu_item:
     greetings: "%{customer_name}, welcome to %{place_name}"

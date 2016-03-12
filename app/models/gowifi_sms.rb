@@ -18,7 +18,7 @@ class GowifiSms < ActiveRecord::Base
   end
 
   def resend_sms
-    if 25.seconds.ago > updated_at
+    if 10.seconds.ago > updated_at
       send_sms
       self.touch
     end
