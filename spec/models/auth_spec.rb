@@ -32,23 +32,6 @@ RSpec.describe Auth do
     end
   end
 
-  describe "accept nested attributes" do
-    let(:valid_attrs){ attributes_for(:vkontakte_auth) }
-    let(:invalid_attrs){ attributes_for(:vkontakte_auth, message:"" ) }
-
-    it "creates resource with valid attributes" do
-      expect do
-        create(:auth, resource_attributes: valid_attrs )
-      end.to change(Auth, :count).by(1)
-    end
-
-    it "raise error resource with invalid attributes" do
-      expect do
-        create(:auth, resource_attributes: invalid_attrs).to have(1).errors_on(:message)
-      end
-    end
-  end
-
   describe "Constant values" do
     it "NETWORKS contains proper auth network methods" do
       expect(described_class::NETWORKS).to match({

@@ -7,12 +7,15 @@ class TwitterAuth < ActiveRecord::Base
 
   validate :twitter_message_length
   validates :message_url, :message, :image, presence: true
-  validate :message_url, url: true
+  validates :message_url, url: true
+
 
   private
 
   def twitter_message_length
-    if (self.message.length + self.message_url.length) >= 140
+    return if self.message.blank? || self.message_url.blank?
+
+    if (self.message.length + self.message_url.length) > 140
       errors.add(:message, I18n.t('models.errors.validations.long_twitter_message'))
     end
   end

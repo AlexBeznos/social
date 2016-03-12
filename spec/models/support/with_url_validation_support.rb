@@ -12,7 +12,7 @@ RSpec.shared_examples 'with url validation for' do |attrs, klass|
     it "invalid #{attr}" do
       record = build_stubbed(klass, attr => 'google.con')
       record.valid?
-      expect(record.errors.messages[:url]).to include(I18n.t('models.errors.validations.wrong_link_format'))
+      expect(record.errors.messages[attr]).to include(I18n.t('models.errors.validations.wrong_link_format'))
     end
   end
 end
