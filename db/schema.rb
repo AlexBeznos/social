@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311163619) do
+ActiveRecord::Schema.define(version: 20160312011100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -222,7 +222,6 @@ ActiveRecord::Schema.define(version: 20160311163619) do
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
     t.boolean  "loyalty_program",              default: false
-    t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
     t.boolean  "display_other_banners",        default: false
@@ -240,12 +239,9 @@ ActiveRecord::Schema.define(version: 20160311163619) do
 
   create_table "poll_auths", force: true do |t|
     t.text     "question"
-    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "poll_auths", ["place_id"], name: "index_poll_auths_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
