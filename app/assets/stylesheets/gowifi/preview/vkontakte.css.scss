@@ -44,77 +44,81 @@
     padding: 0;
   }
 
+  &__options {
+    &--left-column {
+      float: left;
+    }
 
-}
+    &--right-column {
+    float: right;
+    }
+  }
 
+  &__adding-time {
+    color: #999;
+  }
 
-.vk-post__options--left-column {
-  float: left;
-}
+  &__reply {
+    color: #2b587a;
+  }
 
-.vk-post__options--right-column {
-  float: right;
-}
+  &__actions {
+    display: inline-block;
+    margin: 0 5px;
+  }
 
-.vk-post__adding-time {
-  color: #999;
-}
+  &__action {
+    display: inline-block;
+    margin: 0 5px;
 
-.vk-post__reply {
-  color: #2b587a;
-}
+    &--title {
+      color: #829baf;
+    }
 
-.vk-post__actions {
-  display: inline-block;
-  margin: 0 5px;
-}
+    &--quantity {
+      position: relative;
+      padding-left: 18px;
 
+      color: #7295b2;
+      font-weight: bold;
 
-.vk-post__action--title {
-  color: #829baf;
-}
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 2px;
+        width: 15px;
+        height: 15px;
+        background: image-url('icons.png') no-repeat 0px 3px;
+        opacity: 0.4;
+      }
 
-.vk-post__action--quantity {
-  position: relative;
-  padding-left: 18px;
+      &--share::before {
+        background-position: 0px -19px;
+      }
 
-  color: #7295b2;
-  font-weight: bold;
-}
+      &--like::before {
+        background-position: 0px 3px;
+      }
 
-.vk-post__action--quantity::before {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 2px;
-  width: 15px;
-  height: 15px;
-  background: image-url('icons.png') no-repeat 0px 3px;
-  opacity: 0.4;
-}
-
-.vk-post__action--quantity--share::before {
-  background-position: 0px -19px;
-}
-
-.vk-post__action--quantity--like::before {
-  background-position: 0px 3px;
+    }
+  }
 }
 
 @media screen and (max-width: 640px) {
   .vk-post {
     width: 397px;
-  }
 
-  .vk-post__post-img {
-    min-height: 159px;
-  }
+    &__post-img {
+      min-height: 159px;
+    }
 
-  .vk-post__options * {
-    font-size: 10px;
-  }
+    &__options * {
+      font-size: 10px;
+    }
 
-  .vk-post__actions--share {
-    display: none;
+    &__actions--share {
+      display: none;
+    }
   }
 }
