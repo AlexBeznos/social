@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :new, :create]
-  after_action :verify_policy_scoped, only:[ :index ]
 
   def index
     authorize User
 
-    @users = policy_scope(User)
+    if current_user.admin?
+      @users = User.all
+    else
+      @users = current_user.place_owners
+    end
   end
 
   def show

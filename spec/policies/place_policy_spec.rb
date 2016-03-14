@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe PlacePolicy do
   include_examples "visitor"
 
-  subject { PlacePolicy.new(user,record) }
+  subject { PlacePolicy.new(user, record) }
 
   let(:attributes){ subject.permitted_attributes }
   let(:record){ create :place}
@@ -30,7 +30,9 @@ RSpec.describe PlacePolicy do
   end
 
   context "for franchisee" do
+    let(:record){ create :place, user: user }
     let(:user){create :user_franchisee}
+
 
     it "scope includes user with user: current_user" do
       expect(resolved_scope).to include(create :place, user: user)
@@ -48,6 +50,7 @@ RSpec.describe PlacePolicy do
   end
 
   context "for general" do
+    let(:record){ create :place, user: user }
     let(:user){ create :user_general }
 
     it "scope includes place with user: current_user" do
