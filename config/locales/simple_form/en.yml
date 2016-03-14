@@ -4,17 +4,17 @@ en:
       default_message: "Please review the problems below:"
     labels:
       auth:
-        redirect_url: "երահղման URL- ը , հետո իսկությունը"
-        resource_type: "Նույնականացման տեսակը"
+        redirect_url: "Redirect url after authentication"
+        resource_type: "Authentication type"
         resource:
-          message_url: "հաղորդագրություն URL"
-          message: "հաղորդագրություն"
-          image: "պատկեր"
-          password: "գաղտնաբառ"
-          question: "Հարց"
-          answer: "պատասխան"
-          add_answer: "Ավելացնել պատասխան"
-          remove: "հեռացնել"
+          message_url: "Message url"
+          message: "Message"
+          image: "Image"
+          password: "Password"
+          question: "Question"
+          answer: "Answer"
+          add_answer: "Add answer"
+          remove: "Remove"
       place:
         name: 'Place name'
         ssid: 'Place SSID'
@@ -22,7 +22,6 @@ en:
         logo: 'Logo'
         active: Hotspot is active
         stocks_active: Promos are active
-        polls_active: Polls are active
         reputation_on: Add bonuses
         loyalty_on: Enable loyalty settings for users
         loyalty_program: Loyalty program

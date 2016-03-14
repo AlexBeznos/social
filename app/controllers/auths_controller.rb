@@ -21,11 +21,11 @@ class AuthsController < ApplicationController
   end
 
   def edit
-    authorize Auth
+    authorize @auth
   end
 
   def update
-    authorize Auth
+    authorize @auth
 
     if @auth.update(auth_params(:resource_attributes))
       redirect_to settings_place_path(@place)
@@ -35,7 +35,7 @@ class AuthsController < ApplicationController
   end
 
   def destroy
-    authorize Auth
+    authorize @auth
 
     if Auth::NETWORKS.keys.include? @auth.name
       @auth.update(active: false)

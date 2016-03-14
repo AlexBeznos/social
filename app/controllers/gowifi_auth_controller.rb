@@ -77,7 +77,7 @@ class GowifiAuthController < ApplicationController
     if params[:provider]
       redirect_to "/auth/#{params[:provider]}"
     else
-      redirect_to gowifi_place_path(slug: @place.slug)
+      redirect_to gowifi_place_path(@place)
     end
   end
 

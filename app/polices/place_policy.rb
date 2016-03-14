@@ -29,7 +29,6 @@ class PlacePolicy < ApplicationPolicy
       :redirect_url,
       :user_id,
       :stocks_active,
-      :polls_active,
       :reputation_on,
       :score_amount,
       :city,

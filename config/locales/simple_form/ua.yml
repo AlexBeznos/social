@@ -22,7 +22,6 @@ ua:
         logo: 'Логотип'
         active: Активувати Hotspot
         stocks_active: Активувати Акції
-        polls_active: Активувати опитування
         reputation_on: Нарахування бонусів
         loyalty_on: Включити налаштування програм лояльності для юзерів
         loyalty_program: Програма лояльності
