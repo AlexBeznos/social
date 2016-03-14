@@ -61,7 +61,6 @@ Rails.application.routes.draw do
     scope ':slug' do
       get '/login' => 'gowifi#show', as: :gowifi_place
       patch '/poll_enter' => 'gowifi_auth#submit_poll'
-      get '/status' => 'gowifi_auth#redirect_after_auth'
       post '/by_password' => 'gowifi_auth#enter_by_password'
       post '/by_sms' => 'gowifi_auth#enter_by_sms'
       get '/simple_enter' => 'gowifi_auth#simple_enter'
