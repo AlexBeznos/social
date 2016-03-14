@@ -16,15 +16,12 @@ ua:
         redirect_url: "Редирект після аутентифікації"
         wifi_link: "Посилання на сторінку аутентифікації"
         reputation_active: "Нарахування бонусів"
-        simple_enter: Вхід без авторизації
         score_amount: "Розмір бонусу"
         loyalty_program: Програма лояльності
-        polls_active: Виводити опитування на сторінку аутентифікації
         city: Місто
         display_my_banners: Показувати мої банери в інших закладах
         display_other_banners: Показувати чужі банери в моєму закладі
         owner: Власник
-        sms_auth: SMS аутентифікація
       actions:
         index:
           title: 'Заклад'

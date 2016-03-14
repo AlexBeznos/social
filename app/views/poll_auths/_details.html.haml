@@ -1,0 +1,14 @@
+.row
+  .col-sm-12
+    %table.table.table-hover
+      %thead
+        %tr.container-fluid
+          %th.col-md-6= t('models.polls.attrs.answer')
+          %th.col-md-6= t('models.polls.attrs.selections_number')
+      %tbody
+        - resource.answers.each do |a|
+          %tr.container-fluid
+            %td.text-left.col-md-6= a.content
+            %td.text-left.col-md-6= a.number_of_selections
+    = pie_chart resource.answers.group(:content).sum(:number_of_selections) if resource.answers.pluck(:number_of_selections).any? { |n| n > 0 }
+    = link_to t("simple_form.labels.auth.redirect_url"), resource.auth.redirect_url, class: 'btn btn-info'

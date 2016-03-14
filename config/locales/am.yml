@@ -305,6 +305,7 @@
     submit: Պատասխանել
     sms_placeholder: համարը ուղարկելով SMS
     sms_resend: ուղարկել SMS, նորից
+    sms_try_more: "սխալ կոդը: Փորձեք կրկին."
   menu_item:
     greetings: "%{customer_name}, Բարի Գալուստ %{place_name}"
     greetings_short: Բարի Գալուստ

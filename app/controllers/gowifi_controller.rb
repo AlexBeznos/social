@@ -1,9 +1,10 @@
 class GowifiController < ApplicationController
   include Consumerable
 
-  layout false
+  layout 'gowifi'
   before_action :find_place, only: :show
   before_action :set_place_slug, only: :show
+  before_action :set_step, only: :show
   before_action :set_default_format, only: :show
   before_action :find_customer, only: :show
   before_action :set_locale, only: :show
@@ -12,7 +13,7 @@ class GowifiController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
-    @networks = @place.get_networks
+    @auths = @place.auths.active.where(step: Auth.steps[cookies[:step]] || 'primary')
     @banner = find_banner if @place.display_other_banners
     @banner.increment!(:number_of_views) if @banner
   end
@@ -26,6 +27,13 @@ class GowifiController < ApplicationController
   # place slug  will be saved in omniauth or at least session
   def set_place_slug
     session[:slug] = @place.slug
+  end
+
+  def set_step
+    cookies[:step] = {
+      value: 'primary',
+      expires: 15.minutes.from_now
+    } unless cookies[:step]
   end
 
   def set_default_format
@@ -62,6 +70,6 @@ class GowifiController < ApplicationController
 
   def check_for_place_activation
     return redirect_to '/404.html' unless @place
-    redirect_to wifi_login_path(@place) unless @place.try(:active)
+    redirect_to wifi_login_path(@place, "http://#{request.host}") unless @place.try(:active)
   end
 end

@@ -1,0 +1,16 @@
+pl:
+  models:
+    auths:
+      name: "poświadczenie"
+      Primary: "Podstawowa"
+      Secondary: "Wtórny"
+      add_auth: Tworzenie uwierzytelniania
+      methods:
+        vkontakte: "VKontakte"
+        facebook: "Facebook"
+        twitter: "Twitter"
+        sms: "Sms"
+        poll: "Głosowanie"
+        simple: "Prosty"
+        password: "Hasło"
+      no_auth: "Nie masz poświadczeń ."

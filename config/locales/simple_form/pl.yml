@@ -3,6 +3,18 @@ pl:
     error_notification:
       default_message: "Należy rozwiązać problem w następujący sposób:"
     labels:
+      auth:
+        redirect_url: "Przekierowanie po uwierzytelnieniu"
+        resource_type: "Typ uwierzytelniania"
+        resource:
+          message_url: "Wiadomość url"
+          message: "Wiadomość"
+          image: "Obraz"
+          password: "Hasło"
+          question: "Pytanie"
+          answer: "Odpowiedź"
+          add_answer: "Dodaj odpowiedź"
+          remove: "Usunąć"
       place:
         name: 'nazwa instytucji'
         ssid: 'miejsca SSID'
@@ -10,20 +22,16 @@ pl:
         logo: 'logotyp'
         active: Hotspot aktywny
         stocks_active: akcje aktywne
-        polls_active: Sonda
         reputation_on: Bonusy
-        simple_enter: Zaloguj się bez zezwolenia
         loyalty_on: Włącz konfiguracji programów lojalnościowych dla członków
         loyalty_program: Program lojalnościowy
         score_amount: Bonus
         redirect_url: Adres do korespondencji po uwierzytelnieniu
-        enter_by_password: Zaloguj hasło
-        password: hasło
         city: miasto
         display_my_banners: Pokaż swoje banery w innych miejscach
         display_other_banners: Pokaż banery innych ludzi na moim miejscu
-        sms_auth: uwierzytelniania SMS
         auth_default_lang: Domyślnym językiem uwierzytelniania
+        mfa: Wieloczynnikowa autentifіkatsіya
       user:
         first_name: Imię
         last_name: Nazwisko

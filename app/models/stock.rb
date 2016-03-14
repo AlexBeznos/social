@@ -1,14 +1,10 @@
 class Stock < ActiveRecord::Base
   belongs_to :place
 
-  # has_attached_file :image,
-  #                   :storage => :s3,
-  #                   :path => "/images/stocks/:id/:style.:extension",
-  #                   :url => ":s3_domain_url"
   mount_uploader :image, StockUploader, mount_on: :image_file_name
 
   validates :place_id, :day, presence: true
-  validates :url, :url => true
+  validates :url, url: true
   validates :image,
             presence: true,
             file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] }
@@ -24,7 +20,7 @@ class Stock < ActiveRecord::Base
   def normalize_day
     index = I18n.t('date.day_names').index(day)
     self.day = if index
-      I18n.t('date.day_names', :locale => :en)[index]
+      I18n.t('date.day_names', locale: :en)[index]
     else
       day
     end

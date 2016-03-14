@@ -307,6 +307,7 @@ hu:
     sms_placeholder: "szám sms"
     sms_code_placeholder: "A kódex sms"
     sms_resend: 'küldjön SMS-t újra'
+    sms_try_more: "a rossz kódot. Próbálja újra. "
   menu_item:
     greetings: "%{customer_name}, üdvözöljük %{place_name}"
     greetings_short: Ön szívesen!

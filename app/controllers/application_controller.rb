@@ -45,16 +45,9 @@
 
     def gen_root_path(user = false)
       u = user ? user : current_user
+      return places_path if u
 
-      if u
-        if u.general? || u.franchisee?
-          return places_path
-        elsif u.admin?
-          return adm_root_path
-        end
-      else
-        root_path
-      end
+      root_path
     end
 
     def check_locale
@@ -76,9 +69,9 @@
       Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
     end
 
-    def wifi_login_path(place)
+    def wifi_login_path(place, url)
       return status_path(place) if place.demo
-      "http://172.16.16.1/login?user=#{place.wifi_username}&password=#{place.wifi_password}&dst=#{place.redirect_url}"
+      "http://172.16.16.1/login?user=#{place.wifi_username}&password=#{place.wifi_password}&dst=#{url}"
     end
 
 end

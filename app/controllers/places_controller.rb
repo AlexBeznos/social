@@ -20,6 +20,7 @@ class PlacesController < ApplicationController
     authorize Place
 
     @place = Place.new(permitted_attributes(Place))
+
     if @place.save
       redirect_to user_path(@place.user), notice: I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
@@ -63,11 +64,6 @@ class PlacesController < ApplicationController
 
   def settings
     authorize @place
-
-    @message = active_message(params[:message])
-    @networks = all_networks
-    @place_owner = User.find_by(id: @place.user_id)
-
   end
 
   def edit
@@ -109,16 +105,5 @@ class PlacesController < ApplicationController
                     .inject{ |sum,x| sum.to_i + x.to_i }
 
     number ? number : 0
-  end
-
-  def active_message social_network = nil
-    messages = @place.messages.active
-    return messages.first unless social_network
-
-    messages.find_by(social_network: SocialNetwork.find_by(name: social_network))
-  end
-
-  def all_networks
-    @place.messages.active.map { |message| message.social_network }.uniq
   end
 end

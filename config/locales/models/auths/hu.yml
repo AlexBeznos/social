@@ -1,0 +1,16 @@
+hu:
+  models:
+    auths:
+      name: "hitelesítés"
+      Primary: "Elsődleges"
+      Secondary: "Másodlagos"
+      add_auth: Készítsen hitelesítés
+      methods:
+        vkontakte: "vkontakte"
+        facebook: "facebook"
+        twitter: "twitter"
+        sms: "sms"
+        poll: "Közvélemény kutatás"
+        simple: "Egyszerű"
+        password: "Jelszó"
+      no_auth: "Nincsenek hitelesítések."

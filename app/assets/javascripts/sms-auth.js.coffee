@@ -1,45 +1,13 @@
-$id = 0
 $(document).ready ->
-  currentPath = ->
-    return window.location.pathname.replace /login/, ''
+  showInFewSeconds = ->
+    setTimeout "$('#resend_sms').show()", 10000
 
-  sendSmsCode = (e) ->
-    e.preventDefault()
-    data = $(e.currentTarget).serialize()
+  $('#resend_sms').hide()
+  showInFewSeconds()
 
-    $.ajax
-      type: 'POST',
-      url: "#{currentPath()}by_sms",
-      data: data,
-      success: (data) ->
-        window.location.replace data.url
-      error: (xhr, str) ->
-        alert(JSON.parse(xhr.responseText).error)
+  $('#resend_sms').click ->
+    $('#resend_sms').hide()
+    showInFewSeconds()
 
-  resendSms = (e) ->
-    e.preventDefault()
-
-    $.ajax
-      type: 'POST',
-      url: "#{currentPath()}gowifi_sms/#{$id}/resend",
-      error: (xhr, str) ->
-        alert(JSON.parse(xhr.responseText).error)
-
-  $('.gowifi_sms_form').submit (e) ->
-    e.preventDefault()
-    data = $(e.currentTarget).serialize()
-
-    $.ajax
-      type: 'POST',
-      url: "#{currentPath()}gowifi_sms",
-      data: data,
-      success: (data) ->
-        [$id, resendLink] = [data.id, $('#resend_sms')]
-
-        $(e.currentTarget).hide()
-        $('.by_sms_form').show()
-        $('.by_sms_form').submit(sendSmsCode)
-        resendLink.click(resendSms)
-        resendLink.show()
-      error: (xhr, str) ->
-        alert(JSON.parse(xhr.responseText).error)
+  $('#resend_sms').on 'ajax:error', (status, xhr) ->
+    alert(JSON.parse(xhr.responseText).error)

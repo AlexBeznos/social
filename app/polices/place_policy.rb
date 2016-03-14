@@ -25,24 +25,20 @@ class PlacePolicy < ApplicationPolicy
     [
       :name,
       :logo,
-      :enter_by_password,
-      :password,
       :active,
       :redirect_url,
       :user_id,
       :stocks_active,
-      :polls_active,
       :reputation_on,
-      :simple_enter,
       :score_amount,
       :city,
       :display_other_banners,
       :display_my_banners,
       :loyalty_program,
       :domen_url,
-      :sms_auth,
       :auth_default_lang,
-      :ssid
+      :ssid,
+      :mfa
     ]
   end
 

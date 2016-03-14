@@ -11,14 +11,14 @@ RSpec.describe Customer::Visit do
     context "network profile" do
       it "when user enters by password" do
         # byebug
-        visit = build(:visit, customer_network_profile_id: nil, by_password: true)
+        visit = build_stubbed(:visit, customer_network_profile_id: nil, by_password: true)
         expect(visit).to be_valid
       end
     end
 
     context "place" do
       it "when user enters by password" do
-        visit = build(:visit, place: nil, by_password: true)
+        visit = build_stubbed(:visit, place: nil, by_password: true)
         expect(visit).to be_valid
       end
     end
@@ -34,14 +34,14 @@ RSpec.describe Customer::Visit do
 
     context "place" do
       it "when enter by password is false" do
-        visit = build(:visit, place: nil, by_password: false)
+        visit = build_stubbed(:visit, place: nil, by_password: false)
         expect(visit).not_to be_valid
       end
     end
   end
 
   describe "Calculate reputation" do
-    let(:visit) { create(:visit) }
+    let(:visit) { build_stubbed(:visit) }
 
 
     it "create reputation if does not exist" do

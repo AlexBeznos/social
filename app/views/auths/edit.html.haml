@@ -1,0 +1,7 @@
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :title, t("helpers.submit.edit")
+
+.row
+  .col-sm-4
+    %h1= t("helpers.submit.edit").capitalize
+    = render 'form', auth: @auth, place: @place, save_method: :resource

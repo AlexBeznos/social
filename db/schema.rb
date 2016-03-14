@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226161243) do
+ActiveRecord::Schema.define(version: 20160312011100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,13 +31,27 @@ ActiveRecord::Schema.define(version: 20160226161243) do
 
   create_table "answers", force: true do |t|
     t.string   "content"
-    t.integer  "poll_id"
+    t.integer  "poll_auth_id"
     t.integer  "number_of_selections", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "answers", ["poll_id"], name: "index_answers_on_poll_id", using: :btree
+  add_index "answers", ["poll_auth_id"], name: "index_answers_on_poll_auth_id", using: :btree
+
+  create_table "auths", force: true do |t|
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.integer  "place_id"
+    t.string   "redirect_url"
+    t.boolean  "active",        default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "step",          default: 0
+  end
+
+  add_index "auths", ["place_id"], name: "index_auths_on_place_id", using: :btree
+  add_index "auths", ["resource_id"], name: "index_auths_on_resource_id", using: :btree
 
   create_table "banners", force: true do |t|
     t.string   "name"
@@ -110,6 +124,14 @@ ActiveRecord::Schema.define(version: 20160226161243) do
 
   add_index "customers", ["social_network_id"], name: "index_customers_on_social_network_id", using: :btree
 
+  create_table "facebook_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gowifi_sms", force: true do |t|
     t.string   "phone"
     t.string   "code"
@@ -173,12 +195,16 @@ ActiveRecord::Schema.define(version: 20160226161243) do
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["place_id"], name: "index_orders_on_place_id", using: :btree
 
+  create_table "password_auths", force: true do |t|
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "places", force: true do |t|
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "enter_by_password",            default: false
-    t.string   "password"
     t.boolean  "active",                       default: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -196,31 +222,26 @@ ActiveRecord::Schema.define(version: 20160226161243) do
     t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
     t.boolean  "loyalty_program",              default: false
-    t.boolean  "simple_enter",                 default: false
-    t.boolean  "polls_active",                 default: false
     t.string   "city"
     t.boolean  "display_my_banners",           default: false
     t.boolean  "display_other_banners",        default: false
     t.float    "latitude"
     t.float    "longitude"
     t.string   "domen_url",                    default: "gofriends.com.ua"
-    t.boolean  "sms_auth",                     default: false
     t.boolean  "demo",                         default: false
     t.string   "auth_default_lang"
     t.string   "ssid"
+    t.boolean  "mfa",                          default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 
-  create_table "polls", force: true do |t|
+  create_table "poll_auths", force: true do |t|
     t.text     "question"
-    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "polls", ["place_id"], name: "index_polls_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -231,6 +252,16 @@ ActiveRecord::Schema.define(version: 20160226161243) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "simple_auths", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sms_auths", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "social_network_icons", force: true do |t|
     t.integer  "place_id"
@@ -288,6 +319,14 @@ ActiveRecord::Schema.define(version: 20160226161243) do
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
 
+  create_table "twitter_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -342,5 +381,13 @@ ActiveRecord::Schema.define(version: 20160226161243) do
   end
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
+  create_table "vkontakte_auths", force: true do |t|
+    t.text     "message"
+    t.string   "message_url"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

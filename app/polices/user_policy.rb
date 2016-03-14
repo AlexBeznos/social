@@ -12,7 +12,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?; user.franchisee? || user.admin?; end
-  def destroy?; user.franchisee? || user.admin?; end
+  def destroy?; user.admin?; end
   def create?; user.franchisee? || user.admin?; end
   def new?; user.franchisee? || user.admin?; end
 

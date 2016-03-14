@@ -1,8 +1,9 @@
 module Consumerable
   require 'ext/string'
 
-  def get_message(place, network)
-    place.messages.active.where(social_network: SocialNetwork.find_by(name: network)).first
+  def redis_ready_credentials(credentials)
+    service = "#{credentials['provider'].capitalize}Service".constantize
+    service.get_token(credentials)
   end
 
   def find_or_create_costumer(credentials, place, customer = false)

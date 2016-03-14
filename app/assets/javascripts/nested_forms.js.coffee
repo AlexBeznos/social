@@ -28,10 +28,10 @@ jQuery ($) ->
           oldId = $(this).attr 'id'
           newId = oldId.replace(new RegExp(/_[0-9]+_/), "_#{formsOnPage}_")
           $(this).attr 'id', newId
+          $(this).attr 'disabled', false
 
           oldName = $(this).attr 'name'
           newName = oldName.replace(new RegExp(/\[[0-9]+\]/), "[#{formsOnPage}]")
           $(this).attr 'name', newName
 
-        $( newNestedForm ).insertAfter( lastNestedForm ) 
-        
+        $( newNestedForm ).insertAfter( lastNestedForm )

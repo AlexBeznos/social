@@ -1,3 +1,5 @@
+# TODO: Remove model after migration
+
 class Message < ActiveRecord::Base
   mount_uploader :image, ImageUploader, mount_on: :image_file_name
 

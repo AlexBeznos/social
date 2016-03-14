@@ -16,15 +16,12 @@
         redirect_url: "Տեղափոխում մուտք գործելուց հետո"
         wifi_link: "հղում մուտքի էջին"
         reputation_active: "Բոնուսների տրամադրում"
-        simple_enter: Մուտք առանց գրանցման
         score_amount: "Բոնուսի չափը"
         loyalty_program: Հավատարմության ծրագիր
-        polls_active: Հարցման արդյունքների ցուցադրումը մուտքի էջում
         city: քաղաք
         display_my_banners: Ցույց տալ իմ բաններները այլ հաստատություններում
         display_other_banners: Ցույց տալ ուրիշների բաններները իմ հաստատությունում
         owner: սեփականատեր
-        sms_auth: SMS վավերացման
       actions:
         index:
           title: 'Հաստատություն'
