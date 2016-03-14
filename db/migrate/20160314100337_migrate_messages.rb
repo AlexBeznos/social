@@ -1,4 +1,5 @@
 class MigrateMessages < ActiveRecord::Migration
+  include Imagable
   def self.up
     Message.active.each do |message|
       Auth.create!(
@@ -8,7 +9,7 @@ class MigrateMessages < ActiveRecord::Migration
         resource_attributes: {
           message: message.message,
           message_url: message.message_link,
-          remote_image_url: message.image.url
+          remote_image_url: to_full_url(message.image.url)
         }
       )
     end
