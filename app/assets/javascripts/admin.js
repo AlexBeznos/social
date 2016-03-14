@@ -16,4 +16,3 @@
 //= require jquery.slimscroll
 //= require fastclick
 //= require app
-//= require input_binding

@@ -301,6 +301,7 @@ ua:
     sms_placeholder: "номер для смс"
     sms_code_placeholder: "код з смс"
     sms_resend: 'відправити смс ще раз'
+    sms_try_more: "Код не вірний. Спробуйте ще."
   menu_item:
     greetings: "%{customer_name}, ласкаво просимо до %{place_name}"
     greetings_short: Ласкаво просимо!

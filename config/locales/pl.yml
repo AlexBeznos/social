@@ -307,6 +307,7 @@ pl:
     sms_placeholder: "Numer SMS"
     sms_code_placeholder: "Kod SMS"
     sms_resend: 'ponownie wysłać SMS'
+    sms_try_more: "Nieprawidłowy kod. Spróbuj ponownie. "
   menu_item:
     greetings: "%{customer_name}, mile widziany %{place_name}"
     greetings_short: powitanie!

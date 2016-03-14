@@ -1,0 +1,16 @@
+ru:
+  models:
+    auths:
+      name: "аутентификация"
+      Primary: "Первичная"
+      Secondary: "Вторичная"
+      add_auth: Создать аутентификацию
+      methods:
+        vkontakte: "Bконтакте"
+        facebook: "Фейсбук"
+        twitter: "Твиттер"
+        sms: "Смс"
+        poll: "Опрос"
+        simple: По кнопке "Вход"
+        password: "По паролю"
+      no_auth: "У вас нет аутентификаций."

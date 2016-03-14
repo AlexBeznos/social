@@ -1,8 +1,9 @@
 class SocialNetwork < ActiveRecord::Base
-  has_many :messages
   has_many :customers
 
-  validates :name, :presence => true, :uniqueness => true
+  scope :by_name, -> (name) { find_by(name: name) }
+
+  validates :name, presence: true, uniqueness: true
 
   def font_awesome_name
     case name

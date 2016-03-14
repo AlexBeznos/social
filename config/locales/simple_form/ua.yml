@@ -3,6 +3,18 @@ ua:
     error_notification:
       default_message: "Будь ласка вирішіть проблеми нижче:"
     labels:
+      auth:
+        redirect_url: "Адреса переадресації після аутентифікації"
+        resource_type: "Тип аутентифікації"
+        resource:
+          message_url: "Посилання в повідомленні"
+          message: "Повідомлення"
+          image: "Картинка"
+          password: "Пароль"
+          question: "Питання"
+          answer: "Відповідь"
+          add_answer: "Додати відповідь"
+          remove: "Видалити"
       place:
         name: 'Назва закладу'
         ssid: 'SSID закладу'
@@ -10,19 +22,15 @@ ua:
         logo: 'Логотип'
         active: Активувати Hotspot
         stocks_active: Активувати Акції
-        polls_active: Активувати опитування
         reputation_on: Нарахування бонусів
-        simple_enter: Вхід без авторизації
         loyalty_on: Включити налаштування програм лояльності для юзерів
         loyalty_program: Програма лояльності
         redirect_url: Адреса переадресації після аутентифікації
-        enter_by_password: Вхід за паролем
-        password: Пароль
         city: Місто
         display_my_banners: Показувати мої банери в інших закладах
         display_other_banners: Показувати чужі банери в моєму закладі
-        sms_auth: SMS аутентифікація
         auth_default_lang: Стандартная мова аутентифікації
+        mfa: Мультифакторна аутентифікація
       user:
         first_name: Ім`я
         last_name: Прізвище

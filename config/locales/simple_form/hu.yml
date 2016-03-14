@@ -3,6 +3,18 @@ hu:
     error_notification:
       default_message: "Kérjük, oldja meg a problémát a következőképpen:"
     labels:
+      auth:
+        redirect_url: "Átirányítási URL-t hitelesítés után"
+        resource_type: "Azonosítás típusa"
+        resource:
+          message_url: "üzenet url"
+          message: "Üzenet"
+          image: "Kép"
+          password: "Jelszó"
+          question: "Kérdés"
+          answer: "Válasz"
+          add_answer: "Válasz "
+          remove: "Eltávolít"
       place:
         name: 'Az intézmény neve'
         ssid: 'SSID helyek'
@@ -10,20 +22,16 @@ hu:
         logo: 'Logó'
         active: Hotspot aktív
         stocks_active: Részvények aktív
-        polls_active: Szavazás
         reputation_on: Bónuszok
-        simple_enter: Bejelentkezés engedély nélkül
         loyalty_on: Engedélyezze a konfigurációs hűségprogramok felhasználók számára
         loyalty_program: Hűségprogram
         score_amount: A bónusz
         redirect_url: Cím továbbítása hitelesítés után
-        enter_by_password: Bejelentkezési jelszó
-        password: Jelszó
         city: City
         display_my_banners: Mutassa a reklámokat, más helyeken
         display_other_banners: Mutasd mások bannerek a helyemben
-        sms_auth: SMS hitelesítés
         auth_default_lang: Hitelesítés alapértelmezett nyelv
+        mfa: Többváltozós autentifіkatsіya
       user:
         first_name: Első neve
         last_name: Név

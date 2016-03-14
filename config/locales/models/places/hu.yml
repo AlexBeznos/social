@@ -16,15 +16,12 @@ hu:
         redirect_url: "Redirect hitelesítés után"
         wifi_link: "Link erre az oldalra hitelesítés"
         reputation_active: "Bónuszok"
-        simple_enter: Bejelentkezés engedély nélkül
         score_amount: "A bónusz"
         loyalty_program: Hűségprogram
-        polls_active: Következtetés felmérések hitelesítési oldal
         city: City
         display_my_banners: Mutassa a reklámokat, más helyeken
         display_other_banners: Mutasd mások bannerek a helyemben
         owner: Tulajdonos
-        sms_auth: SMS hitelesítés
       actions:
         index:
           title: 'Helyek'

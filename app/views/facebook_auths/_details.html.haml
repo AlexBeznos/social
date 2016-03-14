@@ -1,0 +1,11 @@
+.row
+  .col-sm-8
+    = t("simple_form.labels.auth.resource.message")
+    .panel.panel-default
+      .panel-body
+        = resource.message
+        %br
+        = link_to t("simple_form.labels.auth.resource.message_url"), resource.message_url
+    = link_to t("simple_form.labels.auth.redirect_url"), resource.auth.redirect_url, class: 'btn btn-info'
+  .col-sm-4
+    = image_tag resource.image.url, class: 'img-responsive' if resource.image

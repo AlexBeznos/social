@@ -1,0 +1,16 @@
+ua:
+  models:
+    auths:
+      name: "аутентифікація"
+      Primary: "Первинна"
+      Secondary: "Вторинна"
+      add_auth: Додати аутентифікацію
+      methods:
+        vkontakte: "Вконтакті"
+        facebook: "Фейсбук"
+        twitter: "Твіттер"
+        sms: "Сmс"
+        poll: "Опитувальна"
+        simple: "Звичайна"
+        password: "Запаролена"
+      no_auth: "У вас немає аутентифікацій ."

@@ -3,6 +3,18 @@
     error_notification:
       default_message: "Խնդրում եմ լուծել ներքևում առկա խնդիրները:"
     labels:
+      auth:
+        redirect_url: "երահղման URL- ը , հետո իսկությունը"
+        resource_type: "Նույնականացման տեսակը"
+        resource:
+          message_url: "հաղորդագրություն URL"
+          message: "հաղորդագրություն"
+          image: "պատկեր"
+          password: "գաղտնաբառ"
+          question: "Հարց"
+          answer: "պատասխան"
+          add_answer: "Ավելացնել պատասխան"
+          remove: "հեռացնել"
       place:
         name: 'Հաստատության անվանումը'
         ssid: 'SSID տեղերը'
@@ -10,20 +22,16 @@
         logo: 'Լոգո'
         active: Hotspot ակտիվ է
         stocks_active: Ակցիաները ակտիվ են
-        polls_active: Հարցումները ակտիվ են
         reputation_on: Բոնուսների հաշվառում
-        simple_enter: Մուտք առանց գրանցման
         loyalty_on: Միացնել օգտատերի հավատարմության ծրագրի կարգավորումը
         loyalty_program: Հավատարմության ծրագիր
         score_amount: Բոնուսի չափը
         redirect_url: Մուտք գործելուց հետո ցուցադրվող կայքը
-        enter_by_password: Մուտք գաղտնաբառով
-        password: Գաղտնաբառ
         city: Քաղաք
         display_my_banners: Ցուցադրել իմ բաններները այլ հաստատություններում
         display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում
-        sms_auth: SMS վավերացման
         auth_default_lang: Նույնականացման լռելյայն լեզու
+        mfa: Multi-Factor իսկությունը
       user:
         first_name: Անուն
         last_name: Ազգանուն

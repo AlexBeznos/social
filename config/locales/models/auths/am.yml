@@ -1,0 +1,16 @@
+am:
+  models:
+    auths:
+      name: "իսկությունը"
+      Primary: "հիմնական"
+      Secondary: "միջնակարգ"
+      add_auth: Ստեղծել իսկությունը
+      methods:
+        vkontakte: "vkontakte"
+        facebook: "facebook"
+        twitter: "twitter"
+        sms: "sms"
+        poll: "քվեարկություն"
+        simple: "պարզ"
+        password: "գաղտնաբառ"
+      no_auth: Դուք չունեք."

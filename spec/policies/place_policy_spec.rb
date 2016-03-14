@@ -3,17 +3,33 @@ require "rails_helper"
 RSpec.describe PlacePolicy do
   include_examples "visitor"
 
-  subject { PlacePolicy.new(user,record) }
+  subject { PlacePolicy.new(user, record) }
 
-
-  let(:attributes){subject.permitted_attributes;}
+  let(:attributes){[
+    :name,
+    :logo,
+    :active,
+    :redirect_url,
+    :user_id,
+    :stocks_active,
+    :reputation_on,
+    :score_amount,
+    :city,
+    :display_other_banners,
+    :display_my_banners,
+    :loyalty_program,
+    :domen_url,
+    :auth_default_lang,
+    :ssid,
+    :mfa
+  ]}
   let(:record){ create :place}
   let(:resolved_scope) {
     PlacePolicy::Scope.new(user, Place.all).resolve
   }
 
   context "for admin" do
-    let(:user){create :user_admin}
+    let(:user){ create :user_admin }
 
     it "scope includes user with user: current_user" do
       expect(resolved_scope).to include(record)
@@ -31,7 +47,9 @@ RSpec.describe PlacePolicy do
   end
 
   context "for franchisee" do
+    let(:record){ create :place, user: user }
     let(:user){create :user_franchisee}
+
 
     it "scope includes user with user: current_user" do
       expect(resolved_scope).to include(create :place, user: user)
@@ -44,12 +62,13 @@ RSpec.describe PlacePolicy do
       end
     end
 
-    it{ is_expected.to permit_crud}
-    it{ is_expected.to permit_place_additional_actions}
+    it{ is_expected.to permit_crud }
+    it{ is_expected.to permit_place_additional_actions }
   end
 
   context "for general" do
-    let(:user){create :user_general}
+    let(:record){ create :place, user: user }
+    let(:user){ create :user_general }
 
     it "scope includes place with user: current_user" do
       expect(resolved_scope).to include(create :place, user: user)

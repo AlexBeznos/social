@@ -22,8 +22,13 @@ class ApplicationPolicy
     end
 
     def user_ids
-      user.place_owners.map(&:id)
+      user.place_owners.pluck(:id)
     end
+    
+    def all_owners_places_ids
+      Place.where(user_id: all_user_ids)
+    end
+
   end
 
   def initialize(user, record)
@@ -31,8 +36,9 @@ class ApplicationPolicy
     @user = user
     @record = record
 
+
     if record && !record.is_a?(Class)
-      if !Scope.new(user, record.class).resolve.include?(record)
+      unless self.class::Scope.new(user, record.class).resolve.include?(record)
         raise Pundit::NotAuthorizedError, I18n.t('pundit.default')
       end
     end

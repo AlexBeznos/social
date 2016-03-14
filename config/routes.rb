@@ -35,9 +35,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :places do
-    resources :polls
+    resources :auths, except: :index
     resources :banners
-    resources :messages, except: [:index, :show]
     resources :stocks, except: :show
     resources :styles, except: :index
     resources :menu_items
@@ -62,10 +61,10 @@ Rails.application.routes.draw do
     scope ':slug' do
       get '/login' => 'gowifi#show', as: :gowifi_place
       patch '/poll_enter' => 'gowifi_auth#submit_poll'
-      get '/status' => 'gowifi_auth#redirect_after_auth'
       post '/by_password' => 'gowifi_auth#enter_by_password'
       post '/by_sms' => 'gowifi_auth#enter_by_sms'
       get '/simple_enter' => 'gowifi_auth#simple_enter'
+      get '/sms/:id' => 'gowifi_sms#show', as: :gowifi_sms_confirmation
 
       resources :gowifi_sms, only: :create do
         member do
