@@ -1,8 +1,8 @@
 class GowifiAuthController < ApplicationController
   include Consumerable
 
-  before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :redirect_after_auth, :submit_poll]
-  before_action :find_customer, only: [:omniauth, :redirect_after_auth]
+  before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
+  before_action :find_customer, only: :omniauth
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_filter :check_facebook_permissions, only: :omniauth
 
@@ -81,18 +81,6 @@ class GowifiAuthController < ApplicationController
     end
   end
 
-  def redirect_after_auth
-    if @place
-      if @place.loyalty_program && @customer
-        redirect_to menu_items_list_path(@place)
-      else
-        redirect_to params[:distination]
-      end
-    else
-      redirect_to root_path
-    end
-  end
-
   private
   def poll_params
     params.require(:poll_auth).permit(:answer_ids)
@@ -116,10 +104,18 @@ class GowifiAuthController < ApplicationController
   def succed_auth_path(place, auth)
     if place.mfa && cookies[:step] == 'primary' && auth.step == 'primary'
       cookies[:step] = 'secondary'
+
       gowifi_place_path(place)
     else
       cookies.delete(:step)
-      wifi_login_path(place, auth)
+
+      url = if @place.loyalty_program && @customer
+        menu_items_list_url(@place)
+      else
+        auth.redirect_url
+      end
+
+      wifi_login_path(place, url)
     end
   end
 

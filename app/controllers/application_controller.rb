@@ -69,9 +69,9 @@
       Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
     end
 
-    def wifi_login_path(place, auth)
+    def wifi_login_path(place, url)
       return status_path(place) if place.demo
-      "http://172.16.16.1/login?user=#{place.wifi_username}&password=#{place.wifi_password}&distination=#{auth.redirect_url}"
+      "http://172.16.16.1/login?user=#{place.wifi_username}&password=#{place.wifi_password}&dst=#{url}"
     end
 
 end
