@@ -5,7 +5,7 @@ class MigratePollsToPollAuth < ActiveRecord::Migration
     PollAuth.where(place_id: place_ids).each do |poll|
       Auth.create(
         resource: poll,
-        redirect_url: poll.place.redirect_url
+        redirect_url: Place.find(poll.place_id).redirect_url
       )
     end
   end
