@@ -23,7 +23,7 @@ class Auth < ActiveRecord::Base
   belongs_to :resource, polymorphic: true, dependent: :destroy
 
   validates :redirect_url, presence: true, url: true
-  validates :resource_type, uniqueness: { conditions: -> { where(active: true) }, scope: [ :place_id, :step ] }
+  validates :resource_type, uniqueness: { conditions: -> { where(active: true) }, scope: [ :place_id, :step ] } unless 'resource_type == PollAuth'
 
   accepts_nested_attributes_for :resource
 
