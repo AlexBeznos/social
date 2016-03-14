@@ -128,7 +128,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def visit_already_created?
-    hash = find_or_create_costumer(credentials, @place, @customer)
+    hash = find_or_create_customer(credentials, @place, @customer)
     cookies.permanent[:customer] = hash[:customer].id
 
     hash[:visit]
@@ -136,7 +136,7 @@ class GowifiAuthController < ApplicationController
 
   def check_facebook_permissions
     if credentials['provider'] == 'facebook' && !FacebookService.publishing_permitted?(credentials['credentials']['token'])
-      redirect_to gowifi_place_path(slug: @place.slug), alert: 'Error'
+      redirect_to gowifi_place_path(@place), alert: 'Error'
     end
   end
 end

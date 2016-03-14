@@ -6,7 +6,7 @@ module Consumerable
     service.get_token(credentials)
   end
 
-  def find_or_create_costumer(credentials, place, customer = false)
+  def find_or_create_customer(credentials, place, customer = false)
     profiles = Customer::NetworkProfile.where("uid = ? and social_network_id = ?", credentials['uid'], SocialNetwork.find_by(name: credentials['provider']).id)
 
     if profiles.any?
