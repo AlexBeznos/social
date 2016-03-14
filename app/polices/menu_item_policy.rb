@@ -1,5 +1,5 @@
 class MenuItemPolicy < ApplicationPolicy
-  class Scope
+  class Scope < Scope
     def resolve
       if user.general?
         scope.where(place_id: user.places.pluck(:id))

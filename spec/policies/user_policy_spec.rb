@@ -6,7 +6,6 @@ RSpec.describe UserPolicy do
   subject { UserPolicy.new(user, record) }
   let(:record){ create :user }
 
-
   let(:attributes){[
     :email,
     :first_name,

@@ -6,14 +6,15 @@ RSpec.describe StockPolicy do
   subject { StockPolicy.new(user,record) }
 
 
-  let(:attributes){subject.permitted_attributes;}
-  let(:record){ create :stock}
+  let(:attributes){[:url, :image, :day]}
+  let(:record){ create :stock }
+  let(:place){ create :place, user: user }
   let(:resolved_scope) {
     StockPolicy::Scope.new(user, Stock.all).resolve
   }
 
   context "for admin" do
-    let(:user){create :user_admin}
+    let(:user){ create :user_admin }
 
     it "scope includes all stocks" do
       expect(resolved_scope).to include(record)
@@ -30,7 +31,8 @@ RSpec.describe StockPolicy do
   end
 
   context "for franchisee" do
-    let(:user){create :user_franchisee}
+    let(:user){ create :user_franchisee }
+    let(:record){ create :stock, place: place }
 
     it "scope includes all stocks" do
       expect(resolved_scope).to include(record)
@@ -48,8 +50,10 @@ RSpec.describe StockPolicy do
 
   context "for general" do
     let(:user){create :user_general}
+    let(:record){ create :stock, place: place }
 
     it "scope includes all stocks" do
+      place.reload
       expect(resolved_scope).to include(record)
     end
 

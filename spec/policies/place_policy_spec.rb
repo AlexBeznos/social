@@ -5,7 +5,24 @@ RSpec.describe PlacePolicy do
 
   subject { PlacePolicy.new(user, record) }
 
-  let(:attributes){ subject.permitted_attributes }
+  let(:attributes){[
+    :name,
+    :logo,
+    :active,
+    :redirect_url,
+    :user_id,
+    :stocks_active,
+    :reputation_on,
+    :score_amount,
+    :city,
+    :display_other_banners,
+    :display_my_banners,
+    :loyalty_program,
+    :domen_url,
+    :auth_default_lang,
+    :ssid,
+    :mfa
+  ]}
   let(:record){ create :place}
   let(:resolved_scope) {
     PlacePolicy::Scope.new(user, Place.all).resolve
