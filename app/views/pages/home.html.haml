@@ -11,6 +11,7 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag href='https://fonts.googleapis.com/css?family=Roboto:300italic,200,300,400italic,400&subset=latin,cyrillic-ext', rel='stylesheet', type='text/css'
     = stylesheet_link_tag "landing_new", :media => "all"
     = javascript_include_tag "landing_new"
     / HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -24,19 +25,7 @@
       .container
         .row
           .col-sm-12.header_block
-            = link_to root_path do
-              .logo_block
-                .wi-fi__left_block
-                  .wi-fi__left_block_inner
-                    .wi-fi_text
-                      WI-FI
-                    .icon-signal
-                .wi-fi__right_block
-                  .logo
-                    %strong Go
-                    %span.logo_img
-                    %span.logo_text Friends
-                  .logo_description Друзья придут
+            %a.logo{:href => "/"}
             .top_socials.pull-right
               .socials
                 .socials_item
@@ -45,12 +34,11 @@
                   %a.icon-facebook{:href => "#2", :target => "_blank"}
                 .socials_item
                   %a.icon-linkedin-1{:href => "#3", :target => "_blank"}
-            .top_form_block
-              .top_form_block_inner
-                .top_phone +38(068) 999 93 98
-                .top_form
-                  %a{ href: '#bottom_form'}
-                    %button.btn.btn-default Заказать звонок
+            .top_form_block.clear-fix
+              .top_phone +38(063) 010-17-97
+              .top_form
+                %a{ href: '#bottom_form'}
+                  %button.btn.btn-default Заказать звонок
         .row
           .top_menu
             .enter
@@ -68,7 +56,7 @@
                   %a.button3d{:href => "#partners"}
                     %span{"data-text" => "ПРЕДСТАВИТЕЛЬСТВА"} ПРЕДСТАВИТЕЛЬСТВА
                 %li.menu_item
-                  %a.button3d{:href => "#footer_form"}
+                  %a.button3d{:href => "#bottom_form"}
                     %span{"data-text" => "СТАТЬ ПАРТНЕРОМ"} СТАТЬ ПАРТНЕРОМ
                 %li.menu_item
                   %a.button3d{:href => "#clients"}
@@ -82,13 +70,13 @@
               .header_description1
                 Ваши гости расскажут о вас
               .header_socials
-                %span.icon-vkontakte
-                %span.icon-facebook
-                %span.icon-twitter
+                %span.social.social-vk
+                %span.social.social-fb
+                %span.social.social-tw
               .header_description2
                 в обмен на бесплатный
               .header_description3
-                %strong WI-FI
+                WI-FI
     %section#tel_section
       .container
         .row
@@ -145,6 +133,12 @@
       .container
         .row
           .col-sm-12
+            .actual-info
+              .actual-info__title
+                Размещайте актуальную информацию для ваших клиентов на стартовой странице авторизации
+              = image_tag 'landing/kfc-ipad.jpg', class: 'actual-info__ipad'
+        .row
+          .col-sm-12
             .title.text-center
               %h3 ВЫГОДЫ ДЛЯ ВАС
         .row
@@ -153,25 +147,25 @@
               = image_tag 'landing/benefit_1.png'
             .benefit_title.text-center.benefit_padd АВТОМАТИЗИРОВАННАЯ РЕКЛАМА
             %hr.line/
-            .benefit_description.text-center Реклама через посты в соцсетяз без лишних затрат на сотрудников, и экономия времени
+            .benefit_description.text-center Автоматическая размещение рекламы постов на страницу ваших гостей даст вам 150-200 тыс. показов для их друзей.
           .col-sm-3
             .benefit_img_2.text-center
               = image_tag 'landing/benefit_2.png'
             .benefit_title.text-center СВЯЗЬ С КЛИЕНТАМИ
             %hr.line/
-            .benefit_description.text-center Реклама через посты в соцсетях без лишних затрат на сотрудников, и экономия времени
+            .benefit_description.text-center -поздравление именниников  <br>-отслеживание упущеных клиентов.<br>-аналитика:топ поситителей, <br>таргетинг поситителей.
           .col-sm-3
             .benefit_img.text-center
               = image_tag 'landing/benefit_3.png'
             .benefit_title.text-center ПРОГРАММА ЛОЯЛЬНОСТИ
             %hr.line/
-            .benefit_description.text-center Реклама через посты в соцсетяз без лишних затрат на сотрудников, и экономия времени
+            .benefit_description.text-center Ваши гости станут постаеными клиентами благодаря автоматическимисистеме накопительных балов
           .col-sm-3
             .benefit_img_4.text-center
               = image_tag 'landing/benefit_4.png'
-            .benefit_title.text-center РЕКЛАМА ДОВЕРИЯ
+            .benefit_title.text-center SMM-РЕКЛАМА ДОВЕРИЯ
             %hr.line/
-            .benefit_description.text-center Реклама через посты в соцсетяз без лишних затрат на сотрудников, и экономия времени
+            .benefit_description.text-center Ваши клиенты размещают рекламные посты о вас на своих страницах в социальных сетях от своего имени
     %section#top_form
       .container
         .row
@@ -262,21 +256,19 @@
         .row
           .col-sm-12
             .title.text-center
-              %h3 РЕКЛАМА - КОТОРАЯ ПРИНОСИТ ДЕНЬГИ
+              %h3 РЕКЛАМА - КОТОРАЯ ПРИНОСИТ ПРИБЫЛЬ
+            %a.logo{:href => "/"}
         .row
           .col-sm-4
-            .text_block_1
-              Наш сервис
-              %strong GoFriends
-            .text_block_2
-              ПРИВЕДЕТ к Вам
-              %strong новых клиентов
-            .text_block_3 и дополнительную ПРИБЫЛЬ
+            .text_block_1 Благодаря нам:
+            .text_block_2 Вы сможете увеличить посещаемость вашего заведение
+            .text_block_3 Повысить лояльность ваших клиентов
+            .text_block_5 Брендинг- вы сможете рассказать о себе на большую  аудиторию в соц сетях 150 тыс. человек
           .col-sm-5
             .img_block
               = image_tag 'landing/pizza.png'
           .col-sm-3
-            .text_block_4 А вы поделитель с нами кусочком
+            .text_block_4 А вы поделитесь с нами кусочком:)
     %section#router
       .container
         .row
@@ -294,14 +286,10 @@
                 .router_description SMS АВТОРИЗАЦИЯ НА ВАШ РОУТЕР
                 .router_characteristic
                   Характеристики:
-                  = succeed "\u{41f}\u{438}\u{442}\u{430}\u{43d}\u{438}\u{435}" do
-                    %br/
-                  = succeed "\u{41f}\u{43e}\u{434}\u{43a}\u{43b}\u{44e}\u{447}\u{435}\u{43d}\u{438}\u{435}" do
-                    %br/
-                  = succeed "\u{41d}\u{430}\u{434}\u{435}\u{436}\u{43d}\u{43e}\u{441}\u{442}\u{44c}," do
-                    %br/
-                  = succeed "\u{410}\u{432}\u{442}\u{43e}\u{43c}\u{430}\u{442}\u{438}\u{447}\u{435}\u{441}\u{43a}\u{43e}\u{435}" do
-                    %br/
+                  <br>Питание 220V (так же возможно 12V или 24V)
+                  <br>Подключение к существующей сети Wi-fi, поддержка 3G и 4G (MR3420)
+                  <br>Надежность, простота и удобство эксплуатации
+                  <br>Автоматическое обновление прошивки
           .col-sm-4
             .router_block
               .image_block_2
@@ -311,15 +299,11 @@
                   Назначение:
                 .router_description ДЛЯ СОЦСЕТЕЙ ПРОФЕССИОНАЛЬНЫЙ
                 .router_characteristic
-                  Характеристики:
-                  = succeed "\u{41f}\u{438}\u{442}\u{430}\u{43d}\u{438}\u{435}" do
-                    %br/
-                  = succeed "\u{41f}\u{43e}\u{434}\u{43a}\u{43b}\u{44e}\u{447}\u{435}\u{43d}\u{438}\u{435}" do
-                    %br/
-                  = succeed "\u{41d}\u{430}\u{434}\u{435}\u{436}\u{43d}\u{43e}\u{441}\u{442}\u{44c}," do
-                    %br/
-                  = succeed "\u{410}\u{432}\u{442}\u{43e}\u{43c}\u{430}\u{442}\u{438}\u{447}\u{435}\u{441}\u{43a}\u{43e}\u{435}" do
-                    %br/
+                Характеристики:
+                <br>Питание 220V (так же возможно 12V или 24V)
+                <br>Подключение к существующей сети Wi-fi, поддержка 3G и 4G (MR3420)
+                <br>Надежность, простота и удобство эксплуатации
+                <br>Автоматическое обновление прошивки
           .col-sm-4
             .router_block
               .image_block_3
@@ -329,18 +313,13 @@
                   Назначение:
                 .router_description
                   ДЛЯ БОЛЬШИХ
-                  = succeed "\u{417}\u{410}\u{412}\u{415}\u{414}\u{415}\u{41d}\u{418}\u{419}" do
-                    %br/
+                  <br>ЗАВЕДЕНИЙ
                 .router_characteristic
                   Характеристики:
-                  = succeed "\u{41f}\u{438}\u{442}\u{430}\u{43d}\u{438}\u{435}" do
-                    %br/
-                  = succeed "\u{41f}\u{43e}\u{434}\u{43a}\u{43b}\u{44e}\u{447}\u{435}\u{43d}\u{438}\u{435}" do
-                    %br/
-                  = succeed "\u{41d}\u{430}\u{434}\u{435}\u{436}\u{43d}\u{43e}\u{441}\u{442}\u{44c}," do
-                    %br/
-                  = succeed "\u{410}\u{432}\u{442}\u{43e}\u{43c}\u{430}\u{442}\u{438}\u{447}\u{435}\u{441}\u{43a}\u{43e}\u{435}" do
-                    %br/
+                  <br>Питание 220V (так же возможно 12V или 24V)
+                  <br>Подключение к существующей сети Wi-fi, поддержка 3G и 4G (MR3420)
+                  <br>Надежность, простота и удобство эксплуатации
+                  <br>Автоматическое обновление прошивки
     %section#clients
       .container
         .row
@@ -364,17 +343,20 @@
             .client_block
               = image_tag 'landing/karp.png'
           .col-sm-2.col-xs-4
+            .client_block
+              = image_tag 'landing/bukovel.png'
+          .col-sm-2.col-xs-4
             .client_block.client_position
-              = image_tag 'landing/garden.png'
+              = image_tag 'landing/c13.png'
+          .col-sm-2.col-xs-4
+            .client_block.client_position
+              = image_tag 'landing/nuga-best.jpg'
+          .col-sm-2.col-xs-4
+            .client_block.client_position
+              = image_tag 'landing/cross.jpg'
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c1.png'
-          .col-sm-2.col-xs-4
-            .client_block
-              = image_tag 'landing/c2.png'
-          .col-sm-2.col-xs-4
-            .client_block
-              = image_tag 'landing/c3.png'
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c4.png'
@@ -402,9 +384,6 @@
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c12.png'
-          .col-sm-2.col-xs-4
-            .client_block
-              = image_tag 'landing/c13.png'
           .col-sm-2.col-xs-4
             .client_block
               = image_tag 'landing/c14.png'
@@ -471,165 +450,161 @@
             = image_tag 'landing/maps.png'
         .row
           .col-sm-12
+            .swiper-button-prev
+            .swiper-button-next
             .swiper-container
               .swiper-wrapper.flag-buttons
                 #ua.swiper-slide
-                  = image_tag 'landing/ua.png'
+                  = image_tag 'landing/ukr.jpg'
                 #rus.swiper-slide
-                  = image_tag 'landing/rus.png'
+                  = image_tag 'landing/usa.jpg'
                 #kz.swiper-slide
-                  = image_tag 'landing/kz.png'
+                  = image_tag 'landing/kz.jpg'
                 #bel.swiper-slide
-                  = image_tag 'landing/bel.png'
+                  = image_tag 'landing/arm.jpg'
                 #arm.swiper-slide
-                  = image_tag 'landing/arm.png'
+                  = image_tag 'landing/blr.jpg'
                 #arm.swiper-slide
-                  = image_tag 'landing/jordan.png'
-              .swiper-pagination
-              .slider_description
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location>
-                    Киев
-                  .sd_content
-                    .sd_name Моисеев Евгений
-                    .sd_tel +38(063)01-01-797
-                  .sd_content
-                    .sd_name Гавриленко Егор
-                    .sd_tel +38(068)99-99-398
-                  .sd_content
-                    .sd_name Сапожников Антон
-                    .sd_tel +38(067)50-22-732
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location>
-                    Львов
-                  .sd_content
-                    .sd_name Ременюк Светлана
-                    .sd_tel skype: remennv
-                  .sd_content
-                    .sd_name Конолюк Максим
-                    .sd_tel skype:bazukin2
-                  .sd_content
-                    .sd_name Ротар Максим
-                    .sd_tel +38(068)99-99-398
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location>
-                    Харьков
-                  .sd_content
-                    .sd_name Руслан Олександрович
-                    .sd_tel +38(093)44-18-649
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location>
-                    Чернигов
-                  .sd_content
-                    .sd_name Алексеенко Илья
-                    .sd_tel +38(063)903-29-24
-                .slider_description_block.col-sm-3.col-xs-12
-                  .sd_title
-                    %span.icon-location
-                    Днепропетровск
-                  .sd_content
-                    .sd_name Владимир Ким
-                    .sd_tel +38(097)42-11-490
-                -# .slider_description_block.col-sm-3.col-xs-12
-                -#   .sd_title
-                -#     %span.icon-location>
-                -#     Ивано-Франковск
-                -#   .sd_content
-                -#     .sd_name Юрий Павлов
-                -#     .sd_tel +38(063)10-01-663
-              .slider_description
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location
-                    Москва
-                  .sd_content
-              .slider_description
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location
-                    Алматы
-                  .sd_content
-                    .sd_name Азамат Бисарин
-                    .sd_tel 87776470077
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location
-                    Актобе
-                  .sd_content
-                    .sd_name Толгат Жакешев
-              .slider_description
-                .slider_description_block.col-sm-2.col-xs-6
-                  .sd_title
-                    %span.icon-location
-                    Минск
-              .slider_description
-                .slider_description_block.col-sm-3.col-xs-12
-                  .sd_title
-                    %span.icon-location
-                    Ереван
-              .slider_description
-                .slider_description_block.col-sm-3.col-xs-12
-                  .sd_title
-                    %span.icon-location
-                    Аман
-    %footer#footer_form
+                  = image_tag 'landing/iord.jpg'
+                #arm.swiper-slide
+                  = image_tag 'landing/ru.jpg'
       .container
-        .row
-          .col-sm-12
-            .title.text-center
-              %h3 ОСТАВИТЬ ЗАЯВКУ
-        .row
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f1.png'
-              .footer_title.text-center ВЛАДЕЛЬЦАМ ЗАВЕДЕНИЙ
-              .footer_description.wrap.footer_margin.text-center
-                У вас есть свое заведение
-                либо вы частное лицо?
-                Подключитесь системе GoFriends
-              .footer_btn.text-center
-                %a{ href: '#bottom_form' }
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f2.png'
-              .footer_title.text-center СТАТЬ ПРЕДСТАВИТЕЛЕМ
-              .footer_description.text-center
-                Купите представительство GoFriends
-                Развивайте сеть в своем регионе и
-                зарабатывайте вместе с нами.
-              .footer_btn.text-center
-                %a{ href: '#bottom_form'}
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f1.png'
-              .footer_title.footer_padd.text-center РЕКЛАМОДАТЕЛЯМ
-              .footer_description.footer_margin.text-center
-                Размещайте свою рекламу в сети
-                Gofriends и повышайте
-                узнаваемость бренда.
-              .footer_btn.text-center
-                %a{ href: '#bottom_form' }
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
-          .col-sm-3.col-xs-6
-            .footer_column
-              .footer_img.text-center
-                = image_tag 'landing/f1.png'
-              .footer_title.footer_padd.text-center ПРОВАЙДЕРАМ
-              .footer_description.footer_margin.text-center
-                Получите преимущества перед
-                другими провайдерами, внедрив
-                лучшее Hot-spot решение
-              .footer_btn.text-center
-                %a{ href: '#bottom_form' }
-                  %button.btn.btn-default.btn-lg{:name => "form-submit", :type => "submit"} ОСТАВИТЬ ЗАЯВКУ
+        %section.contacts
+          .our-contacts
+            .our-contacts__4-col
+              %p
+                Генеральный директор GoFriends WiFi
+                %br По вопросам партнерства
+              %p
+                %span.our-contacts__name Гавриленко Егор
+                %br
+                  +38(068)9999-398
+                  %br
+                    %a{:href => "#"} https://vk.com/gavrilenkoegor
+            .our-contacts__4-col
+              %p
+                Комерческий директор
+                %br По покупке представительств
+              %p
+                %span.our-contacts__name Моисеев Евгений
+                %br
+                  +38(063)0101-797
+                  %br
+                    %a{:href => "#"} https://vk.com/moisei2015
+            .our-contacts__4-col
+              %p
+                Техническая поддержка
+                %br сетевое сопровождение
+              %p
+                %span.our-contacts__name Басюк Виталий
+                %br
+                  +38(093)784-55-28
+                  %br
+                    %a{:href => "#"} https://vk.com/asdqwedsa
+            .our-contacts__4-col
+              %p
+                Технический директор
+                %br Разработка
+              %p
+                %span.our-contacts__name Безнос Александр
+                %br
+                  +38(093)700-33-21
+                  %br
+                    %a{:href => "#"} https://vk.com/p0isons
+          .partners-contacts
+            .partners-contacts__5-col
+              %h3 Киев
+              %p.contact
+                Юрий Кислов
+                %br +38(067)500-25-35
+              %p.contact
+                Роман Бажок
+                %br +38(063)728-08-70
+              %p.contact
+                Сапожников Антон
+                %br +38(067)50-22-732
+            .partners-contacts__5-col
+              %h3 Львов
+              %p.contact
+                Ременюк Светлана
+                %br +38(063)833-51-82
+              %p.contact
+                Кононюк Максим
+                %br +38(096)833-64-54
+              %p.contact
+                Ротар Максим
+                %br +38(093)507-89-59
+            .partners-contacts__5-col
+              %h3 Харьков
+              %p.contact
+                Руслан Олександрович
+                %br +38(093)44-18-649
+            .partners-contacts__5-col
+              %h3 Чернигов
+              %p.contact
+                Алексеенко Илья
+                %br +38(063)01-01-797
+            .partners-contacts__5-col
+              %h3 Днепропетровск
+              %p.contact
+                Станислав Борисов
+                %br +38(099)29-02-113
+              %p.contact
+                Владимир
+                %br +38(097)421-14-90
+            .partners-contacts__5-col
+              %h3 Хмельницкий
+              %p.contact
+                Глеб Савинов
+                %br +8(063)42-35174
+            .partners-contacts__5-col
+              %h3 Полтава
+              %p.contact
+                Зорин Руслан
+                %br +38(099)654-06-34
+            .partners-contacts__5-col
+              %h3 Ивана-Франковск
+              %p.contact
+                Ходаковский Юрий
+                %br +3(067)310-32-97
+            .partners-contacts__5-col
+              %h3 Крым,Севастопаль
+              %p.contact
+                Ринат Файзулов
+                %br +79788215121
+            .partners-contacts__5-col
+              %h3 Иордания, Оман
+              %p.contact
+                Навджа Ферас
+                %br +38(063)49-40-867
+            .partners-contacts__5-col
+              %h3 Казахстан, Алматы
+              %p.contact
+                Азамат  Бисарин
+                %br +7(701)430-40-75
+            .partners-contacts__5-col
+              %h3 Армения
+              %p.contact
+                Артур Багдасаруян
+                %br +37495492737
+            .partners-contacts__5-col
+              %h3 США, Техас
+              %p.contact
+                Дмитрий Куртис
+                %br dc.gradebook@yahoo.com
+            .partners-contacts__5-col
+              %h3 Казахстан, Октобе
+              %p.contact
+                Олжас Колишов
+                %br +77015552844
+    %footer.footer
+      .container
+        %p.footer__address Юридический адрес <br> Украина, Киев <br> ул.Вереснева 24
+        %p.footer__copyright
+          %b 2015 ©  OOO «Гоу Френдс»
+        .footer__social-icons-wrap
+          %a.footer__social-icon.footer__social-icon--vk{href: "#"}
+          %a.footer__social-icon.footer__social-icon--fb{href: "#"}
+          %a.footer__social-icon.footer__social-icon--tw{href: "#"}
     %a#back-to-top.btn.btn-primary.btn-lg.back-to-top{"data-placement" => "left", "data-toggle" => "tooltip", :href => "#", :role => "button", :title => "Жми, чтобы попасть наверх страницы"}
       %span.glyphicon.glyphicon-chevron-up.icon-up-open

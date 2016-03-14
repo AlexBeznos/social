@@ -6,14 +6,13 @@
 
 (function(d, w, s) {
 var widgetId = '21334', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
-gcw.src = '//my.binotel.ua/getcall/widgets/'+ widgetId +'.js';
 var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
 })(document, window, 'script');
 
 $(document).ready(function() {
   var swiper = new Swiper('.swiper-container', {
-    pagination: '.swiper-pagination',
-    paginationClickable: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
     slidesPerView: 5,
     spaceBetween: 50,
     breakpoints: {
