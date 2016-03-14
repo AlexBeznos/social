@@ -1,9 +1,9 @@
 class MigrateMessages < ActiveRecord::Migration
   def self.up
     Message.active.each do |message|
-      Auth.create(
+      Auth.create!(
         resource_type: "#{message.social_network.name.capitalize}Auth",
-        place_id: message.place_id,
+        place: message.place,
         redirect_url: message.place.redirect_url,
         resource_attributes: {
           message: message.message,
