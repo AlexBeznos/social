@@ -6,7 +6,13 @@ RSpec.describe StylePolicy do
   subject { StylePolicy.new(user,record) }
 
 
-  let(:attributes){subject.permitted_attributes;}
+  let(:attributes){[
+      :background,
+      :text_color,
+      :greating_color,
+      :css,
+      :network_icons
+  ]}
   let(:record){ create :style}
   let(:place){ create :place, user: user }
   let(:resolved_scope) {

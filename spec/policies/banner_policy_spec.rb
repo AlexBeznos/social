@@ -5,7 +5,7 @@ RSpec.describe BannerPolicy do
 
   subject { BannerPolicy.new(user,record) }
 
-  let(:attributes){subject.permitted_attributes;}
+  let(:attributes){[:name, :content]}
   let(:record){ create :banner}
   let(:place){ create :place, user: user }
   let(:resolved_scope) {
