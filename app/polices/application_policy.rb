@@ -31,8 +31,9 @@ class ApplicationPolicy
     @user = user
     @record = record
 
+
     if record && !record.is_a?(Class)
-      if !Scope.new(user, record.class).resolve.include?(record)
+      if !self.class::Scope.new(user, record.class).resolve.include?(record)
         raise Pundit::NotAuthorizedError, I18n.t('pundit.default')
       end
     end
