@@ -2,6 +2,8 @@ class MigrateMessages < ActiveRecord::Migration
   include Imagable
   def self.up
     Message.active.each do |message|
+      p '_+_+_+_'
+      p message.image.url
       Auth.create!(
         resource_type: "#{message.social_network.name.capitalize}Auth",
         place: message.place,
