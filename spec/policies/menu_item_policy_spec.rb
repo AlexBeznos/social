@@ -3,16 +3,22 @@ require "rails_helper"
 RSpec.describe MenuItemPolicy do
   include_examples "visitor"
 
-  subject { MenuItemPolicy.new(user,record) }
+  subject { MenuItemPolicy.new(user, record) }
 
-  let(:attributes){subject.permitted_attributes;}
-  let(:record){ create :menu_item}
+  let(:attributes){[
+    :name,
+    :price,
+    :description,
+    :image
+  ]}
+  let(:record){ create :menu_item }
+  let(:place){ create :place, user: user }
   let(:resolved_scope) {
-    MenuItemPolicy::Scope.new(user, MenuItem.all).resolve
+    MenuItemPolicy::Scope.new(user, MenuItem).resolve
   }
 
   context "for admin" do
-    let(:user){create :user_admin}
+    let(:user){ create :user_admin }
 
     it "scope includes all menu items" do
       expect(resolved_scope).to include(record)
@@ -29,9 +35,10 @@ RSpec.describe MenuItemPolicy do
   end
 
   context "for franchisee" do
-    let(:user){create :user_franchisee}
+    let(:user){ create :user_franchisee }
+    let(:record){ create :menu_item, place: place }
 
-    it "scope includes all all menu items" do
+    it "scope includes all menu items" do
       expect(resolved_scope).to include(record)
     end
 
@@ -46,9 +53,11 @@ RSpec.describe MenuItemPolicy do
   end
 
   context "for general" do
-    let(:user){create :user_general}
+    let(:user){ create :user_general }
+    let(:record){ create :menu_item, place: place }
 
     it "scope includes all all menu items" do
+      place.reload
       expect(resolved_scope).to include(record)
     end
 

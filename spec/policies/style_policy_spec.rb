@@ -8,8 +8,9 @@ RSpec.describe StylePolicy do
 
   let(:attributes){subject.permitted_attributes;}
   let(:record){ create :style}
+  let(:place){ create :place, user: user }
   let(:resolved_scope) {
-    StylePolicy::Scope.new(user, Style.all).resolve
+    StylePolicy::Scope.new(user, Style).resolve
   }
 
   context "for admin" do
@@ -31,6 +32,7 @@ RSpec.describe StylePolicy do
 
   context "for franchisee" do
     let(:user){create :user_franchisee}
+    let(:record){ create :style, place: place }
 
     it "scope includes user with id: current_user.id" do
       expect(resolved_scope).to include(record)
@@ -48,8 +50,10 @@ RSpec.describe StylePolicy do
 
   context "for general" do
     let(:user){create :user_general}
+    let(:record){ create :style, place: place }
 
     it "scope includes all styles" do
+      place.reload
       expect(resolved_scope).to include(record)
     end
 
