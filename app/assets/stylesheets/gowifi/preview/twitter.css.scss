@@ -1,46 +1,116 @@
+.tw-post {
+  margin: 20px auto;
+  box-sizing: border-box;
+  padding: 9px 12px 9px 70px;
+  width: 590px;
+  background: white;
+  border: 1px solid #e1e8ed;
 
-.btn  {
-  margin-top: 50px;
-  margin-bottom: 25px;
-}
+  & * {
+    box-sizing: border-box;
 
-
-h1, p {
-  text-align: center;
-}
-
-
-.twitter-frame {
-  position: relative;
-  width: 574px;
-  margin: 0 auto;
-}
-
-
-.twitter-pic {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  margin-left: -222px;
-  width: 500px;
-  height: 282px;
-}
-
-
-// mobile < 500px
-
-@media only screen and (max-width: 500px) {
-
-  .twitter-frame {
-    max-width: 100%;
+    font-family: Arial,sans-serif;
+    color: #292f33;
+    font-size: 14px;
+    line-height: 18px;
   }
 
+  &__header {
+    position: relative;
+    margin-bottom: 0px;
+    padding-right: 30px;
 
-  .twitter-pic {
-    top: 50px;
-    left: 50%;
-    margin-left: -180px;
-    max-width: 83%;
-    height: 200px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      right: -3px;
+      width: 14px;
+      height: 14px;
+      background: #ccc image-url('tw-icons.png') no-repeat 0px -120px;
+    }
+
+  }
+
+  &__author {
+    &-photo {
+      position: absolute;
+      top: 3px;
+      left: -58px;
+      width: 48px;
+      height: 48px;
+      border-radius: 5px;
+    }
+
+    &-name {
+      display: inline-block;
+      margin: 0;
+
+      font-weight: bold;
+    }
+  }
+
+  &__link-and-time {
+    color: #8899a6;
+    font-size: 13px;
+  }
+
+  &__text {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  &__img {
+    margin-bottom: 12px;
+    width: 100%;
+    min-height: 100px;
+    background: #eee;
+    border-radius: 5px;
+  }
+
+  &__options div {
+    display: inline-block;
+    padding-left: 30px;
+    width: 75px;
+    height: 20px;
+    background: image-url('tw-icons.png') no-repeat 2px 1px;
+
+    vertical-align: top;
+    color: #aab8c2;
+    font-weight: bold;
+    font-size: 12px;
+
+    &.tw-post__answer {
+      background-position: 2px 0px;
+    }
+
+    &.tw-post__retweet {
+      background-position: 2px -30px;
+    }
+
+    &.tw-post {
+      &__like {
+        background-position: 2px -60px;
+      }
+
+      &__more {
+        background-position: 2px -90px;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .tw-post {
+    width: 400px;
+
+    &__link-and-time {
+      display: block;
+    }
+
+    &__img {
+      min-height: 60px;
+    }
   }
 }

@@ -1,6 +1,18 @@
+%article.tw-post
+  %header.tw-post__header
+    = image_tag('tw-user-photo.jpg', :class => 'tw-post__author-photo')
+    %h2.tw-post__author-name Arts & Culture Trust
+    %span.tw-post__link-and-time @MuseumModernArt · 15 год.
 
-/ TW post
+  %p.tw-post__text
+    %span
+      = @message.message
+    = link_to @message.message_link, :class => 'tw-post__link'
 
-.twitter-frame
-  =image_tag('twitter-frame.png', :class => 'twitter-frame')
-  =image_tag(@message.image, :class => 'twitter-pic')
+  = image_tag(@message.image, :class => 'tw-post__img')
+
+  .tw-post__options
+    .tw-post__answer 41
+    .tw-post__retweet 41
+    .tw-post__like 41
+    .tw-post__more
