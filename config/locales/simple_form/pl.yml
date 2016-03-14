@@ -22,7 +22,6 @@ pl:
         logo: 'logotyp'
         active: Hotspot aktywny
         stocks_active: akcje aktywne
-        polls_active: Sonda
         reputation_on: Bonusy
         loyalty_on: Włącz konfiguracji programów lojalnościowych dla członków
         loyalty_program: Program lojalnościowy
