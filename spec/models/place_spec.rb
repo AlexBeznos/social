@@ -31,20 +31,6 @@ RSpec.describe Place do
     end
   end
 
-  describe "Wifi settings link" do
-    it "has valid value" do
-      place = build(:place, wifi_settings_link: "http://google.com")
-
-      expect(place).to be_valid
-    end
-
-    it "has invalid value" do
-      place = build(:place, wifi_settings_link: "google.com")
-      place.valid?
-      expect(place.errors.messages[:wifi_settings_link]).to include(I18n.t('models.errors.validations.wrong_link_format'))
-    end
-  end
-
   describe "Banners" do
     it "can't show other banners if city is not set" do
       place = build(:place, city: "", display_other_banners: true)
