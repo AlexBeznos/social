@@ -4,17 +4,17 @@
       default_message: "Խնդրում եմ լուծել ներքևում առկա խնդիրները:"
     labels:
       auth:
-        redirect_url: "Redirect url after authentication"
-        resource_type: "Authentication type"
+        redirect_url: "երահղման URL- ը , հետո իսկությունը"
+        resource_type: "Նույնականացման տեսակը"
         resource:
-          message_url: "Message url"
-          message: "Message"
-          image: "Image"
-          password: "Password"
-          question: "Question"
-          answer: "Answer"
-          add_answer: "Add answer"
-          remove: "Remove"
+          message_url: "հաղորդագրություն URL"
+          message: "հաղորդագրություն"
+          image: "պատկեր"
+          password: "գաղտնաբառ"
+          question: "Հարց"
+          answer: "պատասխան"
+          add_answer: "Ավելացնել պատասխան"
+          remove: "հեռացնել"
       place:
         name: 'Հաստատության անվանումը'
         ssid: 'SSID տեղերը'
