@@ -86,7 +86,7 @@ class GowifiAuthController < ApplicationController
       if @place.loyalty_program && @customer
         redirect_to menu_items_list_path(@place)
       else
-        redirect_to params[:dst]
+        redirect_to params[:distination]
       end
     else
       redirect_to root_path

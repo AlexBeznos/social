@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
     authorize Place
 
     @place = Place.new(permitted_attributes(Place))
-    
+
     if @place.save
       redirect_to user_path(@place.user), notice: I18n.t('notice.create', subject: I18n.t('models.places.actions.show.title', place_name: @place.name))
     else
