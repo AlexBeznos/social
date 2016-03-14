@@ -12,7 +12,7 @@ class MigrateMessages < ActiveRecord::Migration
           resource_attributes: {
             message: message.message,
             message_url: message.message_link,
-            remote_image_url: to_full_url(message.image.url)
+            remote_image_url: "https:#{message.image.url}"
           }
         )
       end
