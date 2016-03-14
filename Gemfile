@@ -12,11 +12,11 @@ gem 'jquery-minicolors-rails'
 gem 'codemirror-rails'
 gem 'jquery-modal-rails'
 gem 'jquery-ui-rails'
-gem "fog-aws"
-gem "asset_sync"
+gem 'fog-aws'
+gem 'asset_sync'
 
 # Precompiles
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '5.0.4'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
@@ -33,7 +33,6 @@ gem 'default_value_for'
 gem 'has_unique_slug'
 gem 'http_accept_language'
 gem 'simple_form'
-gem 'translit'
 gem 'yaml_db'
 gem 'mimemagic'
 gem 'figaro'

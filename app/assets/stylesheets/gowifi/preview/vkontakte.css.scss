@@ -1,0 +1,137 @@
+.vk-post * {
+  box-sizing: border-box;
+
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #000;
+  font-size: 11px;
+  line-height: 160%;
+}
+
+.vk-post {
+  position: relative;
+  width: 597px;
+  padding: 10px 0 11px;
+  padding-left: 60px;
+  border: 1px solid #dae1e8;
+  border-left: 0;
+  border-right: 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+
+  &__post-img {
+    margin-bottom: 6px;
+    margin-top: 7px;
+    width: 100%;
+    min-height: 260px;
+    background: #ccc;
+  }
+
+  &__link {
+    color: #2B587A;
+  }
+
+  &__user-photo {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    background: #ccc;
+  }
+
+  &__user-name {
+    margin: 0;
+    margin-bottom: 2px;
+
+    font-weight: bold;
+    line-height: 140%;
+    color: #2B587A;
+    font-size: 11px;
+  }
+
+  &__description {
+    margin: 0;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    padding: 0;
+  }
+
+  &__options {
+    &--left-column {
+      float: left;
+    }
+
+    &--right-column {
+    float: right;
+    }
+  }
+
+  &__adding-time {
+    color: #999;
+  }
+
+  &__reply {
+    color: #2b587a;
+  }
+
+  &__actions {
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  &__action {
+    display: inline-block;
+    margin: 0 5px;
+
+    &--title {
+      color: #829baf;
+    }
+
+    &--quantity {
+      position: relative;
+      padding-left: 18px;
+
+      color: #7295b2;
+      font-weight: bold;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 2px;
+        width: 15px;
+        height: 15px;
+        background: image-url('vk-icons.png') no-repeat 0px 3px;
+        opacity: 0.4;
+      }
+
+      &--share::before {
+        background-position: 0px -19px;
+      }
+
+      &--like::before {
+        background-position: 0px 3px;
+      }
+
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .vk-post {
+    width: 397px;
+
+    &__post-img {
+      min-height: 159px;
+    }
+
+    &__options * {
+      font-size: 10px;
+    }
+
+    &__actions--share {
+      display: none;
+    }
+  }
+}
