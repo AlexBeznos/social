@@ -5,10 +5,11 @@ RSpec.describe BannerPolicy do
 
   subject { BannerPolicy.new(user,record) }
 
-  let(:attributes){subject.permitted_attributes;}
+  let(:attributes){[:name, :content]}
   let(:record){ create :banner}
+  let(:place){ create :place, user: user }
   let(:resolved_scope) {
-    BannerPolicy::Scope.new(user, Banner.all).resolve
+    BannerPolicy::Scope.new(user, Banner).resolve
   }
 
   context "for admin" do
@@ -30,6 +31,7 @@ RSpec.describe BannerPolicy do
 
   context "for franchisee" do
     let(:user){create :user_franchisee}
+    let(:record){ create :banner, place: place }
 
     it "scope includes all banners" do
       expect(resolved_scope).to include(record)
@@ -47,8 +49,10 @@ RSpec.describe BannerPolicy do
 
   context "for general" do
     let(:user){create :user_general}
+    let(:record){ create :banner, place: place }
 
     it "scope includes all banners" do
+      place.reload
       expect(resolved_scope).to include(record)
     end
 
