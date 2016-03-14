@@ -5,15 +5,14 @@ RSpec.describe PlacePolicy do
 
   subject { PlacePolicy.new(user,record) }
 
-
-  let(:attributes){subject.permitted_attributes;}
+  let(:attributes){ subject.permitted_attributes }
   let(:record){ create :place}
   let(:resolved_scope) {
     PlacePolicy::Scope.new(user, Place.all).resolve
   }
 
   context "for admin" do
-    let(:user){create :user_admin}
+    let(:user){ create :user_admin }
 
     it "scope includes user with user: current_user" do
       expect(resolved_scope).to include(record)
@@ -44,12 +43,12 @@ RSpec.describe PlacePolicy do
       end
     end
 
-    it{ is_expected.to permit_crud}
-    it{ is_expected.to permit_place_additional_actions}
+    it{ is_expected.to permit_crud }
+    it{ is_expected.to permit_place_additional_actions }
   end
 
   context "for general" do
-    let(:user){create :user_general}
+    let(:user){ create :user_general }
 
     it "scope includes place with user: current_user" do
       expect(resolved_scope).to include(create :place, user: user)

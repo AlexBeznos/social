@@ -22,7 +22,7 @@ class ApplicationPolicy
     end
 
     def user_ids
-      user.place_owners.map(&:id)
+      user.place_owners.pluck(:id)
     end
   end
 
