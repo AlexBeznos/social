@@ -14,6 +14,7 @@ class AuthsController < ApplicationController
     @auth.place = @place
 
     if @auth.save
+      @auth.mark_as_unapproved! if current_user.general?
       redirect_to settings_place_path(@place)
     else
       render action: :new
@@ -28,6 +29,7 @@ class AuthsController < ApplicationController
     authorize @auth
 
     if @auth.update(auth_params(:resource_attributes))
+      @auth.mark_as_unapproved! if current_user.general?
       redirect_to settings_place_path(@place)
     else
       render action: :edit

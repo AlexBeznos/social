@@ -19,6 +19,7 @@ class Auth < ActiveRecord::Base
   scope :active, -> { where(active: true) }
   scope :resource_like, -> (meth) { where("resource_type LIKE ?", "#{meth}%") }
 
+  has_one :notification, as: :source
   belongs_to :place
   belongs_to :resource, polymorphic: true, dependent: :destroy
 
@@ -33,6 +34,10 @@ class Auth < ActiveRecord::Base
     else
       self.resource = resource_type.constantize.new(attributes, options)
     end
+  end
+
+  def mark_as_unapproved!
+    create_notification(user: place.user, category: "Unapproved authentication")
   end
 
   def auth_methods
