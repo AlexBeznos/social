@@ -21,7 +21,7 @@ ua:
       menu_item: товар
       poll: опитування
       banner: банер
-      auth: аутентифікацию
+      auth: аутентифікацію
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
