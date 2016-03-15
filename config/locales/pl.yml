@@ -21,6 +21,7 @@ pl:
       menu_item: towary
       poll: przesłuchanie
       banner: sztandar
+      auth: uwierzytelnianie
   notice:
     create: "%{subject} dodano"
     updated: "%{subject} zaktualizowany"

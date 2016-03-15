@@ -21,6 +21,7 @@
       menu_item: ապրանք
       poll: հարցում
       banner: բանները
+      auth: իսկությունը
   notice:
     create: "%{subject} Ավելացված է"
     updated: "%{subject} թարմացված է "
