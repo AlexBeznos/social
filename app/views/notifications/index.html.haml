@@ -1,5 +1,19 @@
 = content_for :navigation, 'false'
 = content_for :page_stylesheet, 'dashboard/settings'
-= content_for :title, "All notifications"
+= content_for :title, "Unapproved authentications"
 
-= @notifications
+.panel-info.panel-adjusted
+  .panel-heading
+    %h1= "Unapproved messages"
+  .panel-body
+    - if @sources.any?
+      - @sources.each do |source|
+        .panel.panel-default
+          .panel-heading
+            .panel-title= t("models.auths.methods.#{source.resource.class::NAME}").capitalize
+          .panel-body
+            = render partial: "#{source.resource.class::NAME}_auths/details", locals: { resource: source.resource }
+          .panel-footer
+            = link_to t("helpers.submit.destroy"), user_notification_path(current_user, source.notification), method: 'DELETE', class: 'btn btn-success btn-block'
+    - else
+      = "You have no Unapproved authentications"

@@ -37,7 +37,7 @@ class Auth < ActiveRecord::Base
   end
 
   def mark_as_unapproved!
-    create_notification(user: place.user, category: "Unapproved authentication")
+    create_notification(user: place.user.franchisee, category: "Unapproved authentication")
   end
 
   def auth_methods
