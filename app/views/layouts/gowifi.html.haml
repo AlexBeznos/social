@@ -18,7 +18,7 @@
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
     = stylesheet_link_tag "wifi/poll_styling", :media => "all"
     = javascript_include_tag "wifi_enter"
-    = render 'style', place: @place, customer: @customer if @place.style
+    = render 'shared/gowifi/style', place: @place, customer: @customer if @place.style
   %body
     = render 'banner', place: @place if @place.display_other_banners && @banner
     = render 'shared/flash'
