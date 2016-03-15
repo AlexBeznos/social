@@ -26,7 +26,6 @@ class PlacePolicy < ApplicationPolicy
       :name,
       :logo,
       :active,
-      :redirect_url,
       :user_id,
       :stocks_active,
       :reputation_on,
