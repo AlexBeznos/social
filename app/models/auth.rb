@@ -42,4 +42,5 @@ class Auth < ActiveRecord::Base
   def name
     resource.class::NAME.to_sym
   end
+
 end

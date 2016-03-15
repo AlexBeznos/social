@@ -4,6 +4,7 @@ class TwitterAuth < ActiveRecord::Base
   mount_uploader :image, NetworksAuthUploader
 
   has_one :auth, as: :resource
+  has_one :notification, as: :source
 
   validate :twitter_message_length
   validates :message, :image, presence: true

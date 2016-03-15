@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314100337) do
+ActiveRecord::Schema.define(version: 20160315133749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,17 @@ ActiveRecord::Schema.define(version: 20160314100337) do
 
   add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
   add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "notifications", ["source_id", "source_type"], name: "index_notifications_on_source_id_and_source_type", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "customer_id"
