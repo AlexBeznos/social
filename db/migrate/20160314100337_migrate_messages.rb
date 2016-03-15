@@ -4,7 +4,7 @@ class MigrateMessages < ActiveRecord::Migration
     Message.active.each do |message|
       p '_+_+_+_'
       p message.image.url
-      unless [41,42].include?(message.id)
+      unless [41,42, 16].include?(message.id)
         Auth.create!(
           resource_type: "#{message.social_network.name.capitalize}Auth",
           place: message.place,
