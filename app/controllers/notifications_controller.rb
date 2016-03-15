@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   def index
     authorize Notification
 
-    @notifications = Notifications.where(user: current_user)
+    @notifications = Notification.where(user: params[:user])
   end
 
   def destroy

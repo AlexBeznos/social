@@ -33,7 +33,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    resources :notifications, only: [:index, :destroy]
+  end
   resources :places do
     resources :auths, except: :index
     resources :banners

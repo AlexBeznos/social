@@ -19,7 +19,7 @@ class Auth < ActiveRecord::Base
   scope :active, -> { where(active: true) }
   scope :resource_like, -> (meth) { where("resource_type LIKE ?", "#{meth}%") }
 
-  has_one :notification, as: :source
+  has_one :notification, as: :source, dependent: :destroy
   belongs_to :place
   belongs_to :resource, polymorphic: true, dependent: :destroy
 
