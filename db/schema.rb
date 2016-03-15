@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314100337) do
+ActiveRecord::Schema.define(version: 20160315141817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,25 +165,6 @@ ActiveRecord::Schema.define(version: 20160314100337) do
 
   add_index "menu_items_orders", ["menu_item_id"], name: "index_menu_items_orders_on_menu_item_id", using: :btree
   add_index "menu_items_orders", ["order_id"], name: "index_menu_items_orders_on_order_id", using: :btree
-
-  create_table "messages", force: true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.text     "message"
-    t.string   "message_link"
-    t.integer  "place_id"
-    t.boolean  "active",             default: true
-    t.string   "subscription"
-    t.string   "subscription_uid"
-    t.integer  "social_network_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
-  add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "customer_id"

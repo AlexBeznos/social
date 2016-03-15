@@ -13,7 +13,7 @@ class Adm::PlacesController < AdministrationController
   def show
     authorize @place
 
-    @place = Place.includes(:messages).find_by_slug(params[:id])
+    @place = Place.find_by_slug(params[:id])
     @networks = SocialNetwork.all
   end
 

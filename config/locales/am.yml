@@ -13,7 +13,6 @@
         remember_me: Հիշել
   activerecord:
     models:
-      message: հաղորդագրություն
       user: Բաժանորդ
       place: Հաստատություն
       stock: ակցիան
