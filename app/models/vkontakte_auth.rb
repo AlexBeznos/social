@@ -5,6 +5,6 @@ class VkontakteAuth < ActiveRecord::Base
 
   has_one :auth, as: :resource
 
-  validates :message_url, :message, :image, presence: true
-  validates :message_url, url: true
+  validates :message, :image, presence: true
+  validates :message_url, url: true, if: 'message_url && !message_url.blank?'
 end
