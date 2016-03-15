@@ -5,7 +5,7 @@ class TwitterAuth < ActiveRecord::Base
 
   has_one :auth, as: :resource
 
-  # validate :twitter_message_length
+  validate :twitter_message_length
   validates :message, :image, presence: true
   validates :message_url, url: true, if: 'message_url && !message_url.blank?'
 
