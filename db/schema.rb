@@ -12,7 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20160316170856) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
@@ -132,6 +131,19 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.datetime "updated_at"
   end
 
+  create_table "facebook_profiles", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "url"
+    t.string   "uid"
+    t.string   "access_token"
+    t.date     "expiration_date"
+    t.integer  "friends_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "gowifi_sms", force: true do |t|
     t.string   "phone"
     t.string   "code"
@@ -221,6 +233,18 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "profiles", force: true do |t|
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["customer_id"], name: "index_profiles_on_customer_id", using: :btree
+  add_index "profiles", ["resource_id"], name: "index_profiles_on_resource_id", using: :btree
+  add_index "profiles", ["resource_type"], name: "index_profiles_on_resource_type", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
