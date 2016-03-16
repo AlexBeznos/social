@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315185513) do
+ActiveRecord::Schema.define(version: 20160316170856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20160315185513) do
   add_index "customer_network_profiles", ["uid"], name: "index_customer_network_profiles_on_uid", using: :btree
 
   create_table "customer_reputations", force: true do |t|
-    t.integer  "score"
+    t.integer  "score",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "place_id"

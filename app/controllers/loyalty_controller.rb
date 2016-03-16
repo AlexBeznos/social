@@ -2,7 +2,7 @@ class LoyaltyController < ApplicationController
   before_action :find_place
   before_action :find_customer
   before_action :find_auth
-  before_action :load_reputation_score
+  before_action :find_reputation
 
   layout 'loyalty_program'
 
@@ -22,7 +22,7 @@ class LoyaltyController < ApplicationController
     if cookies[:customer]
       @customer = Customer.find(cookies[:customer].to_i)
     else
-      redirect_to gowifi_place_path(@place)
+      redirect_to root_path
     end
   end
 
@@ -31,8 +31,10 @@ class LoyaltyController < ApplicationController
     @auth = Auth.find(params[:auth])
   end
 
-  def load_reputation_score
-    @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
-    @reputation_score = @reputation.nil? ? 0 : @reputation.score
+  def find_reputation
+    @reputation = Customer::Reputation.find_by(
+      place_id: @place.id,
+      customer_id: @customer.id
+    ) || Customer::Reputation.new
   end
 end

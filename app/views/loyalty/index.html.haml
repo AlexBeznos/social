@@ -19,7 +19,7 @@
             .product-name
               %span
                 %b= item.name
-          - if item.price > @reputation_score
+          - if item.price > @reputation.score
             .insufficient
               = link_to '#', onclick: 'return false;' do
                 %b= t('menu_item.not_enough_points')

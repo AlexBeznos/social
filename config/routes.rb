@@ -18,12 +18,6 @@ Rails.application.routes.draw do
             patch 'remove_background'
           end
         end
-        resources :messages, except: [:index, :show] do
-          member do
-            get 'activate'
-            get 'deactivate'
-          end
-        end
       end
 
       member do
