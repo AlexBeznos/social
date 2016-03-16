@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :find_place
   before_action :find_auth
   before_action :find_customer
-  before_action :load_reputation_score
+  before_action :find_reputation
   before_action :load_menu_item, except: :index
 
   skip_after_action :verify_authorized
@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
     @order = @place.orders.create(customer_id: @customer.id)
 
     if @order.add_menu_item(@reputation, @menu_item)
-      @reputation_score = @reputation.score
       render :show
     else
       redirect_to loyalty_path, notice: t('menu_item.not_enough_points')
@@ -45,9 +44,11 @@ class OrdersController < ApplicationController
     @auth = Auth.find(params[:auth])
   end
 
-  def load_reputation_score
-    @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
-    @reputation_score = @reputation.nil? ? 0 : @reputation.score
+  def find_reputation
+    @reputation = Customer::Reputation.find_by(
+      place_id: @place.id,
+      customer_id: @customer.id
+    ) || Customer::Reputation.new
   end
 
   def load_menu_item
