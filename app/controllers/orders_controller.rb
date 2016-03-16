@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   layout 'loyalty_program'
 
   before_action :find_place
+  before_action :find_auth
   before_action :find_customer
   before_action :load_reputation_score
   before_action :load_menu_item, except: :index
@@ -20,7 +21,7 @@ class OrdersController < ApplicationController
 
     if @order.add_menu_item(@reputation, @menu_item)
       @reputation_score = @reputation.score
-      redirect_to action: :show
+      render :show
     else
       redirect_to loyalty_path, notice: t('menu_item.not_enough_points')
     end
@@ -38,6 +39,10 @@ class OrdersController < ApplicationController
 
   def find_place
     @place = Place.find_by_slug(params[:place_id])
+  end
+
+  def find_auth
+    @auth = Auth.find(params[:auth])
   end
 
   def load_reputation_score

@@ -65,7 +65,7 @@ class GowifiAuthController < ApplicationController
     end
 
     clear_session
-    redirect_to succed_auth_path(@place, auth)
+    redirect_to succed_auth_path(@place, @auth)
   end
 
   def auth_failure
