@@ -79,7 +79,7 @@
             - @place.auths.active.send(step).each do |auth|
               .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
                 .panel-heading
-                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize + " (Unapproved)" unless auth.notification.nil?
+                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize + approved?(auth)
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer
