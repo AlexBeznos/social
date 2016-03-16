@@ -4,6 +4,7 @@ class Customer < ActiveRecord::Base
   has_many :visits, dependent: :destroy, class_name: 'Customer::Visit'
   has_many :reputations, dependent: :destroy, class_name: 'Customer::Reputation'
   has_many :orders, dependent: :destroy
+  has_many :profiles, dependent: :destroy
   belongs_to :social_network
 
   accepts_nested_attributes_for :network_profiles
