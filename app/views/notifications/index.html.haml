@@ -19,17 +19,17 @@
                       .text-left
                         %strong= "Place: "
                     .col-md-6
-                      .text-right= s1.place.name
+                      .text-right= link_to s1.place.name, place_path(s1.place)
                   .row
                     .col-md-6
                       .pull-left
                         %strong= "Place owner: "
                     .col-md-6
-                      .pull-right= s1.place.user.full_name
-              .panel-body
+                      .pull-right= link_to s1.place.user.full_name, user_path(s1.place.user)
+              .panel-body.text-left
                 = render partial: "#{s1.resource.class::NAME}_auths/details", locals: { resource: s1.resource }
               .panel-footer
-                = link_to t("helpers.submit.destroy"), user_notification_path(current_user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
+                = link_to t("models.notifications.approve"), user_notification_path(current_user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
           -if s2
             .col-md-6
               .panel.panel-default
@@ -41,16 +41,16 @@
                         .text-left
                           %strong= "Place:"
                       .col-md-6
-                        .text-right= s2.place.name
+                        .text-right= link_to s2.place.name, place_path(s1.place)
                     .row
                       .col-md-6
                         .pull-left
                           %strong= "Place owner: "
                       .col-md-6
-                        .pull-right= s2.place.user.full_name
-                .panel-body
+                        .pull-right=  link_to s2.place.user.full_name, user_path(s2.place.user)
+                .panel-body.text-left
                   = render partial: "#{s2.resource.class::NAME}_auths/details", locals: { resource: s2.resource }
                 .panel-footer
-                  = link_to t("helpers.submit.destroy"), user_notification_path(current_user, s2.notification), method: 'DELETE', class: 'btn btn-success btn-block'
+                  = link_to t("models.notifications.approve"), user_notification_path(current_user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
     - else
       = "You have no Unapproved authentications"

@@ -21,12 +21,16 @@ module ApplicationHelper
   def approved? (auth)
     if Auth::NETWORKS.keys.include?(auth.name)
       if auth.notification
-        " (Unapproved)"
+        {
+          text: "unapproved",
+          style: "danger"
+        }
       else
-        " (Approved)"
+        {
+          text: "approved",
+          style: "success"
+        }
       end
-    else
-      ""
     end
   end
 

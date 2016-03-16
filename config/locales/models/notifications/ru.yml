@@ -1,0 +1,4 @@
+ru:
+  models:
+    notifications:
+      approve: "Одобрить"

@@ -1,0 +1,6 @@
+en:
+  models:
+    notifications:
+      approve: "Approve"
+      approved: "Approved"
+      unapproved: "Unapproved"
