@@ -14,7 +14,6 @@ class Adm::PlacesController < AdministrationController
     authorize @place
 
     @place = Place.find_by_slug(params[:id])
-    @networks = SocialNetwork.all
   end
 
   def new

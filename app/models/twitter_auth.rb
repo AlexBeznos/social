@@ -7,7 +7,7 @@ class TwitterAuth < ActiveRecord::Base
 
   validate :twitter_message_length
   validates :message, :image, presence: true
-  validates :message_url, url: true, unless: 'message_url.blank?'
+  validates :message_url, url: true, allow_blank: true
 
 
   private

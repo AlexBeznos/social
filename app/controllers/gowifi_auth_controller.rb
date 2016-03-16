@@ -113,7 +113,7 @@ class GowifiAuthController < ApplicationController
       cookies.delete(:step)
 
       url = if @place.loyalty_program && @customer
-        loyalty_url(@place, auth: @auth.id)
+        loyalty_url(@place, auth: auth.id)
       else
         auth.redirect_url
       end
