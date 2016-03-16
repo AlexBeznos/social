@@ -1,0 +1,8 @@
+am:
+  models:
+    notifications:
+      approve: "հավանություն տալ"
+      approved: "Հաստատված"
+      unapproved: "չհաստատված"
+      unapproved_auths: "Չհաստատված authentications"
+      no_unapproved_auths: "Դուք չունեք չգրանցված authentications"

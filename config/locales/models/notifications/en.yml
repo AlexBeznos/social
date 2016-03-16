@@ -4,3 +4,5 @@ en:
       approve: "Approve"
       approved: "Approved"
       unapproved: "Unapproved"
+      unapproved_auths: "Unapproved authentications"
+      no_unapproved_auths: "You have no unapproved authentications."

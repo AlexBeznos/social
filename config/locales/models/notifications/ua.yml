@@ -1,0 +1,8 @@
+ua:
+  models:
+    notifications:
+      approve: "Одобрити"
+      approved: "Одобрено"
+      unapproved: "Неодобрено"
+      unapproved_auths: "Неодобрені аунтентификації"
+      no_unapproved_auths: "У вас немає неодобрених аутентификацій."

@@ -1,0 +1,8 @@
+hu:
+  models:
+    notifications:
+      approve: "Jóváhagy"
+      approved: "Jóváhagyott"
+      unapproved: "A jóvá nem hagyott"
+      unapproved_auths: "Nem jóváhagyott hitelesítések"
+      no_unapproved_auths: "Ön nincs jóváhagyott hitelesítések."

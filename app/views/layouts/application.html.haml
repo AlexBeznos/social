@@ -32,7 +32,7 @@
             - if current_user
               %li= link_to current_user.full_name, user_path(current_user)
               - if current_user.notifications.any?
-                %li= link_to "Unapproved authentications (#{current_user.notifications.count})", user_notifications_path(current_user)
+                %li= link_to t("models.notifications.unapproved_auths")+ " (#{current_user.notifications.count})", user_notifications_path(current_user)
               - if policy(User).index?
                 %li= link_to t('navigation.users'), users_path
               %li= link_to t('navigation.my_places'), places_path

@@ -1,0 +1,8 @@
+pl:
+  models:
+    notifications:
+      approve: "Zatwierdzać"
+      approved: "Zatwierdzony"
+      unapproved: "Niezatwierdzony"
+      unapproved_auths: "uwierzytelnianie Niezatwierdzony"
+      no_unapproved_auths: "Nie masz żadnych niezatwierdzonych uwierzytelnianie ."
