@@ -10,10 +10,10 @@ class Customer::Visit < ActiveRecord::Base
   belongs_to :network_profile, class_name: 'Customer::NetworkProfile',
                                foreign_key: :customer_network_profile_id
 
-  validates :network_profile, :place, presence: true, unless: 'by_password'
+  validates :network_profile, :place, presence: true, unless: :by_password
   # validate :ones_a_day_visit, unless: 'by_password'
 
-  after_create :calculate_reputation, unless: 'by_password'
+  after_create :calculate_reputation, unless: :by_password
 
   private
   def ones_a_day_visit
