@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
     if persisted?
       super attributes
     else
-      self.resource = resource_type.new(attributes, options)
+      self.resource = resource_type.constantize.new(attributes, options)
     end
   end
 end
