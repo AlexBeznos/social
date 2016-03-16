@@ -22,32 +22,30 @@ class OrdersController < ApplicationController
       @reputation_score = @reputation.score
       redirect_to action: :show
     else
-      redirect_to menu_items_list_path, notice: t('menu_item.not_enough_points')
+      redirect_to loyalty_path, notice: t('menu_item.not_enough_points')
     end
   end
 
   private
 
-    def find_customer
-      if cookies[:customer]
-        @customer = Customer.find(cookies[:customer].to_i)
-      else
-        redirect_to gowifi_place_path(@place)
-      end
+  def find_customer
+    if cookies[:customer]
+      @customer = Customer.find(cookies[:customer].to_i)
+    else
+      redirect_to gowifi_place_path(@place)
     end
+  end
 
-    def find_place
-      @place = Place.find_by_slug(params[:place_id])
-    end
+  def find_place
+    @place = Place.find_by_slug(params[:place_id])
+  end
 
-    def load_reputation_score
-      @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
-      @reputation_score = @reputation.nil? ? 0 : @reputation.score
-    end
+  def load_reputation_score
+    @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
+    @reputation_score = @reputation.nil? ? 0 : @reputation.score
+  end
 
-    def load_menu_item
-      @menu_item = MenuItem.find(params[:id])
-    end
-
-
+  def load_menu_item
+    @menu_item = MenuItem.find(params[:id])
+  end
 end

@@ -12,7 +12,6 @@ RSpec.describe PlacePolicy do
     :redirect_url,
     :user_id,
     :stocks_active,
-    :reputation_on,
     :score_amount,
     :city,
     :display_other_banners,

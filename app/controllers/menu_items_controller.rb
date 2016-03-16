@@ -1,20 +1,11 @@
 class MenuItemsController < ApplicationController
   before_action :set_place
-  before_action :set_menu_item, except: [:index, :welcome, :new, :create]
-
-  before_action :find_customer, only: :welcome
-  before_action :load_reputation_score, only: :welcome
+  before_action :set_menu_item, except: [:index, :new, :create]
 
   def index
     authorize MenuItem
 
     @menu_items = @place.menu_items.pagination(params[:page])
-  end
-
-  def welcome
-    @menu_items = @place.menu_items.pagination(params[:page])
-    render layout: 'loyalty_program'
-    skip_authorization
   end
 
   def new
@@ -63,18 +54,5 @@ class MenuItemsController < ApplicationController
 
   def set_menu_item
     @menu_item = MenuItem.find(params[:id])
-  end
-
-  def find_customer
-    if cookies[:customer]
-      @customer = Customer.find(cookies[:customer].to_i)
-    else
-      redirect_to gowifi_place_path(@place)
-    end
-  end
-
-  def load_reputation_score
-    @reputation = Customer::Reputation.find_by(place_id: @place.id, customer_id: @customer.id)
-    @reputation_score = @reputation.nil? ? 0 : @reputation.score
   end
 end

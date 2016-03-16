@@ -10,10 +10,10 @@ class Customer::Visit < ActiveRecord::Base
   belongs_to :network_profile, class_name: 'Customer::NetworkProfile',
                                foreign_key: :customer_network_profile_id
 
-  validates :network_profile, :place,  presence: true, unless: 'by_password'
-  validate :ones_a_day_visit, unless: 'by_password'
+  validates :network_profile, :place, presence: true, unless: 'by_password'
+  # validate :ones_a_day_visit, unless: 'by_password'
 
-  after_commit :calculate_reputation
+  after_create :calculate_reputation, unless: 'by_password'
 
   private
   def ones_a_day_visit
@@ -31,6 +31,6 @@ class Customer::Visit < ActiveRecord::Base
   end
 
   def calculate_reputation
-    Customer::Reputation.calculate(self)
+    Customer::Reputation.calculate(self) if place.loyalty_program
   end
 end
