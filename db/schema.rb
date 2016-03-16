@@ -329,6 +329,20 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.datetime "updated_at"
   end
 
+  create_table "twitter_profiles", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "url"
+    t.string   "uid"
+    t.string   "access_token"
+    t.string   "access_token_secret"
+    t.date     "expiration_date"
+    t.integer  "friends_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -388,6 +402,19 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.text     "message"
     t.string   "message_url"
     t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vkontakte_profiles", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "url"
+    t.string   "uid"
+    t.string   "access_token"
+    t.date     "expiration_date"
+    t.integer  "friends_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
