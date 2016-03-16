@@ -32,6 +32,30 @@ RSpec.describe Auth do
     end
   end
 
+  describe "mark as unapproved" do
+    let(:general){ create :user_general, franchisee: franchisee }
+    let(:franchisee) { create :user_franchisee }
+    let(:place){ create :place, user: general }
+    let(:network){ create :auth, place: place, resource: create(:vkontakte_auth) }
+    let(:alternative){ create :auth, place: place, resource: create(:simple_auth) }
+
+    context "when auth is network" do
+      it "Add new notification to franchisee" do
+        expect do
+          network.mark_as_unapproved!
+        end.to change(franchisee.notifications, :count).by(1)
+      end
+    end
+
+    context "when auth is alternative" do
+      it "Add new notification to franchisee" do
+        expect do
+          alternative.mark_as_unapproved!
+        end.to_not change(franchisee.notifications, :count)
+      end
+    end
+  end
+
   describe "Constant values" do
     it "NETWORKS contains proper auth network methods" do
       expect(described_class::NETWORKS).to match({
