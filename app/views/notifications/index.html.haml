@@ -7,13 +7,50 @@
     %h1= "Unapproved authentications"
   .panel-body
     - if @sources.any?
-      - @sources.each do |source|
-        .panel.panel-default
-          .panel-heading
-            .panel-title= t("models.auths.methods.#{source.resource.class::NAME}").capitalize
-          .panel-body
-            = render partial: "#{source.resource.class::NAME}_auths/details", locals: { resource: source.resource }
-          .panel-footer
-            = link_to t("helpers.submit.destroy"), user_notification_path(current_user, source.notification), method: 'DELETE', class: 'btn btn-success btn-block'
+      - @sources.each_slice(2) do |(s1, s2)|
+        .row
+          .col-md-6
+            .panel.panel-default
+              .panel-heading
+                .panel-title
+                  %strong.text-primary= t("models.auths.methods.#{s1.resource.class::NAME}").capitalize
+                  .row
+                    .col-md-6
+                      .text-left
+                        %strong= "Place: "
+                    .col-md-6
+                      .text-right= s1.place.name
+                  .row
+                    .col-md-6
+                      .pull-left
+                        %strong= "Place owner: "
+                    .col-md-6
+                      .pull-right= s1.place.user.full_name
+              .panel-body
+                = render partial: "#{s1.resource.class::NAME}_auths/details", locals: { resource: s1.resource }
+              .panel-footer
+                = link_to t("helpers.submit.destroy"), user_notification_path(current_user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
+          -if s2
+            .col-md-6
+              .panel.panel-default
+                .panel-heading
+                  .panel-title
+                    %strong.text-primary= t("models.auths.methods.#{s1.resource.class::NAME}").capitalize
+                    .row
+                      .col-md-6
+                        .text-left
+                          %strong= "Place:"
+                      .col-md-6
+                        .text-right= s2.place.name
+                    .row
+                      .col-md-6
+                        .pull-left
+                          %strong= "Place owner: "
+                      .col-md-6
+                        .pull-right= s2.place.user.full_name
+                .panel-body
+                  = render partial: "#{s2.resource.class::NAME}_auths/details", locals: { resource: s2.resource }
+                .panel-footer
+                  = link_to t("helpers.submit.destroy"), user_notification_path(current_user, s2.notification), method: 'DELETE', class: 'btn btn-success btn-block'
     - else
       = "You have no Unapproved authentications"
