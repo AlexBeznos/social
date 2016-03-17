@@ -4,8 +4,8 @@ RSpec.describe Customer::Visit do
   it { is_expected.to belong_to(:customer) }
   it { is_expected.to belong_to(:place) }
   it { is_expected.to belong_to(:network_profile).class_name('Customer::NetworkProfile') }
-  it { is_expected.to validate_presence_of :network_profile }
-  it { is_expected.to validate_presence_of :place }
+  # it { is_expected.to validate_presence_of :network_profile }
+  # it { is_expected.to validate_presence_of :place }
   it { is_expected.to callback(:calculate_reputation).after(:create).unless('by_password || by_sms') }
 
   describe "Does not validate presence of" do
