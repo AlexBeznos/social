@@ -9,7 +9,6 @@ RSpec.describe PlacePolicy do
     :name,
     :logo,
     :active,
-    :redirect_url,
     :user_id,
     :stocks_active,
     :score_amount,
