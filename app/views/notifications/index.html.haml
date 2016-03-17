@@ -29,7 +29,7 @@
               .panel-body.text-left
                 = render partial: "#{s1.resource.class::NAME}_auths/details", locals: { resource: s1.resource }
               .panel-footer
-                = link_to t("models.notifications.approve"), user_notification_path(current_user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
+                = link_to t("models.notifications.approve"), user_notification_path(s1.notification.user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
           -if s2
             .col-md-6
               .panel.panel-default
@@ -51,6 +51,6 @@
                 .panel-body.text-left
                   = render partial: "#{s2.resource.class::NAME}_auths/details", locals: { resource: s2.resource }
                 .panel-footer
-                  = link_to t("models.notifications.approve"), user_notification_path(current_user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
+                  = link_to t("models.notifications.approve"), user_notification_path(s2.notification.user, s2.notification), method: 'DELETE', class: 'btn btn-success btn-block'
     - else
       = t("models.notifications.no_unapproved_auths")

@@ -9,15 +9,9 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    authorize @notification
+    authorize Notification
 
-    @notification.destroy
+    Notification.find(params[:id]).destroy
     redirect_to user_notifications_path(current_user)
-  end
-
-  private
-
-  def set_notification
-    @notification = Notification.find(params[:id])
   end
 end
