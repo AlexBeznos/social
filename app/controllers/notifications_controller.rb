@@ -4,11 +4,8 @@ class NotificationsController < ApplicationController
   def index
     authorize Notification
 
-    if current_user.franchisee?
-      @sources = current_user.notifications.where(category: "Unapproved authentication").map(&:source)
-    else
-      @sources = Notification.all
-    end
+    @sources = policy_scope(Notification).where(category: "Unapproved authentication").map(&:source)
+
   end
 
   def destroy

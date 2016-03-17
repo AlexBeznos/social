@@ -11,10 +11,21 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def index?; user.franchisee? || user.admin?; end
-  def destroy?; user.admin?; end
-  def create?; user.franchisee? || user.admin?; end
-  def new?; user.franchisee? || user.admin?; end
+  def index?
+    user.franchisee? || user.admin?
+  end
+  
+  def destroy?
+    user.admin?
+  end
+  
+  def create?
+    user.franchisee? || user.admin?
+  end
+  
+  def new?
+    user.franchisee? || user.admin?
+  end
 
   def permitted_attributes
     params = [
