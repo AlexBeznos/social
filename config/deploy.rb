@@ -55,8 +55,8 @@ task :basic_deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    invoke :'rails:db_migrate'
 
     queue 'mkdir public/settings && chmod 755 public/settings'
     queue 'mkdir public/vk && chmod 755 public/vk'
