@@ -56,6 +56,10 @@
           %p
             = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_by_date.by_gender().count
+    .analysis-col-inner
+      %h2
+        SMS:
+        %span= @visits_by_date.where(by_sms: true).count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
@@ -78,6 +82,10 @@
           %p
             = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_this_week.by_gender().count
+    .analysis-col-inner
+      %h2
+        SMS:
+        %span= @visits_this_week.where(by_sms: true).count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
@@ -101,3 +109,7 @@
             = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_this_month.by_gender().count
       .row.age
+    .analysis-col-inner
+      %h2
+        SMS:
+        %span= @visits_this_month.where(by_sms: true).count
