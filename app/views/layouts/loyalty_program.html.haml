@@ -40,15 +40,15 @@
     -#       %nav.navbar.navbar-default
     -#         .container-fluid
     -#           .navbar-header
-    -#             = link_to @place.name, menu_items_list_path, class: 'navbar-brand'
+    -#             = link_to @place.name, loyalty_path, class: 'navbar-brand'
     -#           %ul.nav.navbar-nav.navbar-left
     -#             %li= link_to t('menu_item.to_internet'), @place.redirect_url
     -#           .collapse.navbar-collapse#bs-example-navbar-collapse-1
     -#             %ul.nav.navbar-nav.navbar-right
     -#               - if request.path_parameters[:action] == 'index' && request.path_parameters[:controller] == 'orders'
-    -#                 %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+    -#                 %li= link_to t('menu_item.back_to_shopping'), loyalty_path
     -#               - elsif request.path_parameters[:action] == 'show' && request.path_parameters[:controller] == 'orders'
-    -#                 %li= link_to t('menu_item.back_to_shopping'), menu_items_list_path
+    -#                 %li= link_to t('menu_item.back_to_shopping'), loyalty_path
     -#                 %li= link_to t('menu_item.shopping_history'), orders_path
     -#               - else
     -#                 %li= link_to t('menu_item.shopping_history'), orders_path

@@ -13,7 +13,6 @@ ru:
         remember_me: запомнить меня
   activerecord:
     models:
-      message: сообщение
       user: пользователя
       place: заведение
       stock: акцию
@@ -21,6 +20,7 @@ ru:
       menu_item: товар
       poll: опрос
       banner: баннер
+      auth: аутентификацию
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"

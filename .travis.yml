@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+  - 2.1.3
+addons:
+  postgresql: "9.3"
+services:
+  - redis-server
+notifications:
+  slack: gofriends:zUIH7N2yu0fJRmEyUUq5vTay
+gemfile:
+  - Gemfile
+before_script:
+- psql -c 'create database gowifi_test;' -U postgres
+script:
+  - bundle install --deployment --path vendor/bundle
+  - bundle exec rake db:setup
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec

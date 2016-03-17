@@ -13,7 +13,6 @@ en:
         remember_me: remember me
   activerecord:
     models:
-      message: message
       user: user
       place: place
       stock: promo
@@ -21,6 +20,7 @@ en:
       menu_item: product
       poll: poll
       banner: banner
+      auth: authentication
   notice:
     create: "%{subject} added"
     updated: "%{subject} updated"

@@ -3,17 +3,17 @@ class Customer::Visit < ActiveRecord::Base
 
   scope :by_date, lambda { |date| where(created_at: date.beginning_of_day..date.end_of_day) }
   scope :by_date_from_to, lambda { |from, to| where(created_at: from..to.end_of_day) }
-  scope :by_gender, lambda { |gender = 'f'| where('customers.gender = ?', gender == 'm' ? 'male' : 'female') }
+  scope :by_gender, lambda { |gender = 'f'| joins(:customer).where('customers.gender = ?', gender == 'm' ? 'male' : 'female') }
 
   belongs_to :customer
   belongs_to :place
   belongs_to :network_profile, class_name: 'Customer::NetworkProfile',
                                foreign_key: :customer_network_profile_id
 
-  validates :network_profile, :place,  presence: true, unless: 'by_password'
-  validate :ones_a_day_visit, unless: 'by_password'
+  validates :network_profile, :place, presence: true, unless: 'by_password || by_sms'
+  validate :ones_a_day_visit, unless: 'by_password || by_sms'
 
-  after_commit :calculate_reputation
+  after_create :calculate_reputation, unless: 'by_password || by_sms'
 
   private
   def ones_a_day_visit
@@ -31,6 +31,6 @@ class Customer::Visit < ActiveRecord::Base
   end
 
   def calculate_reputation
-    Customer::Reputation.calculate(self)
+    Customer::Reputation.calculate(self) if place.loyalty_program
   end
 end

@@ -8,7 +8,7 @@ class Customer::NetworkProfile < ActiveRecord::Base
 
   validates :uid, uniqueness: { scope: :social_network_id }
   validates :url, url: true
-  before_save :set_friends_count
+  before_save :set_friends_count, unless: :friends_count
 
 
   def set_friends_count

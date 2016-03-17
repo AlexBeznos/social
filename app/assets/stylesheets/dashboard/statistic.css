@@ -192,18 +192,18 @@
     }
 
     @media (max-width: 767px) {
-        .analysis-col:nth-child(2) .analysis-col-inner:first-child {
-            border-top: 2px dashed #434a53;
+        .analysis-col {
+            border-top: 1px dashed #434a53;
         }
-        .analysis-col:nth-child(2) .analysis-col-inner:last-child {
-            border-bottom: 2px dashed #434a53;
+        .analysis-col {
+            border-bottom: 1px dashed #434a53;
         }
     }
 
     @media (min-width: 768px) {
-        .analysis-col:nth-child(2) .analysis-col-inner:last-child {
-            border-left: 2px dashed #434a53;
-            border-right: 2px dashed #434a53;
+        .analysis-col {
+            border-left: 1px dashed #434a53;
+            border-right: 1px dashed #434a53;
         }
     }
 

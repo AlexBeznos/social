@@ -28,6 +28,9 @@
         - if visit.by_password
           %td.col-xs-4= fa_icon 'key'
           %td.col-xs-4
+        - elsif visit.by_sms
+          %td.col-xs-4= fa_icon 'mobile'
+          %td.col-xs-4
         - else
           %td.col-xs-4= fa_icon visit.network_profile.social_network.font_awesome_name
           %td.col-xs-4= link_to visit.network_profile.customer.full_name, visit.network_profile.url
@@ -38,7 +41,7 @@
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.day')}:"
-        %span= @visits_by_date.count
+        %span= @visits_by_date.where(by_sms: false, by_password: false).count
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -56,11 +59,15 @@
           %p
             = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_by_date.by_gender().count
+    .analysis-col-inner
+      %h2
+        SMS:
+        %span= @visits_by_date.where(by_sms: true).count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.week')}:"
-        %span= @visits_this_week.count
+        %span= @visits_this_week.where(by_sms: false, by_password: false).count
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -78,11 +85,15 @@
           %p
             = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_this_week.by_gender().count
+    .analysis-col-inner
+      %h2
+        SMS:
+        %span= @visits_this_week.where(by_sms: true).count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.month')}:"
-        %span= @visits_this_month.count
+        %span= @visits_this_month.where(by_sms: false, by_password: false).count
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -101,3 +112,7 @@
             = "#{t('models.places.actions.show.info.women')}:"
             %span= @visits_this_month.by_gender().count
       .row.age
+    .analysis-col-inner
+      %h2
+        SMS:
+        %span= @visits_this_month.where(by_sms: true).count

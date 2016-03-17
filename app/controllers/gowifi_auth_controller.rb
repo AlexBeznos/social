@@ -4,6 +4,7 @@ class GowifiAuthController < ApplicationController
   before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
   before_action :find_customer, only: :omniauth
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
+  before_action :find_auth, only: :omniauth
   before_filter :check_facebook_permissions, only: :omniauth
 
   skip_after_action :verify_authorized
@@ -22,7 +23,7 @@ class GowifiAuthController < ApplicationController
     sms = @place.gowifi_sms.find_by(code: params[:code])
     auth = @place.auths.active.find_by({ resource_type: SmsAuth, step: Auth.steps[cookies[:step]] })
 
-    if sms
+    if sms && create_visit_by_sms(@place)
       sms.destroy
       redirect_to succed_auth_path(@place, auth)
     else
@@ -55,22 +56,16 @@ class GowifiAuthController < ApplicationController
   end
 
   def omniauth
-    auth = @place.auths
-      .active
-      .resource_like(credentials['provider'].capitalize)
-      .where(step: Auth.steps[cookies[:step]])
-      .first
-
     unless visit_already_created?
       AdvertisingWorker.perform_async(
         @place.slug,
-        auth.id,
+        @auth.id,
         redis_ready_credentials(credentials)
       )
     end
 
     clear_session
-    redirect_to succed_auth_path(@place, auth)
+    redirect_to succed_auth_path(@place, @auth)
   end
 
   def auth_failure
@@ -101,6 +96,14 @@ class GowifiAuthController < ApplicationController
     @place = Place.find_by_slug(slug_by_omni || slug_by_session)
   end
 
+  def find_auth
+    @auth = @place.auths
+      .active
+      .resource_like(credentials['provider'].capitalize)
+      .where(step: Auth.steps[cookies[:step]])
+      .first
+  end
+
   def succed_auth_path(place, auth)
     if place.mfa && cookies[:step] == 'primary' && auth.step == 'primary'
       cookies[:step] = 'secondary'
@@ -110,7 +113,7 @@ class GowifiAuthController < ApplicationController
       cookies.delete(:step)
 
       url = if @place.loyalty_program && @customer
-        menu_items_list_url(@place)
+        loyalty_url(@place, auth: auth.id)
       else
         auth.redirect_url
       end

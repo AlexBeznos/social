@@ -3,16 +3,17 @@
 .poll-btn {
     font-family: 'Open Sans', sans-serif;
     color: #000;
-    background: #fff; 
-    opacity: 0.45; 
+    background: #fff;
+    opacity: 0.45;
     filter: alpha(Opacity=45);
     border: 1px solid #000;
     border-radius: 8px;
     min-width: 240px;
-} 
+    margin-top: 14px;
+}
 
 .poll-btn:hover {
-    opacity: 0.8; 
+    opacity: 0.8;
     filter: alpha(Opacity=80);
 }
 
@@ -45,5 +46,3 @@ label {
 input[type="radio"] {
     margin: 0px;
 }
-
-

@@ -13,7 +13,6 @@ hu:
         remember_me: emlékezz rám
   activerecord:
     models:
-      message: üzenet
       user: felhasználó
       place: intézmény
       stock: részesedés
@@ -21,6 +20,7 @@ hu:
       menu_item: áruk
       poll: kihallgatás
       banner: zászló
+      auth: hitelesítés
   notice:
     create: "%{subject} hozzáadott"
     updated: "%{subject} frissítve"

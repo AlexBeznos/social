@@ -49,6 +49,10 @@ module Consumerable
     Customer::Visit.create(place: place, by_password: true)
   end
 
+  def create_visit_by_sms(place)
+    Customer::Visit.create(place: place, by_sms: true)
+  end
+
   private
 
     def update_profile(network_profile, credentials)

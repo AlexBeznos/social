@@ -8,13 +8,11 @@
     %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
       %tr.row
         %th.col-xs-3= t('models.stocks.attrs.image')
-        %th.col-xs-3= t('models.stocks.attrs.url')
         %th.col-xs-3= t('models.stocks.attrs.day')
         %th.col-xs-3
       - @stocks.each do |stock|
         %tr.row
           %td.col-xs-3= image_tag stock.image.url, width: 100
-          %td.col-xs-3= link_to stock.url, stock.url
           %td.col-xs-3= stock.proper_lang_day
           %td.col-xs-3
             = link_to t('helpers.submit.edit'), edit_place_stock_path(@place, stock), class: 'btn btn-sm btn-primary', style: 'display: block'

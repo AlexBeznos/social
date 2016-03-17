@@ -13,7 +13,6 @@ ua:
         remember_me: запам`ятати мене
   activerecord:
     models:
-      message: повідомлення
       user: користувач
       place: заклад
       stock: акцію
@@ -21,6 +20,7 @@ ua:
       menu_item: товар
       poll: опитування
       banner: банер
+      auth: аутентифікацію
   notice:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"

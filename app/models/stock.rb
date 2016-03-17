@@ -4,7 +4,6 @@ class Stock < ActiveRecord::Base
   mount_uploader :image, StockUploader, mount_on: :image_file_name
 
   validates :place_id, :day, presence: true
-  validates :url, url: true
   validates :image,
             presence: true,
             file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] }

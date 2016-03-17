@@ -13,7 +13,6 @@ pl:
         remember_me: Zapamiętaj mnie
   activerecord:
     models:
-      message: wiadomość
       user: użytkownik
       place: instytucja
       stock: udział
@@ -21,6 +20,7 @@ pl:
       menu_item: towary
       poll: przesłuchanie
       banner: sztandar
+      auth: uwierzytelnianie
   notice:
     create: "%{subject} dodano"
     updated: "%{subject} zaktualizowany"
