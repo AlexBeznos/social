@@ -5,6 +5,8 @@ addons:
   postgresql: "9.3"
 services:
   - redis-server
+notifications:
+  slack: gofriends:zUIH7N2yu0fJRmEyUUq5vTay
 gemfile:
   - Gemfile
 before_script:
