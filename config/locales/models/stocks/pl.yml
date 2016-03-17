@@ -14,5 +14,4 @@ pl:
           title: Edycja akcję
       attrs:
         image: Fotografia
-        url: Link
         day: Dzień pokazu

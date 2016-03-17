@@ -13,7 +13,6 @@ pl:
         remember_me: Zapamiętaj mnie
   activerecord:
     models:
-      message: wiadomość
       user: użytkownik
       place: instytucja
       stock: udział

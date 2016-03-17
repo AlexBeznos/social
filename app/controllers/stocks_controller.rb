@@ -28,7 +28,7 @@ class StocksController < ApplicationController
   end
 
   def edit
-    authorize Stock
+    authorize @stock
   end
 
   def update

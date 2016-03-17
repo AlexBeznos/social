@@ -13,8 +13,7 @@ module ApplicationHelper
     stock = place.get_proper_stock
 
     if place.stocks_active && stock
-      push_image = image_tag stock.image.url, class: 'offer'
-      stock.url.blank? ? push_image : link_to(push_image, stock.url)
+      image_tag stock.image.url, class: 'offer'
     end
   end
 

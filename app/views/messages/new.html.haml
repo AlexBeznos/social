@@ -1,8 +1,0 @@
-= content_for :page_stylesheet, 'dashboard/settings'
-= content_for :title, t('models.messages.actions.new.title', place_name: @place.name)
-
-.row
-  .col-sm-4
-    %h1= t('models.messages.actions.new.title', place_name: @place.name)
-
-    = render 'messages/form/new'

@@ -4,7 +4,6 @@ hu:
       validations:
         english_letters_and_spaces: Lehetővé teszi csak angol betűket és terek
         wrong_link_format: Érvénytelen formátum linkek
-        unique_place_for_customer: Az intézmény legyen egyedi látogató
         long_twitter_message: Üzenet egy linket nem haladhatja meg a 140 karaktert
         wrong_phone_number: Érvénytelen telefonszám formátum
         not_valid_css_color: nem egy igazi színes css

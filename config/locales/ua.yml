@@ -13,7 +13,6 @@ ua:
         remember_me: запам`ятати мене
   activerecord:
     models:
-      message: повідомлення
       user: користувач
       place: заклад
       stock: акцію

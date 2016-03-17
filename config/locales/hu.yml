@@ -13,7 +13,6 @@ hu:
         remember_me: emlékezz rám
   activerecord:
     models:
-      message: üzenet
       user: felhasználó
       place: intézmény
       stock: részesedés
