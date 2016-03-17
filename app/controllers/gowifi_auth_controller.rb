@@ -23,7 +23,7 @@ class GowifiAuthController < ApplicationController
     sms = @place.gowifi_sms.find_by(code: params[:code])
     auth = @place.auths.active.find_by({ resource_type: SmsAuth, step: Auth.steps[cookies[:step]] })
 
-    if sms
+    if sms && create_visit_by_sms(@place)
       sms.destroy
       redirect_to succed_auth_path(@place, auth)
     else

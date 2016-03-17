@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316170856) do
+ActiveRecord::Schema.define(version: 20160317135834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "by_sms",                      default: false
   end
 
   add_index "customer_visits", ["created_at"], name: "index_customer_visits_on_created_at", using: :btree
