@@ -3,7 +3,7 @@ class Customer::Visit < ActiveRecord::Base
 
   scope :by_date, lambda { |date| where(created_at: date.beginning_of_day..date.end_of_day) }
   scope :by_date_from_to, lambda { |from, to| where(created_at: from..to.end_of_day) }
-  scope :by_gender, lambda { |gender = 'f'| where('customers.gender = ?', gender == 'm' ? 'male' : 'female') }
+  scope :by_gender, lambda { |gender = 'f'| joins(:customer).where('customers.gender = ?', gender == 'm' ? 'male' : 'female') }
 
   belongs_to :customer
   belongs_to :place
