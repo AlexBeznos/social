@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316170856) do
+ActiveRecord::Schema.define(version: 20160317135834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "by_sms",                      default: false
   end
 
   add_index "customer_visits", ["created_at"], name: "index_customer_visits_on_created_at", using: :btree
@@ -166,6 +167,7 @@ ActiveRecord::Schema.define(version: 20160316170856) do
   add_index "menu_items_orders", ["menu_item_id"], name: "index_menu_items_orders_on_menu_item_id", using: :btree
   add_index "menu_items_orders", ["order_id"], name: "index_menu_items_orders_on_order_id", using: :btree
 
+<<<<<<< HEAD
   create_table "notifications", force: true do |t|
     t.integer  "source_id"
     t.string   "source_type"
@@ -177,6 +179,8 @@ ActiveRecord::Schema.define(version: 20160316170856) do
 
   add_index "notifications", ["source_id", "source_type"], name: "index_notifications_on_source_id_and_source_type", using: :btree
 
+=======
+>>>>>>> bfa124f9b84268507750b736a1513bfc5a197556
   create_table "orders", force: true do |t|
     t.integer  "customer_id"
     t.integer  "place_id"

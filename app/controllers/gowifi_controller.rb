@@ -21,6 +21,7 @@ class GowifiController < ApplicationController
   private
   def find_place
     @place = Place.find_by_slug(params[:slug])
+    raise ActiveRecord::RecordNotFound unless @place
   end
 
   # we add slug to session to make sure
@@ -69,7 +70,6 @@ class GowifiController < ApplicationController
   end
 
   def check_for_place_activation
-    return redirect_to '/404.html' unless @place
     redirect_to wifi_login_path(@place, "http://#{request.host}") unless @place.try(:active)
   end
 end

@@ -13,7 +13,6 @@ ru:
         remember_me: запомнить меня
   activerecord:
     models:
-      message: сообщение
       user: пользователя
       place: заведение
       stock: акцию

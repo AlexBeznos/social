@@ -14,5 +14,4 @@ en:
           title: Edit promo
       attrs:
         image: Picture
-        url: Redirect url
         day: Show day

@@ -31,16 +31,9 @@
               Slug
               %span.text-muted.pull-right= @place.slug
             %li.list-group-item
-              Enter without authorization
-              %span.text-muted.pull-right
-                = thumb @place.simple_enter
-            %li.list-group-item
               Loyalty program
               %span.text-muted.pull-right
                 = thumb @place.loyalty_program
-            %li.list-group-item
-              Redirect url
-              %span.text-muted.pull-right= link_to 'link', @place.redirect_url
             %li.list-group-item
               Template
               %span.text-muted.pull-right= @place.template
@@ -49,60 +42,13 @@
               %span.text-muted.pull-right
                 = thumb @place.active
             %li.list-group-item
-              Enter by password
-              %span.text-muted.pull-right
-                = thumb @place.enter_by_password
-            %li.list-group-item
               Demo place
               %span.text-muted.pull-right
                 = thumb @place.demo
             %li.list-group-item
-              Enter by sms
-              %span.text-muted.pull-right
-                = thumb @place.sms_auth
-            - if @place.enter_by_password
-              %li.list-group-item
-                Password
-                %span.text-muted.pull-right= @place.password
-            %li.list-group-item
               Created at
               %span.text-muted.pull-right= @place.created_at.strftime('%d/%m/%Y')
 
-  - @networks.each do |network|
-    .box
-      .box-header.with-border
-        = network.name
-        messages
-        = link_to 'New message', new_adm_place_message_path(@place), class: 'btn btn-primary btn-xs pull-right'
-      .box-body
-        %table.table.table-striped
-          %thead
-            %tr
-              %th id
-              %th message
-              %th attachments
-              %th post link
-              %th active
-              %th
-          %tbody
-            - @place.messages.where(social_network: network).each do |message|
-              %tr
-                %td= message.id
-                %td= message.message.empty? ? message.subscription : message.message
-                %td
-                  - if message.image.present?
-                    = image_tag message.image, height: 100
-                %td= message.message_link
-                %td= thumb message.active
-                %td
-              %tr
-                %td{:colspan => '6'}
-                  - if message.active
-                    = link_to 'deactivate', deactivate_adm_message_path(message), class: 'btn btn-danger'
-                  - else
-                    = link_to 'activate', activate_adm_message_path(message), class: 'btn btn-success'
-                  = link_to 'edit', edit_adm_message_path(message), class: 'btn btn-warning'
-                  = link_to 'destroy', adm_message_path(message), class: 'btn btn-danger', method: 'DELETE'
   .box
     .box-header.with-border
       Polls

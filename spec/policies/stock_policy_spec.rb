@@ -6,7 +6,7 @@ RSpec.describe StockPolicy do
   subject { StockPolicy.new(user,record) }
 
 
-  let(:attributes){[:url, :image, :day]}
+  let(:attributes){[:image, :day]}
   let(:record){ create :stock }
   let(:place){ create :place, user: user }
   let(:resolved_scope) {

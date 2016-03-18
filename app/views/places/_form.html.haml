@@ -11,13 +11,11 @@
   = f.input :logo, as: :file
   = f.input :active, as: :boolean
   = f.input :stocks_active, as: :boolean
-  = f.input :reputation_on, as: :boolean
   = f.input :loyalty_program, as: :boolean
   = f.input :display_my_banners, as: :boolean
   = f.input :display_other_banners, as: :boolean
   = f.input :mfa, as: :boolean
   = f.input :score_amount
-  = f.input :redirect_url
   = f.input :auth_default_lang, collection: I18n.available_locales
 
   = f.button :submit

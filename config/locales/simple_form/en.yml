@@ -22,7 +22,6 @@ en:
         logo: 'Logo'
         active: Hotspot is active
         stocks_active: Promos are active
-        reputation_on: Add bonuses
         loyalty_on: Enable loyalty settings for users
         loyalty_program: Loyalty program
         score_amount: Score amount

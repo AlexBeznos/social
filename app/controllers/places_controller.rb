@@ -34,9 +34,9 @@ class PlacesController < ApplicationController
 
     date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
     @visits_by_date_without_join = @place.visits.by_date(date)
-    @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
-    @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
-    @visits_this_month = @place.visits.joins(:customer).by_date_from_to(date - 1.month, date)
+    @visits_by_date = @place.visits.by_date(date)
+    @visits_this_week = @place.visits.by_date_from_to(date - 1.week, date)
+    @visits_this_month = @place.visits.by_date_from_to(date - 1.month, date)
 
     @number_of_friends_by_day = get_number_of_friends @visits_by_date_without_join
     @number_of_friends_by_week = get_number_of_friends @visits_this_week

@@ -18,12 +18,6 @@ Rails.application.routes.draw do
             patch 'remove_background'
           end
         end
-        resources :messages, except: [:index, :show] do
-          member do
-            get 'activate'
-            get 'deactivate'
-          end
-        end
       end
 
       member do
@@ -58,7 +52,7 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'gowifi_auth#auth_failure'
 
   scope '/wifi' do
-    get ':place_id/welcome' => 'menu_items#welcome', as: :menu_items_list
+    get ':place_id/loyalty' => 'loyalty#index', as: :loyalty
 
     scope ':slug' do
       get '/login' => 'gowifi#show', as: :gowifi_place
