@@ -40,9 +40,13 @@ class Auth < ActiveRecord::Base
     if NETWORKS.keys.include? name
       create_notification(
         user: place.user.franchisee,
-        category: "Unapproved authentication"
+        category: :unapproved_authentication
       )
     end
+  end
+
+  def unapproved?
+    notification && notification.unapproved_authentication?
   end
 
   def auth_methods

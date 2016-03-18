@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315204432) do
+ActiveRecord::Schema.define(version: 20160316170856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20160315204432) do
   add_index "customer_network_profiles", ["uid"], name: "index_customer_network_profiles_on_uid", using: :btree
 
   create_table "customer_reputations", force: true do |t|
-    t.integer  "score"
+    t.integer  "score",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "place_id"
@@ -166,25 +166,6 @@ ActiveRecord::Schema.define(version: 20160315204432) do
   add_index "menu_items_orders", ["menu_item_id"], name: "index_menu_items_orders_on_menu_item_id", using: :btree
   add_index "menu_items_orders", ["order_id"], name: "index_menu_items_orders_on_order_id", using: :btree
 
-  create_table "messages", force: true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.text     "message"
-    t.string   "message_link"
-    t.integer  "place_id"
-    t.boolean  "active",             default: true
-    t.string   "subscription"
-    t.string   "subscription_uid"
-    t.integer  "social_network_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "messages", ["place_id"], name: "index_messages_on_place_id", using: :btree
-  add_index "messages", ["social_network_id"], name: "index_messages_on_social_network_id", using: :btree
-
   create_table "notifications", force: true do |t|
     t.integer  "source_id"
     t.string   "source_type"
@@ -223,14 +204,12 @@ ActiveRecord::Schema.define(version: 20160315204432) do
     t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "redirect_url"
     t.string   "wifi_username",                default: "P8uDratA"
     t.string   "wifi_password",                default: "Tac4edrU"
     t.string   "wifi_settings_link"
     t.boolean  "wifi_settings_link_not_fresh", default: true
     t.boolean  "stocks_active",                default: false
     t.string   "template",                     default: "default"
-    t.boolean  "reputation_on",                default: false
     t.integer  "score_amount",                 default: 0
     t.boolean  "loyalty_program",              default: false
     t.string   "city"
@@ -303,7 +282,6 @@ ActiveRecord::Schema.define(version: 20160315204432) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "url"
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"

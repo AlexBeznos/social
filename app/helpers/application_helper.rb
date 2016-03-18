@@ -18,22 +18,6 @@ module ApplicationHelper
     end
   end
 
-  def auth_approved? (auth)
-    if Auth::NETWORKS.keys.include?(auth.name)
-      if auth.notification
-        {
-          text: "unapproved",
-          style: "danger"
-        }
-      else
-        {
-          text: "approved",
-          style: "success"
-        }
-      end
-    end
-  end
-
   def fa_plus_minus(bool)
     fa_icon( bool ? 'plus' : 'minus' )
   end

@@ -3,7 +3,7 @@ class CreateNotifications < ActiveRecord::Migration
     create_table :notifications do |t|
       t.references :source, polymorphic: true, index: true
       t.integer :user_id
-      t.string  :category
+      t.integer  :category, default: 0
       t.timestamps null: false
     end
 
