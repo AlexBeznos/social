@@ -1,5 +1,4 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: :destroy
 
   def index
     authorize Notification

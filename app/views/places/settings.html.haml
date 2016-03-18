@@ -81,7 +81,7 @@
                 .panel-heading
                   .panel-title
                     = t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
-                    -if approved?(auth)
+                    - if auht_approved?(auth)
                       %span{ class: "text-#{ approved?(auth)[:style] }"}= t("models.notifications.#{approved?(auth)[:text]}")
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }

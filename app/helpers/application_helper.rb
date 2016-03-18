@@ -18,7 +18,7 @@ module ApplicationHelper
     end
   end
 
-  def approved? (auth)
+  def auth_approved? (auth)
     if Auth::NETWORKS.keys.include?(auth.name)
       if auth.notification
         {
