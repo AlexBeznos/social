@@ -31,10 +31,6 @@
               Slug
               %span.text-muted.pull-right= @place.slug
             %li.list-group-item
-              Enter without authorization
-              %span.text-muted.pull-right
-                = thumb @place.simple_enter
-            %li.list-group-item
               Loyalty program
               %span.text-muted.pull-right
                 = thumb @place.loyalty_program
@@ -46,21 +42,9 @@
               %span.text-muted.pull-right
                 = thumb @place.active
             %li.list-group-item
-              Enter by password
-              %span.text-muted.pull-right
-                = thumb @place.enter_by_password
-            %li.list-group-item
               Demo place
               %span.text-muted.pull-right
                 = thumb @place.demo
-            %li.list-group-item
-              Enter by sms
-              %span.text-muted.pull-right
-                = thumb @place.sms_auth
-            - if @place.enter_by_password
-              %li.list-group-item
-                Password
-                %span.text-muted.pull-right= @place.password
             %li.list-group-item
               Created at
               %span.text-muted.pull-right= @place.created_at.strftime('%d/%m/%Y')
