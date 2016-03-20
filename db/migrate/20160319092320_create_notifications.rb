@@ -3,10 +3,10 @@ class CreateNotifications < ActiveRecord::Migration
     create_table :notifications do |t|
       t.references :source, polymorphic: true, index: true
       t.integer :user_id
-      t.integer  :category, default: 0
+      t.integer :category, default: 0
       t.timestamps null: false
     end
 
-    add_index "notification", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+    add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 end

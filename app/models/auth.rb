@@ -1,4 +1,6 @@
 class Auth < ActiveRecord::Base
+  include AuthStates
+
   NETWORKS = {
     vkontakte: 'vkontakte',
     facebook: 'facebook',
@@ -39,18 +41,7 @@ class Auth < ActiveRecord::Base
     end
   end
 
-  def mark_as_unapproved!
-    if NETWORKS.keys.include? name
-      create_notification(
-        user: place.user.franchisee,
-        category: :unapproved_authentication
-      )
-    end
-  end
 
-  def unapproved?
-    notification && notification.unapproved_authentication?
-  end
 
   def auth_methods
     persisted? ? [resource.class::NAME] : Auth::METHODS

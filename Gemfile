@@ -73,6 +73,7 @@ gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 
 # Other
+gem 'aasm'
 gem 'authlogic'
 gem 'pundit'
 gem 'lograge'

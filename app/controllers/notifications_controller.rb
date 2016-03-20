@@ -7,6 +7,12 @@ class NotificationsController < ApplicationController
 
   end
 
+  def approve
+  end
+
+  def unapprove
+  end
+
   def destroy
     authorize Notification
 
