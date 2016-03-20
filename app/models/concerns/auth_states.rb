@@ -1,47 +1,26 @@
 module AuthStates
-  include AASM
+  extend ActiveSupport::Concern
 
-  def mark_as_unapproved!(current_user)
+  included do
+    include AASM
 
-  end
+    aasm do
+      state :pending
+      state :unapproved
+      state :approved, initial: true
 
-  def mark_as_approved!(current_user)
+      event :approve do
+        transitions from: :pending, to: :approved
+      end
 
-  end
+      event :unapprove do
+        transitions from: :pending, to: :unapproved
+      end
 
-  aasm do
-    state :pending
-    state :unapproved
-    state :approved, initial: true
-
-    event :approve do
-      transitions from: :pending, to: :approved
+      event :modify do
+        transitions from: [:unapproved, :approved], to: :pending
+      end
     end
-
-    event :unapprove, after: :notify_owner do
-      transitions from: :pending, to: :unapproved
-    end
-
-    event :modify, after: :notify_franchisee do
-
-      transitions from: :unapproved, to: :pending
-      transitions from: :approved, to: :pending
-    end
-
   end
-
-  private
-
-  def notify_owner
-
-  end
-
-  def notify_franchisee
-
-  end
-
-  def create_nofication(category)
-
-
-  end
+  
 end

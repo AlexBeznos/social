@@ -33,6 +33,16 @@ class Auth < ActiveRecord::Base
 
   accepts_nested_attributes_for :resource
 
+  def mark_as_modified!
+    if NETWORKS.keys.include? name
+        create_notification(
+          category: :modified_authentication,
+          user: place.user.franchisee
+        )
+        modify!
+    end
+  end
+
   def resource_attributes=(attributes, options = {})
     if persisted?
       super attributes
@@ -40,8 +50,6 @@ class Auth < ActiveRecord::Base
       self.resource = resource_type.constantize.new(attributes, options)
     end
   end
-
-
 
   def auth_methods
     persisted? ? [resource.class::NAME] : Auth::METHODS
