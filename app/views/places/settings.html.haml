@@ -75,10 +75,7 @@
                 .panel-heading
                   .panel-title
                     = t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
-                    - if auth.unapproved?
-                      %span{ class: "text-danger"}= t("models.notifications.unapproved")
-                    - else
-                      %span{ class: "text-success" }= t("models.notifications.approved")
+                      %span{ class: notification_style(auth) }= t("models.notifications.auth.".auth.aasm.current_state)
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer

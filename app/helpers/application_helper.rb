@@ -28,4 +28,16 @@ module ApplicationHelper
 
     raw links.join(' | ')
   end
+
+  def notification_style(auth)
+    case auth.aasm.current_state
+    when :pendind
+      "text-warning"
+    when :unapproved
+      "text-danger"
+    else
+      "text-success"
+    end
+  end
+
 end

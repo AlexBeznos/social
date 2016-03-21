@@ -10,8 +10,4 @@ class NotificationPolicy < ApplicationPolicy
     end
   end
 
-  def destroy?
-    user.admin? || user.franchisee?
-  end
-
 end

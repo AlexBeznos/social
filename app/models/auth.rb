@@ -1,5 +1,5 @@
 class Auth < ActiveRecord::Base
-  include AuthStates
+  include AASM
 
   NETWORKS = {
     vkontakte: 'vkontakte',
@@ -33,6 +33,24 @@ class Auth < ActiveRecord::Base
 
   accepts_nested_attributes_for :resource
 
+  aasm do
+    state :pending
+    state :unapproved
+    state :approved, initial: true
+
+    event :approve do
+      transitions from: :pending, to: :approved
+    end
+
+    event :unapprove do
+      transitions from: :pending, to: :unapproved
+    end
+
+    event :modify do
+      transitions from: [:unapproved, :approved], to: :pending
+    end
+  end
+
   def mark_as_modified!
     if NETWORKS.keys.include? name
         create_notification(
@@ -50,6 +68,7 @@ class Auth < ActiveRecord::Base
       self.resource = resource_type.constantize.new(attributes, options)
     end
   end
+
 
   def auth_methods
     persisted? ? [resource.class::NAME] : Auth::METHODS
