@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160320123257) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "step",          default: 0
-    t.string   "aasm_state"
+    t.integer  "state"
   end
 
   add_index "auths", ["place_id"], name: "index_auths_on_place_id", using: :btree

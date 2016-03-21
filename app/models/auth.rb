@@ -16,6 +16,8 @@ class Auth < ActiveRecord::Base
 
   METHODS = NETWORKS.values + ALTERNATIVE.values
 
+  enum state: { :pending, :approved, :unapproved }
+
   enum step: %i( primary secondary )
 
   scope :active, -> { where(active: true) }
@@ -33,7 +35,7 @@ class Auth < ActiveRecord::Base
 
   accepts_nested_attributes_for :resource
 
-  aasm do
+  aasm column: :state, enum: true do
     state :pending
     state :unapproved
     state :approved, initial: true
