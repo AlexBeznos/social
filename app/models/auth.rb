@@ -38,7 +38,7 @@ class Auth < ActiveRecord::Base
     state :unapproved
     state :approved, initial: true
 
-    event :approve do
+    event :approve, after: :delete_notification do
       transitions from: :pending, to: :approved
     end
 
@@ -46,7 +46,7 @@ class Auth < ActiveRecord::Base
       transitions from: :pending, to: :unapproved
     end
 
-    event :modify, after: :notify_franchisee do
+    event :modify, after: :notify_franchisee  do
       transitions from: [:unapproved, :approved], to: :pending
     end
   end
@@ -72,8 +72,13 @@ class Auth < ActiveRecord::Base
 
 
   private
-  
+  #FIXME: Fuck this code, sucka blyat
+  def delete_notification
+    notification.destroy if notification
+  end
+
   def notify_general
+    notification.destroy if notification
     if NETWORKS.keys.include? name
         create_notification(
           category: :unapproved_authentication,
@@ -83,6 +88,7 @@ class Auth < ActiveRecord::Base
   end
 
   def notify_franchisee
+    notification.destroy if notification
     if NETWORKS.keys.include? name
         create_notification(
           category: :modified_authentication,

@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  before_action :set_notification, only: [:approve, :unapprove]
 
   def index
     authorize Notification
@@ -10,23 +11,19 @@ class NotificationsController < ApplicationController
     authorize @notification
 
     @notification.source.approve!
-    if notification.destroy
-      redirect_to user_notifications_path(current_user)
-    end
+    redirect_to user_notifications_path(current_user)
   end
 
   def unapprove
     authorize @notification
 
     @notification.source.unapprove!
-    if @notification.destroy
-      redirect_to user_notifications_path(current_user)
-    end
+    redirect_to user_notifications_path(current_user)
   end
 
   private
-
   def set_notification
     @notification = Notification.find(params[:id])
   end
+
 end

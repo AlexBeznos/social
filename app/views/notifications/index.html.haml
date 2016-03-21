@@ -1,10 +1,10 @@
 = content_for :navigation, 'false'
 = content_for :page_stylesheet, 'dashboard/settings'
-= content_for :title, t(@sources.first.notification.category.pluralize, scope: "models.notifications")
+= content_for :title, notification_title(current_user)
 
 .panel-info.panel-adjusted
   .panel-heading
-    %h1= t(@sources.first.notification.category.pluralize, scope: "models.notifications")
+    %h1= notification_title(current_user)
   .panel-body
     - if @sources.any?
       - @sources.each_slice(2) do |(s1, s2)|
@@ -33,7 +33,7 @@
                 = link_to t("models.notifications.approve"), approve_user_notification_path(s1.notification.user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
                 = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s1.notification.user, s1.notification), method: 'DELETE', class: 'btn btn-danger btn-block'
               - elsif policy(s1.place).update?
-                = link_to t("helpers.submit.edit"), edit_place_auth_path(s1.place.auth), class: 'btn btn-primary btn-block'
+                = link_to t("helpers.submit.edit"), edit_place_auth_path(s1.place, s1), class: 'btn btn-primary btn-block'
           -if s2
             .col-md-6
               .panel.panel-default
@@ -59,6 +59,6 @@
                   = link_to t("models.notifications.approve"), approve_user_notification_path(s2.notification.user, s2.notification), method: 'DELETE', class: 'btn btn-success btn-block'
                   = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s2.notification.user, s2.notification), method: 'DELETE', class: 'btn btn-danger btn-block'
                 - elsif policy(s2.place).update?
-                  = link_to t("helpers.submit.edit"), edit_place_auth_path(s2.place.auth), class: 'btn btn-primary btn-block'
+                  = link_to t("helpers.submit.edit"), edit_place_auth_path(s2.place, s2), class: 'btn btn-primary btn-block'
     - else
       = t("models.notifications.no_unapproved_auths")

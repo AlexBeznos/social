@@ -30,13 +30,22 @@ module ApplicationHelper
   end
 
   def notification_style(auth)
-    case auth.aasm.current_state
-    when :pendind
+    state = auth.aasm.current_state
+
+    if state == :pending
       "text-warning"
-    when :unapproved
+    elsif state == :unapproved
       "text-danger"
-    else
+    elsif state == :approved
       "text-success"
+    end
+  end
+
+  def notification_title(user)
+    if user.franchisee?
+      t(:modified_authentications, scope: "models.notifications")
+    elsif user.general?
+      t(:unapproved_authentications, scope: "models.notifications")
     end
   end
 
