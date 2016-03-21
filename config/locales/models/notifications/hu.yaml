@@ -8,4 +8,5 @@ hu:
         unapproved: "A jóvá nem hagyott"
         pending: "várható"
       unapproved_auths: "Nem jóváhagyott hitelesítések"
+      modified_authentications: "módosított hitelesítések"
       no_unapproved_auths: "Ön nincs jóváhagyott hitelesítések."

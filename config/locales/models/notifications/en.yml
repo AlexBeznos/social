@@ -7,5 +7,6 @@ en:
         approved: "Approved"
         unapproved: "Unapproved"
         pending: "Pending"
-      unapproved_auths: "Unapproved authentications"
+      unapproved_authentications: "Unapproved authentications"
+      modified_authentications: "Modified authentications"
       no_unapproved_auths: "You have no unapproved authentications."

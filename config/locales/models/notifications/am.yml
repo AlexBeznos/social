@@ -8,4 +8,5 @@ am:
         unapproved: "չհաստատված"
         pending: "ակնկալվում է"
       unapproved_auths: "Չհաստատված authentications"
+      modified_authentications: "ձեւափոխված authentications"
       no_unapproved_auths: "Դուք չունեք չգրանցված authentications"
