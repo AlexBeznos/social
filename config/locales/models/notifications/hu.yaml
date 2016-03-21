@@ -2,6 +2,7 @@ hu:
   models:
     notifications:
       approve: "Jóváhagy"
+      unapprove: "Jóváhagyás"
       status:
         approved: "Jóváhagyott"
         unapproved: "A jóvá nem hagyott"

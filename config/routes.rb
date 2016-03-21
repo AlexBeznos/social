@@ -28,7 +28,12 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :notifications, only: [:index, :destroy]
+    resources :notifications, only: [:index] do
+        member do
+          delete 'approve', to: 'notifications#approve'
+          delete 'unapprove', to: 'notifications#unapprove'
+        end
+    end
   end
   resources :places do
     resources :auths, except: :index

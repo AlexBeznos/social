@@ -2,6 +2,7 @@ am:
   models:
     notifications:
       approve: "հավանություն տալ"
+      unapprove: "Ապահաստատել"
       status:
         approved: "Հաստատված"
         unapproved: "չհաստատված"

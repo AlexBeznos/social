@@ -2,6 +2,7 @@ ua:
   models:
     notifications:
       approve: "Одобрити"
+      unapprove: "Неодобрити"
       status:
         approved: "Одобрено"
         unapproved: "Неодобрено"

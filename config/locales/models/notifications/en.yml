@@ -2,6 +2,7 @@ en:
   models:
     notifications:
       approve: "Approve"
+      unapproved: "Unapprove"
       status:
         approved: "Approved"
         unapproved: "Unapproved"

@@ -2,6 +2,7 @@ pl:
   models:
     notifications:
       approve: "Zatwierdzać"
+      unapprove: "cofniesz zatwierdzenie"
       status:
         approved: "Zatwierdzony"
         unapproved: "Niezatwierdzony"
