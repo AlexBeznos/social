@@ -14,7 +14,7 @@ class AuthsController < ApplicationController
     @auth.place = @place
 
     if @auth.save
-      @auth.mark_as_modified! if current_user.general?
+      @auth.modify! if current_user.general?
       redirect_to settings_place_path(@place)
     else
       render action: :new

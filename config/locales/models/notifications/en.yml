@@ -2,7 +2,9 @@ en:
   models:
     notifications:
       approve: "Approve"
-      approved: "Approved"
-      unapproved: "Unapproved"
+      status:
+        approved: "Approved"
+        unapproved: "Unapproved"
+        pending: "Pending"
       unapproved_auths: "Unapproved authentications"
       no_unapproved_auths: "You have no unapproved authentications."

@@ -2,7 +2,9 @@ ua:
   models:
     notifications:
       approve: "Одобрити"
-      approved: "Одобрено"
-      unapproved: "Неодобрено"
+      status:
+        approved: "Одобрено"
+        unapproved: "Неодобрено"
+        pending: "Очікується"
       unapproved_auths: "Неодобрені аунтентификації"
       no_unapproved_auths: "У вас немає неодобрених аутентификацій."

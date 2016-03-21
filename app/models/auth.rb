@@ -42,24 +42,16 @@ class Auth < ActiveRecord::Base
       transitions from: :pending, to: :approved
     end
 
-    event :unapprove do
+    event :unapprove, after: :notify_general do
       transitions from: :pending, to: :unapproved
     end
 
-    event :modify do
+    event :modify, after: :notify_franchisee do
       transitions from: [:unapproved, :approved], to: :pending
     end
   end
 
-  def mark_as_modified!
-    if NETWORKS.keys.include? name
-        create_notification(
-          category: :modified_authentication,
-          user: place.user.franchisee
-        )
-        modify!
-    end
-  end
+
 
   def resource_attributes=(attributes, options = {})
     if persisted?
@@ -76,6 +68,27 @@ class Auth < ActiveRecord::Base
 
   def name
     resource.class::NAME.to_sym
+  end
+
+
+  private
+  
+  def notify_general
+    if NETWORKS.keys.include? name
+        create_notification(
+          category: :unapproved_authentication,
+          user: place.user
+        )
+    end
+  end
+
+  def notify_franchisee
+    if NETWORKS.keys.include? name
+        create_notification(
+          category: :modified_authentication,
+          user: place.user.franchisee
+        )
+    end
   end
 
 end

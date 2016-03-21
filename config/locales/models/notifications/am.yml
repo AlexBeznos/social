@@ -2,7 +2,9 @@ am:
   models:
     notifications:
       approve: "հավանություն տալ"
-      approved: "Հաստատված"
-      unapproved: "չհաստատված"
+      status:
+        approved: "Հաստատված"
+        unapproved: "չհաստատված"
+        pending: "ակնկալվում է"
       unapproved_auths: "Չհաստատված authentications"
       no_unapproved_auths: "Դուք չունեք չգրանցված authentications"
