@@ -11,6 +11,11 @@ RSpec.describe Auth do
   it { is_expected.to accept_nested_attributes_for :resource }
   it_behaves_like 'with url validation for', :url, :network_profile
 
+  describe "state machine" do
+    let(:auth) { create :auth }
+
+  end
+
   describe "active scope" do
     let(:scoped_auth){ create :auth }
     let(:unscoped_auth){ create :auth, active: false }

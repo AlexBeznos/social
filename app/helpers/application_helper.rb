@@ -32,11 +32,12 @@ module ApplicationHelper
   def notification_style(auth)
     state = auth.aasm.current_state
 
-    if state == :pending
+    case state
+    when :pending
       "text-warning"
-    elsif state == :unapproved
+    when :unapproved
       "text-danger"
-    elsif state == :approved
+    when :approved
       "text-success"
     end
   end

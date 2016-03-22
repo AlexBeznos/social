@@ -16,7 +16,7 @@ class Auth < ActiveRecord::Base
 
   METHODS = NETWORKS.values + ALTERNATIVE.values
 
-  enum state: { :pending, :approved, :unapproved }
+  enum state: [ :pending, :approved, :unapproved ]
 
   enum step: %i( primary secondary )
 
