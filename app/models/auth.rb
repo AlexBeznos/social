@@ -3,7 +3,7 @@ class Auth < ActiveRecord::Base
     vkontakte: 'vkontakte',
     facebook: 'facebook',
     twitter: 'twitter',
-    instagram: 'instaram'
+    instagram: 'instagram'
   }
 
   ALTERNATIVE = {
