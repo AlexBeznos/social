@@ -41,13 +41,4 @@ module ApplicationHelper
       "text-success"
     end
   end
-
-  def notification_title(user)
-    if user.franchisee?
-      t(:modified_authentications, scope: "models.notifications")
-    elsif user.general?
-      t(:unapproved_authentications, scope: "models.notifications")
-    end
-  end
-
 end

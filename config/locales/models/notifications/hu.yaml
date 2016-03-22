@@ -1,12 +1,11 @@
 hu:
   models:
     notifications:
+      name: "Értesítések"
       approve: "Jóváhagy"
       unapprove: "Jóváhagyás"
       status:
         approved: "Jóváhagyott"
         unapproved: "A jóvá nem hagyott"
         pending: "várható"
-      unapproved_auths: "Nem jóváhagyott hitelesítések"
-      modified_authentications: "módosított hitelesítések"
       no_unapproved_auths: "Ön nincs jóváhagyott hitelesítések."

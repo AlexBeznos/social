@@ -1,12 +1,11 @@
 ru:
   models:
     notifications:
+      name: "Оповещения"
       approve: "Одобрить"
       unapprove: "Неодобрить"
       status:
         approved: "Одобрено"
         unapproved: "Неодобрено"
         pending: "Ожидается"
-      unapproved_authentications: "Неодобреные аунтентификации"
-      modified_authentications: "Изменённые аутентификации"
       no_unapproved_auths: "У вас нету неодобреных аутентификаций."

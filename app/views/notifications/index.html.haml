@@ -1,10 +1,10 @@
 = content_for :navigation, 'false'
 = content_for :page_stylesheet, 'dashboard/settings'
-= content_for :title, notification_title(current_user)
+= content_for :title, t("models.notifications.name")
 
 .panel-info.panel-adjusted
   .panel-heading
-    %h1= notification_title(current_user)
+    %h1= t("models.notifications.name")
   .panel-body
     - if @sources.any?
       - @sources.each_slice(2) do |(s1, s2)|

@@ -1,12 +1,11 @@
 pl:
   models:
     notifications:
+      name: "Powiadomienia"
       approve: "Zatwierdzać"
       unapprove: "cofniesz zatwierdzenie"
       status:
         approved: "Zatwierdzony"
         unapproved: "Niezatwierdzony"
         pending: "spodziewany"
-      unapproved_authentications: "uwierzytelnianie Niezatwierdzony"
-      modified_authentications: "zmodyfikowane autentykacje"
       no_unapproved_auths: "Nie masz żadnych niezatwierdzonych uwierzytelnianie ."

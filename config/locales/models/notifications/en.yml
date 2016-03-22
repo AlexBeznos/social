@@ -1,12 +1,11 @@
 en:
   models:
     notifications:
+      name: "Notifications"
       approve: "Approve"
       unapproved: "Unapprove"
       status:
         approved: "Approved"
         unapproved: "Unapproved"
         pending: "Pending"
-      unapproved_authentications: "Unapproved authentications"
-      modified_authentications: "Modified authentications"
       no_unapproved_auths: "You have no unapproved authentications."
