@@ -7,6 +7,14 @@ class InstagramService # NOTICE: Refactore class to general style in case of usi
     @credentials = hash[:credentials]
   end
 
+  def self.get_token(credentials)
+    {
+      'provider' => credentials['provider'],
+      'token' => credentials['credentials']['token'],
+      'uid' => credentials['uid']
+    }
+  end
+
   def self.get_user_id(user_name)
     Instagram.user_search(user_name, :count => 1).first['id']
   end
