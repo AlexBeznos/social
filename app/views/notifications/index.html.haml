@@ -30,8 +30,8 @@
                 = render partial: "#{s1.resource.class::NAME}_auths/details", locals: { resource: s1.resource }
               .panel-footer
               - if policy(s1.notification).approve?
-                = link_to t("models.notifications.approve"), approve_user_notification_path(s1.notification.user, s1.notification), method: 'DELETE', class: 'btn btn-success btn-block'
-                = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s1.notification.user, s1.notification), method: 'DELETE', class: 'btn btn-danger btn-block'
+                = link_to t("models.notifications.approve"), approve_user_notification_path(s1.notification.user, s1.notification), method: 'PATCH', class: 'btn btn-success btn-block'
+                = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s1.notification.user, s1.notification), method: 'PATCH', class: 'btn btn-danger btn-block'
               - elsif policy(s1.place).update?
                 = link_to t("helpers.submit.edit"), edit_place_auth_path(s1.place, s1), class: 'btn btn-primary btn-block'
           -if s2

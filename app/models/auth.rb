@@ -35,7 +35,7 @@ class Auth < ActiveRecord::Base
 
   accepts_nested_attributes_for :resource
 
-  aasm column: :state, enum: true do
+  aasm column: :state, enum: true, whiny_transitions: false do
     state :pending, initial: true
     state :unapproved
     state :approved
@@ -51,11 +51,9 @@ class Auth < ActiveRecord::Base
     end
 
     event :modify, after: :notify_franchisee  do
-      transitions from: [:unapproved, :approved], to: :pending
+      transitions from: [:unapproved, :approved], to: :pending, unless: :state_pending?
     end
   end
-
-
 
   def resource_attributes=(attributes, options = {})
     if persisted?
@@ -70,12 +68,19 @@ class Auth < ActiveRecord::Base
     persisted? ? [resource.class::NAME] : Auth::METHODS
   end
 
+
+
   def network?
     NETWORKS.keys.include?(resource.class::NAME.to_sym)
   end
 
   private
-  #FIXME: Fuck this code, sucka blyat
+
+  def state_pending?
+    return true if aasm.current_state == :pending
+    false
+  end
+
   def delete_old_notification
     notification.destroy if notification
   end

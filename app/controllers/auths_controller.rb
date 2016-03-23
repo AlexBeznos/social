@@ -14,7 +14,12 @@ class AuthsController < ApplicationController
     @auth.place = @place
 
     if @auth.save
-      @auth.approve! if current_user.franchisee? || current_user.admin?
+      if current_user.general?
+        @auth.modify!
+      else
+        @auth.approve!
+      end
+
       redirect_to settings_place_path(@place)
     else
       render action: :new
@@ -29,7 +34,12 @@ class AuthsController < ApplicationController
     authorize @auth
 
     if @auth.update(auth_params(:resource_attributes))
-      @auth.modify! if current_user.general?
+      if current_user.general?
+        @auth.modify!
+      else
+        @auth.approve!
+      end
+      
       redirect_to settings_place_path(@place)
     else
       render action: :edit

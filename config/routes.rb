@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :notifications, only: [:index] do
         member do
-          delete 'approve', to: 'notifications#approve'
-          delete 'unapprove', to: 'notifications#unapprove'
+          patch 'approve', to: 'notifications#approve'
+          patch 'unapprove', to: 'notifications#unapprove'
         end
     end
   end
