@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :notification do
-    category "Unapproved authentication"
+    category :modified_authentication
   end
 end
