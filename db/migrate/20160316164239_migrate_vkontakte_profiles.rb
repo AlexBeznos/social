@@ -16,7 +16,8 @@ class MigrateVkontakteProfiles < ActiveRecord::Migration
         vkontakte_customer_params = customer_profile.customer.attributes.slice(
           'first_name',
           'last_name',
-          'gender'
+          'gender',
+          'birthday'
         )
 
         params = vkontakte_profile_params.merge(vkontakte_customer_params)

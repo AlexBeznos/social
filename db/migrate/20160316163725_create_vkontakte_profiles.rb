@@ -8,6 +8,7 @@ class CreateVkontakteProfiles < ActiveRecord::Migration
       t.string :uid
       t.string :access_token
 
+      t.date :birthday
       t.date :expiration_date
       t.integer :friends_count
       
