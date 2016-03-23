@@ -3,7 +3,7 @@ en:
     notifications:
       name: "Notifications"
       approve: "Approve"
-      unapproved: "Unapprove"
+      unapprove: "Unapprove"
       status:
         approved: "Approved"
         unapproved: "Unapproved"

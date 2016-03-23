@@ -56,8 +56,8 @@
                   = render partial: "#{s2.resource.class::NAME}_auths/details", locals: { resource: s2.resource }
                 .panel-footer
                 - if policy(s2.notification).approve?
-                  = link_to t("models.notifications.approve"), approve_user_notification_path(s2.notification.user, s2.notification), method: 'DELETE', class: 'btn btn-success btn-block'
-                  = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s2.notification.user, s2.notification), method: 'DELETE', class: 'btn btn-danger btn-block'
+                  = link_to t("models.notifications.approve"), approve_user_notification_path(s2.notification.user, s2.notification), method: 'PATCH', class: 'btn btn-success btn-block'
+                  = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s2.notification.user, s2.notification), method: 'PATCH', class: 'btn btn-danger btn-block'
                 - elsif policy(s2.place).update?
                   = link_to t("helpers.submit.edit"), edit_place_auth_path(s2.place, s2), class: 'btn btn-primary btn-block'
     - else
