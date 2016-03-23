@@ -11,6 +11,10 @@ class StylePolicy < ApplicationPolicy
     end
   end
 
+  def destroy
+    user.admin?
+  end
+
   def permitted_attributes
     [
       :background,
