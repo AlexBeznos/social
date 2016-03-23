@@ -17,8 +17,8 @@ class VkontakteService
     }
   end
 
-  def self.get_friends_number(costumer)
-    vk = VkontakteApi::Client.new(costumer.access_token)
+  def self.get_friends_number(token)
+    vk = VkontakteApi::Client.new(token)
     vk.friends.get(count: 1, v: '5.34')['count']
   end
 
