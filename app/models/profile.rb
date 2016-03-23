@@ -43,6 +43,6 @@ class Profile < ActiveRecord::Base
   end
 
   def self.get_resource_params(resource_type, credentials)
-    resource_type.constantize.prepare_params(credentials)
+    resource_type.constantize.try(:prepare_params, credentials)
   end
 end
