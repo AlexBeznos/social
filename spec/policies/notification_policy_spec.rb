@@ -11,24 +11,35 @@ RSpec.describe NotificationPolicy do
 
   context "for admin" do
     let(:user) { create :user_admin }
-    let(:record){ create :notification }
+    let(:record){ create :notification, user: user }
 
-    it "scope includes all users" do
+    it "scope include record with user:user" do
       expect(resolved_scope).to include record
     end
 
-    it { is_expected.to permit_action(:destroy) }
+    it { is_expected.to permit_action(:approve) }
+    it { is_expected.to permit_action(:unapprove) }
   end
 
   context "for franchisee" do
     let(:user) { create :user_franchisee }
     let(:record){ create :notification, user: user }
 
-    it "scope includes all users" do
+    it "scope include record with user:user" do
       expect(resolved_scope).to include record
     end
 
-    it { is_expected.to permit_action(:destroy) }
+    it { is_expected.to permit_action(:unapprove) }
+    it { is_expected.to permit_action(:approve) }
+  end
+  context "for general" do
+    let(:user) { create :user_franchisee }
+    let(:record){ create :notification, user: user }
+
+    it "scope include record with user:user" do
+      expect(resolved_scope).to include record
+    end
+
   end
 
 end
