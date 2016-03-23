@@ -36,11 +36,13 @@ class Auth < ActiveRecord::Base
   accepts_nested_attributes_for :resource
 
   aasm column: :state, enum: true do
-    state :pending
+    state :pending, initial: true
     state :unapproved
-    state :approved, initial: true
+    state :approved
 
-    event :approve, after: :delete_notification do
+    after_all_transitions :delete_old_notification
+
+    event :approve do
       transitions from: :pending, to: :approved
     end
 
@@ -68,20 +70,18 @@ class Auth < ActiveRecord::Base
     persisted? ? [resource.class::NAME] : Auth::METHODS
   end
 
-  def name
-    resource.class::NAME.to_sym
+  def network?
+    NETWORKS.keys.include?(resource.class::NAME.to_sym)
   end
-
 
   private
   #FIXME: Fuck this code, sucka blyat
-  def delete_notification
+  def delete_old_notification
     notification.destroy if notification
   end
 
   def notify_general
-    notification.destroy if notification
-    if NETWORKS.keys.include? name
+    if network?
         create_notification(
           category: :unapproved_authentication,
           user: place.user
@@ -90,8 +90,7 @@ class Auth < ActiveRecord::Base
   end
 
   def notify_franchisee
-    notification.destroy if notification
-    if NETWORKS.keys.include? name
+    if network?
         create_notification(
           category: :modified_authentication,
           user: place.user.franchisee

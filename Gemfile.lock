@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (2.3.2)
-    aasm (4.0.5)
+    aasm (4.9.0)
     abstract_type (0.0.7)
     actionmailer (4.1.7)
       actionpack (= 4.1.7)
@@ -651,7 +651,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm
+  aasm (= 4.9.0)
   active_type
   ahoy_matey
   asset_sync

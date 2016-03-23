@@ -14,7 +14,7 @@ class AuthsController < ApplicationController
     @auth.place = @place
 
     if @auth.save
-      @auth.modify! if current_user.general?
+      @auth.approve! if current_user.franchisee? || current_user.admin?
       redirect_to settings_place_path(@place)
     else
       render action: :new
@@ -39,7 +39,7 @@ class AuthsController < ApplicationController
   def destroy
     authorize @auth
 
-    if Auth::NETWORKS.keys.include? @auth.name
+    if @auth.network?
       @auth.update(active: false)
     else
       @auth.destroy
@@ -49,6 +49,7 @@ class AuthsController < ApplicationController
   end
 
   private
+
   def set_place
     @place = Place.find_by_slug(params[:place_id])
   end
