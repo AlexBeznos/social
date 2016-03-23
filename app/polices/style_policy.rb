@@ -11,7 +11,7 @@ class StylePolicy < ApplicationPolicy
     end
   end
 
-  def destroy
+  def destroy?
     user.admin?
   end
 

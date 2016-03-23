@@ -40,13 +40,6 @@ class InstagramService # NOTICE: Refactore class to general style in case of usi
   end
 
   def advertise
-    client = Instagram.client(:access_token => @credentials['credentials']['token'])
-
-    begin
-      client.follow_user(@message.subscription_uid)
-    rescue => e
-      Rails.logger.fatal "Twitter message was not posted. Error: #{e}"
-    end
   end
 
   private
