@@ -10,6 +10,7 @@ require 'shoulda/matchers'
 require 'rspec_candy/all'
 require 'capybara/rspec'
 require 'pundit/rspec'
+require 'aasm/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

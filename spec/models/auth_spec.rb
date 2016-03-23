@@ -11,8 +11,37 @@ RSpec.describe Auth do
   it { is_expected.to accept_nested_attributes_for :resource }
   it_behaves_like 'with url validation for', :url, :network_profile
 
-  describe "state machine" do
-    let(:auth) { create :auth }
+  describe "notification" do
+    let(:place){ create :place, user: general }
+    let(:general){ create :user_general, franchisee: franchisee }
+    let(:franchisee){ create :user_franchisee }
+    let(:auth) { create :auth, place: place }
+    before(:each) do
+      auth.stub(:network?){ true }
+    end
+
+    describe "on modify" do
+      it "dot not change state pending" do
+        auth.modify!
+      end
+
+      it "notifies franchisee" do
+        auth.approve!
+
+        expect do
+          auth.modify!
+        end.to change(franchisee.notifications, :count).by(1)
+      end
+
+    end
+
+    context "on unapprove" do
+      it "notifies place owner" do
+        expect do
+          auth.unapprove!
+        end.to change(general.notifications, :count).by(1)
+      end
+    end
 
   end
 
@@ -37,29 +66,8 @@ RSpec.describe Auth do
     end
   end
 
-  describe "mark as unapproved" do
-    let(:general){ create :user_general, franchisee: franchisee }
-    let(:franchisee) { create :user_franchisee }
-    let(:place){ create :place, user: general }
-    let(:network){ create :auth, place: place, resource: create(:vkontakte_auth) }
-    let(:alternative){ create :auth, place: place, resource: create(:simple_auth) }
 
-    context "when auth is network" do
-      it "Add new notification to franchisee" do
-        expect do
-          network.mark_as_unapproved!
-        end.to change(franchisee.notifications, :count).by(1)
-      end
-    end
 
-    context "when auth is alternative" do
-      it "Add new notification to franchisee" do
-        expect do
-          alternative.mark_as_unapproved!
-        end.to_not change(franchisee.notifications, :count)
-      end
-    end
-  end
 
   describe "Constant values" do
     it "NETWORKS contains proper auth network methods" do
