@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :users
   resources :places do
     resources :auths, except: :index
-    resources :banners
+    # resources :banners NOTE: uncomment when we will know what to do with this shit
     resources :stocks, except: :show
     resources :styles, except: :index
     resources :menu_items
