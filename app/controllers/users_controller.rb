@@ -4,11 +4,7 @@ class UsersController < ApplicationController
   def index
     authorize User
 
-    if current_user.admin?
-      @users = User.all
-    else
-      @users = current_user.place_owners
-    end
+    @users = policy_scope(User)
   end
 
   def show

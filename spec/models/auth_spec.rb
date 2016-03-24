@@ -37,7 +37,8 @@ RSpec.describe Auth do
       expect(described_class::NETWORKS).to match({
         vkontakte: 'vkontakte',
         facebook: 'facebook',
-        twitter: 'twitter'
+        twitter: 'twitter',
+        instagram: 'instagram'
       })
     end
 
@@ -55,6 +56,7 @@ RSpec.describe Auth do
         "vkontakte",
         "facebook",
         "twitter",
+        "instagram",
         "poll",
         "sms",
         "password",

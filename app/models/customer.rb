@@ -10,7 +10,6 @@ class Customer < ActiveRecord::Base
 
   validates :first_name, presence: true
 
-  before_save :get_more_customer_info, if: 'first_name =~ /unfinished/'
   before_save :set_gender, unless: 'gender'
   scope :by_birthday, -> (from, till) { joins(:visits)
                                 .where("(extract(month from birthday) = ? and extract(day from birthday) >= ?) or
@@ -29,35 +28,27 @@ class Customer < ActiveRecord::Base
   end
 
   private
-    def self.sort_by_birthday a, b
-      case
-        when a.birthday.strftime('%m%d').to_i < b.birthday.strftime('%m%d').to_i
-          if a.birthday.strftime('%m').to_i == 1 and b.birthday.strftime('%m').to_i == 12
-            1
-          else
-            -1
-          end
-        when a.birthday.strftime('%m%d').to_i > b.birthday.strftime('%m%d').to_i
-          if a.birthday.strftime('%m').to_i == 12 and b.birthday.strftime('%m').to_i == 1
-            -1
-          else
-            1
-          end
+  def self.sort_by_birthday a, b
+    case
+      when a.birthday.strftime('%m%d').to_i < b.birthday.strftime('%m%d').to_i
+        if a.birthday.strftime('%m').to_i == 1 and b.birthday.strftime('%m').to_i == 12
+          1
         else
-          0
+          -1
         end
-    end
-
-    def get_more_customer_info
-      begin
-        params = Object.const_get("#{first_name.split('#')[1].capitalize}Service").get_more_customer_info(self)
-        self.assign_attributes(params)
-      rescue
+      when a.birthday.strftime('%m%d').to_i > b.birthday.strftime('%m%d').to_i
+        if a.birthday.strftime('%m').to_i == 12 and b.birthday.strftime('%m').to_i == 1
+          -1
+        else
+          1
+        end
+      else
+        0
       end
-    end
+  end
 
-    def set_gender
-      gender = Guess.gender(self.full_name)[:gender]
-      self.gender = gender unless gender == 'unknown'
-    end
+  def set_gender
+    gender = Guess.gender(self.full_name)[:gender]
+    self.gender = gender unless gender == 'unknown'
+  end
 end

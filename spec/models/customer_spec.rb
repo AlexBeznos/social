@@ -8,7 +8,6 @@ RSpec.describe Customer do
   it { is_expected.to belong_to(:social_network) }
   it { is_expected.to accept_nested_attributes_for(:network_profiles) }
   it { is_expected.to validate_presence_of :first_name }
-  it { is_expected.to callback(:get_more_customer_info).before(:save).if('first_name =~ /unfinished/') }
   it { is_expected.to callback(:set_gender).before(:save).unless('gender') }
 
   it "returns a customer's full name as a string" do
