@@ -35,16 +35,17 @@ class InstagramService # NOTICE: Refactore class to general style in case of usi
   end
 
   def self.get_friends_number(customer)
-    user = get_user customer
-    user['counts']['followed_by']
+    # user = get_user customer
+    # user['counts']['followed_by']
+    0 # NOTE: for now it should be 0 because we do not post anything to instagram
   end
 
   def advertise
   end
 
   private
-    def self.get_user(network_profile)
-      client = Instagram.client(:access_token => network_profile.access_token)
-      client.user
-    end
+  def self.get_user(network_profile)
+    client = Instagram.client(access_token: network_profile.access_token)
+    client.user
+  end
 end
