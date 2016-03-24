@@ -20,5 +20,5 @@
   = f.input :css, as: :text
 
   = f.button :submit
-  - if @style.id
+  - if @style.id && policy(@style).destroy?
     = link_to t('helpers.submit.destroy'), place_style_path(@place, @style), method: 'delete', class: 'btn btn-danger'

@@ -3,7 +3,7 @@ class UserPolicy < ApplicationPolicy
     def resolve
       if user.franchisee?
         scope.where(id: user_ids + [user.id])
-      elsif user.general? && user.id
+      elsif user.general?
         scope.where(id: user.id)
       elsif user.admin?
         scope.all
