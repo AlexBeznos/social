@@ -15,8 +15,8 @@ class FacebookService
     }
   end
 
-  def self.get_friends_number(costumer)
-    graph = Koala::Facebook::API.new(costumer.access_token)
+  def self.get_friends_number(token)
+    graph = Koala::Facebook::API.new(token)
     friends = graph.get_connections('me', 'friends')
     friends.raw_response['summary']['total_count']
   end
