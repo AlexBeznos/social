@@ -5,7 +5,7 @@ class GowifiAuthController < ApplicationController
   before_action :find_customer, only: :omniauth
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_auth, only: :omniauth
-  before_filter :check_facebook_permissions, only: :omniauth
+  before_action :check_facebook_permissions, only: :omniauth
 
   skip_after_action :verify_authorized
 
@@ -20,11 +20,14 @@ class GowifiAuthController < ApplicationController
   end
 
   def enter_by_sms
-    sms = @place.gowifi_sms.find_by(code: params[:code])
+    sms = SmsProfile.find_by(code: params[:code])
     auth = @place.auths.active.find_by({ resource_type: SmsAuth, step: Auth.steps[cookies[:step]] })
 
     if sms
-      sms.destroy
+      sms.update(used: true)
+      p '+++++++++++++++++++++++'
+      p sms.profile
+      create_visit(sms.profile, @place)
       redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
@@ -77,6 +80,7 @@ class GowifiAuthController < ApplicationController
   end
 
   private
+
   def poll_params
     params.require(:poll_auth).permit(:answer_ids)
   end
