@@ -12,17 +12,18 @@ RSpec.describe Auth do
   it_behaves_like 'with url validation for', :url, :network_profile
 
   describe "notification" do
-    let(:place){ create :place, user: general }
-    let(:general){ create :user_general, franchisee: franchisee }
     let(:franchisee){ create :user_franchisee }
+    let(:general){ create :user_general, franchisee: franchisee }
+    let(:place){ create :place, user: general }
     let(:auth) { create :auth, place: place }
     before(:each) do
       auth.stub(:network?){ true }
     end
 
     describe "on modify" do
-      it "dot not change state pending" do
+      it "creates proper notification" do
         auth.modify!
+        expect(franchisee.notifications.last.category).to eq("modified_authentication")
       end
 
       it "notifies franchisee" do
@@ -36,6 +37,11 @@ RSpec.describe Auth do
     end
 
     context "on unapprove" do
+      it "creates proper notification" do
+        auth.unapprove!
+        expect(general.notifications.last.category).to eq("unapproved_authentication")
+      end
+
       it "notifies place owner" do
         expect do
           auth.unapprove!

@@ -177,9 +177,9 @@ ActiveRecord::Schema.define(version: 20160322115447) do
     t.integer  "source_id"
     t.string   "source_type"
     t.integer  "user_id"
-    t.integer  "category",    default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "category"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "notifications", ["source_id", "source_type"], name: "index_notifications_on_source_id_and_source_type", using: :btree
