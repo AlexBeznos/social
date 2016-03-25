@@ -25,9 +25,8 @@ class GowifiAuthController < ApplicationController
 
     if sms
       sms.update(used: true)
-      p '+++++++++++++++++++++++'
-      p sms.profile
       create_visit(sms.profile, @place)
+      
       redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
