@@ -28,13 +28,13 @@ class Profile < ActiveRecord::Base
     Date.parse(str_date)
   end
 
-  def self.create_with_resource(credentials, customer)
-    resource_type = get_profile_type(credentials['provider'])
+  def self.create_with_resource(params, customer)
+    resource_type = get_profile_type(params['provider'] || params[:provider])
 
     create(
       customer: customer,
       resource_type: resource_type,
-      resource_attributes: get_resource_params(resource_type, credentials)
+      resource_attributes: get_resource_params(resource_type, params)
     )
   end
 
