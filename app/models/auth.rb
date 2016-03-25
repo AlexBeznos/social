@@ -52,7 +52,7 @@ class Auth < ActiveRecord::Base
     end
 
     event :modify, after: :notify_franchisee  do
-      transitions from: [:unapproved, :approved], to: :pending, unless: :state_pending?
+      transitions from: [:unapproved, :approved], to: :pending, unless: lambda { pending? }
     end
   end
 
@@ -76,11 +76,6 @@ class Auth < ActiveRecord::Base
   end
 
   private
-
-  def state_pending?
-    return true if aasm.current_state == :pending
-    false
-  end
 
   def delete_old_notification
     notification.destroy if notification
