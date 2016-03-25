@@ -5,20 +5,22 @@ class Customer::Visit < ActiveRecord::Base
   scope :by_date_from_to, lambda { |from, to| where(created_at: from..to.end_of_day) }
   scope :by_gender, lambda { |gender = 'f'| where('customers.gender = ?', gender == 'm' ? 'male' : 'female') }
 
+  belongs_to :profile
   belongs_to :customer
   belongs_to :place
   belongs_to :network_profile, class_name: 'Customer::NetworkProfile',
                                foreign_key: :customer_network_profile_id
 
-  validates :network_profile, :place, presence: true, unless: :by_password
+  # validates :network_profile, :place, presence: true, unless: :by_password
   # validate :ones_a_day_visit, unless: 'by_password'
 
   after_create :calculate_reputation, unless: :by_password
 
   private
+
   def ones_a_day_visit
     now = DateTime.now
-    visits =  Customer::Visit.joins(:network_profile).where({
+    visits =  Customer::Visit.joins(:profiles).where({
       customer_network_profiles: {
         social_network_id: network_profile.social_network_id,
         uid: network_profile.uid
