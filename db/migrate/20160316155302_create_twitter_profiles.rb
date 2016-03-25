@@ -2,7 +2,6 @@ class CreateTwitterProfiles < ActiveRecord::Migration
   def change
     create_table :twitter_profiles do |t|
       t.string :name
-      t.string :gender
       t.string :url
       t.string :uid
       t.string :access_token

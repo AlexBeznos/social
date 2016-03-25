@@ -345,9 +345,7 @@ ActiveRecord::Schema.define(version: 20160322122059) do
   end
 
   create_table "twitter_profiles", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "gender"
+    t.string   "name"
     t.string   "url"
     t.string   "uid"
     t.string   "access_token"
