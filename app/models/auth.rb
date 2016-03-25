@@ -41,17 +41,17 @@ class Auth < ActiveRecord::Base
     state :unapproved
     state :approved
 
-    after_all_transitions :delete_old_notification
+    before_all_events :delete_old_notification
 
     event :approve do
       transitions from: :pending, to: :approved
     end
 
-    event :unapprove, after: :notify_general do
+    event :unapprove, before: :notify_general do
       transitions from: :pending, to: :unapproved
     end
 
-    event :modify, after: :notify_franchisee  do
+    event :modify, before: :notify_franchisee  do
       transitions from: [:unapproved, :approved], to: :pending, unless: lambda { pending? }
     end
   end

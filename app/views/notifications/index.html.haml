@@ -7,58 +7,31 @@
     %h1= t("models.notifications.name")
   .panel-body
     - if @sources.any?
-      - @sources.each_slice(2) do |(s1, s2)|
-        .row
-          .col-md-6
-            .panel.panel-default
-              .panel-heading
-                .panel-title
-                  %strong.text-primary= t("models.auths.methods.#{s1.resource.class::NAME}").capitalize
-                  .row
-                    .col-md-6
-                      .text-left
-                        %strong= t("models.places.attrs.name") + " :"
-                    .col-md-6
-                      .text-right= link_to s1.place.name, place_path(s1.place)
-                  .row
-                    .col-md-6
-                      .pull-left
-                        %strong=  t("models.places.attrs.owner") + " :"
-                    .col-md-6
-                      .pull-right= link_to s1.place.user.full_name, user_path(s1.place.user)
-              .panel-body.text-left
-                = render partial: "#{s1.resource.class::NAME}_auths/details", locals: { resource: s1.resource }
-              .panel-footer
-              - if policy(s1.notification).approve?
-                = link_to t("models.notifications.approve"), approve_user_notification_path(s1.notification.user, s1.notification), method: 'PATCH', class: 'btn btn-success btn-block'
-                = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s1.notification.user, s1.notification), method: 'PATCH', class: 'btn btn-danger btn-block'
-              - elsif policy(s1.place).update?
-                = link_to t("helpers.submit.edit"), edit_place_auth_path(s1.place, s1), class: 'btn btn-primary btn-block'
-          -if s2
-            .col-md-6
-              .panel.panel-default
-                .panel-heading
-                  .panel-title
-                    %strong.text-primary= t("models.auths.methods.#{s1.resource.class::NAME}").capitalize
-                    .row
-                      .col-md-6
-                        .text-left
-                          %strong= t("models.places.attrs.name") + " :"
-                      .col-md-6
-                        .text-right= link_to s2.place.name, place_path(s1.place)
-                    .row
-                      .col-md-6
-                        .pull-left
-                          %strong= t("models.places.attrs.owner") + " :"
-                      .col-md-6
-                        .pull-right=  link_to s2.place.user.full_name, user_path(s2.place.user)
-                .panel-body.text-left
-                  = render partial: "#{s2.resource.class::NAME}_auths/details", locals: { resource: s2.resource }
-                .panel-footer
-                - if policy(s2.notification).approve?
-                  = link_to t("models.notifications.approve"), approve_user_notification_path(s2.notification.user, s2.notification), method: 'PATCH', class: 'btn btn-success btn-block'
-                  = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(s2.notification.user, s2.notification), method: 'PATCH', class: 'btn btn-danger btn-block'
-                - elsif policy(s2.place).update?
-                  = link_to t("helpers.submit.edit"), edit_place_auth_path(s2.place, s2), class: 'btn btn-primary btn-block'
+      - @sources.each do |source|
+        .col-md-6
+          .panel.panel-default
+            .panel-heading
+              .panel-title
+                %strong.text-primary= t("models.auths.methods.#{source.resource.class::NAME}").capitalize
+                .row
+                  .col-md-6
+                    .text-left
+                      %strong= t("models.places.attrs.name") + " :"
+                  .col-md-6
+                    .text-right= link_to source.place.name, place_path(source.place)
+                .row
+                  .col-md-6
+                    .text-left
+                      %strong=  t("models.places.attrs.owner") + " :"
+                  .col-md-6
+                    .text-right= link_to source.place.user.full_name, user_path(source.place.user)
+            .panel-body.text-left
+              = render partial: "#{source.resource.class::NAME}_auths/details", locals: { resource:source.resource }
+            .panel-footer
+            - if policy(source.notification).approve?
+              = link_to t("models.notifications.approve"), approve_user_notification_path(source.notification.user, source.notification), method: 'PATCH', class: 'btn btn-success btn-block'
+              = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(source.notification.user, source.notification), method: 'PATCH', class: 'btn btn-danger btn-block'
+            - elsif policy(source.place).update?
+              = link_to t("helpers.submit.edit"), edit_place_auth_path(source.place, source), class: 'btn btn-primary btn-block'
     - else
       = t("models.notifications.no_unapproved_auths")
