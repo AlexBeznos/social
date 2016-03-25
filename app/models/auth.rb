@@ -69,8 +69,6 @@ class Auth < ActiveRecord::Base
     persisted? ? [resource.class::NAME] : Auth::METHODS
   end
 
-
-
   def network?
     NETWORKS.keys.include? resource.class::NAME.to_sym
   end
