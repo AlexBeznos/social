@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316170856) do
+ActiveRecord::Schema.define(version: 20160322122059) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "profile_id"
   end
 
   add_index "customer_visits", ["created_at"], name: "index_customer_visits_on_created_at", using: :btree
@@ -194,6 +196,11 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.datetime "updated_at"
   end
 
+  create_table "password_profiles", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "places", force: true do |t|
     t.string   "name"
     t.string   "slug"
@@ -262,6 +269,14 @@ ActiveRecord::Schema.define(version: 20160316170856) do
   end
 
   create_table "sms_auths", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sms_profiles", force: true do |t|
+    t.string   "phone"
+    t.string   "code"
+    t.boolean  "used",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -413,6 +428,7 @@ ActiveRecord::Schema.define(version: 20160316170856) do
     t.string   "url"
     t.string   "uid"
     t.string   "access_token"
+    t.date     "birthday"
     t.date     "expiration_date"
     t.integer  "friends_count"
     t.datetime "created_at"
