@@ -8,4 +8,4 @@ ru:
         approved: "Одобрено"
         unapproved: "Неодобрено"
         pending: "Ожидается"
-      no_unapproved_auths: "У вас нету неодобреных аутентификаций."
+      no_notifications: "У вас нет оповещений."

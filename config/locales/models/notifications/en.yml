@@ -8,4 +8,4 @@ en:
         approved: "Approved"
         unapproved: "Unapproved"
         pending: "Pending"
-      no_unapproved_auths: "You have no unapproved authentications."
+      no_notifications: "You have no notifications."

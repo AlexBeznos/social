@@ -8,4 +8,4 @@ pl:
         approved: "Zatwierdzony"
         unapproved: "Niezatwierdzony"
         pending: "spodziewany"
-      no_unapproved_auths: "Nie masz żadnych niezatwierdzonych uwierzytelnianie ."
+      no_notifications: "Nie masz żadnych powiadomień ."

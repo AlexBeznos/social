@@ -8,4 +8,4 @@ am:
         approved: "Հաստատված"
         unapproved: "չհաստատված"
         pending: "ակնկալվում է"
-      no_unapproved_auths: "Դուք չունեք չգրանցված authentications"
+      no_notifications: "Դուք չունեք ծանուցումները"

@@ -8,4 +8,4 @@ ua:
         approved: "Одобрено"
         unapproved: "Неодобрено"
         pending: "Очікується"
-      no_unapproved_auths: "У вас немає неодобрених аутентификацій."
+      no_notifications: "У вас немає сповіщень."
