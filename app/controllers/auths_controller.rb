@@ -14,11 +14,7 @@ class AuthsController < ApplicationController
     @auth.place = @place
 
     if @auth.save
-      if current_user.general?
-        @auth.modify!
-      else
-        @auth.approve!
-      end
+      notify(current_user, @auth)
 
       redirect_to settings_place_path(@place)
     else
@@ -34,12 +30,8 @@ class AuthsController < ApplicationController
     authorize @auth
 
     if @auth.update(auth_params(:resource_attributes))
-      if current_user.general?
-        @auth.modify!
-      else
-        @auth.approve!
-      end
-      
+      notify(current_user, @auth)
+
       redirect_to settings_place_path(@place)
     else
       render action: :edit
@@ -59,6 +51,14 @@ class AuthsController < ApplicationController
   end
 
   private
+
+  def notify(user, auth)
+    if user.general?
+      auth.modify!
+    else
+      auth.approve!
+    end
+  end
 
   def set_place
     @place = Place.find_by_slug(params[:place_id])

@@ -16,14 +16,12 @@
                   %strong.text-primary= t("models.auths.methods.#{source.resource.class::NAME}").capitalize
                   .row
                     .col-xs-6
-                      .text-left
-                        %strong= t("models.places.attrs.name") + " :"
+                      .text-left.font-medium= t("models.places.attrs.name") + " :"
                     .col-xs-6
                       .text-right= link_to source.place.name, place_path(source.place)
                   .row
                     .col-xs-6
-                      .text-left
-                        %strong=  t("models.places.attrs.owner") + " :"
+                      .text-left.font-medium=  t("models.places.attrs.owner") + " :"
                     .col-xs-6
                       .text-right= link_to source.place.user.full_name, user_path(source.place.user)
               .panel-body.text-left
