@@ -10,8 +10,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 20160320123257) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,11 @@ ActiveRecord::Schema.define(version: 20160320123257) do
   end
 
   add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
+
+  create_table "instagram_auths", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "menu_items", force: true do |t|
     t.string   "name"

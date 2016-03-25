@@ -4,7 +4,8 @@ class Auth < ActiveRecord::Base
   NETWORKS = {
     vkontakte: 'vkontakte',
     facebook: 'facebook',
-    twitter: 'twitter'
+    twitter: 'twitter',
+    instagram: 'instagram'
   }
 
   ALTERNATIVE = {
