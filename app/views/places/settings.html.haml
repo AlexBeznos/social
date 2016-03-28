@@ -75,7 +75,7 @@
                 .panel-heading
                   .panel-title
                     = t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
-                    %span{ class: notification_style(auth) }= t(auth.aasm.current_state, scope: "models.notifications.status")
+                    %span{ class: notification_style(auth) }= t(auth.aasm.current_state, scope: "models.notifications.status") if auth.network?
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer
