@@ -12,12 +12,7 @@ class MigrateTwitterProfiles < ActiveRecord::Migration
           'updated_at'
         )
 
-        twitter_customer_params = customer_profile.customer.attributes.slice(
-          'first_name',
-          'last_name',
-          'gender'
-        )
-
+        twitter_customer_params = { name: customer_profile.customer.first_name }
         params = twitter_profile_params.merge(twitter_customer_params)
 
         Profile.create!(
