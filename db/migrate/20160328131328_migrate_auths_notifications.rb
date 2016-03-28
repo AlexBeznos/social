@@ -1,4 +1,4 @@
-class MigrateNotifications < ActiveRecord::Migration
+class MigrateAuthsState < ActiveRecord::Migration
 
   def up
     Auth.all.map(&:approved!)
