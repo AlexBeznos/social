@@ -9,7 +9,7 @@ class Customer < ActiveRecord::Base
 
   accepts_nested_attributes_for :network_profiles
 
-  validates :first_name, presence: true
+  # validates :first_name, presence: true
 
   before_save :get_more_customer_info, if: 'first_name =~ /unfinished/'
   before_save :set_gender, unless: 'gender'

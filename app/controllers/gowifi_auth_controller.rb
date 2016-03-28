@@ -2,7 +2,6 @@ class GowifiAuthController < ApplicationController
   include Consumerable
 
   before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
-  before_action :find_customer, only: :omniauth
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_auth, only: :omniauth
   before_action :check_facebook_permissions, only: :omniauth
@@ -20,14 +19,10 @@ class GowifiAuthController < ApplicationController
   end
 
   def enter_by_sms
-    sms = SmsProfile.find_by(code: params[:code])
+    sms = SmsProfile.verified?(params[:code], @place)
     auth = @place.auths.active.find_by({ resource_type: SmsAuth, step: Auth.steps[cookies[:step]] })
 
     if sms
-      sms.update(used: true)
-      p '+++++++++++++++++++++++'
-      p sms.profile
-      create_visit(sms.profile, @place)
       redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
@@ -59,15 +54,16 @@ class GowifiAuthController < ApplicationController
   end
 
   def omniauth
-    unless visit_already_created?
-      AdvertisingWorker.perform_async(
-        @place.slug,
-        @auth.id,
-        redis_ready_credentials(credentials)
-      )
-    end
+    decorator = NetworksAuthDecorator.new(
+      credentials: credentials,
+      auth: @auth,
+      place: @place,
+      customer_id: cookies[:customer]
+    )
 
-    clear_session
+    decorator.save
+    session.delete(:slug)
+    cookies.permanent[:customer] = decorator.customer.id
     redirect_to succed_auth_path(@place, @auth)
   end
 
@@ -80,17 +76,12 @@ class GowifiAuthController < ApplicationController
   end
 
   private
-
   def poll_params
     params.require(:poll_auth).permit(:answer_ids)
   end
 
   def find_place
     @place = Place.find_by_slug(params[:slug])
-  end
-
-  def find_customer
-    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
   end
 
   def find_place_from_session
@@ -128,17 +119,6 @@ class GowifiAuthController < ApplicationController
 
   def credentials
     request.env['omniauth.auth']
-  end
-
-  def clear_session
-    session.delete(:slug)
-  end
-
-  def visit_already_created?
-    hash = find_or_create_customer(credentials, @place, @customer)
-    cookies.permanent[:customer] = hash[:customer].id
-
-    hash[:visit]
   end
 
   def check_facebook_permissions

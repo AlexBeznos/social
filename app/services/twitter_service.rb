@@ -6,23 +6,15 @@ class TwitterService
   def initialize(hash)
     @place = hash[:place]
     @message = hash[:message]
-    @credentials = hash[:credentials]
-  end
-
-  def self.get_token(credentials)
-    {
-      'provider' => credentials['provider'],
-      'token' => credentials['credentials']['token'],
-      'secret' => credentials['credentials']['secret']
-    }
+    @profile = hash[:profile]
   end
 
   def advertise
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_API_KEY']
       config.consumer_secret     = ENV['TWITTER_API_SECRET']
-      config.access_token        = @credentials['token']
-      config.access_token_secret = @credentials['secret']
+      config.access_token        = @profile.access_token
+      config.access_token_secret = @profile.access_token_secret
     end
 
     client.update_with_media(
