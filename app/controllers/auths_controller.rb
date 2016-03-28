@@ -53,11 +53,7 @@ class AuthsController < ApplicationController
   private
 
   def notify(user, auth)
-    if user.general?
-      auth.modify!
-    else
-      auth.approve!
-    end
+    user.general? ? auth.modify! : auth.approve!
   end
 
   def set_place
