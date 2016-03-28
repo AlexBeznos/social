@@ -27,7 +27,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    resources :notifications, only: [:index] do
+        member do
+          patch 'approve', to: 'notifications#approve'
+          patch 'unapprove', to: 'notifications#unapprove'
+        end
+    end
+  end
   resources :places do
     resources :auths, except: :index
     # resources :banners NOTE: uncomment when we will know what to do with this shit

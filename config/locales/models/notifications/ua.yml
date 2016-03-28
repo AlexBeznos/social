@@ -1,0 +1,11 @@
+ua:
+  models:
+    notifications:
+      name: "Cповіщення"
+      approve: "Одобрити"
+      unapprove: "Неодобрити"
+      status:
+        approved: "Одобрено"
+        unapproved: "Неодобрено"
+        pending: "Очікується"
+      no_notifications: "У вас немає сповіщень."
