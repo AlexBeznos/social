@@ -70,7 +70,11 @@ class Auth < ActiveRecord::Base
   end
 
   def network?
-    NETWORKS.keys.include? resource.class::NAME.to_sym
+    NETWORKS.keys.include? name
+  end
+
+  def name
+    resource.class::NAME.to_sym
   end
 
   private
