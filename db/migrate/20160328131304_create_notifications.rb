@@ -7,6 +7,6 @@ class CreateNotifications < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+    add_index :notifications, :user_id
   end
 end
