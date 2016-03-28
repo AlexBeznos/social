@@ -22,18 +22,6 @@ class SmsProfile < ActiveRecord::Base
     { phone: params[:phone] }
   end
 
-  def verified?(code, place)
-    sms = SmsProfile.find_by(code: code)
-    return false unless sms
-
-    Customer::Visit.create(
-      place: place,
-      profile: sms.profile,
-      customer: sms.profile.customer
-    )
-    profile.update(used: true)
-  end
-
   private
 
   def set_sms_code

@@ -1,6 +1,5 @@
 class AdvertisingWorker
   include Sidekiq::Worker
-  include Consumerable
 
   sidekiq_options queue: :advertisment, retry: false, failures: true
 

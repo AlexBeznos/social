@@ -1,5 +1,4 @@
 class NetworksAuthDecorator
-  include Consumerable
   extend ActiveModel::Callbacks
 
   attr_accessor :profile, :customer, :credentials, :auth, :place, :customer_id, :visit

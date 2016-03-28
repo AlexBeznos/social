@@ -1,9 +1,8 @@
 class GowifiAuthController < ApplicationController
-  include Consumerable
-
   before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_auth, only: :omniauth
+  before_action :find_or_create_customer, only: :enter_by_password
   before_action :check_facebook_permissions, only: :omniauth
 
   skip_after_action :verify_authorized
@@ -11,7 +10,13 @@ class GowifiAuthController < ApplicationController
   def enter_by_password
     auth = @place.auths.active.find_by({ resource_type: PasswordAuth, step: Auth.steps[cookies[:step]] })
 
-    if auth && auth.resource.password == params[:password] && create_visit_by_password(@place)
+    if auth && auth.resource.password == params[:password]
+      profile = Profile.create_with_resource({provider: 'password'}, @customer)
+      Customer::Visit.create(
+        place: @place,
+        profile: profile,
+        customer: profile.customer
+      )
       redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_place_path(@place)
@@ -19,10 +24,15 @@ class GowifiAuthController < ApplicationController
   end
 
   def enter_by_sms
-    sms = SmsProfile.verified?(params[:code], @place)
+    sms = SmsProfile.find_by(code: params[:code])
     auth = @place.auths.active.find_by({ resource_type: SmsAuth, step: Auth.steps[cookies[:step]] })
 
-    if sms
+    if sms && sms.update(used: true)
+      Customer::Visit.create(
+        place: @place,
+        profile: sms.profile,
+        customer: sms.profile.customer
+      )
       redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
@@ -82,6 +92,15 @@ class GowifiAuthController < ApplicationController
 
   def find_place
     @place = Place.find_by_slug(params[:slug])
+  end
+
+  def find_or_create_customer
+    if cookies[:customer]
+      @customer = Customer.find(cookies[:customer].to_i)
+    else
+      @customer = Customer.create
+      cookies.permanent[:customer] = @customer.id
+    end
   end
 
   def find_place_from_session
