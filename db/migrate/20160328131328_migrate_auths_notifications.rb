@@ -1,10 +1,10 @@
 class MigrateAuthsState < ActiveRecord::Migration
 
-  def up
+  def self.up
     Auth.all.map(&:approved!)
   end
 
-  def down
+  def self.down
     Auth.all.map(&:pending!)
   end
 end
