@@ -1,4 +1,4 @@
-class MigrateVkontakteProfiles < ActiveRecord::Migration
+class MigrateVkontakteProfilesAndVisits < ActiveRecord::Migration
   def self.up
     vk = SocialNetwork.find_by(name: 'vkontakte')
 
@@ -22,11 +22,13 @@ class MigrateVkontakteProfiles < ActiveRecord::Migration
 
         params = vkontakte_profile_params.merge(vkontakte_customer_params)
 
-        Profile.create!(
+        profile = Profile.create!(
           customer_id: customer_profile.customer_id,
           resource_type: 'VkontakteProfile',
           resource_attributes: params
         )
+
+        customer_profile.visits.update_all(profile_id: profile.id)
       end
     end
   end

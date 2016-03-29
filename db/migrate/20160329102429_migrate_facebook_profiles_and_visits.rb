@@ -1,9 +1,9 @@
-class MigrateFacebookProfiles < ActiveRecord::Migration
+class MigrateFacebookProfilesAndVisits < ActiveRecord::Migration
   def self.up
     facebook = SocialNetwork.find_by(name: 'facebook')
 
     if facebook
-      Customer::NetworkProfile.includes(:customer).where(social_network_id: facebook.id).each do |customer_profile|
+      Customer::NetworkProfile.includes(:customer, :visits).where(social_network_id: facebook.id).each do |customer_profile|
         facebook_profile_params = customer_profile.attributes.except(
           'id',
           'customer_id',
@@ -21,11 +21,13 @@ class MigrateFacebookProfiles < ActiveRecord::Migration
 
         params = facebook_profile_params.merge(facebook_customer_params)
 
-        Profile.create!(
+        profile = Profile.create!(
           customer_id: customer_profile.customer_id,
           resource_type: 'FacebookProfile',
           resource_attributes: params
         )
+
+        customer_profile.visits.update_all(profile_id: profile.id)
       end
     end
   end

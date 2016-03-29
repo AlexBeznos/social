@@ -1,4 +1,4 @@
-class MigrateTwitterProfiles < ActiveRecord::Migration
+class MigrateTwitterProfilesAndVisits < ActiveRecord::Migration
   def self.up
     twitter = SocialNetwork.find_by(name: 'twitter')
 
@@ -12,14 +12,16 @@ class MigrateTwitterProfiles < ActiveRecord::Migration
           'updated_at'
         )
 
-        twitter_customer_params = { name: customer_profile.customer.first_name }
+        twitter_customer_params = { 'name' => customer_profile.customer.first_name }
         params = twitter_profile_params.merge(twitter_customer_params)
 
-        Profile.create!(
+        profile = Profile.create!(
           customer_id: customer_profile.customer_id,
           resource_type: 'TwitterProfile',
           resource_attributes: params
         )
+
+        customer_profile.visits.update_all(profile_id: profile.id)
       end
     end
   end
