@@ -5,7 +5,7 @@ class GowifiPreviewsController < ApplicationController
 
   def show
     @auth = Auth.find(params[:auth_id])
-    @provider = @auth.name.to_s
+    @provider_name = @auth.name.to_s
     @place = Place.find_by_slug(params[:slug])
   end
 end
