@@ -117,11 +117,10 @@ class GowifiAuthController < ApplicationController
         auth.redirect_url
       end
 
-      if @place.scratchpad?
+      if @place.scratchpad? && auht.network?
         scratchpad_path(@place, url: url)
       else
         wifi_login_path(place, url)
-      end
     end
   end
 

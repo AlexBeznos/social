@@ -58,7 +58,7 @@ Rails.application.routes.draw do
 
   scope '/wifi' do
     get ':place_id/loyalty' => 'loyalty#index', as: :loyalty
-    get ':place_id/scratchpad', to: 'gowifi_scracthpad#show', as: :scratchpad  
+    post ':place_id/scratchpad', to: 'gowifi_scracthpad#show', as: :scratchpad  
 
     scope ':slug' do
       get '/login' => 'gowifi#show', as: :gowifi_place
