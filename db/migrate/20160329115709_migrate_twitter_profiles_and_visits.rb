@@ -3,7 +3,7 @@ class MigrateTwitterProfilesAndVisits < ActiveRecord::Migration
     twitter = SocialNetwork.find_by(name: 'twitter')
 
     if twitter
-      Customer::NetworkProfile.includes(:customer).where(social_network_id: twitter.id).each do |customer_profile|
+      Customer::NetworkProfile.includes(:customer, :visits).where(social_network_id: twitter.id).each do |customer_profile|
         twitter_profile_params = customer_profile.attributes.except(
           'id',
           'customer_id',

@@ -3,7 +3,7 @@ class MigrateVkontakteProfilesAndVisits < ActiveRecord::Migration
     vk = SocialNetwork.find_by(name: 'vkontakte')
 
     if vk
-      Customer::NetworkProfile.includes(:customer).where(social_network_id: vk.id).each do |customer_profile|
+      Customer::NetworkProfile.includes(:customer, :visits).where(social_network_id: vk.id).each do |customer_profile|
         vkontakte_profile_params = customer_profile.attributes.except(
           'id',
           'customer_id',
