@@ -13,6 +13,10 @@ class Customer::Visit < ActiveRecord::Base
     Auth::NETWORKS.values.include?(profile.resource_type.underscore.gsub(/\_profile/, ''))
   }
   # validate :ones_a_day_visit, unless: 'by_password'
+  # validates :network_profile, :place, presence: true, unless: :by_password
+  validates :profile_id, presence: true
+  validate :ones_a_day_visit
+
 
   after_create :calculate_reputation, unless: :by_password
 
@@ -20,10 +24,10 @@ class Customer::Visit < ActiveRecord::Base
 
   def ones_a_day_visit
     now = DateTime.now
-    visits =  Customer::Visit.joins(:profiles).where({
-      customer_network_profiles: {
-        social_network_id: network_profile.social_network_id,
-        uid: network_profile.uid
+    visits = Customer::Visit.joins(:profile).where({
+      profiles: {
+        resource_type: profile.resource_type,
+        resource_id: profile.resource_id
       },
       created_at: (now - now.hour.hours)..now,
       place_id: place_id
