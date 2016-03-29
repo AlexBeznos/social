@@ -1,0 +1,21 @@
+%article.fb-pv-photo
+  %header.fb-pv-phot__header
+    = image_tag('fb-user-photo.jpg', class: 'fb-pv-photo__user-photo')
+    %span.fb-pv-photo__user-name User Name
+    %span.fb-pv-photo__about-post done something
+    %br
+      %span.fb-pv-photo__adding-time 17 декабря 2015 р.
+      .fb-pv-photo__show-for
+  %p.fb-pv-photo__text
+    %span
+      = resource.message
+    = link_to resource.message_url, class: 'fb-pv-photo__link'
+  .fb-pv-photo__img-wrap
+    = image_tag(resource.image, class: 'fb-pv-photo__img')
+  .fb-pv-photo__options
+    %span.fb-pv-photo__like Like
+    %span.fb-pv-photo__comment Comment
+    %span.fb-pv-photo__share Share
+  .fb-pv-photo__comments.clear-fix
+    = image_tag('fb-user-photo.jpg', class: 'fb-pv-photo__comment-user-photo')
+    .fb-pv-photo__field Write a comment...

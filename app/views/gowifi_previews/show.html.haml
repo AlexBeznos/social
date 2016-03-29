@@ -1,0 +1,8 @@
+%body
+  .container
+    .vertical-center-row
+      .col-md-2-lg-1
+
+      = link_to 'Рассказать!', auth_url(@auth, @place), class: 'btn btn-md btn-default btn-success btn-block'
+      = render @provider, resource: @auth.resource
+      = link_to 'Нет, спасибо', gowifi_place_path, class: 'btn btn-md center-block'

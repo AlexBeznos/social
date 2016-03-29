@@ -1,0 +1,11 @@
+/*
+ *= require bootstrap
+ *= require_self
+ *= require_tree ./preview
+ */
+
+.clear-fix {
+  display: table;
+  content: "";
+  width: 100%;
+}

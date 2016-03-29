@@ -1,0 +1,127 @@
+.vk-post * {
+  box-sizing: border-box;
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #000;
+  font-size: 11px;
+  line-height: 160%;
+}
+
+.vk-post {
+  position: relative;
+  width: 597px;
+  padding: 10px 0 11px;
+  padding-left: 60px;
+  border: 1px solid #dae1e8;
+  border-left: 0;
+  border-right: 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.vk-post__post-img {
+  margin-bottom: 6px;
+  margin-top: 7px;
+  width: 100%;
+  min-height: 260px;
+  background: #ccc;
+}
+
+.vk-post__link {
+  color: #2B587A;
+}
+
+.vk-post__user-photo {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 50px;
+  height: 50px;
+  background: #ccc;
+}
+
+.vk-post__user-name {
+  margin: 0;
+  margin-bottom: 2px;
+  font-weight: bold;
+  line-height: 140%;
+  color: #2B587A;
+  font-size: 11px;
+}
+
+.vk-post__description {
+  margin: 0;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.vk-post__options--left-column {
+  float: left;
+}
+
+.vk-post__options--right-column {
+  float: right;
+}
+
+.vk-post__adding-time {
+  color: #999;
+}
+
+.vk-post__reply {
+  color: #2b587a;
+}
+
+.vk-post__actions {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.vk-post__action {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.vk-post__action--title {
+  color: #829baf;
+}
+
+.vk-post__action--quantity {
+  position: relative;
+  padding-left: 18px;
+  color: #7295b2;
+  font-weight: bold;
+}
+
+.vk-post__action--quantity::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 2px;
+  width: 15px;
+  height: 15px;
+  background: image-url('vk-icons.png') no-repeat 0px 3px;
+  opacity: 0.4;
+}
+
+.vk-post__action--quantity--share::before {
+  background-position: 0px -19px;
+}
+
+.vk-post__action--quantity--like::before {
+  background-position: 0px 3px;
+}
+
+@media screen and (max-width: 640px) {
+  .vk-post {
+    width: 397px;
+  }
+  .vk-post__post-img {
+    min-height: 159px;
+  }
+  .vk-post__options * {
+    font-size: 10px;
+  }
+  .vk-post__actions--share {
+    display: none;
+  }
+}
