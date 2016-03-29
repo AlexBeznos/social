@@ -72,7 +72,7 @@
   margin-top: 0px;
   width: 27px;
   height: 20px;
-  background: url('/images/fb-icons.png') no-repeat 0px -23px;
+  background: image-url('/images/fb-icons.png') no-repeat 0px -23px;
   vertical-align: top;
 }
 
@@ -83,7 +83,7 @@
   right: 0px;
   width: 10px;
   height: 10px;
-  background: url('/images/fb-icons.png') -3px -57px;
+  background: image-url('fb-icons.png') -3px -57px;
 }
 
 .fb-pv-photo__text {
@@ -127,7 +127,7 @@
   left: 0px;
   width: 18px;
   height: 18px;
-  background: url('/images/fb-icons.png') no-repeat;
+  background: image-url('fb-icons.png') no-repeat;
 }
 
 .fb-pv-photo__options span.fb-pv-photo__like::before {
@@ -174,7 +174,7 @@
   right: 9px;
   width: 47px;
   height: 16px;
-  background: url('/images/fb-icons.png') no-repeat 0px -174px;
+  background: image-url('fb-icons.png') no-repeat 0px -174px;
 }
 
 @media screen and (max-width: 570px) {
