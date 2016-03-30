@@ -1,8 +1,9 @@
 %article.tw-post
   %header.tw-post__header
     = image_tag('tw-user-photo.jpg', class: 'tw-post__author-photo')
-    %h2.tw-post__author-name Arts & Culture Trust
-    %span.tw-post__link-and-time @MuseumModernArt · 15 год.
+    %h2.tw-post__author-name= t(".name")
+    %span.tw-post__link-and-time
+      = "@username · #{t('.time')}"
 
   %p.tw-post__text
     %span

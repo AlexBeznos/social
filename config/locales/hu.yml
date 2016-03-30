@@ -342,3 +342,24 @@ hu:
       menu_items: 'Termékek / Szolgáltatások'
       polls: 'Szavazás'
       banners: 'Bannerek'
+  gowifi_previews:
+    show:
+      accept: "Elfogad"
+      reject: "Nem, köszönöm"
+    vkontakte:
+      name: "Felhasználónév"
+      time: "egy órája"
+      reply: "Válasz"
+      share: "Ossza meg"
+      like: "Mint"
+    twitter:
+      name: "Felhasználónév"
+      time: "15h"
+    facebook:
+      name: "Felhasználónév"
+      action: "közzétett egy fotót"
+      time: "1 órával ezelőtt"
+      like: "Mint"
+      comment: "Megjegyzés"
+      share: "Ossza meg"
+      write_comment: "Írj hozzászólást ..."

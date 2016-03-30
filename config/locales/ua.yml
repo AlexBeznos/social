@@ -344,3 +344,24 @@ ua:
       title: "Заклад %{place_name}"
     guests:
       title: "Top відвідувачів в %{place_name}"
+  gowifi_previews:
+    show:
+      accept: "Розповісти!"
+      reject: "Ні, дякую"
+    vkontakte:
+      name: "І'мя користувача"
+      time: "годину тому"
+      reply: "Відповісти"
+      share: "Поділитись"
+      like: "Мені подобається"
+    twitter:
+      name: "І'мя користувача"
+      time: "15год"
+    facebook:
+      name: "І'мя користувача"
+      action: "добавив фотографію"
+      time: "17 грудня 2015 р."
+      like: "Подобається"
+      comment: "Коментар"
+      share: "Поділитись"
+      write_comment: "Написати коментар ..."
