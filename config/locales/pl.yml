@@ -342,3 +342,24 @@ pl:
       menu_items: 'Produkty / Usługi'
       polls: 'Ankiety'
       banners: 'Banery'
+  gowifi_previews:
+    show:
+      accept: "Zaakceptować"
+      reject: "Nie, dziękuję"
+    vkontakte:
+      name: "Nazwa użytkownika"
+      time: "godzinę temu"
+      reply: "Odpowiadać"
+      share: "Dzielić"
+      like: "Lubić"
+    twitter:
+      name: "Nazwa użytkownika"
+      time: "15h"
+    facebook:
+      name: "Nazwa użytkownika"
+      action: "napisal zdjęcie"
+      time: "1 godzinę temu"
+      like: "Lubić"
+      comment: "Komentarz"
+      share: "Dzielić"
+      write_comment: "Napisz komentarz ..."
