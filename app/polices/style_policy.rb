@@ -21,7 +21,10 @@ class StylePolicy < ApplicationPolicy
       :text_color,
       :greating_color,
       :css,
-      :network_icons
+      :network_icons,
+      :line,
+      :line_background_color,
+      :line_background_transparency
     ]
   end
 end

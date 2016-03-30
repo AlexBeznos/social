@@ -49,6 +49,7 @@ gem 'kaminari-bootstrap'
 gem 'exception_notification'
 gem 'slack-notifier'
 
+gem 'rubocop', require: false
 # Validatiors
 gem 'file_validators'
 

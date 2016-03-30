@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322115447) do
+ActiveRecord::Schema.define(version: 20160328184540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -299,6 +299,8 @@ ActiveRecord::Schema.define(version: 20160322115447) do
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "line",                    default: false
+    t.string   "line_background_color",   default: "0, 0, 0, 0.5"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
