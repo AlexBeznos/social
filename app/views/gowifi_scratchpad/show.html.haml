@@ -1,2 +1,2 @@
-= image_tag( @item_image, class: "img-responsive" )
+= image_tag( @menu_item.image.path, class: "img-responsive" )
 .button-success= link_to "Submit", wifi_login_path(@place, @url)
