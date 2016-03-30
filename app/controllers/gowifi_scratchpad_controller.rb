@@ -4,10 +4,11 @@ class GowifiScratchpadController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
-    @place = Place.find_by_slug(params[:id])
-    @auth = params[:auth]
-    @menu_item = MenuItem.where(place_id: params[:id])
+    @place = Place.find_by_slug(params[:slug])
+    @auth = Auth.find(params[:auth])
+    @menu_item = @place.menu_items
                    .order("RANDOM()")
                    .first
   end
+
 end
