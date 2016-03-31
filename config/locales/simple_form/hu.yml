@@ -31,6 +31,7 @@ hu:
         display_other_banners: Mutasd mások bannerek a helyemben
         auth_default_lang: Hitelesítés alapértelmezett nyelv
         mfa: Többváltozós autentifіkatsіya
+        post_preview: Preview üzenetre
       user:
         first_name: Első neve
         last_name: Név

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328131328) do
+ActiveRecord::Schema.define(version: 20160330143659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,6 +230,7 @@ ActiveRecord::Schema.define(version: 20160328131328) do
     t.string   "auth_default_lang"
     t.string   "ssid"
     t.boolean  "mfa",                          default: false
+    t.boolean  "post_preview",                 default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
