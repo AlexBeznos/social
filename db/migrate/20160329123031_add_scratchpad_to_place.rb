@@ -1,5 +1,5 @@
-class AddScratchpadToPlace < ActiveRecord::Migration
+class AddScratchcardToPlace < ActiveRecord::Migration
   def change
-    add_column :places, :scratchpad, :boolean, default: false
+    add_column :places, :scratchcard, :boolean, default: false
   end
 end

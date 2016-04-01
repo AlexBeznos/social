@@ -61,7 +61,7 @@ Rails.application.routes.draw do
 
 
     scope ':slug' do
-      get '/scratchpad', to: 'gowifi_scratchpad#show', as: :scratchpad
+      get '/scratchcard', to: 'gowifi_scratchpad#show', as: :scratchpad
       get '/login' => 'gowifi#show', as: :gowifi_place
       patch '/poll_enter' => 'gowifi_auth#submit_poll'
       post '/by_password' => 'gowifi_auth#enter_by_password'

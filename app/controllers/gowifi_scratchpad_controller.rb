@@ -1,5 +1,5 @@
-class GowifiScratchpadController < ApplicationController
-  layout "gowifi_scratchpad"
+class GowifiScratchcardController < ApplicationController
+  layout "gowifi_scratchcard"
 
   skip_after_action :verify_authorized
 
