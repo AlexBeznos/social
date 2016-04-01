@@ -19,7 +19,7 @@
     = javascript_include_tag "wifi_enter"
     = javascript_include_tag "lib/scratchcard-standalone"
     = javascript_include_tag 'scratchcard'
-    -# = render 'shared/gowifi/style', place: @place, customer: @customer if @place.style
+    = render 'shared/gowifi/style', place: @place if @place.style
   %body
     .wrapper
       = render 'shared/flash'
@@ -27,3 +27,5 @@
         .col-xs-12.col-md-6.col-md-offset-3.scr-wrapper
           .text-center.menu_item
             = yield
+    :javascript
+      #{ raw @place.style.js_min if @place.style }
