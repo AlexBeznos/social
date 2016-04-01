@@ -27,12 +27,4 @@
         .col-xs-12.col-md-6.col-md-offset-3.scr-wrapper
           .text-center.menu_item
             = yield
-    %footer
-      .col-lg-2.col-sm-12.localization_links
-        = localization_links
-      .col-lg-8.col-sm-12.wifi_footer
-        %p
-          = t('wifi.footer')
-          %br
-            = link_to t('privacy_police.title'), page_path('privacy_policy')
-    = javascript_include_tag "wifi/#{@place.template}"
+  

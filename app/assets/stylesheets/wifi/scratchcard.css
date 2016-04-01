@@ -17,18 +17,22 @@
   margin-bottom: 10px;
   width: 200px;
   font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .scr-header {
   color:white;
 }
 .scr-wrapper {
   margin-top: 5%;
-  background-color: rgba(178, 107, 0, 0.49);
-  border:4px dotted #e5e5e5;
-	box-shadow: inset 0 -1px 0 0 #e5e5e5, inset 0 1px 0 0 #e5e5e5, 0 1px 0 0 #e5e5e5, 0 -1px 0 0 #e5e5e5;
+  /*background-color: rgba(178, 107, 0, 0.49);
+
+	box-shadow: inset 0 -1px 0 0 #e5e5e5, inset 0 1px 0 0 #e5e5e5, 0 1px 0 0 #e5e5e5, 0 -1px 0 0 #e5e5e5;*/
 	margin-bottom: 1px;
+  padding-top: 40px;
 }
 #scrcard {
+  border:8px dotted #e5e5e5;
   visibility: hidden;
   display: inline;
 }
