@@ -230,7 +230,7 @@ ActiveRecord::Schema.define(version: 20160329123031) do
     t.string   "auth_default_lang"
     t.string   "ssid"
     t.boolean  "mfa",                          default: false
-    t.boolean  "scratchpad",                   default: false
+    t.boolean  "scratchcard",                  default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

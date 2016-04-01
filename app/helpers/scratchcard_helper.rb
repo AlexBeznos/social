@@ -1,4 +1,4 @@
-module ScratchpadHelper
+module ScratchcardHelper
   def succeed_scratch_path(place, auth)
       url = if place.loyalty_program && cookies[:customer]
         loyalty_url(place, auth: auth.id)

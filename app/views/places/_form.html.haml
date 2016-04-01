@@ -12,8 +12,10 @@
   = f.input :active, as: :boolean
   = f.input :stocks_active, as: :boolean
   = f.input :loyalty_program, as: :boolean
-  = f.input :scratchcard, as: :boolean
-
+  - if @place.menu_items.any?
+    = f.input :scratchcard, as: :boolean
+  - else
+    = t("scratchcard.no_menu_items")
   -# = f.input :display_my_banners, as: :boolean
   -# = f.input :display_other_banners, as: :boolean
   = f.input :mfa, as: :boolean
