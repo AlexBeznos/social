@@ -12,4 +12,14 @@ class MenuItem < ActiveRecord::Base
 
   scope :pagination, -> (page_params) { page(page_params).per(3) }
 
+  after_destroy :disable_place_scratchcard
+
+  private
+
+  def disable_place_scratchcard
+    if place.menu_items.empty?
+      place.update(scratchcard: false)
+    end
+  end
+
 end
