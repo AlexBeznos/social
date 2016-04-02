@@ -31,11 +31,8 @@ hu:
         display_other_banners: Mutasd mások bannerek a helyemben
         auth_default_lang: Hitelesítés alapértelmezett nyelv
         mfa: Többváltozós autentifіkatsіya
-<<<<<<< HEAD
         scratchcard: "Kaparós sorsjegy"
-=======
         post_preview: Preview üzenetre
->>>>>>> 064c4cea6f8e4f114f06955252656a76958103e1
       user:
         first_name: Első neve
         last_name: Név

@@ -31,11 +31,8 @@
         display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում
         auth_default_lang: Նույնականացման լռելյայն լեզու
         mfa: Multi-Factor իսկությունը
-<<<<<<< HEAD
         scratchcard: "Scratchcard"
-=======
         post_preview: նախադիտում գրառումը
->>>>>>> 064c4cea6f8e4f114f06955252656a76958103e1
       user:
         first_name: Անուն
         last_name: Ազգանուն
