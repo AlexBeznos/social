@@ -25,6 +25,15 @@ RSpec.describe Place do
 
   it { is_expected.to have_one(:style).dependent(:destroy) }
 
+  describe "when enables scratchcard" do
+    let(:place){ create :place }
+
+    it "add errors to scratchcard attr" do
+      place.update(scratchcard: true)
+      expect(place).to have(1).error_on(:scratchcard)
+    end
+  end
+
   describe 'constants' do
     it 'matches DOMAIN_LIST' do
       expect(Place::DOMAIN_LIST).to match([ "gofriends.com.ua", "go-friends.ru", "gofriends.by", "gofriends.kz" ])
