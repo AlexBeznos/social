@@ -346,3 +346,24 @@ ru:
       menu_items: 'Товары/Услуги'
       polls: 'Опросы'
       banners: 'Баннеры'
+  gowifi_previews:
+    show:
+      accept: "Рассказать!"
+      reject: "Нет, спасибо"
+    vkontakte:
+      name: "Имя Пользователя"
+      time: "час назад"
+      reply: "Ответить"
+      share: "Поделиться"
+      like: "Мне нравится"
+    twitter:
+      name: "Имя Пользователя"
+      time: "15ч"
+    facebook:
+      name: "Имя Пользователя"
+      action: "добавил фотографию"
+      time: "17 декабря 2015 р."
+      like: "Нравится"
+      comment: "Комментарий"
+      share: "Поделиться"
+      write_comment: "Написать комментарий ..."

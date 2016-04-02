@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160329123031) do
+=======
+ActiveRecord::Schema.define(version: 20160330143659) do
+>>>>>>> 064c4cea6f8e4f114f06955252656a76958103e1
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,7 +234,11 @@ ActiveRecord::Schema.define(version: 20160329123031) do
     t.string   "auth_default_lang"
     t.string   "ssid"
     t.boolean  "mfa",                          default: false
+<<<<<<< HEAD
     t.boolean  "scratchcard",                  default: false
+=======
+    t.boolean  "post_preview",                 default: false
+>>>>>>> 064c4cea6f8e4f114f06955252656a76958103e1
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

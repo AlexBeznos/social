@@ -344,3 +344,24 @@
       menu_items: 'Ապրանքներ / Ծառայություններ'
       polls: 'Հարցումներ'
       banners: 'Բաններներ'
+  gowifi_previews:
+    show:
+      accept: "Ընդունել"
+      reject: "Ոչ, շնորհակալություն"
+    vkontakte:
+      name: "Օգտագործողի անունը"
+      time: "մեկ ժամ առաջ"
+      reply: "պատասխանել"
+      share: "բաժնետոմս"
+      like: "նման"
+    twitter:
+      name: "Օգտագործողի անունը"
+      time: "15h"
+    facebook:
+      name: "Օգտագործողի անունը"
+      action: "տեղադրված է լուսանկար"
+      time: "1 ժամ առաջ"
+      like: "նման"
+      comment: "մեկնաբանություն"
+      share: "բաժնետոմս"
+      write_comment: "Գրեք մեկնաբանություն ..."

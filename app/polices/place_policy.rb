@@ -37,7 +37,8 @@ class PlacePolicy < ApplicationPolicy
       :domen_url,
       :auth_default_lang,
       :ssid,
-      :mfa
+      :mfa,
+      :post_preview
     ]
   end
 

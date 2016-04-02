@@ -5,7 +5,7 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    %title GoFriends - Больше друзей в вашем заведении
+    %title GoFriends - Grow Your Business
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
     / Le HTML5 shim, for IE6-8 support of HTML elements
@@ -25,25 +25,21 @@
       .container
         .row
           .col-sm-12.header_block
-            %a.logo{:href => "/"}
+            %a.logo.us{href: "/"}
             .top_socials.pull-right
               .socials
-                .socials_item
-                  %a.icon-vkontakte{:href => "#1", :target => "_blank"}
                 .socials_item
                   %a.icon-facebook{:href => "#2", :target => "_blank"}
                 .socials_item
                   %a.icon-linkedin-1{:href => "#3", :target => "_blank"}
             .top_form_block.clear-fix
-              .top_phone +38(063) 010-17-97
+              .top_phone
               .top_form
-                %a{ href: '#bottom_form'}
-                  %button.btn.btn-default Get call
         .row
           .top_menu
             .enter
               = link_to login_path do
-                Вход
+                Login
                 %span.icon-login
             %button.navbar-toggle{"data-target" => "#responsive-menu", "data-toggle" => "collapse", :type => "button"}
               %span.icon-menu
@@ -150,7 +146,7 @@
               = image_tag 'landing/benefit_2.png'
             .benefit_title.text-center Connect with the Customer
             %hr.line/
-            .benefit_description.text-center - Manage customer relations<br>- keep track of birthdays<br>- analyze top customers and target user groups
+            .benefit_description.text-center Manage customer relations, keep track of birthdays, analyze top customers, and target user groups.
           .col-sm-3
             .benefit_img.text-center
               = image_tag 'landing/benefit_3.png'
@@ -180,16 +176,16 @@
                 .form-group.col-sm-12
                   %button.btn.btn-default.btn-lg.pull-right{:name => "form-submit", :type => "submit"} Send
           .col-md-8.col-sm-6.col-xs-12.form_content.pull-right
-            %span.form_description Grow Your
+            %span.form_description Customer Traffic
             %br/
-            %span.form_description_2 Customer Traffic
+            %span.form_description_2 Grow Your
             %br/
     %section#business
       .container
         .row
           .col-sm-12
             .title.text-center
-              %h3 Our solution suitable for any kind of bussines
+              %h3 Suitable for all types of businesses
         .row
           .column_business.col-sm-1
             .business_img.text-center
@@ -577,11 +573,10 @@
                 %br +77015552844
     %footer.footer
       .container
-        %p.footer__address Address <br> Ukraine, Kiev <br> Veresneva 24
+        %p.footer__address Tulsa, Oklahoma
         %p.footer__copyright
           %b 2015 © GoFriends LLC
         .footer__social-icons-wrap
-          %a.footer__social-icon.footer__social-icon--vk{href: "#"}
           %a.footer__social-icon.footer__social-icon--fb{href: "#"}
           %a.footer__social-icon.footer__social-icon--tw{href: "#"}
     %a#back-to-top.btn.btn-primary.btn-lg.back-to-top{"data-placement" => "left", "data-toggle" => "tooltip", :href => "#", :role => "button", :title => "Push to get to the top"}
