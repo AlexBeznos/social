@@ -31,11 +31,8 @@ pl:
         display_other_banners: Pokaż banery innych ludzi na moim miejscu
         auth_default_lang: Domyślnym językiem uwierzytelniania
         mfa: Wieloczynnikowa autentifіkatsіya
-<<<<<<< HEAD
         scratchcard: "Zdrapka"
-=======
         post_preview: Podgląd postu
->>>>>>> 064c4cea6f8e4f114f06955252656a76958103e1
       user:
         first_name: Imię
         last_name: Nazwisko
