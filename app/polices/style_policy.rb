@@ -22,9 +22,7 @@ class StylePolicy < ApplicationPolicy
       :greating_color,
       :css,
       :network_icons,
-      :line,
-      :line_background_color,
-      :line_background_transparency
+      :line
     ]
   end
 end

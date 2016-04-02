@@ -18,9 +18,7 @@
     = image_tag @style.background.url, height: 100
   = f.input :background, as: :file
   = f.input :css, as: :text
-  = f.input :line, as: :boolean
-  - if @style.line.present?
-    = f.input :line_background_color, input_html: { class: 'line_minicolors' } 
+  = f.input :line, input_html: { class: 'line_minicolors' }
 
   = f.button :submit
   - if @style.id && policy(@style).destroy?

@@ -5,10 +5,6 @@ class Style < ActiveRecord::Base
 
   accepts_nested_attributes_for :social_network_icons, allow_destroy: true
 
-  # has_attached_file :background,
-  #                   :storage => :s3,
-  #                   :path => "/style/bachground/:id/:style.:extension",
-  #                   :url => ":s3_domain_url"
   mount_uploader :background, BackgroundUploader, mount_on: :background_file_name
 
   validates :text_color, :greating_color, css_colour: true, allow_blank: true

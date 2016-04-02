@@ -1,9 +1,5 @@
 class SocialNetworkIcon < ActiveRecord::Base
 
-  # has_attached_file :icon,
-  #                   :storage => :s3,
-  #                   :path => "/style/icons/:id/:style.:extension",
-  #                   :url => ":s3_domain_url"
   mount_uploader :icon, IconUploader, mount_on: :icon_file_name
 
   belongs_to :style
