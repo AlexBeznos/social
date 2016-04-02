@@ -30,6 +30,7 @@ ua:
         display_other_banners: Показувати чужі банери в моєму закладі
         auth_default_lang: Стандартная мова аутентифікації
         mfa: Мультифакторна аутентифікація
+        scratchcard: "Скретчкартка"
       user:
         first_name: Ім`я
         last_name: Прізвище

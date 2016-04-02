@@ -1,4 +1,8 @@
 ua:
+  gowifi:
+    scratchcard:
+      title: 'Скретчкартка'
+      text: 'Зітри, щоб виграти'
   pundit:
     default: У Вас немае доступу до цієї строрінки
   authlogic:

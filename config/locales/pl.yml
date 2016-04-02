@@ -1,4 +1,8 @@
 pl:
+  gowifi:
+    scratchcard:
+      title: 'Zdrapka'
+      text: Przetrzyj wygrać'
   pundit:
     default: Nie masz dostępu do tej strony
   authlogic:

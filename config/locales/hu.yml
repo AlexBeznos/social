@@ -1,4 +1,8 @@
 hu:
+  gowifi:
+    scratchcard:
+      title: 'Kaparós sorsjegy'
+      text: 'Wipe nyerni'
   pundit:
     default: Nem kell hozzáférése ehhez az oldalhoz
   authlogic:

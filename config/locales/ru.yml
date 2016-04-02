@@ -1,4 +1,8 @@
 ru:
+  gowifi:
+    scratchcard:
+      title: 'Cкретчкарта'
+      text: 'Сотри, чтобы выиграть'
   pundit:
     default: У вас нет доступа к этой странице
   authlogic:

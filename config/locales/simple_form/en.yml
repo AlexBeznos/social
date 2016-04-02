@@ -30,6 +30,7 @@ en:
         display_my_banners: Display my banners in other places
         display_other_banners: Display other's banners in my place
         auth_default_lang: Authentication default language
+        scratchcard: "Scratchcard"
         mfa: Multi-factor authentication
       user:
         first_name: First name

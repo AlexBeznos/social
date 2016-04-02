@@ -1,4 +1,8 @@
 ﻿am:
+  gowifi:
+    scratchcard:
+      title: 'Scratchcard'
+      text: 'Սրբել է հաղթել'
   pundit:
     default: Դուք չունեք թույլտվություն նշված էջին
   authlogic:
