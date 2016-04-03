@@ -110,17 +110,10 @@ class GowifiAuthController < ApplicationController
 
       gowifi_place_path(place)
     else
-
-      url = if @place.loyalty_program && @customer
-        loyalty_url(@place, auth: auth.id)
-      else
-        auth.redirect_url
-      end
-
       if @place.scratchcard? && auth.network?
         scratchcard_path(@place, auth_id: auth.id)
       else
-        wifi_login_path(place, url)
+        wifi_login_path(place, login_url(@place, auth, @customer))
       end
     end
   end

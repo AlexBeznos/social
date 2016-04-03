@@ -1,6 +1,0 @@
-= content_for :title, t("scratchcard.title")
-
-
-= image_tag(@menu_item.image.url, { class: "img-responsive img-rounded ", id: "scrcard" })
-
-= link_to t("scratchcard.ready"), succeed_scratch_path(@place, @auth), class: "btn scr-button"

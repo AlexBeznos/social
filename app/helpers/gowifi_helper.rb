@@ -10,4 +10,12 @@ module GowifiHelper
   def auth_path(place, auth)
     "/auth/#{auth.name}?place=#{place.slug}"
   end
+
+  def login_url(place, auth, customer)
+    if place.loyalty_program && customer
+      loyalty_url(place, auth: auth.id)
+    else
+      auth.redirect_url
+    end
+  end
 end
