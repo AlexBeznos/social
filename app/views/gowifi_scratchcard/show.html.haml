@@ -3,4 +3,4 @@
 
 = image_tag(@menu_item.image.url, { class: "img-responsive img-rounded ", id: "scrcard" })
 
-= link_to t("scratchcard.ready"), wifi_login_path(place, login_url(@place, auth, cookies[:customer])), class: "btn scr-button"
+= link_to t("scratchcard.ready"), wifi_login_path(place, login_url(@place, @auth, cookies[:customer])), class: "btn scr-button"
