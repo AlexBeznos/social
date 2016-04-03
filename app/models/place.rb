@@ -77,7 +77,7 @@ class Place < ActiveRecord::Base
 
   def scratchcard_items_presence
     if scratchcard && menu_items.empty?
-      errors.add(:scratchcard, "models.errors.validations.scratchcard_no_items_error")
+      errors.add(:scratchcard, I18n.t("models.errors.validations.scratchcard_no_items_error"))
     end
   end
 

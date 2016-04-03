@@ -3,6 +3,7 @@ pl:
     scratchcard:
       title: 'Zdrapka'
       text: Przetrzyj wygrać'
+      ready: "gotowy!"
   pundit:
     default: Nie masz dostępu do tej strony
   authlogic:

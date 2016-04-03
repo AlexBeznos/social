@@ -3,6 +3,7 @@ ru:
     scratchcard:
       title: 'Cкретчкарта'
       text: 'Сотри, чтобы выиграть'
+      ready: "Готово!"
   pundit:
     default: У вас нет доступа к этой странице
   authlogic:
