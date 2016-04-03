@@ -9,3 +9,4 @@
         not_valid_css_color: ոչ իրական css գույն
         not_valid_css_websafe_color: не веб безопасный цвет
         not_valid_css_hexidecimal_color: ոչ իրական hexidecimal գույն
+        scratchcard_no_items_error: "Դուք պետք է առնվազն մեկ լոյալության իրը, որը հնարավորություն կտա scratchcard:"

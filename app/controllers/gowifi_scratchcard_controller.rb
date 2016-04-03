@@ -5,7 +5,7 @@ class GowifiScratchcardController < ApplicationController
 
   def show
     @place = Place.find_by_slug(params[:slug])
-    @auth = Auth.find(params[:auth])
+    @auth = Auth.find(params[:auth_id])
     @menu_item = @place.menu_items
                    .order("RANDOM()")
                    .first

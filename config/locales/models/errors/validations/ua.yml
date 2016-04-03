@@ -9,3 +9,4 @@ ua:
         not_valid_css_color: не справжній css колір
         not_valid_css_websafe_color: не веб безпечний колір
         not_valid_css_hexidecimal_color: не справжній hexidecimal колір
+        scratchcard_no_items_error: "Вам потрібен я мінімум один товар/послуга для того щоб активувати скретчкартку."

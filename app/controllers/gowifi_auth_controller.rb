@@ -118,7 +118,7 @@ class GowifiAuthController < ApplicationController
       end
 
       if @place.scratchcard? && auth.network?
-        scratchcard_path(@place, auth: auth.id)
+        scratchcard_path(@place, auth_id: auth.id)
       else
         wifi_login_path(place, url)
       end
