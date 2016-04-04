@@ -75,10 +75,9 @@ class Place < ActiveRecord::Base
     self.wifi_username, self.wifi_password = SecureRandom.hex(6), SecureRandom.hex(6)
   end
 
-  def scratchcard_items_presence
+  def scratchcard_items_presence  
     if scratchcard && menu_items.empty?
       errors.add(:scratchcard, I18n.t("models.errors.validations.scratchcard_no_items_error"))
-    end
+    end  
   end
-
 end
