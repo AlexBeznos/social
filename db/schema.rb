@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328184540) do
+ActiveRecord::Schema.define(version: 20160330143659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160328184540) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "step",          default: 0
+    t.integer  "state"
   end
 
   add_index "auths", ["place_id"], name: "index_auths_on_place_id", using: :btree
@@ -172,6 +173,18 @@ ActiveRecord::Schema.define(version: 20160328184540) do
   add_index "menu_items_orders", ["menu_item_id"], name: "index_menu_items_orders_on_menu_item_id", using: :btree
   add_index "menu_items_orders", ["order_id"], name: "index_menu_items_orders_on_order_id", using: :btree
 
+  create_table "notifications", force: true do |t|
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "user_id"
+    t.integer  "category"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "notifications", ["source_id", "source_type"], name: "index_notifications_on_source_id_and_source_type", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+
   create_table "orders", force: true do |t|
     t.integer  "customer_id"
     t.integer  "place_id"
@@ -217,6 +230,7 @@ ActiveRecord::Schema.define(version: 20160328184540) do
     t.string   "auth_default_lang"
     t.string   "ssid"
     t.boolean  "mfa",                          default: false
+    t.boolean  "post_preview",                 default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

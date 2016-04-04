@@ -1,0 +1,19 @@
+%article.tw-post
+  %header.tw-post__header
+    = image_tag('tw-user-photo.jpg', class: 'tw-post__author-photo')
+    %h2.tw-post__author-name= t(".name")
+    %span.tw-post__link-and-time
+      = "@username · #{t('.time')}"
+
+  %p.tw-post__text
+    %span
+      = resource.message
+    = link_to resource.message_url, class: 'tw-post__link'
+
+  = image_tag(resource.image, class: 'tw-post__img')
+
+  .tw-post__options
+    .tw-post__answer 41
+    .tw-post__retweet 41
+    .tw-post__like 41
+    .tw-post__more

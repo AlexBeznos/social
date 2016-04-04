@@ -74,6 +74,7 @@ gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 
 # Other
+gem 'aasm', '4.9.0'
 gem 'authlogic'
 gem 'pundit'
 gem 'lograge'
@@ -94,7 +95,9 @@ group :development, :test do
   gem 'faker'
   gem 'byebug'
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'timecop'
+  gem 'quiet_assets'
 end
 
 group :test do

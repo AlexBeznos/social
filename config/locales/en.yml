@@ -298,3 +298,24 @@ en:
       title: "Place %{place_name}"
     guests:
       title: "Top Visitors in %{place_name}"
+  gowifi_previews:
+    show:
+      accept: "Accept"
+      reject: "No, thanks"
+    vkontakte:
+      name: "User Name"
+      time: "one hour ago"
+      reply: "Reply"
+      share: "Share"
+      like: "Like"
+    twitter:
+      name: "User Name"
+      time: "15h"
+    facebook:
+      name: "User Name"
+      action: "posted a photo"
+      time: "1 hour ago"
+      like: "Like"
+      comment: "Comment"
+      share: "Share"
+      write_comment: "Write a comment ..."

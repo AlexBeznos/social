@@ -1,0 +1,11 @@
+en:
+  models:
+    notifications:
+      name: "Notifications"
+      approve: "Approve"
+      unapprove: "Unapprove"
+      status:
+        approved: "Approved"
+        unapproved: "Unapproved"
+        pending: "Pending"
+      no_notifications: "You have no notifications."
