@@ -18,6 +18,7 @@ ua:
         reputation_active: "Нарахування бонусів"
         score_amount: "Розмір бонусу"
         loyalty_program: Програма лояльності
+        scratchcard: "Скретчкартка"
         city: Місто
         display_my_banners: Показувати мої банери в інших закладах
         display_other_banners: Показувати чужі банери в моєму закладі

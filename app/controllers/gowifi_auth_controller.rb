@@ -110,15 +110,11 @@ class GowifiAuthController < ApplicationController
 
       gowifi_place_path(place)
     else
-      cookies.delete(:step)
-
-      url = if @place.loyalty_program && @customer
-        loyalty_url(@place, auth: auth.id)
+      if @place.scratchcard? && auth.network?
+        scratchcard_path(@place, auth_id: auth.id)
       else
-        auth.redirect_url
+        wifi_login_path(place, login_url(@place, auth, @customer))
       end
-
-      wifi_login_path(place, url)
     end
   end
 

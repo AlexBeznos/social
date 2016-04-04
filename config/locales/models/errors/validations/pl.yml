@@ -9,3 +9,4 @@ pl:
         not_valid_css_color: nie prawdziwy kolor css
         not_valid_css_websafe_color: nie internetowej bezpieczne kolor
         not_valid_css_hexidecimal_color: nie prawdziwe kolor szesnastkowy
+        scratchcard_no_items_error: "W przeglądarce musi być co najmniej jeden element lojalnościowy włączyć zdrapkę."

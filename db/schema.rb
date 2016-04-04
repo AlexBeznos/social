@@ -230,6 +230,7 @@ ActiveRecord::Schema.define(version: 20160330143659) do
     t.string   "auth_default_lang"
     t.string   "ssid"
     t.boolean  "mfa",                          default: false
+    t.boolean  "scratchcard",                  default: false
     t.boolean  "post_preview",                 default: false
   end
 

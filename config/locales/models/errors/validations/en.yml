@@ -9,3 +9,4 @@ en:
         not_valid_css_color: is not a valid css colour
         not_valid_css_websafe_color: is not a websafe css colour
         not_valid_css_hexidecimal_color: is not a valid hexadecimal colour
+        scratchcard_no_items_error: "You need at least one loyalty item to enable scratchcard."

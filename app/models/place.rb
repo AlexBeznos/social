@@ -34,6 +34,7 @@ class Place < ActiveRecord::Base
   validates :name, :template, presence: true
   validates :logo, file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
                    file_size: { less_than_or_equal_to: 10.megabytes }
+  validate :scratchcard_items_presence
 
   after_validation :geocode, if: :city_changed?
   before_create :set_wifi_username_password
@@ -72,5 +73,11 @@ class Place < ActiveRecord::Base
 
   def set_wifi_username_password
     self.wifi_username, self.wifi_password = SecureRandom.hex(6), SecureRandom.hex(6)
+  end
+
+  def scratchcard_items_presence  
+    if scratchcard && menu_items.empty?
+      errors.add(:scratchcard, I18n.t("models.errors.validations.scratchcard_no_items_error"))
+    end  
   end
 end

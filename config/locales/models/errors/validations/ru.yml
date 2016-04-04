@@ -9,3 +9,4 @@ ru:
         not_valid_css_color: не настоящий css цвет
         not_valid_css_websafe_color: не веб безопасный цвет
         not_valid_css_hexidecimal_color: не настоящий hexadecimal цвет
+        scratchcard_no_items_error: "Вам нужна как минимум один товар/услуга для того, чтобы включить скретчкарту."

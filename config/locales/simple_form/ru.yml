@@ -31,6 +31,7 @@ ru:
         display_other_banners: Показывать чужие баннеры в моем заведении
         auth_default_lang: Язык для аутентификации по умолчанию
         mfa: Мультифакторная аутентификация
+        scratchcard: "Скретчкарта"
         post_preview: Предварительный просмотр поста
       user:
         first_name: Имя

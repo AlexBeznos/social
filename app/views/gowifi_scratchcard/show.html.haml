@@ -1,0 +1,6 @@
+= content_for :title, t("gowifi.scratchcard.title")
+
+
+= image_tag(@menu_item.image.url, { class: "img-responsive img-rounded ", id: "scrcard" })
+
+= link_to t("gowifi.scratchcard.ready"), wifi_login_path(@place, login_url(@place, @auth, cookies[:customer])), class: "btn scr-button"

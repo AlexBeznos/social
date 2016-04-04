@@ -1,4 +1,9 @@
 en:
+  gowifi:
+    scratchcard:
+      title: 'Scratchcard'
+      text: 'Scratch to win'
+      ready: 'Ready!'
   pundit:
     default: You are not authorized to perform this action
   authlogic:

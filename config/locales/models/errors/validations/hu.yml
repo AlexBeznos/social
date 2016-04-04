@@ -9,3 +9,4 @@ hu:
         not_valid_css_color: nem egy igazi színes css
         not_valid_css_websafe_color: nem biztonságos webes színek
         not_valid_css_hexidecimal_color: nem valós hexadecimális
+        scratchcard_no_items_error: "Be kell legalább egy hűség tételt, hogy kaparós sorsjegy."

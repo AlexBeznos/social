@@ -33,6 +33,7 @@ class PlacePolicy < ApplicationPolicy
       :display_other_banners,
       :display_my_banners,
       :loyalty_program,
+      :scratchcard,
       :domen_url,
       :auth_default_lang,
       :ssid,
