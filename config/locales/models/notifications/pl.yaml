@@ -1,0 +1,11 @@
+pl:
+  models:
+    notifications:
+      name: "Powiadomienia"
+      approve: "Zatwierdzać"
+      unapprove: "cofniesz zatwierdzenie"
+      status:
+        approved: "Zatwierdzony"
+        unapproved: "Niezatwierdzony"
+        pending: "spodziewany"
+      no_notifications: "Nie masz żadnych powiadomień ."

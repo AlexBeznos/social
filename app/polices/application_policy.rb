@@ -24,7 +24,7 @@ class ApplicationPolicy
     def user_ids
       user.place_owners.pluck(:id)
     end
-    
+
     def all_owners_places_ids
       Place.where(user_id: all_user_ids)
     end

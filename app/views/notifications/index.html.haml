@@ -1,0 +1,36 @@
+= content_for :navigation, 'false'
+= content_for :page_stylesheet, 'dashboard/settings'
+= content_for :title, t("models.notifications.name")
+
+.panel-info.panel-adjusted
+  .panel-heading
+    %h1= t("models.notifications.name")
+  .panel-body
+    .row
+      - if @sources.any?
+        - @sources.each do |source|
+          .col-md-6
+            .panel.panel-default
+              .panel-heading
+                .panel-title
+                  %strong.text-primary= t("models.auths.methods.#{source.resource.class::NAME}").capitalize
+                  .row
+                    .col-xs-6
+                      .text-left.font-medium= t("models.places.attrs.name") + " :"
+                    .col-xs-6
+                      .text-right= link_to source.place.name, place_path(source.place)
+                  .row
+                    .col-xs-6
+                      .text-left.font-medium=  t("models.places.attrs.owner") + " :"
+                    .col-xs-6
+                      .text-right= link_to source.place.user.full_name, user_path(source.place.user)
+              .panel-body.text-left
+                = render partial: "#{source.resource.class::NAME}_auths/details", locals: { resource:source.resource }
+              .panel-footer
+              - if policy(source.notification).approve?
+                = link_to t("models.notifications.approve"), approve_user_notification_path(source.notification.user, source.notification), method: 'PATCH', class: 'btn btn-success btn-block'
+                = link_to t("models.notifications.unapprove"), unapprove_user_notification_path(source.notification.user, source.notification), method: 'PATCH', class: 'btn btn-danger btn-block'
+              - elsif policy(source.place).update?
+                = link_to t("helpers.submit.edit"), edit_place_auth_path(source.place, source), class: 'btn btn-primary btn-block'
+      - else
+        = t("models.notifications.no_notifications")

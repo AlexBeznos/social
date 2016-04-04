@@ -1,0 +1,11 @@
+ru:
+  models:
+    notifications:
+      name: "Оповещения"
+      approve: "Одобрить"
+      unapprove: "Неодобрить"
+      status:
+        approved: "Одобрено"
+        unapproved: "Неодобрено"
+        pending: "Ожидается"
+      no_notifications: "У вас нет оповещений."
