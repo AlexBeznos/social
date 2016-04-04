@@ -33,8 +33,9 @@ $(document).ready(function() {
     });
   });
 
-  $('.line_minicolors').minicolors({
+  $('.line_colors').minicolors({
       theme: 'bootstrap',
+      format: 'rgb',
       opacity: true
   });
 });

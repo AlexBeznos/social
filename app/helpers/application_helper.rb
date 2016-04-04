@@ -17,10 +17,6 @@ module ApplicationHelper
     end
   end
 
-  def render_line_minicolors(place)
-    style.id.line
-  end
-
   def fa_plus_minus(bool)
     fa_icon( bool ? 'plus' : 'minus' )
   end
