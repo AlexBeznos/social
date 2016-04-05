@@ -33,12 +33,11 @@ class PlacesController < ApplicationController
     authorize @place
 
     date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
-    @visits_by_date_without_join = @place.visits.by_date(date)
-    @visits_by_date = @place.visits.joins([:customer, :network_profile => :social_network]).by_date(date)
-    @visits_this_week = @place.visits.joins(:customer).by_date_from_to(date - 1.week, date)
-    @visits_this_month = @place.visits.joins(:customer).by_date_from_to(date - 1.month, date)
+    @visits_by_date = @place.visits.by_date(date)
+    @visits_this_week = @place.visits.by_date_from_to(date - 1.week, date)
+    @visits_this_month = @place.visits.by_date_from_to(date - 1.month, date)
 
-    @number_of_friends_by_day = get_number_of_friends @visits_by_date_without_join
+    @number_of_friends_by_day = get_number_of_friends @visits_by_date
     @number_of_friends_by_week = get_number_of_friends @visits_this_week
     @number_of_friends_by_month = get_number_of_friends @visits_this_month
 
@@ -59,7 +58,7 @@ class PlacesController < ApplicationController
     authorize @place
 
     date_from = params[:date] ? params[:date].to_date : Time.now
-    @customers = @place.get_customers.by_birthday(date_from, date_from + 1.month).uniq
+    @customers = nil
   end
 
   def settings
@@ -94,12 +93,13 @@ class PlacesController < ApplicationController
   end
 
   private
+
   def set_place
     @place = Place.find_by_slug(params[:id])
   end
 
   def get_number_of_friends(records)
-    number = records.map { |visit| visit.network_profile }
+    number = records.map { |visit| visit.profile.try(:resource) }
                     .uniq
                     .map { |np| np.try(:friends_count) }
                     .inject{ |sum,x| sum.to_i + x.to_i }
