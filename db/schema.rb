@@ -313,7 +313,7 @@ ActiveRecord::Schema.define(version: 20160330143659) do
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "line_colors",             default: "0, 0, 0, 0.0"
+    t.string   "line_colors",             default: "rgba(0, 0, 0, 0.0)"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
