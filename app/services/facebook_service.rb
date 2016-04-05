@@ -8,8 +8,15 @@ class FacebookService
     @profile = hash[:profile]
   end
 
-  def self.get_friends_number(profile)
-    graph = Koala::Facebook::API.new(profile.access_token)
+  def self.get_token(credentials)
+    {
+      'provider' => credentials['provider'],
+      'token' => credentials['credentials']['token']
+    }
+  end
+
+  def self.get_friends_number(token)
+    graph = Koala::Facebook::API.new(token)
     friends = graph.get_connections('me', 'friends')
     friends.raw_response['summary']['total_count']
   end
