@@ -86,6 +86,7 @@ class GowifiAuthController < ApplicationController
   end
 
   private
+
   def poll_params
     params.require(:poll_auth).permit(:answer_ids)
   end
