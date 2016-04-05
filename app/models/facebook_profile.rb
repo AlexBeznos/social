@@ -3,6 +3,8 @@ class FacebookProfile < ActiveRecord::Base
 
   has_one :profile, as: :resource
 
+  validates :uid, presence: true
+
   def self.prepare_params(credentials)
     {
       first_name: credentials['info']['first_name'],
