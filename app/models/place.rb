@@ -52,6 +52,7 @@ class Place < ActiveRecord::Base
   end
 
   private
+  
   def set_wifi_link_freshnes
     if wifi_settings_link_not_fresh
       delete_settings_archive

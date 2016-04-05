@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :statistics do
+    resources :orders, only: [:show]
+  end
+
   resources :users do
     resources :notifications, only: [:index] do
         member do
