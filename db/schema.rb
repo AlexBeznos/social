@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160329135809) do
   add_index "customer_visits", ["customer_id"], name: "index_customer_visits_on_customer_id", using: :btree
   add_index "customer_visits", ["customer_network_profile_id"], name: "index_customer_visits_on_customer_network_profile_id", using: :btree
   add_index "customer_visits", ["place_id"], name: "index_customer_visits_on_place_id", using: :btree
+  add_index "customer_visits", ["profile_id"], name: "index_customer_visits_on_profile_id", using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "first_name"
@@ -155,6 +156,16 @@ ActiveRecord::Schema.define(version: 20160329135809) do
   end
 
   add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
+
+  create_table "instagram_profiles", force: true do |t|
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "url"
+    t.string   "uid"
+    t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "menu_items", force: true do |t|
     t.string   "name"
