@@ -1,0 +1,3 @@
+- if visit.by_social_network?
+  %td.col-xs-4= fa_icon visit.font_awesome_name
+  %td.col-xs-4= link_to visit.profile.full_name, visit.profile.resource.try(:url)

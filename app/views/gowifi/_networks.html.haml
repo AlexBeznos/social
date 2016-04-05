@@ -2,5 +2,5 @@
   - auths.each do |auth|
     - if Auth::NETWORKS.keys.include? auth.name
       = link_to "#{ENV['APP_URL']}auth/#{auth.name}?place=#{place.slug}", class: 'wifi_link' do
-        - icon = place.social_network_icons.find_by(social_network: SocialNetwork.by_name(auth.name))
+        - icon = place.social_network_icons.find_by(network_name: auth.name.to_s)
         = image_tag icon ? icon.icon.url : "wifi/#{place.template}/#{auth.name}.png"

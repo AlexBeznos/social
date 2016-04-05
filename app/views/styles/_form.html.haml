@@ -8,12 +8,12 @@
   - @style.social_network_icons.find_each do |icon|
     = image_tag icon.icon.url, height: 65
   = f.simple_fields_for :network_icons do |s_form|
-    - SocialNetwork.find_each do |network|
-      = s_form.simple_fields_for network.name do |n_form|
-        = n_form.input :icon, as: :file, label: network.name
+    - Auth::NETWORKS.each_value do |network|
+      = s_form.simple_fields_for network do |n_form|
+        = n_form.input :icon, as: :file, label: network
         = n_form.input :place_id, as: :hidden, input_html: { value: @place.id }
         = n_form.input :style_id, as: :hidden, input_html: { value: @style.id }
-        = n_form.input :social_network_id, as: :hidden, input_html: { value: network.id }
+        = n_form.input :network_name, as: :hidden, input_html: { value: network }
   - if @style.background.present?
     = image_tag @style.background.url, height: 100
   = f.input :background, as: :file
