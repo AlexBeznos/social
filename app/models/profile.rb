@@ -15,6 +15,14 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def full_name
+    first_name = resource.try(:first_name) || resource.try(:name)
+    last_name = resource.try(:last_name)
+    full_name = [first_name, last_name].compact.join(" ")
+
+    full_name.present? ? full_name : nil
+  end
+
   def self.resource_like(provider, customer_id)
     resource = provider.capitalize
 
