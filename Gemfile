@@ -85,6 +85,7 @@ group :development do
   gem 'mina-unicorn', :require => false
   gem 'metric_fu'
   gem 'thin'
+  gem 'quiet_assets'
 end
 
 group :development, :test do
@@ -93,6 +94,7 @@ group :development, :test do
   gem 'faker'
   gem 'byebug'
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'timecop'
 end
 
