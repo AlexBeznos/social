@@ -7,7 +7,7 @@ class Statistics::OrdersController < ApplicationController
   def index
     @orders = Order.where(place: @place)
     @items = MenuItem.joins(:orders).where(place: @place)
-    
+
   end
 
   private
