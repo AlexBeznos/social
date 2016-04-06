@@ -1,6 +1,6 @@
 = content_for :page_stylesheet, 'dashboard/statistic'
 = content_for :page_javascript, 'dashboard/statistic'
 
-
-- @items.each do |item|
-  = render 'analysis', item: item
+.row.analysis
+  - @items.each do |item|
+    = render 'analysis', item: item

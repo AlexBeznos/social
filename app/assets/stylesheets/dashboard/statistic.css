@@ -179,10 +179,10 @@
             padding-left: 8%;
         }
 
-.analysis {
-    background: #f4f2f2;
-}
-
+.analysis 
+    .analysis-col{
+      background: #f4f2f2;
+    }
     .analysis h1 {
         font-size: 18px;
     }

@@ -1,25 +1,24 @@
-.row.analysis
-  .col-sm-4.analysis-col
-    .analysis-col-inner
-      %h1
-        = item.name
-    .analysis-col-inner
-      .row.pic
-        .col-xs-6.col-xs-offset-6
-          = fa_icon 'users'
-      .row.gender
-        .col-xs-6
-          = "Orders:"
-        .col-xs-6
-          %p
-            = "all: "
-            %span= item.orders.size
-          %p
-            = "day: "
-            %span= item.orders_today
-          %p
-            = "week: "
-            %span= item.orders_by_week
-          %p
-            = "month: "
-            %span= item.orders_by_month
+.col-sm-4.analysis-col
+  .analysis-col-inner
+    %h1
+      = item.name
+  .analysis-col-inner
+    .row.pic
+      .col-xs-6.col-xs-offset-6
+        = fa_icon 'users'
+    .row.gender
+      .col-xs-6
+        = "Orders:"
+      .col-xs-6
+        %p
+          = "all: "
+          %span= item.orders.size
+        %p
+          = "day: "
+          %span= item.orders_today
+        %p
+          = "week: "
+          %span= item.orders_by_week
+        %p
+          = "month: "
+          %span= item.orders_by_month
