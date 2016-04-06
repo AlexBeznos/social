@@ -5,8 +5,7 @@ class Statistics::OrdersController < ApplicationController
   skip_after_action :verify_authorized
 
   def index
-    @orders = Order.where(place: @place)
-    @items = MenuItem.joins(:orders).where(place: @place)
+    @items = MenuItemDecorator.decorate_multiple(MenuItem.includes(:orders))
 
   end
 

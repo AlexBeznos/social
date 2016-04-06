@@ -1,0 +1,22 @@
+.row.analysis
+  .col-sm-4.analysis-col
+    .analysis-col-inner
+      %h1
+        = item.name
+    .analysis-col-inner
+      %h2
+        = "#{t('models.places.actions.show.info.auditory')}:"
+        %span= @number_of_friends_by_day
+      .row.pic
+        .col-xs-6.col-xs-offset-6
+          = fa_icon 'users'
+      .row.gender
+        .col-xs-6
+          = "#{t('models.places.actions.show.info.gender')}:"
+        .col-xs-6
+          %p
+            = "#{t('models.places.actions.show.info.men')}:"
+            %span= @visits_by_date.by_gender('m').count
+          %p
+            = "#{t('models.places.actions.show.info.women')}:"
+            %span= @visits_by_date.by_gender().count
