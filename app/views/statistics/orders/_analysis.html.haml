@@ -4,19 +4,22 @@
       %h1
         = item.name
     .analysis-col-inner
-      %h2
-        = "#{t('models.places.actions.show.info.auditory')}:"
-        %span= @number_of_friends_by_day
       .row.pic
         .col-xs-6.col-xs-offset-6
           = fa_icon 'users'
       .row.gender
         .col-xs-6
-          = "#{t('models.places.actions.show.info.gender')}:"
+          = "Orders:"
         .col-xs-6
           %p
-            = "#{t('models.places.actions.show.info.men')}:"
-            %span= @visits_by_date.by_gender('m').count
+            = "all: "
+            %span= item.orders.size
           %p
-            = "#{t('models.places.actions.show.info.women')}:"
-            %span= @visits_by_date.by_gender().count
+            = "day: "
+            %span= item.orders_today
+          %p
+            = "week: "
+            %span= item.orders_by_week
+          %p
+            = "month: "
+            %span= item.orders_by_month

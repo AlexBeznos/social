@@ -1,5 +1,4 @@
 class MenuItemDecorator
-
   def self.decorate_multiple(menu_items)
     menu_items.map do |item|
       self.new(item)
@@ -26,5 +25,11 @@ class MenuItemDecorator
     @menu_item.orders.to_ary.count do |order|
       order.created_at >= (Time.now - 1.month)
     end
+  end
+
+  private
+
+  def method_missing(m, *args, &block)
+    @menu_item.send(m, *args, &block)
   end
 end
