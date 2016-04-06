@@ -19,5 +19,10 @@
     .content p:first-line {
       color: #{ place.style.greating_color }
     }
+- if place.style.line_colors && !place.style.line_colors.empty?
+  :css
+    .line_colors {
+      background-color: #{ place.style.line_colors }
+    }
 :css
   #{ place.style.css_min }
