@@ -10,6 +10,8 @@ ru:
 
   global_statistics:
     visits:
+      index:
+        places_statistics: "Статистика по заведениям"
       places_visits_table:
         place: "Заведение"
         visits_count: "Количество посещений"

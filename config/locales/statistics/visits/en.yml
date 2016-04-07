@@ -10,6 +10,8 @@ en:
 
   global_statistics:
     visits:
+      index:
+        places_statistics: "Places statistics"
       places_visits_table:
         place: "Place"
         visits_count: "Visits quantity"

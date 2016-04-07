@@ -10,6 +10,8 @@ pl:
 
   global_statistics:
     visits:
+      index:
+        places_statistics: "Statystyki dotyczące instytucji"
       places_visits_table:
         place: "Instytucja"
         visits_count: "Ilość odwiedzin"

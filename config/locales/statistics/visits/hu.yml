@@ -10,6 +10,8 @@ hu:
 
   global_statistics:
     visits:
+      index:
+        places_statistics: "Intézmények statisztikai"
       places_visits_table:
         place: "Intézmény"
         visits_count: "Látogatás mennyiség"

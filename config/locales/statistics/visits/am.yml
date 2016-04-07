@@ -10,6 +10,8 @@ am:
 
   global_statistics:
     visits:
+      index:
+        places_statistics: "հիմնարկների վիճակագրություն"
       places_visits_table:
         place: "հիմնարկ"
         visits_count: "Այցելություններ քանակի"

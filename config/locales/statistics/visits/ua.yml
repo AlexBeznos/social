@@ -10,6 +10,8 @@ ua:
 
   global_statistics:
     visits:
+      index:
+        places_statistics: "Статистика по закладам"
       places_visits_table:
         place: "Заклад"
         visits_count: "Кількість відвідувань"
