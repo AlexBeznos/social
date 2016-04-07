@@ -9,6 +9,8 @@ class Place < ActiveRecord::Base
   mount_uploader :logo, LogoUploader, mount_on: :logo_file_name
 
   has_one  :style, dependent: :destroy
+  has_one  :router, dependent: :destroy
+
   has_many :banners, dependent: :destroy
   has_many :visits, dependent: :destroy, class_name: 'Customer::Visit'
   has_many :stocks, dependent: :destroy
@@ -17,7 +19,7 @@ class Place < ActiveRecord::Base
   has_many :menu_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :auths, dependent: :destroy
-  has_many :gowifi_sms, :dependent => :destroy, class_name: 'GowifiSms'
+  has_many :gowifi_sms, dependent: :destroy, class_name: 'GowifiSms'
 
   belongs_to :user
 
@@ -36,9 +38,7 @@ class Place < ActiveRecord::Base
                    file_size: { less_than_or_equal_to: 10.megabytes }
 
   after_validation :geocode, if: :city_changed?
-  before_create :set_wifi_username_password
-  before_save :set_wifi_link_freshnes
-  after_save :gen_new_wifi_settings
+  after_create :setup_router
 
   def get_customers
     Customer.joins(:visits).where('customer_visits.place_id = ?', self.id)
@@ -52,25 +52,7 @@ class Place < ActiveRecord::Base
   end
 
   private
-  def set_wifi_link_freshnes
-    if wifi_settings_link_not_fresh
-      delete_settings_archive
-      self.wifi_settings_link = nil
-    end
-
-    self.wifi_settings_link_not_fresh = true
-  end
-
-  def gen_new_wifi_settings
-    WifiSettingsWorker.perform_async(id) unless wifi_settings_link
-  end
-
-  # TODO: should be delayed
-  def delete_settings_archive
-    S3UploaderService.delete_settings_archive_by_url(wifi_settings_link) if wifi_settings_link
-  end
-
-  def set_wifi_username_password
-    self.wifi_username, self.wifi_password = SecureRandom.hex(6), SecureRandom.hex(6)
+  def setup_router
+    RouterSetupWorker.perform_async(id)
   end
 end

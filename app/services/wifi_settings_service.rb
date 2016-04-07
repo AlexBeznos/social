@@ -62,7 +62,7 @@ class WifiSettingsService < ActiveType::Object
 
     def post_to_s3_and_update_place
       url = S3UploaderService.upload_zip(get_archive_path)
-      @place.update(wifi_settings_link: url, wifi_settings_link_not_fresh: false)
+      @place.update(wifi_settings_link: url)
     end
 
     def delete_folder

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328131328) do
+ActiveRecord::Schema.define(version: 20160404170105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,31 +205,30 @@ ActiveRecord::Schema.define(version: 20160328131328) do
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "active",                       default: false
+    t.boolean  "active",                default: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "wifi_username",                default: "P8uDratA"
-    t.string   "wifi_password",                default: "Tac4edrU"
-    t.string   "wifi_settings_link"
-    t.boolean  "wifi_settings_link_not_fresh", default: true
-    t.boolean  "stocks_active",                default: false
-    t.string   "template",                     default: "default"
-    t.integer  "score_amount",                 default: 0
-    t.boolean  "loyalty_program",              default: false
+    t.string   "wifi_username",         default: "P8uDratA"
+    t.string   "wifi_password",         default: "Tac4edrU"
+    t.string   "router_settings"
+    t.boolean  "stocks_active",         default: false
+    t.string   "template",              default: "default"
+    t.integer  "score_amount",          default: 0
+    t.boolean  "loyalty_program",       default: false
     t.string   "city"
-    t.boolean  "display_my_banners",           default: false
-    t.boolean  "display_other_banners",        default: false
+    t.boolean  "display_my_banners",    default: false
+    t.boolean  "display_other_banners", default: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "domen_url",                    default: "gofriends.com.ua"
-    t.boolean  "demo",                         default: false
+    t.string   "domen_url",             default: "gofriends.com.ua"
+    t.boolean  "demo",                  default: false
     t.string   "auth_default_lang"
     t.string   "ssid"
-    t.boolean  "mfa",                          default: false
+    t.boolean  "mfa",                   default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
@@ -240,6 +239,22 @@ ActiveRecord::Schema.define(version: 20160328131328) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "routers", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "client_ip"
+    t.string   "client_crt"
+    t.string   "client_key"
+    t.string   "client_pass"
+    t.integer  "place_id"
+    t.boolean  "ovpn_ready",  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "routers", ["client_ip"], name: "index_routers_on_client_ip", using: :btree
+  add_index "routers", ["place_id"], name: "index_routers_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
