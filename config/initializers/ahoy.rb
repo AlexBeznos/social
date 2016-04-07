@@ -1,4 +1,6 @@
 class Ahoy::Store < Ahoy::Stores::ActiveRecordStore
+  Ahoy.visit_duration = 5.minutes
+
   def visit_model
     AhoyVisit
   end
