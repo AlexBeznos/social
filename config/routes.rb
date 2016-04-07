@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       get 'settings'
     end
     namespace :statistics do
-      resources :orders, only: [:index]
+      get '/loyalty', to: "loyalty#show"
     end
   end
 

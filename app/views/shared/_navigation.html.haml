@@ -1,7 +1,7 @@
 %nav.nav-inner-custom
   %ul.nav.nav-justified
     %li= link_to t('navigation.dashboard.statistic'), place_path(@place)
-    %li= link_to t('navigation.dashboard.orders_statistic'), place_statistics_orders_path(@place)
+    %li= link_to t('navigation.dashboard.orders_statistic'), place_statistics_loyalty_path(@place)
     %li= link_to t('navigation.dashboard.settings'), settings_place_path(@place)
     %li= link_to t('navigation.dashboard.guests'), guests_place_path(@place)
     %li= link_to t('navigation.dashboard.birthdays'), birthdays_place_path(@place)
