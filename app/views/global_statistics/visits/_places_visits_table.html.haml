@@ -1,0 +1,11 @@
+%table.table.visits-table
+  %thead.thead-default
+    %tr
+      %th Заведение
+      %th Количество посещений
+
+  - places.each do |place|
+    %tbody
+      %tr
+        %td= place.name
+        %td= place.ahoy_visits.size

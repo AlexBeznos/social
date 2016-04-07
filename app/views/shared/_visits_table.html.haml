@@ -1,0 +1,15 @@
+.row
+  .col-sm-6
+    %h4 Браузер
+    = pie_chart AhoyVisit.group(:browser).count
+    %h4 OS
+    = pie_chart AhoyVisit.group(:os).count
+    %h4 Тип устройства
+    = pie_chart AhoyVisit.group(:device_type).count
+  .col-sm-6
+    %h4 Страна
+    = pie_chart AhoyVisit.group(:country).count
+    %h4 Регион
+    = pie_chart AhoyVisit.group(:region).count
+    %h4 Город
+    = pie_chart AhoyVisit.group(:city).count
