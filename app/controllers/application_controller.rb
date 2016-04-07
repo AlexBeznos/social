@@ -3,7 +3,7 @@
   # For APIs, you may want to use :null_session instead.
   include Pundit
 
-  helper_method :current_user_session, :current_user, :gen_root_path, :wifi_login_path
+  helper_method :current_user_session, :current_user, :current_customer, :gen_root_path, :wifi_login_path
   protect_from_forgery with: :null_session
   before_action :check_locale
   before_action :set_timezone
@@ -35,6 +35,12 @@ end
     payload[:visit_id] = ahoy.visit_id # if you use Ahoy
   end
 
+  def current_customer
+    if cookies[:customer]
+      Customer.find(cookies[:customer])
+    end
+  end
+
   private
 
     def current_user_session
@@ -45,6 +51,14 @@ end
     def current_user
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.user
+    end
+
+    def ahoy_track_visit
+      ahoy.track_visit
+    end
+
+    def ahoy_authenticate
+     current_visit.update(customer: current_customer)
     end
 
     def gen_root_path(user = false)
