@@ -281,8 +281,10 @@ en:
     login: 'Login'
     users: 'Users'
     my_places: 'My places'
+    global_statistics: "Global statistics"
     dashboard:
       statistic: 'Statistic'
+      visit_statistics: "Statistics of visits"
       settings: 'Settings'
       stocks: 'Stocks'
       guests: 'Top visitors'

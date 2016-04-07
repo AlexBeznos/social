@@ -1,0 +1,15 @@
+pl:
+  shared:
+    visits_table:
+      browser: "Przeglądarka"
+      os: "OS"
+      device: "Rodzaj urządzenia"
+      country: "Kraj"
+      region: "Region"
+      city: "Miasto"
+
+  global_statistics:
+    visits:
+      places_visits_table:
+        place: "Instytucja"
+        visits_count: "Ilość odwiedzin"

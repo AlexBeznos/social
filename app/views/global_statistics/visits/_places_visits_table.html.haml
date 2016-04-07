@@ -1,8 +1,8 @@
 %table.table.visits-table
   %thead.thead-default
     %tr
-      %th Заведение
-      %th Количество посещений
+      %th= t(".place")
+      %th= t(".visits_count")
 
   - places.each do |place|
     %tbody

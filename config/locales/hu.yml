@@ -333,8 +333,10 @@ hu:
     login: 'Bejelentkezés'
     users: 'Felhasználók'
     my_places: 'Saját helyek'
+    global_statistics: "Globális statisztikák"
     dashboard:
       statistic: 'Statisztikai'
+      visit_statistics: "Statisztikák látogatások"
       guests: 'Top látogatók'
       birthdays: "Születésnap"
       settings: 'Beállítások'
