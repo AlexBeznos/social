@@ -6,6 +6,8 @@ class GowifiAuthController < ApplicationController
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_auth, only: :omniauth
   before_filter :check_facebook_permissions, only: :omniauth
+  after_action :ahoy_track_visit, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
+  after_action :ahoy_authenticate, only: [:omniauth]
 
   skip_after_action :verify_authorized
 
