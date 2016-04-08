@@ -1,8 +1,8 @@
 class GlobalStatistics::VisitsController < ApplicationController
-  skip_after_action :verify_authorized
-
   def index
-    @visits = AhoyVisit.all
-    @places = Place.all.includes(:ahoy_visits)
+    authorize :global_statistics, :visits_index?
+
+    @visits = policy_scope(AhoyVisit)
+    @places = policy_scope(Place).includes(:ahoy_visits)
   end
 end

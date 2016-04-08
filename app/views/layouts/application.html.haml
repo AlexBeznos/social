@@ -36,7 +36,8 @@
               - if policy(User).index?
                 %li= link_to t('navigation.users'), users_path
               %li= link_to t('navigation.my_places'), places_path
-              %li= link_to t('navigation.global_statistics'), global_statistics_visits_path
+              - if policy(:global_statistics).visits_index?
+                %li= link_to t('navigation.global_statistics'), global_statistics_visits_path
               %li= link_to t('navigation.logout'), user_session_path(current_user.id), method: 'DELETE'
             - else
               %li
