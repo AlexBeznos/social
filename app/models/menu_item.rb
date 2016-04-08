@@ -7,9 +7,8 @@ class MenuItem < ActiveRecord::Base
   validates :name, :price, :place_id, presence: true
   validates :image,
             presence: true,
-            file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
-            file_size: { in: 11.kilobytes..10.megabytes }
+            file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] },
+            file_size: { less_than_or_equal_to: 10.megabytes }
 
   scope :pagination, -> (page_params) { page(page_params).per(3) }
-
 end
