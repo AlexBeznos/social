@@ -10,21 +10,21 @@ class MenuItemDecorator
   end
 
   def orders_today
-    @menu_item.orders.to_ary.count do |order|
-      order.updated_at.today?
-    end
+    @menu_item.orders
+      .where("created_at >= ? ", Time.zone.now.beginning_of_day)
+      .count
   end
 
   def orders_by_week
-    @menu_item.orders.to_ary.count do |order|
-      order.created_at >= (Time.now - 7.days)
-    end
+    @menu_item.orders
+      .where("created_at >= ? ", Time.zone.now - 1.week)
+      .count
   end
 
   def orders_by_month
-    @menu_item.orders.to_ary.count do |order|
-      order.created_at >= (Time.now - 1.month)
-    end
+    @menu_item.orders
+    .where("created_at >= ? ", Time.zone.now - 1.month)
+    .count
   end
 
   private
