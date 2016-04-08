@@ -121,6 +121,7 @@ en:
       month: Month
       second: Seconds
       year: Year
+      week: "Week"
   errors:
     format: "%{attribute} %{message}"
     messages:

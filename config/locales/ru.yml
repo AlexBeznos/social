@@ -143,6 +143,7 @@ ru:
       month: Месяц
       second: Секунд
       year: Год
+      week: Неделя
   errors:
     format: "%{attribute} %{message}"
     messages:

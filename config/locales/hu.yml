@@ -143,6 +143,7 @@ hu:
       month: Hónap
       second: Másodperc
       year: Év
+      week: Hét
   errors:
     format: "%{attribute} %{message}"
     messages:

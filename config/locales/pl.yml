@@ -143,6 +143,7 @@ pl:
       month: miesiąc
       second: Секунд
       year: Rok
+      week: Tydzień
   errors:
     format: "%{attribute} %{message}"
     messages:

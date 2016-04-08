@@ -143,6 +143,7 @@ ua:
       month: Місяць
       second: Секунда
       year: Рік
+      week: Неділя
   errors:
     format: "%{attribute} %{message}"
     messages:
