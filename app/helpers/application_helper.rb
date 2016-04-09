@@ -21,16 +21,4 @@ module ApplicationHelper
     fa_icon( bool ? 'plus' : 'minus' )
   end
 
-  def notification_style(auth)
-    state = auth.aasm.current_state
-
-    case state
-    when :pending
-      "text-warning"
-    when :unapproved
-      "text-danger"
-    when :approved
-      "text-success"
-    end
-  end
 end
