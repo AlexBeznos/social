@@ -1,0 +1,14 @@
+- if place.try(:style).try(:background).present?
+  :css
+    .background {
+      background: url( #{place.style.background.url} ) no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+- else
+  :css
+    .background {
+      background: url( #{image_path("wifi/default/bg.jpg")}) no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }

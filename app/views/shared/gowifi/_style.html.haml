@@ -1,7 +1,8 @@
 - if place.style.background.present?
   :css
     body {
-      background: url(#{place.style.background.url }) no-repeat center
+      background: url(#{place.style.background.url }) no-repeat center;
+      background-attachment: fixed;
     }
 - if place.style.text_color && !place.style.text_color.empty?
   :css
