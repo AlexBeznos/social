@@ -13,19 +13,17 @@ module StylesHelper
   end
 
   def background_style(place)
-    if place.try(:style).try(:background).present?
-      <<-FIN
-        background: url( #{place.style.background.url} ) no-repeat center;
-        background-attachment: fixed;
-        background-size: cover;
-        FIN
-    else
-      <<-FIN
-          background: url( #{image_path("wifi/default/bg.jpg")}) no-repeat center;
-          background-attachment: fixed;
-          background-size: cover;
-        FIN
-    end
+    background_path = if place.try(:style).try(:background).present?
+                        place.style.background.url
+                      else
+                        image_url("wifi/default/bg.jpg")
+                      end
+
+    <<-FIN
+      background: url( #{background_path} ) no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+      FIN
   end
 
 end
