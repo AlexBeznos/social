@@ -3,4 +3,4 @@
     - if auth.network? && auth.approved?
       = link_to network_path(place, auth), class: 'wifi_link' do
         - icon = place.social_network_icons.find_by(social_network: SocialNetwork.by_name(auth.name))
-         = image_tag icon ? icon.icon.url : "wifi/default/#{auth.name}.png"
+        = image_tag icon ? icon.icon.url : "wifi/default/#{auth.name}.png"
