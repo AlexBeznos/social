@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330143659) do
+ActiveRecord::Schema.define(version: 20160410101316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,7 +217,6 @@ ActiveRecord::Schema.define(version: 20160330143659) do
     t.string   "wifi_settings_link"
     t.boolean  "wifi_settings_link_not_fresh", default: true
     t.boolean  "stocks_active",                default: false
-    t.string   "template",                     default: "default"
     t.integer  "score_amount",                 default: 0
     t.boolean  "loyalty_program",              default: false
     t.string   "city"
