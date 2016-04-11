@@ -24,9 +24,9 @@
     end
   end
 
-rescue_from ActiveRecord::RecordNotFound do |exception|
-  redirect_to '/404.html'
-end
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    redirect_to '/404.html'
+  end
 
   def append_info_to_payload(payload)
     super
@@ -58,7 +58,7 @@ end
     end
 
     def ahoy_authenticate
-     current_visit.update(customer: current_customer)
+      current_visit.update(customer: current_customer)
     end
 
     def gen_root_path(user = false)
