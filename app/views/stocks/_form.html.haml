@@ -1,6 +1,6 @@
 = simple_form_for [@place, @stock] do |f|
   = f.error_notification
-  = f.input :day, collection: t('date.day_names').dup.push(t('models.stocks.day'))
+  = f.input :days, collection: t('date.day_names').dup.push(t('models.stocks.days'))
   - if @stock.image.present?
     = image_tag @stock.image.url, height: 100
   = f.input :image, as: :file
