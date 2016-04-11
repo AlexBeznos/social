@@ -13,10 +13,10 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "wifi/modal", :media => "all"
-    = stylesheet_link_tag "wifi/#{@place.template}/style", :media => "all"
     = stylesheet_link_tag "bootstrap", :media => "all"
     = stylesheet_link_tag "bootstrap-theme", :media => "all"
     = stylesheet_link_tag "wifi/poll_styling", :media => "all"
+    = stylesheet_link_tag "wifi/default", :media => "all"
     = javascript_include_tag "wifi_enter"
     = render 'shared/gowifi/style', place: @place, customer: @customer if @place.style
   %body
@@ -37,6 +37,5 @@
           = t('wifi.footer')
           %br
             = link_to t('privacy_police.title'), page_path('privacy_policy')
-    = javascript_include_tag "wifi/#{@place.template}"
     :javascript
       #{ raw @place.style.js_min if @place.style }

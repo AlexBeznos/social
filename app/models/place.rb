@@ -26,12 +26,12 @@ class Place < ActiveRecord::Base
   validates :ssid, presence: true
   validates :ssid, length: { maximum: 9 },
                    format: { with: /\A[a-zA-Z]+\z/, message: I18n.t("models.errors.validations.english_letters_and_spaces") },
-                   if: 'persisted? && created_at > Date.new(2016,02,12)' # NOTE: remove after implementation of remote router control
+                   if: 'new_record? || created_at > Date.new(2016,02,12)' # NOTE: remove after implementation of remote router control
 
   validates :display_my_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :display_other_banners, inclusion: { in: [false] }, if: "self.city.blank?"
   validates :domen_url, inclusion: { in: Place::DOMAIN_LIST }
-  validates :name, :template, presence: true
+  validates :name, presence: true
   validates :logo, file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
                    file_size: { less_than_or_equal_to: 10.megabytes }
 
@@ -52,6 +52,7 @@ class Place < ActiveRecord::Base
   end
 
   private
+  
   def set_wifi_link_freshnes
     if wifi_settings_link_not_fresh
       delete_settings_archive
