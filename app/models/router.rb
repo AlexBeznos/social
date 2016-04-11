@@ -17,6 +17,6 @@ class Router < ActiveRecord::Base
   end
 
   def gen_ovpn_client
-    VpnClientSetupWorker.perform_async(id)
+    Vpn::ClientSetupWorker.perform_async(id)
   end
 end

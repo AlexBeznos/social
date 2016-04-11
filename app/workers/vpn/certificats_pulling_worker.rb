@@ -1,12 +1,12 @@
-class VpnClientSetupWorker
+class Vpn::CertificatsPullingWorker
   include Sidekiq::Worker
 
-  sidekiq_options queue: :ovpn_setup, failures: true
+  sidekiq_options queue: :ovpn, failures: true
 
   def perform(router_id)
     router = Router.find(router_id)
     ovpn = OvpnService.new({router: router})
 
-    ovpn.create_client
+    p ovpn.get_certificates
   end
 end

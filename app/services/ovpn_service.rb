@@ -1,23 +1,44 @@
 class OvpnService
   def initialize(attrs)
     @router = attrs[:router]
-    @place = @router.place
+    @client_name = Place.select(:slug).find(@router.place_id).slug
   end
 
-  def create_client # FIXME: make it work with docker
-    Net::SSH.start('46.101.213.72', 'root') do |ssh| # FIXME: ip, user move to env vars
-      # NOTE: should be by one line
-      ssh.exec! "cd /etc/openvpn/easy-rsa && source vars && ./pkitool #{@place.slug}"
+  def setup_client
+    stdout = ''
+
+    ovpn_connect do |ssh|
+      stdout = ssh.exec!(setup_client_cmnds(@client_name, @router.client_ip))
     end
+
+    raise unless stdout.include? 'Write out database with 1 new entries'
+  end
+
+  def get_certificates
+    {}
   end
 
   private
 
-  # def build_client(client_name)
-  #   "docker run --volumes-from $OVPN_DATA --rm -it beznosa/docker-openvpn-staticip easyrsa build-client-full #{client_name} nopass"
-  # end
-  #
-  # def ovpn_staticip(client_name, client_ip)
-  #   "docker run --volumes-from $OVPN_DATA --rm -it beznosa/docker-openvpn-staticip ovpn_staticip #{client_name} #{client_ip}"
-  # end
+  def ovpn_connect(&ssh)
+    Net::SSH.start(ENV['OVPN_SERVER'], ENV['OVPN_USER']) do |connection|
+      ssh.call connection
+    end
+  end
+
+  def build_client(client_name)
+    "docker run --volumes-from $OVPN_DATA --rm -i beznosa/openvpn-mikrotik easyrsa build-client-full #{client_name} nopass"
+  end
+
+  def set_static_ip(client_name, client_ip)
+    "docker run --volumes-from $OVPN_DATA --rm -i beznosa/openvpn-mikrotik ovpn_staticip #{client_name} #{client_ip}"
+  end
+
+  def setup_client_cmnds(client_name, client_ip)
+    [
+      "OVPN_DATA='ovpn-data'",
+      build_client(client_name),
+      set_static_ip(client_name, client_ip)
+    ].join(' && ')
+  end
 end

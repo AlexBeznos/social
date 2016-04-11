@@ -57,7 +57,7 @@ class WifiSettingsService < ActiveType::Object
     end
 
     def gen_zip_archive
-      ZipArchivationService.new(get_path, get_archive_path).write
+      ZipArchivator.new(get_path, get_archive_path).write
     end
 
     def post_to_s3_and_update_place

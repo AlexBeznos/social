@@ -43,9 +43,6 @@ gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'rack-attack'
 gem 'net-ssh'
-gem 'sshkit'
-gem 'highline'
-gem 'docker-api'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
@@ -75,6 +72,8 @@ gem 'smsc'
 gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
+gem 'sidekiq-superworker'
+
 
 # Other
 gem 'aasm', '4.9.0'
