@@ -12,6 +12,10 @@
     margin-top: 14px;
 }
 
+.radio {
+  word-wrap: break-word;
+  width: 270px;
+}
 .poll-btn:hover {
     opacity: 0.8;
     filter: alpha(Opacity=80);
@@ -27,7 +31,7 @@
     padding: 5.5px;
     text-align: left;
     position: relative;
-    left: 47%;
+    left: 10%;
 }
 
 
