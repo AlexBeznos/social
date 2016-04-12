@@ -10,14 +10,14 @@ class OrdersController < ApplicationController
   skip_after_action :verify_authorized
 
   def index
-    @orders = @customer.orders.pagination(params[:page])
+    @orders = current_customer.orders.pagination(params[:page])
   end
 
   def show
   end
 
   def create
-    @order = @place.orders.create(customer_id: @customer.id)
+    @order = @place.orders.create(customer_id: current_customer.id)
 
     if @order.add_menu_item(@reputation, @menu_item)
       render :show
@@ -29,11 +29,7 @@ class OrdersController < ApplicationController
   private
 
   def find_customer
-    if cookies[:customer]
-      @customer = Customer.find(cookies[:customer].to_i)
-    else
-      redirect_to gowifi_place_path(@place)
-    end
+    redirect_to gowifi_place_path(@place) unless current_customer
   end
 
   def find_place
@@ -47,7 +43,7 @@ class OrdersController < ApplicationController
   def find_reputation
     @reputation = Customer::Reputation.find_by(
       place_id: @place.id,
-      customer_id: @customer.id
+      customer_id: current_customer.id
     ) || Customer::Reputation.new
   end
 

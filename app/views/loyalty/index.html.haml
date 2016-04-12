@@ -1,6 +1,6 @@
 .wrapper
   .container
-    %h2= t('menu_item.greetings', customer_name: @customer.first_name, place_name: @place.name)
+    %h2= t('menu_item.greetings', customer_name: current_customer.first_name, place_name: @place.name)
     .outer
       .button
         = link_to @auth.redirect_url do

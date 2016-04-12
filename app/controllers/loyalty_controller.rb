@@ -19,11 +19,7 @@ class LoyaltyController < ApplicationController
   end
 
   def find_customer
-    if cookies[:customer]
-      @customer = Customer.find(cookies[:customer].to_i)
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_customer
   end
 
   def find_auth
@@ -34,7 +30,7 @@ class LoyaltyController < ApplicationController
   def find_reputation
     @reputation = Customer::Reputation.find_by(
       place_id: @place.id,
-      customer_id: @customer.id
+      customer_id: current_customer.id
     ) || Customer::Reputation.new
   end
 end

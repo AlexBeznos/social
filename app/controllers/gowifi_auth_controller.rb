@@ -2,7 +2,6 @@ class GowifiAuthController < ApplicationController
   include Consumerable
 
   before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
-  before_action :find_customer, only: :omniauth
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_auth, only: :omniauth
   before_filter :check_facebook_permissions, only: :omniauth
@@ -87,10 +86,6 @@ class GowifiAuthController < ApplicationController
     @place = Place.find_by_slug(params[:slug])
   end
 
-  def find_customer
-    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-  end
-
   def find_place_from_session
     slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
     slug_by_session = session[:slug]
@@ -114,7 +109,7 @@ class GowifiAuthController < ApplicationController
     else
       cookies.delete(:step)
 
-      url = if @place.loyalty_program && @customer
+      url = if @place.loyalty_program && current_customer
         loyalty_url(@place, auth: auth.id)
       else
         auth.redirect_url
@@ -133,7 +128,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def visit_already_created?
-    hash = find_or_create_customer(credentials, @place, @customer)
+    hash = find_or_create_customer(credentials, @place, current_customer)
     cookies.permanent[:customer] = hash[:customer].id
 
     hash[:visit]
