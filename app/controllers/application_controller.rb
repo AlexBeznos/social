@@ -36,7 +36,7 @@
   end
 
   def current_customer
-    if cookies[:customer]
+    @customer ||= if cookies[:customer]
       Customer.find(cookies[:customer])
     end
   end
