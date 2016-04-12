@@ -30,15 +30,6 @@
             = yield
         .push
 
-      %footer
-        .col-lg-2.col-sm-12.localization_links
-          = localization_links_in_place
-        .col-lg-8.col-sm-12.wifi_footer
-          %p
-            = t('wifi.footer')
-            %br
-              = link_to t('privacy_police.title'), page_path('privacy_policy')
-    = javascript_include_tag "wifi/#{@place.template}"
     %footer
       .col-lg-2.col-sm-12.localization_links
         = localization_links_in_place
