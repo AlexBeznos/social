@@ -31,6 +31,8 @@ class GowifiController < ApplicationController
   end
 
   def set_step
+    cookies.delete(:step) if cookies[:step] && !@place.mfa
+
     cookies[:step] = {
       value: 'primary',
       expires: 15.minutes.from_now
