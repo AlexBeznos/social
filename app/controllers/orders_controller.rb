@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   before_action :find_place
   before_action :find_auth
-  before_action :find_customer
+  before_action :authenticate_customer
   before_action :find_reputation
   before_action :load_menu_item, except: :index
 
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
 
   private
 
-  def find_customer
+  def authenticate_customer
     redirect_to gowifi_place_path(@place) unless current_customer
   end
 

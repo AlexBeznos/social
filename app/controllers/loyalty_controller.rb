@@ -1,6 +1,6 @@
 class LoyaltyController < ApplicationController
   before_action :find_place
-  before_action :find_customer
+  before_action :authenticate_customer
   before_action :find_auth
   before_action :find_reputation
 
@@ -18,7 +18,7 @@ class LoyaltyController < ApplicationController
     @place = Place.find_by_slug(params[:place_id])
   end
 
-  def find_customer
+  def authenticate_customer
     redirect_to root_path unless current_customer
   end
 
