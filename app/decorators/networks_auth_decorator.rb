@@ -19,7 +19,8 @@ class NetworksAuthDecorator
       self.profile = Profile.create_or_update(credentials, customer)
       self.visit = Customer::Visit.create(
         place: place,
-        profile: profile,
+        account_id: profile.resource_id,
+        account_type: profile.resource_type,
         customer: customer
       )
 
