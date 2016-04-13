@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
     authorize @place
 
     date_from = params[:date] ? params[:date].to_date : Time.now
-    @customers = nil
+    @customers = @place.visits.by_birthday(date_from, date_from + 1.month)
   end
 
   def settings
@@ -99,7 +99,7 @@ class PlacesController < ApplicationController
   end
 
   def get_number_of_friends(records)
-    number = records.map { |visit| visit.profile.try(:resource) }
+    number = records.map { |visit| visit.try(:account) }
                     .uniq
                     .map { |np| np.try(:friends_count) }
                     .inject{ |sum,x| sum.to_i + x.to_i }

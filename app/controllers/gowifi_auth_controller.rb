@@ -14,7 +14,8 @@ class GowifiAuthController < ApplicationController
       profile = Profile.create_with_resource({provider: 'password'}, @customer)
       Customer::Visit.create(
         place: @place,
-        profile: profile,
+        account_id: profile.resource_id,
+        account_type: profile.resource_type,
         customer: profile.customer
       )
       redirect_to succed_auth_path(@place, auth)
@@ -30,7 +31,8 @@ class GowifiAuthController < ApplicationController
     if sms && sms.update(used: true)
       Customer::Visit.create(
         place: @place,
-        profile: sms.profile,
+        account_id: sms.profile.resource_id,
+        account_type: sms.profile.resource_type,
         customer: sms.profile.customer
       )
       redirect_to succed_auth_path(@place, auth)
