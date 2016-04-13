@@ -102,14 +102,15 @@ ActiveRecord::Schema.define(version: 20160329135809) do
     t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "profile_id"
+    t.integer  "account_id"
+    t.string   "account_type"
   end
 
+  add_index "customer_visits", ["account_type", "account_id"], name: "index_customer_visits_on_account_type_and_account_id", using: :btree
   add_index "customer_visits", ["created_at"], name: "index_customer_visits_on_created_at", using: :btree
   add_index "customer_visits", ["customer_id"], name: "index_customer_visits_on_customer_id", using: :btree
   add_index "customer_visits", ["customer_network_profile_id"], name: "index_customer_visits_on_customer_network_profile_id", using: :btree
   add_index "customer_visits", ["place_id"], name: "index_customer_visits_on_place_id", using: :btree
-  add_index "customer_visits", ["profile_id"], name: "index_customer_visits_on_profile_id", using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "first_name"

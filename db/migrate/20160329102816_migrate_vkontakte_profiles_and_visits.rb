@@ -28,7 +28,10 @@ class MigrateVkontakteProfilesAndVisits < ActiveRecord::Migration
           resource_attributes: params
         )
 
-        customer_profile.visits.update_all(profile_id: profile.id)
+        customer_profile.visits.update_all(
+          account_type: profile.resource_type,
+          account_id: profile.resource_id
+        )
       end
     end
   end

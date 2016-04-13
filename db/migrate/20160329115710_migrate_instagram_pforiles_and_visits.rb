@@ -36,7 +36,10 @@ class MigrateInstagramPforilesAndVisits < ActiveRecord::Migration
           resource_attributes: params
         )
 
-        customer_profile.visits.update_all(profile_id: profile.id)
+        customer_profile.visits.update_all(
+          account_id: profile.resource_id,
+          account_type: profile.resource_type
+        )
       end
     end
   end
