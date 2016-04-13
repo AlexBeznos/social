@@ -23,6 +23,10 @@ class Profile < ActiveRecord::Base
     full_name.present? ? full_name : nil
   end
 
+  def font_awesome_name
+    profile_name == "vkontakte" ? "vk" : profile_name
+  end
+
   def self.resource_like(provider, customer_id)
     resource = provider.capitalize
 
@@ -65,5 +69,11 @@ class Profile < ActiveRecord::Base
 
   def self.get_resource_params(resource_type, credentials)
     resource_type.constantize.try(:prepare_params, credentials)
+  end
+
+  private
+
+  def profile_name
+    self.resource_type.remove("Profile").downcase
   end
 end

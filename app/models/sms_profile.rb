@@ -1,5 +1,6 @@
 class SmsProfile < ActiveRecord::Base
   has_one :profile, as: :resource
+  has_many :visits, as: :account, class_name: "Customer::Visit"
 
   before_save :set_sms_code
   after_create :send_sms

@@ -41,7 +41,7 @@ class Place < ActiveRecord::Base
   after_save :gen_new_wifi_settings
 
   def get_customers
-    Customer.joins(:visits).where('customer_visits.place_id = ?', self.id)
+    Profile.joins(:visits).where('customer_visits.place_id = ?', self.id)
   end
 
   def get_proper_stock
