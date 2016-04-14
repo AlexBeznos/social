@@ -16,7 +16,7 @@ module StylesHelper
     background_path = if place.try(:style).try(:background).present?
                         place.style.background.url
                       else
-                        image_url("wifi/default/bg.jpg")
+                        image_url("wifi/bg.jpg")
                       end
 
     <<-FIN
