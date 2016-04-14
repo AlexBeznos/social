@@ -1,0 +1,17 @@
+en:
+  shared:
+    visits_table:
+      browser: "Browser"
+      os: "OS"
+      device: "Device type"
+      country: "Country"
+      region: "Region"
+      city: "City"
+
+  global_statistics:
+    visits:
+      index:
+        places_statistics: "Places statistics"
+      places_visits_table:
+        place: "Place"
+        visits_count: "Visits quantity"

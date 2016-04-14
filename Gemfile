@@ -49,7 +49,6 @@ gem 'kaminari-bootstrap'
 gem 'exception_notification'
 gem 'slack-notifier'
 
-gem 'rubocop', require: false
 # Validatiors
 gem 'file_validators'
 
@@ -87,6 +86,7 @@ group :development do
   gem 'mina-unicorn', :require => false
   gem 'metric_fu'
   gem 'thin'
+  gem 'rubocop', require: false
 end
 
 group :development, :test do

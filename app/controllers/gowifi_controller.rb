@@ -6,9 +6,9 @@ class GowifiController < ApplicationController
   before_action :set_place_slug, only: :show
   before_action :set_step, only: :show
   before_action :set_default_format, only: :show
-  before_action :find_customer, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
+  after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
 
@@ -41,10 +41,6 @@ class GowifiController < ApplicationController
 
   def set_default_format
     request.format = :html
-  end
-
-  def find_customer
-    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
   end
 
   def set_locale
