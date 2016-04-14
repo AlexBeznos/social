@@ -33,6 +33,17 @@ class Customer::Visit < ActiveRecord::Base
     genders.except(nil)
   end
 
+  def self.top_customers
+    includes(account: :profile)
+      .where(account_type: get_social_networks_names)
+      .uniq
+      .map(&:account)
+  end
+
+  def self.get_social_networks_names
+    Auth::NETWORKS.values.map { |network| network.capitalize + "Profile" }
+  end
+
   def within_date?(from, till)
     return false if account.birthday.nil?
     birthday_day, birthday_month = [account.birthday.day, account.birthday.month]

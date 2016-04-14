@@ -46,12 +46,7 @@ class PlacesController < ApplicationController
   def guests
     authorize @place
 
-    @customers = Customer::NetworkProfile.joins(:visits)
-                                         .where('customer_visits.place_id = ?', @place.id)
-                                         .uniq
-                                         .sort_by { |np| np.visits.where(place: @place).count }
-                                         .reverse
-
+    @customers = @place.visits.top_customers
   end
 
   def birthdays
