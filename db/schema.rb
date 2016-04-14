@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404115111) do
+ActiveRecord::Schema.define(version: 20160410101316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -248,7 +248,6 @@ ActiveRecord::Schema.define(version: 20160404115111) do
     t.string   "wifi_settings_link"
     t.boolean  "wifi_settings_link_not_fresh", default: true
     t.boolean  "stocks_active",                default: false
-    t.string   "template",                     default: "default"
     t.integer  "score_amount",                 default: 0
     t.boolean  "loyalty_program",              default: false
     t.string   "city"
@@ -261,6 +260,7 @@ ActiveRecord::Schema.define(version: 20160404115111) do
     t.string   "auth_default_lang"
     t.string   "ssid"
     t.boolean  "mfa",                          default: false
+    t.boolean  "post_preview",                 default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
@@ -343,6 +343,7 @@ ActiveRecord::Schema.define(version: 20160404115111) do
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "line_colors",             default: "rgba(0, 0, 0, 0.0)"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree

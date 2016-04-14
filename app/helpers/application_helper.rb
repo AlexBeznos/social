@@ -21,24 +21,4 @@ module ApplicationHelper
     fa_icon( bool ? 'plus' : 'minus' )
   end
 
-  def localization_links
-    to_link = lambda { |l| link_to(l, set_locale_path(l)) }
-    locals    = I18n.available_locales
-    links     = locals.map { |l| to_link.call(l) }
-
-    raw links.join(' | ')
-  end
-
-  def notification_style(auth)
-    state = auth.aasm.current_state
-
-    case state
-    when :pending
-      "text-warning"
-    when :unapproved
-      "text-danger"
-    when :approved
-      "text-success"
-    end
-  end
 end

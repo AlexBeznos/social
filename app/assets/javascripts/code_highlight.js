@@ -15,7 +15,7 @@ $(document).ready(function() {
       mode: "css"
     });
   }
-  
+
   if($('#style_js')[0]) {
     CodeMirror.fromTextArea($('#style_js')[0], {
       mode: "text/html",
@@ -31,5 +31,11 @@ $(document).ready(function() {
     input.minicolors({
       theme: 'bootstrap'
     });
+  });
+
+  $('.line_colors').minicolors({
+      theme: 'bootstrap',
+      format: 'rgb',
+      opacity: true
   });
 });

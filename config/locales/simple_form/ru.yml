@@ -31,6 +31,7 @@ ru:
         display_other_banners: Показывать чужие баннеры в моем заведении
         auth_default_lang: Язык для аутентификации по умолчанию
         mfa: Мультифакторная аутентификация
+        post_preview: Предварительный просмотр поста
       user:
         first_name: Имя
         last_name: Фамилия
@@ -55,6 +56,7 @@ ru:
         css: CSS
         text_color: Цвет основного текста
         greating_color: Цвет приветствия
+        line_colors: Цвет и прозрачность полосы страницы входа
       menu_item:
         menu_item: Товар
         name: Название товара
