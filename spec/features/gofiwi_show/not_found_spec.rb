@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe "Place login page" do
   context "When place is not provided" do
-    let(:place){ build :place }
+    let(:not_existed_place){ build :place }
 
     it "redirects to 404" do
-      allow(place).to receive(:slug) { "lol" }
+      allow(not_existed_place).to receive(:slug) { "lol" }
 
       visit gowifi_place_path(slug: place.slug)
 
