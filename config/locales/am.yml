@@ -331,8 +331,10 @@
     login: 'Մուտք'
     users: 'Օգտագործողներ'
     my_places: 'Իմ հաստատությունները'
+    global_statistics: "Համաշխարհային վիճակագրություն"
     dashboard:
       statistic: 'Վիճակագրություն'
+      visit_statistics: "Այցելեք վիճակագրություն"
       guests: 'TOP Հաճախորդներ'
       birthdays: "Ծննդյան Օրեր"
       settings: 'Կարգավորումներ'

@@ -1,0 +1,7 @@
+= content_for :page_stylesheet, 'statistics'
+= content_for :navigation, 'false'
+
+= render 'shared/visits_table', visits: @visits
+%hr
+%h2= t(".places_statistics")
+= render 'places_visits_table', places: @places

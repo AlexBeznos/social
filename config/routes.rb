@@ -35,6 +35,7 @@ Rails.application.routes.draw do
         end
     end
   end
+
   resources :places do
     resources :auths, except: :index
     # resources :banners NOTE: uncomment when we will know what to do with this shit
@@ -46,8 +47,15 @@ Rails.application.routes.draw do
       get 'birthdays'
       get 'settings'
     end
+
+    namespace 'statistics' do
+      resources :visits, only: [:index]
+    end
   end
 
+  namespace 'global_statistics' do
+    resources :visits, only: [:index]
+  end
 
   # customers level accessed pages
   resources :user_sessions, only: [:create, :destroy]

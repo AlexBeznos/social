@@ -333,8 +333,10 @@ pl:
     login: 'Zaloguj się'
     users: 'Użytkownicy'
     my_places: 'Moje miejsca'
+    global_statistics: "Globalne statystyki"
     dashboard:
       statistic: 'Statystyki'
+      visit_statistics: "Statystyka odwiedzin"
       guests: 'Najczęściej odwiedzający'
       birthdays: "Urodziny"
       settings: 'Ustawienia'

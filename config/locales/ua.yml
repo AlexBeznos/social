@@ -327,8 +327,10 @@ ua:
     login: 'Увійти'
     users: 'Користувачі'
     my_places: 'Мої заклади'
+    global_statistics: "Глобальна статистика"
     dashboard:
       statistic: 'Статистика'
+      visit_statistics: "Статистика відвідувань"
       settings: 'Налаштування'
       stocks: 'Акції'
       guests: 'Top відвідувачів'
