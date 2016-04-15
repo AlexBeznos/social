@@ -48,11 +48,13 @@ class GowifiController < ApplicationController
   end
 
   def set_locale
-    if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
-      return I18n.locale = params[:lang]
-    end
+    I18n.locale = if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
+                    params[:lang]
+                  elsif @place.auth_default_lang.present?
+                    @place.auth_default_lang
+                  end
 
-    I18n.locale = @place.auth_default_lang unless @place.auth_default_lang.blank?
+    session[:locale] = I18n.locale
   end
 
   # TODO: make banner injection by simple method and visits incrementation by ajax call

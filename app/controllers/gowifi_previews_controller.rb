@@ -4,7 +4,7 @@ class GowifiPreviewsController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
-    @auth = Auth.find(params[:auth_id])
+    @auth = Auth.find(params[:auth])
     @provider_name = @auth.name.to_s
     @place = Place.find_by_slug(params[:slug])
   end
