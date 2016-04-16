@@ -328,13 +328,16 @@ hu:
     goods: "Termék / Szolgáltatás"
     coupon_code: "Vásárlási kód: %{coupon_code}"
     buy: Az Exchange
+    already_have: "Már van %{score} pontot."
   navigation:
     logout: 'Kijelentkezés'
     login: 'Bejelentkezés'
     users: 'Felhasználók'
     my_places: 'Saját helyek'
+    global_statistics: "Globális statisztikák"
     dashboard:
       statistic: 'Statisztikai'
+      visit_statistics: "Statisztikák látogatások"
       guests: 'Top látogatók'
       birthdays: "Születésnap"
       settings: 'Beállítások'
