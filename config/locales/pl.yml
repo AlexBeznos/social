@@ -328,6 +328,7 @@ pl:
     goods: "Produkt / usługę"
     coupon_code: "Kod zamówienia: %{coupon_code}"
     buy: wymiana
+    already_have: "Masz już %{score} zdobędzie punkty."
   navigation:
     logout: 'Wyloguj się'
     login: 'Zaloguj się'

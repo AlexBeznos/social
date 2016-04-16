@@ -322,6 +322,7 @@ ua:
     coupon_code: "Код покупки: %{coupon_code}"
     add_new_item: Додати новий товар/послугу
     buy: Обміняти
+    already_have: "У Вас вже є %{score} балів."
   navigation:
     logout: 'Вийти'
     login: 'Увійти'

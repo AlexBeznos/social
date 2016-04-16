@@ -328,6 +328,7 @@ hu:
     goods: "Termék / Szolgáltatás"
     coupon_code: "Vásárlási kód: %{coupon_code}"
     buy: Az Exchange
+    already_have: "Már van %{score} pontot."
   navigation:
     logout: 'Kijelentkezés'
     login: 'Bejelentkezés'
