@@ -276,6 +276,7 @@ en:
     add_new_item: Add new item
     coupon_code: "Code: %{coupon_code}"
     buy: Exchange
+    already_have: "You already have %{score} points."
   navigation:
     logout: 'Logout'
     login: 'Login'

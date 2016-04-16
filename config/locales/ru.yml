@@ -328,6 +328,7 @@ ru:
     goods: "Товар/услуга"
     coupon_code: "Код покупки: %{coupon_code}"
     buy: Обменять
+    already_have: "У вас уже есть %{score} баллов."
   navigation:
     logout: 'Выйти'
     login: 'Войти'

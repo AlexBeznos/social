@@ -326,6 +326,7 @@
     goods: "Ապրանք/ծառայություն"
     coupon_code: "Գնման կոդ: %{coupon_code}"
     buy: Փոխանակել
+    already_have: "Դուք արդեն ունեք %{score} միավոր."
   navigation:
     logout: 'Դուրս գալ'
     login: 'Մուտք'
