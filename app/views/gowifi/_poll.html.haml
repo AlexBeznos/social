@@ -5,7 +5,7 @@
   .container.inner
     = yield
   %button#poll-button.btn.btn-lg.poll-btn= t('wifi.poll')
-   
+
   #poll-container{ style: "display: none;" }
     = simple_form_for [place, poll], url: { controller: 'gowifi_auth', action: :submit_poll } do |f|
       = f.error_notification

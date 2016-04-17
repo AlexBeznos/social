@@ -21,13 +21,14 @@ RSpec.shared_examples "with proper polls" do
 
   it "has proper question" do
     place.auths << auth
-    p "*" * 40
-    p place.auths.first
-    
+    place.auths.first.approve!
+
     visit gowifi_place_path(slug: place.slug)
     click_button I18n.t('wifi.poll')
 
-    expect(page).to have_content(poll_auth.question)
+    poll_question = page.find("label.question").text
+
+    expect(poll_question).to eq(poll_auth.question)
   end
 
   it "has proper answers" do
