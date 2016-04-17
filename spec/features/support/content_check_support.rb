@@ -28,7 +28,7 @@ RSpec.shared_examples "with proper polls" do
 
     poll_question = page.find("label.question").text
 
-    expect(poll_question).to eq(poll_auth.question)
+    expect(poll_question).to eq(poll_auth.question.humanize)
   end
 
   it "has proper answers" do
