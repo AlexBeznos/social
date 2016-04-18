@@ -9,7 +9,7 @@ describe "Ahoy visits" do
   it "creates new visit" do
     visitable_pages = [
       gowifi_place_path(place),
-      preview_path(place, auth_id: auth.id),
+      preview_path(place, auth: auth),
       gowifi_sms_confirmation_path(place, sms)
     ]
 
