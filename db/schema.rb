@@ -244,11 +244,9 @@ ActiveRecord::Schema.define(version: 20160404170105) do
     t.string   "username"
     t.string   "password"
     t.string   "client_ip"
-    t.string   "client_crt"
-    t.string   "client_key"
-    t.string   "client_pass"
+    t.string   "ovpn"
+    t.string   "access_token"
     t.integer  "place_id"
-    t.boolean  "ovpn_ready",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

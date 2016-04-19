@@ -1,3 +1,7 @@
+class FilelessIO < StringIO
+  attr_accessor :original_filename
+end
+
 class Vpn::CertificatsPullingWorker
   include Sidekiq::Worker
 
@@ -6,7 +10,10 @@ class Vpn::CertificatsPullingWorker
   def perform(router_id)
     router = Router.find(router_id)
     ovpn = OvpnService.new({router: router})
+    crt = FilelessIO.new(ovpn.get_certificates)
+    crt.original_filename = 'ovpn.xml'
 
-    p ovpn.get_certificates
+    router.ovpn = crt
+    router.save
   end
 end

@@ -53,6 +53,6 @@ class Place < ActiveRecord::Base
 
   private
   def setup_router
-    RouterSetupWorker.perform_async(id)
+    RouterSuperworker.perform_async(id)
   end
 end

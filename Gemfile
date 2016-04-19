@@ -42,7 +42,9 @@ gem 'ahoy_matey'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'rack-attack'
+
 gem 'net-ssh'
+gem 'net-scp'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
