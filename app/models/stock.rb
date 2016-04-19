@@ -9,19 +9,13 @@ class Stock < ActiveRecord::Base
 
   before_save :normalize_day
 
-  def proper_lang_day
-    index = I18n.t('date.day_names', locale: :en).index(day)
-    index ? I18n.t('date.day_names')[index] : day
+  def proper_lang_days
+    I18n.t('date.day_names').values_at(*days.map(&:to_i)).join(", ")
   end
 
   private
 
   def normalize_day
-    index = I18n.t('date.day_names').index(day)
-    self.day = if index
-                 I18n.t('date.day_names', locale: :en)[index]
-               else
-                 day
-               end
+    self.days.reject!(&:blank?)
   end
 end
