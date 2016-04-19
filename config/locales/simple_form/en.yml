@@ -49,7 +49,7 @@ en:
       stock:
         url: URL
         image: Image
-        day: Show day
+        days: Show days
       style:
         background: Background
         js: JS

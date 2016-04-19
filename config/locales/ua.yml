@@ -25,6 +25,8 @@ ua:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
     deleted: "%{subject} видалено"
+  stock:
+    select_all: Вибрати всі
   date:
     abbr_day_names:
     - нд.

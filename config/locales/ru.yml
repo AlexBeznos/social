@@ -25,6 +25,8 @@ ru:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
     deleted: "%{subject} удалено"
+  stock:
+    select_all: Выбрать все
   date:
     abbr_day_names:
     - Вс

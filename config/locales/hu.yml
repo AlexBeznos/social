@@ -25,6 +25,8 @@ hu:
     create: "%{subject} hozzáadott"
     updated: "%{subject} frissítve"
     deleted: "%{subject} az eltávolított"
+  stock:
+    select_all: jelölje ki az összes
   date:
     abbr_day_names:
     - Va
