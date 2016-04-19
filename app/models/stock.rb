@@ -2,7 +2,8 @@ class Stock < ActiveRecord::Base
   belongs_to :place
 
   mount_uploader :image, StockUploader, mount_on: :image_file_name
-
+  
+  validates :place_id, :days, presence: true
   validates :image,
             presence: true,
             file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
