@@ -55,6 +55,7 @@ ua:
         css: CSS
         text_color: Колір основного тексту
         greating_color: Колір привітання
+        line_colors: Колір і прозорість смуги сторінки входу
       menu_item:
         menu_item: Item
         name: Назва товара
