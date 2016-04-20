@@ -13,14 +13,23 @@ class OvpnService
       stdout = ssh.exec!(setup_client_cmnds(@client_name, @router.client_ip))
     end
 
-    raise unless stdout.include? 'Write out database with 1 new entries'
+    unless stdout.include? 'Write out database with 1 new entries'
+
+      return raise
+    end
   end
 
   def get_certificate
     cmnd = [ data_volume, gen_ovpn_client_file(@client_name) ].join(' && ')
+    stdout = ''
 
     ssh_connection do |ssh|
-      ssh.exec!(cmnd)
+      stdout = ssh.exec!(cmnd)
+    end
+
+    if stdout.present?
+      Rails.logger.debug stdout
+      return raise
     end
 
     open(scp_client_path(@client_name)).read

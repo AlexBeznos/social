@@ -10,8 +10,8 @@ class GowifiSms < ActiveRecord::Base
   validates :phone, phone: true
   validates :code, length: { is: 6 }
 
-  after_create :send_sms
-  after_create :remove_gowifi_sms_record
+  after_commit :send_sms, on: :create
+  after_commit :remove_gowifi_sms_record, on: :create
 
   def send_sms
     GowifiSmsSendWorker.perform_async(id)

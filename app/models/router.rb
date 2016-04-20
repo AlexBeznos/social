@@ -3,17 +3,17 @@ class Router < ActiveRecord::Base
 
   belongs_to :place
 
-  validates :username, :password, :place, presence: true
+  validates :place, presence: true
 
   before_create :set_random_values
   before_create :set_client_ip
-  after_commit :gen_ovpn_client, on: :create
+  after_commit :initial_setup, on: :create
 
   private
 
   def set_random_values
-    self.username = SecureRandom.hex(6) unless username
-    self.password = SecureRandom.hex(6) unless password
+    self.username = SecureRandom.hex(6)
+    self.password = SecureRandom.hex(6)
     self.access_token = SecureRandom.hex(12)
   end
 
@@ -23,7 +23,7 @@ class Router < ActiveRecord::Base
     end until Router.where(client_ip: client_ip, place: place).empty?
   end
 
-  def gen_ovpn_client
+  def initial_setup
     RouterSuperworker.perform_async(id)
   end
 end

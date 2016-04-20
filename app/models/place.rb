@@ -38,7 +38,7 @@ class Place < ActiveRecord::Base
                    file_size: { less_than_or_equal_to: 10.megabytes }
 
   after_validation :geocode, if: :city_changed?
-  after_create :setup_router
+  after_commit :setup_router, on: :create
 
   def get_customers
     Customer.joins(:visits).where('customer_visits.place_id = ?', self.id)
@@ -52,7 +52,8 @@ class Place < ActiveRecord::Base
   end
 
   private
+
   def setup_router
-    RouterSuperworker.perform_async(id)
+    RouterSetupWorker.perform_async(id)
   end
 end

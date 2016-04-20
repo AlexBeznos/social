@@ -1,9 +1,10 @@
 ---
 :concurrency:  25
 :queues:
-  - [sms_send, 6]
-  - [advertisment, 5]
-  - [router_setup, 4]
+  - [sms_send, 7]
+  - [advertisment, 6]
+  - [router_setup, 5]
   - [ovpn, 4]
-  - [sms_remove, 3]
+  - [router_settings, 3]
+  - [sms_remove, 2]
   - [default, 1]
