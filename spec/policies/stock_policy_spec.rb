@@ -21,7 +21,7 @@ RSpec.describe StockPolicy do
     end
 
 
-    it "permit mass assigment of all attributes" do
+    it "permit mass assignment of all attributes" do
       attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
@@ -39,7 +39,7 @@ RSpec.describe StockPolicy do
     end
 
 
-    it "permit mass assigment of all attributes" do
+    it "permit mass assignment of all attributes" do
       attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
@@ -57,12 +57,12 @@ RSpec.describe StockPolicy do
       expect(resolved_scope).to include(record)
     end
 
-    it "permit mass assigment of all attributes" do
+    it "permit mass assignment of all attributes" do
       attributes.each do |attr|
         is_expected.to permit_mass_assignment_of(attr)
       end
     end
 
-      it{ is_expected.to permit_crud}
+    it{ is_expected.to permit_crud}
   end
 end
