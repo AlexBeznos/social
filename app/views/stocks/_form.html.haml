@@ -6,7 +6,7 @@
   %input#check_all_days{:type => "checkbox"}
   %label{:for => "check_all_days"}= I18n.t('stock.select_all')
 
-  = f.input :days, collection: I18n.t('date.day_names').map.with_index { |day, index| [day, index] }, as: :check_boxes
+  = f.input :days, collection: I18n.t('date.day_names').map.with_index { |day, index| [day, index] }, as: :check_boxes, checked: @stock.days
   - if @stock.image.present?
     = image_tag @stock.image.url, height: 100
   = f.input :image, as: :file
