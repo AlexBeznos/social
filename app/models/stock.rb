@@ -2,7 +2,7 @@ class Stock < ActiveRecord::Base
   belongs_to :place
 
   mount_uploader :image, StockUploader, mount_on: :image_file_name
-  
+
   validates :place_id, :days, presence: true
   validates :image,
             presence: true,
@@ -17,6 +17,6 @@ class Stock < ActiveRecord::Base
   private
 
   def normalize_day
-    self.days.reject!(&:blank?)
+    days.reject!(&:blank?)
   end
 end
