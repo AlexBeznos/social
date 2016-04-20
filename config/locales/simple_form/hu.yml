@@ -49,7 +49,7 @@ hu:
       stock:
         url: Link
         image: Kép
-        day: Napos show
+        days: Mutatott napok
       style:
         background: A háttérben
         js: JS

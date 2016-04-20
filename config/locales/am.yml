@@ -25,6 +25,8 @@
     create: "%{subject} Ավելացված է"
     updated: "%{subject} թարմացված է "
     deleted: "%{subject} ջնջված է"
+  stock:
+    select_all: ընտրել բոլորը
   date:
     abbr_day_names:
     - Կիր.

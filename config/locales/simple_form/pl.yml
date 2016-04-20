@@ -49,7 +49,7 @@ pl:
       stock:
         url: powiązanie
         image: Obraz
-        day: dzień pokaż
+        days: Dni pokaż
       style:
         background: tło
         js: JS
