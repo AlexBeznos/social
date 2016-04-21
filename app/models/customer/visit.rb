@@ -13,9 +13,9 @@ class Customer::Visit < ActiveRecord::Base
              foreign_key: :customer_network_profile_id
 
   validates :place, presence: true
-  validate :ones_a_day_visit, unless: :by_password?
+  validate :ones_a_day_visit, unless: :by_password? || :by_sms?
 
-  after_create :calculate_reputation, unless: :by_password?
+  after_create :calculate_reputation, unless: :by_password? || :by_sms?
 
   def self.by_birthday(from, till)
     includes(:account).where(account_type: "VkontakteProfile").reject do |visit|
@@ -87,6 +87,6 @@ class Customer::Visit < ActiveRecord::Base
   end
 
   def profile_name
-    account_type.remove("Profile").downcase
+    account_type.try(:remove, "Profile").try(:downcase)
   end
 end

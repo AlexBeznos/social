@@ -43,7 +43,7 @@ class Profile < ActiveRecord::Base
   def self.create_with_resource(params, customer)
     resource_type = get_profile_type(params['provider'] || params[:provider])
 
-    create!(
+    create(
       customer: customer,
       resource_type: resource_type,
       resource_attributes: get_resource_params(resource_type, params)

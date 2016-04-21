@@ -143,7 +143,7 @@ class GowifiAuthController < ApplicationController
   end
 
   def credentials
-    p request.env['omniauth.auth']
+    request.env['omniauth.auth']
   end
 
   def clear_session

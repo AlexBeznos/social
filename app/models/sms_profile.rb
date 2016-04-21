@@ -6,6 +6,7 @@ class SmsProfile < ActiveRecord::Base
   after_create :send_sms
 
   validates :phone, presence: true
+  validates :phone, phone: true
   validates :code, uniqueness: true
 
   def send_sms
