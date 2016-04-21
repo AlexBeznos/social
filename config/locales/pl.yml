@@ -25,6 +25,8 @@ pl:
     create: "%{subject} dodano"
     updated: "%{subject} zaktualizowany"
     deleted: "%{subject} usunięto"
+  stock:
+    select_all: zaznacz wszystko
   date:
     abbr_day_names:
     - Ni
