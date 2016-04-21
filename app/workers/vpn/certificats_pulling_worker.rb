@@ -1,6 +1,4 @@
-class FilelessIO < StringIO
-  attr_accessor :original_filename
-end
+require 'fileless_io'
 
 class Vpn::CertificatsPullingWorker
   include Sidekiq::Worker

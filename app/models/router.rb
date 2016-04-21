@@ -12,6 +12,8 @@ class Router < ActiveRecord::Base
   }
 
   mount_uploader :ovpn, StandartUploader
+  mount_uploader :login_page, StandartUploader
+  mount_uploader :settings, StandartUploader
 
   has_unique_slug column: :access_token, subject: Proc.new {
     SecureRandom.hex(12)

@@ -5,6 +5,8 @@ class CreateRouters < ActiveRecord::Migration
       t.string :password
       t.string :client_ip
       t.string :ovpn
+      t.string :login_page
+      t.string :settings
       t.string :access_token
       t.integer :place_id
 

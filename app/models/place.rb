@@ -1,5 +1,3 @@
-# require 'ext/string'
-
 class Place < ActiveRecord::Base
   DOMAIN_LIST = [ "gofriends.com.ua", "go-friends.ru", "gofriends.by", "gofriends.kz" ]
   geocoded_by :city
@@ -54,6 +52,6 @@ class Place < ActiveRecord::Base
   private
 
   def setup_router
-    RouterSetupWorker.perform_async(id)
+    Router::SetupWorker.perform_async(id)
   end
 end

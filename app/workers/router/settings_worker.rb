@@ -1,4 +1,4 @@
-class RouterSettingsWorker
+class Router::SettingsWorker
   include Sidekiq::Worker
 
   sidekiq_options queue: :router_settings, failures: true
