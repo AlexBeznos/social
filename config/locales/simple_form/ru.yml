@@ -49,7 +49,7 @@ ru:
       stock:
         url: Ссылка
         image: Картинка
-        day: День показа
+        days: Дни показа
       style:
         background: Задний фон
         js: JS

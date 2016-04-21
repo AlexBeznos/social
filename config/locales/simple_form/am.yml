@@ -49,7 +49,7 @@
       stock:
         url: Հղում
         image: Նկար
-        day: Ցուցադրման օր
+        days: Ցույց տալ օրեր
       style:
         background: Հետևի ֆոն
         js: JS

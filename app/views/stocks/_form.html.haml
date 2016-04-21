@@ -1,9 +1,14 @@
-= simple_form_for [@place, @stock] do |f|
+= content_for :page_javascript, "dashboard/stocks"
+
+= simple_form_for [@place, @stock], html: { class: "stocks" } do |f|
   = f.error_notification
-  = f.input :day, collection: t('date.day_names').dup.push(t('models.stocks.day'))
+
+  %input#check_all_days{:type => "checkbox"}
+  %label{:for => "check_all_days"}= I18n.t('stock.select_all')
+
+  = f.input :days, collection: I18n.t('date.day_names').map.with_index { |day, index| [day, index] }, as: :check_boxes, checked: @stock.days
   - if @stock.image.present?
     = image_tag @stock.image.url, height: 100
   = f.input :image, as: :file
-
 
   = f.button :submit

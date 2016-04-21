@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410101316) do
+ActiveRecord::Schema.define(version: 20160418134328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,37 @@ ActiveRecord::Schema.define(version: 20160410101316) do
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
+  create_table "ahoy_visits", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "visitor_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "customer_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.integer  "screen_height"
+    t.integer  "screen_width"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "postal_code"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.datetime "started_at"
+    t.integer  "place_id"
+  end
+
+  add_index "ahoy_visits", ["customer_id"], name: "index_ahoy_visits_on_customer_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -294,6 +325,7 @@ ActiveRecord::Schema.define(version: 20160410101316) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "day"
+    t.text     "days",               default: [], array: true
   end
 
   add_index "stocks", ["place_id"], name: "index_stocks_on_place_id", using: :btree
@@ -349,36 +381,6 @@ ActiveRecord::Schema.define(version: 20160410101316) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["last_request_at"], name: "index_users_on_last_request_at", using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", using: :btree
-
-  create_table "visits", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.uuid     "visitor_id"
-    t.string   "ip"
-    t.text     "user_agent"
-    t.text     "referrer"
-    t.text     "landing_page"
-    t.integer  "user_id"
-    t.string   "referring_domain"
-    t.string   "search_keyword"
-    t.string   "browser"
-    t.string   "os"
-    t.string   "device_type"
-    t.integer  "screen_height"
-    t.integer  "screen_width"
-    t.string   "country"
-    t.string   "region"
-    t.string   "city"
-    t.string   "postal_code"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.string   "utm_source"
-    t.string   "utm_medium"
-    t.string   "utm_term"
-    t.string   "utm_content"
-    t.string   "utm_campaign"
-    t.datetime "started_at"
-  end
-
-  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
   create_table "vkontakte_auths", force: true do |t|
     t.text     "message"

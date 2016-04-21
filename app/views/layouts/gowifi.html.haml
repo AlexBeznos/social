@@ -18,7 +18,7 @@
     = stylesheet_link_tag "wifi/poll_styling", :media => "all"
     = stylesheet_link_tag "wifi/default", :media => "all"
     = javascript_include_tag "wifi_enter"
-    = render 'shared/gowifi/style', place: @place, customer: @customer if @place.style
+    = render 'shared/gowifi/style', place: @place if @place.style
   %body
     %div.background{ style: background_style(@place) }
       .wrapper

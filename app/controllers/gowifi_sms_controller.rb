@@ -4,6 +4,7 @@ class GowifiSmsController < ApplicationController
   layout 'gowifi'
   before_action :find_place, only: [:show, :create]
   before_action :find_sms, only: [:show]
+  after_action :ahoy_track_visit, only: [:show]
 
   def show
     render 'gowifi/sms/show'
