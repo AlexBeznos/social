@@ -25,6 +25,8 @@ ua:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
     deleted: "%{subject} видалено"
+  stock:
+    select_all: Вибрати всі
   date:
     abbr_day_names:
     - нд.
@@ -322,13 +324,16 @@ ua:
     coupon_code: "Код покупки: %{coupon_code}"
     add_new_item: Додати новий товар/послугу
     buy: Обміняти
+    already_have: "У Вас вже є %{score} балів."
   navigation:
     logout: 'Вийти'
     login: 'Увійти'
     users: 'Користувачі'
     my_places: 'Мої заклади'
+    global_statistics: "Глобальна статистика"
     dashboard:
       statistic: 'Статистика'
+      visit_statistics: "Статистика відвідувань"
       settings: 'Налаштування'
       stocks: 'Акції'
       guests: 'Top відвідувачів'
@@ -344,3 +349,24 @@ ua:
       title: "Заклад %{place_name}"
     guests:
       title: "Top відвідувачів в %{place_name}"
+  gowifi_previews:
+    show:
+      accept: "Розповісти!"
+      reject: "Ні, дякую"
+    vkontakte:
+      name: "І'мя користувача"
+      time: "годину тому"
+      reply: "Відповісти"
+      share: "Поділитись"
+      like: "Мені подобається"
+    twitter:
+      name: "І'мя користувача"
+      time: "15год"
+    facebook:
+      name: "І'мя користувача"
+      action: "добавив фотографію"
+      time: "17 грудня 2015 р."
+      like: "Подобається"
+      comment: "Коментар"
+      share: "Поділитись"
+      write_comment: "Написати коментар ..."

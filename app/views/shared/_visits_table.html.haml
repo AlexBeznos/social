@@ -1,0 +1,15 @@
+.row
+  .col-sm-6
+    %h4= t(".browser")
+    = pie_chart visits.group(:browser).count
+    %h4= t(".os")
+    = pie_chart visits.group(:os).count
+    %h4= t(".device")
+    = pie_chart visits.group(:device_type).count
+  .col-sm-6
+    %h4= t(".country")
+    = pie_chart visits.group(:country).count
+    %h4= t(".region")
+    = pie_chart visits.group(:region).count
+    %h4= t(".city")
+    = pie_chart visits.group(:city).count

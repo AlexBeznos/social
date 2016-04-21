@@ -7,10 +7,10 @@ class PagesController < ApplicationController
 
   private
   def throw_to_proper_home
-    if request.host.match /gofriends\.am/
-      params[:id] = 'home_am'
-    elsif request.host.match /go-friends\.ru/
-      params[:id] = 'home_ru'
+    domain = request.host.match(/\..*$/).to_s.gsub(/\./, '')
+
+    if ['am', 'ru', 'us'].include?(domain)
+       params[:id] = "home_#{domain}"
     end
   end
 end

@@ -3,7 +3,7 @@ class UserPolicy < ApplicationPolicy
     def resolve
       if user.franchisee?
         scope.where(id: user_ids + [user.id])
-      elsif user.general? && user.id
+      elsif user.general?
         scope.where(id: user.id)
       elsif user.admin?
         scope.all
@@ -11,10 +11,21 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def index?; user.franchisee? || user.admin?; end
-  def destroy?; user.admin?; end
-  def create?; user.franchisee? || user.admin?; end
-  def new?; user.franchisee? || user.admin?; end
+  def index?
+    user.franchisee? || user.admin?
+  end
+  
+  def destroy?
+    user.admin?
+  end
+  
+  def create?
+    user.franchisee? || user.admin?
+  end
+  
+  def new?
+    user.franchisee? || user.admin?
+  end
 
   def permitted_attributes
     params = [

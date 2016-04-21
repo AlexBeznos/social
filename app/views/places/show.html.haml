@@ -35,7 +35,8 @@
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.day')}:"
-        %span= @visits_by_date.by_sms.count
+        %span= @visits_by_date.by_social_network.count
+
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -61,7 +62,7 @@
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.week')}:"
-        %span= @visits_this_week.by_sms.count
+        %span= @visits_this_week.by_social_network.count
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -78,6 +79,7 @@
             %span= @visits_this_week.by_gender['male']
           %p
             = "#{t('models.places.actions.show.info.women')}:"
+
             %span= @visits_this_week.by_gender['female']
     .analysis-col-inner
       %h2
@@ -87,7 +89,7 @@
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.month')}:"
-        %span= @visits_this_month.by_sms.count
+        %span= @visits_this_month.by_social_network.count
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"

@@ -25,6 +25,8 @@ pl:
     create: "%{subject} dodano"
     updated: "%{subject} zaktualizowany"
     deleted: "%{subject} usunięto"
+  stock:
+    select_all: zaznacz wszystko
   date:
     abbr_day_names:
     - Ni
@@ -328,13 +330,16 @@ pl:
     goods: "Produkt / usługę"
     coupon_code: "Kod zamówienia: %{coupon_code}"
     buy: wymiana
+    already_have: "Masz już %{score} zdobędzie punkty."
   navigation:
     logout: 'Wyloguj się'
     login: 'Zaloguj się'
     users: 'Użytkownicy'
     my_places: 'Moje miejsca'
+    global_statistics: "Globalne statystyki"
     dashboard:
       statistic: 'Statystyki'
+      visit_statistics: "Statystyka odwiedzin"
       guests: 'Najczęściej odwiedzający'
       birthdays: "Urodziny"
       settings: 'Ustawienia'
@@ -342,3 +347,24 @@ pl:
       menu_items: 'Produkty / Usługi'
       polls: 'Ankiety'
       banners: 'Banery'
+  gowifi_previews:
+    show:
+      accept: "Zaakceptować"
+      reject: "Nie, dziękuję"
+    vkontakte:
+      name: "Nazwa użytkownika"
+      time: "godzinę temu"
+      reply: "Odpowiadać"
+      share: "Dzielić"
+      like: "Lubić"
+    twitter:
+      name: "Nazwa użytkownika"
+      time: "15h"
+    facebook:
+      name: "Nazwa użytkownika"
+      action: "napisal zdjęcie"
+      time: "1 godzinę temu"
+      like: "Lubić"
+      comment: "Komentarz"
+      share: "Dzielić"
+      write_comment: "Napisz komentarz ..."

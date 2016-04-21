@@ -25,6 +25,8 @@ hu:
     create: "%{subject} hozzáadott"
     updated: "%{subject} frissítve"
     deleted: "%{subject} az eltávolított"
+  stock:
+    select_all: jelölje ki az összes
   date:
     abbr_day_names:
     - Va
@@ -328,13 +330,16 @@ hu:
     goods: "Termék / Szolgáltatás"
     coupon_code: "Vásárlási kód: %{coupon_code}"
     buy: Az Exchange
+    already_have: "Már van %{score} pontot."
   navigation:
     logout: 'Kijelentkezés'
     login: 'Bejelentkezés'
     users: 'Felhasználók'
     my_places: 'Saját helyek'
+    global_statistics: "Globális statisztikák"
     dashboard:
       statistic: 'Statisztikai'
+      visit_statistics: "Statisztikák látogatások"
       guests: 'Top látogatók'
       birthdays: "Születésnap"
       settings: 'Beállítások'
@@ -342,3 +347,24 @@ hu:
       menu_items: 'Termékek / Szolgáltatások'
       polls: 'Szavazás'
       banners: 'Bannerek'
+  gowifi_previews:
+    show:
+      accept: "Elfogad"
+      reject: "Nem, köszönöm"
+    vkontakte:
+      name: "Felhasználónév"
+      time: "egy órája"
+      reply: "Válasz"
+      share: "Ossza meg"
+      like: "Mint"
+    twitter:
+      name: "Felhasználónév"
+      time: "15h"
+    facebook:
+      name: "Felhasználónév"
+      action: "közzétett egy fotót"
+      time: "1 órával ezelőtt"
+      like: "Mint"
+      comment: "Megjegyzés"
+      share: "Ossza meg"
+      write_comment: "Írj hozzászólást ..."

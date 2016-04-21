@@ -36,11 +36,14 @@
         = t('models.places.attrs.loyalty_program')
         %span.text-muted.pull-right= fa_plus_minus(@place.loyalty_program)
       %li.list-group-item
-        = t('models.places.attrs.display_my_banners')
-        %span.text-muted.pull-right= fa_plus_minus(@place.display_my_banners)
-      %li.list-group-item
-        = t('models.places.attrs.display_other_banners')
-        %span.text-muted.pull-right= fa_plus_minus(@place.display_other_banners)
+        = t('models.places.attrs.post_preview')
+        %span.text-muted.pull-right= fa_plus_minus(@place.post_preview)
+      -# %li.list-group-item
+      -#   = t('models.places.attrs.display_my_banners')
+      -#   %span.text-muted.pull-right= fa_plus_minus(@place.display_my_banners)
+      -# %li.list-group-item
+      -#   = t('models.places.attrs.display_other_banners')
+      -#   %span.text-muted.pull-right= fa_plus_minus(@place.display_other_banners)
       %li.list-group-item
         = t('models.places.attrs.score_amount')
         %span.text-muted.pull-right= @place.score_amount
@@ -73,7 +76,9 @@
             - @place.auths.active.send(step).each do |auth|
               .panel.panel-default.panel-settings{ style: "margin-top: #{@place.mfa ? 20 : 30}px;"}
                 .panel-heading
-                  .panel-title= t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
+                  .panel-title
+                    = t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
+                    %span{ class: notification_style(auth) }= t(auth.aasm.current_state, scope: "models.notifications.status") if auth.network?
                 .panel-body
                   = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer

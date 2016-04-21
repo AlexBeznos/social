@@ -21,11 +21,4 @@ module ApplicationHelper
     fa_icon( bool ? 'plus' : 'minus' )
   end
 
-  def localization_links
-    to_link = lambda { |l| link_to(l, set_locale_path(l)) }
-    locals    = I18n.available_locales
-    links     = locals.map { |l| to_link.call(l) }
-
-    raw links.join(' | ')
-  end
 end

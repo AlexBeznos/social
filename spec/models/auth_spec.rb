@@ -11,6 +11,46 @@ RSpec.describe Auth do
   it { is_expected.to accept_nested_attributes_for :resource }
   it_behaves_like 'with url validation for', :url, :network_profile
 
+  describe "notification" do
+    let(:franchisee){ create :user_franchisee }
+    let(:general){ create :user_general, franchisee: franchisee }
+    let(:place){ create :place, user: general }
+    let(:auth) { create :auth, place: place }
+    before(:each) do
+      auth.stub(:network?){ true }
+    end
+
+    describe "on modify" do
+      it "creates proper notification" do
+        auth.modify!
+        expect(franchisee.notifications.last.category).to eq("modified_authentication")
+      end
+
+      it "notifies franchisee" do
+        auth.approve!
+
+        expect do
+          auth.modify!
+        end.to change(franchisee.notifications, :count).by(1)
+      end
+
+    end
+
+    context "on unapprove" do
+      it "creates proper notification" do
+        auth.unapprove!
+        expect(general.notifications.last.category).to eq("unapproved_authentication")
+      end
+
+      it "notifies place owner" do
+        expect do
+          auth.unapprove!
+        end.to change(general.notifications, :count).by(1)
+      end
+    end
+
+  end
+
   describe "active scope" do
     let(:scoped_auth){ create :auth }
     let(:unscoped_auth){ create :auth, active: false }
@@ -32,12 +72,16 @@ RSpec.describe Auth do
     end
   end
 
+
+
+
   describe "Constant values" do
     it "NETWORKS contains proper auth network methods" do
       expect(described_class::NETWORKS).to match({
         vkontakte: 'vkontakte',
         facebook: 'facebook',
-        twitter: 'twitter'
+        twitter: 'twitter',
+        instagram: 'instagram'
       })
     end
 
@@ -55,6 +99,7 @@ RSpec.describe Auth do
         "vkontakte",
         "facebook",
         "twitter",
+        "instagram",
         "poll",
         "sms",
         "password",

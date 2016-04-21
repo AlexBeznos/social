@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329135809) do
+ActiveRecord::Schema.define(version: 20160418134328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,37 @@ ActiveRecord::Schema.define(version: 20160329135809) do
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
+  create_table "ahoy_visits", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "visitor_id"
+    t.string   "ip"
+    t.text     "user_agent"
+    t.text     "referrer"
+    t.text     "landing_page"
+    t.integer  "customer_id"
+    t.string   "referring_domain"
+    t.string   "search_keyword"
+    t.string   "browser"
+    t.string   "os"
+    t.string   "device_type"
+    t.integer  "screen_height"
+    t.integer  "screen_width"
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
+    t.string   "postal_code"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.datetime "started_at"
+    t.integer  "place_id"
+  end
+
+  add_index "ahoy_visits", ["customer_id"], name: "index_ahoy_visits_on_customer_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.string   "content"
@@ -48,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160329135809) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "step",          default: 0
+    t.integer  "state"
   end
 
   add_index "auths", ["place_id"], name: "index_auths_on_place_id", using: :btree
@@ -102,6 +134,7 @@ ActiveRecord::Schema.define(version: 20160329135809) do
     t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "by_sms",                      default: false
     t.integer  "account_id"
     t.string   "account_type"
   end
@@ -158,6 +191,11 @@ ActiveRecord::Schema.define(version: 20160329135809) do
 
   add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
 
+  create_table "instagram_auths", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "instagram_profiles", force: true do |t|
     t.string   "name"
     t.string   "nickname"
@@ -191,6 +229,18 @@ ActiveRecord::Schema.define(version: 20160329135809) do
 
   add_index "menu_items_orders", ["menu_item_id"], name: "index_menu_items_orders_on_menu_item_id", using: :btree
   add_index "menu_items_orders", ["order_id"], name: "index_menu_items_orders_on_order_id", using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "user_id"
+    t.integer  "category"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "notifications", ["source_id", "source_type"], name: "index_notifications_on_source_id_and_source_type", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "customer_id"
@@ -229,7 +279,6 @@ ActiveRecord::Schema.define(version: 20160329135809) do
     t.string   "wifi_settings_link"
     t.boolean  "wifi_settings_link_not_fresh", default: true
     t.boolean  "stocks_active",                default: false
-    t.string   "template",                     default: "default"
     t.integer  "score_amount",                 default: 0
     t.boolean  "loyalty_program",              default: false
     t.string   "city"
@@ -242,6 +291,7 @@ ActiveRecord::Schema.define(version: 20160329135809) do
     t.string   "auth_default_lang"
     t.string   "ssid"
     t.boolean  "mfa",                          default: false
+    t.boolean  "post_preview",                 default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
@@ -327,6 +377,7 @@ ActiveRecord::Schema.define(version: 20160329135809) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "day"
+    t.text     "days",               default: [], array: true
   end
 
   add_index "stocks", ["place_id"], name: "index_stocks_on_place_id", using: :btree
@@ -345,6 +396,7 @@ ActiveRecord::Schema.define(version: 20160329135809) do
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "line_colors",             default: "rgba(0, 0, 0, 0.0)"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
@@ -393,36 +445,6 @@ ActiveRecord::Schema.define(version: 20160329135809) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["last_request_at"], name: "index_users_on_last_request_at", using: :btree
   add_index "users", ["persistence_token"], name: "index_users_on_persistence_token", using: :btree
-
-  create_table "visits", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.uuid     "visitor_id"
-    t.string   "ip"
-    t.text     "user_agent"
-    t.text     "referrer"
-    t.text     "landing_page"
-    t.integer  "user_id"
-    t.string   "referring_domain"
-    t.string   "search_keyword"
-    t.string   "browser"
-    t.string   "os"
-    t.string   "device_type"
-    t.integer  "screen_height"
-    t.integer  "screen_width"
-    t.string   "country"
-    t.string   "region"
-    t.string   "city"
-    t.string   "postal_code"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.string   "utm_source"
-    t.string   "utm_medium"
-    t.string   "utm_term"
-    t.string   "utm_content"
-    t.string   "utm_campaign"
-    t.datetime "started_at"
-  end
-
-  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
   create_table "vkontakte_auths", force: true do |t|
     t.text     "message"

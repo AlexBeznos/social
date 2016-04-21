@@ -25,6 +25,8 @@
     create: "%{subject} Ավելացված է"
     updated: "%{subject} թարմացված է "
     deleted: "%{subject} ջնջված է"
+  stock:
+    select_all: ընտրել բոլորը
   date:
     abbr_day_names:
     - Կիր.
@@ -326,13 +328,16 @@
     goods: "Ապրանք/ծառայություն"
     coupon_code: "Գնման կոդ: %{coupon_code}"
     buy: Փոխանակել
+    already_have: "Դուք արդեն ունեք %{score} միավոր."
   navigation:
     logout: 'Դուրս գալ'
     login: 'Մուտք'
     users: 'Օգտագործողներ'
     my_places: 'Իմ հաստատությունները'
+    global_statistics: "Համաշխարհային վիճակագրություն"
     dashboard:
       statistic: 'Վիճակագրություն'
+      visit_statistics: "Այցելեք վիճակագրություն"
       guests: 'TOP Հաճախորդներ'
       birthdays: "Ծննդյան Օրեր"
       settings: 'Կարգավորումներ'
@@ -340,3 +345,24 @@
       menu_items: 'Ապրանքներ / Ծառայություններ'
       polls: 'Հարցումներ'
       banners: 'Բաններներ'
+  gowifi_previews:
+    show:
+      accept: "Ընդունել"
+      reject: "Ոչ, շնորհակալություն"
+    vkontakte:
+      name: "Օգտագործողի անունը"
+      time: "մեկ ժամ առաջ"
+      reply: "պատասխանել"
+      share: "բաժնետոմս"
+      like: "նման"
+    twitter:
+      name: "Օգտագործողի անունը"
+      time: "15h"
+    facebook:
+      name: "Օգտագործողի անունը"
+      action: "տեղադրված է լուսանկար"
+      time: "1 ժամ առաջ"
+      like: "նման"
+      comment: "մեկնաբանություն"
+      share: "բաժնետոմս"
+      write_comment: "Գրեք մեկնաբանություն ..."

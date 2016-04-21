@@ -12,8 +12,9 @@
   = f.input :active, as: :boolean
   = f.input :stocks_active, as: :boolean
   = f.input :loyalty_program, as: :boolean
-  = f.input :display_my_banners, as: :boolean
-  = f.input :display_other_banners, as: :boolean
+  = f.input :post_preview, as: :boolean
+  -# = f.input :display_my_banners, as: :boolean
+  -# = f.input :display_other_banners, as: :boolean
   = f.input :mfa, as: :boolean
   = f.input :score_amount
   = f.input :auth_default_lang, collection: I18n.available_locales

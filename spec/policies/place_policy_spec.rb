@@ -9,7 +9,6 @@ RSpec.describe PlacePolicy do
     :name,
     :logo,
     :active,
-    :redirect_url,
     :user_id,
     :stocks_active,
     :score_amount,
@@ -20,7 +19,8 @@ RSpec.describe PlacePolicy do
     :domen_url,
     :auth_default_lang,
     :ssid,
-    :mfa
+    :mfa,
+    :post_preview
   ]}
   let(:record){ create :place}
   let(:resolved_scope) {

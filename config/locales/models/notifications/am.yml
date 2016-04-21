@@ -1,0 +1,11 @@
+am:
+  models:
+    notifications:
+      name: "ծանուցումները"
+      approve: "հավանություն տալ"
+      unapprove: "Ապահաստատել"
+      status:
+        approved: "Հաստատված"
+        unapproved: "չհաստատված"
+        pending: "ակնկալվում է"
+      no_notifications: "Դուք չունեք ծանուցումները"

@@ -1,0 +1,17 @@
+ru:
+  shared:
+    visits_table:
+      browser: "Браузер"
+      os: "OS"
+      device: "Тип устройства"
+      country: "Страна"
+      region: "Регион"
+      city: "Город"
+
+  global_statistics:
+    visits:
+      index:
+        places_statistics: "Статистика по заведениям"
+      places_visits_table:
+        place: "Заведение"
+        visits_count: "Количество посещений"

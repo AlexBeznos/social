@@ -33,6 +33,7 @@ class PlacesController < ApplicationController
     authorize @place
 
     date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
+
     @visits_by_date = @place.visits.by_date(date)
     @visits_this_week = @place.visits.by_date_from_to(date - 1.week, date)
     @visits_this_month = @place.visits.by_date_from_to(date - 1.month, date)

@@ -1,9 +1,11 @@
 %nav.nav-inner-custom
   %ul.nav.nav-justified
     %li= link_to t('navigation.dashboard.statistic'), place_path(@place)
+    - if policy(:statistics).visits_index?
+      %li= link_to t('navigation.dashboard.visit_statistics'), place_statistics_visits_path(@place)
     %li= link_to t('navigation.dashboard.settings'), settings_place_path(@place)
     %li= link_to t('navigation.dashboard.guests'), guests_place_path(@place)
     %li= link_to t('navigation.dashboard.birthdays'), birthdays_place_path(@place)
     %li= link_to t('navigation.dashboard.stocks'), place_stocks_path(@place)
     %li= link_to t('navigation.dashboard.menu_items'), place_menu_items_path(@place)
-    %li= link_to t('navigation.dashboard.banners'), place_banners_path(@place)
+    -# %li= link_to t('navigation.dashboard.banners'), place_banners_path(@place)

@@ -4,9 +4,9 @@ class GowifiController < ApplicationController
   before_action :set_place_slug, only: :show
   before_action :set_step, only: :show
   before_action :set_default_format, only: :show
-  before_action :find_customer, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
+  after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
 
@@ -19,6 +19,7 @@ class GowifiController < ApplicationController
   private
   def find_place
     @place = Place.find_by_slug(params[:slug])
+    raise ActiveRecord::RecordNotFound unless @place
   end
 
   # we add slug to session to make sure
@@ -28,6 +29,8 @@ class GowifiController < ApplicationController
   end
 
   def set_step
+    cookies.delete(:step) if cookies[:step] && !@place.mfa
+
     cookies[:step] = {
       value: 'primary',
       expires: 15.minutes.from_now
@@ -38,16 +41,14 @@ class GowifiController < ApplicationController
     request.format = :html
   end
 
-  def find_customer
-    @customer = Customer.find(cookies[:customer].to_i) if cookies[:customer]
-  end
-
   def set_locale
-    if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
-      return I18n.locale = params[:lang]
-    end
+    I18n.locale = if params[:lang] && I18n.available_locales.include?(params[:lang].to_sym)
+                    params[:lang]
+                  elsif @place.auth_default_lang.present?
+                    @place.auth_default_lang
+                  end
 
-    I18n.locale = @place.auth_default_lang unless @place.auth_default_lang.blank?
+    session[:locale] = I18n.locale
   end
 
   # TODO: make banner injection by simple method and visits incrementation by ajax call
@@ -67,7 +68,6 @@ class GowifiController < ApplicationController
   end
 
   def check_for_place_activation
-    return redirect_to '/404.html' unless @place
     redirect_to wifi_login_path(@place, "http://#{request.host}") unless @place.try(:active)
   end
 end

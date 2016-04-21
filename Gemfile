@@ -8,7 +8,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'chartkick'
 gem 'font-awesome-rails'
-gem 'jquery-minicolors-rails'
+gem 'jquery-minicolors-rails', '2.2.3.0'
 gem 'codemirror-rails'
 gem 'jquery-modal-rails'
 gem 'jquery-ui-rails'
@@ -73,6 +73,7 @@ gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 
 # Other
+gem 'aasm', '4.9.0'
 gem 'authlogic'
 gem 'pundit'
 gem 'lograge'
@@ -86,6 +87,7 @@ group :development do
   gem 'metric_fu'
   gem 'thin'
   gem 'quiet_assets'
+  gem 'rubocop', require: false
 end
 
 group :development, :test do
@@ -96,6 +98,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'timecop'
+  gem 'quiet_assets'
 end
 
 group :test do

@@ -4,6 +4,7 @@ class Customer::Visit < ActiveRecord::Base
   scope :by_date, ->(date) { where(created_at: date.beginning_of_day..date.end_of_day) }
   scope :by_date_from_to, ->(from, to) { where(created_at: from..to.end_of_day) }
   scope :by_sms, -> { where(account_type: "SmsProfile") }
+  scope :by_social_network, -> { where(account_type: get_social_networks_names) }
 
   belongs_to :account, polymorphic: true
   belongs_to :customer
@@ -49,6 +50,10 @@ class Customer::Visit < ActiveRecord::Base
     birthday_day, birthday_month = [account.birthday.day, account.birthday.month]
 
     (from.day..from.end_of_month.day).include?(birthday_day) && from.month == birthday_month || (1..till.day).include?(birthday_day) && till.month == birthday_month
+  end
+
+  def font_awesome_name
+    profile_name == "vkontakte" ? "vk" : profile_name
   end
 
   def by_sms?

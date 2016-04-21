@@ -25,6 +25,8 @@ en:
     create: "%{subject} added"
     updated: "%{subject} updated"
     deleted: "%{subject} deleted"
+  stock:
+    select_all: Select all
   date:
     abbr_day_names:
     - Sun
@@ -276,13 +278,16 @@ en:
     add_new_item: Add new item
     coupon_code: "Code: %{coupon_code}"
     buy: Exchange
+    already_have: "You already have %{score} points."
   navigation:
     logout: 'Logout'
     login: 'Login'
     users: 'Users'
     my_places: 'My places'
+    global_statistics: "Global statistics"
     dashboard:
       statistic: 'Statistic'
+      visit_statistics: "Statistics of visits"
       settings: 'Settings'
       stocks: 'Stocks'
       guests: 'Top visitors'
@@ -298,3 +303,24 @@ en:
       title: "Place %{place_name}"
     guests:
       title: "Top Visitors in %{place_name}"
+  gowifi_previews:
+    show:
+      accept: "Accept"
+      reject: "No, thanks"
+    vkontakte:
+      name: "User Name"
+      time: "one hour ago"
+      reply: "Reply"
+      share: "Share"
+      like: "Like"
+    twitter:
+      name: "User Name"
+      time: "15h"
+    facebook:
+      name: "User Name"
+      action: "posted a photo"
+      time: "1 hour ago"
+      like: "Like"
+      comment: "Comment"
+      share: "Share"
+      write_comment: "Write a comment ..."

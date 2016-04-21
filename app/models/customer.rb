@@ -5,6 +5,7 @@ class Customer < ActiveRecord::Base
   has_many :reputations, dependent: :destroy, class_name: 'Customer::Reputation'
   has_many :orders, dependent: :destroy
   has_many :profiles, dependent: :destroy
+  has_many :ahoy_visits
   belongs_to :social_network
 
   accepts_nested_attributes_for :network_profiles
@@ -31,35 +32,27 @@ class Customer < ActiveRecord::Base
   end
 
   private
-    def self.sort_by_birthday a, b
-      case
-        when a.birthday.strftime('%m%d').to_i < b.birthday.strftime('%m%d').to_i
-          if a.birthday.strftime('%m').to_i == 1 and b.birthday.strftime('%m').to_i == 12
-            1
-          else
-            -1
-          end
-        when a.birthday.strftime('%m%d').to_i > b.birthday.strftime('%m%d').to_i
-          if a.birthday.strftime('%m').to_i == 12 and b.birthday.strftime('%m').to_i == 1
-            -1
-          else
-            1
-          end
+  def self.sort_by_birthday a, b
+    case
+      when a.birthday.strftime('%m%d').to_i < b.birthday.strftime('%m%d').to_i
+        if a.birthday.strftime('%m').to_i == 1 and b.birthday.strftime('%m').to_i == 12
+          1
         else
-          0
+          -1
         end
-    end
-
-    def get_more_customer_info
-      begin
-        params = Object.const_get("#{first_name.split('#')[1].capitalize}Service").get_more_customer_info(self)
-        self.assign_attributes(params)
-      rescue
+      when a.birthday.strftime('%m%d').to_i > b.birthday.strftime('%m%d').to_i
+        if a.birthday.strftime('%m').to_i == 12 and b.birthday.strftime('%m').to_i == 1
+          -1
+        else
+          1
+        end
+      else
+        0
       end
-    end
+  end
 
-    def set_gender
-      gender = Guess.gender(self.full_name)[:gender]
-      self.gender = gender unless gender == 'unknown'
-    end
+  def set_gender
+    gender = Guess.gender(self.full_name)[:gender]
+    self.gender = gender unless gender == 'unknown'
+  end
 end
