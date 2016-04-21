@@ -8,5 +8,6 @@ FactoryGirl.define do
     factory :alternative_auth do
       resource_type "SimpleAuth"
     end
+
   end
 end

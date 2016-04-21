@@ -108,6 +108,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'rspec_candy'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'test_after_commit'
   gem 'rspec-sidekiq'
