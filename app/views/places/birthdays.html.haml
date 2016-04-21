@@ -1,4 +1,3 @@
-= content_for :page_stylesheet, 'dashboard/guests'
 = content_for :page_javascript, 'dashboard/guests'
 = content_for :title, t('models.places.actions.birthdays.title', place_name: @place.name)
 
@@ -16,7 +15,7 @@
     .calendar-bar
       = fa_icon "chevron-left", class: 'aleft'
       = fa_icon "chevron-right", class: 'aright'
-      
+
 .row.birthdays-table-container
   %table.col-sm-8.col-sm-offset-2.col-xs-12.guests-table.guests-table-minimized
     %tr.row
