@@ -87,6 +87,6 @@ class Customer::Visit < ActiveRecord::Base
   end
 
   def profile_name
-    account_type.try(:remove, "Profile").try(:downcase)
+    account_type.remove("Profile").downcase if account_type
   end
 end
