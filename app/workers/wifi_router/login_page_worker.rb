@@ -1,6 +1,6 @@
 require 'fileless_io'
 
-class Router::LoginPageWorker
+class WifiRouter::LoginPageWorker
   include Rails.application.routes.url_helpers
   include Sidekiq::Worker
 

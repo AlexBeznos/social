@@ -1,15 +1,11 @@
 class Router < ActiveRecord::Base
-  ALLOWED_CRTS = [
-    'client.crt',
-    'client.key',
-    'ca.crt'
-  ]
-
   OVPN_NAME_MATCH = {
     'client.crt' => 'cert',
     'client.key' => 'key',
     'ca.crt' => 'ca'
   }
+
+  ALLOWED_CRTS = OVPN_NAME_MATCH.keys
 
   mount_uploader :ovpn, StandartUploader
   mount_uploader :login_page, StandartUploader

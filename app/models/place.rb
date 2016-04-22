@@ -52,6 +52,6 @@ class Place < ActiveRecord::Base
   private
 
   def setup_router
-    Router::SetupWorker.perform_async(id)
+    WifiRouter::SetupWorker.perform_async(id)
   end
 end

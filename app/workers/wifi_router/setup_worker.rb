@@ -1,4 +1,4 @@
-class Router::SetupWorker
+class WifiRouter::SetupWorker
   include Sidekiq::Worker
 
   sidekiq_options queue: :router_setup, failures: true
