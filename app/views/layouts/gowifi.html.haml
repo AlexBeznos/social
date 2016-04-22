@@ -13,7 +13,7 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "gowifi", :media => "all"
-    = javascript_include_tag "wifi_enter"
+    = javascript_include_tag "gowifi"
     = render 'shared/gowifi/style', place: @place if @place.style
   %body
     %div.background{ style: background_style(@place) }
