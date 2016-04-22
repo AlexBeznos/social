@@ -1,4 +1,6 @@
 class Customer::Visit < ActiveRecord::Base
+  Account = Struct.new(:account, :count)
+
   default_scope { order('created_at DESC') }
 
   scope :by_date, ->(date) { where(created_at: date.beginning_of_day..date.end_of_day) }
@@ -35,10 +37,11 @@ class Customer::Visit < ActiveRecord::Base
   end
 
   def self.top_customers
-    includes(account: :profile)
-      .where(account_type: get_social_networks_names)
-      .uniq
-      .map(&:account)
+    visits = includes(:account).where(account_type: get_social_networks_names).to_a
+
+    visits.map do |visit|
+      Account.new(visit.account, visits.count(visit))
+    end.uniq.sort_by {|v| v.count}
   end
 
   def self.get_social_networks_names
