@@ -7,7 +7,7 @@ class Vpn::CertificatsPullingWorker
 
   def perform(router_id)
     router = Router.find(router_id)
-    ovpn = OvpnService.new({router: router})
+    ovpn = OvpnSshService.new({router: router})
     crt = FilelessIO.new(ovpn.get_certificate)
     crt.original_filename = 'ovpn.xml'
 

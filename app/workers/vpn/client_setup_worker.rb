@@ -5,7 +5,7 @@ class Vpn::ClientSetupWorker
 
   def perform(router_id)
     router = Router.find(router_id)
-    ovpn = OvpnService.new({router: router})
+    ovpn = OvpnSshService.new({router: router})
 
     ovpn.setup_client
   end

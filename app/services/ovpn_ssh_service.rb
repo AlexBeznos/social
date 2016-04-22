@@ -1,6 +1,6 @@
 require 'uri/open-scp'
 
-class OvpnService
+class OvpnSshService
   def initialize(attrs)
     @router = attrs[:router]
     @client_name = Place.select(:slug).find(@router.place_id).slug
@@ -14,7 +14,7 @@ class OvpnService
     end
 
     unless stdout.include? 'Write out database with 1 new entries'
-
+      Rails.logger.debug stdout
       return raise
     end
   end
