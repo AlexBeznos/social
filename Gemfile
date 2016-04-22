@@ -86,6 +86,7 @@ group :development do
   gem 'mina-unicorn', :require => false
   gem 'metric_fu'
   gem 'thin'
+  gem 'quiet_assets'
   gem 'rubocop', require: false
 end
 
