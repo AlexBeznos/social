@@ -18,8 +18,10 @@ class MikrotikService
   def normalized_commands
     File.readlines(path_to_config).map do |line|
       matched_macros.each do |macro, value|
-        line.gsub! macro, value
+        line.gsub! Regexp.new(macro), value
       end
+
+      line
     end
   end
 

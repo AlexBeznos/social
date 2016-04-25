@@ -54,9 +54,9 @@
         = link_to t('helpers.submit.edit'), edit_place_path(@place, user: @place.user_id), class: 'btn btn-primary btn-block'
       %li.list-group-item
         = link_to "#{t('helpers.submit.edit')} #{t('models.style.page')}", @place.style ? edit_place_style_path(@place, @place.style) : new_place_style_path(@place), class: 'btn btn-success btn-block'
-      - if @place.router_settings && policy(@place).download_settings?
+      - if @place.router.settings && policy(@place).download_settings?
         %li.list-group-item
-          = link_to t('models.places.actions.settings.download_settings'), @place.wifi_settings_link, class: 'btn btn-block btn-info'
+          = link_to t('models.places.actions.settings.download_settings'), @place.router.settings.url, class: 'btn btn-block btn-info'
   .col-sm-7
     %h1= t('models.places.actions.settings.messages')
     - if @place.mfa

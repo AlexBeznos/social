@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404105602) do
+ActiveRecord::Schema.define(version: 20160404170105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -239,6 +239,25 @@ ActiveRecord::Schema.define(version: 20160404105602) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "routers", force: true do |t|
+    t.string   "hp_username"
+    t.string   "hp_password"
+    t.string   "mt_password"
+    t.string   "mt_api_password"
+    t.string   "ip"
+    t.string   "ovpn"
+    t.string   "login_page"
+    t.string   "settings"
+    t.string   "access_token"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "routers", ["access_token"], name: "index_routers_on_access_token", using: :btree
+  add_index "routers", ["ip"], name: "index_routers_on_ip", using: :btree
+  add_index "routers", ["place_id"], name: "index_routers_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
