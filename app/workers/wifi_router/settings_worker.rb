@@ -4,7 +4,7 @@ require 'fileless_io'
 class WifiRouter::SettingsWorker
   include Sidekiq::Worker
 
-  sidekiq_options queue: :router_settings, failures: true
+  sidekiq_options queue: :router, failures: true
 
   def perform(router_id)
     router = Router.find(router_id)

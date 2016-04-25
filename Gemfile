@@ -26,7 +26,6 @@ gem 'therubyracer',  platforms: :ruby
 
 # Utils
 gem 'geocoder'
-gem 'active_type'
 gem 'mini_magick'
 gem 'default_value_for'
 gem 'has_unique_slug'

@@ -10,9 +10,7 @@ RSpec.describe Place do
   # it { is_expected.to validate_attachment_content_type(:logo).allowing(["image/jpeg", "image/png", "image/gif"]) }
   it { is_expected.to belong_to(:user) }
 
-  it { is_expected.to callback(:set_wifi_link_freshnes).before(:save) }
-  it { is_expected.to callback(:gen_new_wifi_settings).after(:save) }
-  it { is_expected.to callback(:set_wifi_username_password).before(:create) }
+  it { is_expected.to callback(:setup_router).after(:commit).on(:create) }
 
   it { is_expected.to have_many(:auths).dependent(:destroy) }
   it { is_expected.to have_many(:visits).class_name('Customer::Visit') }
@@ -24,6 +22,7 @@ RSpec.describe Place do
   it { is_expected.to have_many(:banners).dependent(:destroy) }
 
   it { is_expected.to have_one(:style).dependent(:destroy) }
+  it { is_expected.to have_one(:router).dependent(:destroy) }
 
   describe 'constants' do
     it 'matches DOMAIN_LIST' do

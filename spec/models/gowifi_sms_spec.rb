@@ -8,8 +8,8 @@ RSpec.describe GowifiSms do
   it { is_expected.to validate_presence_of :place_id }
   it { is_expected.to validate_length_of(:code).is_equal_to(6) }
 
-  it { is_expected.to callback(:send_sms).after(:create) }
-  it { is_expected.to callback(:remove_gowifi_sms_record).after(:create) }
+  it { is_expected.to callback(:send_sms).after(:commit).on(:create) }
+  it { is_expected.to callback(:remove_gowifi_sms_record).after(:commit).on(:create) }
 
   it 'should initialize proper code' do
     expect(subject.code).to be_a String

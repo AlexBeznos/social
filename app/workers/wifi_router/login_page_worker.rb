@@ -4,7 +4,7 @@ class WifiRouter::LoginPageWorker
   include Rails.application.routes.url_helpers
   include Sidekiq::Worker
 
-  sidekiq_options queue: :router_setup, failures: true
+  sidekiq_options queue: :router, failures: true
 
   def perform(router_id)
     router = Router.find(router_id)
