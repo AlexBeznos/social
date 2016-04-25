@@ -8,7 +8,7 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'chartkick'
 gem 'font-awesome-rails'
-gem 'jquery-minicolors-rails'
+gem 'jquery-minicolors-rails', '2.2.3.0'
 gem 'codemirror-rails'
 gem 'jquery-modal-rails'
 gem 'jquery-ui-rails'
@@ -90,6 +90,8 @@ group :development do
   gem 'mina-unicorn', :require => false
   gem 'metric_fu'
   gem 'thin'
+  gem 'quiet_assets'
+  gem 'rubocop', require: false
 end
 
 group :development, :test do

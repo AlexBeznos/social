@@ -25,6 +25,8 @@ ua:
     create: "%{subject} добавлено"
     updated: "%{subject} оновлено"
     deleted: "%{subject} видалено"
+  stock:
+    select_all: Вибрати всі
   date:
     abbr_day_names:
     - нд.
@@ -322,13 +324,16 @@ ua:
     coupon_code: "Код покупки: %{coupon_code}"
     add_new_item: Додати новий товар/послугу
     buy: Обміняти
+    already_have: "У Вас вже є %{score} балів."
   navigation:
     logout: 'Вийти'
     login: 'Увійти'
     users: 'Користувачі'
     my_places: 'Мої заклади'
+    global_statistics: "Глобальна статистика"
     dashboard:
       statistic: 'Статистика'
+      visit_statistics: "Статистика відвідувань"
       settings: 'Налаштування'
       stocks: 'Акції'
       guests: 'Top відвідувачів'

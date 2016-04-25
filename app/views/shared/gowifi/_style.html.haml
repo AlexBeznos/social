@@ -1,8 +1,3 @@
-- if place.style.background.present?
-  :css
-    body {
-      background: url(#{place.style.background.url }) no-repeat center
-    }
 - if place.style.text_color && !place.style.text_color.empty?
   :css
     .content p {
@@ -18,6 +13,11 @@
   :css
     .content p:first-line {
       color: #{ place.style.greating_color }
+    }
+- if place.style.line_colors && !place.style.line_colors.empty?
+  :css
+    .line_colors {
+      background-color: #{ place.style.line_colors }
     }
 :css
   #{ place.style.css_min }

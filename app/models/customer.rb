@@ -4,19 +4,23 @@ class Customer < ActiveRecord::Base
   has_many :visits, dependent: :destroy, class_name: 'Customer::Visit'
   has_many :reputations, dependent: :destroy, class_name: 'Customer::Reputation'
   has_many :orders, dependent: :destroy
+  has_many :profiles, dependent: :destroy
+  has_many :ahoy_visits
   belongs_to :social_network
 
   accepts_nested_attributes_for :network_profiles
 
-  validates :first_name, presence: true
+  # validates :first_name, presence: true
 
-  before_save :set_gender, unless: 'gender'
+  # before_save :get_more_customer_info, if: 'first_name =~ /unfinished/'
+  # before_save :set_gender, unless: 'gender'
+
   scope :by_birthday, -> (from, till) { joins(:visits)
-                                .where("(extract(month from birthday) = ? and extract(day from birthday) >= ?) or
+                                          .where("(extract(month from birthday) = ? and extract(day from birthday) >= ?) or
                                         (extract(month from birthday) = ? and extract(day from birthday) <= ?)",
-                                        from.strftime("%m"), from.strftime("%d"),
-                                        till.strftime("%m"), till.strftime("%d"))
-                                .sort { |a, b| sort_by_birthday a, b } }
+                                                 from.strftime("%m"), from.strftime("%d"),
+                                                 till.strftime("%m"), till.strftime("%d"))
+                                          .sort { |a, b| sort_by_birthday a, b } }
 
 
   def full_name

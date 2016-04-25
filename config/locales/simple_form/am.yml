@@ -31,6 +31,7 @@
         display_other_banners: Ցուցադրել օտար բաններները իմ հաստատությունում
         auth_default_lang: Նույնականացման լռելյայն լեզու
         mfa: Multi-Factor իսկությունը
+        post_preview: նախադիտում գրառումը
       user:
         first_name: Անուն
         last_name: Ազգանուն
@@ -48,13 +49,14 @@
       stock:
         url: Հղում
         image: Նկար
-        day: Ցուցադրման օր
+        days: Ցույց տալ օրեր
       style:
         background: Հետևի ֆոն
         js: JS
         css: CSS
         text_color: Հիմնական գույնի տեքստը
         greating_color: Ողջույնի գույնը
+        line_colors: The գույնը եւ թափանցիկությունը մուտքի էջ շերտի
       menu_item:
         menu_item: Ապրանք
         name: Ապրանքի անվանումը

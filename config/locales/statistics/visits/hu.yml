@@ -1,0 +1,17 @@
+hu:
+  shared:
+    visits_table:
+      browser: "Böngésző"
+      os: "OS"
+      device: "Eszköztípus"
+      country: "Ország"
+      region: "Vidék"
+      city: "Város"
+
+  global_statistics:
+    visits:
+      index:
+        places_statistics: "Intézmények statisztikai"
+      places_visits_table:
+        place: "Intézmény"
+        visits_count: "Látogatás mennyiség"

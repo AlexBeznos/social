@@ -25,6 +25,8 @@ en:
     create: "%{subject} added"
     updated: "%{subject} updated"
     deleted: "%{subject} deleted"
+  stock:
+    select_all: Select all
   date:
     abbr_day_names:
     - Sun
@@ -276,13 +278,16 @@ en:
     add_new_item: Add new item
     coupon_code: "Code: %{coupon_code}"
     buy: Exchange
+    already_have: "You already have %{score} points."
   navigation:
     logout: 'Logout'
     login: 'Login'
     users: 'Users'
     my_places: 'My places'
+    global_statistics: "Global statistics"
     dashboard:
       statistic: 'Statistic'
+      visit_statistics: "Statistics of visits"
       settings: 'Settings'
       stocks: 'Stocks'
       guests: 'Top visitors'

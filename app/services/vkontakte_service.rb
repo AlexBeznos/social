@@ -6,25 +6,17 @@ class VkontakteService
   def initialize(hash)
     @place = hash[:place]
     @message = hash[:message]
-    @credentials = hash[:credentials]
+    @profile = hash[:profile]
   end
 
-  def self.get_token(credentials)
-    {
-      'provider' => credentials['provider'],
-      'token' => credentials['credentials']['token'],
-      'uid' => credentials['uid']
-    }
-  end
-
-  def self.get_friends_number(costumer)
-    vk = VkontakteApi::Client.new(costumer.access_token)
+  def self.get_friends_number(token)
+    vk = VkontakteApi::Client.new(token)
     vk.friends.get(count: 1, v: '5.34')['count']
   end
 
   def advertise
-    vk = vk(@credentials['token'])
-    albums = vk.photos.getAlbums(owner_id: @credentials['uid'])
+    vk = vk(@profile.access_token)
+    albums = vk.photos.getAlbums(owner_id: @profile.uid)
     found_album = get_album(albums)
 
     album_id = if found_album == 0

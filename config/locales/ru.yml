@@ -25,6 +25,8 @@ ru:
     create: "%{subject} добавлено"
     updated: "%{subject} обновлено"
     deleted: "%{subject} удалено"
+  stock:
+    select_all: Выбрать все
   date:
     abbr_day_names:
     - Вс
@@ -328,13 +330,16 @@ ru:
     goods: "Товар/услуга"
     coupon_code: "Код покупки: %{coupon_code}"
     buy: Обменять
+    already_have: "У вас уже есть %{score} баллов."
   navigation:
     logout: 'Выйти'
     login: 'Войти'
     users: 'Пользователи'
     my_places: 'Мои заведения'
+    global_statistics: "Глобальная статистика"
     dashboard:
       statistic: 'Статистика'
+      visit_statistics: "Статистика посещений"
       guests: 'Top посетителей'
       birthdays: "Дни рождения"
       settings: 'Настройки'

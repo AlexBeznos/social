@@ -30,6 +30,7 @@ ua:
         display_other_banners: Показувати чужі банери в моєму закладі
         auth_default_lang: Стандартная мова аутентифікації
         mfa: Мультифакторна аутентифікація
+        post_preview: Попередній перегляд поста
       user:
         first_name: Ім`я
         last_name: Прізвище
@@ -47,13 +48,14 @@ ua:
       stock:
         url: Посилання
         image: Картинка
-        day: День показу
+        days: Дні показу
       style:
         background: Задній фон
         js: JS
         css: CSS
         text_color: Колір основного тексту
         greating_color: Колір привітання
+        line_colors: Колір і прозорість смуги сторінки входу
       menu_item:
         menu_item: Item
         name: Назва товара

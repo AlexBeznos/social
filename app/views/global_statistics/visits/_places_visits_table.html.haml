@@ -1,0 +1,11 @@
+%table.table.visits-table
+  %thead.thead-default
+    %tr
+      %th.visits-table__item= t(".place")
+      %th.visits-table__item= t(".visits_count")
+
+  - places.each do |place|
+    %tbody
+      %tr
+        %td= place.name
+        %td= place.ahoy_visits.size

@@ -1,0 +1,17 @@
+ua:
+  shared:
+    visits_table:
+      browser: "Браузер"
+      os: "OS"
+      device: "Тип пристрою"
+      country: "Країна"
+      region: "Регіон"
+      city: "Місто"
+
+  global_statistics:
+    visits:
+      index:
+        places_statistics: "Статистика по закладам"
+      places_visits_table:
+        place: "Заклад"
+        visits_count: "Кількість відвідувань"
