@@ -52,9 +52,6 @@
     -#                 %li= link_to t('menu_item.shopping_history'), orders_path
     -#               %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
 
-
-    = javascript_include_tag "jquery"
-    = javascript_include_tag "bootstrap"
     :javascript
       $(document).ready(function() {
       	$("#nav li:has(ul.sub-nav)").addClass("with-drop");
