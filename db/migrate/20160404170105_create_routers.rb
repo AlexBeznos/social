@@ -1,9 +1,11 @@
 class CreateRouters < ActiveRecord::Migration
   def change
     create_table :routers do |t|
-      t.string :username
-      t.string :password
-      t.string :client_ip
+      t.string :hp_username
+      t.string :hp_password
+      t.string :mt_password
+      t.string :mt_api_password
+      t.string :ip
       t.string :ovpn
       t.string :login_page
       t.string :settings
@@ -14,6 +16,7 @@ class CreateRouters < ActiveRecord::Migration
     end
 
     add_index :routers, :place_id
-    add_index :routers, :client_ip
+    add_index :routers, :ip
+    add_index :routers, :access_token
   end
 end

@@ -69,13 +69,13 @@ gem 'twitter'
 gem 'aws-sdk', '< 2.0'
 gem 'sendgrid'
 gem 'smsc'
+gem 'mtik'
 
 # Jobs
 gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 gem 'sidekiq-superworker'
-
 
 # Other
 gem 'aasm', '4.9.0'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404170105) do
+ActiveRecord::Schema.define(version: 20160404105602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -239,22 +239,6 @@ ActiveRecord::Schema.define(version: 20160404170105) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "routers", force: true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "client_ip"
-    t.string   "ovpn"
-    t.string   "login_page"
-    t.string   "settings"
-    t.string   "access_token"
-    t.integer  "place_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "routers", ["client_ip"], name: "index_routers_on_client_ip", using: :btree
-  add_index "routers", ["place_id"], name: "index_routers_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false

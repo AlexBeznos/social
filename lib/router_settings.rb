@@ -33,7 +33,9 @@ class RouterSettings
   def replace_config
     cmnds = []
     config_path = File.join(settings_path, 'config.rsc')
+    mtik_service = MikrotikService.new(@router, 'init_config')
 
+    cmnds += mtik_service.normalized_commands
     ['fetch', 'import', 'remove'].each do |command|
       Router::ALLOWED_CRTS.each do |crt|
         cmnds.push(send("#{command}_command", crt))

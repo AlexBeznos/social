@@ -389,6 +389,7 @@ GEM
     mini_magick (4.2.7)
     mini_portile (0.6.2)
     minitest (5.8.3)
+    mtik (4.0.3)
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -708,6 +709,7 @@ DEPENDENCIES
   mina-sidekiq
   mina-unicorn
   mini_magick
+  mtik
   net-scp
   net-ssh
   omniauth-facebook
