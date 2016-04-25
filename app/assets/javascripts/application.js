@@ -14,4 +14,4 @@
 //= require jquery_ujs
 //= require slick.min
 //= require bootstrap
-//= require nested_forms
+//= require_tree ./application
