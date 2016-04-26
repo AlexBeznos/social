@@ -32,8 +32,8 @@ class Router < ActiveRecord::Base
   private
 
   def set_random_values
-    self.hp_username = hp_username || SecureRandom.hex(6)
-    self.hp_password = hp_password || SecureRandom.hex(6)
+    self.hp_username ||= SecureRandom.hex(6)
+    self.hp_password ||= SecureRandom.hex(6)
     self.mt_api_password = SecureRandom.hex(8)
     self.mt_password = SecureRandom.hex(8)
   end
