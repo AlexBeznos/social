@@ -21,6 +21,7 @@ prod_keys = %w(
   SENDGRID_PASSWORD
   OVPN_SERVER
   OVPN_USER
+  OVPN_PASSWORD
 )
 
 figaro_required = if Rails.env.production?

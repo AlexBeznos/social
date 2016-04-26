@@ -38,7 +38,7 @@ class OvpnSshService
   private
 
   def ssh_connection(&ssh)
-    Net::SSH.start(ENV['OVPN_SERVER'], ENV['OVPN_USER']) do |connection|
+    Net::SSH.start(ENV['OVPN_SERVER'], ENV['OVPN_USER'], password: ENV['OVPN_PASSWORD']) do |connection|
       ssh.call connection
     end
   end
