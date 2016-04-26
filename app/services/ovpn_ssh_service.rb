@@ -19,7 +19,7 @@ class OvpnSshService
     end
   end
 
-  def get_certificate
+  def make_certificate
     cmnd = [ data_volume, gen_ovpn_client_file(@router_name) ].join(' && ')
     stdout = ''
 
@@ -31,7 +31,9 @@ class OvpnSshService
       Rails.logger.debug stdout
       return raise RuntimeError.new(stdout)
     end
+  end
 
+  def get_certificate
     open(scp_client_path(@router_name), ssh: { password: ENV['OVPN_PASSWORD'] }).read
   end
 
