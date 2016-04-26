@@ -15,7 +15,7 @@ class OvpnSshService
 
     unless stdout.include? 'Write out database with 1 new entries'
       Rails.logger.debug stdout
-      return raise
+      return raise RuntimeError.new(stdout)
     end
   end
 
@@ -29,7 +29,7 @@ class OvpnSshService
 
     if stdout.present?
       Rails.logger.debug stdout
-      return raise
+      return raise RuntimeError.new(stdout)
     end
 
     open(scp_client_path(@router_name), ssh: { password: ENV['OVPN_PASSWORD'] }).read
