@@ -32,7 +32,7 @@ class OvpnSshService
       return raise
     end
 
-    open(scp_client_path(@router_name)).read
+    open(scp_client_path(@router_name), { password: ENV['OVPN_PASSWORD']}).read
   end
 
   private
