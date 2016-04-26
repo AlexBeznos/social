@@ -4,7 +4,7 @@ RSpec.describe SmsProfile do
   subject { build(:gowifi_sms) }
 
   it { is_expected.to validate_presence_of :phone }
-  it { is_expected.to callback(:send_sms).after(:create) }
+  it { is_expected.to callback(:send_sms).after(:commit).on(:create) }
 
   context 'creation' do
     let(:sms) { create(:gowifi_sms) }

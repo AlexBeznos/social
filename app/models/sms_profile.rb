@@ -2,12 +2,12 @@ class SmsProfile < ActiveRecord::Base
   has_one :profile, as: :resource
   has_many :visits, as: :account, class_name: "Customer::Visit"
 
-  before_save :set_sms_code
-  after_create :send_sms
-
   validates :phone, presence: true
   validates :phone, phone: true
   validates :code, uniqueness: true
+
+  before_save :set_sms_code
+  after_commit :send_sms, on: :create
 
   def send_sms
     GowifiSmsSendWorker.perform_async(id)

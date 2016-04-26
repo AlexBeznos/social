@@ -19,6 +19,8 @@ prod_keys = %w(
   SLACK_WEB_HOOK
   SENDGRID_USERNAME
   SENDGRID_PASSWORD
+  OVPN_SERVER
+  OVPN_USER
 )
 
 figaro_required = if Rails.env.production?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418134328) do
+ActiveRecord::Schema.define(version: 20160425044945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -267,31 +267,28 @@ ActiveRecord::Schema.define(version: 20160418134328) do
     t.string   "name"
     t.string   "slug"
     t.integer  "user_id"
-    t.boolean  "active",                       default: false
+    t.boolean  "active",                default: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "wifi_username",                default: "P8uDratA"
-    t.string   "wifi_password",                default: "Tac4edrU"
-    t.string   "wifi_settings_link"
-    t.boolean  "wifi_settings_link_not_fresh", default: true
-    t.boolean  "stocks_active",                default: false
-    t.integer  "score_amount",                 default: 0
-    t.boolean  "loyalty_program",              default: false
+    t.string   "router_settings"
+    t.boolean  "stocks_active",         default: false
+    t.integer  "score_amount",          default: 0
+    t.boolean  "loyalty_program",       default: false
     t.string   "city"
-    t.boolean  "display_my_banners",           default: false
-    t.boolean  "display_other_banners",        default: false
+    t.boolean  "display_my_banners",    default: false
+    t.boolean  "display_other_banners", default: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "domen_url",                    default: "gofriends.com.ua"
-    t.boolean  "demo",                         default: false
+    t.string   "domen_url",             default: "gofriends.com.ua"
+    t.boolean  "demo",                  default: false
     t.string   "auth_default_lang"
     t.string   "ssid"
-    t.boolean  "mfa",                          default: false
-    t.boolean  "post_preview",                 default: false
+    t.boolean  "mfa",                   default: false
+    t.boolean  "post_preview",          default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
@@ -314,6 +311,25 @@ ActiveRecord::Schema.define(version: 20160418134328) do
   add_index "profiles", ["customer_id"], name: "index_profiles_on_customer_id", using: :btree
   add_index "profiles", ["resource_id"], name: "index_profiles_on_resource_id", using: :btree
   add_index "profiles", ["resource_type"], name: "index_profiles_on_resource_type", using: :btree
+
+  create_table "routers", force: true do |t|
+    t.string   "hp_username"
+    t.string   "hp_password"
+    t.string   "mt_password"
+    t.string   "mt_api_password"
+    t.string   "ip"
+    t.string   "ovpn"
+    t.string   "login_page"
+    t.string   "settings"
+    t.string   "access_token"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "routers", ["access_token"], name: "index_routers_on_access_token", using: :btree
+  add_index "routers", ["ip"], name: "index_routers_on_ip", using: :btree
+  add_index "routers", ["place_id"], name: "index_routers_on_place_id", using: :btree
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
