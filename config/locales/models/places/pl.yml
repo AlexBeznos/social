@@ -23,6 +23,7 @@ pl:
         display_other_banners: Pokaż banery innych ludzi na moim miejscu
         owner: Właściciel
         post_preview: Podgląd postu
+        demo: Tryb demo
       actions:
         index:
           title: 'Miejsca'

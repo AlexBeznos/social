@@ -32,6 +32,7 @@ hu:
         auth_default_lang: Hitelesítés alapértelmezett nyelv
         mfa: Többváltozós autentifіkatsіya
         post_preview: Preview üzenetre
+        demo: Demo módban
       user:
         first_name: Első neve
         last_name: Név

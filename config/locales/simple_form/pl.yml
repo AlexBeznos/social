@@ -32,6 +32,7 @@ pl:
         auth_default_lang: Domyślnym językiem uwierzytelniania
         mfa: Wieloczynnikowa autentifіkatsіya
         post_preview: Podgląd postu
+        demo: Tryb demo
       user:
         first_name: Imię
         last_name: Nazwisko

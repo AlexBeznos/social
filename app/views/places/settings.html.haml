@@ -27,6 +27,9 @@
           .pull-right
             = image_tag @place.logo.url, height: 50
       %li.list-group-item
+        = t('models.places.attrs.demo')
+        %span.text-muted.pull-right= fa_plus_minus(@place.demo)
+      %li.list-group-item
         = t('models.places.attrs.active')
         %span.text-muted.pull-right= fa_plus_minus(@place.active)
       %li.list-group-item

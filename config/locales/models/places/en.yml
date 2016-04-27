@@ -23,6 +23,7 @@ en:
         display_other_banners: Display other's banners in my place
         owner: Place owner
         post_preview: Post preview
+        demo: Demo mode
       actions:
         index:
           title: 'Places'

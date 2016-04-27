@@ -88,7 +88,7 @@
     end
 
     def wifi_login_path(place, url)
-      return status_path(place) if place.demo
+      return url if place.demo
       router = place.router
       "http://172.16.16.1/login?user=#{router.hp_username}&password=#{router.hp_password}&dst=#{url}"
     end
