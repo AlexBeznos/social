@@ -19,7 +19,7 @@ class AdvertisingWorker
     attrs   = {
       place: @place,
       message: @auth.resource,
-      profile: @profile
+      profile: @profile.resource
     }
 
     service.new(attrs).advertise

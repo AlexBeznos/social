@@ -1,9 +1,9 @@
 class Router < ActiveRecord::Base
   API_USERNAME = 'gofriends_api' # NOTE: never change it, unless you know what you do
   OVPN_NAME_MATCH = {
+    'ca.crt' => 'ca',
     'client.crt' => 'cert',
     'client.key' => 'key',
-    'ca.crt' => 'ca'
   }
 
   ALLOWED_CRTS = OVPN_NAME_MATCH.keys
@@ -34,8 +34,8 @@ class Router < ActiveRecord::Base
   def set_random_values
     self.hp_username ||= SecureRandom.hex(6)
     self.hp_password ||= SecureRandom.hex(6)
-    self.mt_api_password = SecureRandom.hex(8)
-    self.mt_password = SecureRandom.hex(8)
+    self.mt_api_password = SecureRandom.hex(4)
+    self.mt_password = SecureRandom.hex(4)
   end
 
   def set_ip

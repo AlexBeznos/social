@@ -7,18 +7,6 @@ class SmsProfile < ActiveRecord::Base
   validates :code, uniqueness: true
 
   before_save :set_sms_code
-  after_commit :send_sms, on: :create
-
-  def send_sms
-    GowifiSmsSendWorker.perform_async(id)
-  end
-
-  def resend_sms
-    if 10.seconds.ago > updated_at
-      send_sms
-      self.touch
-    end
-  end
 
   def self.prepare_params(params)
     { phone: params[:phone] }

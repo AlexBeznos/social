@@ -87,6 +87,6 @@ class RouterSettings
   end
 
   def ovpn_command
-    "/interface ovpn-client> add name=\"ovpn\" connect-to=#{ENV['OVPN_SERVER']} port=443 user=\"#{@router.place.slug}\" password=\"\" disabled=no profile=default certificate=\"client\" add-default-route=no"
+    "/interface ovpn-client> add name=\"ovpn\" connect-to=#{ENV['OVPN_SERVER']} port=443 user=\"#{@router.place.slug}\" password=\"\" disabled=no profile=default certificate=\"cert_2\" add-default-route=no"
   end
 end
