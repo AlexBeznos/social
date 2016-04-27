@@ -38,7 +38,7 @@ class GowifiAuthController < ApplicationController
         account_type: sms.profile.resource_type,
         customer: sms.profile.customer
       )
-      redirect_to succed_auth_path(@place, auth)
+      redirect_to auth.redirect_url
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
     end
@@ -56,10 +56,11 @@ class GowifiAuthController < ApplicationController
 
   def submit_poll
     if params[:poll_auth]
+      auth = Auth.find(params[:poll_auth][:id])
       answer = Answer.find(poll_params[:answer_ids])
 
       if answer.increment!(:number_of_selections)
-        redirect_to succed_auth_path(@place, answer.poll_auth.auth)
+        redirect_to succed_auth_path(@place, auth)
       else
         redirect_to gowifi_place_path(@place)
       end
@@ -132,7 +133,7 @@ class GowifiAuthController < ApplicationController
     else
       cookies.delete(:step)
 
-      url = if @place.loyalty_program && current_customer
+      url = if @place.loyalty_program && current_customer && Auth::NETWORKS.values.include?(auth.resource.class::NAME)
         loyalty_url(@place, auth: auth.id)
       else
         auth.redirect_url

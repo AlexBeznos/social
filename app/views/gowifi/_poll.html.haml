@@ -1,6 +1,7 @@
 - polls = auths.resource_like(Auth::ALTERNATIVE[:poll].capitalize)
 - if polls.any?
-  - poll = polls.sample.resource
+  - auth = polls.sample
+  - poll = auth.resource
 
   .container.inner
     = yield
@@ -10,6 +11,7 @@
     = simple_form_for [place, poll], url: { controller: 'gowifi_auth', action: :submit_poll } do |f|
       = f.error_notification
       %h3= f.label f.object.question, class: "question"
+      = f.input :id, as: :hidden, input_html: { value: auth.id }
       = f.association :answers, label: t('wifi.select_answer'), collection: poll.answers, label_method: :content, value_method: :id, as: :radio_buttons
 
       = f.button :submit, t('wifi.submit'), class: 'btn-lg poll-btn', :'data-disable-with' => t('wifi.submit')
