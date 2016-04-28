@@ -35,9 +35,17 @@
     payload[:visit_id] = ahoy.visit_id # if you use Ahoy
   end
 
+  def customer_cookie
+    cookies.permanent[:customer]
+  end
+
+  def customer_cookie=(customer)
+    cookies.permanent[:customer] = customer
+  end
+
   def current_customer
-    @customer ||= if cookies[:customer]
-      Customer.find(cookies[:customer])
+    @customer ||= if customer_cookie
+      Customer.find(customer_cookie)
     end
   end
 

@@ -74,7 +74,7 @@ class GowifiAuthController < ApplicationController
       credentials: credentials,
       auth: @auth,
       place: @place,
-      customer_id: cookies[:customer]
+      customer_id: cookies.permanent[:customer]
     )
 
     decorator.save
@@ -102,11 +102,11 @@ class GowifiAuthController < ApplicationController
   end
 
   def find_or_create_customer
-    if cookies[:customer]
-      @customer = Customer.find(cookies[:customer].to_i)
+    if customer_cookie
+      @customer = Customer.find(customer_cookie.to_i)
     else
       @customer = Customer.create
-      cookies.permanent[:customer] = @customer.id
+      customer_cookie = @customer.id
     end
   end
 
