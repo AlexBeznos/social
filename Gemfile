@@ -26,7 +26,6 @@ gem 'therubyracer',  platforms: :ruby
 
 # Utils
 gem 'geocoder'
-gem 'active_type'
 gem 'mini_magick'
 gem 'default_value_for'
 gem 'has_unique_slug'
@@ -42,6 +41,9 @@ gem 'ahoy_matey'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'rack-attack'
+
+gem 'net-ssh'
+gem 'net-scp'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap'
@@ -66,11 +68,13 @@ gem 'twitter'
 gem 'aws-sdk', '< 2.0'
 gem 'sendgrid'
 gem 'smsc'
+gem 'mtik'
 
 # Jobs
 gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
+gem 'sidekiq-superworker'
 
 # Other
 gem 'aasm', '4.9.0'
@@ -86,6 +90,7 @@ group :development do
   gem 'mina-unicorn', :require => false
   gem 'metric_fu'
   gem 'thin'
+  gem 'quiet_assets'
   gem 'rubocop', require: false
 end
 
@@ -97,7 +102,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'timecop'
-  gem 'quiet_assets'
 end
 
 group :test do

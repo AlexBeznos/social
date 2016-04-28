@@ -23,6 +23,7 @@ ua:
         display_other_banners: Показувати чужі банери в моєму закладі
         owner: Власник
         post_preview: Попередній перегляд поста
+        demo: Демо режим
       actions:
         index:
           title: 'Заклад'

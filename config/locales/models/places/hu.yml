@@ -23,6 +23,7 @@ hu:
         display_other_banners: Mutasd mások bannerek a helyemben
         owner: Tulajdonos
         post_preview: Preview üzenetre
+        demo: Demo módban
       actions:
         index:
           title: 'Helyek'

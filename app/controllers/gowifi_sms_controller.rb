@@ -2,8 +2,9 @@ class GowifiSmsController < ApplicationController
   skip_after_action :verify_authorized
 
   layout 'gowifi'
-  before_action :find_place, only: [:show, :create]
-  before_action :find_sms, only: [:show]
+  before_action :find_place, only: [:show, :create, :resend]
+  before_action :find_sms, only: [:show, :resend]
+  before_action :find_or_create_customer, only: [:create]
   after_action :ahoy_track_visit, only: [:show]
 
   def show
@@ -11,29 +12,38 @@ class GowifiSmsController < ApplicationController
   end
 
   def create
-    @gowifi_sms = GowifiSms.new(gowifi_sms_params)
+    @sms = Profile.create_with_resource(sms_params, @customer).resource
 
-    if @gowifi_sms.save
-      redirect_to gowifi_sms_confirmation_path(params[:slug], @gowifi_sms)
+    if @sms.persisted?
+      GowifiSmsSendWorker.perform_async(@sms.id, @place.id)
+      redirect_to gowifi_sms_confirmation_path(params[:slug], @sms)
     else
-      redirect_to gowifi_place_path(@place), alert: @gowifi_sms.errors.messages.first.last.first
+      redirect_to gowifi_place_path(@place), alert: @sms.errors.full_messages
     end
   end
 
   def resend
-    @gowifi_sms = GowifiSms.find(params[:id])
-    @gowifi_sms.resend_sms
+    @sms = SmsProfile.find(params[:id])
+    GowifiSmsSendWorker.perform_async(@sms.id, @place.id)
 
     render nothing: true, status: :ok
-  rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound # NOTE: currenty not works because of rescue in application_controller
     render json: { error: t('errors.messages.not_found') },
            status: :not_acceptable
   end
 
   private
-  def gowifi_sms_params
-    params.require(:gowifi_sms).permit(:phone).tap do |param|
-      param[:place_id] = Place.find_by_slug(params[:slug]).id
+
+  def sms_params
+    params.require(:sms_profile).permit(:phone, :provider)
+  end
+
+  def find_or_create_customer
+    if cookies[:customer]
+      @customer = Customer.find(cookies[:customer].to_i)
+    else
+      @customer = Customer.create
+      cookies.permanent[:customer] = @customer.id
     end
   end
 
@@ -42,6 +52,6 @@ class GowifiSmsController < ApplicationController
   end
 
   def find_sms
-    @sms = GowifiSms.find(params[:id])
+    @sms = SmsProfile.find(params[:id])
   end
 end

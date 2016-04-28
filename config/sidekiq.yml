@@ -3,6 +3,7 @@
 :queues:
   - [sms_send, 6]
   - [advertisment, 5]
-  - [wifi_settings, 4]
-  - [sms_remove, 3]
+  - [router, 4]
+  - [ovpn, 3]
+  - [sms_remove, 2]
   - [default, 1]

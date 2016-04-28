@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   require 'sidekiq/web'
   require 'admin_constraint'
 
@@ -94,7 +93,7 @@ Rails.application.routes.draw do
 
   post '/feedback' => 'basic#feedback', as: :feedback
 
-
+  get '/routers/:access_token/:file' => 'ovpn_certificates#index'
 
   # static pages
   get "/:id" => "pages#show", as: :page, format: false

@@ -24,6 +24,7 @@ class PlacePolicy < ApplicationPolicy
   def permitted_attributes
     [
       :name,
+      :demo,
       :logo,
       :active,
       :user_id,

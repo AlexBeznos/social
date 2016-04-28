@@ -25,9 +25,8 @@
       %th.col-xs-4= t('models.places.actions.birthdays.table.birthday')
     - @customers.each do |customer|
       %tr.row
-        %td.col-xs-4= customer.full_name
+        %td.col-xs-4= customer.profile.full_name
         %td.col-xs-4
-          - customer.network_profiles.joins(:visits).where('customer_visits.place_id = ?', @place.id).uniq.includes(:social_network).each do |np|
-            = link_to fa_icon(np.social_network.font_awesome_name), np.url
+          = link_to fa_icon(customer.profile.font_awesome_name), customer.url
         %td.col-xs-4= customer.birthday.strftime('%d.%m.%Y')
   .col-sm-2.guests-table-arrow= fa_icon "angle-double-down"

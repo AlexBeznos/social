@@ -1,4 +1,5 @@
 - if auths.resource_like(Auth::ALTERNATIVE[:sms].capitalize).any?
   = form_tag("/wifi/#{@place.slug}/gowifi_sms", id: 'manual', method: 'post', class: 'gowifi_sms_form') do
-    %input{ name: "gowifi_sms[phone]", placeholder: "#{t('wifi.sms_placeholder')}", required: "", type: "tel" }
+    %input{ name: "sms_profile[provider]", type: "hidden", value: "sms"}
+    %input{ name: "sms_profile[phone]", placeholder: "#{t('wifi.sms_placeholder')}", required: "", type: "tel" }
     %input{ type: "submit" }

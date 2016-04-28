@@ -1,19 +1,26 @@
 class GowifiAuthController < ApplicationController
-  include Consumerable
-
   before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
   before_action :find_auth, only: :omniauth
-  before_filter :check_facebook_permissions, only: :omniauth
+  before_action :find_or_create_customer, only: :enter_by_password
+  before_action :check_facebook_permissions, only: :omniauth
   after_action :ahoy_track_visit, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
   after_action :ahoy_authenticate, only: [:omniauth]
+
 
   skip_after_action :verify_authorized
 
   def enter_by_password
     auth = @place.auths.active.find_by({ resource_type: PasswordAuth, step: Auth.steps[cookies[:step]] })
 
-    if auth && auth.resource.password == params[:password] && create_visit_by_password(@place)
+    if auth && auth.resource.password == params[:password]
+      profile = Profile.create_with_resource({provider: 'password'}, @customer)
+      Customer::Visit.create(
+        place: @place,
+        account_id: profile.resource_id,
+        account_type: profile.resource_type,
+        customer: profile.customer
+      )
       redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_place_path(@place)
@@ -21,12 +28,17 @@ class GowifiAuthController < ApplicationController
   end
 
   def enter_by_sms
-    sms = @place.gowifi_sms.find_by(code: params[:code])
+    sms = SmsProfile.find_by(code: params[:code])
     auth = @place.auths.active.find_by({ resource_type: SmsAuth, step: Auth.steps[cookies[:step]] })
 
-    if sms && create_visit_by_sms(@place)
-      sms.destroy
-      redirect_to succed_auth_path(@place, auth)
+    if sms && sms.update(used: true)
+      Customer::Visit.create(
+        place: @place,
+        account_id: sms.profile.resource_id,
+        account_type: sms.profile.resource_type,
+        customer: sms.profile.customer
+      )
+      redirect_to auth.redirect_url
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
     end
@@ -44,10 +56,11 @@ class GowifiAuthController < ApplicationController
 
   def submit_poll
     if params[:poll_auth]
+      auth = Auth.find(params[:poll_auth][:id])
       answer = Answer.find(poll_params[:answer_ids])
 
       if answer.increment!(:number_of_selections)
-        redirect_to succed_auth_path(@place, answer.poll_auth.auth)
+        redirect_to succed_auth_path(@place, auth)
       else
         redirect_to gowifi_place_path(@place)
       end
@@ -57,15 +70,16 @@ class GowifiAuthController < ApplicationController
   end
 
   def omniauth
-    unless visit_already_created?
-      AdvertisingWorker.perform_async(
-        @place.slug,
-        @auth.id,
-        redis_ready_credentials(credentials)
-      )
-    end
+    decorator = NetworksAuthDecorator.new(
+      credentials: credentials,
+      auth: @auth,
+      place: @place,
+      customer_id: cookies[:customer]
+    )
 
-    clear_session
+    decorator.save
+    session.delete(:slug)
+    cookies.permanent[:customer] = decorator.customer.id
     redirect_to succed_auth_path(@place, @auth)
   end
 
@@ -78,12 +92,22 @@ class GowifiAuthController < ApplicationController
   end
 
   private
+
   def poll_params
     params.require(:poll_auth).permit(:answer_ids)
   end
 
   def find_place
     @place = Place.find_by_slug(params[:slug])
+  end
+
+  def find_or_create_customer
+    if cookies[:customer]
+      @customer = Customer.find(cookies[:customer].to_i)
+    else
+      @customer = Customer.create
+      cookies.permanent[:customer] = @customer.id
+    end
   end
 
   def find_place_from_session
@@ -109,7 +133,7 @@ class GowifiAuthController < ApplicationController
     else
       cookies.delete(:step)
 
-      url = if @place.loyalty_program && current_customer
+      url = if @place.loyalty_program && current_customer && Auth::NETWORKS.values.include?(auth.resource.class::NAME)
         loyalty_url(@place, auth: auth.id)
       else
         auth.redirect_url
@@ -125,13 +149,6 @@ class GowifiAuthController < ApplicationController
 
   def clear_session
     session.delete(:slug)
-  end
-
-  def visit_already_created?
-    hash = find_or_create_customer(credentials, @place, current_customer)
-    cookies.permanent[:customer] = hash[:customer].id
-
-    hash[:visit]
   end
 
   def check_facebook_permissions

@@ -1,4 +1,6 @@
-class InstagramService
+class InstagramService # NOTICE: Refactore class to general style in case of using
+  attr_accessor :hash  # FIXME: fixe after pull from stage 28.03.2016
+
   def initialize(hash)
     @place = hash[:place]
     @message = hash[:message]

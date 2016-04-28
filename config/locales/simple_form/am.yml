@@ -32,6 +32,7 @@
         auth_default_lang: Նույնականացման լռելյայն լեզու
         mfa: Multi-Factor իսկությունը
         post_preview: նախադիտում գրառումը
+        demo: դեմո ռեժիմ
       user:
         first_name: Անուն
         last_name: Ազգանուն

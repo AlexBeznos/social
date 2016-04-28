@@ -5,7 +5,7 @@ class FacebookService
   def initialize(hash)
     @place = hash[:place]
     @message = hash[:message]
-    @credentials = hash[:credentials]
+    @profile = hash[:profile]
   end
 
   def self.get_token(credentials)
@@ -15,14 +15,14 @@ class FacebookService
     }
   end
 
-  def self.get_friends_number(costumer)
-    graph = Koala::Facebook::API.new(costumer.access_token)
+  def self.get_friends_number(token)
+    graph = Koala::Facebook::API.new(token)
     friends = graph.get_connections('me', 'friends')
     friends.raw_response['summary']['total_count']
   end
 
   def advertise
-    graph = Koala::Facebook::API.new(@credentials['token'])
+    graph = Koala::Facebook::API.new(@profile.access_token)
 
     graph.put_connections('me', 'feed', {
       message: @message.message,

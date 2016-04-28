@@ -35,5 +35,14 @@ module Social
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.time_zone = 'Kyiv'
+
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :haml
+      g.test_framework  false
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+    end
   end
 end

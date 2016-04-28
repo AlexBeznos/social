@@ -1,7 +1,7 @@
 class VkontakteAuth < ActiveRecord::Base
   NAME = Auth::NETWORKS[:vkontakte]
 
-  mount_uploader :image, NetworksAuthUploader
+  mount_uploader :image, StandartUploader
 
   has_one :auth, as: :resource
 
