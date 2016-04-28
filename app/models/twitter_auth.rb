@@ -1,7 +1,7 @@
 class TwitterAuth < ActiveRecord::Base
   NAME = Auth::NETWORKS[:twitter]
 
-  mount_uploader :image, NetworksAuthUploader
+  mount_uploader :image, StandartUploader
 
   has_one :auth, as: :resource
 

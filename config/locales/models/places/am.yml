@@ -23,6 +23,7 @@
         display_other_banners: Ցույց տալ ուրիշների բաններները իմ հաստատությունում
         owner: սեփականատեր
         post_preview: նախադիտում գրառումը
+        demo: դեմո ռեժիմ
       actions:
         index:
           title: 'Հաստատություն'

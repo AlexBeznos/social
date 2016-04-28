@@ -1,12 +1,13 @@
 .wrapper
   .container
-    %h2= t('menu_item.greetings', customer_name: @customer.first_name, place_name: @place.name)
+    %h2= t('menu_item.greetings', customer_name: current_customer.first_name, place_name: @place.name)
     .outer
       .button
         = link_to @auth.redirect_url do
           %b= t('menu_item.to_internet')
           = image_tag 'loyalty/arrow-inet.png'
     %p= t('menu_item.added_bonus', place_score_amount: @place.score_amount)
+    %p= t('menu_item.already_have', score: current_customer.reputations.find_by(place: @place).score)
     .row
       - @menu_items.each do |item|
         #product-1.col-xs-6.col-sm-6.col-md-3.products

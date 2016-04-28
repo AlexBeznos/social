@@ -32,6 +32,7 @@ ru:
         auth_default_lang: Язык для аутентификации по умолчанию
         mfa: Мультифакторная аутентификация
         post_preview: Предварительный просмотр поста
+        demo: Демо режим 
       user:
         first_name: Имя
         last_name: Фамилия
@@ -49,13 +50,14 @@ ru:
       stock:
         url: Ссылка
         image: Картинка
-        day: День показа
+        days: Дни показа
       style:
         background: Задний фон
         js: JS
         css: CSS
         text_color: Цвет основного текста
         greating_color: Цвет приветствия
+        line_colors: Цвет и прозрачность полосы страницы входа
       menu_item:
         menu_item: Товар
         name: Название товара

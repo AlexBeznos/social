@@ -32,6 +32,7 @@ pl:
         auth_default_lang: Domyślnym językiem uwierzytelniania
         mfa: Wieloczynnikowa autentifіkatsіya
         post_preview: Podgląd postu
+        demo: Tryb demo
       user:
         first_name: Imię
         last_name: Nazwisko
@@ -49,13 +50,14 @@ pl:
       stock:
         url: powiązanie
         image: Obraz
-        day: dzień pokaż
+        days: Dni pokaż
       style:
         background: tło
         js: JS
         css: CSS
         text_color: Kolor tekstu głównego
         greating_color: kolor pozdrowienia
+        line_colors: Kolor i przejrzystość paska strona logowania
       menu_item:
         menu_item: towary
         name: Nazwa produktu

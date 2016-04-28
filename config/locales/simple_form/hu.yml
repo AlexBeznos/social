@@ -32,6 +32,7 @@ hu:
         auth_default_lang: Hitelesítés alapértelmezett nyelv
         mfa: Többváltozós autentifіkatsіya
         post_preview: Preview üzenetre
+        demo: Demo módban
       user:
         first_name: Első neve
         last_name: Név
@@ -49,13 +50,14 @@ hu:
       stock:
         url: Link
         image: Kép
-        day: Napos show
+        days: Mutatott napok
       style:
         background: A háttérben
         js: JS
         css: CSS
         text_color: A szín a fő szöveg
         greating_color: színes üdvözlet
+        line_colors: A szín és az átláthatóság a bejelentkező oldal csík
       menu_item:
         menu_item: Áruk
         name: Termék megnevezése

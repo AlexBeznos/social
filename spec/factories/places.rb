@@ -3,11 +3,7 @@ FactoryGirl.define do
     association :user
     active true
     name { Faker::Company.name }
-    template "default"
     ssid { Faker::Lorem.word[0..7] }
-    wifi_username SecureRandom.hex(6)
-    wifi_password SecureRandom.hex(6)
-    wifi_settings_link { Faker::Internet.url }
     score_amount 20
     domen_url { Place::DOMAIN_LIST.sample }
     created_at { Date.today }

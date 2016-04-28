@@ -11,8 +11,8 @@
       %th.col-xs-4= t('models.places.actions.guests.table.connection_number')
     - @customers.each do |customer|
       %tr.row
-        %td.col-xs-4= customer.customer.full_name
-        %td.col-xs-4= link_to fa_icon(customer.social_network.font_awesome_name), customer.url
-        %td.col-xs-4= customer.visits.where(place: @place).count
+        %td.col-xs-4= customer.account.profile.full_name
+        %td.col-xs-4= link_to fa_icon(customer.account.profile.font_awesome_name), customer.account.url
+        %td.col-xs-4= customer.count
   .col-sm-2.guests-table-arrow
     = fa_icon "angle-double-down"

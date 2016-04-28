@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   require 'sidekiq/web'
   require 'admin_constraint'
 
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
         end
     end
   end
+
   resources :places do
     resources :auths, except: :index
     # resources :banners NOTE: uncomment when we will know what to do with this shit
@@ -46,11 +46,16 @@ Rails.application.routes.draw do
       get 'birthdays'
       get 'settings'
     end
+
     namespace :statistics do
-      get '/loyalty', to: "loyalty#show"
+      resources :visits, only: [:index]
+      resource :loyalty, only: [:show]
     end
   end
 
+  namespace :global_statistics do
+    resources :visits, only: [:index]
+  end
 
   # customers level accessed pages
   resources :user_sessions, only: [:create, :destroy]
@@ -89,7 +94,7 @@ Rails.application.routes.draw do
 
   post '/feedback' => 'basic#feedback', as: :feedback
 
-
+  get '/routers/:access_token/:file' => 'ovpn_certificates#index'
 
   # static pages
   get "/:id" => "pages#show", as: :page, format: false

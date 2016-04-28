@@ -25,6 +25,8 @@ pl:
     create: "%{subject} dodano"
     updated: "%{subject} zaktualizowany"
     deleted: "%{subject} usunięto"
+  stock:
+    select_all: zaznacz wszystko
   date:
     abbr_day_names:
     - Ni
@@ -329,13 +331,16 @@ pl:
     goods: "Produkt / usługę"
     coupon_code: "Kod zamówienia: %{coupon_code}"
     buy: wymiana
+    already_have: "Masz już %{score} zdobędzie punkty."
   navigation:
     logout: 'Wyloguj się'
     login: 'Zaloguj się'
     users: 'Użytkownicy'
     my_places: 'Moje miejsca'
+    global_statistics: "Globalne statystyki"
     dashboard:
       statistic: 'Statystyki'
+      visit_statistics: "Statystyka odwiedzin"
       guests: 'Najczęściej odwiedzający'
       birthdays: "Urodziny"
       settings: 'Ustawienia'

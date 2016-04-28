@@ -22,18 +22,12 @@
       %th.col-xs-4= t('models.places.actions.show.table.time')
       %th.col-xs-4= t('models.places.actions.show.table.network')
       %th.col-xs-4= t('models.places.actions.show.table.customer')
-    - @visits_by_date_without_join.each do |visit|
+    - @visits_by_date.each do |visit|
       %tr.row
         %td.col-xs-4= visit.created_at.strftime('%k:%M')
-        - if visit.by_password
-          %td.col-xs-4= fa_icon 'key'
-          %td.col-xs-4
-        - elsif visit.by_sms
-          %td.col-xs-4= fa_icon 'mobile'
-          %td.col-xs-4
-        - else
-          %td.col-xs-4= fa_icon visit.network_profile.social_network.font_awesome_name
-          %td.col-xs-4= link_to visit.network_profile.customer.full_name, visit.network_profile.url
+        = render 'places/visits/password', visit: visit
+        = render 'places/visits/sms', visit: visit
+        = render 'places/visits/social_network', visit: visit
   .col-sm-2.statistics-table-arrow
     = fa_icon "angle-double-down"
 .row.analysis
@@ -41,7 +35,8 @@
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.day')}:"
-        %span= @visits_by_date.where(by_sms: false, by_password: false).count
+        %span= @visits_by_date.by_social_network.count
+
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -55,19 +50,19 @@
         .col-xs-6
           %p
             = "#{t('models.places.actions.show.info.men')}:"
-            %span= @visits_by_date.by_gender('m').count
+            %span= @visits_by_date.by_gender['male']
           %p
             = "#{t('models.places.actions.show.info.women')}:"
-            %span= @visits_by_date.by_gender().count
+            %span= @visits_by_date.by_gender['female']
     .analysis-col-inner
       %h2
         SMS:
-        %span= @visits_by_date.where(by_sms: true).count
+        %span= @visits_by_date.by_sms.count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.week')}:"
-        %span= @visits_this_week.where(by_sms: false, by_password: false).count
+        %span= @visits_this_week.by_social_network.count
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -81,19 +76,20 @@
         .col-xs-6
           %p
             = "#{t('models.places.actions.show.info.men')}:"
-            %span= @visits_this_week.by_gender('m').count
+            %span= @visits_this_week.by_gender['male']
           %p
             = "#{t('models.places.actions.show.info.women')}:"
-            %span= @visits_this_week.by_gender().count
+
+            %span= @visits_this_week.by_gender['female']
     .analysis-col-inner
       %h2
         SMS:
-        %span= @visits_this_week.where(by_sms: true).count
+        %span= @visits_this_week.by_sms.count
   .col-sm-4.analysis-col
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.month')}:"
-        %span= @visits_this_month.where(by_sms: false, by_password: false).count
+        %span= @visits_this_month.by_social_network.count
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -107,12 +103,12 @@
         .col-xs-6
           %p
             = "#{t('models.places.actions.show.info.men')}:"
-            %span= @visits_this_month.by_gender('m').count
+            %span= @visits_this_month.by_gender['male']
           %p
             = "#{t('models.places.actions.show.info.women')}:"
-            %span= @visits_this_month.by_gender().count
+            %span= @visits_this_month.by_gender['female']
       .row.age
     .analysis-col-inner
       %h2
         SMS:
-        %span= @visits_this_month.where(by_sms: true).count
+        %span= @visits_this_month.by_sms.count

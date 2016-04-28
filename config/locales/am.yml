@@ -25,6 +25,8 @@
     create: "%{subject} Ավելացված է"
     updated: "%{subject} թարմացված է "
     deleted: "%{subject} ջնջված է"
+  stock:
+    select_all: ընտրել բոլորը
   date:
     abbr_day_names:
     - Կիր.
@@ -327,13 +329,16 @@
     goods: "Ապրանք/ծառայություն"
     coupon_code: "Գնման կոդ: %{coupon_code}"
     buy: Փոխանակել
+    already_have: "Դուք արդեն ունեք %{score} միավոր."
   navigation:
     logout: 'Դուրս գալ'
     login: 'Մուտք'
     users: 'Օգտագործողներ'
     my_places: 'Իմ հաստատությունները'
+    global_statistics: "Համաշխարհային վիճակագրություն"
     dashboard:
       statistic: 'Վիճակագրություն'
+      visit_statistics: "Այցելեք վիճակագրություն"
       guests: 'TOP Հաճախորդներ'
       birthdays: "Ծննդյան Օրեր"
       settings: 'Կարգավորումներ'

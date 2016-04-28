@@ -3,9 +3,6 @@
 - else
   %h1= place.name
 %p
-  - if customer
-    = t('wifi.greetings', customer_name: customer.full_name).html_safe
-  - else
-    = t('wifi.greetings_to_no_one')
+  = t('wifi.greetings_to_no_one')
   %br
   = t('wifi.description').html_safe
