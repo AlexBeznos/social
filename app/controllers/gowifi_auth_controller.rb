@@ -74,12 +74,12 @@ class GowifiAuthController < ApplicationController
       credentials: credentials,
       auth: @auth,
       place: @place,
-      customer_id: cookies.permanent[:customer]
+      customer_id: customer_cookie
     )
 
     decorator.save
     session.delete(:slug)
-    cookies.permanent[:customer] = decorator.customer.id
+    customer_cookie = decorator.customer.id
     redirect_to succed_auth_path(@place, @auth)
   end
 
