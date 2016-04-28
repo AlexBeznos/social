@@ -27,7 +27,7 @@ class GowifiSmsController < ApplicationController
     GowifiSmsSendWorker.perform_async(@sms.id, @place.id)
 
     render nothing: true, status: :ok
-  rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound # NOTE: currenty not works because of rescue in application_controller
     render json: { error: t('errors.messages.not_found') },
            status: :not_acceptable
   end

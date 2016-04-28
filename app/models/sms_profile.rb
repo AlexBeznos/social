@@ -4,7 +4,6 @@ class SmsProfile < ActiveRecord::Base
 
   validates :phone, presence: true
   validates :phone, phone: true
-  validates :code, uniqueness: true
 
   before_save :set_sms_code
 
@@ -15,7 +14,8 @@ class SmsProfile < ActiveRecord::Base
   private
 
   def set_sms_code
-    self.code = SecureRandom.random_number.to_s[-6, 6]
-    set_sms_code if SmsProfile.find_by(code: code)
+    begin
+      self.code = SecureRandom.random_number.to_s[-6, 6]
+    end until SmsProfile.where(code: code).empty?
   end
 end

@@ -70,6 +70,6 @@ class OvpnSshService
   end
 
   def scp_client_path(router_name)
-    "scp://#{ENV['OVPN_USER']}@#{ENV['OVPN_SERVER']}/#{ENV['OVPN_USER']}/#{router_name}.xml"
+    "scp://#{ENV['OVPN_USER']}@#{ENV['OVPN_SERVER']}/home/#{ENV['OVPN_USER']}/#{router_name}.xml"
   end
 end
