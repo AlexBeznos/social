@@ -1,7 +1,7 @@
 .col-sm-4.analysis-col
   .analysis-col-inner
     %h1
-      = item.name
+      = menu_item.name
   .analysis-col-inner
     .row.pic
       .col-xs-6.col-xs-offset-6
@@ -12,13 +12,13 @@
       .col-xs-6
         %p
           = "all: "
-          %span= item.orders.size
+          %span= menu_item.orders.size
         %p
           = "#{t("datetime.prompts.day")}: "
-          %span= item.orders_today
+          %span= menu_item.orders_today
         %p
           = "#{t("datetime.prompts.week")}: "
-          %span= item.orders_by_week
+          %span= menu_item.orders_this_week
         %p
           = "#{t("datetime.prompts.month")}: "
-          %span= item.orders_by_month
+          %span= menu_item.orders_this_month

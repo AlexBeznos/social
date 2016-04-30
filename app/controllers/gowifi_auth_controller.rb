@@ -1,12 +1,11 @@
 class GowifiAuthController < ApplicationController
   before_action :find_place, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
   before_action :find_place_from_session, only: [:omniauth, :auth_failure]
-  before_action :find_auth, only: :omniauth
+  before_action :find_auth, only: [:omniauth]
   before_action :find_or_create_customer, only: :enter_by_password
   before_action :check_facebook_permissions, only: :omniauth
   after_action :ahoy_track_visit, only: [:enter_by_password, :enter_by_sms, :simple_enter, :submit_poll]
   after_action :ahoy_authenticate, only: [:omniauth]
-
 
   skip_after_action :verify_authorized
 
@@ -118,11 +117,12 @@ class GowifiAuthController < ApplicationController
   end
 
   def find_auth
+
     @auth = @place.auths
-      .active
-      .resource_like(credentials['provider'].capitalize)
-      .where(step: Auth.steps[cookies[:step]])
-      .first
+              .active
+              .resource_like(credentials['provider'].capitalize)
+              .where(step: Auth.steps[cookies[:step]])
+              .first
   end
 
   def succed_auth_path(place, auth)

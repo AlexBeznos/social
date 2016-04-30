@@ -4,9 +4,9 @@ class Statistics::LoyaltyController < ApplicationController
 
   def show
     authorize @place
-    @items = MenuItemDecorator.decorate_multiple(MenuItem.where(place: @place))
+    @items = MenuItemDecorator.decorate_multiple(@place.menu_items)
 
-    @profiles = "Suka blyat"
+    @profiles = 
 
   end
 

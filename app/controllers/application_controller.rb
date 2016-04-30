@@ -23,7 +23,7 @@
       redirect_to login_path, alert: t('pundit.default')
     end
   end
-
+#
 # rescue_from ActiveRecord::RecordNotFound do |exception|
 #   redirect_to '/404.html'
 # end

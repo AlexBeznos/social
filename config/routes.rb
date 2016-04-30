@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
     namespace :statistics do
       resources :visits, only: [:index]
-      resource :loyalty, only: [:show]
+      get "/loyalty", to: "loyalty#show", as: :loyalty
     end
   end
 
