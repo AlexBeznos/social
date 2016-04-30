@@ -21,7 +21,7 @@ class MikrotikService
         line.gsub! Regexp.new(macro), value
       end
 
-      line
+      line.gsub /\n/, ''
     end
   end
 
