@@ -3,9 +3,10 @@
 = content_for :title, t("statistic.loyalty.title")
 
 
-%table.table
+
+= render 'table', orders: @orders
 
 
-.row.analysis
-  - @items.each do |menu_item|
-    = render 'analysis', menu_item: menu_item
+-# .row.analysis
+  -# - @items.each do |menu_item|
+    -# = render 'analysis', menu_item: menu_item
