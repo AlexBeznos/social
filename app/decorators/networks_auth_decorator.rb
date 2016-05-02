@@ -36,6 +36,10 @@ class NetworksAuthDecorator
   end
 
   def advertise
-    AdvertisingWorker.perform_async(place.slug, auth.id, profile.id) if visit
+    AdvertisingWorker.perform_async(
+      place.slug,
+      auth.id,
+      profile.id
+    ) if visit
   end
 end
