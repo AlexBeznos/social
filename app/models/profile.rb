@@ -34,6 +34,8 @@ class Profile < ActiveRecord::Base
   end
 
   def self.prepare_date(date)
+    return nil unless date
+
     str_date = date
     str_date = str_date + ".1900" if str_date.length <= 5
 
