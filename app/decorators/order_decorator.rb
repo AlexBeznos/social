@@ -10,23 +10,28 @@ class OrderDecorator
   end
 
   def time
-    "Time"
+    @order.created_at.to_formatted_s(:time)
   end
 
   def price
-    "Price"
+    @order.menu_items.inject(0){|sum, item| sum + item.price }
   end
 
   def items_received
-    "Received"
-  end
-
-  def customer_full_name
-    "Newotk id"
+    @order.menu_items.map(&:name).join(" ")
   end
 
   def customer_score
-    "Customer score"
+    Customer::Reputation.where(
+                          customer: @order.customer,
+                          place: @order.place
+                        ).first.score
+  end
+
+  private
+
+  def method_missing(m, *args, &block)
+    @order.send(m, *args, &block)
   end
 
 end
