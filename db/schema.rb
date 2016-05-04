@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504223753) do
+ActiveRecord::Schema.define(version: 20160504224423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -360,14 +360,6 @@ ActiveRecord::Schema.define(version: 20160504223753) do
 
   add_index "social_network_icons", ["place_id"], name: "index_social_network_icons_on_place_id", using: :btree
   add_index "social_network_icons", ["style_id"], name: "index_social_network_icons_on_style_id", using: :btree
-
-  create_table "social_networks", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "social_networks", ["name"], name: "index_social_networks_on_name", using: :btree
 
   create_table "stocks", force: true do |t|
     t.string   "image_file_name"
