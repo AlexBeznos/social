@@ -27,7 +27,7 @@
 /ip neighbor discovery set gf-adm discover=no
 /ip pool add name=GF-hotspot-pool ranges=172.16.16.5-172.16.16.254
 /ip pool add name=GF-adm-pool ranges=192.168.88.100-192.168.88.200
-/ip dhcp-server add disabled=no name=GF-hotspot-dhcp lease-time=2h address-pool=GF-hotspot-pool bootp-support=none interface=GoFriends_WiFi
+/ip dhcp-server add disabled=no name=GF-hotspot-dhcp lease-time=24h address-pool=GF-hotspot-pool bootp-support=none interface=GoFriends_WiFi
 /ip dhcp-server add disabled=no name=GF-adm-dhcp lease-time=30d address-pool=GF-adm-pool bootp-support=none interface=GoFriends_Admin
 /ip dhcp-server network add address=172.16.16.0/24 dns-server=172.16.16.1 gateway=172.16.16.1 ntp-server=172.16.16.1
 /ip dhcp-server network add address=192.168.88.0/24 dns-server=192.168.88.1 gateway=192.168.88.1 ntp-server=192.168.88.1
