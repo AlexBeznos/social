@@ -37,9 +37,4 @@ class Customer < ActiveRecord::Base
         0
       end
   end
-
-  def set_gender # FIXME: Set this shit to be found in Profle resource generation
-    gender = Guess.gender(self.full_name)[:gender]
-    self.gender = gender unless gender == 'unknown'
-  end
 end

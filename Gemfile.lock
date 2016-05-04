@@ -277,7 +277,6 @@ GEM
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     geocoder (1.2.11)
-    guess (0.1.0)
     haml (4.0.6)
       tilt
     haml-rails (0.9.0)
@@ -693,7 +692,6 @@ DEPENDENCIES
   fog-aws
   font-awesome-rails
   geocoder
-  guess
   haml-rails
   has_unique_slug
   high_voltage (~> 2.3.0)
