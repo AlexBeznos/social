@@ -27,7 +27,7 @@ class Router < ActiveRecord::Base
   def ssid
     place.ssid
   end
-  
+
   def crt_by_name(name)
     xml = Nokogiri::XML(ovpn.read)
     xml.css(OVPN_NAME_MATCH[name]).first.content
@@ -42,8 +42,8 @@ class Router < ActiveRecord::Base
   def set_random_values
     self.hp_username ||= SecureRandom.hex(6)
     self.hp_password ||= SecureRandom.hex(6)
-    self.mt_api_password = SecureRandom.hex(4)
-    self.mt_password = SecureRandom.hex(4)
+    self.mt_api_password = SecureRandom.urlsafe_base64(6)
+    self.mt_password = SecureRandom.urlsafe_base64(6)
   end
 
   def set_ip

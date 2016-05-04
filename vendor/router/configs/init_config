@@ -54,6 +54,7 @@
 /ip hotspot user add name=apple password=apple profile=apple
 /ip hotspot user add name=##HP_USERNAME## password=##HP_PASSWORD## profile=guest
 /ip hotspot walled-garden add dst-host=*facebook*
+/ip hotspot walled-garden add dst-host=*fbcdn.net*
 /ip hotspot walled-garden add dst-host=*gofriends.com.ua*
 /ip hotspot walled-garden add dst-host=*gowifi-prod.s3.amazonaws.com*
 /ip hotspot walled-garden add dst-host=*akamai*
@@ -103,5 +104,5 @@ set ftp address=10.0.0.0/8,192.168.0.0/16
 /tool mac-server ping set enabled=no
 /tool mac-server mac-winbox add interface=ether1
 /tool mac-server mac-winbox add interface=GoFriends_Admin
-/user add name=admin password=##MT_ADMIN_PASSWORD## group=full
-/system routerboard settings set cpu-frequency=750MHz protected-routerboot=disabledra
+/user add name=GF password=##MT_ADMIN_PASSWORD## group=full
+/system routerboard settings set cpu-frequency=750MHz protected-routerboot=disabled
