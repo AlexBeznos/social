@@ -13,6 +13,6 @@ class TopCustomerDecorator
         visit.account,
         visits.where(account_type: visit.account_type, account_id: visit.account_id).count
       )
-    end.uniq.sort_by { |v| v.count }
+    end.uniq.sort_by { |v| -v.count }
   end
 end

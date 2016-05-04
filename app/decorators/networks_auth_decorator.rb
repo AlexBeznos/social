@@ -40,6 +40,6 @@ class NetworksAuthDecorator
       place.slug,
       auth.id,
       profile.id
-    ) if visit
+    ) unless visit.errors.any?
   end
 end
