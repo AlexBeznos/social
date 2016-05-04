@@ -31,7 +31,7 @@ class NetworksAuthDecorator
   private
 
   def set_customer
-    @customer = Customer.find(customer_id.to_i) if customer_id
+    @customer = Customer.find(customer_id.to_i) if customer_id.present?
     @customer ||= Customer.create
   end
 
