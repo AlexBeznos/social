@@ -9,8 +9,6 @@ class Customer::Visit < ActiveRecord::Base
   belongs_to :account, polymorphic: true
   belongs_to :customer
   belongs_to :place
-  belongs_to :network_profile, class_name: 'Customer::NetworkProfile',
-             foreign_key: :customer_network_profile_id
 
   validates :place, presence: true
   validate :ones_a_day_visit, unless: :by_password? || :by_sms?

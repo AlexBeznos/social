@@ -24,7 +24,23 @@ class Profile < ActiveRecord::Base
   end
 
   def font_awesome_name
-    profile_name == "vkontakte" ? "vk" : profile_name
+    profile_name = resource_type.remove("Profile").downcase
+
+    if profile_name == "vkontakte"
+      "vk"
+    else
+      profile_name
+    end
+  end
+
+  def self.find_by_credentials(credentials)
+    resource_type = get_profile_type(credentials['provider']).constantize
+    resource_params = resource_type.prepare_params(credentials)
+    profile_resource = resource_type.find_by(uid: resource_params[:uid])
+
+    if profile_resource
+      profile_resource.profile
+    end
   end
 
   def self.resource_like(provider, customer_id)
@@ -48,14 +64,13 @@ class Profile < ActiveRecord::Base
     create(
       customer: customer,
       resource_type: resource_type,
-      resource_attributes: get_resource_params(resource_type, params)
+      resource_attributes: resource_type.constantize.prepare_params(params)
     )
   end
 
   def self.create_or_update(params, customer)
-    resource_type = get_profile_type(params['provider'])
-    resource_params = get_resource_params(resource_type, params)
-    profile_resource = resource_type.constantize.find_by(uid: resource_params[:uid])
+    profile_resource = find_by_credentials(params).resource
+    resource_params = profile_resource.class.prepare_params(params)
 
     if profile_resource
       profile_resource.update!(resource_params)
@@ -67,15 +82,5 @@ class Profile < ActiveRecord::Base
 
   def self.get_profile_type(provider)
     provider.capitalize + "Profile"
-  end
-
-  def self.get_resource_params(resource_type, credentials)
-    resource_type.constantize.try(:prepare_params, credentials)
-  end
-
-  private
-
-  def profile_name
-    self.resource_type.remove("Profile").downcase
   end
 end

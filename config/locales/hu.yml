@@ -311,7 +311,7 @@ hu:
     sms_resend: 'küldjön SMS-t újra'
     sms_try_more: "a rossz kódot. Próbálja újra. "
   menu_item:
-    greetings: "%{customer_name}, üdvözöljük %{place_name}"
+    greetings: "üdvözöljük %{place_name}"
     greetings_short: Ön szívesen!
     buy_with_bonuses: Az alábbiakban egy listát, amit meg lehet tölteni a pontokat
     added_bonus: Akkor kerül jóváírásra %{place_score_amount} pont!
