@@ -55,7 +55,7 @@ class StylesController < ApplicationController
 
     def icons_save
       params[:style][:network_icons].each do |network, record|
-        SocialNetworkIcon.create(record)
+        SocialNetworkIcon.create!(record) if record[:icon]
       end
 
       params[:style].delete(:network_icons)

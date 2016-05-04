@@ -3,10 +3,8 @@ class SocialNetworkIcon < ActiveRecord::Base
 
   belongs_to :style
   belongs_to :place
-  belongs_to :social_network
 
-  validates :place, :style, presence: true
-  validates :icon, presence: true # TODO: add proper validations
+  validates :place, :style, :icon, presence: true
 
   before_create :delete_unneeded_icons
 
