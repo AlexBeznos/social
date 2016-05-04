@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504230942) do
+ActiveRecord::Schema.define(version: 20160504233440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,16 +150,6 @@ ActiveRecord::Schema.define(version: 20160504230942) do
     t.datetime "updated_at"
   end
 
-  create_table "gowifi_sms", force: true do |t|
-    t.string   "phone"
-    t.string   "code"
-    t.integer  "place_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
-
   create_table "instagram_auths", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -180,13 +170,10 @@ ActiveRecord::Schema.define(version: 20160504230942) do
     t.text     "description"
     t.integer  "price"
     t.integer  "place_id"
-    t.integer  "items_count",        default: 0
+    t.integer  "items_count",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   add_index "menu_items", ["place_id"], name: "index_menu_items_on_place_id", using: :btree
@@ -238,9 +225,6 @@ ActiveRecord::Schema.define(version: 20160504230942) do
     t.integer  "user_id"
     t.boolean  "active",                default: false
     t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "router_settings"
@@ -362,13 +346,10 @@ ActiveRecord::Schema.define(version: 20160504230942) do
     t.string   "text_color"
     t.string   "greating_color"
     t.string   "background_file_name"
-    t.string   "background_content_type"
-    t.integer  "background_file_size"
-    t.datetime "background_updated_at"
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "line_colors",             default: "rgba(0, 0, 0, 0.0)"
+    t.string   "line_colors",          default: "rgba(0, 0, 0, 0.0)"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree
