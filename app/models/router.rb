@@ -29,6 +29,10 @@ class Router < ActiveRecord::Base
     xml.css(OVPN_NAME_MATCH[name]).first.content
   end
 
+  def reload_settings!
+    WifiRouter::SettingsWorker.perform_async(id)
+  end
+
   private
 
   def set_random_values

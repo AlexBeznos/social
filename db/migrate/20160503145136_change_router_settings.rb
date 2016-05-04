@@ -1,7 +1,7 @@
 class ChangeRouterSettings < ActiveRecord::Migration
   def self.up
-    Router.pluck(:id) do |id|
-      WifiRouter::SettingsWorker.perform_async(id)
+    Router.find_each do |router|
+      router.reload_settings!
     end
   end
 
