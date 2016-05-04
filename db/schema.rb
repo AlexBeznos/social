@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504224423) do
+ActiveRecord::Schema.define(version: 20160504230942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,23 +99,6 @@ ActiveRecord::Schema.define(version: 20160504224423) do
 
   add_index "banners", ["place_id"], name: "index_banners_on_place_id", using: :btree
 
-  create_table "customer_network_profiles", force: true do |t|
-    t.integer  "social_network_id"
-    t.integer  "customer_id"
-    t.integer  "friends_count"
-    t.string   "access_token"
-    t.string   "access_token_secret"
-    t.datetime "expiration_date"
-    t.string   "url"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "customer_network_profiles", ["customer_id"], name: "index_customer_network_profiles_on_customer_id", using: :btree
-  add_index "customer_network_profiles", ["social_network_id"], name: "index_customer_network_profiles_on_social_network_id", using: :btree
-  add_index "customer_network_profiles", ["uid"], name: "index_customer_network_profiles_on_uid", using: :btree
-
   create_table "customer_reputations", force: true do |t|
     t.integer  "score",       default: 0
     t.datetime "created_at"
@@ -128,13 +111,10 @@ ActiveRecord::Schema.define(version: 20160504224423) do
   add_index "customer_reputations", ["place_id"], name: "index_customer_reputations_on_place_id", using: :btree
 
   create_table "customer_visits", force: true do |t|
-    t.integer  "customer_network_profile_id"
     t.integer  "place_id"
     t.integer  "customer_id"
-    t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "by_sms",                      default: false
     t.integer  "account_id"
     t.string   "account_type"
   end
@@ -142,7 +122,6 @@ ActiveRecord::Schema.define(version: 20160504224423) do
   add_index "customer_visits", ["account_type", "account_id"], name: "index_customer_visits_on_account_type_and_account_id", using: :btree
   add_index "customer_visits", ["created_at"], name: "index_customer_visits_on_created_at", using: :btree
   add_index "customer_visits", ["customer_id"], name: "index_customer_visits_on_customer_id", using: :btree
-  add_index "customer_visits", ["customer_network_profile_id"], name: "index_customer_visits_on_customer_network_profile_id", using: :btree
   add_index "customer_visits", ["place_id"], name: "index_customer_visits_on_place_id", using: :btree
 
   create_table "customers", force: true do |t|
