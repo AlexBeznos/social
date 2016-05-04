@@ -27,6 +27,16 @@ class Profile < ActiveRecord::Base
     profile_name == "vkontakte" ? "vk" : profile_name
   end
 
+  def self.find_by_credentials(credentials)
+    resource_type = get_profile_type(credentials['provider']).constantize
+    resource_params = get_resource_params(resource_type, credentials)
+    profile_resource = resource_type.find_by(uid: resource_params[:uid])
+
+    if profile_resource
+      profile_resource.profile
+    end
+  end
+
   def self.resource_like(provider, customer_id)
     resource = provider.capitalize
 
@@ -53,9 +63,8 @@ class Profile < ActiveRecord::Base
   end
 
   def self.create_or_update(params, customer)
-    resource_type = get_profile_type(params['provider'])
-    resource_params = get_resource_params(resource_type, params)
-    profile_resource = resource_type.constantize.find_by(uid: resource_params[:uid])
+    profile_resource = find_by_credentials(params).resource
+    resource_params = get_resource_params(profile_resource.class, params)
 
     if profile_resource
       profile_resource.update!(resource_params)
@@ -70,7 +79,7 @@ class Profile < ActiveRecord::Base
   end
 
   def self.get_resource_params(resource_type, credentials)
-    resource_type.constantize.try(:prepare_params, credentials)
+    resource_type.prepare_params(credentials)
   end
 
   private
