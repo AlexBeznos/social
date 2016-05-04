@@ -21,6 +21,8 @@ class MikrotikService
         line.chomp!
         line.gsub! Regexp.new(macro), value
       end
+
+      line
     end
   end
 
