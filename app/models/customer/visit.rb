@@ -13,7 +13,7 @@ class Customer::Visit < ActiveRecord::Base
              foreign_key: :customer_network_profile_id
 
   validates :place, presence: true
-  validate :ones_a_day_visit, unless: :by_password? || :by_sms?
+  #validate :ones_a_day_visit, unless: :by_password? || :by_sms?
 
   after_create :calculate_reputation, unless: :by_password? || :by_sms?
 

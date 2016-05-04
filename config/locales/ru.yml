@@ -311,7 +311,7 @@ ru:
     sms_code_placeholder: "код из смс"
     sms_resend: 'отправить смс еще раз'
   menu_item:
-    greetings: "%{customer_name}, добро пожаловать в %{place_name}"
+    greetings: "Добро пожаловать в %{place_name}"
     greetings_short: Добро пожаловать!
     buy_with_bonuses: Ниже список того, на что Вы можете потратить свои баллы
     added_bonus: Вам начислено %{place_score_amount} баллов!
