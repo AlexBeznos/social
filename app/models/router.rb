@@ -24,6 +24,10 @@ class Router < ActiveRecord::Base
   before_create :set_ip
   after_commit :initial_setup, on: :create
 
+  def ssid
+    place.ssid
+  end
+  
   def crt_by_name(name)
     xml = Nokogiri::XML(ovpn.read)
     xml.css(OVPN_NAME_MATCH[name]).first.content
