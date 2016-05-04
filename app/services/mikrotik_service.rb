@@ -4,7 +4,7 @@ class MikrotikService
     @config_name = config_name
   end
 
-  def load!
+  def load! # NOTE: don't used currenty
     cmnds = normalized_commands
 
     MTik::command(
@@ -18,10 +18,9 @@ class MikrotikService
   def normalized_commands
     File.readlines(path_to_config).map do |line|
       matched_macros.each do |macro, value|
+        line.chomp!
         line.gsub! Regexp.new(macro), value
       end
-
-      line.gsub /\n/, ''
     end
   end
 

@@ -77,6 +77,10 @@ class Auth < ActiveRecord::Base
     resource.class::NAME.to_sym
   end
 
+  def self.network_classes
+    Auth::NETWORKS.values.map { |network| network.capitalize + "Profile" }
+  end
+
   private
 
   def delete_old_notification

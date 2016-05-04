@@ -15,7 +15,7 @@ class WifiRouter::SettingsWorker
     settings.archivate
 
     settings_io = FilelessIO.new(settings.zip)
-    settings_io.original_filename = RouterSettings::SETTINGS_FILE
+    settings_io.original_filename = router.ssid + '_' + RouterSettings::SETTINGS_FILE
 
     router.settings = settings_io
     router.save!
