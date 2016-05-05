@@ -3,6 +3,10 @@ class FriendsPullWorker
 
   sidekiq_options queue: :advertisment, failures: true
 
+  sidekiq_retry_in do |count|
+    10 * (count + 1)
+  end
+
   def perform(klass, id)
     record = klass.constantize.find(id)
     service_class = get_service_klass_by_profile(klass)
