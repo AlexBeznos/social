@@ -32,7 +32,7 @@ class NetworksAuthDecorator
 
   def set_customer
     @customer = Customer.find(customer_id.to_i) if customer_id.present?
-    @customer ||= Profile.find_by_credentials(credentials).customer
+    @customer ||= Profile.find_by_credentials(credentials).try(:customer)
     @customer ||= Customer.create
   end
 
