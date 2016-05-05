@@ -12,7 +12,7 @@ class FacebookProfile < ActiveRecord::Base
     {
       first_name: credentials['info']['first_name'],
       last_name: credentials['info']['last_name'],
-      gender: credentials['extra']['raw_info']['gender'].try(:to_gender!)
+      gender: credentials['extra']['raw_info']['gender'].try(:to_gender!),
       url: credentials['info']['urls']['Facebook'],
       uid: credentials['uid'],
       access_token: credentials['credentials']['token'],
