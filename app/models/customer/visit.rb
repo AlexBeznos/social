@@ -1,18 +1,14 @@
 class Customer::Visit < ActiveRecord::Base
-  Account = Struct.new(:account, :count)
-
   default_scope { order('created_at DESC') }
 
   scope :by_date, ->(date) { where(created_at: date.beginning_of_day..date.end_of_day) }
   scope :by_date_from_to, ->(from, to) { where(created_at: from..to.end_of_day) }
   scope :by_sms, -> { where(account_type: "SmsProfile") }
-  scope :by_social_network, -> { where(account_type: get_social_networks_names) }
+  scope :by_social_network, -> { where(account_type: Auth.network_classes) }
 
   belongs_to :account, polymorphic: true
   belongs_to :customer
   belongs_to :place
-  belongs_to :network_profile, class_name: 'Customer::NetworkProfile',
-             foreign_key: :customer_network_profile_id
 
   validates :place, presence: true
   # validate :ones_a_day_visit, unless: :by_password? || :by_sms?
@@ -34,18 +30,6 @@ class Customer::Visit < ActiveRecord::Base
     end
 
     genders.except(nil)
-  end
-
-  def self.top_customers
-    visits = includes(:account).where(account_type: get_social_networks_names).to_a
-
-    visits.map do |visit|
-      Account.new(visit.account, visits.count(visit))
-    end.uniq.sort_by {|v| v.count}
-  end
-
-  def self.get_social_networks_names
-    Auth::NETWORKS.values.map { |network| network.capitalize + "Profile" }
   end
 
   def within_date?(from, till)

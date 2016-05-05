@@ -70,7 +70,7 @@
     end
 
     def ahoy_authenticate
-      current_visit.update(customer: current_customer)
+      current_visit.try(:update, { customer: current_customer })
     end
 
     def gen_root_path(user = false)

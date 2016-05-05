@@ -37,7 +37,7 @@ class GowifiAuthController < ApplicationController
         account_type: sms.profile.resource_type,
         customer: sms.profile.customer
       )
-      redirect_to auth.redirect_url
+      redirect_to succed_auth_path(@place, auth)
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')
     end

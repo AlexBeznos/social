@@ -310,7 +310,7 @@
     sms_resend: ուղարկել SMS, նորից
     sms_try_more: "սխալ կոդը: Փորձեք կրկին."
   menu_item:
-    greetings: "%{customer_name}, Բարի Գալուստ %{place_name}"
+    greetings: "Բարի Գալուստ %{place_name}"
     greetings_short: Բարի Գալուստ
     buy_with_bonuses: Ներքևում ցուցակն է, որտեղ Դուք կարող եք օգտագործել Ձեր միավորները
     added_bonus: Ձեզ հատկացված է %{place_score_amount} Միավոր

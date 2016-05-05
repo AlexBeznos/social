@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425044945) do
+ActiveRecord::Schema.define(version: 20160504233440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,23 +99,6 @@ ActiveRecord::Schema.define(version: 20160425044945) do
 
   add_index "banners", ["place_id"], name: "index_banners_on_place_id", using: :btree
 
-  create_table "customer_network_profiles", force: true do |t|
-    t.integer  "social_network_id"
-    t.integer  "customer_id"
-    t.integer  "friends_count"
-    t.string   "access_token"
-    t.string   "access_token_secret"
-    t.datetime "expiration_date"
-    t.string   "url"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "customer_network_profiles", ["customer_id"], name: "index_customer_network_profiles_on_customer_id", using: :btree
-  add_index "customer_network_profiles", ["social_network_id"], name: "index_customer_network_profiles_on_social_network_id", using: :btree
-  add_index "customer_network_profiles", ["uid"], name: "index_customer_network_profiles_on_uid", using: :btree
-
   create_table "customer_reputations", force: true do |t|
     t.integer  "score",       default: 0
     t.datetime "created_at"
@@ -128,13 +111,10 @@ ActiveRecord::Schema.define(version: 20160425044945) do
   add_index "customer_reputations", ["place_id"], name: "index_customer_reputations_on_place_id", using: :btree
 
   create_table "customer_visits", force: true do |t|
-    t.integer  "customer_network_profile_id"
     t.integer  "place_id"
     t.integer  "customer_id"
-    t.boolean  "by_password",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "by_sms",                      default: false
     t.integer  "account_id"
     t.string   "account_type"
   end
@@ -142,23 +122,12 @@ ActiveRecord::Schema.define(version: 20160425044945) do
   add_index "customer_visits", ["account_type", "account_id"], name: "index_customer_visits_on_account_type_and_account_id", using: :btree
   add_index "customer_visits", ["created_at"], name: "index_customer_visits_on_created_at", using: :btree
   add_index "customer_visits", ["customer_id"], name: "index_customer_visits_on_customer_id", using: :btree
-  add_index "customer_visits", ["customer_network_profile_id"], name: "index_customer_visits_on_customer_network_profile_id", using: :btree
   add_index "customer_visits", ["place_id"], name: "index_customer_visits_on_place_id", using: :btree
 
   create_table "customers", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "gender"
-    t.string   "age"
-    t.date     "birthday"
-    t.string   "city"
-    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "social_network_id"
   end
-
-  add_index "customers", ["social_network_id"], name: "index_customers_on_social_network_id", using: :btree
 
   create_table "facebook_auths", force: true do |t|
     t.text     "message"
@@ -181,16 +150,6 @@ ActiveRecord::Schema.define(version: 20160425044945) do
     t.datetime "updated_at"
   end
 
-  create_table "gowifi_sms", force: true do |t|
-    t.string   "phone"
-    t.string   "code"
-    t.integer  "place_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "gowifi_sms", ["place_id"], name: "index_gowifi_sms_on_place_id", using: :btree
-
   create_table "instagram_auths", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -211,13 +170,10 @@ ActiveRecord::Schema.define(version: 20160425044945) do
     t.text     "description"
     t.integer  "price"
     t.integer  "place_id"
-    t.integer  "items_count",        default: 0
+    t.integer  "items_count",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   add_index "menu_items", ["place_id"], name: "index_menu_items_on_place_id", using: :btree
@@ -269,9 +225,6 @@ ActiveRecord::Schema.define(version: 20160425044945) do
     t.integer  "user_id"
     t.boolean  "active",                default: false
     t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "router_settings"
@@ -362,10 +315,6 @@ ActiveRecord::Schema.define(version: 20160425044945) do
   create_table "social_network_icons", force: true do |t|
     t.integer  "place_id"
     t.string   "icon_file_name"
-    t.string   "icon_content_type"
-    t.integer  "icon_file_size"
-    t.datetime "icon_updated_at"
-    t.integer  "social_network_id"
     t.integer  "style_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -373,16 +322,7 @@ ActiveRecord::Schema.define(version: 20160425044945) do
   end
 
   add_index "social_network_icons", ["place_id"], name: "index_social_network_icons_on_place_id", using: :btree
-  add_index "social_network_icons", ["social_network_id"], name: "index_social_network_icons_on_social_network_id", using: :btree
   add_index "social_network_icons", ["style_id"], name: "index_social_network_icons_on_style_id", using: :btree
-
-  create_table "social_networks", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "social_networks", ["name"], name: "index_social_networks_on_name", using: :btree
 
   create_table "stocks", force: true do |t|
     t.string   "image_file_name"
@@ -406,13 +346,10 @@ ActiveRecord::Schema.define(version: 20160425044945) do
     t.string   "text_color"
     t.string   "greating_color"
     t.string   "background_file_name"
-    t.string   "background_content_type"
-    t.integer  "background_file_size"
-    t.datetime "background_updated_at"
     t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "line_colors",             default: "rgba(0, 0, 0, 0.0)"
+    t.string   "line_colors",          default: "rgba(0, 0, 0, 0.0)"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree

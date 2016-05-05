@@ -31,11 +31,16 @@ class NetworksAuthDecorator
   private
 
   def set_customer
-    @customer = Customer.find(customer_id.to_i) if customer_id
+    @customer = Customer.find(customer_id.to_i) if customer_id.present?
+    @customer ||= Profile.find_by_credentials(credentials).try(:customer)
     @customer ||= Customer.create
   end
 
   def advertise
-    AdvertisingWorker.perform_async(place.slug, auth.id, profile.id) if visit
+    AdvertisingWorker.perform_async(
+      place.slug,
+      auth.id,
+      profile.id
+    ) unless visit.errors.any?
   end
 end

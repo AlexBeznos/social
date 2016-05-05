@@ -47,14 +47,14 @@ class PlacesController < ApplicationController
   def guests
     authorize @place
 
-    @customers = @place.visits.top_customers
+    @customers = TopCustomerDecorator.new(@place).call
   end
 
   def birthdays
     authorize @place
 
     date_from = params[:date] ? params[:date].to_date : Time.now
-    @customers = @place.visits.by_birthday(date_from, date_from + 1.month)
+    @customers = @place.visits.by_birthday(date_from, date_from + 1.month).uniq
   end
 
   def settings

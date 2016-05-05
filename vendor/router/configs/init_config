@@ -20,14 +20,14 @@
 /interface wireless nstreme set wlan1 enable-polling=no
 /interface wireless set [ find default-name=wlan1 ] disabled=no mode=ap-bridge band="2ghz-b/g/n" security-profile=open
 /interface wireless set [ find default-name=wlan1 ] wps-mode=disabled frequency=auto radio-name=GoFriends wireless-protocol=802.11 bridge-mode=disabled wds-mode=disabled wmm-support=enabled multicast-helper=full default-authentication=yes default-forwarding=no
-/interface wireless set [ find default-name=wlan1 ] distance=indoors adaptive-noise-immunity=ap-and-client-mode basic-rates-a/g="" basic-rates-b="" guard-interval=long supported-rates-a/g=6Mbps,9Mbps,12Mbps,18Mbps,24Mbps,36Mbps,48Mbps,54Mbps supported-rates-b="" rate-set=configured ht-basic-mcs=""
+/interface wireless set [ find default-name=wlan1 ] distance=indoors adaptive-noise-immunity=ap-and-client-mode basic-rates-a/g="" basic-rates-b=""  channel-width=20/40mhz-Ce frequency=auto guard-interval=long ht-basic-mcs="" supported-rates-b="" tx-power=19 tx-power-mode=all-rates-fixed
 /interface wireless set [ find default-name=wlan1 ] ssid=##SSID##
 /interface wireless add disabled=no name=gf-adm default-authentication=yes master-interface=wlan1 security-profile=WPA2-GF-Admin ssid=gf-adm wmm-support=enabled wps-mode=disabled
 /interface bridge port add bridge=GoFriends_Admin interface=gf-adm
 /ip neighbor discovery set gf-adm discover=no
 /ip pool add name=GF-hotspot-pool ranges=172.16.16.5-172.16.16.254
 /ip pool add name=GF-adm-pool ranges=192.168.88.100-192.168.88.200
-/ip dhcp-server add disabled=no name=GF-hotspot-dhcp lease-time=2h address-pool=GF-hotspot-pool bootp-support=none interface=GoFriends_WiFi
+/ip dhcp-server add disabled=no name=GF-hotspot-dhcp lease-time=12h address-pool=GF-hotspot-pool bootp-support=none interface=GoFriends_WiFi
 /ip dhcp-server add disabled=no name=GF-adm-dhcp lease-time=30d address-pool=GF-adm-pool bootp-support=none interface=GoFriends_Admin
 /ip dhcp-server network add address=172.16.16.0/24 dns-server=172.16.16.1 gateway=172.16.16.1 ntp-server=172.16.16.1
 /ip dhcp-server network add address=192.168.88.0/24 dns-server=192.168.88.1 gateway=192.168.88.1 ntp-server=192.168.88.1
@@ -54,6 +54,7 @@
 /ip hotspot user add name=apple password=apple profile=apple
 /ip hotspot user add name=##HP_USERNAME## password=##HP_PASSWORD## profile=guest
 /ip hotspot walled-garden add dst-host=*facebook*
+/ip hotspot walled-garden add dst-host=*fbcdn.net*
 /ip hotspot walled-garden add dst-host=*gofriends.com.ua*
 /ip hotspot walled-garden add dst-host=*gowifi-prod.s3.amazonaws.com*
 /ip hotspot walled-garden add dst-host=*akamai*
@@ -94,7 +95,7 @@ set ftp address=10.0.0.0/8,192.168.0.0/16
 /ip firewall mangle add action=mark-connection chain=forward connection-mark=OUT new-connection-mark=OUT_from_Hotspot src-address-list=Hotspot_addr
 /ip firewall mangle add action=mark-packet chain=forward connection-mark=OUT_from_Hotspot new-packet-mark=OUT_packets_from_Hotspot
 /system clock set time-zone-name=Europe/Kiev
-/system identity set name=GoFriends
+/system identity set name=##SSID##
 /system ntp client set enabled=yes primary-ntp=216.239.32.15 secondary-ntp=216.239.34.15
 /system ntp server set broadcast=yes broadcast-addresses=172.16.16.1,192.168.88.1 enabled=yes manycast=no
 /tool bandwidth-server set enabled=no
@@ -103,5 +104,5 @@ set ftp address=10.0.0.0/8,192.168.0.0/16
 /tool mac-server ping set enabled=no
 /tool mac-server mac-winbox add interface=ether1
 /tool mac-server mac-winbox add interface=GoFriends_Admin
-/user add name=admin password=##MT_ADMIN_PASSWORD## group=full
-/user add name=##MT_API_USERNAME## password=##MT_API_PASSWORD## group=full
+/user add name=GF password=##MT_ADMIN_PASSWORD## group=full
+/system routerboard settings set cpu-frequency=750MHz protected-routerboot=disabled

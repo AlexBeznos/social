@@ -312,7 +312,7 @@ pl:
     sms_resend: 'ponownie wysłać SMS'
     sms_try_more: "Nieprawidłowy kod. Spróbuj ponownie. "
   menu_item:
-    greetings: "%{customer_name}, mile widziany %{place_name}"
+    greetings: "Mile widziany %{place_name}"
     greetings_short: powitanie!
     buy_with_bonuses: Poniżej znajduje się lista tego, co można spędzić swoje punkty
     added_bonus: Jesteś uznawany %{place_score_amount} punktów!

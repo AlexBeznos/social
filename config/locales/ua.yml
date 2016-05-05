@@ -306,7 +306,7 @@ ua:
     sms_resend: 'відправити смс ще раз'
     sms_try_more: "Код не вірний. Спробуйте ще."
   menu_item:
-    greetings: "%{customer_name}, ласкаво просимо до %{place_name}"
+    greetings: "Ласкаво просимо до %{place_name}"
     greetings_short: Ласкаво просимо!
     buy_with_bonuses: Нижче список того, на що Ви можете витратити свої бали
     added_bonus: Вам нараховано %{place_score_amount} балів!

@@ -8,8 +8,6 @@ RSpec.describe Stock do
   # it { is_expected.to validate_attachment_content_type(:image).allowing("image/jpeg", "image/png", "image/gif") }
   it { is_expected.to callback(:normalize_day).before(:save) }
 
-  it_behaves_like 'with url validation for', :url, :network_profile
-
   describe "days" do
     it "is normalized" do
       days = ["1", ""]
