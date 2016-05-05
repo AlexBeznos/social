@@ -6,7 +6,7 @@ class FacebookProfile < ActiveRecord::Base
 
   validates :uid, presence: true
 
-  after_commit :set_friends_number, on: :save
+  after_commit :set_friends_number, on: [:create, :update]
 
   def self.prepare_params(credentials)
     {

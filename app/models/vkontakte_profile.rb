@@ -4,7 +4,7 @@ class VkontakteProfile < ActiveRecord::Base
   has_one :profile, as: :resource
   has_many :visits, as: :account, class_name: "Customer::Visit"
 
-  after_commit :set_friends_number, on: :save
+  after_commit :set_friends_number, on: [:create, :update]
 
   def self.prepare_params(credentials)
     {
