@@ -29,12 +29,12 @@ class GowifiController < ApplicationController
   end
 
   def set_step
-    cookies.delete(:step) if cookies[:step] && !@place.mfa
+    return if cookies[:step] == 'secondary' && @place.mfa
 
     cookies[:step] = {
       value: 'primary',
       expires: 15.minutes.from_now
-    } unless cookies[:step]
+    }
   end
 
   def set_default_format

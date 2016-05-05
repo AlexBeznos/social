@@ -18,7 +18,8 @@ class FacebookService
   def self.get_friends_number(token)
     graph = Koala::Facebook::API.new(token)
     friends = graph.get_connections('me', 'friends')
-    friends.raw_response['summary']['total_count']
+    friends.raw_response.fetch('summary', {})
+                        .fetch('total_count', 0)
   end
 
   def advertise
