@@ -4,6 +4,8 @@ class VkontakteProfile < ActiveRecord::Base
   has_one :profile, as: :resource
   has_many :visits, as: :account, class_name: "Customer::Visit"
 
+  after_commit :set_friends_number, on: :save
+
   def self.prepare_params(credentials)
     {
       first_name: credentials['extra']['raw_info']['first_name'],
@@ -13,8 +15,13 @@ class VkontakteProfile < ActiveRecord::Base
       access_token: credentials['credentials']['token'],
       expiration_date: credentials['credentials']['expires_at'].to_i.seconds.from_now,
       url: credentials['info']['urls']['Vkontakte'],
-      uid: credentials['uid'],
-      friends_count: VkontakteService.get_friends_number(credentials['credentials']['token'])
+      uid: credentials['uid']
     }
+  end
+
+  private
+
+  def set_friends_number
+    FriendsPullWorker.perform_async(self.class, id)
   end
 end
