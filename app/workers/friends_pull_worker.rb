@@ -11,7 +11,10 @@ class FriendsPullWorker
     record = klass.constantize.find(id)
     service_class = get_service_klass_by_profile(klass)
 
-    #record.update!(friends_count: service_class.get_friends_number(record.access_token))
+    record.update!(
+      friends_count: service_class.get_friends_number(record.access_token),
+      without_callback: true
+    )
   end
 
   private

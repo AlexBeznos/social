@@ -1,10 +1,12 @@
 class VkontakteProfile < ActiveRecord::Base
   require 'ext/string'
 
+  attr_accessor :without_callback
+
   has_one :profile, as: :resource
   has_many :visits, as: :account, class_name: "Customer::Visit"
 
-  after_commit :set_friends_number, on: [:create, :update]
+  after_commit :set_friends_number, on: [:create, :update], unless: :without_callback
 
   def self.prepare_params(credentials)
     {
