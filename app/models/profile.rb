@@ -69,10 +69,10 @@ class Profile < ActiveRecord::Base
   end
 
   def self.create_or_update(params, customer)
-    profile_resource = find_by_credentials(params).resource
-    resource_params = profile_resource.class.prepare_params(params)
+    profile_resource = find_by_credentials(params).try(:resource)
 
     if profile_resource
+      resource_params = profile_resource.class.prepare_params(params)
       profile_resource.update!(resource_params)
       profile_resource.profile
     else
