@@ -22,7 +22,7 @@ class Profile < ActiveRecord::Base
 
     full_name.present? ? full_name : nil
   end
-
+w
   def font_awesome_name
     profile_name == "vkontakte" ? "vk" : profile_name
   end

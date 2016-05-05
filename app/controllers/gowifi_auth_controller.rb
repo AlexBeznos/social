@@ -78,7 +78,9 @@ class GowifiAuthController < ApplicationController
 
     decorator.save
     session.delete(:slug)
-    customer_cookie = decorator.customer.id
+
+    send('customer_cookie=', decorator.customer.id)
+
     redirect_to succed_auth_path(@place, @auth)
   end
 
@@ -133,7 +135,8 @@ class GowifiAuthController < ApplicationController
     else
       cookies.delete(:step)
 
-      url = if @place.loyalty_program && current_customer && Auth::NETWORKS.values.include?(auth.resource.class::NAME)
+      url = if @place.loyalty_program && current_customer && auth.network?
+
         loyalty_url(@place, auth: auth.id)
       else
         auth.redirect_url

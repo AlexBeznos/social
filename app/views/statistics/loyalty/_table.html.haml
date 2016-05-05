@@ -10,7 +10,7 @@
     -orders.each do |order|
       %tr
         %td= order.time
-        %td= order.customer.full_name
+        %td= order.customer_full_name
         %td= order.price
         %td= order.items_received
         %td= order.customer_score

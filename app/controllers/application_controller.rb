@@ -41,6 +41,9 @@
   end
 
   def customer_cookie=(customer)
+    p "*" * 60
+    p "Goooood"
+
     cookies.permanent[:customer] = customer
   end
 

@@ -28,6 +28,15 @@ class OrderDecorator
                         ).first.score
   end
 
+  def customer_full_name
+    profile = @order.customer.profiles.first
+    if profile
+      profile.full_name
+    else
+      "No name"
+    end
+  end
+
   private
 
   def method_missing(m, *args, &block)
