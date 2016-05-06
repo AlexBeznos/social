@@ -107,8 +107,7 @@ class GowifiAuthController < ApplicationController
       @customer = Customer.find(customer_cookie.to_i)
     else
       @customer = Customer.create
-      customer_cookie = @customer.id
-    end
+      customer_cookie = @customer.id    end
   end
 
   def find_place_from_session

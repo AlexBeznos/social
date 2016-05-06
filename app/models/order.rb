@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  extend TimeQueries
+
   belongs_to :customer
   belongs_to :place
   has_and_belongs_to_many :menu_items

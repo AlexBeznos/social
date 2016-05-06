@@ -1,16 +1,19 @@
 %table.table.table-bordered.table-striped
   %thead
     %tr
-      %th= "Time"
-      %th= "Social network ID"
-      %th= "Price"
-      %th= "Received"
-      %th= "Current ID score"
+      %th.text-center= "Time"
+      %th.text-center= "Social network ID"
+      %th.text-center= "Price"
+      %th.text-center= "Received"
+      %th.text-center= "Current ID score"
   %tbody
     -orders.each do |order|
       %tr
         %td= order.time
-        %td= order.customer_full_name
+        %td
+          - order.customer_profiles.each do |profile|
+            - social_icon = image_tag("wifi/#{profile.network_name}.png", class: "mini_social_icon")
+            = link_to fa_icon(profile.font_awesome_name), profile.resource.url
         %td= order.price
         %td= order.items_received
         %td= order.customer_score

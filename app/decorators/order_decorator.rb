@@ -29,12 +29,11 @@ class OrderDecorator
   end
 
   def customer_full_name
-    profile = @order.customer.profiles.first
-    if profile
-      profile.full_name
-    else
-      "No name"
-    end
+    profile = @order.customer.profiles.first.full_name
+  end
+
+  def customer_profiles
+    @order.customer.profiles 
   end
 
   private

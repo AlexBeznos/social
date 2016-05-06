@@ -1,0 +1,6 @@
+= button_to place_statistics_loyalty_path(place), method: :get, params: {today: true} do
+  - "Today"
+= button_to place_statistics_loyalty_path(place), method: :get, params: {this_week: true} do
+  - "This week"
+= button_to place_statistics_loyalty_path(place), method: :get, params: {this_month: true} do
+  - "This month"
