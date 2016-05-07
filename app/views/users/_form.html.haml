@@ -1,5 +1,7 @@
 = simple_form_for @user do |f|
   = f.error_notification
+  - if current_user.admin? && current_user != @user
+    = f.input :group, as: :select, collection: User.groups
   = f.input :email
   = f.input :first_name
   = f.input :last_name

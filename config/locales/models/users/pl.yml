@@ -12,6 +12,7 @@ pl:
           title: "Uytkownik %{user}"
           heading: Preferencje użytkownika
           places: Restauracje użytkownika
+          users: Właściciele zakładów
         new:
           title: Utwórz nowe konto
         edit:

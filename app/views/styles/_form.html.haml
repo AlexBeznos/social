@@ -18,6 +18,7 @@
     = image_tag @style.background.url, height: 100
   = f.input :background, as: :file
   = f.input :css, as: :text
+  = f.input :js, as: :text if current_user.admin?
   = f.input :line_colors, input_html: { class: 'line_colors' }
 
   = f.button :submit

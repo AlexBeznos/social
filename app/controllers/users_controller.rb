@@ -26,9 +26,9 @@ class UsersController < ApplicationController
     @user.user_id = current_user.id
 
     if @user.save
-      redirect_to users_path, :notice => I18n.t('models.users.created')
+      redirect_to users_path, notice: I18n.t('models.users.created')
     else
-      render :action => :new
+      render action: :new
     end
 
   end
@@ -41,9 +41,9 @@ class UsersController < ApplicationController
     authorize @user
 
     if @user.update(permitted_attributes(@user))
-      redirect_to user_path(@user), :notice => I18n.t('models.users.updated')
+      redirect_to user_path(@user), notice: I18n.t('models.users.updated')
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
