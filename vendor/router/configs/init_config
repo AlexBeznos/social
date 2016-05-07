@@ -46,10 +46,10 @@
 /ip firewall filter add action=drop chain=input dst-port=53 in-interface=ether1 protocol=udp
 /ip firewall nat add action=masquerade chain=srcnat comment="GoFriends WiFi NAT out" src-address=172.16.16.0/24
 /ip firewall nat add action=masquerade chain=srcnat comment="GoFriends adm NAT out" src-address=192.168.88.0/24
-/ip hotspot profile add name=GoFriends_hotspot dns-name=gofriends.lan hotspot-address=172.16.16.1 html-directory=hotspot login-by=http-pap
+/ip hotspot profile add name=GoFriends_hotspot dns-name=gofriends.lan hotspot-address=172.16.16.1 html-directory=hotspot login-by=http-pap,mac
 /ip hotspot add disabled=no name=GoFriends_WiFi_srv address-pool=GF-hotspot-pool interface=GoFriends_WiFi profile=GoFriends_hotspot
 /ip hotspot user profile add name=apple keepalive-timeout=10s queue-type=hotspot-default session-timeout=6s shared-users=unlimited status-autorefresh=1s
-/ip hotspot user profile add name=guest queue-type=hotspot-default session-timeout=1d shared-users=unlimited
+/ip hotspot user profile add name=guest queue-type=hotspot-default keepalive-timeout=12h session-timeout=12h mac-cookie-timeout=12h shared-users=unlimited
 /ip hotspot user add name=guest password=guest profile=guest
 /ip hotspot user add name=apple password=apple profile=apple
 /ip hotspot user add name=##HP_USERNAME## password=##HP_PASSWORD## profile=guest
