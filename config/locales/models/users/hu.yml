@@ -12,6 +12,7 @@ hu:
           title: "Felhasználó %{user}"
           heading: Felhasználói beállítások
           places: Éttermek Felhasználó
+          users: Tulajdonosai létesítmények
         new:
           title: Új fiók létrehozása
         edit:

@@ -12,8 +12,8 @@ class Style < ActiveRecord::Base
             file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] },
             file_size: { less_than_or_equal_to: 10.megabytes }
 
-  before_save :precompile_css, if: 'css'
-  before_save :precompile_js, if: 'js'
+  before_save :precompile_css, if: -> { css_changed? }
+  before_save :precompile_js, if: -> { js_changed? }
 
   private
 

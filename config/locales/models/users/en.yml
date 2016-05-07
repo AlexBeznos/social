@@ -12,6 +12,7 @@ en:
           title: "User %{user}"
           heading: User's settings
           places: User's places
+          users: Place owners
         new:
           title: Create new user
         edit:
