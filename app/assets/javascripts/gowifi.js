@@ -13,5 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require slick.min
-//= require poll_toggle
-//= require popup_modal
+//= require_tree ./gowifi
