@@ -2,7 +2,6 @@
 *= require jquery.minicolors
 *= require codemirror
 *= require codemirror/modes/css
-*= require codemirror/modes/javascript
 */
 
 $(document).ready(function() {

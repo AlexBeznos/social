@@ -12,9 +12,7 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = javascript_include_tag :application
-    = stylesheet_link_tag "bootstrap", :media => "all"
-    = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    = stylesheet_link_tag "loyalty/style", :media => "all"
+    = stylesheet_link_tag "loyalty", :media => "all"
 
   %body
     %header
@@ -54,9 +52,6 @@
     -#                 %li= link_to t('menu_item.shopping_history'), orders_path
     -#               %li= link_to t('menu_item.bonus_amount', customer_reputation_score: @reputation_score), ''
 
-
-    = javascript_include_tag "jquery"
-    = javascript_include_tag "bootstrap"
     :javascript
       $(document).ready(function() {
       	$("#nav li:has(ul.sub-nav)").addClass("with-drop");
