@@ -4,10 +4,6 @@ class Statistics::LoyaltyController < ApplicationController
 
   def show
     authorize @place
-    # @items = MenuItemDecorator.decorate_multiple(MenuItem
-    #                                               .includes(:orders)
-    #                                               .where(place: @place)
-    #                                             )
 
     @orders = OrderDecorator.decorate_multiple(place_orders(@place))
 
@@ -27,10 +23,10 @@ class Statistics::LoyaltyController < ApplicationController
                        )
                      elsif params[:this_month]
                        Order.created_this_month
-                     elsif params[:this_week]
-                       Order.created_this_week
                      elsif params[:today]
                        Order.created_today
+                     else
+                       Order.created_this_week
                      end
 
     orders_by_date.includes(:customer).where(place: place)

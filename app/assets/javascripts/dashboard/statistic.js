@@ -1,4 +1,10 @@
 $(document).ready(function(){
+  $("#from, #to").datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+});
+
+$(document).ready(function(){
     if ($(window).width() > 750) {
         $(".statistics-table-arrow").css("height", $(".statistics-table").height());
     }

@@ -1,6 +1,19 @@
-= button_to place_statistics_loyalty_path(place), method: :get, params: {today: true} do
-  - "Today"
-= button_to place_statistics_loyalty_path(place), method: :get, params: {this_week: true} do
-  - "This week"
-= button_to place_statistics_loyalty_path(place), method: :get, params: {this_month: true} do
-  - "This month"
+.btn-group.date_checker
+  = link_to place_statistics_loyalty_path(place, today: true), class: "btn btn-primary" do
+    - "Today"
+  = link_to place_statistics_loyalty_path(place, this_week: true), class: "btn btn-primary" do
+    - "This week"
+  = link_to place_statistics_loyalty_path(place, this_month: true), class: "btn btn-primary"  do
+    - "This month"
+  %button{ class: "btn btn-primary", data:{ toggle: "collapse", target: "#date_form" } }
+    ="Custom date"
+
+%div{ id: "date_form", class: "collapse date_form" }
+  = form_tag( place_statistics_loyalty_path(place), method: :get, class: "form-inline") do
+    .form-group
+      = label_tag :from, "From:"
+      = datetime_field_tag :from, Date.today, class: "form-control"
+    .form-group
+      = label_tag :to, "To:"
+      = datetime_field_tag :to, Date.today + 1.week, class: "form-control"
+    = submit_tag "Submit", class: "btn btn-primary"
