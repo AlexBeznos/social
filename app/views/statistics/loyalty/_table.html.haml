@@ -12,7 +12,6 @@
         %td= order.time
         %td
           - order.customer_profiles.each do |profile|
-            - social_icon = image_tag("wifi/#{profile.network_name}.png", class: "mini_social_icon")
             = link_to fa_icon(profile.font_awesome_name), profile.resource.url
         %td= order.price
         %td= order.items_received

@@ -13,10 +13,6 @@ class OrderDecorator
     @order.created_at.to_formatted_s(:time)
   end
 
-  def price
-    @order.menu_items.inject(0){|sum, item| sum + item.price }
-  end
-
   def items_received
     @order.menu_items.map(&:name).join(" ")
   end

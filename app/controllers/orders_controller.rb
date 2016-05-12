@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
     @order = @place.orders.create(customer_id: current_customer.id)
 
     if @order.add_menu_item(@reputation, @menu_item)
+      @order.set_price!
       render :show
     else
       redirect_to loyalty_path, notice: t('menu_item.not_enough_points')

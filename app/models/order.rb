@@ -16,4 +16,8 @@ class Order < ActiveRecord::Base
       false
     end
   end
+
+  def set_price!
+    self.update(price: menu_items.inject(0){|sum, item| sum + item.price })
+  end
 end
