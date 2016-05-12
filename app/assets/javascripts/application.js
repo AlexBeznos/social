@@ -15,4 +15,4 @@
 //= require slick.min
 //= require bootstrap
 //= require nested_forms
-//= require jquery-ui
+//= require jquery-ui/datepicker
