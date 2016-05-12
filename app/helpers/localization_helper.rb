@@ -18,13 +18,17 @@ module LocalizationHelper
     raw links.join(' | ')
   end
 
-  def include_i18n_calendar_javascript
-    content_for :head do
-      javascript_include_tag case I18n.locale
-        when :en then "jquery.ui.datepicker-en-GB.js"
-        when :ru then "jquery.ui.datepicker-pt-BR.js"
-        else raise ArgumentError, "Locale error"
-      end
+  def datepicker_locale_name
+    locale = I18n.locale
+
+    if locale == :en
+      "en-GB"
+    elsif locale == :am
+      "hy"
+    elsif locale == :ua
+      "uk"
+    else
+      locale.to_s
     end
   end
 end

@@ -6,10 +6,11 @@
   = link_to place_statistics_loyalty_path(place, this_month: true), class: "btn btn-primary"  do
     - "This month"
   %button{ class: "btn btn-primary", data:{ toggle: "collapse", target: "#date_form" } }
-    ="Custom date"
+    = "Custom date"
 
 %div{ id: "date_form", class: "collapse date_form" }
   = form_tag( place_statistics_loyalty_path(place), method: :get, class: "form-inline") do
+    = hidden_field_tag :datepicker_locale, datepicker_locale_name
     .form-group
       = label_tag :from, "From:"
       = datetime_field_tag :from, Date.today, class: "form-control"
