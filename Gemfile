@@ -117,6 +117,7 @@ group :test do
   gem 'test_after_commit'
   gem 'rspec-sidekiq'
   gem 'pundit-matchers' ,'~> 1.0.0'
+  gem 'poltergeist'
 end
 
 # Use ActiveModel has_secure_password

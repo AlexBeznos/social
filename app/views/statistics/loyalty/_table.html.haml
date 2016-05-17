@@ -8,7 +8,7 @@
       %th.text-center= "Current ID score"
   %tbody
     -orders.each do |order|
-      %tr
+      %tr{ id: "order_#{order.id}"}
         %td= order.time
         %td
           - order.customer_profiles.each do |profile|

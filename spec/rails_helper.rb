@@ -10,6 +10,7 @@ require 'shoulda/matchers'
 require 'rspec_candy/all'
 require 'capybara/rspec'
 require 'pundit/rspec'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -64,3 +65,5 @@ RSpec.configure do |config|
     Sidekiq::Worker.clear_all
   end
 end
+
+Capybara.javascript_driver = :poltergeist
