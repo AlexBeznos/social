@@ -14,7 +14,6 @@ gem 'jquery-modal-rails'
 gem 'jquery-ui-rails'
 gem "fog-aws"
 gem "asset_sync"
-gem 'jquery-ui-rails'
 
 # Precompiles
 gem 'sass-rails', '~> 4.0.3'

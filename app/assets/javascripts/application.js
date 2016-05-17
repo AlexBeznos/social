@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require slick.min
 //= require bootstrap
-//= require nested_forms
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-ru
 //= require jquery-ui/datepicker-en-GB
