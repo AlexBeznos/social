@@ -12,10 +12,7 @@
  *
  *
  *= require bootstrap
- *= require landing/style
- *= require landing/responsive
- *= require landing/fontello
- *= require landing/swiper
+ *= require landing
  *= require lib/jbox
  *= require_self
  */

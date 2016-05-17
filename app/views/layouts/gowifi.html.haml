@@ -12,12 +12,8 @@
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag "wifi/modal", :media => "all"
-    = stylesheet_link_tag "bootstrap", :media => "all"
-    = stylesheet_link_tag "bootstrap-theme", :media => "all"
-    = stylesheet_link_tag "wifi/poll_styling", :media => "all"
-    = stylesheet_link_tag "wifi/default", :media => "all"
-    = javascript_include_tag "wifi_enter"
+    = stylesheet_link_tag "gowifi", :media => "all"
+    = javascript_include_tag "gowifi"
     = render 'shared/gowifi/style', place: @place if @place.style
   %body
     %div.background{ style: background_style(@place) }

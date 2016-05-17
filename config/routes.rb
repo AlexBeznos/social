@@ -6,26 +6,6 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
   root to: 'pages#show', id: 'home'
 
-  namespace :adm do
-    root to: 'dashboard#index'
-    get '/' => 'dashboard#index'
-    resources :places, only: :index
-    resources :users, :shallow => true do
-      resources :places, except: :index do
-        resources :styles, except: :index do
-          member do
-            patch 'remove_background'
-          end
-        end
-      end
-
-      member do
-        get 'edit_password' => 'users#edit_password'
-        patch 'update_password' => 'users#update_password'
-      end
-    end
-  end
-
   resources :users do
     resources :notifications, only: [:index] do
         member do

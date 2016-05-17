@@ -123,6 +123,10 @@ GEM
     docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    dumper (1.6.0)
+      multi_json (>= 1.0)
+      multipart-post (>= 1.1.5)
+      posix-spawn (>= 0.3.6)
     equalizer (0.0.11)
     errbase (0.0.3)
     erubis (2.7.0)
@@ -439,6 +443,7 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    posix-spawn (0.3.11)
     powerpack (0.1.1)
     procto (0.0.2)
     pry (0.10.3)
@@ -693,6 +698,7 @@ DEPENDENCIES
   cssminify
   database_cleaner
   default_value_for
+  dumper
   exception_notification
   factory_girl_rails
   faker

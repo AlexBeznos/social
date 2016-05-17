@@ -83,6 +83,7 @@ gem 'authlogic'
 gem 'pundit'
 gem 'lograge'
 gem 'high_voltage', '~> 2.3.0'
+gem 'dumper'
 
 group :development do
   gem 'spring'

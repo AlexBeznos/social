@@ -22,3 +22,4 @@
 //= require jquery-ui/datepicker-pl
 //= require jquery-ui/datepicker-hu
 //= require jquery-ui/datepicker-hy
+//= require_tree ./application

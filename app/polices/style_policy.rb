@@ -16,7 +16,7 @@ class StylePolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [
+    params = [
       :background,
       :text_color,
       :greating_color,
@@ -24,5 +24,8 @@ class StylePolicy < ApplicationPolicy
       :network_icons,
       :line_colors
     ]
+
+    return params + [:js] if user.admin?
+    params
   end
 end

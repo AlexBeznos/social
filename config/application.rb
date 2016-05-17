@@ -23,10 +23,6 @@ module Social
                                  "#{config.root}/app/queries"
                             )
 
-    Rails.application.config.assets.precompile += %w( *.css )
-    Rails.application.config.assets.precompile += %w( *.js )
-    config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf|jpg|png|ico|gif)\z/
-
     # localization
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     config.i18n.default_locale = :ru
