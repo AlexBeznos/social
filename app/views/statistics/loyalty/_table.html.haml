@@ -1,11 +1,11 @@
 %table.table.table-bordered.table-striped
   %thead
     %tr
-      %th.text-center= "Time"
-      %th.text-center= "Social network ID"
-      %th.text-center= "Price"
-      %th.text-center= "Received"
-      %th.text-center= "Current ID score"
+      %th.text-center= t("statistics.loyalty.time")
+      %th.text-center= t("statistics.loyalty.social_network_id")
+      %th.text-center= t("statistics.loyalty.price")
+      %th.text-center= t("statistics.loyalty.received")
+      %th.text-center= t("statistics.loyalty.current_id_score")
   %tbody
     -orders.each do |order|
       %tr{ id: "order_#{order.id}"}

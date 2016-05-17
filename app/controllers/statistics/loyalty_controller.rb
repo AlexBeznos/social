@@ -3,6 +3,7 @@ class Statistics::LoyaltyController < ApplicationController
   before_action :set_place
 
   def show
+    authorize :loyalty_statistics
     authorize @place
 
     @orders = OrderDecorator.decorate_multiple(place_orders(@place))

@@ -1,4 +1,15 @@
 ua:
-  statistic:
+  statistics:
     loyalty:
       title: "Статистика лояльності"
+      time: "Час"
+      social_network_id: "ID Соц мережі"
+      price: "Ціна"
+      received: "Отримано"
+      current_id_score: "Поточнй рахунок ID"
+      today: "Сьогодні"
+      this_week: "За неділю"
+      this_month: "За місяць"
+      custom_date: "Вибрати період"
+      from: "Від:"
+      to: "До:"

@@ -1,4 +1,15 @@
 hu:
-  statistic:
+  statistics:
     loyalty:
-       title: "hűség statisztika"
+      title: "hűség statisztika"
+      time: "Time"
+      social_network_id: "Social network ID"
+      price: "Price"
+      received: "Received"
+      current_id_score: "Current ID score"
+      today: "Today"
+      this_week: "This week"
+      this_month: "This month"
+      custom_date: "Custom date"
+      from: "From:"
+      to: "To:"

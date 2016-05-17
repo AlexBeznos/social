@@ -1,20 +1,20 @@
 .btn-group.date_checker
   = link_to place_statistics_loyalty_path(place, today: true), class: "btn btn-primary" do
-    - "Today"
+    - t("statistics.loyalty.today")
   = link_to place_statistics_loyalty_path(place, this_week: true), class: "btn btn-primary" do
-    - "This week"
+    - t("statistics.loyalty.this_week")
   = link_to place_statistics_loyalty_path(place, this_month: true), class: "btn btn-primary"  do
-    - "This month"
+    - t("statistics.loyalty.this_month")
   %button{ class: "btn btn-primary", data:{ toggle: "collapse", target: "#date_form" } }
-    = "Custom date"
+    = t("statistics.loyalty.custom_date")
 
 %div{ id: "date_form", class: "collapse date_form" }
   = form_tag( place_statistics_loyalty_path(place), method: :get, class: "form-inline") do
     = hidden_field_tag :datepicker_locale, datepicker_locale_name
     .form-group
-      = label_tag :from, "From:"
+      = label_tag :from, t("statistics.loyalty.from")
       = datetime_field_tag :from, Date.today, class: "form-control"
     .form-group
-      = label_tag :to, "To:"
+      = label_tag :to, t("statistics.loyalty.to")
       = datetime_field_tag :to, Date.today + 1.week, class: "form-control"
     = submit_tag "Submit", class: "btn btn-primary"
