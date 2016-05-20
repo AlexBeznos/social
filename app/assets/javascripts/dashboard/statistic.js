@@ -1,7 +1,7 @@
 $(window).load(function () {
   localeName = $("#datepicker_locale").val();
   localeHash = $.datepicker.regional[localeName];
-  localeHash.dateFormat = "dd-mm-yy";
+  localeHash.dateFormat = "dd M yy";
   $("#from, #to").datepicker(localeHash);
 });
 

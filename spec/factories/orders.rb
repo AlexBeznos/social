@@ -5,7 +5,7 @@ FactoryGirl.define do
 
     factory :last_week_order do
       before(:create) do
-        Timecop.travel(Date.today - 6.days)
+        Timecop.travel(Date.today - 5.days)
       end
 
       after(:create) do
