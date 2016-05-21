@@ -21,14 +21,15 @@ module LocalizationHelper
   def datepicker_locale_name
     locale = I18n.locale
 
-    if locale == :en
-      "en-GB"
-    elsif locale == :am
-      "hy"
-    elsif locale == :ua
-      "uk"
-    else
-      locale.to_s
+    case locale
+      when :en
+        "en-GB"
+      when :am
+        "hy"
+      when :ua
+        "uk"
+      else
+        locale.to_s
     end
   end
 end

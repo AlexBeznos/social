@@ -5,8 +5,9 @@
     - t("statistics.loyalty.this_week")
   = link_to place_statistics_loyalty_path(place, this_month: true), class: "btn btn-primary"  do
     - t("statistics.loyalty.this_month")
-  %button{ class: "btn btn-primary", data:{ toggle: "collapse", target: "#date_form" } } 
+  %button{ class: "btn btn-primary", data:{ toggle: "collapse", target: "#date_form" } }
     = t("statistics.loyalty.custom_date")
+
 
 %div{ id: "date_form", class: "collapse date_form" }
   = form_tag( place_statistics_loyalty_path(place), method: :get, class: "form-inline") do
@@ -17,4 +18,4 @@
     .form-group
       = label_tag :to, t("statistics.loyalty.to")
       = datetime_field_tag :to, Date.today + 1.week, class: "form-control"
-    = submit_tag "Submit", class: "btn btn-primary"
+    = submit_tag t("statistics.loyalty.find"), class: "btn btn-primary", id: "date_time_find"

@@ -54,7 +54,7 @@ describe "loyalty statistic" do
 
         find("#to").click
         find("a.ui-state-default", text: today, visible: true).click
-        find("input[value='Submit']").click
+        find("#date_time_find").click
 
         expect(page).to have_selector("#order_#{last_month_order.id}")
       end

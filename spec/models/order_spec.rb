@@ -7,9 +7,9 @@ RSpec.describe Order do
 
   describe "Add menu item to order" do
     let(:user) { build(:user) }
-    let(:place) { build(:place, user_id: user.id) }
-    let(:customer) { build(:customer) }
-    let(:order) { place.orders.build(customer_id: customer.id) }
+    let(:place) { create(:place, user_id: user.id) }
+    let(:customer) { create(:customer) }
+    let(:order) { build(:order, place: place, customer: customer) }
     let(:menu_item) { build(:menu_item) }
 
     it "success when enough points" do
@@ -22,6 +22,17 @@ RSpec.describe Order do
       reputation = Customer::Reputation.new(place_id: place.id, customer_id: customer.id, score: 20)
 
       expect{ order.add_menu_item(reputation, menu_item) }.to change{ order.menu_items.size }.by(0)
+    end
+
+    it "sets price when adds menu item" do
+      reputation = Customer::Reputation.new(place_id: place.id, customer_id: customer.id, score: 1000)
+
+      order.add_menu_item(reputation, menu_item)
+      order.add_menu_item(reputation, menu_item)
+
+      price = menu_item.price * 2
+  
+      expect(order.price).to eq(price)
     end
   end
 end

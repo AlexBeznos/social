@@ -1,7 +1,7 @@
-pl:
+hu:
   statistics:
     loyalty:
-      title: "Statystyki Loyalty"
+      title: "hűség statisztika"
       time: "Time"
       social_network_id: "Social network ID"
       price: "Price"
@@ -12,4 +12,5 @@ pl:
       this_month: "This month"
       custom_date: "Custom date"
       from: "From:"
-      to: "To:" 
+      to: "To:"
+      find: "Find"
