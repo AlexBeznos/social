@@ -33,14 +33,13 @@ class Statistics::LoyaltyController < ApplicationController
 
   def bool_params
     bool_par = {}
-    
+
     %i{today from to this_month this_week}.each do |date|
       if params[date]
         begin
           bool_par[date] = params[date].to_bool
         rescue ArgumentError
-          d = Date.parse(params[date]) rescue nil
-          d ? bool_par[date] = true : bool_par[date] = false
+          bool_par[date] = true if Date.parse(params[date]) 
         end
       else
         bool_par[date] = false
