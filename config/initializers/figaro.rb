@@ -22,7 +22,6 @@ prod_keys = %w(
   OVPN_SERVER
   OVPN_USER
   OVPN_PASSWORD
-  STAGE
 )
 
 figaro_required = if Rails.env.production?
