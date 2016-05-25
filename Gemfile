@@ -74,6 +74,7 @@ gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 gem 'sidekiq-superworker'
+gem 'sidekiq-cron'
 
 # Other
 gem 'aasm', '4.9.0'
@@ -82,6 +83,7 @@ gem 'pundit'
 gem 'lograge'
 gem 'high_voltage', '~> 2.3.0'
 gem 'dumper'
+gem 'backup'
 
 group :development do
   gem 'spring'
