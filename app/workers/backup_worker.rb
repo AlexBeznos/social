@@ -1,7 +1,7 @@
 class BackupWorker
   include Sidekiq::Worker
 
-  sidekiq_options queue: :backup, failures: true
+  sidekiq_options retry: false, queue: :backup, failures: true
 
   def perform
     root_path = "#{Rails.root}/vendor/backup"

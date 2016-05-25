@@ -17,10 +17,10 @@ Backup::Model.new(:gowifi_backup, 'Every day backup, storing in AWS.') do
   split_into_chunks_of 250
 
   database PostgreSQL do |db|
-    db.name               = DB["database"]
-    db.username           = DB["username"]
-    db.password           = DB["password"]
-    db.host               = DB["host"]
+    db.name               = "gowifi_production`"
+    db.username           = ENV['DB_USERNAME']
+    db.password           = ENV['DB_PASSWORD']
+    db.host               = ENV['DB_HOST']
   end
 
   store_with S3 do |s3|
