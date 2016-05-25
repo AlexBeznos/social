@@ -14,8 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-vendor/backup/.tmp/
-vendor/backup/log/*.log
+
 
 # ignore variables
 /config/application.yml
