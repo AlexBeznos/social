@@ -3,19 +3,25 @@ $ ->
   select = '.authMethodSelect'
 
   static_input = ["input", "textarea"].join(", ")
-  checkbox = "#auth_method_posting_enabled, #auth_resource_attributes_posting_enabled"
+
+  checkbox = ['method', 'resource_attributes'].map((el) ->
+    "#auth_#{el}_posting_enabled"
+  ).join(",")
+
+  checkbox_input = ['method', 'resource_attributes'].map((el) ->
+    "input[name = 'auth[#{el}][posting_enabled]' ]"
+  ).join(",")
 
   checkboxTrigger = (checkbox, authClass)->
-    console.log(checkbox.checked)
 
     if checkbox.checked
-      $(authClass).find(static_input).not(checkbox).attr("disabled", false)
-      $(authClass).find(static_input).not(checkbox).show()
+      $(authClass).find(static_input).not(checkbox_input).attr("disabled", false)
+      $(authClass).find(static_input).not(checkbox_input).show()
       $(authClass).find("label").not("[for=#{checkbox.id}]").show()
 
     if !checkbox.checked
-      $(authClass).find(static_input).not(checkbox).attr("disabled", true)
-      $(authClass).find(static_input).not(checkbox).hide()
+      $(authClass).find(static_input).not(checkbox_input).attr("disabled", true)
+      $(authClass).find(static_input).not(checkbox_input).hide()
       $(authClass).find("label").not("[for=#{checkbox.id}]").hide()
 
   showForm = (target) ->

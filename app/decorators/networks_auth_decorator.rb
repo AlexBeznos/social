@@ -41,6 +41,6 @@ class NetworksAuthDecorator
       place.slug,
       auth.id,
       profile.id
-    ) unless visit.errors.any?
+    ) unless visit.errors.any? && autn.resource.posting_enabled?
   end
 end
