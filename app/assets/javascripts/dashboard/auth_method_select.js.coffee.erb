@@ -3,13 +3,16 @@ $ ->
   select = '.authMethodSelect'
 
   static_input = ["input", "textarea"].join(", ")
-  checkbox = "#auth_method_posting_enabled"
+  checkbox = "#auth_method_posting_enabled, #auth_resource_attributes_posting_enabled"
 
   checkboxTrigger = (checkbox, authClass)->
+    console.log(checkbox.checked)
+
     if checkbox.checked
       $(authClass).find(static_input).not(checkbox).attr("disabled", false)
       $(authClass).find(static_input).not(checkbox).show()
       $(authClass).find("label").not("[for=#{checkbox.id}]").show()
+
     if !checkbox.checked
       $(authClass).find(static_input).not(checkbox).attr("disabled", true)
       $(authClass).find(static_input).not(checkbox).hide()
@@ -23,7 +26,9 @@ $ ->
     if auth
       $(".#{auth}").find(static_input).attr("disabled", false)
       $(".#{auth}").show()
+
       checkboxTrigger($(".#{auth}").find(checkbox)[0], ".#{auth}")
+
       $(".#{auth}").find(checkbox).on 'change', (e) ->
         checkboxTrigger(e.target, ".#{auth}")
 
