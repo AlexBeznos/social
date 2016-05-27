@@ -1,15 +1,31 @@
 $ ->
   methods = '<%= Auth::METHODS.map { |m| ".#{m.capitalize}Auth" }.join(", ") %>'
   select = '.authMethodSelect'
+
   static_input = ["input", "textarea"].join(", ")
+  checkbox = "#auth_method_posting_enabled"
+
+  checkboxTrigger = (checkbox, authClass)->
+    if checkbox.checked
+      $(authClass).find(static_input).not(checkbox).attr("disabled", false)
+      $(authClass).find(static_input).not(checkbox).show()
+      $(authClass).find("label").not("[for=#{checkbox.id}]").show()
+    if !checkbox.checked
+      $(authClass).find(static_input).not(checkbox).attr("disabled", true)
+      $(authClass).find(static_input).not(checkbox).hide()
+      $(authClass).find("label").not("[for=#{checkbox.id}]").hide()
 
   showForm = (target) ->
     $(methods).hide()
     $(methods).find(static_input).attr("disabled", true)
+    auth = target.val()
 
-    if target.val()
-      $(".#{target.val()}").find(static_input).attr("disabled", false)
-      $(".#{target.val()}").show()
+    if auth
+      $(".#{auth}").find(static_input).attr("disabled", false)
+      $(".#{auth}").show()
+      checkboxTrigger($(".#{auth}").find(checkbox)[0], ".#{auth}")
+      $(".#{auth}").find(checkbox).on 'change', (e) ->
+        checkboxTrigger(e.target, ".#{auth}")
 
   $(methods).hide()
   showForm($(select))

@@ -1,4 +1,6 @@
 .form-inputs
+  = form.input :posting_enabled, as: :boolean
+.form-inputs
   = form.input :image, label: t("simple_form.labels.auth.resource.image"), as: :file
 .form-inputs
   = form.input :message, label: t("simple_form.labels.auth.resource.message"), as: :text
