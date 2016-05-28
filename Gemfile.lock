@@ -742,7 +742,6 @@ DEPENDENCIES
   kaminari
   kaminari-bootstrap
   koala
-  launchy
   lograge
   metric_fu
   mimemagic
