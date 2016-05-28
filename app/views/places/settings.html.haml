@@ -85,7 +85,7 @@
                   - if auth.resource.posting_enabled?
                     = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                   - else
-                    = "No posting"
+                    = t("models.places.actions.settings.posting_disabled")
                 .panel-footer
                   = link_to t("helpers.submit.edit"), edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
                   = link_to t("helpers.submit.destroy"), place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
