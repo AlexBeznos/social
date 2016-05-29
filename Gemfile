@@ -82,8 +82,6 @@ gem 'authlogic'
 gem 'pundit'
 gem 'lograge'
 gem 'high_voltage', '~> 2.3.0'
-gem 'backup'
-
 
 group :development do
   gem 'spring'
