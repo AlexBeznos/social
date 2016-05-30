@@ -8,6 +8,4 @@ class VkontakteAuth < ActiveRecord::Base
   validates :message, :image, :message_url, presence: true, if: "posting_enabled?"
   validates :message_url, url: true, if: "posting_enabled?"
 
-  after_save :clear_attributes, if: "!posting_enabled?"
-  
 end
