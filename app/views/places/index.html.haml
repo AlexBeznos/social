@@ -1,5 +1,6 @@
 = content_for :title, t('models.places.actions.index.title')
 = content_for :navigation, 'false'
+= content_for :page_javascript, "dashboard/search"
 
 .panel.panel-info.panel-adjusted
   .panel-heading
@@ -8,7 +9,24 @@
       (
       %span= @places.length
       )
+    .row
+      .col-md-4.col-md-offset-4
+        .input-group.soritng_buttons
+          .input-group-btn
+            %button{ type: "button",
+                     class: "btn btn-default dropdown-toggle",
+                     data: { toggle: "dropdown" },
+                     aria: { haspopup: "true", expanded: "false" } }
+              = "Sort by"
+              %span.caret
+            %ul.dropdown-menu
+              %li= link_to "date of creation", "#", class: "btn btn-link"
+              %li= link_to "alphabet", "#", class: "btn btn-link"
+          %input{ id: "searchinput",
+                  type: "text",
+                  class: "form-control",
+                  placeholder: "Insert place name ..."}
   .panel-body
     %ul.facility
       - @places.each do |place|
-        %li= link_to place.name, place_path(place)
+        %li= link_to place.name, place_path(place), class: "place-link"
