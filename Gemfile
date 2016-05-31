@@ -74,7 +74,6 @@ gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 gem 'sidekiq-superworker'
-gem 'sidekiq-cron'
 
 # Other
 gem 'aasm', '4.9.0'
@@ -88,7 +87,6 @@ group :development do
   gem 'mina'
   gem 'mina-sidekiq', :require => false
   gem 'mina-unicorn', :require => false
-  gem 'metric_fu'
   gem 'thin'
   gem 'quiet_assets'
   gem 'rubocop', require: false
