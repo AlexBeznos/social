@@ -15,7 +15,7 @@ class FacebookProfile < ActiveRecord::Base
       first_name: credentials['info']['first_name'],
       last_name: credentials['info']['last_name'],
       gender: credentials['extra']['raw_info']['gender'].try(:to_gender!),
-      url: credentials['info']['urls']['Facebook'],
+      url: credentials['extra']['raw_info']['link'],
       uid: credentials['uid'],
       access_token: credentials['credentials']['token'],
       expiration_date: Time.now + credentials['credentials']['expires_at'].to_i.seconds
