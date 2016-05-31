@@ -74,6 +74,7 @@ gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 gem 'sidekiq-superworker'
+gem 'redis-namespace'
 
 # Other
 gem 'aasm', '4.9.0'
