@@ -26,6 +26,10 @@ en:
         demo: Demo mode
       actions:
         index:
+          alphabet: "alphabet"
+          date_of_creation: "date of creation"
+          sort_by: "Sort by"
+          insert_name: "Insert place name ..."
           title: 'Places'
           my_places: 'Your places '
         show:

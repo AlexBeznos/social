@@ -92,7 +92,7 @@ class PlacesController < ApplicationController
 
   #NOTE: to improve this needs statistics#loyalty merging
   def sorted_places
-    Place.order(created_at: :desc) if params[:by_created_at]
+    return Place.order(:created_at) if params[:by_created_at]
     Place.order(:name)
   end
 

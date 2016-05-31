@@ -17,15 +17,19 @@
                      class: "btn btn-default dropdown-toggle",
                      data: { toggle: "dropdown" },
                      aria: { haspopup: "true", expanded: "false" } }
-              = "Sort by"
+              = t("models.places.actions.index.sort_by")
               %span.caret
             %ul.dropdown-menu
-              %li= link_to "date of creation", places_path(by_created_at: true), class: "btn btn-link"
-              %li= link_to "alphabet", places_path, class: "btn btn-link"
+              %li
+                = link_to places_path(by_created_at: true), class: "btn btn-link" do
+                  - t("models.places.actions.index.date_of_creation")
+              %li
+                = link_to places_path, class: "btn btn-link" do
+                  - t("models.places.actions.index.alphabet")
           %input{ id: "searchinput",
                   type: "text",
                   class: "form-control",
-                  placeholder: "Insert place name ..."}
+                  placeholder: t("models.places.actions.index.insert_name")}
   .panel-body
     %ul.facility
       - @places.each do |place|

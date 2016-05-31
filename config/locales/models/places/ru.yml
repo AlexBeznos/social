@@ -26,8 +26,12 @@ ru:
         demo: Демо режим
       actions:
         index:
+          alphabet: "алфавиту"
+          date_of_creation: "дате создания"
+          sort_by: "Сортировать по"
           title: 'Заведения'
           my_places: 'Ваши заведения '
+          insert_name: "Поиск по названию ..."
         show:
           title: "Заведение %{place_name}"
           table:

@@ -26,6 +26,10 @@ pl:
         demo: Tryb demo
       actions:
         index:
+          alphabet: "alphabet"
+          date_of_creation: "date of creation"
+          sort_by: "Sort by"
+          insert_name: "Insert place name ..."
           title: 'Miejsca'
           my_places: 'Twoje miejsca'
         show:
