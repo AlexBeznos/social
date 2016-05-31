@@ -59,7 +59,6 @@ pl:
             network: Sieć społeczna
             birthday: Urodziny
         settings:
-          posting_disabled: "Posting disabled"
           auth_default_lang: Domyślnym językiem uwierzytelniania
           title: "Ustawienia %{place_name}"
           wifi:  Ustawienia Wi-Fi

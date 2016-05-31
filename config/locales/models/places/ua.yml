@@ -59,7 +59,6 @@ ua:
             network: Соц. мережа
             birthday: День народження
         settings:
-          posting_disabled: "Постинг вимкнено"
           auth_default_lang: Стандартная мова аутентифікації
           title: "Налаштування для %{place_name}"
           wifi:  Налаштування Wi-Fi

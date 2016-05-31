@@ -59,7 +59,6 @@
             network: Սոց. Ցանց
             birthday: Ծննդյան օրեր
         settings:
-          posting_disabled: "Posting disabled"
           auth_default_lang: Նույնականացման լռելյայն լեզու
           title: "Կարգավորումները %{place_name}"
           wifi:  Wi-Fi կարգավորում
