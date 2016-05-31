@@ -5,7 +5,7 @@ class FacebookAuth < ActiveRecord::Base
 
   has_one :auth, as: :resource
 
-  validates :message, :image, :message_url, presence: true, if: "posting_enabled?"
-  validates :message_url, url: true, if: "posting_enabled?"
+  validates :message, :image, :message_url, presence: true
+  validates :message_url, url: true
 
 end
