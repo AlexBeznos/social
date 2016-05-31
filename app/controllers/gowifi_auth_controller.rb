@@ -132,7 +132,7 @@ class GowifiAuthController < ApplicationController
 
       gowifi_place_path(place)
     else
-      cookies.delete(:step)
+      cookies[:step] = 'primary'
 
       url = if @place.loyalty_program && current_customer && Auth::NETWORKS.values.include?(auth.resource.class::NAME)
         loyalty_url(@place, auth: auth.id)

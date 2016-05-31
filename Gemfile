@@ -74,6 +74,7 @@ gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem 'sidekiq-failures'
 gem 'sidekiq-superworker'
+gem 'redis-namespace'
 
 # Other
 gem 'aasm', '4.9.0'
@@ -81,14 +82,12 @@ gem 'authlogic'
 gem 'pundit'
 gem 'lograge'
 gem 'high_voltage', '~> 2.3.0'
-gem 'dumper'
 
 group :development do
   gem 'spring'
   gem 'mina'
   gem 'mina-sidekiq', :require => false
   gem 'mina-unicorn', :require => false
-  gem 'metric_fu'
   gem 'thin'
   gem 'quiet_assets'
   gem 'rubocop', require: false
