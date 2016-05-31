@@ -7,7 +7,6 @@ ua:
         redirect_url: "Адреса переадресації після аутентифікації"
         resource_type: "Тип аутентифікації"
         resource:
-          posting_enabled: "Постинг ввімкнено"
           message_url: "Посилання в повідомленні"
           message: "Повідомлення"
           image: "Картинка"

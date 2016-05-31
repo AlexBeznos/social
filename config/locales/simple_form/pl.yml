@@ -7,7 +7,6 @@ pl:
         redirect_url: "Przekierowanie po uwierzytelnieniu"
         resource_type: "Typ uwierzytelniania"
         resource:
-          posting_enabled: "Posting enabled"
           message_url: "Wiadomość url"
           message: "Wiadomość"
           image: "Obraz"

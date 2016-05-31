@@ -7,7 +7,6 @@ hu:
         redirect_url: "Átirányítási URL-t hitelesítés után"
         resource_type: "Azonosítás típusa"
         resource:
-          posting_enabled: "Posting enabled"
           message_url: "üzenet url"
           message: "Üzenet"
           image: "Kép"
