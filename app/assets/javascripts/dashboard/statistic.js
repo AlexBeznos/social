@@ -1,3 +1,10 @@
+$(window).load(function () {
+  localeName = $("#datepicker_locale").val();
+  localeHash = $.datepicker.regional[localeName];
+  localeHash.dateFormat = "dd M yy";
+  $("#from, #to").datepicker(localeHash);
+});
+
 $(document).ready(function(){
     if ($(window).width() > 750) {
         $(".statistics-table-arrow").css("height", $(".statistics-table").height());
