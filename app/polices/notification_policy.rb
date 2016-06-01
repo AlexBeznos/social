@@ -13,5 +13,4 @@ class NotificationPolicy < ApplicationPolicy
   def unapprove?
     user.franchisee? || user.admin?
   end
-
 end

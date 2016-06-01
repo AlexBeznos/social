@@ -14,4 +14,11 @@
 //= require jquery_ujs
 //= require slick.min
 //= require bootstrap
+//= require jquery-ui/datepicker
+//= require jquery-ui/datepicker-ru
+//= require jquery-ui/datepicker-en-GB
+//= require jquery-ui/datepicker-uk
+//= require jquery-ui/datepicker-pl
+//= require jquery-ui/datepicker-hu
+//= require jquery-ui/datepicker-hy
 //= require_tree ./application
