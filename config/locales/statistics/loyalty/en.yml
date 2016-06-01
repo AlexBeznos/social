@@ -1,0 +1,16 @@
+en:
+  statistics:
+    loyalty:
+      title: "Loyalty statistic"
+      time: "Time"
+      social_network_id: "Customer`s social network"
+      price: "Price"
+      received: "Received"
+      current_id_score: "Current customer`s score"
+      today: "Today"
+      this_week: "This week"
+      this_month: "This month"
+      custom_date: "Custom date"
+      from: "From:"
+      to: "To:"
+      find: "Find"

@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  extend TimeQueries
+
   belongs_to :customer
   belongs_to :place
   has_and_belongs_to_many :menu_items
@@ -8,8 +10,9 @@ class Order < ActiveRecord::Base
 
   def add_menu_item(reputation, menu_item)
     if reputation.score >= menu_item.price
-      reputation.update(score: reputation.score - menu_item.price)
+      reputation.update!(score: reputation.score - menu_item.price)
       self.menu_items << menu_item
+      self.update!(price: menu_items.inject(0){|sum, item| sum + item.price })
     else
       false
     end

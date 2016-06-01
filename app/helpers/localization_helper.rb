@@ -17,4 +17,19 @@ module LocalizationHelper
 
     raw links.join(' | ')
   end
+
+  def datepicker_locale_name
+    locale = I18n.locale
+
+    case locale
+      when :en
+        "en-GB"
+      when :am
+        "hy"
+      when :ua
+        "uk"
+      else
+        locale.to_s
+    end
+  end
 end

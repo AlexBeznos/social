@@ -27,12 +27,13 @@ Rails.application.routes.draw do
       get 'settings'
     end
 
-    namespace 'statistics' do
+    namespace :statistics do
       resources :visits, only: [:index]
+      get "/loyalty", to: "loyalty#show", as: :loyalty
     end
   end
 
-  namespace 'global_statistics' do
+  namespace :global_statistics do
     resources :visits, only: [:index]
   end
 
