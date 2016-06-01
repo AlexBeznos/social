@@ -48,12 +48,18 @@ describe "loyalty statistic" do
         I18n.locale = :en
         click_button(I18n.t("statistics.loyalty.custom_date"))
 
+
         find("#from").click
-        find("a[title='Prev']").click
-        find("a[class='ui-state-default']", text: month_ago, visible: true).click
+        within "#ui-datepicker-div" do
+          find("a[title='Prev']").click
+          click_link(month_ago.to_s)
+        end
 
         find("#to").click
-        find("a.ui-state-default", text: today, visible: true).click
+        within "#ui-datepicker-div" do
+          click_link(today)
+        end
+
         find("#date_time_find").click
 
         expect(page).to have_selector("#order_#{last_month_order.id}")
