@@ -3,10 +3,10 @@ en:
     loyalty:
       title: "Loyalty statistic"
       time: "Time"
-      social_network_id: "Social network ID"
+      social_network_id: "Customer`s social network"
       price: "Price"
       received: "Received"
-      current_id_score: "Current ID score"
+      current_id_score: "Current customer`s score"
       today: "Today"
       this_week: "This week"
       this_month: "This month"
