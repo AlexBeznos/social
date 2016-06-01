@@ -36,11 +36,11 @@ class RouterSettings
     mtik_service = MikrotikService.new(@router, 'init_config')
 
     cmnds += mtik_service.normalized_commands
-    ['fetch', 'import', 'remove'].each do |command|
-      Router::ALLOWED_CRTS.each do |crt|
-        cmnds.push(send("#{command}_command", crt))
-      end
-    end
+    #['fetch', 'import', 'remove'].each do |command|
+    #  Router::ALLOWED_CRTS.each do |crt|
+    #    cmnds.push(send("#{command}_command", crt))
+    #  end
+    #end
 
     cmnds.push(ovpn_command)
     File.open(config_path, 'w') { |file| file.write(cmnds.join("\n")) }
