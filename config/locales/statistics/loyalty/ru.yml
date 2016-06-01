@@ -3,10 +3,10 @@ ru:
     loyalty:
       title: "Статистика лояльности"
       time: "Время"
-      social_network_id:  "ID социальной сети"
+      social_network_id:  "Социальной сети пользователя"
       price: "Цена"
       received: "Получено"
-      current_id_score: "Текущий счёт ID"
+      current_id_score: "Текущий счёт пользователя"
       today: "Сегодня"
       this_week: "За неделю"
       this_month: "За месяц"
