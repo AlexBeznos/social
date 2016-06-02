@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+
   belongs_to :customer
   belongs_to :resource, polymorphic: true, dependent: :destroy
   has_many :visits, class_name: Customer::Visit, dependent: :destroy
@@ -21,6 +22,10 @@ class Profile < ActiveRecord::Base
     full_name = [first_name, last_name].compact.join(" ")
 
     full_name.present? ? full_name : nil
+  end
+
+  def network?
+    Auth::NETWORKS.values.include? network_name
   end
 
   def network_name
