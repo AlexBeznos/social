@@ -25,13 +25,13 @@ class OrderDecorator
   end
 
   def customer_full_name
-    @order.customer.profiles.first.full_name
+    customer_network_profiles.first.full_name
   end
 
-  def customer_profiles
-    @order.customer.profiles
+  def customer_network_profiles
+    @order.customer.profiles.reject {|prof| !prof.network?}
   end
-
+  
   private
 
   def method_missing(m, *args, &block)
