@@ -28,6 +28,7 @@
     redirect_to '/404.html'
   end
 
+
   def append_info_to_payload(payload)
     super
     payload[:request_id] = request.uuid

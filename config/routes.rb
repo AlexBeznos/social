@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   require 'sidekiq/web'
-  require 'sidekiq/cron/web'
   require 'admin_constraint'
 
   mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
@@ -28,12 +27,13 @@ Rails.application.routes.draw do
       get 'settings'
     end
 
-    namespace 'statistics' do
+    namespace :statistics do
       resources :visits, only: [:index]
+      get "/loyalty", to: "loyalty#show", as: :loyalty
     end
   end
 
-  namespace 'global_statistics' do
+  namespace :global_statistics do
     resources :visits, only: [:index]
   end
 

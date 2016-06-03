@@ -66,4 +66,7 @@ RSpec.configure do |config|
 end
 
 Capybara.javascript_driver = :poltergeist
+<<<<<<< HEAD
 OmniAuth.config.test_mode = true
+=======
+>>>>>>> ddb9eb489b7a9a1d4a92031f52d10650fdb3d14f

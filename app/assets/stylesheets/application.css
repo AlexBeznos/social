@@ -14,5 +14,6 @@
  *= require dashboard
  *= require lib/slick_slider
  *= require font-awesome
+ *= require jquery-ui/datepicker
  *= require_self
  */

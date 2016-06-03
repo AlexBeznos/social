@@ -22,14 +22,20 @@ class Profile < ActiveRecord::Base
 
     full_name.present? ? full_name : nil
   end
+  
+  def network?
+    Auth::NETWORKS.values.include? network_name
+  end
+
+  def network_name
+    resource_type.remove("Profile").downcase
+  end
 
   def font_awesome_name
-    profile_name = resource_type.remove("Profile").downcase
-
-    if profile_name == "vkontakte"
+    if network_name == "vkontakte"
       "vk"
     else
-      profile_name
+      network_name
     end
   end
 
