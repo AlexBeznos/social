@@ -26,8 +26,12 @@ ru:
         demo: Демо режим
       actions:
         index:
+          alphabet: "алфавиту"
+          date_of_creation: "дате создания"
+          sort_by: "Сортировать по"
           title: 'Заведения'
           my_places: 'Ваши заведения '
+          insert_name: "Поиск по названию ..."
         show:
           title: "Заведение %{place_name}"
           table:
@@ -59,7 +63,6 @@ ru:
             network: Соц. сеть
             birthday: День рождения
         settings:
-          posting_disabled: "Постинг выключен"
           auth_default_lang: Язык для аутентификации по умолчанию
           title: "Настройки для %{place_name}"
           wifi:  Настройка Wi-Fi

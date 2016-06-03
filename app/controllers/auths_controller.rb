@@ -66,7 +66,7 @@ class AuthsController < ApplicationController
 
   def auth_params(method)
     r = params[:auth].delete(method)
-    params.require(:auth).permit(:redirect_url, :resource_type, :step, :posting_enabled).tap do |p|
+    params.require(:auth).permit(:redirect_url, :resource_type, :step).tap do |p|
       p[:resource_attributes] = r
     end
   end

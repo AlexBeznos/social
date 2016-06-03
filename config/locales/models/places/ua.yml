@@ -26,8 +26,12 @@ ua:
         demo: Демо режим
       actions:
         index:
+          alphabet: "алфавіту"
+          date_of_creation: "даті створення"
+          sort_by: 'Сортувати по'
           title: 'Заклад'
           my_places: 'Ваші заклади '
+          insert_name: "Пошук по назві ..."
         show:
           title: "Заклад %{place_name}"
           table:
@@ -59,7 +63,6 @@ ua:
             network: Соц. мережа
             birthday: День народження
         settings:
-          posting_disabled: "Постинг вимкнено"
           auth_default_lang: Стандартная мова аутентифікації
           title: "Налаштування для %{place_name}"
           wifi:  Налаштування Wi-Fi

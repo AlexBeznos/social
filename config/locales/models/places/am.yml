@@ -26,8 +26,12 @@
         demo: դեմո ռեժիմ
       actions:
         index:
+          alphabet: "alphabet"
+          date_of_creation: "date of creation"
+          sort_by: "Sort by"
           title: 'Հաստատություն'
           my_places: 'Ձեր հաստատությունները '
+          insert_name: "Insert place name ..."
         show:
           title: "Հաստատություն %{place_name}"
           table:
@@ -59,7 +63,6 @@
             network: Սոց. Ցանց
             birthday: Ծննդյան օրեր
         settings:
-          posting_disabled: "Posting disabled"
           auth_default_lang: Նույնականացման լռելյայն լեզու
           title: "Կարգավորումները %{place_name}"
           wifi:  Wi-Fi կարգավորում

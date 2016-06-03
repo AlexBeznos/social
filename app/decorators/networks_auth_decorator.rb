@@ -45,5 +45,4 @@ class NetworksAuthDecorator
       )
     end
   end
-
 end
