@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20160601102519) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "posting_enabled", default: true
   end
 
   create_table "facebook_profiles", force: true do |t|
@@ -361,6 +362,7 @@ ActiveRecord::Schema.define(version: 20160601102519) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "posting_enabled", default: true
   end
 
   create_table "twitter_profiles", force: true do |t|
@@ -406,6 +408,7 @@ ActiveRecord::Schema.define(version: 20160601102519) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "posting_enabled", default: true
   end
 
   create_table "vkontakte_profiles", force: true do |t|
