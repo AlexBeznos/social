@@ -23,7 +23,7 @@ ru:
         display_other_banners: Показывать чужие баннеры в моем заведении
         owner: Владелец
         post_preview: Предварительный просмотр поста
-        demo: Демо режим 
+        demo: Демо режим
       actions:
         index:
           title: 'Заведения'
@@ -59,6 +59,7 @@ ru:
             network: Соц. сеть
             birthday: День рождения
         settings:
+          posting_disabled: "Постинг выключен"
           auth_default_lang: Язык для аутентификации по умолчанию
           title: "Настройки для %{place_name}"
           wifi:  Настройка Wi-Fi

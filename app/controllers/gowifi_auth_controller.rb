@@ -136,7 +136,6 @@ class GowifiAuthController < ApplicationController
       cookies[:step] = 'primary'
 
       url = if @place.loyalty_program && current_customer && auth.network?
-
         loyalty_url(@place, auth: auth.id)
       else
         auth.redirect_url

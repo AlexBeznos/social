@@ -7,6 +7,7 @@
         redirect_url: "երահղման URL- ը , հետո իսկությունը"
         resource_type: "Նույնականացման տեսակը"
         resource:
+          posting_enabled: "Posting enabled"
           message_url: "հաղորդագրություն URL"
           message: "հաղորդագրություն"
           image: "պատկեր"

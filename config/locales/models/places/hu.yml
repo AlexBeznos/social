@@ -59,6 +59,7 @@ hu:
             network: Szociális háló
             birthday: Születésnap
         settings:
+          posting_disabled: "Posting disabled"
           title: "Beállításai %{place_name}"
           wifi:  Testreszabása Wi-Fi
           messages:  Beállítás állomások

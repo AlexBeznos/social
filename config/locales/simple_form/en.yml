@@ -7,6 +7,7 @@ en:
         redirect_url: "Redirect url after authentication"
         resource_type: "Authentication type"
         resource:
+          posting_enabled: "Posting enabled"
           message_url: "Message url"
           message: "Message"
           image: "Image"

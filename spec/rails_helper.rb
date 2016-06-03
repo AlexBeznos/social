@@ -11,7 +11,6 @@ require 'rspec_candy/all'
 require 'capybara/rspec'
 require 'pundit/rspec'
 require 'capybara/poltergeist'
-
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -67,3 +66,4 @@ RSpec.configure do |config|
 end
 
 Capybara.javascript_driver = :poltergeist
+OmniAuth.config.test_mode = true
