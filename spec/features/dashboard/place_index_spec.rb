@@ -30,8 +30,8 @@ describe "places#index sorting" do
     end
 
     it "show places sorted in alphabetical order" do
-      click_button("Sort by")
-      click_link("alphabet")
+      click_button(I18n.t("models.places.actions.index.sort_by"))
+      click_link(I18n.t("models.places.actions.index.alphabet"))
 
       sorted_places_names = places.map(&:name).sort
       link_names = all("a.place-link").map(&:text)

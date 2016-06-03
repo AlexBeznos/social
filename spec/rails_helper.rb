@@ -69,3 +69,4 @@ end
 Capybara::Screenshot.autosave_on_failure = false
 
 Capybara.javascript_driver = :poltergeist
+OmniAuth.config.test_mode = true
