@@ -11,7 +11,7 @@
       %tr{ id: "order_#{order.id}"}
         %td= order.time
         %td
-          - order.customer_profiles.each do |profile|
+          - order.customer_network_profiles.each do |profile|
             = link_to fa_icon(profile.font_awesome_name), profile.resource.url
         %td= order.price
         %td= order.items_received

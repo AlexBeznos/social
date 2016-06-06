@@ -26,6 +26,10 @@ en:
         demo: Demo mode
       actions:
         index:
+          alphabet: "alphabet"
+          date_of_creation: "date of creation"
+          sort_by: "Sort by"
+          insert_name: "Insert place name ..."
           title: 'Places'
           my_places: 'Your places '
         show:
@@ -59,6 +63,7 @@ en:
             network: Soc. network
             birthday: Birthday
         settings:
+          posting_disabled: "Posting disabled"
           auth_default_lang: Authentication default language
           title: "Settings for %{place_name}"
           wifi: Wi-Fi settings

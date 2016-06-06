@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
   def index
     authorize Place
 
-    @places = policy_scope(Place)
+    @places = policy_scope(sorted_places)
   end
 
   def new
@@ -89,6 +89,11 @@ class PlacesController < ApplicationController
   end
 
   private
+
+  def sorted_places
+    return Place.order(created_at: :desc) if params[:by_created_at].try(:to_bool)
+    Place.order(:name)
+  end
 
   def set_place
     @place = Place.find_by_slug(params[:id])

@@ -7,6 +7,7 @@ ru:
         redirect_url: "Адрес переадресации после аутентификации"
         resource_type: "Тип аутентификации"
         resource:
+          posting_enabled: "Постинг включён"
           message_url: "Ссылка в сообщении"
           message: "Сообщение"
           image: "Картинка"
@@ -32,7 +33,7 @@ ru:
         auth_default_lang: Язык для аутентификации по умолчанию
         mfa: Мультифакторная аутентификация
         post_preview: Предварительный просмотр поста
-        demo: Демо режим 
+        demo: Демо режим
       user:
         first_name: Имя
         last_name: Фамилия

@@ -10,7 +10,7 @@ class OrderDecorator
   end
 
   def time
-    @order.created_at.to_formatted_s(:time)
+    @order.created_at.strftime("%H:%M %d.%m.%y")
   end
 
   def items_received
@@ -25,13 +25,13 @@ class OrderDecorator
   end
 
   def customer_full_name
-    @order.customer.profiles.first.full_name
+    customer_network_profiles.first.full_name
   end
 
-  def customer_profiles
-    @order.customer.profiles
+  def customer_network_profiles
+    @order.customer.profiles.select { |profile| profile.network? }
   end
-
+  
   private
 
   def method_missing(m, *args, &block)

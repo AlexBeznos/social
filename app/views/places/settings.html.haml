@@ -82,7 +82,10 @@
                     = t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
                     %span{ class: notification_style(auth) }= t(auth.aasm.current_state, scope: "models.notifications.status") if auth.network?
                 .panel-body
-                  = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
+                  - if auth.network? && !auth.resource.posting_enabled?
+                    = t("models.places.actions.settings.posting_disabled")
+                  - else
+                    = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
                 .panel-footer
                   = link_to t("helpers.submit.edit"), edit_place_auth_path(@place, auth), class: 'btn btn-primary btn-block'
                   = link_to t("helpers.submit.destroy"), place_auth_path(@place, auth), method: 'DELETE', class: 'btn btn-danger btn-block'
