@@ -10,7 +10,7 @@ class OrderDecorator
   end
 
   def time
-    @order.created_at.to_formatted_s(:time)
+    @order.created_at.strftime("%H:%M %d.%m.%y")
   end
 
   def items_received
@@ -29,7 +29,7 @@ class OrderDecorator
   end
 
   def customer_network_profiles
-    @order.customer.profiles.reject {|prof| !prof.network?}
+    @order.customer.profiles.select { |profile| profile.network? }
   end
 
   private

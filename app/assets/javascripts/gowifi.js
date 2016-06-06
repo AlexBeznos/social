@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require slick.min
+//= require toastr
 //= require_tree ./gowifi

@@ -26,8 +26,12 @@ hu:
         demo: Demo módban
       actions:
         index:
+          alphabet: "alphabet"
+          date_of_creation: "date of creation"
+          sort_by: "Sort by"
           title: 'Helyek'
           my_places: 'Az Ön helyeken'
+          insert_name: "Insert place name ..."
         show:
           title: "intézmény %{place_name}"
           table:
@@ -59,6 +63,7 @@ hu:
             network: Szociális háló
             birthday: Születésnap
         settings:
+          posting_disabled: "Posting disabled"
           title: "Beállításai %{place_name}"
           wifi:  Testreszabása Wi-Fi
           messages:  Beállítás állomások

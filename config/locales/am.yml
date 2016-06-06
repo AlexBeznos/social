@@ -147,6 +147,7 @@
   errors:
     format: "%{attribute} %{message}"
     messages:
+      cookies: 'Անջատեն, խնդրում եմ, ձեր բրաուզերում, թխվածքներ ունեն, քանի որ, առանց նրանց, ծառայությունը չի կարող աշխատել ճիշտ'
       file_size_is_in: ! 'ֆայլի չափը պետք է լինի, %{min} եւ %{max}'
       file_size_is_less_than: ! 'ֆայլի չափը պետք է լինի ոչ պակաս, քան %{count} '
       file_size_is_less_than_or_equal_to: ! 'ֆայլի չափը պետք է լինի ոչ պակաս, քան կամ հավասար է %{count}'
