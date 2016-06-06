@@ -149,6 +149,7 @@ ru:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      cookies: 'Включите, пожалуйста, cookies в вашем браузере, так как, без них сервис может работать не верно'
       file_size_is_in: ! 'размер файла должен быть между %{min} и %{max}'
       file_size_is_less_than: ! 'размер файла должен быть меньше %{count}'
       file_size_is_less_than_or_equal_to: ! 'размер файла должен быть меньше или ровнятся %{count}'

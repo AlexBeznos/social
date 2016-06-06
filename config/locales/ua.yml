@@ -149,6 +149,7 @@ ua:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      cookies: 'Увімкніть, будь-ласка, cookies у вашому браузері, так як, без них сервіс може працювати не вірно'
       file_size_is_in: ! 'розмір файла має бути від %{min} до %{max}'
       file_size_is_less_than: ! 'розмір фала має бути менеше ніж %{count}'
       file_size_is_less_than_or_equal_to: ! 'розмір файла має бути меншим або доривнюваті %{count}'

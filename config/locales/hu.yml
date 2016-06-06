@@ -149,6 +149,7 @@ hu:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      cookies: 'Turn, kérjük, a böngésző, a cookie-kat is, hiszen nélkülük a szolgáltatás nem működik megfelelően'
       file_size_is_in: ! 'fájlméret között kell lennie %{min} és %{max}'
       file_size_is_less_than: ! 'fájl mérete ne legyen kisebb, mint %{count}'
       file_size_is_less_than_or_equal_to: ! 'file size must be less than or equal to %{count}'

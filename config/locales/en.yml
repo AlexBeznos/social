@@ -127,6 +127,7 @@ en:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      cookies: 'Turn, please, in your browser, the cookies have, since, without them, the service may not work correctly'
       file_size_is_in: ! 'file size must be between %{min} and %{max}'
       file_size_is_less_than: ! 'file size must be less than %{count}'
       file_size_is_less_than_or_equal_to: ! 'file size must be less than or equal to %{count}'

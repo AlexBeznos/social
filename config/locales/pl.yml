@@ -149,6 +149,7 @@ pl:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      cookies: 'Włącz, proszę, w przeglądarce, ciasteczka mają, gdyż bez nich, usługa może nie działać poprawnie'
       file_size_is_in: ! 'rozmiar pliku musi być między %{min} i %{max}'
       file_size_is_less_than: ! 'rozmiar pliku musi być mniejsza niż %{count}'
       file_size_is_less_than_or_equal_to: ! 'rozmiar pliku musi być mniejsza lub równa %{count} '
