@@ -10,7 +10,7 @@ class OrderDecorator
   end
 
   def time
-    @order.created_at.to_formatted_s(:time)
+    @order.created_at.strftime("%H:%M %d.%m.%y")
   end
 
   def items_received
