@@ -509,7 +509,6 @@ GEM
       rake
     sendgrid (1.2.4)
       json
-      json
     sexp_processor (4.7.0)
     shoulda-callback-matchers (1.1.4)
       activesupport (>= 3)
@@ -705,3 +704,6 @@ DEPENDENCIES
   unicorn
   vkontakte_api
   yaml_db
+
+BUNDLED WITH
+   1.11.2

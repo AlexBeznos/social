@@ -5,8 +5,8 @@ class VkontakteAuth < ActiveRecord::Base
 
   has_one :auth, as: :resource
 
-  with_options if: "posting_enabled?" do
-    validates :message, :image, :message_url, presence: true
-    validates :message_url, url: true
+  with_options if: "posting_enabled?" do |vkauth|
+    vkauth.validates :message, :image, :message_url, presence: true
+    vkauth.validates :message_url, url: true
   end
 end
