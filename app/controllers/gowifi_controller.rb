@@ -11,7 +11,7 @@ class GowifiController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
-    @auths = @place.auths.active.where(step: Auth.steps[cookies[:step]] || 'primary')
+    @auths = @place.auths.active.where(step: Auth.steps[session[:auth_step]] || 'primary')
     @banner = find_banner if @place.display_other_banners
     @banner.increment!(:number_of_views) if @banner
   end
@@ -29,12 +29,8 @@ class GowifiController < ApplicationController
   end
 
   def set_step
-    return if cookies[:step] == 'secondary' && @place.mfa
-
-    cookies[:step] = {
-      value: 'primary',
-      expires: 15.minutes.from_now
-    }
+    return if session[:auth_step] == 'secondary' && @place.mfa
+    session[:auth_step] = 'primary'
   end
 
   def set_default_format

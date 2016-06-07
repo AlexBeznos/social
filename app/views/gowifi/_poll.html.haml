@@ -8,7 +8,7 @@
   #poll-button.btn.btn-lg.poll-btn
     = t('wifi.poll')
   #poll-container{ style: "display: none;" }
-    = simple_form_for [place, poll], url: { controller: 'gowifi_auth', action: :submit_poll } do |f|
+    = simple_form_for [place, poll], url: poll_enter_path, method: "PATCH" do |f|
       = f.error_notification
       %h3= f.label f.object.question, class: "question"
       = f.input :id, as: :hidden, input_html: { value: auth.id }
