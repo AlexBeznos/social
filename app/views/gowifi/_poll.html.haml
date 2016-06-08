@@ -5,7 +5,7 @@
 
   .container.inner
     = yield
-  #poll-button.btn.btn-lg.poll-btn
+  %button#poll-button.btn.btn-lg.poll-btn
     = t('wifi.poll')
   #poll-container{ style: "display: none;" }
     = simple_form_for [place, poll], url: poll_enter_path, method: "PATCH" do |f|

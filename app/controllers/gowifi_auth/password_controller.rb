@@ -23,11 +23,11 @@ class GowifiAuth::PasswordController < GowifiAuthController
   private
 
   def find_or_create_customer
-    if customer_cookie
-      @customer = Customer.find(customer_cookie.to_i)
+    if get_customer_cookie
+      @customer = Customer.find(get_customer_cookie.to_i)
     else
       @customer = Customer.create
-      customer_cookie = @customer.id
+      set_customer_cookie(@customer.id)
     end
   end
 end
