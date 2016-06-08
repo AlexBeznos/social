@@ -26,8 +26,6 @@ var padding = {
 
 function responsiveContent(){
   padding.containerHeight = $(".wrapper").height() - $(".push").height();
-  console.log(padding.containerHeigth)
-
 
   if($(window).height() > $(".content").height()){
     padding.center(".content");
@@ -39,12 +37,10 @@ function responsiveContent(){
 }
 
 $(window).load( function() {
-  console.log("load");
   responsiveContent();
 });
 
 
 $(window).resize( function() {
-  console.log("resize");
   responsiveContent();
 });
