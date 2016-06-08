@@ -25,7 +25,7 @@ $(document).ready(function(){
           break;
         case 'open' :
          scroller.distance = 0 + $(".content").height();
-          scroller($(".content h1").offset().top, 'closed');
+          scroller($(".content").offset().top, 'closed');
           break;
         case 'closed' :
           scroller.distance = $("#poll-container").height() + $(".content").height();
