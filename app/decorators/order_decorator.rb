@@ -31,7 +31,7 @@ class OrderDecorator
   def customer_network_profiles
     @order.customer.profiles.select { |profile| profile.network? }
   end
-  
+
   private
 
   def method_missing(m, *args, &block)
