@@ -23,10 +23,7 @@ class Profile < ActiveRecord::Base
 
     full_name.present? ? full_name : nil
   end
-  
-  def network?
-    Auth::NETWORKS.values.include? network_name
-  end
+
 
   def network?
     Auth::NETWORKS.values.include? network_name
