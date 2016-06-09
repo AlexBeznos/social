@@ -29,7 +29,7 @@ class OrderDecorator
   end
 
   def customer_network_profiles
-    @order.customer.profiles.select { |profile| profile.network? }
+    @order.customer.profiles.select { |profile| profile.postable? }
   end
 
   private
