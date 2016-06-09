@@ -3,5 +3,4 @@
 .row
   .col-sm-4
     %h1= t("helpers.submit.edit").capitalize
-
     = render 'form', auth: @auth, place: @place, save_method: :method

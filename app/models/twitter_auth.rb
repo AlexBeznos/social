@@ -5,12 +5,12 @@ class TwitterAuth < ActiveRecord::Base
 
   has_one :auth, as: :resource
 
-  validate :twitter_message_length
-  validates :message, :image, presence: true
+  with_options if: "posting_enabled?" do |twauth|
+    twauth.validates :message, :image, presence: true
+    twauth.validate :twitter_message_length
+  end
+
   validates :message_url, url: true, allow_blank: true
-
-
-  private
 
   def twitter_message_length
     return if message.blank? || message_url.blank?

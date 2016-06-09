@@ -14,6 +14,7 @@ gem 'jquery-modal-rails'
 gem 'jquery-ui-rails'
 gem "fog-aws"
 gem "asset_sync"
+gem "toastr-rails"
 
 # Precompiles
 gem 'sass-rails', '~> 4.0.3'
@@ -117,6 +118,7 @@ group :test do
   gem 'rspec-sidekiq'
   gem 'pundit-matchers' ,'~> 1.0.0'
   gem 'poltergeist'
+  gem 'capybara-screenshot'
 end
 
 # Use ActiveModel has_secure_password
