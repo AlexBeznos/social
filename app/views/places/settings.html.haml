@@ -82,7 +82,7 @@
                     = t("models.auths.methods.#{auth.resource.class::NAME}").capitalize
                     %span{ class: notification_style(auth) }= t(auth.aasm.current_state, scope: "models.notifications.status") if auth.network?
                 .panel-body
-                  - if auth.network? && !auth.resource.posting_enabled?
+                  - if auth.postable? && !auth.resource.posting_enabled?
                     = t("models.places.actions.settings.posting_disabled")
                   - else
                     = render partial: "#{auth.resource.class::NAME}_auths/details", locals: { resource: auth.resource, place: @place }
