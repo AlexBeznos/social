@@ -6,7 +6,8 @@ class TwitterAuth < ActiveRecord::Base
   has_one :auth, as: :resource
 
   with_options if: "posting_enabled?" do |twauth|
-    twauth.validates :message, :image, :message_url, presence: true
+    twauth.validates :message, :image, presence: true
+    twauth.validates :message_url, url: true, allow_blank: true
     twauth.validate :twitter_message_length
   end
 
