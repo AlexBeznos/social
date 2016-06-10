@@ -107,7 +107,7 @@ class GowifiAuthController < ApplicationController
       @customer = Customer.find(customer_cookie.to_i)
     else
       @customer = Customer.create
-      customer_cookie = @customer.id
+      send('customer_cookie=',  @customer.id)
     end
   end
 
@@ -119,7 +119,6 @@ class GowifiAuthController < ApplicationController
   end
 
   def find_auth
-
     @auth = @place.auths
               .active
               .resource_like(credentials['provider'].capitalize)

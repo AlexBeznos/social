@@ -35,7 +35,14 @@ class GowifiSmsController < ApplicationController
   private
 
   def sms_params
-    params.require(:sms_profile).permit(:phone, :provider)
+    par = params.require(:sms_profile).permit(:phone, :provider)
+
+    if @place.remember_sms && @customer.mac_address
+      par[:remember] = true
+      par[:remember_expiration_date] = DateTime.now + 90.days
+    end
+    
+    return par
   end
 
   def find_or_create_customer

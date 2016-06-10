@@ -11,8 +11,6 @@ class PlacePolicy < ApplicationPolicy
     end
   end
 
-
-
   def new?; user.franchisee? || user.admin?; end
   def create?; user.franchisee? || user.admin?; end
   def destroy?; user.franchisee? || user.admin?; end
@@ -38,8 +36,8 @@ class PlacePolicy < ApplicationPolicy
       :auth_default_lang,
       :ssid,
       :mfa,
+      :remember_sms,
       :post_preview
     ]
   end
-
 end

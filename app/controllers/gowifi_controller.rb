@@ -6,6 +6,7 @@ class GowifiController < ApplicationController
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
+  before_action :find_or_create_customer_mac, only: :show
   after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
@@ -20,6 +21,19 @@ class GowifiController < ApplicationController
   def find_place
     @place = Place.find_by_slug(params[:slug])
     raise ActiveRecord::RecordNotFound unless @place
+  end
+
+  def find_or_create_customer_mac
+    if customer_cookie && params[:mac_address]
+      @customer = Customer.find(customer_cookie.to_i)
+      @customer.update(mac_address: params[:mac_address]) unless @customer.mac_address
+    elsif params[:mac_address]
+      @customer = Customer.create(mac_address: params[:mac_address])
+      send('customer_cookie=',  @customer.id)
+    else
+      @customer = Customer.create
+      send('customer_cookie=',  @customer.id)
+    end
   end
 
   # we add slug to session to make sure
