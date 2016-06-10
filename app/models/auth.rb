@@ -69,8 +69,8 @@ class Auth < ActiveRecord::Base
     persisted? ? [resource.class::NAME] : Auth::METHODS
   end
 
-  def network?
-    NETWORKS.keys.include? name
+  def postable?
+    Auth::NETWORKS.keys.reject{ |net| net == :instagram }.include? name
   end
 
   def name
