@@ -12,7 +12,7 @@ describe "User authentication by sms", js: true do
 
   context 'with correct code input' do
     it 'should redirect to auth redirect url' do
-      phone = Faker::PhoneNumber.cell_phone
+      phone = "093-881-4202"
 
       fill_in('sms_profile[phone]', with: phone)
       within 'form.gowifi_sms_form' do
@@ -50,7 +50,7 @@ describe "User authentication by sms", js: true do
     end
 
     it 'code should be raised alert' do
-      phone = Faker::PhoneNumber.cell_phone
+      phone = "093-881-4202"
 
       fill_in('sms_profile[phone]', with: phone)
       within 'form.gowifi_sms_form' do
