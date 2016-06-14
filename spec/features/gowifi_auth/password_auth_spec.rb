@@ -17,6 +17,8 @@ describe "User authentication by sms", js: true do
     end
 
     expect(current_url).to eq auth.redirect_url
+    expect(Customer::Visit.count).to eq 1
+    expect(Customer::Visit.last.account_type).to eq "PasswordProfile"
   end
 
   it 'should redirect back when password incorect' do
@@ -26,5 +28,6 @@ describe "User authentication by sms", js: true do
     end
 
     expect(current_path).to eq gowifi_place_path(slug: place.slug)
+    expect(Customer::Visit.count).to be_zero
   end
 end

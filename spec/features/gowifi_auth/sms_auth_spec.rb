@@ -30,6 +30,8 @@ describe "User authentication by sms", js: true do
       end
 
       expect(current_url).to eq auth.redirect_url
+      expect(Customer::Visit.count).to eq 1
+      expect(Customer::Visit.last.account_type).to eq "SmsProfile"
     end
   end
 
@@ -44,8 +46,7 @@ describe "User authentication by sms", js: true do
 
       expect(current_path).to eq gowifi_place_path(slug: place.slug)
       expect(page).to have_content(I18n.t('models.errors.validations.wrong_phone_number'))
-
-      Profile.destroy_all
+      expect(Customer::Visit.count).to be_zero
     end
 
     it 'code should be raised alert' do
@@ -62,6 +63,7 @@ describe "User authentication by sms", js: true do
       end
 
       expect(page.has_css?('.alert', text: I18n.t('wifi.sms_try_more'))).to eq true
+      expect(Customer::Visit.count).to be_zero
     end
   end
 end
