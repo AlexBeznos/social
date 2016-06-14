@@ -9,6 +9,10 @@ class GowifiAuthController < ApplicationController
   end
 
   def succed_auth_path(place, auth)
+    if place.mfa && session[:auth_step] == 'primary'
+      return gowifi_place_path(@place)
+    end
+
     url = if place.loyalty_program && current_customer && auth.network?
       loyalty_url(place, auth: auth.id)
     else
@@ -21,11 +25,10 @@ class GowifiAuthController < ApplicationController
   private
 
   def set_auth_step
-    if @place.mfa && session[:auth_step] == 'primary' && @auth.step == 'primary'
-      session[:auth_step] = 'secondary'
-      return redirect_to( gowifi_place_path(@place) )
+    session[:auth_step] = if @place.mfa && session[:auth_step] == 'primary' && @auth.step == 'primary'
+      'secondary'
     else
-      session[:auth_step] = 'primary'
+      'primary'
     end
   end
 end

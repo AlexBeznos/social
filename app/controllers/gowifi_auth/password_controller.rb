@@ -4,9 +4,9 @@ class GowifiAuth::PasswordController < GowifiAuthController
   after_action :ahoy_track_visit, only: :create
 
   def create
-    auth = @place.auths.active.find_by({ resource_type: PasswordAuth, step: Auth.steps[session[:auth_step]] })
+    @auth = @place.auths.active.find_by({ resource_type: PasswordAuth, step: Auth.steps[session[:auth_step]] })
 
-    if auth && auth.resource.password == params[:password]
+    if @auth && @auth.resource.password == params[:password]
       profile = Profile.create_with_resource({provider: 'password'}, @customer)
       Customer::Visit.create(
         place: @place,
@@ -14,7 +14,8 @@ class GowifiAuth::PasswordController < GowifiAuthController
         account_type: profile.resource_type,
         customer: profile.customer
       )
-      redirect_to succed_auth_path(@place, auth)
+      
+      redirect_to succed_auth_path(@place, @auth)
     else
       redirect_to gowifi_place_path(@place)
     end
