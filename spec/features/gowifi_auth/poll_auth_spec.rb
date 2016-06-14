@@ -11,7 +11,10 @@ describe "User submit poll authentication", js: true do
   end
 
   context "when submit not filled poll" do
-    before { visit gowifi_path }
+    before do
+      I18n.locale = place.auth_default_lang
+      visit gowifi_path
+    end
 
     it "should redirect back" do
       find("#poll-button").click
