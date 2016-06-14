@@ -1,0 +1,55 @@
+vkontakte:
+  provider: vkontakte
+  uid: '80577'
+  extra:
+    raw_info:
+      first_name: Corene
+      last_name: Hauck
+      sex: '2'
+      bdate: "23.7.1996"
+  info:
+    urls:
+      Vkontakte: http://vk.com/id80577
+  credentials:
+    token: fake_token
+    expires_at: '80577'
+
+
+facebook:
+  provider: facebook
+  uid: '850019085034966'
+  credentials:
+    token: fake_token
+    expires_at: '80577'
+  info:
+    first_name: Corene
+    last_name: Hauck
+  extra:
+    raw_info:
+      gender: male
+      link: https://www.facebook.com/app_scoped_user_id/850019085034966/
+
+
+twitter:
+  provider: twitter
+  uid: '850019085034966'
+  credentials:
+    token: fake_token
+    secret: fake_secret
+  info:
+    name: Corene
+    urls:
+      Twitter: http://twitter.com
+  extra:
+    raw_info:
+      followers_count: '10'
+
+
+instagram:
+  provider: instagram
+  uid: '850019085034966'
+  credentials:
+    token: fake_token
+  info:
+    nickname: Corene
+    name: Corene
