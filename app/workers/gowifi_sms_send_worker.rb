@@ -8,7 +8,7 @@ class GowifiSmsSendWorker
     place       = Place.find(place_id)
     sms         = Smsc::Sms.new(ENV['SMSC_LOGIN'], ENV['SMSC_PASSWORD']) # TODO: fork smsc gem to make this in better way
 
-    return development_env_perform(sms_profile, place) if Rails.env.development?
+    return development_env_perform(sms_profile, place) if Rails.env.development? || Rails.env.test?
 
     sms.message(sms_profile.code, [sms_profile.phone], sender: "#{place.name} | GoFriends")
   end

@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :answer do
-    content "MyString"
+    content Faker::Hacker.say_something_smart
   end
 end

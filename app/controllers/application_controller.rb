@@ -36,70 +36,69 @@
     payload[:visit_id] = ahoy.visit_id # if you use Ahoy
   end
 
-  def customer_cookie
+  def get_customer_cookie
     cookies.permanent[:customer]
   end
 
-  def customer_cookie=(customer)
+  def set_customer_cookie(customer)
     cookies.permanent[:customer] = customer
   end
 
   def current_customer
-    @customer ||= if customer_cookie
-      Customer.find(customer_cookie)
+    @customer ||= if get_customer_cookie
+      Customer.find(get_customer_cookie)
     end
   end
 
   private
 
-    def current_user_session
-      return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
-    end
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
+  end
 
-    def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = current_user_session && current_user_session.user
-    end
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.user
+  end
 
-    def ahoy_track_visit
-      ahoy.track_visit
-    end
+  def ahoy_track_visit
+    ahoy.track_visit
+  end
 
-    def ahoy_authenticate
-      current_visit.try(:update, { customer: current_customer })
-    end
+  def ahoy_authenticate
+    current_visit.try(:update, { customer: current_customer })
+  end
 
-    def gen_root_path(user = false)
-      u = user ? user : current_user
-      return places_path if u
+  def gen_root_path(user = false)
+    u = user ? user : current_user
+    return places_path if u
 
-      root_path
-    end
+    root_path
+  end
 
-    def check_locale
-      if !session[:locale] || !I18n.available_locales.include?(session[:locale].to_sym)
-        locale = http_accept_language.compatible_language_from(I18n.available_locales)
-        if locale && I18n.available_locales.include?(locale.to_sym)
-          I18n.locale = locale
-          session[:locale] = locale
-        else
-          session[:locale] = I18n.default_locale
-        end
+  def check_locale
+    if !session[:locale] || !I18n.available_locales.include?(session[:locale].to_sym)
+      locale = http_accept_language.compatible_language_from(I18n.available_locales)
+      if locale && I18n.available_locales.include?(locale.to_sym)
+        I18n.locale = locale
+        session[:locale] = locale
       else
-        I18n.locale = session[:locale]
+        session[:locale] = I18n.default_locale
       end
+    else
+      I18n.locale = session[:locale]
     end
+  end
 
-    def set_timezone
-      tz = current_user ? current_user.timezone : nil
-      Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
-    end
+  def set_timezone
+    tz = current_user ? current_user.timezone : nil
+    Time.zone = tz || ActiveSupport::TimeZone['Kyiv']
+  end
 
-    def wifi_login_path(place, url)
-      return url if place.demo
-      router = place.router
-      "http://172.16.16.1/login?user=#{router.hp_username}&password=#{router.hp_password}&dst=#{url}"
-    end
-
+  def wifi_login_path(place, url)
+    return url if place.demo
+    router = place.router
+    "http://172.16.16.1/login?user=#{router.hp_username}&password=#{router.hp_password}&dst=#{url}"
+  end
 end

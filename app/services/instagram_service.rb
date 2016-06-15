@@ -1,10 +1,9 @@
-class InstagramService # NOTICE: Refactore class to general style in case of using
-  attr_accessor :hash  # FIXME: fixe after pull from stage 28.03.2016
+class InstagramService
 
   def initialize(hash)
     @place = hash[:place]
     @message = hash[:message]
-    @credentials = hash[:credentials]
+    @profile = hash[:profile]
   end
 
   def self.get_token(credentials)
@@ -20,12 +19,6 @@ class InstagramService # NOTICE: Refactore class to general style in case of usi
     user = client.user
 
     user['full_name'].blank? ? user['username'] : user['full_name']
-  end
-
-  def self.get_friends_number(customer)
-    # user = get_user customer
-    # user['counts']['followed_by']
-    0 # NOTE: for now it should be 0 because we do not post anything to instagram
   end
 
   def advertise
