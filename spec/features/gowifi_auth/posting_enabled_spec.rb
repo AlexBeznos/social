@@ -8,13 +8,13 @@ describe "User clicks network link" do
   before(:each) do
     place.auths << auth
     auth.approve!
-    set_omniauth()
+    set_omniauth('vkontakte')
     visit gowifi_place_path(slug: place.slug)
   end
 
   context "when posting enabled" do
     it "should create advertising worker" do
-      vk.update( posting_enabled: true)
+      vk.update(posting_enabled: true)
       find("a.wifi_link").click
       expect(AdvertisingWorker.jobs.size).to eq(1)
     end
@@ -22,7 +22,7 @@ describe "User clicks network link" do
 
   context "when posting disabled" do
     it "shouldn`t create advertising worker" do
-      vk.update( posting_enabled: false)
+      vk.update(posting_enabled: false)
       find("a.wifi_link").click
       expect(AdvertisingWorker.jobs.size).to eq(0)
     end

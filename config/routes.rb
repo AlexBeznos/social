@@ -41,8 +41,10 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create, :destroy]
   get 'login' => 'user_sessions#new'
 
-  get '/auth/:provider/callback' => 'gowifi_auth#omniauth' # omniauth customers authentication
-  get '/auth/failure' => 'gowifi_auth#auth_failure'
+  scope module: 'gowifi_auth' do
+    get '/auth/:provider/callback' => 'omniauth#create'
+    get '/auth/failure' => 'omniauth#failure'
+  end
 
   scope '/wifi' do
     get ':place_id/loyalty' => 'loyalty#index', as: :loyalty
@@ -50,11 +52,14 @@ Rails.application.routes.draw do
     scope ':slug' do
       get '/login' => 'gowifi#show', as: :gowifi_place
       get '/preview' => 'gowifi_previews#show'
-      patch '/poll_enter' => 'gowifi_auth#submit_poll'
-      post '/by_password' => 'gowifi_auth#enter_by_password'
-      post '/by_sms' => 'gowifi_auth#enter_by_sms'
-      get '/simple_enter' => 'gowifi_auth#simple_enter'
       get '/sms/:id' => 'gowifi_sms#show', as: :gowifi_sms_confirmation
+
+      scope module: 'gowifi_auth' do
+        patch '/poll_enter' => 'poll#create'
+        post '/by_password' => 'password#create'
+        post '/by_sms' => 'sms#create'
+        get '/simple_enter' => 'simple_enter#create'
+      end
 
       resources :gowifi_sms, only: :create do
         member do

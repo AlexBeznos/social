@@ -1,7 +1,7 @@
 am:
   statistics:
     loyalty:
-      title: "hűség statisztikac"
+      title: "Հավատարմության վիճակագրություն"
       time: "Time"
       social_network_id: "Social network ID"
       price: "Price"
