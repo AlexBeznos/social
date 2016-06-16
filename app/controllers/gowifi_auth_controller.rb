@@ -127,6 +127,9 @@ class GowifiAuthController < ApplicationController
   end
 
   def succed_auth_path(place, auth)
+
+
+
     if place.mfa && cookies[:step] == 'primary' && auth.step == 'primary'
       cookies[:step] = 'secondary'
 

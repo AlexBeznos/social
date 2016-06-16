@@ -30,9 +30,6 @@ class GowifiController < ApplicationController
     elsif params[:mac_address]
       @customer = Customer.create(mac_address: params[:mac_address])
       send('customer_cookie=',  @customer.id)
-    else
-      @customer = Customer.create
-      send('customer_cookie=',  @customer.id)
     end
   end
 
