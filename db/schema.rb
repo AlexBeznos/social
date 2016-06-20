@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620032930) do
+ActiveRecord::Schema.define(version: 20160620042840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,18 @@ ActiveRecord::Schema.define(version: 20160620032930) do
   create_table "customers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "customers_devices", id: false, force: true do |t|
+    t.integer "device_id",   null: false
+    t.integer "customer_id", null: false
+  end
+
+  add_index "customers_devices", ["customer_id", "device_id"], name: "index_customers_devices_on_customer_id_and_device_id", using: :btree
+  add_index "customers_devices", ["device_id", "customer_id"], name: "index_customers_devices_on_device_id_and_customer_id", using: :btree
+
+  create_table "devices", force: true do |t|
+    t.string "mac_address"
   end
 
   create_table "facebook_auths", force: true do |t|

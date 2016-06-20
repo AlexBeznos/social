@@ -6,6 +6,7 @@ class Customer::Visit < ActiveRecord::Base
   scope :by_sms, -> { where(account_type: "SmsProfile") }
   scope :by_social_network, -> { where(account_type: Auth.network_classes) }
 
+  has_one :device
   belongs_to :account, polymorphic: true
   belongs_to :customer
   belongs_to :place
