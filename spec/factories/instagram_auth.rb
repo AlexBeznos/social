@@ -1,4 +1,4 @@
 FactoryGirl.define do
-  factory :simple_auth do
+  factory :instagram_auth do
   end
 end

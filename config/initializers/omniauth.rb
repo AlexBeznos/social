@@ -14,3 +14,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     :info_fields => 'gender,link,first_name,last_name'
   }
 end
+
+OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+}
