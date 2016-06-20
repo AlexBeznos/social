@@ -34,8 +34,8 @@ class Place < ActiveRecord::Base
   validates :name, presence: true
   validates :logo, file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
                    file_size: { less_than_or_equal_to: 10.megabytes }
-                   
-  validates :remember_sms, absence: true, unless: 'self.mfa?'
+
+  validates :save_device_after_sms, absence: true, unless: 'self.mfa?'
 
 
   after_validation :geocode, if: :city_changed?

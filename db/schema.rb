@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610124905) do
+ActiveRecord::Schema.define(version: 20160620032930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,7 +127,6 @@ ActiveRecord::Schema.define(version: 20160610124905) do
   create_table "customers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "mac_address"
   end
 
   create_table "facebook_auths", force: true do |t|
@@ -245,7 +244,7 @@ ActiveRecord::Schema.define(version: 20160610124905) do
     t.string   "ssid"
     t.boolean  "mfa",                   default: false
     t.boolean  "post_preview",          default: false
-    t.boolean  "remember_sms"
+    t.boolean  "save_device_after_sms", default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
