@@ -6,7 +6,7 @@ class GowifiController < ApplicationController
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
-  before_action :find_or_create_customer_mac, only: :show
+  before_action :find_or_create_customer_device, only: :show
   after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
@@ -23,13 +23,18 @@ class GowifiController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @place
   end
 
-  def find_or_create_customer_mac
+  def find_or_create_customer_device
     if customer_cookie && params[:mac_address]
-      @customer = Customer.find(customer_cookie.to_i)
-      @customer.update(mac_address: params[:mac_address]) unless @customer.mac_address
+      customer = Customer.find(customer_cookie.to_i)
+      unless customer.devices.find_by(mac_address: params[:mac_address])
+        customer.update(mac_address: params[:mac_address])
+      else
+        @device = Customer.devices.find_by(mac_address: params[:mac_address])
+      end
     elsif params[:mac_address]
-      @customer = Customer.create(mac_address: params[:mac_address])
-      send('customer_cookie=',  @customer.id)
+      customer = Customer.create
+      @device = customer.devices.create(mac_address: params[:mac_address])
+      set_customer_cookie(customer.id)
     end
   end
 

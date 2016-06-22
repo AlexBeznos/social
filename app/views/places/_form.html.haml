@@ -18,7 +18,7 @@
   -# = f.input :display_other_banners, as: :boolean
   = f.input :mfa, as: :boolean
   - if @place.mfa
-    = f.input :save_device_after_sms, as: :boolean, label: t("suka") + raw("<a>Pidaras<a/>")
+    = f.input :save_device, as: :boolean, label: t("suka") + raw("<a>Pidaras<a/>")
   = f.input :score_amount
   = f.input :auth_default_lang, collection: I18n.available_locales
 
