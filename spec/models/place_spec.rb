@@ -15,7 +15,6 @@ RSpec.describe Place do
   it { is_expected.to have_many(:visits).class_name('Customer::Visit') }
   it { is_expected.to have_many(:stocks).dependent(:destroy) }
   it { is_expected.to have_many(:reputations).class_name('Customer::Reputation') }
-  it { is_expected.to have_many(:social_network_icons).dependent(:destroy) }
   it { is_expected.to have_many(:menu_items).dependent(:destroy) }
   it { is_expected.to have_many(:orders).dependent(:destroy) }
   it { is_expected.to have_many(:banners).dependent(:destroy) }
@@ -25,7 +24,7 @@ RSpec.describe Place do
 
   describe 'constants' do
     it 'matches DOMAIN_LIST' do
-      expect(Place::DOMAIN_LIST).to match([ "gofriends.com.ua", "go-friends.ru", "gofriends.by", "gofriends.kz" ])
+      expect(Place::DOMAIN_LIST).to match([ "gofriends.com.ua", "go-friends.ru", "gofriends.by", "gofriends.kz", "gofriends.us" ])
     end
   end
 
