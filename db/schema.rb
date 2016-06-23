@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20160622102222) do
   create_table "customer_sessions", force: true do |t|
     t.integer "profile_id"
     t.integer "customer_id"
-    t.string  "step"
+    t.string  "auth_step",    default: "primary"
     t.string  "redirect_url"
   end
 

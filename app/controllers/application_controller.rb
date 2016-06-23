@@ -36,21 +36,25 @@
     payload[:visit_id] = ahoy.visit_id # if you use Ahoy
   end
 
-  def get_customer_cookie
-    cookies.permanent[:customer]
+  private
+
+  def get_customer_session_cookie
+    cookies.permanent[:customer_session]
   end
 
-  def set_customer_cookie(customer)
-    cookies.permanent[:customer] = customer
+  def set_customer_session_cookie(customer_session_id)
+    cookies.permanent[:customer_session] = customer_session_id
   end
 
-  def current_customer
-    @customer ||= if get_customer_cookie
-      Customer.find(get_customer_cookie)
+  def current_customer_session
+    if get_customer_session_cookie
+      session = Customer::Session.find(get_customer_cookie) #NOTE: Here`s exception  
+    else
+      session = Customer::Session.create
+      set_customer_session_cookie(session.id)
+      return session
     end
   end
-
-  private
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
