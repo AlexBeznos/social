@@ -1,12 +1,7 @@
 # encoding: utf-8
-# TODO: remove after migration
-class IconUploader < CarrierWave::Uploader::Base
-  include CarrierWave::Compatibility::Paperclip
 
-  def paperclip_path
-    "style/icons/:id/:style.:extension"
-  end
-
+class NetworkIconUploader < CarrierWave::Uploader::Base
+  # include CarrierWave::Compatibility::Paperclip
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick

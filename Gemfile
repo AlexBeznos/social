@@ -25,7 +25,6 @@ gem 'cssminify'
 gem 'redcarpet'
 gem 'therubyracer',  platforms: :ruby
 
-
 # Utils
 gem 'geocoder'
 gem 'mini_magick'

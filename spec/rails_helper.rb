@@ -69,5 +69,8 @@ end
 Capybara::Screenshot.autosave_on_failure = false
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, { timeout: 50 })
+end
 Capybara.javascript_driver = :poltergeist
 OmniAuth.config.test_mode = true
