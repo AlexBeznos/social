@@ -28,12 +28,17 @@
     redirect_to '/404.html'
   end
 
-
   def append_info_to_payload(payload)
     super
     payload[:request_id] = request.uuid
     payload[:user_id] = current_user.id if current_user
     payload[:visit_id] = ahoy.visit_id # if you use Ahoy
+  end
+
+  def current_customer_session
+    Customer::Session.create_on_absence(get_customer_session_cookie.to_i) do |session|
+      set_customer_session_cookie(session.id)
+    end
   end
 
   private
@@ -44,12 +49,6 @@
 
   def set_customer_session_cookie(customer_session_id)
     cookies.permanent[:customer_session] = customer_session_id
-  end
-
-  def current_customer_session
-    Customer::Session.create_on_absence(get_customer_session_cookie.to_i) do |session|
-      set_customer_session_cookie(session.id)
-    end
   end
 
   def current_user_session

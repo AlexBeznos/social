@@ -8,7 +8,7 @@ class Ahoy::Store < Ahoy::Stores::ActiveRecordStore
   def track_visit(options)
     super do |visit|
       visit.place = Place.find_by_slug(controller.params[:slug])
-      visit.customer = controller.current_customer
+      visit.customer = controller.current_customer_session.customer
     end
   end
 end

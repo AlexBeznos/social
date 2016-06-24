@@ -6,14 +6,13 @@ class GowifiController < ApplicationController
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
-  before_action :find_or_create_device, only: :show
-  before_action :authenticate_customer, only: :show
+  before_action :set_customer_session, only: :show
   after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
 
   def show
-    @auths = @place.auths.active.where(step: Auth.steps[session[:auth_step]] || 'primary')
+    @auths = @place.auths.active.where(step: current_customer_session.auth_step)
     @banner = find_banner if @place.display_other_banners
     @banner.increment!(:number_of_views) if @banner
   end
@@ -25,13 +24,14 @@ class GowifiController < ApplicationController
   end
 
   def device
-    Device.create_on_absence(mac_address: params[:mac_address]) if params[:mac_address]
+    Device.create_on_absence(mac_address: params[:mac]) if params[:mac]
   end
 
   def set_customer_session
-    Customer::Session.update_on_unequality(
-      device: device
-    )
+    current_customer_session.update_on_unequality(
+      device_id: device.id,
+      auth_step: current_customer_session.auth_step || 'primary'
+    ) if device
   end
 
   # we add slug to session to make sure
