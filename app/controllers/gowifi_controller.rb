@@ -24,13 +24,14 @@ class GowifiController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @place
   end
 
-  def find_or_create_device
-    @device = Device.find_by(mac_address: params[:mac]) ||
-              Device.create(mac_address: params[:mac])
+  def device
+    Device.create_on_absence(mac_address: params[:mac_address]) if params[:mac_address]
   end
 
-  def authenticate_customer
-    current_customer_session.check_device(@device)
+  def set_customer_session
+    Customer::Session.update_on_unequality(
+      device: device
+    )
   end
 
   # we add slug to session to make sure

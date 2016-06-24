@@ -1,9 +1,6 @@
 class Customer::Session < ActiveRecord::Base
-  extend ConditionQueries
+  include ConditionalQueries
+  
   belongs_to :profile
   belongs_to :customer
-
-
-
-
 end

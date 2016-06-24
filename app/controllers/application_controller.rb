@@ -47,12 +47,8 @@
   end
 
   def current_customer_session
-    if get_customer_session_cookie
-      session = Customer::Session.find(get_customer_cookie) #NOTE: Here`s exception  
-    else
-      session = Customer::Session.create
+    Customer::Session.create_on_absence(get_customer_session_cookie.to_i) do |session|
       set_customer_session_cookie(session.id)
-      return session
     end
   end
 
