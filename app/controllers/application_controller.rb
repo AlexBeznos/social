@@ -48,7 +48,9 @@
   end
 
   def set_customer_session_cookie(customer_session_id)
-    cookies.permanent[:customer_session] = customer_session_id
+    unless cookies.permanent[:customer_session].to_i == customer_session_id
+      cookies.permanent[:customer_session] = customer_session_id
+    end
   end
 
   def current_user_session

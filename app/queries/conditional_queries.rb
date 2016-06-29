@@ -27,7 +27,7 @@ module ConditionalQueries
     def create_on_absence(args = {}, &block)
       record = exists?(args) ? find_by(valid_args(args)) : create!(valid_args(args))
 
-      yield(record) if block
+      yield(record) if block 
       record
     end
 

@@ -30,16 +30,19 @@ class GowifiController < ApplicationController
   def set_customer_session
     current_customer_session.update_on_unequality(
       device_id: device.id,
-      auth_step: current_customer_session.auth_step || 'primary'
     ) if device
   end
 
   # we add slug to session to make sure
   # place slug  will be saved in omniauth or at least session
+
   def set_place_slug
-    session[:slug] = @place.slug
+    current_customer_session.update_on_unequality(
+      place_id: place.slug
+    )
   end
 
+  #NOTE: for what this used ?
   def set_step
     return if session[:auth_step] == 'secondary' && @place.mfa
     session[:auth_step] = 'primary'
