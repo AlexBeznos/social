@@ -4,7 +4,7 @@ describe "User authentication by password with enabled mfa", js: true do
   let(:place){ create :place, mfa: true }
   let(:password_auth_1){ create :password_auth }
   let(:password_auth_2){ create :password_auth }
-  let(:redirect_url_2){ 'http://pikabu.ru/' }
+  let(:redirect_url_2){ 'https://ya.ru/' }
   let(:auth_1){ create :auth, resource: password_auth_1, step: 'primary' }
   let(:auth_2){ create :auth, resource: password_auth_2, redirect_url: redirect_url_2, step: 'secondary' }
 
