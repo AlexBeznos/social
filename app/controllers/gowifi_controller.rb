@@ -38,7 +38,7 @@ class GowifiController < ApplicationController
 
   def set_place_slug
     current_customer_session.update_on_unequality(
-      place_id: place.slug
+      place_id: @place.slug
     )
   end
 

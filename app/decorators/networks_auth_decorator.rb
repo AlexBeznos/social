@@ -1,7 +1,7 @@
 class NetworksAuthDecorator
   extend ActiveModel::Callbacks
 
-  attr_accessor :profile, :customer, :credentials, :auth, :place, :customer_id, :visit
+  attr_accessor :profile, :credentials, :auth, :place, :customer_id, :visit
 
   define_model_callbacks :save
 
@@ -16,12 +16,12 @@ class NetworksAuthDecorator
 
   def save
     run_callbacks :save do
-      self.profile = Profile.create_or_update(credentials, customer)
+      self.profile = Profile.create_or_update(credentials, customer_id)
       self.visit = Customer::Visit.create(
         place: place,
         account_id: profile.resource_id,
         account_type: profile.resource_type,
-        customer: customer
+        customer_id: customer_id
       )
 
       self
@@ -29,12 +29,6 @@ class NetworksAuthDecorator
   end
 
   private
-
-  def set_customer
-    @customer = Customer.find(customer_id.to_i) if customer_id.present?
-    @customer ||= Profile.find_by_credentials(credentials).try(:customer)
-    @customer ||= Customer.create
-  end
 
   def advertise
     unless visit.errors.any? || !auth.resource.try(:posting_enabled?)
