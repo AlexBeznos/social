@@ -7,7 +7,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'sidekiq/testing'
 require 'shoulda/matchers'
-require 'rspec_candy/all'
 require 'capybara/rspec'
 require 'pundit/rspec'
 require 'capybara/poltergeist'

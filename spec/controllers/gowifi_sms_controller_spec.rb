@@ -4,20 +4,20 @@ RSpec.describe GowifiSmsController, :type => :controller do
   let(:place) { create :place }
 
   it do
-    should route(:post, "/wifi/#{place.slug}/gowifi_sms").to(
-      action: :create,
-      controller: :gowifi_sms,
+    expect({ post: "/wifi/#{place.slug}/gowifi_sms" }).to route_to(
+      action: 'create',
+      controller: 'gowifi_sms',
       slug: place.slug
     )
   end
 
   it do
     sms = create :gowifi_sms
-    should route(:post, "/wifi/#{place.slug}/gowifi_sms/#{sms.id}/resend").to(
-      action: :resend,
-      controller: :gowifi_sms,
+    expect({ post: "/wifi/#{place.slug}/gowifi_sms/#{sms.id}/resend" }).to route_to(
+      action: 'resend',
+      controller: 'gowifi_sms',
       slug: place.slug,
-      id: sms.id
+      id: sms.id.to_s
     )
   end
 
