@@ -366,6 +366,10 @@ ActiveRecord::Schema.define(version: 20160622102222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "line_colors",          default: "rgba(0, 0, 0, 0.0)"
+    t.string   "vkontakte_icon"
+    t.string   "facebook_icon"
+    t.string   "twitter_icon"
+    t.string   "instagram_icon"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree

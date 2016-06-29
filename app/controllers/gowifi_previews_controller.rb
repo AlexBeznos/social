@@ -2,7 +2,6 @@ class GowifiPreviewsController < ApplicationController
   layout 'gowifi_previews'
 
   skip_after_action :verify_authorized
-  after_action :ahoy_track_visit
 
   def show
     @auth = Auth.find(params[:auth])

@@ -22,7 +22,11 @@ class StylePolicy < ApplicationPolicy
       :greating_color,
       :css,
       :network_icons,
-      :line_colors
+      :line_colors,
+      :facebook_icon,
+      :twitter_icon,
+      :vkontakte_icon,
+      :instagram_icon
     ]
 
     return params + [:js] if user.admin?

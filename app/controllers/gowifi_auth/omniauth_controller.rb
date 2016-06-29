@@ -2,7 +2,6 @@ class GowifiAuth::OmniauthController < GowifiAuthController
   before_action :find_place, only: :create
   before_action :find_auth, only: :create
   before_action :check_facebook_permissions, only: :create
-  after_action :ahoy_authenticate, only: :create
   skip_after_action :set_auth_step, only: :failure
 
   def create

@@ -5,8 +5,8 @@ class GowifiController < ApplicationController
   before_action :set_step, only: :show
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
+  before_action :set_device, onli: :show
   before_filter :check_for_place_activation, only: :show
-  before_action :set_customer_session, only: :show
   after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
@@ -27,7 +27,7 @@ class GowifiController < ApplicationController
     Device.create_on_absence(mac_address: params[:mac]) if params[:mac]
   end
 
-  def set_customer_session
+  def set_device
     current_customer_session.update_on_unequality(
       device_id: device.id,
     ) if device

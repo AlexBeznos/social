@@ -1,11 +1,14 @@
 require 'cssminify'
 class Style < ActiveRecord::Base
-  has_many :social_network_icons, dependent: :destroy
+  ICONS_ATTRS = Auth::NETWORKS.values.map { |n| "#{n}_icon".to_sym }
+
   belongs_to :place
 
-  accepts_nested_attributes_for :social_network_icons, allow_destroy: true
-
   mount_uploader :background, BackgroundUploader, mount_on: :background_file_name
+  mount_uploader :vkontakte_icon, NetworkIconUploader
+  mount_uploader :facebook_icon, NetworkIconUploader
+  mount_uploader :twitter_icon, NetworkIconUploader
+  mount_uploader :instagram_icon, NetworkIconUploader
 
   validates :text_color, :greating_color, css_colour: true, allow_blank: true
   validates :background,
