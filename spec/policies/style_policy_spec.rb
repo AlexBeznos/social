@@ -33,7 +33,7 @@ RSpec.describe StylePolicy do
       end
     end
 
-    it{ is_expected.to permit_crud}
+    it{ is_expected.to permit_crud }
   end
 
   context "for franchisee" do
@@ -51,8 +51,8 @@ RSpec.describe StylePolicy do
       end
     end
 
-    it { should permit_action(:index, :new, :create, :show, :edit, :update) }
-    it{ should forbid_action(:destroy) }
+    it { is_expected.to permit_action(:index, :new, :create, :show, :edit, :update) }
+    it { is_expected.to forbid_action(:destroy) }
   end
 
   context "for general" do
@@ -70,7 +70,7 @@ RSpec.describe StylePolicy do
       end
     end
 
-      it { should permit_action(:index, :new, :create, :show, :edit, :update) }
-      it{ should forbid_action(:destroy) }
+      it { is_expected.to permit_action(:index, :new, :create, :show, :edit, :update) }
+      it{ is_expected.to forbid_action(:destroy) }
   end
 end

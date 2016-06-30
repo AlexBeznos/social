@@ -7,7 +7,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'sidekiq/testing'
 require 'shoulda/matchers'
-require 'rspec_candy/all'
 require 'capybara/rspec'
 require 'pundit/rspec'
 require 'capybara/poltergeist'
@@ -51,6 +50,10 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.before(:each) do
+    Sidekiq::Worker.clear_all
+  end
 end
 
 Shoulda::Matchers.configure do |config|
@@ -60,14 +63,11 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-RSpec.configure do |config|
-  config.before(:each) do
-    Sidekiq::Worker.clear_all
-  end
-end
-
 Capybara::Screenshot.autosave_on_failure = false
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, { timeout: 50 })
+end
 Capybara.javascript_driver = :poltergeist
 OmniAuth.config.test_mode = true

@@ -1,6 +1,5 @@
 class GowifiAuth::PollController < GowifiAuthController
   before_action :find_place, only: :create
-  after_action :ahoy_track_visit, only: :create
 
   def create
     @auth = Auth.find(poll_params[:id])

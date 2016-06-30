@@ -16,7 +16,7 @@ RSpec.describe Auth do
     let(:place){ create :place, user: general }
     let(:auth) { create :auth, place: place }
     before(:each) do
-      auth.stub(:network?){ true }
+      allow(auth).to receive(:network?).and_return(true)
     end
 
     describe "on modify" do

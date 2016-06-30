@@ -5,7 +5,6 @@ class GowifiSmsController < ApplicationController
   before_action :find_place, only: [:show, :create, :resend]
   before_action :find_sms, only: [:show, :resend]
   before_action :find_or_create_customer, only: [:create]
-  after_action :ahoy_track_visit, only: [:show]
 
   def show
     render 'gowifi/sms/show'

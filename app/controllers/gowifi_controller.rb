@@ -6,7 +6,6 @@ class GowifiController < ApplicationController
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
-  after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
 

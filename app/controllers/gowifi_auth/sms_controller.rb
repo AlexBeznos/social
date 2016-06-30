@@ -1,6 +1,5 @@
 class GowifiAuth::SmsController < GowifiAuthController
   before_action :find_place, only: :create
-  after_action :ahoy_track_visit, only: :create
 
   def create
     sms = SmsProfile.find_by(code: params[:code])

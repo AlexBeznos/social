@@ -1,5 +1,4 @@
 class StylesController < ApplicationController
-  before_action :icons_save, only: [:create, :update]
   before_action :set_style, except: [:new, :create]
   before_action :set_place
 
@@ -45,19 +44,11 @@ class StylesController < ApplicationController
 
   private
 
-    def set_place
-      @place = Place.find_by_slug(params[:place_id])
-    end
+  def set_place
+    @place = Place.find_by_slug(params[:place_id])
+  end
 
-    def set_style
-      @style = Style.find(params[:id])
-    end
-
-    def icons_save
-      params[:style][:network_icons].each do |network, record|
-        SocialNetworkIcon.create!(record) if record[:icon]
-      end
-
-      params[:style].delete(:network_icons)
-    end
+  def set_style
+    @style = Style.find(params[:id])
+  end
 end
