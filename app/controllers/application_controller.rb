@@ -3,7 +3,7 @@
   # For APIs, you may want to use :null_session instead.
   include Pundit
 
-  helper_method :current_user_session, :current_user, :current_customer, :gen_root_path, :wifi_login_path
+  helper_method :current_user_session, :current_user, :current_customer_session, :gen_root_path, :wifi_login_path
   protect_from_forgery with: :null_session
   before_action :check_locale
   before_action :set_timezone
