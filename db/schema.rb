@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622102222) do
+ActiveRecord::Schema.define(version: 20160623083018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 20160622102222) do
     t.datetime "updated_at"
     t.integer  "account_id"
     t.string   "account_type"
-    t.integer  "device_id"
   end
 
   add_index "customer_visits", ["account_type", "account_id"], name: "index_customer_visits_on_account_type_and_account_id", using: :btree
@@ -139,7 +138,8 @@ ActiveRecord::Schema.define(version: 20160622102222) do
   end
 
   create_table "devices", force: true do |t|
-    t.string "mac_address"
+    t.string   "mac_address"
+    t.datetime "remembering_expires_at"
   end
 
   create_table "facebook_auths", force: true do |t|
@@ -257,7 +257,7 @@ ActiveRecord::Schema.define(version: 20160622102222) do
     t.string   "ssid"
     t.boolean  "mfa",                   default: false
     t.boolean  "post_preview",          default: false
-    t.boolean  "save_device",           default: false
+    t.boolean  "remember_device",       default: false
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

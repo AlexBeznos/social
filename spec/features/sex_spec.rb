@@ -1,8 +1,19 @@
 require 'rails_helper'
 
 describe "Tomorror night." do
-  it "I will have a house without parents." do
-    tonight = "coding"
-    expect(tonight).to eq("party and sex")
+
+  context "first ctx" do
+    before(:each)do
+      p "sosi pisos"
+    end
+    it "suka" do
+      expect(true).to eq(true)
+    end
+  end
+
+  context "second ctx" do
+    it "suka" do
+      expect(true).to eq(true)
+    end
   end
 end

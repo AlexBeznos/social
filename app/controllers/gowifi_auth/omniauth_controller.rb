@@ -28,7 +28,7 @@ class GowifiAuth::OmniauthController < GowifiAuthController
 
   def find_place
     slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
-    slug_by_session = current_customer_session.place_id
+    slug_by_session = current_customer_session.place.slug
 
     @place = Place.find_by_slug(slug_by_omni || slug_by_session)
   end

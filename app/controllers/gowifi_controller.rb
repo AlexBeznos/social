@@ -2,10 +2,9 @@ class GowifiController < ApplicationController
   layout 'gowifi'
   before_action :find_place, only: :show
   before_action :set_place_slug, only: :show
-  before_action :set_step, only: :show
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
-  before_action :set_device, onli: :show
+  before_action :check_device_remembering, only: :show
   before_filter :check_for_place_activation, only: :show
   after_action :ahoy_track_visit, only: [:show]
 
@@ -38,14 +37,21 @@ class GowifiController < ApplicationController
 
   def set_place_slug
     current_customer_session.update_on_unequality(
-      place_id: @place.slug
+      place: @place
     )
   end
 
-  #NOTE: for what this used ?
-  def set_step
-    return if session[:auth_step] == 'secondary' && @place.mfa
-    session[:auth_step] = 'primary'
+
+  def check_device_remembering
+    if current_customer_session.place && current_customer_session.device_remembered?
+      current_customer_session.update_on_unequality(
+        auth_step: "secondary"
+      )
+    end
+
+    #NOTE: for what this used ?
+    # return if session[:auth_step] == 'secondary' && @place.mfa
+    # session[:auth_step] = 'primary'
   end
 
   def set_default_format

@@ -10,10 +10,10 @@ class Customer::Visit < ActiveRecord::Base
   belongs_to :account, polymorphic: true
   belongs_to :customer
   belongs_to :place
-  belongs_to :device 
+  belongs_to :device
 
   validates :place, presence: true
-  validate :ones_a_day_visit, unless: :by_password? || :by_sms?
+  # validate :ones_a_day_visit, unless: :by_password? || :by_sms?
 
   after_create :calculate_reputation, unless: :by_password? || :by_sms?
 
