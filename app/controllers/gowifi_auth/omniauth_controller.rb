@@ -9,9 +9,9 @@ class GowifiAuth::OmniauthController < GowifiAuthController
       credentials: credentials,
       auth: @auth,
       place: @place,
-      customer_id: current_customer_session.customer.id
     )
 
+    decorator.customer_id = current_customer_session.customer.try(:id)
     decorator.save
     redirect_to succed_auth_path(@place, @auth)
   end
@@ -34,10 +34,12 @@ class GowifiAuth::OmniauthController < GowifiAuthController
   end
 
   def find_auth
+    p "*" * 60
+    p current_customer_session.auth_step
     @auth = @place.auths
                   .active
                   .resource_like(credentials['provider'].capitalize)
-                  .find_by(step: Auth.steps[session[:auth_step]])
+                  .find_by(step: current_customer_session.auth_step)
   end
 
   def check_facebook_permissions

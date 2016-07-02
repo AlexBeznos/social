@@ -16,12 +16,12 @@ class NetworksAuthDecorator
 
   def save
     run_callbacks :save do
-      self.profile = Profile.create_or_update(credentials, customer_id)
+      self.profile = Profile.create_or_update(credentials, @customer)
       self.visit = Customer::Visit.create(
         place: place,
         account_id: profile.resource_id,
         account_type: profile.resource_type,
-        customer_id: customer_id
+        customer: @customer
       )
 
       self
@@ -29,6 +29,12 @@ class NetworksAuthDecorator
   end
 
   private
+
+  def set_customer
+    @customer = Customer.find(customer_id.to_i) if customer_id.present?
+    @customer ||= Profile.find_by_credentials(credentials).try(:customer)
+    @customer ||= Customer.create
+  end
 
   def advertise
     unless visit.errors.any? || !auth.resource.try(:posting_enabled?)

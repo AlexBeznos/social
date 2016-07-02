@@ -6,7 +6,7 @@ class GowifiController < ApplicationController
   before_action :set_locale, only: :show
   before_action :check_device_remembering, only: :show
   before_filter :check_for_place_activation, only: :show
-  after_action :ahoy_track_visit, only: [:show]
+  # after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
 
@@ -43,15 +43,11 @@ class GowifiController < ApplicationController
 
 
   def check_device_remembering
-    if current_customer_session.place && current_customer_session.device_remembered?
-      current_customer_session.update_on_unequality(
-        auth_step: "secondary"
-      )
-    end
-
-    #NOTE: for what this used ?
-    # return if session[:auth_step] == 'secondary' && @place.mfa
-    # session[:auth_step] = 'primary'
+    # if current_customer_session.place && current_customer_session.device_remembered?
+    #   current_customer_session.update_on_unequality(
+    #     auth_step: "secondary"
+    #   )
+    # end
   end
 
   def set_default_format
