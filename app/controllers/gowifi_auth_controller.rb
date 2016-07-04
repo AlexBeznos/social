@@ -23,7 +23,7 @@ class GowifiAuthController < ApplicationController
   end
 
   private
-  
+
   def set_auth_step
     if @place.mfa? && @auth.step == "primary"
       current_customer_session.update_on_unequality(

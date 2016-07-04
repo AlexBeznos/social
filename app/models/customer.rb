@@ -1,5 +1,4 @@
 class Customer < ActiveRecord::Base
-  has_and_belongs_to_many :devices
   has_many :visits, dependent: :destroy, class_name: 'Customer::Visit'
   has_many :reputations, dependent: :destroy, class_name: 'Customer::Reputation'
   has_many :orders, dependent: :destroy

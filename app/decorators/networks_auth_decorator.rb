@@ -31,9 +31,15 @@ class NetworksAuthDecorator
   private
 
   def set_customer
-    @customer = Customer.find(customer_id.to_i) if customer_id.present?
-    @customer ||= Profile.find_by_credentials(credentials).try(:customer)
-    @customer ||= Customer.create
+    @customer = Profile.find_by_credentials(credentials).try(:customer)
+
+    if @customer && current_user_session.customer != @customer
+      current_user_session.customer.destroy
+      current_user_session.update(customer: @customer)
+    else
+      @customer ||= Profile.find_by_credentials(credentials).try(:customer)
+      @customer ||= Customer.create
+    end
   end
 
   def advertise
