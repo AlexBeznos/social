@@ -13,6 +13,7 @@ class GowifiAuth::SmsController < GowifiAuthController
         customer: sms.profile.customer
       )
       current_customer_session.remember_device! if @place.mfa
+      current_customer_session.next_auth_step 
       redirect_to succed_auth_path(@place, @auth)
     else
       redirect_to gowifi_sms_confirmation_path(@place, params[:id]), alert: I18n.t('wifi.sms_try_more')

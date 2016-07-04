@@ -11,7 +11,7 @@ class GowifiController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
-    @auths = @place.auths.active.where(step: current_customer_session.auth_step)
+    @auths = @place.auths.active.where(step: Auth.steps[current_customer_session.auth_step])
     @banner = find_banner if @place.display_other_banners
     @banner.increment!(:number_of_views) if @banner
   end

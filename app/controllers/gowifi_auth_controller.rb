@@ -1,5 +1,5 @@
 class GowifiAuthController < ApplicationController
-  after_action :set_auth_step
+  # after_action :set_auth_step
   skip_after_action :verify_authorized
 
   protected
@@ -9,6 +9,9 @@ class GowifiAuthController < ApplicationController
   end
 
   def succed_auth_path(place, auth)
+
+    p "*" * 60
+    current_customer_session.auth_step
     if place.mfa && current_customer_session.auth_step == 'primary'
       return gowifi_place_path(@place)
     end
@@ -24,14 +27,7 @@ class GowifiAuthController < ApplicationController
 
   private
 
-  def set_auth_step
-    p "*" * 60
-    p current_customer_session.auth_step    
-    current_customer_session.update_on_unequality(
-      auth_step: 'primary'
-    )
-    current_customer_session.update_on_unequality(
-      auth_step: 'secondary'
-    )if @place.mfa? && @auth.step == 'primary'
-  end
+  # def find_auth(args={})
+  #
+  # end
 end

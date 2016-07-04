@@ -36,7 +36,7 @@ class PlacePolicy < ApplicationPolicy
       :auth_default_lang,
       :ssid,
       :mfa,
-      :remmember_device,
+      :remember_device,
       :post_preview
     ]
   end
