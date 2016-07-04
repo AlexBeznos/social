@@ -34,8 +34,6 @@ class Place < ActiveRecord::Base
   validates :logo, file_content_type: { allow: ["image/jpeg", "image/png", "image/gif"] },
                    file_size: { less_than_or_equal_to: 10.megabytes }
 
-  validates :save_device, absence: true, if: 'mfa?'
-
   after_validation :geocode, if: :city_changed?
   after_commit :setup_router, on: :create
 

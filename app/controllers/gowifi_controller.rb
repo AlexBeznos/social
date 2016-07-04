@@ -1,12 +1,11 @@
 class GowifiController < ApplicationController
   layout 'gowifi'
-  before_action :find_place, only: :show
-  before_action :set_place_slug, only: :show
+  before_action :find_and_save_place, only: :show
+  before_action :find_customer_session_from_device, only: :show
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
-  before_action :check_device_remembering, only: :show
   before_filter :check_for_place_activation, only: :show
-  # after_action :ahoy_track_visit, only: [:show]
+  after_action :ahoy_track_visit, only: [:show]
 
   skip_after_action :verify_authorized
 
@@ -17,38 +16,32 @@ class GowifiController < ApplicationController
   end
 
   private
-  def find_place
+  def find_and_save_place
     @place = Place.find_by_slug(params[:slug])
     raise ActiveRecord::RecordNotFound unless @place
+
+    current_customer_session.update(place: @place)
   end
 
   def device
     Device.create_on_absence(mac_address: params[:mac]) if params[:mac]
   end
 
-  def set_device
-    current_customer_session.update_on_unequality(
-      device_id: device.id,
-    ) if device
+  def find_customer_session_from_device
+    session =  Customer::Session.find_by(device: device, place: @place)
+
+    if params[:mac] && session
+      current_customer_session.destroy
+      set_customer_session_cookie(session.id)
+    end
+  end
+
+  def check_device_remembering
+
   end
 
   # we add slug to session to make sure
   # place slug  will be saved in omniauth or at least session
-
-  def set_place_slug
-    current_customer_session.update_on_unequality(
-      place: @place
-    )
-  end
-
-
-  def check_device_remembering
-    # if current_customer_session.place && current_customer_session.device_remembered?
-    #   current_customer_session.update_on_unequality(
-    #     auth_step: "secondary"
-    #   )
-    # end
-  end
 
   def set_default_format
     request.format = :html

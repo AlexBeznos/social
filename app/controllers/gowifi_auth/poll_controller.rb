@@ -6,8 +6,7 @@ class GowifiAuth::PollController < GowifiAuthController
     answer = Answer.find(poll_params[:answer_ids])
 
     answer.increment!(:number_of_selections)
-    
-    current_customer_session.next_auth_step
+
     redirect_to succed_auth_path(@place, @auth)
   rescue
     redirect_to :back, alert: I18n.t('wifi.poll_error')

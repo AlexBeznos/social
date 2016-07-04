@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20160623083018) do
   create_table "customers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mac_address"
   end
 
   create_table "devices", force: true do |t|
@@ -258,6 +259,7 @@ ActiveRecord::Schema.define(version: 20160623083018) do
     t.boolean  "mfa",                   default: false
     t.boolean  "post_preview",          default: false
     t.boolean  "remember_device",       default: false
+    t.boolean  "remember_sms"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

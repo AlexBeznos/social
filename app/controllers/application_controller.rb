@@ -38,8 +38,10 @@
   def current_customer_session
     Customer::Session.create_on_absence(get_customer_session_cookie.to_i) do |session|
       set_customer_session_cookie(session.id)
-      customer = Customer.create
-      session.update(customer: customer)
+      unless session.customer
+        customer = Customer.create
+        session.update(customer: customer)
+      end
     end
   end
 

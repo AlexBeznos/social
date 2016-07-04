@@ -2,7 +2,7 @@ class GowifiAuth::OmniauthController < GowifiAuthController
   before_action :find_place, only: :create
   before_action :find_auth, only: :create
   before_action :check_facebook_permissions, only: :create
-  # skip_after_action :set_auth_step, only: :failure
+  skip_after_action :set_auth_step, only: :failure
 
   def create
     decorator = NetworksAuthDecorator.new(
@@ -13,7 +13,6 @@ class GowifiAuth::OmniauthController < GowifiAuthController
 
     decorator.customer_id = current_customer_session.customer.try(:id)
     decorator.save
-    current_customer_session.next_auth_step
     redirect_to succed_auth_path(@place, @auth)
   end
 
