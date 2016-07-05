@@ -4,14 +4,13 @@ class GowifiSmsController < ApplicationController
   layout 'gowifi'
   before_action :find_place, only: [:show, :create, :resend]
   before_action :find_sms, only: [:show, :resend]
-  before_action :find_or_create_customer, only: [:create]
 
   def show
     render 'gowifi/sms/show'
   end
 
   def create
-    @sms = Profile.create_with_resource(sms_params, @customer).resource
+    @sms = Profile.create_with_resource(sms_params, current_customer_session.customer).resource
 
     if @sms.persisted?
       GowifiSmsSendWorker.perform_async(@sms.id, @place.id)
@@ -34,23 +33,7 @@ class GowifiSmsController < ApplicationController
   private
 
   def sms_params
-    par = params.require(:sms_profile).permit(:phone, :provider)
-
-    if @place.remember_sms && @customer.mac_address
-      par[:remember] = true
-      par[:remember_expiration_date] = DateTime.now + 90.days
-    end
-    
-    return par
-  end
-
-  def find_or_create_customer
-    if get_customer_cookie
-      @customer = Customer.find(get_customer_cookie.to_i)
-    else
-      @customer = Customer.create
-      set_customer_cookie(@customer.id)
-    end
+    params.require(:sms_profile).permit(:phone, :provider)
   end
 
   def find_place

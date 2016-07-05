@@ -1,7 +1,9 @@
 class GowifiController < ApplicationController
   layout 'gowifi'
   before_action :find_and_save_place, only: :show
+  before_action :save_device_to_session, only: :show
   before_action :find_customer_session_from_device, only: :show
+  before_action :check_device_remembering, only: :show
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
   before_filter :check_for_place_activation, only: :show
@@ -27,19 +29,29 @@ class GowifiController < ApplicationController
     Device.create_on_absence(mac_address: params[:mac]) if params[:mac]
   end
 
+  def save_device_to_session
+    current_customer_session.update_on_unequality(
+      device: device
+    )if device
+  end
+
   def find_customer_session_from_device
     session =  Customer::Session.find_by(device: device, place: @place)
 
-    if params[:mac] && session
+    if device && current_customer_session != session
       current_customer_session.destroy
       set_customer_session_cookie(session.id)
     end
   end
 
   def check_device_remembering
-    if @place.remember_device && current_customer_session.device_remembered? && device
+    if @place.remember_device && current_customer_session.device && current_customer_session.device_remembered?
       current_customer_session.update_on_unequality(
         auth_step: "secondary"
+      )
+    else
+      current_customer_session.update_on_unequality(
+        auth_step: "primary"
       )
     end
   end

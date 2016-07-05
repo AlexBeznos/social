@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623083018) do
+ActiveRecord::Schema.define(version: 20160705124213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160623083018) do
     t.datetime "updated_at"
     t.integer  "account_id"
     t.string   "account_type"
+    t.integer  "profile_id"
   end
 
   add_index "customer_visits", ["account_type", "account_id"], name: "index_customer_visits_on_account_type_and_account_id", using: :btree
@@ -135,7 +136,6 @@ ActiveRecord::Schema.define(version: 20160623083018) do
   create_table "customers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "mac_address"
   end
 
   create_table "devices", force: true do |t|

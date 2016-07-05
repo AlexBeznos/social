@@ -6,7 +6,7 @@ class Customer::Session < ActiveRecord::Base
   belongs_to :device
 
   def device_remembered?
-    if device && device.remembering_expires_at > DateTime.now - 90.days
+    if device.try(:remembering_expires_at) && device.remembering_expires_at - DateTime.now  > 0
       return true
     end
 
@@ -14,6 +14,6 @@ class Customer::Session < ActiveRecord::Base
   end
 
   def remember_device!
-    device.update(remembering_expires_at: DateTime.now - 90.days)
+    device.update(remembering_expires_at: DateTime.now + 90.days)
   end
 end
