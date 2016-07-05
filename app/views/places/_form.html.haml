@@ -18,7 +18,8 @@
   -# = f.input :display_other_banners, as: :boolean
   = f.input :mfa, as: :boolean
   - if @place.mfa
-    = f.input :remember_device, as: :boolean, label: t("remember_device") + raw("<a>?<a/>")
+    - glyph = "  <a class='glyphicon glyphicon-question-sign' data-toggle='popover' title='hello' data-content='lol'></a>"
+    = f.input :remember_device, as: :boolean, label: t("remeber_customer_by_sms") +  raw(glyph)
   = f.input :score_amount
   = f.input :auth_default_lang, collection: I18n.available_locales
 

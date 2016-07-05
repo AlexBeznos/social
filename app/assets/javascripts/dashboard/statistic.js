@@ -3,6 +3,7 @@ $(window).load(function () {
   localeHash = $.datepicker.regional[localeName];
   localeHash.dateFormat = "dd M yy";
   $("#from, #to").datepicker(localeHash);
+  $('[data-toggle="popover"]').popover();
 });
 
 $(document).ready(function(){
