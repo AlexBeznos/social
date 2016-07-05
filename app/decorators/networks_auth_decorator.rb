@@ -1,7 +1,7 @@
 class NetworksAuthDecorator
   extend ActiveModel::Callbacks
 
-  attr_accessor :profile, :credentials, :auth, :place, :customer_id, :visit
+  attr_accessor :profile, :credentials, :auth, :place, :customer_session, :visit
 
   define_model_callbacks :save
 
@@ -33,9 +33,9 @@ class NetworksAuthDecorator
   def set_customer
     @customer = Profile.find_by_credentials(credentials).try(:customer)
 
-    if @customer && current_user_session.customer != @customer
-      current_user_session.customer.destroy
-      current_user_session.update(customer: @customer)
+    if @customer && @customer_session.customer != @customer
+      @customer_session.customer.destroy
+      @customer_session.update(customer: @customer)
     else
       @customer ||= Profile.find_by_credentials(credentials).try(:customer)
       @customer ||= Customer.create

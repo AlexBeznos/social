@@ -19,7 +19,7 @@ class LoyaltyController < ApplicationController
   end
 
   def authenticate_customer
-    redirect_to root_path unless current_customer
+    redirect_to root_path unless current_customer_session.customer
   end
 
   def find_auth
@@ -30,7 +30,7 @@ class LoyaltyController < ApplicationController
   def find_reputation
     @reputation = Customer::Reputation.find_by(
       place_id: @place.id,
-      customer_id: current_customer.id
+      customer_id: current_customer_session.customer.id
     ) || Customer::Reputation.new
   end
 end

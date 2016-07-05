@@ -17,8 +17,8 @@
   -# = f.input :display_my_banners, as: :boolean
   -# = f.input :display_other_banners, as: :boolean
   = f.input :mfa, as: :boolean
-  -# - if @place.mfa
-  -#   = f.input :remember_device, as: :boolean, label: t("suka") + raw("<a>Pidaras<a/>")
+  - if @place.mfa
+    = f.input :remember_device, as: :boolean, label: t("remember_device") + raw("<a>?<a/>")
   = f.input :score_amount
   = f.input :auth_default_lang, collection: I18n.available_locales
 

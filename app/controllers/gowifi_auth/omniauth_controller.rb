@@ -9,9 +9,9 @@ class GowifiAuth::OmniauthController < GowifiAuthController
       credentials: credentials,
       auth: @auth,
       place: @place,
+      customer_session: current_customer_session
     )
 
-    decorator.customer_id = current_customer_session.customer.try(:id)
     decorator.save
     redirect_to succed_auth_path(@place, @auth)
   end
