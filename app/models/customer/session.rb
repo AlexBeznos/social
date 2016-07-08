@@ -14,6 +14,6 @@ class Customer::Session < ActiveRecord::Base
   end
 
   def remember_device!
-    device.update(remembering_expires_at: DateTime.now + 90.days)
+    device.update(remembering_expires_at: Time.zone.now + 90.days)
   end
 end
