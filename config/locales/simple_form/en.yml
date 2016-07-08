@@ -18,6 +18,9 @@ en:
           remove: "Remove"
       place:
         name: 'Place name'
+        remember_device: "Remember customer by device"
+        remember_device_gtext: "This is functionality, that provides opportunity to remember customers via their devices"
+        remember_device_gtitle: "Remember device"
         ssid: 'Place SSID'
         domen_url: 'Domen URL'
         logo: 'Logo'

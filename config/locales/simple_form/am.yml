@@ -18,6 +18,9 @@
           remove: "հեռացնել"
       place:
         name: 'Հաստատության անվանումը'
+        remember_device: "Remember customer bys device"
+        remember_device_gtext: "This is functionality, that provides opportunity to remember customers via their devices"
+        remember_device_gtitle: "Remember device"
         ssid: 'SSID տեղերը'
         domen_url: 'Դոմեյնի հասցեն'
         logo: 'Լոգո'
