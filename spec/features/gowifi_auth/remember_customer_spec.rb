@@ -35,7 +35,7 @@ describe "visit login page with enabled remembering" do
 
     it "sets expiration date to device" do
       expiration_date = (DateTime.now  + 90.days).to_formatted_s(:rfc822)
-      device_expires_at = Device.last.remembering_expires_at.to_formatted_s(:rfc822)
+      device_expires_at = Device.last.remembering_expires_at.change(offset: "+0000").to_formatted_s(:rfc822)
 
       expect(device_expires_at).to be === (expiration_date)
     end

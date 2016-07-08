@@ -7,7 +7,6 @@ class Customer::Session < ActiveRecord::Base
 
   def device_remembered?
     if device.try(:remembering_expires_at) && device.remembering_expires_at - DateTime.now  > 0
-      p DateTime.now 
       return true
     end
 
