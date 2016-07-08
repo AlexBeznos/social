@@ -45,13 +45,9 @@ class GowifiController < ApplicationController
   end
 
   def check_device_remembering
-    if @place.remember_device && current_customer_session.device && current_customer_session.device_remembered?
+    if @place.remember_device && device && current_customer_session.device_remembered?
       current_customer_session.update_on_unequality(
         auth_step: "secondary"
-      )
-    else
-      current_customer_session.update_on_unequality(
-        auth_step: "primary"
       )
     end
   end

@@ -6,7 +6,7 @@ class GowifiAuth::PasswordController < GowifiAuthController
     @auth = @place.auths.active.find_by({ resource_type: PasswordAuth, step: Auth.steps[current_customer_session.auth_step] })
 
     if @auth && @auth.resource.password == params[:password]
-      profile = Profile.create_with_resource({provider: 'password'}, current_customer_session.customer.try(:id))
+      profile = Profile.create_with_resource({provider: 'password'}, current_customer_session.customer)
       Customer::Visit.create(
         place: @place,
         account_id: profile.resource_id,
