@@ -3,10 +3,7 @@ class GowifiAuth::SimpleEnterController < GowifiAuthController
 
   def create
     @auth = @place.auths.active.find_by({ resource_type: SimpleAuth, step: Auth.steps[current_customer_session.auth_step] })
-    if @auth
-      redirect_to succed_auth_path(@place, @auth)
-    else
-      gowifi_place_path(@place)
-    end
+    
+    redirect_to @auth ? succed_auth_path(@place, @auth) : gowifi_place_path(@place)
   end
 end
