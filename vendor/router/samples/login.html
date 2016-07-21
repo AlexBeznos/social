@@ -55,29 +55,13 @@ function GofriendsAuth(){
     this.start = function(){
       self.logger('auth');
       var callback = function(e) {
-        setTimeout(self.load, 1000);
+        setTimeout(self.redirect, 1000);
       }
 
-      var url = 'http://gofriends.lan/login?username=apple&password=apple'
+      var url = '$(link-orig)login?username=apple&password=apple'
       var request = new Request(url, callback);
 
       request.run();
-    }
-
-    this.load = function(){
-      r = function(){
-        self.logger('load');
-
-        var callback = function(e) {
-          self.logger('redirect');
-          self.redirect();
-        }
-
-        var url = 'http://gofriends.lan/logout'
-        var request = new Request(url, callback);
-
-        request.run();
-      }();
     }
 
     this.redirect = function() {
@@ -116,7 +100,7 @@ function GofriendsAuth(){
 }
 
 function ready(){
-  var a = '<a id="click" href="##LOGIN_PAGE##?mac=$(mac)"></a>';
+  var a = '<a id="click" href="##LOGIN_PAGE##?mac=$(mac)&link-orig=$(link-orig)"></a>';
   document.body.innerHTML += a;
 
   var gf = new GofriendsAuth();
