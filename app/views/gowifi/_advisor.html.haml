@@ -1,5 +1,6 @@
-- if auths.resource_like(Auth::ALTERNATIVE[:advisor].capitalize).any?
-  %br
-  = link_to "/wifi/#{place.slug}/advisor", class: 'wifi_link' do
-    - icon = place.style.try("advisor_icon")
-    = image_tag icon.try(:present?) ? icon.url : "wifi/advisor.png"
+.socials
+  - if auths.resource_like(Auth::ALTERNATIVE[:advisor].capitalize).any?
+    %br
+    = link_to "/wifi/#{place.slug}/advisor", class: 'wifi_link' do
+      - icon = place.style.try("advisor_icon")
+      = image_tag icon.try(:present?) ? icon.url : "wifi/advisor.png"
