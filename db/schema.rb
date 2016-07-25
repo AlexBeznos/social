@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623083018) do
+ActiveRecord::Schema.define(version: 20160725154755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "advisor_auths", force: true do |t|
+  end
 
   create_table "ahoy_events", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.uuid     "visit_id"
@@ -110,6 +113,14 @@ ActiveRecord::Schema.define(version: 20160623083018) do
   add_index "customer_reputations", ["customer_id"], name: "index_customer_reputations_on_customer_id", using: :btree
   add_index "customer_reputations", ["place_id"], name: "index_customer_reputations_on_place_id", using: :btree
 
+  create_table "customer_sessions", force: true do |t|
+    t.integer "device_id"
+    t.integer "place_id"
+    t.integer "customer_id"
+    t.string  "auth_step",    default: "primary"
+    t.string  "redirect_url"
+  end
+
   create_table "customer_visits", force: true do |t|
     t.integer  "place_id"
     t.integer  "customer_id"
@@ -117,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160623083018) do
     t.datetime "updated_at"
     t.integer  "account_id"
     t.string   "account_type"
+    t.integer  "profile_id"
   end
 
   add_index "customer_visits", ["account_type", "account_id"], name: "index_customer_visits_on_account_type_and_account_id", using: :btree
@@ -127,6 +139,11 @@ ActiveRecord::Schema.define(version: 20160623083018) do
   create_table "customers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "devices", force: true do |t|
+    t.string   "mac_address"
+    t.datetime "remembering_expires_at"
   end
 
   create_table "facebook_auths", force: true do |t|
@@ -244,6 +261,8 @@ ActiveRecord::Schema.define(version: 20160623083018) do
     t.string   "ssid"
     t.boolean  "mfa",                   default: false
     t.boolean  "post_preview",          default: false
+    t.boolean  "remember_device",       default: false
+    t.boolean  "remember_sms"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
