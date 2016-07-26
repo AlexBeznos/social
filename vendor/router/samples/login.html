@@ -58,7 +58,7 @@ function GofriendsAuth(){
         setTimeout(self.redirect, 1000);
       }
 
-      var url = '$(link-orig)login?username=apple&password=apple'
+      var url = 'http://$(hostname)/login?username=apple&password=apple'
       var request = new Request(url, callback);
 
       request.run();
@@ -100,7 +100,7 @@ function GofriendsAuth(){
 }
 
 function ready(){
-  var a = '<a id="click" href="##LOGIN_PAGE##?mac=$(mac)&link-orig=$(link-orig)"></a>';
+  var a = '<a id="click" href="##LOGIN_PAGE##?mac=$(mac)&hostname=$(hostname)"></a>';
   document.body.innerHTML += a;
 
   var gf = new GofriendsAuth();
