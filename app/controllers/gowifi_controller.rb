@@ -5,6 +5,7 @@ class GowifiController < ApplicationController
   before_action :set_step, only: :show
   before_action :set_default_format, only: :show
   before_action :set_locale, only: :show
+  before_action :set_hostname, only: :show
   before_filter :check_for_place_activation, only: :show
 
   skip_after_action :verify_authorized
@@ -44,6 +45,10 @@ class GowifiController < ApplicationController
                   end
 
     session[:locale] = I18n.locale
+  end
+
+  def set_hostname
+    session[:hostname] = params[:hostname] if params[:hostname]
   end
 
   # TODO: make banner injection by simple method and visits incrementation by ajax call
