@@ -22,7 +22,7 @@ $(document).ready(function() {
     return query_string;
   }();
 
-  if(QueryString['link-orig'] != undefined) {
-    $.get(QueryString['link-orig'] + '/logout');
+  if(QueryString['hostname'] != undefined) {
+    $.get('http://' + QueryString['hostname'] + '/logout');
   }
 });
