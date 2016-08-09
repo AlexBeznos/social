@@ -1,6 +1,11 @@
 .socials
   - auths.each do |auth|
-    - if auth.network?
+    - if auth.network? && auth.resource_type != 'InstagramAuth'
       = link_to network_path(place, auth), class: 'wifi_link' do
+        - icon = place.style.try("#{auth.name}_icon")
+        = image_tag icon.try(:present?) ? icon.url : "wifi/#{auth.name}.png"
+
+    - if auth.network? && auth.resource_type == 'InstagramAuth'
+      = link_to succed_auth_path(place, auth), class: 'wifi_link' do
         - icon = place.style.try("#{auth.name}_icon")
         = image_tag icon.try(:present?) ? icon.url : "wifi/#{auth.name}.png"
