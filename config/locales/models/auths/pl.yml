@@ -12,6 +12,7 @@ pl:
         instagram: "Instagram"
         sms: "Sms"
         poll: "Głosowanie"
+        advisor: "Trip Advisor"
         simple: "Prosty"
         password: "Hasło"
       no_auth: "Nie masz poświadczeń ."
