@@ -26,7 +26,8 @@ class StylePolicy < ApplicationPolicy
       :facebook_icon,
       :twitter_icon,
       :vkontakte_icon,
-      :instagram_icon
+      :instagram_icon,
+      :advisor_icon
     ]
 
     return params + [:js] if user.admin?

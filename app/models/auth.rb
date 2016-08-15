@@ -5,14 +5,15 @@ class Auth < ActiveRecord::Base
     vkontakte: 'vkontakte',
     facebook: 'facebook',
     twitter: 'twitter',
-    instagram: 'instagram'
+    instagram: 'instagram',
   }
 
   ALTERNATIVE = {
     poll: 'poll',
     sms: 'sms',
     password: 'password',
-    simple: 'simple'
+    simple: 'simple',
+    advisor: 'advisor'
   }
 
   METHODS = NETWORKS.values + ALTERNATIVE.values
@@ -68,7 +69,7 @@ class Auth < ActiveRecord::Base
   def auth_methods
     persisted? ? [resource.class::NAME] : Auth::METHODS
   end
-  
+
   def network?
     Auth::NETWORKS.keys.include? name
   end

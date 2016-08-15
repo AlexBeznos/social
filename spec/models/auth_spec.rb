@@ -86,7 +86,8 @@ RSpec.describe Auth do
         poll: 'poll',
         sms: 'sms',
         password: 'password',
-        simple: 'simple'
+        simple: 'simple',
+        advisor: 'advisor'
       })
     end
 
@@ -99,7 +100,8 @@ RSpec.describe Auth do
         "poll",
         "sms",
         "password",
-        "simple"
+        "simple",
+        "advisor"
       ])
     end
   end

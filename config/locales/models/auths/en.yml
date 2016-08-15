@@ -13,5 +13,6 @@ en:
         sms: "sms"
         poll: "poll"
         simple: "simple"
+        advisor: "Trip Advisor"
         password: "password"
       no_auth: "You have no authentications"
