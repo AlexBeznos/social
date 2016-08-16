@@ -1,0 +1,18 @@
+del config.rsc
+put config.rsc
+mkdir hotspot
+cd hotspot
+del alogin.html
+del error.html
+del errors.txt
+del favicon.ico
+del md5.js
+del radvert.html
+del redirect.html
+del rlogin.html
+del status.html
+put hotspot/login.html
+put hotspot/logout.html
+put hotspot/redirect.html
+put hotspot/errors.txt
+quit
