@@ -110,7 +110,6 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'json_spec'
   gem 'simplecov', require: false
-  gem 'rspec_candy'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'test_after_commit'

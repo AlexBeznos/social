@@ -43,7 +43,7 @@ class NetworksAuthDecorator
   end
 
   def advertise
-    unless visit.errors.any? || !auth.resource.try(:posting_enabled?)
+    if visit.errors.empty? && auth.resource.try(:posting_enabled?)
       AdvertisingWorker.perform_async(
         place.slug,
         auth.id,

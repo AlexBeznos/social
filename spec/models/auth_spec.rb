@@ -16,7 +16,7 @@ RSpec.describe Auth do
     let(:place){ create :place, user: general }
     let(:auth) { create :auth, place: place }
     before(:each) do
-      auth.stub(:network?){ true }
+      allow(auth).to receive(:network?).and_return(true)
     end
 
     describe "on modify" do
@@ -86,7 +86,8 @@ RSpec.describe Auth do
         poll: 'poll',
         sms: 'sms',
         password: 'password',
-        simple: 'simple'
+        simple: 'simple',
+        advisor: 'advisor'
       })
     end
 
@@ -99,7 +100,8 @@ RSpec.describe Auth do
         "poll",
         "sms",
         "password",
-        "simple"
+        "simple",
+        "advisor"
       ])
     end
   end

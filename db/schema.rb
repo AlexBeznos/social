@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705124213) do
+ActiveRecord::Schema.define(version: 20160725165942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "advisor_auths", force: true do |t|
+  end
 
   create_table "ahoy_events", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.uuid     "visit_id"
@@ -259,7 +262,6 @@ ActiveRecord::Schema.define(version: 20160705124213) do
     t.boolean  "mfa",                   default: false
     t.boolean  "post_preview",          default: false
     t.boolean  "remember_device",       default: false
-    t.boolean  "remember_sms"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
@@ -372,6 +374,7 @@ ActiveRecord::Schema.define(version: 20160705124213) do
     t.string   "facebook_icon"
     t.string   "twitter_icon"
     t.string   "instagram_icon"
+    t.string   "advisor_icon"
   end
 
   add_index "styles", ["place_id"], name: "index_styles_on_place_id", using: :btree

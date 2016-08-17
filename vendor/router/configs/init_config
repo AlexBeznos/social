@@ -1,107 +1,177 @@
-/file remove [ find name=auto-before-reset.backup ]
-/file remove [ find name=preconfig.rsc ]
-/interface bridge add name=GoFriends_WiFi
-/interface bridge add name=GoFriends_Admin
-/interface bridge port add bridge=GoFriends_WiFi interface=ether2
-/interface bridge port add bridge=GoFriends_WiFi interface=ether3
-/interface bridge port add bridge=GoFriends_WiFi interface=wlan1
-/interface bridge port add bridge=GoFriends_Admin interface=ether4
-/ip neighbor discovery set GoFriends_WiFi discover=no
-/ip neighbor discovery set ether1 discover=no
-/ip neighbor discovery set ether2 discover=no
-/ip neighbor discovery set ether3 discover=no
-/ip neighbor discovery set ether4 discover=no
-/ip neighbor discovery set wlan1 discover=no
-/ip dhcp-client add interface=ether1 default-route-distance=0 add-default-route=yes dhcp-options=hostname use-peer-dns=no use-peer-ntp=no disabled=no
-/ip address add address=172.16.16.1/22 interface=GoFriends_WiFi
-/ip address add address=192.168.88.1/24 interface=GoFriends_Admin
-/interface wireless security-profiles add name=open authentication-types="" eap-methods="" supplicant-identity="" unicast-ciphers="" group-ciphers="" management-protection=disabled
-/interface wireless security-profiles add name=WPA2-GF-Admin authentication-types=wpa2-psk mode=dynamic-keys wpa2-pre-shared-key=gOfriendS2016_GO eap-methods="" group-key-update=00:10:00 management-protection=disabled
-/interface wireless nstreme set wlan1 enable-polling=no
-/interface wireless set [ find default-name=wlan1 ] disabled=no mode=ap-bridge band="2ghz-b/g/n" security-profile=open
-/interface wireless set [ find default-name=wlan1 ] wds-mode=disabled frequency=auto radio-name=GoFriends wireless-protocol=802.11 bridge-mode=disabled wmm-support=enabled multicast-helper=full default-authentication=yes default-forwarding=no
-/interface wireless set [ find default-name=wlan1 ] distance=indoors adaptive-noise-immunity=ap-and-client-mode basic-rates-a/g="" basic-rates-b=""  channel-width=20/40mhz-Ce frequency=auto guard-interval=long ht-basic-mcs="" supported-rates-b="" tx-power=19 tx-power-mode=all-rates-fixed
-/interface wireless set [ find default-name=wlan1 ] ssid=##SSID##
-/interface wireless add disabled=no name=gf-adm default-authentication=yes master-interface=wlan1 security-profile=WPA2-GF-Admin ssid=gf-adm wmm-support=enabled wds-mode=disabled
-/interface bridge port add bridge=GoFriends_Admin interface=gf-adm
-/ip neighbor discovery set gf-adm discover=no
-/ip pool add name=GF-hotspot-pool ranges=172.16.16.5-172.16.19.254
-/ip pool add name=GF-adm-pool ranges=192.168.88.100-192.168.88.200
-/ip dhcp-server add disabled=no name=GF-hotspot-dhcp lease-time=12h address-pool=GF-hotspot-pool bootp-support=none interface=GoFriends_WiFi
-/ip dhcp-server add disabled=no name=GF-adm-dhcp lease-time=30d address-pool=GF-adm-pool bootp-support=none interface=GoFriends_Admin
-/ip dhcp-server network add address=172.16.16.0/22 dns-server=172.16.16.1 gateway=172.16.16.1 ntp-server=172.16.16.1
-/ip dhcp-server network add address=192.168.88.0/24 dns-server=192.168.88.1 gateway=192.168.88.1 ntp-server=192.168.88.1
-/ip firewall filter add action=drop chain=input dst-address=0.0.0.0/8
-/ip firewall filter add action=drop chain=input dst-address=169.254.0.0/16
-/ip firewall filter add action=drop chain=input dst-address=192.0.2.0/24
-/ip firewall filter add action=drop chain=input dst-address=198.18.0.0/15
-/ip firewall filter add action=drop chain=input dst-address=224.0.0.0/4
-/ip firewall filter add action=drop chain=input dst-address=240.0.0.0/4
-/ip firewall filter add action=drop chain=forward dst-address-list=Local out-interface=ether1
-/ip firewall filter add chain=input dst-port=8291 in-interface=ether1 protocol=tcp
-/ip firewall filter add chain=input connection-state=established
-/ip firewall filter add chain=forward connection-state=established
-/ip firewall filter add chain=output connection-state=established
-/ip firewall filter add action=drop chain=input dst-port=53 in-interface=ether1 protocol=tcp
-/ip firewall filter add action=drop chain=input dst-port=53 in-interface=ether1 protocol=udp
-/ip firewall nat add action=masquerade chain=srcnat comment="GoFriends WiFi NAT out" src-address=172.16.16.0/22
-/ip firewall nat add action=masquerade chain=srcnat comment="GoFriends adm NAT out" src-address=192.168.88.0/24
-/ip hotspot profile add name=GoFriends_hotspot dns-name=gofriends.lan hotspot-address=172.16.16.1 html-directory=hotspot login-by=http-pap
-/ip hotspot add disabled=no name=GoFriends_WiFi_srv address-pool=GF-hotspot-pool interface=GoFriends_WiFi profile=GoFriends_hotspot
-/ip hotspot user profile add name=apple queue-type=hotspot-default session-timeout=10s shared-users=unlimited
-/ip hotspot user profile add name=guest queue-type=hotspot-default idle-timeout=1d keepalive-timeout=1d shared-users=unlimited on-login="/ip firewall address-list add list=AUTHORIZED address=\$address timeout=24:00:00" on-logout="/ip firewall address-list remove list=AUTHORIZED address=\$address"
-/ip hotspot user add name=guest password=guest profile=guest
-/ip hotspot user add name=apple password=apple profile=apple
-/ip hotspot user add name=##HP_USERNAME## password=##HP_PASSWORD## profile=guest
-/ip hotspot walled-garden add dst-host=*facebook*
-/ip hotspot walled-garden add dst-host=*fbcdn.net*
-/ip hotspot walled-garden add dst-host=*gofriends.com.ua*
-/ip hotspot walled-garden add dst-host=*gowifi-prod.s3.amazonaws.com*
-/ip hotspot walled-garden add dst-host=*akamai*
-/ip hotspot walled-garden add dst-host=*vk.com
-/ip hotspot walled-garden add dst-host=*vk.me*
-/ip hotspot walled-garden add dst-host=*googleapis*
-/ip hotspot walled-garden add dst-host=*odnoklassniki*
-/ip hotspot walled-garden add dst-host=*mycdn*
-/ip hotspot walled-garden add dst-host=*.ok.ru
-/ip hotspot walled-garden add dst-host=*twitter*
-/ip hotspot walled-garden add dst-host=*twimg*
-/ip hotspot walled-garden add dst-host=*facebook*
-/ip hotspot walled-garden add dst-host=*akamai*
-/ip hotspot walled-garden add dst-host=*gtld-servers.net
-/ip hotspot walled-garden add dst-host=*verisign-grs.com
-/ip hotspot walled-garden add dst-host=*edgecastcdn.net
-/ip hotspot walled-garden add dst-host=*instagram.com
-/ip hotspot walled-garden add dst-host=*google-analytics.com
-/ip dns set allow-remote-requests=yes servers=8.8.8.8,64.6.64.6
-/ip service set telnet disabled=yes
-/ip service set www disabled=no
-/ip service set api disabled=yes
-/ip service set api-ssl disabled=yes
-/queue tree add limit-at=60M max-limit=60M name=IN_packet parent=GoFriends_WiFi
-/queue tree add name=OUT_packet parent=ether1
-/queue type add kind=pcq name=PCQ_upload pcq-classifier=src-address
-/queue type add kind=pcq name=PCQ_download pcq-classifier=dst-address pcq-limit=100KiB
-/queue tree add limit-at=4M max-limit=50M name=IN_Hotspot packet-mark=IN_packets_to_Hotspot parent=IN_packet queue=PCQ_download
-/queue tree add limit-at=4M max-limit=50M name=OUT_Hotspot packet-mark=OUT_packets_from_Hotspot parent=OUT_packet queue=PCQ_upload
-/queue tree add limit-at=50M max-limit=50M name=HTTP_DL_BOOST packet-mark=http_dl_boost parent=IN_packet priority=2 queue=PCQ_download
-/ip firewall mangle add action=add-src-to-address-list address-list=Hotspot_addr chain=prerouting in-interface=GoFriends_WiFi src-address=172.16.16.5-172.16.16.254
-/ip firewall mangle add action=mark-connection chain=forward in-interface=ether1 new-connection-mark=IN out-interface=GoFriends_WiFi
-/ip firewall mangle add action=mark-packet chain=forward comment=HTTP_DL_BOOST connection-bytes=0-2000000 connection-mark=IN new-packet-mark=http_dl_boost passthrough=no protocol=tcp src-port=80
-/ip firewall mangle add action=mark-connection chain=forward connection-mark=IN dst-address-list=Hotspot_addr new-connection-mark=IN_to_Hotspot
-/ip firewall mangle add action=mark-packet chain=forward connection-mark=IN_to_Hotspot new-packet-mark=IN_packets_to_Hotspot
-/ip firewall mangle add action=mark-connection chain=forward in-interface=GoFriends_WiFi new-connection-mark=OUT out-interface=ether1
-/ip firewall mangle add action=mark-connection chain=forward connection-mark=OUT new-connection-mark=OUT_from_Hotspot src-address-list=Hotspot_addr
-/ip firewall mangle add action=mark-packet chain=forward connection-mark=OUT_from_Hotspot new-packet-mark=OUT_packets_from_Hotspot
-/system clock set time-zone-name=Europe/Kiev
-/system identity set name=##SSID##
-/system ntp client set enabled=yes primary-ntp=216.239.32.15 secondary-ntp=216.239.34.15
-/system ntp server set broadcast=yes broadcast-addresses=172.16.16.1,192.168.88.1 enabled=yes manycast=no
-/tool bandwidth-server set enabled=no
-/tool mac-server set [ find default=yes ] disabled=yes
-/tool mac-server mac-winbox set [ find default=yes ] disabled=yes
-/tool mac-server ping set enabled=no
-/tool mac-server mac-winbox add interface=ether1
-/tool mac-server mac-winbox add interface=GoFriends_Admin
-/user add name=GF password=##MT_ADMIN_PASSWORD## group=full
-/system routerboard settings set cpu-frequency=750MHz protected-routerboot=disabled
+#GoFriends......Go....Go....Go
+/interface bridge
+add name=GoFriends_Admin
+add name=GoFriends_WiFi
+/ip neighbor discovery
+set ether1 discover=no
+set ether2 discover=no
+set ether3 discover=no
+set ether4 discover=no
+set GoFriends_WiFi discover=no
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+add eap-methods="" group-ciphers="" name=open supplicant-identity="" \
+    unicast-ciphers=""
+add authentication-types=wpa2-psk eap-methods="" group-key-update=10m mode=\
+    dynamic-keys name=WPA2-GF-Admin supplicant-identity=MikroTik \
+    wpa2-pre-shared-key=gOfriendS2016_GO
+/interface wireless
+set [ find default-name=wlan1 ] adaptive-noise-immunity=ap-and-client-mode \
+    band=2ghz-b/g/n basic-rates-a/g="" basic-rates-b="" bridge-mode=disabled \
+    channel-width=20/40mhz-Ce default-forwarding=no disabled=no distance=\
+    indoors frequency=auto guard-interval=long ht-basic-mcs="" mode=ap-bridge \
+    multicast-helper=full radio-name=GoFriends security-profile=open \
+    supported-rates-b="" tx-power=19 tx-power-mode=all-rates-fixed \
+    wireless-protocol=802.11 wmm-support=enabled ssid=##SSID##
+/ip neighbor discovery
+set wlan1 discover=no
+/interface wireless nstreme
+set wlan1 enable-polling=no
+/interface wireless
+add disabled=no master-interface=wlan1 name=\
+    gf-adm security-profile=WPA2-GF-Admin ssid=gf-adm wmm-support=enabled
+/ip neighbor discovery
+set gf-adm discover=no
+/ip hotspot profile
+add dns-name=gofriends.lan hotspot-address=172.16.16.1 login-by=http-pap \
+    name=GoFriends_hotspot
+/ip pool
+add name=GF-adm-pool ranges=192.168.88.100-192.168.88.200
+add name=GF-hotspot-pool ranges=172.16.16.5-172.16.19.254
+/ip dhcp-server
+add address-pool=GF-adm-pool disabled=no interface=GoFriends_Admin \
+    lease-time=2w name=GF-adm-dhcp
+add address-pool=GF-hotspot-pool disabled=no interface=GoFriends_WiFi \
+    lease-time=12h name=GF-hotspot-dhcp
+/ip hotspot
+add address-pool=GF-hotspot-pool disabled=no interface=GoFriends_WiFi name=\
+    GoFriends_WiFi_srv profile=GoFriends_hotspot
+/queue tree
+add limit-at=60M max-limit=60M name=IN_packet parent=GoFriends_WiFi
+add name=OUT_packet parent=ether1
+/queue type
+add kind=pcq name=PCQ_upload pcq-classifier=src-address
+add kind=pcq name=PCQ_download pcq-classifier=dst-address pcq-limit=100KiB
+/ip hotspot user profile
+add name=apple queue-type=hotspot-default session-timeout=10s shared-users=\
+    unlimited
+add idle-timeout=1d keepalive-timeout=1d name=guest on-login="/ip firewall add\
+    ress-list add list=AUTHORIZED address=\$address timeout=24:00:00" \
+    on-logout=\
+    "/ip firewall address-list remove list=AUTHORIZED address=\$address" \
+    queue-type=hotspot-default shared-users=unlimited
+/queue tree
+add limit-at=4M max-limit=50M name=IN_Hotspot packet-mark=\
+    IN_packets_to_Hotspot parent=IN_packet queue=PCQ_download
+add limit-at=4M max-limit=50M name=OUT_Hotspot packet-mark=\
+    OUT_packets_from_Hotspot parent=OUT_packet queue=PCQ_upload
+add limit-at=50M max-limit=50M name=HTTP_DL_BOOST packet-mark=http_dl_boost \
+    parent=IN_packet priority=2 queue=PCQ_download
+/interface bridge port
+add bridge=GoFriends_Admin interface=ether4
+add bridge=GoFriends_WiFi interface=ether2
+add bridge=GoFriends_WiFi interface=ether3
+add bridge=GoFriends_WiFi interface=wlan1
+add bridge=GoFriends_Admin interface=gf-adm
+/ip address
+add address=192.168.88.1/24 interface=GoFriends_Admin network=192.168.88.0
+add address=172.16.16.1/22 interface=GoFriends_WiFi network=172.16.16.0
+/ip dhcp-client
+add default-route-distance=0 dhcp-options=hostname,clientid disabled=no \
+    interface=ether1 use-peer-dns=no use-peer-ntp=no
+/ip dhcp-server network
+add address=172.16.16.0/22 dns-server=172.16.16.1 gateway=172.16.16.1 \
+    ntp-server=172.16.16.1
+add address=192.168.88.0/24 dns-server=192.168.88.1 gateway=192.168.88.1 \
+    ntp-server=192.168.88.1
+/ip dns
+set allow-remote-requests=yes servers=8.8.8.8,64.6.64.6
+/ip firewall filter
+add action=passthrough chain=unused-hs-chain comment=\
+    "place hotspot rules here" disabled=yes
+add action=drop chain=input dst-address=0.0.0.0/8
+add action=drop chain=input dst-address=169.254.0.0/16
+add action=drop chain=input dst-address=192.0.2.0/24
+add action=drop chain=input dst-address=198.18.0.0/15
+add action=drop chain=input dst-address=224.0.0.0/4
+add action=drop chain=input dst-address=240.0.0.0/4
+add action=drop chain=forward dst-address-list=Local out-interface=ether1
+add chain=input dst-port=8291 in-interface=ether1 protocol=tcp
+add chain=input connection-state=established
+add chain=forward connection-state=established
+add chain=output connection-state=established
+add action=drop chain=input dst-port=53 in-interface=ether1 protocol=tcp
+add action=drop chain=input dst-port=53 in-interface=ether1 protocol=udp
+/ip firewall mangle
+add action=add-src-to-address-list address-list=Hotspot_addr chain=prerouting \
+    in-interface=GoFriends_WiFi src-address=172.16.16.5-172.16.19.254
+add action=mark-connection chain=forward in-interface=ether1 \
+    new-connection-mark=IN out-interface=GoFriends_WiFi
+add action=mark-packet chain=forward comment=HTTP_DL_BOOST connection-bytes=\
+    0-2000000 connection-mark=IN new-packet-mark=http_dl_boost passthrough=no \
+    protocol=tcp src-port=80
+add action=mark-connection chain=forward connection-mark=IN dst-address-list=\
+    Hotspot_addr new-connection-mark=IN_to_Hotspot
+add action=mark-packet chain=forward connection-mark=IN_to_Hotspot \
+    new-packet-mark=IN_packets_to_Hotspot
+add action=mark-connection chain=forward in-interface=GoFriends_WiFi \
+    new-connection-mark=OUT out-interface=ether1
+add action=mark-connection chain=forward connection-mark=OUT \
+    new-connection-mark=OUT_from_Hotspot src-address-list=Hotspot_addr
+add action=mark-packet chain=forward connection-mark=OUT_from_Hotspot \
+    new-packet-mark=OUT_packets_from_Hotspot
+/ip firewall nat
+add action=passthrough chain=unused-hs-chain comment=\
+    "place hotspot rules here" disabled=yes
+add action=masquerade chain=srcnat comment="GoFriends WiFi NAT out" \
+    src-address=172.16.16.0/22
+add action=masquerade chain=srcnat comment="GoFriends adm NAT out" \
+    src-address=192.168.88.0/24
+/ip hotspot user
+add name=guest password=guest profile=guest
+add name=apple password=apple profile=apple
+add name=##HP_USERNAME## password=##HP_PASSWORD## profile=guest
+/ip hotspot walled-garden
+add dst-host=*facebook*
+add dst-host=*fbcdn.net*
+add dst-host=*gofriends.com.ua*
+add dst-host=*gowifi-prod.s3.amazonaws.com*
+add dst-host=*akamai*
+add dst-host=*vk.com
+add dst-host=*vk.me*
+add dst-host=*googleapis*
+add dst-host=*odnoklassniki*
+add dst-host=*mycdn*
+add dst-host=*.ok.ru
+add dst-host=*twitter*
+add dst-host=*twimg*
+add dst-host=*facebook*
+add dst-host=*akamai*
+add dst-host=*gtld-servers.net
+add dst-host=*verisign-grs.com
+add dst-host=*edgecastcdn.net
+add dst-host=*instagram.com
+add dst-host=*google-analytics.com
+/ip service
+set telnet disabled=yes
+set api disabled=yes
+set api-ssl disabled=yes
+/system clock
+set time-zone-name=Europe/Kiev
+/system identity
+set name=NGUCenter
+/system ntp client
+set enabled=yes primary-ntp=216.239.32.15 secondary-ntp=216.239.34.15
+/tool bandwidth-server
+set enabled=no
+/tool mac-server
+set [ find default=yes ] disabled=yes
+/tool mac-server mac-winbox
+set [ find default=yes ] disabled=yes
+add interface=ether1
+add interface=GoFriends_Admin
+/tool mac-server ping
+set enabled=no
+/user
+add name=GF password=##MT_ADMIN_PASSWORD## group=full
+disable admin

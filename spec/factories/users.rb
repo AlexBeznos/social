@@ -20,7 +20,7 @@ FactoryGirl.define do
     end
 
     trait :with_places do
-      ignore do
+      transient do
         number_of_places 5
       end
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Order do
   it { is_expected.to belong_to(:customer) }
   it { is_expected.to belong_to(:place) }
-  it { should have_and_belong_to_many(:menu_items) }
+  it { is_expected.to have_and_belong_to_many(:menu_items) }
 
   describe "Add menu item to order" do
     let(:user) { build(:user) }
@@ -31,7 +31,7 @@ RSpec.describe Order do
       order.add_menu_item(reputation, menu_item)
 
       price = menu_item.price * 2
-  
+
       expect(order.price).to eq(price)
     end
   end

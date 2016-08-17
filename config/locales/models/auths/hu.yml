@@ -13,5 +13,6 @@ hu:
         sms: "sms"
         poll: "Közvélemény kutatás"
         simple: "Egyszerű"
+        advisor: "Trip Advisor"
         password: "Jelszó"
       no_auth: "Nincsenek hitelesítések."

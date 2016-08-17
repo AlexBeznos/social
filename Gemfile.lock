@@ -483,9 +483,6 @@ GEM
       rspec (~> 3.0, >= 3.0.0)
       sidekiq (>= 2.4.0)
     rspec-support (3.0.4)
-    rspec_candy (0.4.0)
-      rspec
-      sneaky-save
     rubocop (0.40.0)
       parser (>= 2.3.1.0, < 3.0)
       powerpack (~> 0.1)
@@ -541,8 +538,6 @@ GEM
     slop (3.6.0)
     smsc (0.0.6)
       faraday (~> 0.9)
-    sneaky-save (0.1.0)
-      activerecord (>= 3.2.0)
     spring (1.7.1)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -678,7 +673,6 @@ DEPENDENCIES
   rspec-collection_matchers
   rspec-rails (~> 3.0.0)
   rspec-sidekiq
-  rspec_candy
   rubocop
   rubyzip
   sass-rails (~> 4.0.3)

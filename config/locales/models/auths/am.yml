@@ -13,5 +13,6 @@ am:
         sms: "sms"
         poll: "քվեարկություն"
         simple: "պարզ"
+        advisor: "Trip Advisor"
         password: "գաղտնաբառ"
       no_auth: Դուք չունեք."

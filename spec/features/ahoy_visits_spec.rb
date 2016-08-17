@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Ahoy visits" do
-  it 'currently turned of because of posibility of visit key violation'
+  it 'currently turned off because of posibility of visit key violation'
 #   let(:place) { create :place }
 #   let(:vkontakte_auth) { create :vkontakte_auth }
 #   let(:auth) { create :auth, place: place, resource: vkontakte_auth }

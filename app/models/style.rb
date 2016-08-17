@@ -1,6 +1,6 @@
 require 'cssminify'
 class Style < ActiveRecord::Base
-  ICONS_ATTRS = Auth::NETWORKS.values.map { |n| "#{n}_icon".to_sym }
+  ICONS_ATTRS = Auth::NETWORKS.values.map { |n| "#{n}_icon".to_sym }.push(:advisor_icon)
 
   belongs_to :place
 
@@ -9,6 +9,7 @@ class Style < ActiveRecord::Base
   mount_uploader :facebook_icon, NetworkIconUploader
   mount_uploader :twitter_icon, NetworkIconUploader
   mount_uploader :instagram_icon, NetworkIconUploader
+  mount_uploader :advisor_icon, NetworkIconUploader
 
   validates :text_color, :greating_color, css_colour: true, allow_blank: true
   validates :background,
