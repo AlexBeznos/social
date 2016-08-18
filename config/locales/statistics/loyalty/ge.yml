@@ -1,0 +1,16 @@
+ge:
+  statistics:
+    loyalty:
+      title: "ლოიალობის სტატისტიკა"
+      time: "დრო"
+      social_network_id:  "მომხმარებლის სოციალური ქსელი"
+      price: "ფასი"
+      received: "მიღებულია"
+      current_id_score: "მომხმარებლის მიმდინარე ანგარიში"
+      today: "დღეს"
+      this_week: "კვირაში"
+      this_month: "თვეში"
+      custom_date: "პერიოდის არჩევა"
+      from: "დან:"
+      to: "მდე:"
+      find: "ძებნა"

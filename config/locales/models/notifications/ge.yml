@@ -1,0 +1,11 @@
+ge:
+  models:
+    notifications:
+      name: "შეტყობინება"
+      approve: "დასტური"
+      unapprove: "უარყოფა"
+      status:
+        approved: "დადასტურებულია"
+        unapproved: "უარყოფილია"
+        pending: "მოსალოდნელია"
+      no_notifications: "შეტყობინება თქვენთვის არ მოიძებნა."

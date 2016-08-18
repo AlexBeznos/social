@@ -1,0 +1,20 @@
+ge:
+  models:
+    banners:
+      class: 'ბანერი'
+      actions:
+        index:
+          title: "ბანერი %{place_name}"
+          no_city: "ბანერის შესაქმნელად საჭიროა მიუთითოთ ქალაქი სადაც დაწესებულებაა"
+          no_banners: ბანერს ჯერ არ ფლობთ
+          add: ბანერის დამატება
+          confirm: დარწმუნებული ხართ?
+        new:
+          title: ახალი ბანერი
+        edit:
+          title: ბანერის რედაქტირება
+      attrs:
+        name: დასახელება
+        views_number: ნახვის რაოდენობა
+      navigation:
+          back: დაბრუნება

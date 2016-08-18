@@ -1,0 +1,15 @@
+geo:
+  activerecord:
+    errors:
+      models:
+        menu_item:
+          attributes:
+            image:
+              in_between: გამოსახულება უნდა იყოს არანაკლებ 11 კბ და არაუმეტეს 10 მბ
+  models:
+    menu_items:
+      actions:
+        edit:
+          title: 'პროდუქტის/მომსახურების რედაქტირება'
+        new:
+          title: პროდუქტის/მომსახურების დამატება

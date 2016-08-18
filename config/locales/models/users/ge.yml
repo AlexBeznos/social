@@ -1,0 +1,25 @@
+ge:
+  models:
+    users:
+      created: მომხამრებელი დამატეულია
+      updated: მომხმარებლის მონაცემეი განახლეულია
+      user: მომხმარებელი
+      actions:
+        index:
+          title: მომხმარელეი
+          my_users: თქვენი მომხმარებლები
+        show:
+          title: "მომხმარეელი %{user}"
+          heading: მომხმარებლის პარამეტრები
+          places: მომხმარებლის დაწესებულეა
+          users: დაწესებულების მფლობელები
+        new:
+          title: ახალი მომხმარებლის დამატება
+        edit:
+          title: 'რედაქტირება %{name}'
+      attrs:
+        first_name: სახელი
+        last_name: გვარი
+        phone: ტელეფონი
+        email: ელ-ფოსტაE-mail
+        timezone: 'სასაათო სარტყელი'

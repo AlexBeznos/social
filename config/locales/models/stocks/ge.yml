@@ -1,0 +1,17 @@
+ge:
+  models:
+    stocks:
+      class: 'აქცია'
+      day: 'ნებისმიერ დღეს'
+      actions:
+        index:
+          title: "აქციები დაწესეულებაში %{place_name}"
+          no_stocks: თქვენ ჯერ არ გაქვთ აქცია
+          add: აქციის დამატება
+        new:
+          title: აქციის დამატება
+        edit:
+          title: აქციის რედაქტირება
+      attrs:
+        image: ფოტო
+        day: ჩვენების დღე

@@ -1,0 +1,69 @@
+ge:
+  simple_form:
+    error_notification:
+      default_message: "გთხოვთ მოაგვარეთ მოცემული პრობლემები:"
+    labels:
+      auth:
+        redirect_url: "აუტენთიფიკაციის შემდეგ გადამისამართების მისამართი"
+        resource_type: "აუტენთიფიკაციის ტიპი"
+        resource:
+          posting_enabled: "პოსტინგი ცართულია"
+          message_url: "გადამისამართება შეტყობინებაში"
+          message: "შეტყობინება"
+          image: "სურათი"
+          password: "პაროლი"
+          question: "კითხვა"
+          answer: "პასუხი"
+          add_answer: "კითხვის დამატება"
+          remove: "კითხვის წაშლა"
+      place:
+        name: 'დაწესებულების დასახელება'
+        ssid: 'დაწესებულების SSID'
+        domen_url: 'დომენის მისამართი'
+        logo: 'ლოგოტიპი'
+        active: Hotspot აქტიურია
+        stocks_active: აქციები აქტიურია
+        loyalty_on: ლოიალობის პროგრამის პარამეტრების ჩართვა იუზერებისთვის
+        loyalty_program: ლოაიალობის პროგრამა
+        score_amount: ბონუსის მოცულობა
+        redirect_url: აუტენთიფიკაციის შემდეგ გადამისამართების გადამისამართება
+        city: ქალაქი
+        display_my_banners: ჩემი ბანერების ჩვენება სხვა დაწესებულებებში
+        display_other_banners: სხვისი ბანერების ჩვენება ჩემს დაწესებულებაში
+        auth_default_lang: აუტეთიფიკაციის ნაგუისხმები ენა
+        mfa: მულტიფატორული აუტენთიფიკაცია
+        post_preview: პოსტის წინასწარი ნახვა
+        demo: დემო რეჟიმი
+      user:
+        first_name: სახელი
+        last_name: გვარი
+        phone: ტელეფონის ნომერი
+        timezone: მიმდინარე ტაიმზონა
+        password: პაროლი
+        password_confirmation: დაადასტურეთ პაროლი
+      message:
+        social_network: სოციალური ქსელი
+        subscription: გამოწერა
+        message_link: შეტყოინებაზე გადასვლა
+        image: სურათი
+        message: შეტყოინეა
+        redirect_url: Аაუტენთიფიკაციის შემდგომ გადამისამართეიბის მისამართი
+      stock:
+        url: ლინქი
+        image: სურათი
+        days: ჩვენეის დღეეი
+      style:
+        background: უკანა ფონი
+        js: JS
+        css: CSS
+        text_color: ძირითადი ტექსტის ფერი
+        greating_color: მისალმეის ფერი
+        line_colors: შესვლის ველის ფერი და გამჭვირვალობა
+      menu_item:
+        menu_item: პროდუქტი
+        name: პროდუქტის დასახელეა
+        description: აღწერა
+        image: სურათი
+        price: ღირეულება(ქულებში)
+      poll:
+        question: კითხვა

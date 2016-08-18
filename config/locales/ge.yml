@@ -1,0 +1,374 @@
+ge:
+  pundit:
+    default: არ გაქვთ წვდომა ამ გვერდზე
+  authlogic:
+    error_messages:
+      login_not_found: არ მოიძებნა
+      password_blank: ვერ იქნება ცარიელი
+      user_session: UserSession (or whatever name you are using)
+    attributes:
+      user_session:
+        email: Email
+        password: პაროლი
+        remember_me: დამიმახსოვრე
+  activerecord:
+    models:
+      user: მომხმარებელი
+      place: დაწესებულება
+      stock: აქცია
+      style: სტილი
+      menu_item: პროდუქტი
+      poll: გამოკითხვა
+      banner: бბანერი
+      auth: აუტენთიფიკაცია
+  notice:
+    create: "%{subject} დამატებულია"
+    updated: "%{subject} განახლებულია"
+    deleted: "%{subject} წაშლილია"
+  stock:
+    select_all: ველას არჩევა
+  date:
+    abbr_day_names:
+    - კვ
+    - ორშ
+    - სამ
+    - ოთხ
+    - ხუთ
+    - პარ
+    - შაბ
+    abbr_month_names:
+    -
+    - იან.
+    - თებ.
+    - მარტ
+    - აპრ.
+    - მაი
+    - ივნ
+    - ივლ
+    - აგვ.
+    - სექტ.
+    - ოქტ.
+    - ნოემ.
+    - დეკ.
+    day_names:
+    - вკვირა
+    - ორშაბათი
+    - სამშაბათი
+    - ოთხშაბათი
+    - ხუთშაბათი
+    - პარასკევი
+    - შაბათი
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - იანვარი
+    - თებერვალი
+    - მარტი
+    - აპრილი
+    - მაისი
+    - ივნისი
+    - ივლისი
+    - აგვისტო
+    - სექტემბერი
+    - ოქტომბერი
+    - ნოემბერი
+    - დეკემბერი
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        few: დაახლოებით %{count} საათი
+        many: დაახლოებით %{count} საათი
+        one: დაახლოებით %{count} საათი
+        other: оდაახლოებით %{count} საათი
+      about_x_months:
+        few: დაახლოებით %{count} თვე
+        many: დაახლოებით %{count} თვე
+        one: დაახლოებით %{count} თე
+        other: დაახლოებით %{count} თვე
+      about_x_years:
+        few: დაახლოებით %{count} წელი
+        many: დაახლოებით %{count} წელი
+        one: დაახლოებით %{count} წელი
+        other: დაახლოებით %{count} წელი
+      almost_x_years:
+        one: 1 წლამდე
+        few: დაახლოებით %{count} წელი
+        many: пდაახლოებით %{count} წელი
+        other: დაახლოებით %{count} წელი
+      half_a_minute: წუთზე ნაკლები
+      less_than_x_minutes:
+        few: "%{count} წუთზე ნაკლები"
+        many:  "%{count} წუთზე ნაკლები"
+        one: "%{count} წუთზე ნაკლები"
+        other: "%{count} წუთზე ნაკლები"
+      less_than_x_seconds:
+        few: "%{count} წამზე ნაკლები"
+        many: "%{count} წამზე ნაკლები"
+        one: "%{count} წამზე ნაკლები"
+        other: "%{count} წამზე ნაკლები"
+      over_x_years:
+        few:  "%{count} წელზე მეტი"
+        many: "%{count} წელზე მეტი"
+        one: "%{count} წელზე მეტი"
+        other: "%{count} წელზე მეტი"
+      x_days:
+        few: "%{count} დღე"
+        many: "%{count} დღე"
+        one: "%{count} დღე"
+        other: "%{count} დღე"
+      x_minutes:
+        few: "%{count} წუთი"
+        many: "%{count} წუთი"
+        one: "%{count} წუთი"
+        other: "%{count} წუთი"
+      x_months:
+        few: "%{count} თვე"
+        many: "%{count} თვე"
+        one: "%{count} თვე"
+        other: "%{count} თვე"
+      x_seconds:
+        few: "%{count} წამი"
+        many: "%{count} წამი"
+        one: "%{count} წამი"
+        other: "%{count} წამი"
+    prompts:
+      day: День
+      hour: საათი
+      minute: წუთი
+      month: თვე
+      second: წამი
+      year: წელი
+      week: კვირა
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      cookies: 'გთხოვთ ჩართეთ, cookies თქვენს ბრაუზერში, რადგან სერვისი მის გარეშე სწორად ვერ ფუნქციონირებს'
+      file_size_is_in: ! 'ფაილის მოცულობა უნდა ეტეოდეს %{min} და %{max} შორის'
+      file_size_is_less_than: ! 'ფაილის მოცულობა უნდა იყოს %{count}მცირე'
+      file_size_is_less_than_or_equal_to: ! 'ფაილის მოცულობა უნდა იყოს %{count}მცირე ან ტოლი'
+      file_size_is_greater_than: ! 'ფაილის მოცულობა უნდა იყოს  %{count}მეტი'
+      file_size_is_greater_than_or_equal_to: ! 'ფაილის მოცულობა უნდა იყოს %{count} მეტი ან ტოლი '
+      spoofed_file_media_type: ფაილის შიგთავსი არ შეესაბამება ფაილის ფორმატს
+      allowed_file_content_types: ! 'ფაილის დაშვებული ფორმატები %{types}'
+      excluded_file_content_types: ! 'ფაილის შემდეგი ფორმატები დაუშვებელიაс %{types}'
+      not_found: ჩანაწერი არ მოიძებნა
+      accepted: საჭიროა დადასტურება
+      blank: არ უნდა იყოს ცარიელი
+      present: დატოვეთ ცარიელი
+      confirmation: არ ემთხვევა ველის მნიშვნელობას %{attribute}
+      empty: არ უნდა იყოს ცარიელი
+      equal_to: მხოლოდ %{count} ტოლი მნიშვნელობა უნდა ქონდეს
+      even: შეიძლება ქონდეს მხოლოდ კენტი მნიშვნელობა
+      exclusion: გააჩნია დაჯავშნული მნიშვნელობა
+      greater_than: შეუძლია ქონდეს %{count} მეტი მნიშვნელობა
+      greater_than_or_equal_to: შეიძლება ქონდეს %{count} მეტი ან თანაბარი მნიშვნელობა
+      inclusion: აქვს გაუთვალისწენებელი მნიშვნელობა
+      invalid: გააჩნია თანაბარი მნიშვნელობა
+      less_than: შეიძლება ქონდეს %{count} -ზე ნაკლები მნიშვნელობა
+      less_than_or_equal_to: შეიძლება ქონდეს %{count} ნაკლები ან ტოლი მნიშვნელობა
+      not_a_number: არ არის რიცხვი
+      not_an_integer: არ არის მთელი რიცხვი
+      odd: შეიძლება ქონდეს ლუწი მნიშვნელობა
+      record_invalid: 'წარმოიშვა შეცდომები: %{errors}'
+      restrict_dependent_destroy:
+        one: 'ჩანაწერის წაშლა შეუძლებელია რადგან წარმოიშვა დამოკიდებულება: %{record}'
+        many: 'ჩანაწერის წაშლა შეუძლებელია რადგან წარმოიშვა დამოკიდებულება: %{record}'
+      taken: უკვე არსებობს
+      too_long:
+        few: ძლიან გრძელია (არ უნდა იყოს %{count} სიმბოლოზე მეტი)
+        many: ძალიან გრძელია (არ უნდა იყოს %{count} სიმბოლოზე მეტი)
+        one: ძალიან გრძელია (არ უნდა იყოს %{count} სიმბოლოზე მეტი)
+        other: ძალიან გრძელია (არ უნდა იყოს %{count} სიმბოლოზე მეტი)
+      too_short:
+        few: არასაკმარისი სიგრძისაა (უნდა იყოს არანაკლებ %{count} სიმბოლო)
+        many: არასაკმარისი სიგრძისაა (უნდა იყოს არანაკლებ %{count} სიმბოლო)
+        one: არასაკმარისი სიგრძისაა (უნდა იყოს არანაკლებ %{count} სიმბოლო)
+
+        other: არასაკმარისი სიგრძისაა (უნდა იყოს არანაკლებ %{count} სიმბოლო)
+
+      wrong_length:
+        few: არასწორი სიგრძე (შეიძლება იყოს %{count}სიმბოლოს ტოლი სიგრძის)
+        many: არასწორი სიგრძე (შეიძლება იყოს %{count}სიმბოლოს ტოლი სიგრძის)
+        one: არასწორი სიგრძე (შეიძლება იყოს %{count}სიმბოლოს ტოლი სიგრძის)
+        other: არასწორი სიგრძე (შეიძლება იყოს %{count}სიმბოლოს ტოლი სიგრძის)
+        other_than: უნდა განსხვავდებოდეს %{count}-სგან
+    template:
+      body: 'შემდეგ ველებში წარმოიშვა პრობლემები:'
+      header:
+        few: "%{model}: ვერ შეინახა %{count} შეცდომის გამო"
+        many: "%{model}: ვერ შეინახა %{count} შეცდომის გამო"
+        one: "%{model}: ვერ შეინახა %{count} შეცდომის გამო"
+        other: "%{model}: ვერ შეინახა %{count} შეცდომის გამო"
+  helpers:
+    select:
+      prompt: 'აირჩიეთ: '
+    submit:
+      create: შექმენით %{model}
+      submit: შეინახეთ %{model}
+      update: შეინახეთ %{model}
+      edit: რედაქტირება
+      add: დაუმატეთ ახალი %{name}
+      destroy: წაშლა
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: ლარი.
+    format:
+      delimiter: " "
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            few: მილიარდი
+            many: მილიარდი
+            one: მილიარდი
+            other: მილიარდი
+          million:
+            few: მილიარდი
+            many: მილიონი
+            one: მილიონი
+            other: მილიონი
+          quadrillion:
+            few: კვადრილიონი
+            many: კვადრილიონი
+            one: კვადრილიონი
+            other: კვადრილიონი
+          thousand:
+            few: ათასი
+            many: ათასი
+            one: ათასი
+            other: ათასი
+          trillion:
+            few: ტრილიონი
+            many: ტრილიონი
+            one: ტრილიონი
+            other: ტრილიონი
+            unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            few: ბაიტი
+            many: ბაიტი
+            one: ბაიტი
+            other: ბაიტი
+          gb: გბ
+          kb: კბ
+          mb: მბ
+          tb: ტბ
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " и "
+      two_words_connector: " и "
+      words_connector: ", "
+  time:
+    am: დილა
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+    pm: საღამო
+  wifi:
+    sms_try_more: 'არასწორი კოდი. კვლავ სცადეთ'
+    greetings: "გამარჯობა, <ins>%{customer_name}</ins>!"
+    greetings_to_no_one: გამარჯობა!
+    description: 'შედით ტქვენს საყვარელ<br/>სოციალურ ქსელში და მიიღეთ<br/>ინტენეტზე წვდომა'
+    poll: 'შეავსე კითხვარი და შედი'
+    poll_error: "არ აგირჩევიათ არცერთი შემოტავაზებული პასუხი"
+    footer: 'Powered by GoFriends'
+    password_placeholder: 'ან შეიყვანეთ პაროლი...'
+    simple_enter: "შესვლა"
+    countdown: " წამი დარჩა"
+    select_answer: "აირჩიეთ ერთერთი შემოთავაზებული პასუხი"
+    submit: "პასუხი"
+    sms_placeholder: "ნომერი sms-ისთის"
+    sms_code_placeholder: "კოდი sms-დან"
+    sms_resend: 'კიდევ ერთხელ გაგზავნეთ smsо'
+  menu_item:
+    greetings: "კეთილი იყოს თქვენი მობრძანება %{place_name}"
+    greetings_short: კეთილი იყოს თქვენი მობრძანება!
+    buy_with_bonuses: ჩამოთანათვალში ნახავთ თუ რაში დახარჯოთ ქულები
+    added_bonus: დაგერიცხათ %{place_score_amount} ქულა!
+    bonus_amount: "თქვენს ანგარიშზეა: %{customer_reputation_score} ქულა"
+    to_internet: "Пინტერნეტშ შესვლა"
+    back_to_shopping: "დაბრუნდით შეძენაზე"
+    shopping_history: "შენაძენის ისტორია"
+    confirm_order: "დაადასტურეთ ჩამოწერილიП %{item_price} ქულები?"
+    not_enough_points: "Нარაასაკმარისი"
+    successful_buy: "გადაცვალეთ %{price}%{price_img}  %{menu_item_name}"
+    billed_account: "თქვენი საბონუსე ანგარიშიდან ჩამოჭრა %{item_price} ქულა"
+    show_to_waiter: "აჩვენეთ ეს გვერდი ოფიციანტს"
+    show_to_waiter_with_code: "აჩვენეთ კოდი ოფიციანტს"
+    add_new_item: დაამატეთ ახალი პროდუქტი/მომსახურეობა
+    item_price: "ფასი: %{item_price}"
+    goods: "პროდუქტი/მომსახურება"
+    coupon_code: "შეძენის კოდი: %{coupon_code}"
+    buy: გადაცვლა
+    already_have: "თვქენს ანგარიშზეა უკვე %{score} ქულა."
+  navigation:
+    logout: 'გამოსვლა'
+    login: 'შესვლა'
+    users: 'მომხმარებლები'
+    my_places: 'ჩემი დაწესებულებები'
+    global_statistics: "გლობალური სტატისტიკა"
+    dashboard:
+      statistic: 'სტატისტიკა'
+      visit_statistics: "სტუმრების სტატისტიკა"
+      guests: 'ტოპ სტუმრები'
+      birthdays: "დბადების დღეები"
+      settings: 'პარამეტრები'
+      stocks: 'აქციები'
+      menu_items: 'პროდუქცია/მომსახურება'
+      polls: 'გამოკითხვები'
+      banners: 'ბანერები'
+  gowifi_previews:
+    show:
+      accept: "მოყევით!"
+      reject: "გმადლობთ, არა"
+    vkontakte:
+      name: "Иმომხმარებლის სახელი"
+      time: "საათის უკან"
+      reply: "პასუხი"
+      share: "გაზიარება"
+      like: "მმომწონს"
+    twitter:
+      name: "მომხმარებლის სახელი"
+      time: "15"
+    facebook:
+      name: "მომხმარებლის სახელი"
+      action: "სურათის დამატება"
+      time: "17 დეკემბერი 2015 ."
+      like: "მომწონს"
+      comment: "კომენტარები"
+      share: "გაზიარება"
+      write_comment: "დაწერეთ კომენტარი ..."

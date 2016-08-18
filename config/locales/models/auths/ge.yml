@@ -1,0 +1,17 @@
+ge:
+  models:
+    auths:
+      name: "აუტენტიფიკაცია"
+      Primary: "პირველადი"
+      Secondary: "მეორადი"
+      add_auth: აუტენთიფიკაციის შექმნა
+      methods:
+        vkontakte: "Bконтакте"
+        facebook: "ფეისბუკში"
+        twitter: "ტვიტერში"
+        instagram: "ინსტაგრამში"
+        sms: "SMS"
+        poll: "გამოკითხვა"
+        simple: 'ღილაკით: "შესვლა"'
+        password: "პაროლით"
+      no_auth: "არ გაქვთ აუტენთიფიკაცია."

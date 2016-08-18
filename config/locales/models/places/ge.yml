@@ -1,0 +1,71 @@
+ge:
+  models:
+    places:
+      errors:
+        different_owners: "მფლობელის შეცვლამდე-წაშალეთ ეს დაწესებულება ჯგუფიდან"
+      place: დაწესებულება
+      attrs:
+        name: 'დაწესებულების დასახელება'
+        ssid: 'დაწესებულების SSID '
+        domen_url: "დომენის მისამართი"
+        by_password: 'პაროლით შესვლა'
+        password: 'შესასვლელი პაროლი'
+        active: 'Hotspot აქტიურია'
+        stocks_active: აქციის აუტენთიფიკაციის გვერდზე გამოტანა
+        logo: 'ლოგოტიპი'
+        redirect_url: "აუთენთიფიკაციის შემდგომი რედირექტი"
+        wifi_link: "აუტენთიფიკაციის გვერდზე გადამისამართება"
+        reputation_active: "ბონუსის ჩარიცხვა"
+        score_amount: "ბონუსის მოცულობა"
+        loyalty_program: ლოიალობის პროგრამა
+        city: ქალაქი
+        display_my_banners: აჩვენე ჩემი ბანერი სხვა დაწესებულებებში
+        display_other_banners: აჩვენე სხვების ბანერები ჩემს დაწესებულებაში
+        owner: მფლობელი
+        post_preview: პოსტის წინასწარ ნახვა
+        demo: დემო რეჟიმი
+      actions:
+        index:
+          alphabet: "ალფავიტით"
+          date_of_creation: "შექმნის თარიღით"
+          sort_by: "დახარისხება"
+          title: 'დაწესებულება'
+          my_places: 'თქვენი დწესებულებები'
+          insert_name: "სახელით ძიება..."
+        show:
+          title: "დაწესებულება %{place_name}"
+          table:
+            time: დრო
+            network: სოც.ქსელი
+            customer: მომხმარებელი
+          info:
+            day: დღეღამე
+            week: კვირა
+            month: თვე
+            gender: სქესი
+            men: მამრ.
+            women: მდ.
+            auditory: აუდიტორია
+        new:
+          title: "დაწესებულების შექმნა"
+        edit:
+          title: 'რედაქტირება %{place_name}'
+        guests:
+          title: " %{place_name}-ში ტოპ სტუმრები"
+          table:
+            user: მომხმარებელი
+            network: სოც.ქსელი
+            connection_number: მიერთების რაოდენობა
+        birthdays:
+          title: "%{place_name}-ში სტუმრების დაბადების დღეები"
+          table:
+            user: მომხმარებელი
+            network: სოც.ქსელი
+            birthday: დაბადების დღე
+        settings:
+          posting_disabled: "პოსტირება გამორთულია"
+          auth_default_lang: აუთენთიფიკაციის ენა ნაგულისხმებია
+          title: " პარამეტრები %{place_name}-თვის"
+          wifi:  Wi-Fi ინსტალაცია
+          messages:  პოსტების ინსტალაცია
+          download_settings: 'WiFi-ის პარამეტრების გადმოწერა'
