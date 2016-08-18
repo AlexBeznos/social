@@ -1,0 +1,29 @@
+ge:
+  models:
+    polls:
+      class: 'გამოკითხვა'
+      actions:
+        index:
+          title: "გამოკითხვა%{place_name}-ში"
+          no_polls: გამოკითხვები ჯერ არ გაქვთ
+          add: გამოკითხვის დამატება
+          confirm: დარწმუნებული ხართ?
+        new:
+          title: გამოკითხვის დამატება
+          edit: გამოკითხვის რედაქტირება
+        show:
+          title: სტატისტიკა
+      attrs:
+        question: კითხვა
+        answer: პასუხი
+        answers_number: სავარაუდო პასუხების ვარიანტები
+        selections_number: პასუხების რაოდენობა
+      form:
+        placeholder_question: შეიყვანეთ კითხვა
+        placeholder_answer: შეიყვანეთ პასუხი
+        remove: წაშლა
+        add_answer: კიდევ ერთი პასუხის ვარიანტის დამატება
+      navigation:
+        show: სტატისტიკა
+        back: დაბრუნება
+        edit: რედაქტირება

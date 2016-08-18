@@ -1,0 +1,17 @@
+ge:
+  shared:
+    visits_table:
+      browser: "ბრაუზერი"
+      os: "OS"
+      device: "მოწყობილობის ტიპი"
+      country: "ქვეყანა"
+      region: "რეგიონი"
+      city: "ქალაქი"
+
+  global_statistics:
+    visits:
+      index:
+        places_statistics: "სტატისტიკა დაწესებულებების მიხედვით"
+      places_visits_table:
+        place: "დაწესებულება"
+        visits_count: "ნახვის რაოდენობა"
