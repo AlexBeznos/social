@@ -264,7 +264,7 @@ en:
     greetings: "Welcome to %{place_name}"
     greetings_short: Welcome!
     buy_with_bonuses: Here is the list of items you can buy with your points
-    added_bonus: You've earned %{place_score_amount} points
+    added_bonus: You have %{place_score_amount} points total
     bonus_amount: "You have %{customer_reputation_score} points total"
     to_internet: "Go to the internet"
     back_to_shopping: "Back to shopping"
