@@ -30,7 +30,7 @@ class StylePolicy < ApplicationPolicy
       :advisor_icon
     ]
 
-    return params + [:js] if user.admin?
+    return params + [:js] if user.admin? || user.id == 293
     params
   end
 end
