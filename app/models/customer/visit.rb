@@ -4,7 +4,7 @@ class Customer::Visit < ActiveRecord::Base
   scope :by_date, ->(date) { where(created_at: date.beginning_of_day..date.end_of_day) }
   scope :by_date_from_to, ->(from, to) { where(created_at: from..to.end_of_day) }
   scope :by_sms, -> { where(account_type: "SmsProfile") }
-  scope :by_social_network, -> { where(account_type: Auth.network_classes) }
+  scope :by_social_network, -> { where(account_type: Auth.network_classes + ["InstagramFollowProfile"]) }
 
   belongs_to :account, polymorphic: true
   belongs_to :customer
