@@ -52,7 +52,7 @@ class Customer::Visit < ActiveRecord::Base
   end
 
   def by_instagram_follow?
-    'instagram_follow' == profile_name
+    'instagramfollow' == profile_name
   end
 
   def by_social_network?
