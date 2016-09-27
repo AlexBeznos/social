@@ -24,6 +24,7 @@
     - @visits_by_date.each do |visit|
       %tr.row
         %td.col-xs-4= visit.created_at.strftime('%k:%M')
+        = render 'places/visits/instagram_follow', visit: visit
         = render 'places/visits/password', visit: visit
         = render 'places/visits/sms', visit: visit
         = render 'places/visits/social_network', visit: visit

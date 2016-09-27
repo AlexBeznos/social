@@ -51,6 +51,10 @@ class Customer::Visit < ActiveRecord::Base
     Auth::ALTERNATIVE[:password] == profile_name
   end
 
+  def by_instagram_follow?
+    Auth::ALTERNATIVE[:instagram_follow] == profile_name
+  end
+
   def by_social_network?
     Auth::NETWORKS.has_value?(profile_name)
   end

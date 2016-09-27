@@ -13,7 +13,8 @@ class Auth < ActiveRecord::Base
     sms: 'sms',
     password: 'password',
     simple: 'simple',
-    advisor: 'advisor'
+    advisor: 'advisor',
+    instagram_follow: 'instagram_follow'
   }
 
   METHODS = NETWORKS.values + ALTERNATIVE.values
