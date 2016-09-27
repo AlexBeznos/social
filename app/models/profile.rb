@@ -89,6 +89,6 @@ class Profile < ActiveRecord::Base
   end
 
   def self.get_profile_type(provider)
-    provider.capitalize + "Profile"
+    provider.classify + "Profile"
   end
 end

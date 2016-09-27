@@ -60,6 +60,7 @@ Rails.application.routes.draw do
         post '/by_sms' => 'sms#create'
         get '/simple_enter' => 'simple_enter#create'
         get '/advisor' => 'advisor#create'
+        get '/follow_instagram' => 'instagram#create'
       end
 
       resources :gowifi_sms, only: :create do

@@ -6,7 +6,7 @@
         = image_tag icon.try(:present?) ? icon.url : "wifi/#{auth.name}.png"
 
     - if auth.network? && auth.resource_type == 'InstagramAuth'
-      = link_to wifi_login_path(place, auth.redirect_url), class: 'wifi_link' do
+      = link_to follow_instagram_path(place), class: 'wifi_link' do
         - icon = place.style.try("#{auth.name}_icon")
         = image_tag icon.try(:present?) ? icon.url : "wifi/#{auth.name}.png"
 

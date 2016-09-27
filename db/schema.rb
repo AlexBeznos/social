@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725165942) do
+ActiveRecord::Schema.define(version: 20160927152925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,9 @@ ActiveRecord::Schema.define(version: 20160725165942) do
     t.datetime "updated_at"
   end
 
+  create_table "instagram_follow_profiles", force: true do |t|
+  end
+
   create_table "instagram_profiles", force: true do |t|
     t.string   "name"
     t.string   "nickname"
@@ -262,7 +265,6 @@ ActiveRecord::Schema.define(version: 20160725165942) do
     t.boolean  "mfa",                   default: false
     t.boolean  "post_preview",          default: false
     t.boolean  "remember_device",       default: false
-    t.boolean  "remember_sms"
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree
