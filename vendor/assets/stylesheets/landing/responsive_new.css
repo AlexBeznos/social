@@ -1,0 +1,119 @@
+@media (max-width: 767px) {
+    .top_form,
+    .top_form_block,
+    .top_socials,
+    header .enter,
+    header .menu_item {
+        text-align: center!important;
+        width: 100%!important
+    }
+    #business .column_business,
+    #pizza .img_block img,
+    #tel_section .col-xs-6,
+    .top_form,
+    header .menu_item {
+        width: 100%!important
+    }
+    #pizza .img_block img,
+    #tel_section,
+    header {
+        height: auto!important
+    }
+    #pizza .logo,
+    header .logo {
+        background-repeat: no-repeat!important;
+        background-size: 100%!important
+    }
+    body,
+    html {
+        overflow-x: hidden
+    }
+    header .logo {
+        max-width: 100%!important
+    }
+    .header_block {
+        padding: 15px!important
+    }
+    .top_form,
+    header .menu_item {
+        padding: 6px 15px!important;
+        margin: 0 auto!important
+    }
+    #tel_section .tel_img,
+    #tel_section .tel_number img {
+        margin: 0 auto!important;
+        max-width: 220px!important
+    }
+    #tel_section .tel_text {
+        margin-right: auto!important
+    }
+    #tel_section .tel_description {
+        margin-bottom: 30px!important
+    }
+    #tel_section .tel_block_4 {
+        margin-top: 60px!important
+    }
+    #benefit .actual-info__title {
+        font-size: 24px!important;
+        line-height: 1.5!important
+    }
+    #top_form .form_block {
+        padding: 15px!important
+    }
+    #pizza .logo {
+        max-width: 100%!important
+    }
+}
+@media (max-width: 1199px) {
+    #pizza .col-sm-3,
+    #pizza .col-sm-4,
+    #pizza .col-sm-5,
+    #pizza .text_block_4 {
+        width: 100%!important
+    }
+    #benefit .benefit_description {
+        margin: 0 auto
+    }
+    #top_form .form_description,
+    #top_form .form_description_2 {
+        line-height: 1.5!important;
+        font-size: 36px!important;
+        text-align: center!important;
+        float: none!important;
+        display: block!important
+    }
+    #pizza .img_block {
+        text-align: center!important
+    }
+    #pizza .title h3 {
+        position: static!important;
+        margin: 0!important
+    }
+    #pizza .text_block_1,
+    #pizza .text_block_2,
+    #pizza .text_block_3,
+    #pizza .text_block_5 {
+        text-align: left!important;
+        margin: 15px 0!important;
+        padding: 0!important;
+        font-size: 24px!important;
+        width: 100%!important
+    }
+    #pizza .text_block_4 {
+        text-align: center!important
+    }
+    #router .router_content {
+        padding-left: 0
+    }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    #benefit .col-sm-3 {
+        width: 100%!important
+    }
+}
+#pizza .text_block_4 {
+    font-size: 24px!important
+}
+#router .router_content {
+    max-width: 100%
+}
