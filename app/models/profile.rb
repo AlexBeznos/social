@@ -25,8 +25,8 @@ class Profile < ActiveRecord::Base
   end
 
 
-  def postable?
-    Auth::NETWORKS.values.reject{ |net| net == "instagram" }.include? network_name
+  def network?		
+    Auth::NETWORKS.values.include? network_name		
   end
 
   def network_name

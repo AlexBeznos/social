@@ -1,7 +1,7 @@
 class MigrateAuthsState < ActiveRecord::Migration
 
   def self.up
-    Auth.all.map(&:approved!)
+    Auth.update_all({state: 1})
   end
 
   def self.down
