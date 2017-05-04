@@ -9,13 +9,10 @@ class GowifiAuth::OmniauthController < GowifiAuthController
       credentials: credentials,
       auth: @auth,
       place: @place,
-      customer_id: get_customer_cookie
+      customer_session: current_customer_session
     )
 
     decorator.save
-    session.delete(:slug)
-    set_customer_cookie(decorator.customer.id)
-
     redirect_to succed_auth_path(@place, @auth)
   end
 
@@ -31,7 +28,7 @@ class GowifiAuth::OmniauthController < GowifiAuthController
 
   def find_place
     slug_by_omni = request.env.try(:[], 'omniauth.params').try(:[], 'place')
-    slug_by_session = session[:slug]
+    slug_by_session = current_customer_session.place.slug
 
     @place = Place.find_by_slug(slug_by_omni || slug_by_session)
   end
@@ -40,7 +37,7 @@ class GowifiAuth::OmniauthController < GowifiAuthController
     @auth = @place.auths
                   .active
                   .resource_like(credentials['provider'].capitalize)
-                  .find_by(step: Auth.steps[session[:auth_step]])
+                  .find_by(step: Auth.steps[current_customer_session.auth_step])
   end
 
   def check_facebook_permissions

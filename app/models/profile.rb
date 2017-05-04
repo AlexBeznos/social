@@ -1,8 +1,9 @@
 class Profile < ActiveRecord::Base
+  scope :sms, -> { where(resource_type: "SmsProfile") }
 
   belongs_to :customer
   belongs_to :resource, polymorphic: true, dependent: :destroy
-  has_many :visits, class_name: Customer::Visit, dependent: :destroy
+  # has_many :visits, class_name: Customer::Visit, dependent: :destroy
 
   accepts_nested_attributes_for :resource
 

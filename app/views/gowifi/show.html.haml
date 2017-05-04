@@ -1,7 +1,7 @@
 = render 'header', place: @place
 = render 'networks', place: @place, auths: @auths
 = render 'by_password', place: @place, auths: @auths
-= render 'by_sms', place: @place, auths: @auths
+= render 'by_sms', place: @place, auths: @auths if !current_customer_session.device_remembered?
 = render 'poll', place: @place, auths: @auths
 = render 'simple_enter', place: @place, auths: @auths
 %br

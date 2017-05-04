@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  extend TimeQueries
+  extend CreationDateQueries
 
   belongs_to :customer
   belongs_to :place

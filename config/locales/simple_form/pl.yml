@@ -18,6 +18,9 @@ pl:
           remove: "Usunąć"
       place:
         name: 'nazwa instytucji'
+        remember_device: "Remember customer bys device"
+        remember_device_gtext: "This is functionality, that provides opportunity to remember customers via their devices"
+        remember_device_gtitle: "Remember device"
         ssid: 'miejsca SSID'
         domen_url: 'adres domenyа'
         logo: 'logotyp'

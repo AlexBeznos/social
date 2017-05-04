@@ -3,7 +3,7 @@
   # For APIs, you may want to use :null_session instead.
   include Pundit
 
-  helper_method :current_user_session, :current_user, :current_customer, :gen_root_path, :wifi_login_path
+  helper_method :current_user_session, :current_user, :current_customer_session, :gen_root_path, :wifi_login_path
   protect_from_forgery with: :null_session
   before_action :check_locale
   before_action :set_timezone
@@ -28,7 +28,6 @@
     redirect_to '/404.html'
   end
 
-
   def append_info_to_payload(payload)
     super
     payload[:request_id] = request.uuid
@@ -36,21 +35,25 @@
     payload[:visit_id] = ahoy.visit_id # if you use Ahoy
   end
 
-  def get_customer_cookie
-    cookies.permanent[:customer]
-  end
-
-  def set_customer_cookie(customer)
-    cookies.permanent[:customer] = customer
-  end
-
-  def current_customer
-    @customer ||= if get_customer_cookie
-      Customer.find(get_customer_cookie)
+  def current_customer_session
+    Customer::Session.create_on_absence(get_customer_session_cookie.to_i) do |session|
+      set_customer_session_cookie(session.id)
+      unless session.customer
+        customer = Customer.create
+        session.update(customer: customer)
+      end
     end
   end
 
   private
+
+  def get_customer_session_cookie
+    cookies.permanent[:customer_session]
+  end
+
+  def set_customer_session_cookie(customer_session_id)
+    cookies.permanent[:customer_session] = customer_session_id
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

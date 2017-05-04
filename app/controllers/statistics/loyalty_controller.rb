@@ -1,5 +1,5 @@
 class Statistics::LoyaltyController < ApplicationController
-
+  
   before_action :set_place
 
   def show
@@ -39,7 +39,7 @@ class Statistics::LoyaltyController < ApplicationController
         begin
           bool_par[date] = params[date].to_bool
         rescue ArgumentError
-          bool_par[date] = true if Date.parse(params[date]) 
+          bool_par[date] = true if Date.parse(params[date])
         end
       else
         bool_par[date] = false

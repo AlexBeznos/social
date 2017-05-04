@@ -1,4 +1,4 @@
-module  TimeQueries
+module  CreationDateQueries
   def created_in_peroid(args={})
     if args[:from] && args[:to]
       self.where(created_at: args[:from]..args[:to])
