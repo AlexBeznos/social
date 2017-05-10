@@ -46,6 +46,7 @@ ge:
             men: მამრ.
             women: მდ.
             auditory: აუდიტორია
+            count_views: გვერდების ნახვა
         new:
           title: "დაწესებულების შექმნა"
         edit:

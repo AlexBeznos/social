@@ -47,6 +47,26 @@ class Place < ActiveRecord::Base
     stocks.where("days && '{#{day}}'::text[]").order("RANDOM()").first
   end
 
+  def up_to_day
+    self.update_attributes(access_count_day: 0)
+  end
+
+  def up_to_week
+    self.update_attributes(access_count_week: 0)
+  end
+
+  def up_to_month
+    self.update_attributes(access_count_month: 0)
+  end
+
+  def by_date_for_place(date)
+    Place.where(updated_at: date.beginning_of_day..date.end_of_day, access_count_day: self.access_count_day)
+  end
+
+  def by_date_from_to_for_place(from, to)
+    Place.where(updated_at: from..to.end_of_day, access_count: self.access_count)
+  end
+
   private
 
   def setup_router

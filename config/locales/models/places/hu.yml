@@ -46,6 +46,7 @@ hu:
             men: férfi
             women: női
             auditory: A közönség elérése
+            count_views: Összesen oldalletöltések
         new:
           title: "Hozzon létre Intézmény"
         edit:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927152925) do
+ActiveRecord::Schema.define(version: 20170505064230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -265,6 +265,10 @@ ActiveRecord::Schema.define(version: 20160927152925) do
     t.boolean  "mfa",                   default: false
     t.boolean  "post_preview",          default: false
     t.boolean  "remember_device",       default: false
+    t.integer  "access_count",          default: 0
+    t.integer  "access_count_day",      default: 0
+    t.integer  "access_count_week",     default: 0
+    t.integer  "access_count_month",    default: 0
   end
 
   add_index "places", ["slug"], name: "index_places_on_slug", using: :btree

@@ -14,6 +14,10 @@ class GowifiController < ApplicationController
     @auths = @place.auths.active.where(step: Auth.steps[session[:auth_step]] || 'primary')
     @banner = find_banner if @place.display_other_banners
     @banner.increment!(:number_of_views) if @banner
+    @place.increment!(:access_count, 1)
+    @place.increment!(:access_count_day, 1)
+    @place.increment!(:access_count_week, 1)
+    @place.increment!(:access_count_month, 1)
   end
 
   private

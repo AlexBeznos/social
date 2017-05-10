@@ -46,6 +46,7 @@ pl:
             men: mężczyzna
             women: żeński
             auditory: Docieranie do odbiorców
+            count_views: Liczba wyświetleń strony
         new:
           title: "Tworzenie Instytucji"
         edit:
