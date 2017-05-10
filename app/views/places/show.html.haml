@@ -33,10 +33,13 @@
 .row.analysis
   .col-sm-4.analysis-col
     .analysis-col-inner
+      %h2
+        = "#{t('models.places.actions.show.info.count_views')}:"
+        %span= @number_of_views_by_day
+    .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.day')}:"
         %span= @visits_by_date.by_social_network.count
-
     .analysis-col-inner
       %h2
         = "#{t('models.places.actions.show.info.auditory')}:"
@@ -59,6 +62,10 @@
         SMS:
         %span= @visits_by_date.by_sms.count
   .col-sm-4.analysis-col
+    .analysis-col-inner
+      %h2
+        = "#{t('models.places.actions.show.info.count_views')}:"
+        %span= @number_of_views_by_week
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.week')}:"
@@ -86,6 +93,10 @@
         SMS:
         %span= @visits_this_week.by_sms.count
   .col-sm-4.analysis-col
+    .analysis-col-inner
+      %h2
+        = "#{t('models.places.actions.show.info.count_views')}:"
+        %span= @number_of_views_by_month
     .analysis-col-inner
       %h1
         = "#{t('models.places.actions.show.info.month')}:"

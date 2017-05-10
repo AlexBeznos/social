@@ -46,6 +46,7 @@ ru:
             men: муж
             women: жен
             auditory: Охват аудитории
+            count_views: Количество просмотров страницы
         new:
           title: "Создать заведение"
         edit:

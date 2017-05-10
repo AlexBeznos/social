@@ -46,6 +46,7 @@ en:
             men: men
             women: women
             auditory: Audience
+            count_views: Page views
         new:
           title: "Create a place"
         edit:

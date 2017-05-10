@@ -46,6 +46,7 @@ ua:
             men: чол
             women: жен
             auditory: Охоплення аудиториї
+            count_views: Кількість переглядів сторінки
         new:
           title: "Додати заклад"
         edit:
