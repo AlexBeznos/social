@@ -33,27 +33,26 @@ class PlacesController < ApplicationController
     authorize @place
 
     date = params[:date] ? Date.strptime( params[:date],'%d-%m-%Y' ) : Time.zone.now
-
-    @views_by_date = @place.by_date_for_place(date)
+    @views_by_date = @place.by_date_for_place(date.to_time)
     @views_by_week = @place.by_date_from_to_for_place(date - 1.week, date)
     @views_by_month = @place.by_date_from_to_for_place(date - 1.month, date)
     @number_of_views_by_day = @views_by_date.map(&:access_count_day).join.to_i
     @number_of_views_by_week = @views_by_week.map(&:access_count_week).join.to_i
     @number_of_views_by_month = @views_by_month.map(&:access_count_month).join.to_i
 
-    if (date.between?(DateTime.now, date + 7.day)) || (date.between?(date - 7.day, DateTime.now - 1.day)) || (Time.zone.now.between?(date, date.end_of_day))
+    if date.between?(DateTime.now, date + 7.day) || date.between?(date - 7.day, DateTime.now - 1.day) || @place.updated_at.to_time.between?(date.to_time.beginning_of_day, date.to_time.end_of_day)
       @number_of_views_by_day
     else
       @place.up_to_day
     end
 
-    if DateTime.now.between?(date - 1.week, DateTime.now.end_of_day)
+    if @place.updated_at.to_time.between?(date.to_time.beginning_of_day - 1.week, date.to_time.end_of_day + 1.week)
       @number_of_views_by_week
     else
       @place.up_to_week
     end
 
-    if DateTime.now.between?(date - 1.month, DateTime.now.end_of_day)
+    if @place.updated_at.to_time.between?(date.to_time.beginning_of_day - 1.month, date.to_time.end_of_day + 1.month)
       @number_of_views_by_month
     else
       @place.up_to_month
