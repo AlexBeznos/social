@@ -25,16 +25,20 @@
       .container
         .row
           .col-sm-12.header_block
-            %a.logo.us{href: "/"}
+            %a.logo{href: "/"}
             .top_socials.pull-right
               .socials
                 .socials_item
-                  %a.icon-facebook{:href => "#2", :target => "_blank"}
+                  %a.icon-vkontakte{:href => "https://vk.com/gofriendswifi", :target => "_blank"}
+                .socials_item
+                  %a.icon-facebook{:href => "https://www.facebook.com/gofriendswifi", :target => "_blank"}
                 .socials_item
                   %a.icon-linkedin-1{:href => "#3", :target => "_blank"}
             .top_form_block.clear-fix
-              .top_phone
+              .top_phone +38(063) 010-17-97
               .top_form
+                %a{ href: '#bottom_form'}
+                  %button.btn.btn-default Request a call
         .row
           .top_menu
             .enter
@@ -47,19 +51,22 @@
               %ul#mainmenu.navbar.navbar-nav
                 %li.menu_item.active
                   %a.button3d{:href => "#tel_section"}
-                    %span{"data-text" => "About"} About
+                    %span{"data-text" => "ABOUT"} ABOUT
                 %li.menu_item
                   %a.button3d{:href => "#partners"}
-                    %span{"data-text" => "Locations"} Locations
+                    %span{"data-text" => "LOCATIONS"} LOCATIONS
                 %li.menu_item
                   %a.button3d{:href => "#bottom_form"}
-                    %span{"data-text" => "Become A Partner"} Become A Partner
+                    %span{"data-text" => "BECOME A PARTNER"} BECOME A PARTNER
                 %li.menu_item
                   %a.button3d{:href => "#clients"}
-                    %span{"data-text" => "Our Clients"} Our Clients
+                    %span{"data-text" => "OUR CLIENTS"} OUR CLIENTS
                 %li.menu_item
                   %a.button3d{:href => "#bottom_form"}
-                    %span{"data-text" => "Contact"} Contact
+                    %span{"data-text" => "CONTACT"} CONTACT
+                %li.menu_item
+                  %a.button3d{:href => (page_path(id: "home"))}
+                    %span{"data-text" => "RU"} RU
         .row
           .col-sm-12{:style => "padding-right: 0"}
             .header_content
@@ -156,7 +163,7 @@
           .col-sm-3
             .benefit_img_4.text-center
               = image_tag 'landing/benefit_4.png'
-            .benefit_title.text-center Build Brand Trust
+            .benefit_title.text-center Build Brand <br> Trust
             %hr.line/
             .benefit_description.text-center Build brand trust when social media users see your ad posted on the personal pages of their friends
     %section#top_form
@@ -470,11 +477,11 @@
                 Technical Support
                 %br Network Assistance
               %p
-                %span.our-contacts__name Vitali Basyuk
+                %span.our-contacts__name Valentin Bushnev
                 %br
-                  +38(093)784-55-28
+                  +38(063)328-22-69
                   %br
-                    %a{:href => "#"} https://vk.com/asdqwedsa
+                    %a{:href => "#"} https://vk.com/id16837638
             .our-contacts__4-col
               %p
                 Technical Director
@@ -526,6 +533,9 @@
               %p.contact
                 Vladimir
                 %br +38(097)421-14-90
+              %p.contact
+                Oleg Zavgorodny
+                %br +38(063)256-23-48
             .partners-contacts__5-col
               %h3 Hmelnitski
               %p.contact
@@ -573,11 +583,12 @@
                 %br +77015552844
     %footer.footer
       .container
-        %p.footer__address Tulsa, Oklahoma
+        %p.footer__address Ukraine, <br> Kiev Veresneva 24
         %p.footer__copyright
           %b 2015 © GoFriends LLC
         .footer__social-icons-wrap
+          %a.footer__social-icon.footer__social-icon--vk{href: "https://www.facebook.com/gofriendswifi"}
           %a.footer__social-icon.footer__social-icon--fb{href: "#"}
-          %a.footer__social-icon.footer__social-icon--tw{href: "#"}
+          %a.footer__social-icon.footer__social-icon--tw{href: "https://vk.com/gofriendswifi"}
     %a#back-to-top.btn.btn-primary.btn-lg.back-to-top{"data-placement" => "left", "data-toggle" => "tooltip", :href => "#", :role => "button", :title => "Push to get to the top"}
       %span.glyphicon.glyphicon-chevron-up.icon-up-open
