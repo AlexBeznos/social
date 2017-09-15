@@ -78,86 +78,86 @@ task :cleanup do
     }
   end
 
-namespace :stage do
-  task :set_domain do
-    set :domain, 'stage.gofriends.com.ua'
-  end
+# namespace :stage do
+#   task :set_domain do
+#     set :domain, 'stage.gofriends.com.ua'
+#   end
 
-  task :setup do
-    invoke :'stage:set_domain'
-    invoke :basic_setup
-  end
+#   task :setup do
+#     invoke :'stage:set_domain'
+#     invoke :basic_setup
+#   end
 
-  task :logs do
-    invoke :'stage:set_domain'
-    invoke :basic_logs
-  end
+#   task :logs do
+#     invoke :'stage:set_domain'
+#     invoke :basic_logs
+#   end
 
-  task :deploy do
-    set :branch, 'stage'
-    invoke :'stage:set_domain'
-    invoke :basic_deploy
-  end
+#   task :deploy do
+#     set :branch, 'stage'
+#     invoke :'stage:set_domain'
+#     invoke :basic_deploy
+#   end
 
-  task :cleanup do
-    invoke :'stage:set_domain'
-    invoke :cleanup
-  end
-end
+#   task :cleanup do
+#     invoke :'stage:set_domain'
+#     invoke :cleanup
+#   end
+# end
 
-namespace :app_1 do
-  task :set_domain do
-    set :domain, 'app-1.gofriends.com.ua'
-  end
+# namespace :app_1 do
+#   task :set_domain do
+#     set :domain, '138.197.187.19'
+#   end
 
-  task :setup do
-    invoke :'app_1:set_domain'
-    invoke :basic_setup
-  end
+#   task :setup do
+#     invoke :'app_1:set_domain'
+#     invoke :basic_setup
+#   end
 
-  task :logs do
-    invoke :'app_1:set_domain'
-    invoke :basic_logs
-  end
+#   task :logs do
+#     invoke :'app_1:set_domain'
+#     invoke :basic_logs
+#   end
 
-  task :deploy do
-    invoke :'app_1:set_domain'
-    invoke :basic_deploy
-  end
+#   task :deploy do
+#     invoke :'app_1:set_domain'
+#     invoke :basic_deploy
+#   end
 
-  task :cleanup do
-    invoke :'app_1:set_domain'
-    invoke :cleanup
-  end
-end
+#   task :cleanup do
+#     invoke :'app_1:set_domain'
+#     invoke :cleanup
+#   end
+# end
 
-namespace :app_2 do
-  task :set_domain do
-    set :domain, 'app-2.gofriends.com.ua'
-  end
-  task :setup do
-    invoke :'app_2:set_domain'
-    invoke :basic_setup
-  end
+# namespace :app_2 do
+#   task :set_domain do
+#     set :domain, 'app-2.gofriends.com.ua'
+#   end
+#   task :setup do
+#     invoke :'app_2:set_domain'
+#     invoke :basic_setup
+#   end
 
-  task :logs do
-    invoke :'app_2:set_domain'
-    invoke :basic_logs
-  end
+#   task :logs do
+#     invoke :'app_2:set_domain'
+#     invoke :basic_logs
+#   end
 
-  task :deploy do
-    invoke :'app_1:set_domain'
-    invoke :basic_deploy
-  end
+#   task :deploy do
+#     invoke :'app_1:set_domain'
+#     invoke :basic_deploy
+#   end
 
-  task :cleanup do
-    invoke :'app_1:set_domain'
-    invoke :cleanup
-  end
-end
+#   task :cleanup do
+#     invoke :'app_1:set_domain'
+#     invoke :cleanup
+#   end
+# end
 
 namespace :prod do
-  set :domains, %w[app-1.gofriends.com.ua app-2.gofriends.com.ua]
+  set :domains, %w[138.197.187.19]
 
   task :logs do
     isolate do
